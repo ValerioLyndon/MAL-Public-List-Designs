@@ -23,9 +23,9 @@ body { background: #efefef; }
 }
 .icon-menu, .list-menu-float form { display: inline-block !important; }
 .icon-menu {
-  top: 74px;
-  
-  height: 26px !important;
+	top: 74px;
+	
+	height: 26px !important;
 	width: 26px !important;
 	margin: 0 6px 0 0;
 	background-color: #fff !important;
@@ -45,22 +45,22 @@ body { background: #efefef; }
 	transition: all 0.3s ease;
 }
 .icon-menu:hover {
-  width: 100px !important;
-  background-color: #1d439b !important;
-  
-  -webkit-transition: all 0.3s ease;
+	width: 100px !important;
+	background-color: #1d439b !important;
+	
+	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
 .icon-menu .text {
-  top: 0 !important;
-  left: 26px !important;
-  
-  display: inline-block;
-  width: auto !important;
-  height: 26px;
-  
+	top: 0 !important;
+	left: 26px !important;
+	
+	display: inline-block;
+	width: auto !important;
+	height: 26px;
+	
 	font-size: 14px !important;
 	color: #323232 !important;
 	font-family: Arial, Verdana;
@@ -68,48 +68,48 @@ body { background: #efefef; }
 	opacity: 1 !important;
 }
 .icon-menu:hover .text {
-  color: #fff !important;
+	color: #fff !important;
 }
 .icon-menu svg.icon {
-  top: 6px !important;
-  left: 6px !important;
-  
-  max-width: 14px;
-  max-height: 14px;
+	top: 6px !important;
+	left: 6px !important;
+	
+	max-width: 14px;
+	max-height: 14px;
 }
 
 .icon-menu.profile {
 	background-image: none !important;
 }
 .icon-menu.profile:before {
-  content: "\f007";
-  position: absolute;
-  top: 0;
-  left: 0;
-  
-  display: block;
-  width: 26px;
-  height: 26px;
-  
-  font-size: 14px;
-  line-height: 26px;
-  text-align: center;
-  color: #323232;
-  font-family: FontAwesome;
+	content: "\f007";
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	display: block;
+	width: 26px;
+	height: 26px;
+	
+	font-size: 14px;
+	line-height: 26px;
+	text-align: center;
+	color: #323232;
+	font-family: FontAwesome;
 }
 .icon-menu.profile:hover:before {
-  color: #fff;
+	color: #fff;
 }
 .icon-menu.profile:after {
-  content: "Profile";
-  position:absolute;
-  top: 0;
-  left: 26px;
-  
-  display: inline-block;
-  height: 26px;
-  
-  font-size: 14px;
+	content: "Profile";
+	position:absolute;
+	top: 0;
+	left: 26px;
+	
+	display: inline-block;
+	height: 26px;
+	
+	font-size: 14px;
 	
 	color: #323232;
 }
@@ -118,35 +118,35 @@ body { background: #efefef; }
 }
 
 .icon-menu.setting:hover {
-  width: 120px !important;
-  overflow: visible;
-  
-  -webkit-transition: all 0.3s ease;
+	width: 120px !important;
+	overflow: visible;
+	
+	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
 .icon-menu.setting .text a, .icon-menu.setting .text { width: 0 !important; }
 .icon-menu.setting:hover .text {
-  width: 100px !important;
-  height: 54px !important;
-  
-  opacity: 1 !important;
-  -webkit-transition: all 0.3s ease;
+	width: 100px !important;
+	height: 54px !important;
+	
+	opacity: 1 !important;
+	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
 .icon-menu.setting:hover .text a {
-  width: 100px !important;
-  height: 26px !important;
-  background: #323232 !important;
-  border-radius: 13px;
-  
-  line-height: 26px !important;
-  
-  opacity: 1 !important;
-  -webkit-transition: all 0.3s ease;
+	width: 100px !important;
+	height: 26px !important;
+	background: #323232 !important;
+	border-radius: 13px;
+	
+	line-height: 26px !important;
+	
+	opacity: 1 !important;
+	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
@@ -154,8 +154,8 @@ body { background: #efefef; }
 .icon-menu.setting:hover .text a:hover { background: #1d439b !important; }
 .icon-menu.setting
 .link-style-setting {
-  top:28px !important;
-  border-top:none!important;
+	top:28px !important;
+	border-top:none!important;
 }
 
 /* HEADER */
