@@ -1,4 +1,4 @@
-/* Untitled Clean Theme by Valerio Lyndon / Revision 4 */
+/* Untitled Clean Theme by Valerio Lyndon / Revision 5 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -447,20 +447,13 @@ body { background: #efefef; }
 	0% {
 		top: 12px;
 		margin-left: -535px;
-		margin-left: ;
-		opacity: 0;
-		letter-spacing: 0;
-	}
-	33% {
-		top: 12px;
-		margin-left: -535px;
 		opacity: 0;
 		letter-spacing: 0;
 		
 		-webkit-animation-timing-function: ease-out;
 		animation-timing-function: ease-out;
 	}
-	96% {
+	90% {
 		top: 55px;
 		margin-left: -475px;
 	}
@@ -476,20 +469,13 @@ body { background: #efefef; }
 	0% {
 		top: 12px;
 		margin-left: -535px;
-		margin-left: ;
-		opacity: 0;
-		letter-spacing: 0;
-	}
-	33% {
-		top: 12px;
-		margin-left: -535px;
 		opacity: 0;
 		letter-spacing: 0;
 		
 		-moz-animation-timing-function: ease-out;
 		animation-timing-function: ease-out;
 	}
-	96% {
+	90% {
 		top: 55px;
 		margin-left: -475px;
 	}
@@ -505,20 +491,13 @@ body { background: #efefef; }
 	0% {
 		top: 12px;
 		margin-left: -535px;
-		margin-left: ;
-		opacity: 0;
-		letter-spacing: 0;
-	}
-	33% {
-		top: 12px;
-		margin-left: -535px;
 		opacity: 0;
 		letter-spacing: 0;
 		
 		-o-animation-timing-function: ease-out;
 		animation-timing-function: ease-out;
 	}
-	96% {
+	90% {
 		top: 55px;
 		margin-left: -475px;
 	}
@@ -534,19 +513,12 @@ body { background: #efefef; }
 	0% {
 		top: 12px;
 		margin-left: -535px;
-		margin-left: ;
-		opacity: 0;
-		letter-spacing: 0;
-	}
-	33% {
-		top: 12px;
-		margin-left: -535px;
 		opacity: 0;
 		letter-spacing: 0;
 		
 		animation-timing-function: ease-out;
 	}
-	96% {
+	90% {
 		top: 55px;
 		margin-left: -475px;
 	}
@@ -578,10 +550,10 @@ body:after {
 	-o-transform: scale(0.9) perspective(350px) rotateY(8deg) rotateZ(-3deg);
 	transform: scale(0.9) perspective(350px) rotateY(8deg) rotateZ(-3deg);
 	
-	-webkit-animation: name-slide 3s 1;
-	-moz-animation: name-slide 3s 1;
-	-o-animation: name-slide 3s 1;
-	animation: name-slide 3s 1;
+	-webkit-animation: name-slide 3s 1 0.5s backwards;
+	-moz-animation: name-slide 3s 1 0.5s backwards;
+	-o-animation: name-slide 3s 1 0.5s backwards;
+	animation: name-slide 3s 1 0.5s backwards;
 }
 
 .list-container {
