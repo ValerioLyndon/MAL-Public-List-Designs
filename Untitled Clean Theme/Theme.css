@@ -1,4 +1,4 @@
-/* Untitled Clean Theme by Valerio Lyndon / Revision 5 */
+/* Untitled Clean Theme by Valerio Lyndon / Revision 6 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -795,6 +795,7 @@ body:after {
 	text-align: center !important;
 	color: #fff !important;
 	line-height: 26px;
+	text-indent: -7.5px;
 	vertical-align: middle;
 	
 	-webkit-transition: all 0.2s ease;
@@ -810,6 +811,20 @@ body:after {
 	-o-transition: all 0.2s ease;
 	transition: all 0.2s ease;
 }
+.list-table-header .header-title a .sort-icon {
+  position: absolute;
+  left: 50%;
+  
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  
+  font-size: 10px;
+  line-height: 10px;
+  color: #fff !important;
+}
+.sort-icon.fa-sort-asc { top: 2px; }
+.sort-icon.fa-sort-desc { bottom: 2px; }
 
 .list-table-header:hover .title { right: 350px; }
 .list-table-header:hover .score { right: 283px; }
