@@ -1,4 +1,4 @@
-/* Untitled Clean Theme by Valerio Lyndon / Revision 6 */
+/* Untitled Clean Theme by Valerio Lyndon / Revision 7 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -7,7 +7,9 @@ body { background: #efefef; }
 /* LIST MENU FLOAT */
 
 .list-menu-float {
-	position: static;
+	position: relative;
+	top: auto;
+	
 	display: block;
 	width: 904px;
 	height: 0;
@@ -19,7 +21,7 @@ body { background: #efefef; }
 	text-align: left;
 	font-size: 0;
 	
-	z-index: 1;
+	z-index: 28;
 }
 .icon-menu, .list-menu-float form { display: inline-block !important; }
 .icon-menu {
@@ -314,7 +316,7 @@ body { background: #efefef; }
 	
 	font-size: 0;
 
-	z-index: 2;
+	z-index: 26;
 }
 
 .btn-menu #header-menu-button { display: none; }
@@ -652,7 +654,7 @@ body:after {
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
-.status-menu-container.fixed { z-index: 2; }
+.status-menu-container.fixed { z-index: 35 !important; }
 .status-menu-container.fixed .status-menu {
 	margin: 0 0 0 71px;
 	
@@ -843,7 +845,14 @@ body:after {
 /* LIST */
 
 .list-block { margin: 0; }
-.status-menu-container.fixed + .list-block { margin-top: 64px !important; }
+.status-menu-container.fixed + .list-block {
+	margin-top: 64px !important;
+	position: relative;
+	z-index: 27;
+}
+.status-menu-container.fixed + .list-block .list-stats {
+	top: 36px;
+}
 .list-unit{width:1060px!important;margin:0}
 .list-table {
 	border: none !important;
