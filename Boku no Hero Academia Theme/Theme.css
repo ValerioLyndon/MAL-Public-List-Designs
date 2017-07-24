@@ -1,4 +1,24 @@
+/*@import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One|Open+Sans:400,700');*/
 @import url('https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Open+Sans:400,700');
+
+body[data-owner=""]:after {
+  content: "! WORK IN PROGRESS STYLE !";
+  position: absolute;
+  top: calc(215px + 64px);
+  left: 0;
+  
+  width: 200%;
+  background: #000d07;
+  margin-left: -50%;
+  
+  letter-spacing: 3px;
+  color: #fff600;
+  font-size: 20px;
+  line-height: 50px;
+  font-family: Carrois Gothic SC;
+  transform: rotate(-4.5deg);
+  box-shadow: 0 0 7px 2px #f33;
+}
 
 body {
   background-color: #000 !important;
@@ -64,22 +84,88 @@ body {
 .header .header-title:hover {
   transform: scale(0.975);
 }
+
+
+.header .header-info {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  
+  text-align: center;
+  line-height: 48px;
+  font-size: 0;
+}
+.header .header-info a {
+  display: inline-block;
+  width: auto;
+  height: 18px;
+  padding: 3px 0px;
+  margin: 0px;
+  
+  color: #fff600;
+  text-transform: uppercase;
+  font-family: "Carrois Gothic SC";
+  font-weight: normal;
+  line-height: normal;
+  
+  transition: color 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
+}
+.header .header-info a:hover {
+  color: #fff;
+}
+/*.header .header-info a:nth-of-type(1) {
+  text-indent: 7.5px;
+}
+.header .header-info a:nth-of-type(2) {
+  text-indent: -7.5px;
+}*/
+.header .header-info a:before {
+  font-size: 14px;
+}
+.header .header-info:before {
+  content: "Please, ";
+  font-size: 14px;
+  color: #fff600;
+  font-family: Carrois Gothic SC;
+}
+.header .header-info a:nth-of-type(1):before {
+  content: "Log In /";
+}
+.header .header-info a:nth-of-type(2):before {
+  content: " Register";
+  white-space: pre;
+}
+
 .header .header-menu {
-  top: 64px;
-  left: 468px;
+  position: fixed;
+  top: 0 !important;
+  right: calc(50% - 528px);
+  
+  display: block;
+  width: 346px;
+  height: 48px;
+  padding: 8px 0;
+  
+  z-index: -1;
+}
+.btn-menu {
+  position: absolute;
+  top: 66px;
+  left: -24px /*106px*/; /*468px*/;
   
   width: 130px;
   height: 28px;
   background: #001a0e;
+  box-shadow: -1px 1px 0 1px #d60025;
   
-  z-index: ;
-  visibility: hidden;
+  font-size: 0 !important;
 }
-.header .header-menu:before, .header .header-menu:after {
+/*.btn-menu:after {
 	content: "";
 	
 	position: absolute;
 	top: 0;
+	right: -9px;
 	
 	display: block;
 	width: 18px;
@@ -87,16 +173,69 @@ body {
 	background: #001a0e;
   
   transform: skew(-30deg);
-  z-index: -1;
+  box-shadow: 2px 1px 0 1px #d60025;
+}*/
+.list-menu {
+  position: absolute;
+  top: 66px !important;
+  left: -24px; /*468px*/;
+  right: auto !important;
+  
+  display: block !important;
+  width: 130px;
+  height: 0;
+  border: none !important;
+  
+  box-shadow: none !important;
 }
-.header .header-menu:before {
-	left: -9px;
-}
-.header .header-menu:after {
-	right: -9px;
-}
-.btn-menu {
+
+.btn-menu .username, .list-menu .manga-list {
+  position: absolute;
+  top: 0;
+  
+  display: block !important;
+  width: 55px !important;
+  height: 28px !important;
+  margin: 0 !important;
+  
+  text-align: center !important;
+  line-height: 28px;
+  color: #0cd693 !important;
+  font-family: Carrois Gothic SC;
+  text-transform: uppercase;
   font-size: 0 !important;
+  font-weight: normal !important;
+  
+  z-index: 1;
+  transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1) !important;
+}
+.btn-menu .username:hover, .list-menu .manga-list:hover {
+  color: #fff !important;
+  background: none !important;
+}
+.btn-menu .username {
+  right: 55px;
+}
+.list-menu .manga-list {
+  right: 0;
+}
+.btn-menu .username:before {
+  content: "Profile";
+  
+  font-size: 12px;
+}
+.list-menu .manga-list:before {
+  content: "Manga" !important;
+  
+  font-size: 12px;
+}
+.list-menu .manga-list svg {
+  display: none !important;
+}
+
+.btn-menu:hover .username, .btn-menu:hover ~ .list-menu .manga-list {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 
@@ -155,13 +294,13 @@ body {
 .status-menu-container .status-menu .status-button, .list-menu-float .icon-menu {
 	display: inline-block;
 	width: 100px;
-	height: 16px;
+	height: 18px /*16px*/;
 	padding: 3px 0;
 	margin: 0;
 	background: none !important;
 	
 	color: #fff600;
-	font-weight: normal;
+	font-weight: normal !important;
 	text-transform: uppercase;
 	font-size: 0;
 	font-family: Carrois Gothic SC;
@@ -172,11 +311,9 @@ body {
 .list-menu-float form {
 	display: inline-block;
 }
+.status-menu-container .status-menu .status-button.on { color: #fff; }
 .status-menu-container .status-menu .status-button:hover, .list-menu-float .icon-menu:hover {
   color: #fff;
-  font-weight: normal;
-  
-  transition: none;
 }
 
 .status-menu-container .status-menu {
@@ -209,7 +346,7 @@ body {
 .status-menu-container .status-menu .status-button:not(:nth-of-type(3n)), .icon-menu:not(:nth-of-type(3n)) {
   margin-right: 15px;
 }
-.status-menu-container .status-menu .status-button:nth-of-type(4), .icon-menu:nth-of-type(1) { margin-left: 13px; }
+.status-menu-container .status-menu .status-button:nth-of-type(4), .icon-menu:nth-of-type(1) { margin-left: 15px /*13px*/; }
 .status-menu-container .status-menu .status-button:nth-of-type(3n+1), .icon-menu:nth-of-type(3n+1) {
   text-align: right;
 }
@@ -237,14 +374,12 @@ body {
 .icon-menu.export, .icon-menu.setting { display: none; }
 /* continues */
 
-.status-menu-container .status-menu .status-button.on { color: #d50025; }
-.status-menu-container .status-menu .status-button:hover { color: #fff; }
 .status-menu .status-button:after { display: none !important; }
 
 .search-container {
   position: absolute;
   top: 66px;
-  left: 686px;
+  left: 800px /*686px*/;
   
   width: 130px;
   height: 28px;
@@ -341,8 +476,11 @@ body {
   display: block !important;
   width: 55px;
   height: 28px;
+  /*height: 28px;*/
   padding-right: 8px;
   background: #001a0e;
+  
+  text-align: center;
   
 	box-shadow: 0 1px 0 1px #d60025;
 	z-index: 5;
@@ -350,7 +488,6 @@ body {
 .list-table > tbody:first-of-type:before {
   content: "SORT";
   
-  text-align: center;
   line-height: 28px;
   font-size: 12px;
   color: #0cd693;
@@ -382,6 +519,10 @@ body {
   
   display: block;
 }
+/*.list-table > tbody:first-of-type:hover .list-table-header {
+  overflow: visible;
+  transition: overflow 0s 0.9s;
+}*/
 
 .list-table-header .header-title {
   position: absolute;
@@ -562,8 +703,6 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(); }
 .list-table {
   display: block;
   width: 1050px;
-  
-  text-align: center;
 }
 
 .list-unit .list-status-title {
@@ -692,7 +831,36 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(); }
   color:  #fff600 /*#00ed30*/ !important;
 }
 
-.data.status { display: none !important; }
+.data.status {
+  position: absolute;
+  top: 2px;
+  left: 51px;
+  
+  display: none !important;
+  width: 15px !important;
+  height: 15px;
+  background: none !important;
+  
+  line-height: 15px;
+  color: #0cd693;
+  text-align: right !important;
+  text-shadow: -1px 1px 1px rgb(0,21,11);
+  
+  z-index: 1;
+}
+.data.status:before {
+  font-family: FontAwesome;
+  font-size: 15px;
+}
+.data.status.onhold, .data.status.dropped, .data.status.plantowatch {
+  display: block !important;
+}
+.data.status.onhold:before { content : "\f017" /*f00d*/; }
+.data.status.dropped:before { content : "\f05e" /*f00d*/; }
+.data.status.plantowatch:before { content: "\f073"; }
+
+.data.status:hover ~ .title .add-edit-more { background: rgba(0,13,7,0.9); }
+.data.status:hover ~ .title .add-edit-more a { opacity: 1; }
 
 .data.image {
   position: absolute;
@@ -791,7 +959,7 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(); }
 .add-edit-more:hover a {
   opacity: 1;
 }
-.add-edit-more .edit a { top: 30px; }
+.add-edit-more .edit a, .add-edit-more .add a { top: 30px; }
 .add-edit-more .more a { top: 50px; }
 
 .data.progress:before, .data.season:before, .data.tags:before {
@@ -870,9 +1038,23 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(); }
 .data.progress span:only-of-type:after {
   content: /*"\f14a"*/ "\f00c";
   font-family: FontAwesome;
-  color: #0cd693;
   font-size: 14px;
   line-height: 50px;
+}
+.data.progress .icon-add-episode {
+  display: inline-block;
+  margin: 20px 0 0 3px;
+  
+  line-height: 10px;
+  font-size: 10px;
+}
+.data.progress .icon-add-episode i:before {
+  content: "\f067";
+  color: #06754e;
+  transition: color 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
+}
+.data.progress .icon-add-episode:hover i:before {
+  color: #0cd693;
 }
 
 .data.progress span input {
@@ -1086,39 +1268,3 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(); }
 #copyright:after {
     content: "- List design by Valerio Lyndon.";
 }
-
-/*.header-title.title {
-  top: 0px;
-  left: 0px;
-  transition-duration: 0.15s;
-}
-.header-title.score {
-  top: 20px;
-  left: 11px;
-  transition-duration: 0.3s;
-}
-.header-title.type {
-  top: 40px;
-  left: 22px;
-  transition-duration: 0.45s;
-}
-.header-title.progress {
-  top: 60px;
-  left: 33px;
-  transition-duration: 0.6s;
-}
-.header-title.started {
-  top: 80px;
-  left: 44px;
-  transition-duration: 0.75s;
-}
-.header-title.finished {
-  top: 100px;
-  left: 55px;
-  transition-duration: 0.9s;
-}
-.header-title.priority {
-  top: 120px;
-  left: 66px;
-  transition-duration: 1.05s;
-}*/
