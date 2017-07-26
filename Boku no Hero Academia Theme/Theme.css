@@ -1,3 +1,5 @@
+/* Boku no Hero Academia Theme by Valerio Lyndon / Beta Revision 3 */
+
 @import url('https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Open+Sans:400,700');
 
 body[data-owner=""]:after {
@@ -710,27 +712,6 @@ body[data-owner="1"] .icon-menu.setting:before {
 
 /* CHARACTER */
 
-@keyframes character-slide {
-  0% {
-    background-position: right center;
-    opacity: 0;
-  }
-  100% {
-    background-position: 20px center;
-    opacity: 1;
-  }
-}
-@keyframes character-slide-right {
-  0% {
-    background-position: left center;
-    opacity: 0;
-  }
-  100% {
-    background-position: right center;
-    opacity: 1;
-  }
-}
-
 .cover-block {
   width: 1060px;
   height: 430px;
@@ -739,15 +720,13 @@ body[data-owner="1"] .icon-menu.setting:before {
   background-size: contain;
   background-position: 20px center;
   background-attachment: scroll;
-  animation: character-slide 1s ease-out;
 }
-body[data-query*="\"status\":7"] .cover-block { background-image: url(http://i.imgur.com/2dNxOcM.png); }
+body[data-query*="\"status\":7"] .cover-block { background-image: url(http://i.imgur.com/2dNxOcM.png); background-position: left center; }
 body[data-query*="\"status\":1"] .cover-block { background-image: url(http://i.imgur.com/aPHWdRV.png); }
 body[data-query*="\"status\":2"] .cover-block { background-image: url(http://i.imgur.com/Dv7xyGN.png); }
 body[data-query*="\"status\":3"] .cover-block { background-image: url(); }
-body[data-query*="\"status\":4"] .cover-block { background-image: url(http://i.imgur.com/Wa1MIcN.png); background-position: right center; animation-name: character-slide-right; }
-body[data-query*="\"status\":5"] .cover-block { background-image: url(); }
-body[data-query*="\"status\":6"] .cover-block { background-image: url(); }
+body[data-query*="\"status\":4"] .cover-block { background-image: url(http://i.imgur.com/Wa1MIcN.png); background-position: right center; }
+body[data-query*="\"status\":6"] .cover-block { background-image: url(http://i.imgur.com/JQlB1VA.png); background-position: 563px center; }
 
 .btn-list-setting { display: none !important; }
 
@@ -970,7 +949,7 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(); }
   overflow: hidden;
   white-space: normal;
   
-  transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
+  transition: all 0.075s cubic-bezier(0.32,0.05,0.48,1);
 }
 .icon-watch { display: none !important; }
 
@@ -1020,7 +999,9 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(); }
   line-height: 20px;
   text-transform: uppercase;
   
-  transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
+  transition-property: color, opacity;
+  transition-duration: 0.075s, 0.2s;
+  transition-timing-function: cubic-bezier(0.32,0.05,0.48,1);
   opacity: 0;
 }
 .add-edit-more:hover a {
