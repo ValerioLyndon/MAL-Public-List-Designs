@@ -1,4 +1,4 @@
-/* Boku no Hero Academia Theme by Valerio Lyndon / Beta Revision 3 */
+/* Boku no Hero Academia Theme by Valerio Lyndon / Beta Revision 4 */
 
 @import url('https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Open+Sans:400,700');
 
@@ -724,7 +724,7 @@ body[data-owner="1"] .icon-menu.setting:before {
 body[data-query*="\"status\":7"] .cover-block { background-image: url(http://i.imgur.com/2dNxOcM.png); background-position: left center; }
 body[data-query*="\"status\":1"] .cover-block { background-image: url(http://i.imgur.com/aPHWdRV.png); }
 body[data-query*="\"status\":2"] .cover-block { background-image: url(http://i.imgur.com/Dv7xyGN.png); }
-body[data-query*="\"status\":3"] .cover-block { background-image: url(); }
+body[data-query*="\"status\":3"] .cover-block { background-image: url(http://i.imgur.com/0HM7Vho.png); background-position: left center; }
 body[data-query*="\"status\":4"] .cover-block { background-image: url(http://i.imgur.com/Wa1MIcN.png); background-position: right center; }
 body[data-query*="\"status\":6"] .cover-block { background-image: url(http://i.imgur.com/JQlB1VA.png); background-position: 563px center; }
 
