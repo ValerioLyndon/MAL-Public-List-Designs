@@ -1,4 +1,4 @@
-/* Boku no Hero Academia Theme by Valerio Lyndon / Beta Revision 4 */
+/* Boku no Hero Academia Theme by Valerio Lyndon / Beta Revision 5 */
 
 @import url('https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Open+Sans:400,700');
 
@@ -434,7 +434,7 @@ body[data-owner="1"] .icon-menu.setting:after {
   box-shadow: 2px 1px 0 1px #d60025;
 }
 body[data-owner="1"] .icon-menu.setting:before {
-  content: "\f013";
+  content: "\f0ad" /*gear - f013*/;
   position: relative;
   
   font-family: FontAwesome;
@@ -665,7 +665,7 @@ body[data-owner="1"] .icon-menu.setting:before {
   color: #0cd693 !important;
   font-family: Carrois Gothic SC;
   
-  transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1);
+  transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1) !important;
 }
 .list-table-header .header-title a:hover {
   color: #fff !important;
@@ -879,34 +879,33 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(http://i.i
 
 .data.status {
   position: absolute;
-  top: 2px;
-  left: 51px;
+  top: 4px;
+  left: 74px;
   
   display: none !important;
-  width: 15px !important;
-  height: 15px;
+  width: 12px !important;
+  height: 12px;
   background: none !important;
   
-  line-height: 15px;
+  line-height: 12px;
   color: #0cd693;
-  text-align: right !important;
-  text-shadow: -1px 1px 1px rgb(0,21,11);
+  text-align: center !important;
+  text-shadow: 0px 0px 3px #00150b;
   
+  transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
   z-index: 1;
 }
 .data.status:before {
   font-family: FontAwesome;
-  font-size: 15px;
+  font-size: 12px;
 }
-.data.status.onhold, .data.status.dropped, .data.status.plantowatch {
+.data.status.completed, .data.status.onhold, .data.status.dropped, .data.status.plantowatch {
   display: block !important;
 }
-.data.status.onhold:before { content : "\f017" /*f00d*/; }
-.data.status.dropped:before { content : "\f05e" /*f00d*/; }
-.data.status.plantowatch:before { content: "\f073"; }
-
-.data.status:hover ~ .title .add-edit-more { background: rgba(0,13,7,0.9); }
-.data.status:hover ~ .title .add-edit-more a { opacity: 1; }
+.data.status.completed:before { content : "\f00c"; }
+.data.status.onhold:before { content : "\f017"; }
+.data.status.dropped:before { content : "\f00d" /*f05e*/; }
+.data.status.plantowatch:before { content: "\f02e"; /*calendar f073 - solid bookmark f02e - trans bookmark f097*/ }
 
 .data.image {
   position: absolute;
@@ -926,9 +925,11 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(http://i.i
   overflow: hidden;
 }
 .data.image .image {
-  width: auto !important; /*70.58*/
+  width: 70px /*auto*/ !important; /*69.17*/
   height: 98px !important;
   border: none !important;
+  margin-left: -1px;
+  /*transform: translateX(-0.585px);*/
 }
 
 .data.title {
@@ -944,6 +945,7 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(http://i.i
   
   font-family: Open Sans;
   line-height: 15px;
+  text-indent: 14px;
   font-size: 11px !important;
   
   overflow: hidden;
@@ -951,22 +953,31 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(http://i.i
   
   transition: all 0.075s cubic-bezier(0.32,0.05,0.48,1);
 }
+.watching ~ .data.title .link.sort {
+  text-indent: 0;
+}
 .icon-watch { display: none !important; }
 
 .content-status, .rewatching {
   position: absolute;
-  top: 35px;
-  left: 80px;
+  top: 67px;
+  left: 105px;
   
   display: block;
-  width: 70px;
+  width: 50px;
   height: 15px;
   
   color: #06754e !important;
   font-family: Open Sans;
   font-size: 9px !important;
   line-height: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  
+  transform: rotateZ(60deg);
 }
+.rewatching { font-size: 0 !important; }
+.rewatching:before { content: "Rewatch"; font-size: 9px !important; }
 
 .add-edit-more {
   position: absolute;
@@ -1036,10 +1047,13 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(http://i.i
   font-size: 16px !important;
   line-height: 50px;
 }
-.data.score select, .data.score select option {
+.data.score select {
   margin: 15px 10px 15px 0;
+}
+.data.score select, .data.score select option {
   width: 40px;
   height: 20px;
+  border: none !important;
   background: #00150b;
   outline-color: #0cd693 !important;
   
@@ -1061,8 +1075,10 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(http://i.i
 .data.progress span:nth-of-type(1) {
   margin-right: 7px;
 }
-.data.progress span .link, .data.progress span:nth-of-type(2) {
+.data.progress span:only-of-type, .data.progress span .link, .data.progress span:nth-of-type(2) {
   position: relative;
+  
+  margin: 0;
   
   color: #0cd693 !important;
   font-family: Carrois Gothic SC;
@@ -1080,15 +1096,6 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(http://i.i
   transform: skew(10deg);
 }
 
-.data.progress span:only-of-type {
-  margin: 0;
-}
-.data.progress span:only-of-type:after {
-  content: /*"\f14a"*/ "\f00c";
-  font-family: FontAwesome;
-  font-size: 14px;
-  line-height: 50px;
-}
 .data.progress .icon-add-episode {
   display: inline-block;
   margin: 20px 0 0 3px;
@@ -1138,6 +1145,7 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(http://i.i
   line-height: 50px;
 }
 
+/* !!!! NEED TO DO THIS !!!! */
 .data.type, .data.priority {
   position: absolute;
   top: 35px;
@@ -1292,6 +1300,16 @@ body[data-query*="\"status\":6"] .cover-block { background-image: url(http://i.i
 }
 .more-info a:hover {
   color: #fff600 !important;
+}
+
+.list-unit .loading-space {
+  height: auto;
+  margin: 0 0 5px 0;
+}
+.list-unit .loading-space i {
+  width: 20px;
+  margin: 0 auto;
+  /* may not need margin if it goes inline */
 }
 
 /* FOOTER */
