@@ -1,4 +1,4 @@
-/* Untitled Clean Theme by Valerio Lyndon / Revision 7 */
+/* Untitled Clean Theme by Valerio Lyndon / Revision 8 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -688,37 +688,28 @@ body:after {
 	line-height: 22px;
 }
 
-.status-button.all_anime:after{ background-color: #4065BA !important; }
-.status-button.watching:after{ background-color: #2db039 !important; }
-.status-button.completed:after{ background-color: #26448f !important; }
-.status-button.onhold:after{ background-color: #f9d457 !important; }
-.status-button.dropped:after{ background-color: #a12f31 !important; }
-.status-button.plantowatch:after{ background-color: #c3c3c3 !important; }
+.status-button.all_anime:after { background-color: #4065BA !important; }
+.status-button.watching:after, .status-button.reading:after { background-color: #2db039 !important; }
+.status-button.completed:after { background-color: #26448f !important; }
+.status-button.onhold:after { background-color: #f9d457 !important; }
+.status-button.dropped:after { background-color: #a12f31 !important; }
+.status-button.plantowatch:after, .status-button.plantoread:after { background-color: #c3c3c3 !important; }
 
 /* SORTING */
 
 .list-table > tbody:first-of-type {
 	position: relative;
-	
-	display: block;
-	width: 1060px;
-	height: 0px;
-}
-
-.list-table-header {
-	position: absolute;
-	right: -2px;
 	top: -56px;
+	left: 1032px;
 	
 	display: block;
 	width: 30px;
 	height: 30px;
-	
-	font-size: 0;
+	background: none !important;
 	
 	z-index: 1;
 }
-.list-table-header:before {
+.list-table > tbody:first-of-type:after {
 	content: "\f0dc";
 	position: absolute;
 	top: 0;
@@ -743,7 +734,7 @@ body:after {
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
-.list-table-header:hover:before {
+.list-table > tbody:first-of-type:hover:after {
 	background: #1d439b;
 	
 	color: #fff;
@@ -754,12 +745,30 @@ body:after {
 	transition: all 0.3s ease;
 }
 
-.list-table-header .header-title {
+.list-table-header {
 	position: absolute;
-	top: 2px;
+	top: 0;
 	right: 15px;
 	
-	display: block !important;
+	display: block;
+	width: auto;
+	height: 26px;
+	padding: 2px 0;
+	
+	font-size: 0;
+	white-space: nowrap;
+	
+  pointer-events: none;
+	z-index: -1;
+}
+.list-table > tbody:first-of-type:hover .list-table-header {
+  pointer-events: auto;
+}
+
+.list-table-header .header-title {
+	position: relative;
+	
+	display: inline-block !important;
 	width: auto !important;
 	height: auto !important;
 	padding: 0 !important;
@@ -768,18 +777,16 @@ body:after {
 	
 	font-weight: normal !important;
 	
-	opacity: 0;
-	visibility: hidden;
-	z-index: -1;
-	
 	-webkit-transition: all 0.2s ease;
 	-moz-transition: all 0.2s ease;
 	-o-transition: all 0.2s ease;
 	transition: all 0.2s ease;
 }
-.list-table-header:hover .header-title {
+.list-table-header .header-title:not(.status):not(.image):not(.tags):not(.days) {
+	margin-left: -13px;
+}
+.list-table > tbody:first-of-type:hover .header-title {
 	opacity: 1;
-	visibility: visible;
 	
 	-webkit-transition: all 0.2s ease;
 	-moz-transition: all 0.2s ease;
@@ -789,7 +796,7 @@ body:after {
 .list-table-header .header-title a {
 	display: block !important;
 	
-	width: 80px !important;
+	width: 0 !important;
 	height: 26px !important;
 	background: #323232 !important;
 	border-radius: 13px 0 0 13px;
@@ -800,6 +807,7 @@ body:after {
 	text-indent: -7.5px;
 	vertical-align: middle;
 	
+	opacity: 0;
 	-webkit-transition: all 0.2s ease;
 	-moz-transition: all 0.2s ease;
 	-o-transition: all 0.2s ease;
@@ -813,6 +821,16 @@ body:after {
 	-o-transition: all 0.2s ease;
 	transition: all 0.2s ease;
 }
+.list-table > tbody:first-of-type:hover .list-table-header .header-title a {
+	width: 80px !important;
+	
+	opacity: 1;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+
 .list-table-header .header-title a .sort-icon {
   position: absolute;
   left: 50%;
@@ -827,13 +845,6 @@ body:after {
 }
 .sort-icon.fa-sort-asc { top: 2px; }
 .sort-icon.fa-sort-desc { bottom: 2px; }
-
-.list-table-header:hover .title { right: 350px; }
-.list-table-header:hover .score { right: 283px; }
-.list-table-header:hover .type { right: 216px; }
-.list-table-header:hover .progress { right: 149px; }
-.list-table-header:hover .started { right: 82px; }
-.list-table-header:hover .finished { right: 15px; }
 
 .header-title.title a, .header-title.started a, .header-title.finished a { font-size: 0 !important; }
 .header-title.title a:after, .header-title.started a:after, .header-title.finished a:after { font-size: 11px !important; }
@@ -854,11 +865,9 @@ body:after {
 	top: 36px;
 }
 .list-unit{width:1060px!important;margin:0}
-.list-table {
-	border: none !important;
-}
+.list-table { border: none !important; }
 
-/* SORTING */
+/* FILTERING */
 
 .list-status-title {
 	width:1060px!important;
@@ -942,7 +951,7 @@ body:after {
 	background: #fff;
 }
 .list-table > tbody:nth-of-type(2n+1) { background: #fff; }
-.list-item:nth-of-type(2) { border-top: #ebebeb 3px solid; }
+.list-item:nth-of-type(2) { margin-top: -30px; }
 .list-table-data {
 	display: block;
 	
@@ -1021,6 +1030,7 @@ body:after {
 	width: 632px;
 	height: 16px;
 	padding: 16px 0 0 8px !important;
+	margin-top: 16px;
 	
 	line-height: 16px;
 }
@@ -1044,7 +1054,10 @@ body:after {
 	-o-transition: all 0.2s ease;
 	transition: all 0.2s ease;
 }
-.all_anime .data.title .link.sort, .plantowatch .data.title .link.sort { width: 500px; }
+.rewatching, .rereading, .content-status {
+	font-size: 10px; !important;
+}
+.all_anime .data.title .link.sort, .plantowatch .data.title .link.sort, .plantoread .data.title .link.sort { width: 500px; }
 .data.title .link.sort:hover {
 	text-decoration: none !important;
 	color: #4b5875;
@@ -1103,19 +1116,40 @@ body:after {
 	box-shadow: 0 2px 2px rgba(0,0,0,0.3);
 }
 
+.data.progress a, .data.progress span, .data.chapter a, .data.chapter span, .data.volume a, .data.volume span {
+	color: #323232;
+}
 .data.progress:before {
 	content: "Progress:";
 	color: #bababa;
 }
-.data.progress {
-	width: 92px;
+.data.chapter:before {
+	content: "Chapters:";
+	color: #bababa;
 }
-.data.progress a, .data.progress span {
-	color: #323232;
+.data.volume:before {
+	content: "Volumes:";
+	color: #bababa;
 }
 
-.data.progress span:only-of-type {font-size: 0; display: block; height: 13px; line-height: 13px; }
-.data.progress span:only-of-type:after {
+.data.progress, .data.chapter, .data.volume {
+	width: 92px;
+}
+.data.chapter {
+	margin-top: -34px;
+}
+.data.volume {
+	margin: 34px 0 0 -92px;
+}
+
+.data.progress span:only-of-type, .data.chapter span:only-of-type, .data.volume span:only-of-type {
+	display: block;
+	height: 13px;
+	
+	font-size: 0;
+	line-height: 13px;
+}
+.data.progress span:only-of-type:after, .data.chapter span:only-of-type:after, .data.volume span:only-of-type:after {
 	content: "\f058";
 	color: #9696eb;
 	font-family: FontAwesome;
@@ -1126,6 +1160,7 @@ body:after {
 	display: block;
 	width: 120px;
 	padding: 3px 0 !important;
+	margin-left: 650px;
 }
 
 .data.tags span { padding: 1px 0; }
@@ -1283,17 +1318,17 @@ body:after {
 .data.finished:before { content: "End" }
 .data.days:before { content: "Days" }
 
-.status:not(.plantowatch) ~ .data.priority, .status:not(.plantowatch) ~ .data.type {
+.status:not(.plantowatch):not(.plantoread) ~ .data.priority, .anime .status:not(.plantowatch) ~ .data.type {
 	display: none !important;
 }
 .data.priority {
 	width: 92px;
-	height: 40px !important;
+	height: 74px !important;
 	padding: 0 !important;
 	margin-left: -312px;
 	background: #fff;
 	
-	line-height: 40px;
+	line-height: 74px;
 	
 	opacity: 1;
 	visibility: visible;
@@ -1318,18 +1353,28 @@ body:after {
 }
 
 .data.type {
-	position: absolute;
-	left: 64px;
-	top: 5px;
-	
 	padding: 0 !important;
+	margin-left: -750px;
+	
+	width: 100px;
+	height: 16px;
+	margin-top: -48px;
+	
+	text-align: left !important;
+	color: #BABABA;
+	line-height: 16px;
+	font-size: 10px;
 	
 	opacity: 0;
-	
 	-webkit-transition: all 0.2s ease;
 	-moz-transition: all 0.2s ease;
 	-o-transition: all 0.2s ease;
 	transition: all 0.2s ease;
+}
+.manga .data.type {
+	margin-top: -32px;
+	
+	opacity: 1;
 }
 .list-item:hover .data.type {
 	opacity: 1;
