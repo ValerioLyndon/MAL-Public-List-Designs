@@ -1,4 +1,4 @@
-/* Boku no Hero Academia Theme by Valerio Lyndon / Revision 0 */
+/* Boku no Hero Academia Theme by Valerio Lyndon / Revision 1 */
 
 @import url('https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Open+Sans:400,700');
 
@@ -18,6 +18,34 @@ body {
 	}
 }
 
+/* COMPACT - BASE */
+.header:before, .header:after,
+.header-info:before, .header-info:after,
+.status-menu-container:before, .status-menu-container:after,
+.data.progress:before, .data.season:before, .data.tags:before,
+.list-table > tbody:first-of-type:after
+{
+	content: "";
+	position: absolute;
+	bottom: 0;
+	
+	display: block;
+	background: #000d07;
+	
+	transform: skew(30deg);
+	box-shadow: -2px 1px 0 1px #d60025;
+}
+
+/* TILTED RIGHT */
+.header:after,
+.header-info:after,
+.status-menu-container:after
+{
+	transform: skew(-30deg);
+	box-shadow: 2px 1px 0 1px #d60025;
+}
+
+
 /* HEADER BAR - BASE */
 
 .header {
@@ -32,26 +60,11 @@ body {
 	z-index: 15;
 }
 .header:before, .header:after {
-	content: "";
-	
-	position: absolute;
-	bottom: 0;
-	
-	display: block;
 	width: 170px;
 	height: 48px;
-	background: #000d07;
 }
-.header:before {
-	left: -18px;
-	transform: skew(30deg);
-	box-shadow: -2px 1px 0 1px #d60025;
-}
-.header:after {
-	right: -18px;
-	transform: skew(-30deg);
-	box-shadow: 2px 1px 0 1px #d60025;
-}
+.header:before { left: -18px; }
+.header:after { right: -18px; }
 
 /* HEADER BAR - LOGO */
 
@@ -119,13 +132,10 @@ body {
 	height: 28px !important;
 	margin: 0 !important;
 	
-	text-align: center !important;
-	line-height: 28px;
 	color: #0cd693 !important;
-	font-family: Carrois Gothic SC;
+	font: normal 0/28px Carrois Gothic SC !important;
+	text-align: center !important;
 	text-transform: uppercase;
-	font-size: 0 !important;
-	font-weight: normal !important;
 	
 	cursor: pointer;
 	z-index: 1;
@@ -167,13 +177,13 @@ body[data-owner="1"] .btn-menu .username {
 
 .header .header-info {
 	position: fixed;
-	top: 50%;
+	top: calc(50% + 196px);
 	right: 0;
 	
 	width: 340px;
 	height: 24px;
 	background: #000d07;
-	margin: 196px 0 0 0;
+	margin: 0;
 	
 	color: #0cd693;
 	font: 14px/24px Carrois Gothic SC;
@@ -186,26 +196,11 @@ body[data-owner="1"] .btn-menu .username {
 	transform-origin: top right;
 }
 .header-info:before, .header-info:after {
-	content: "";
-	
-	position: absolute;
-	bottom: 0;
-	
-	display: block;
 	width: 13px;
 	height: 24px;
-	background: #000d07;
 }
-.header-info:before {
-	left: -6px;
-	transform: skew(30deg);
-	box-shadow: -2px 1px 0 1px #d60025;
-}
-.header-info:after {
-	right: -6px;
-	transform: skew(-30deg);
-	box-shadow: 2px 1px 0 1px #d60025;
-}
+.header-info:before { left: -6px; }
+.header-info:after { right: -6px; }
 .header .header-info a {
 	display: inline-block;
 	width: auto;
@@ -237,26 +232,11 @@ body[data-owner="1"] .btn-menu .username {
 	z-index: 10;
 }
 .status-menu-container:before, .status-menu-container:after {
-	content: "";
-	
-	position: absolute;
-	top: 0;
-	
-	display: block;
 	width: 36px;
 	height: 64px;
-	background: #000d07;
 }
-.status-menu-container:before {
-	left: -18px;
-	transform: skew(30deg);
-	box-shadow: -2px 1px 0 1px #d60025;
-}
-.status-menu-container:after {
-	right: -18px;
-	transform: skew(-30deg);
-	box-shadow: 2px 1px 0 1px #d60025;
-}
+.status-menu-container:before { left: -18px; }
+.status-menu-container:after { right: -18px; }
 
 .status-menu-container .status-menu, .list-menu-float {
 	display: block;
@@ -266,8 +246,8 @@ body[data-owner="1"] .btn-menu .username {
 	border: none;
 	margin: 0;
 	
-	text-align: left;
 	font-size: 0;
+	text-align: left;
 }
 .list-menu-float {
 	top: 0;
@@ -289,18 +269,10 @@ body[data-owner="1"] .btn-menu .username {
 	height: 52px;
 	background-color: #fff600;
 }
-.status-menu-container .status-menu:before, .list-menu-float:before {
-	left: 116px;
-}
-.status-menu-container .status-menu:after, .list-menu-float:after {
-	right: 116px;
-}
-.status-menu-container .status-menu:before, .status-menu-container .status-menu:after {
-	transform: skew(30deg);
-}
-.list-menu-float:before, .list-menu-float:after {
-	transform: skew(-30deg);
-}
+.status-menu-container .status-menu:before, .list-menu-float:before { left: 116px; }
+.status-menu-container .status-menu:after, .list-menu-float:after { right: 116px; }
+.status-menu-container .status-menu:before, .status-menu-container .status-menu:after { transform: skew(30deg); }
+.list-menu-float:before, .list-menu-float:after { transform: skew(-30deg); }
 
 /* HEADER BAR - MAIN BUTTONS */
 
@@ -313,34 +285,28 @@ body[data-owner="1"] .btn-menu .username {
 	background: none !important;
 	
 	color: #fff600;
-	font-weight: normal !important;
-	text-transform: uppercase;
-	font-size: 0;
-	font-family: Carrois Gothic SC;
+	font: normal 0 Carrois Gothic SC !important;
 	text-align: center;
+	text-transform: uppercase;
 	
 	transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1);
 }
-.list-menu-float form {
+.list-menu-float form { 
 	display: inline-block;
 }
-.status-menu-container .status-menu .status-button.on { color: #fff; }
-.status-menu-container .status-menu .status-button:hover, .list-menu-float .icon-menu:hover {
-	color: #fff;
-}
+.status-menu-container .status-menu .status-button.on, .status-menu-container .status-menu .status-button:hover, .list-menu-float .icon-menu:hover { color: #fff; }
 
-.status-menu-container .status-menu .status-button:not(:nth-of-type(3n)), .icon-menu:not(:nth-of-type(3n)) {
-	margin-right: 15px;
-}
-.status-menu-container .status-menu .status-button:nth-of-type(4), .icon-menu:nth-of-type(1) { margin-left: 15px; }
-.status-menu-container .status-menu .status-button:nth-of-type(3n+1), .icon-menu:nth-of-type(3n+1) {
-	text-align: right;
-}
-.status-menu-container .status-menu .status-button:nth-of-type(3n), .icon-menu:nth-of-type(3n) {
-	text-align: left;
-}
+.status-menu-container .status-menu .status-button:not(:nth-of-type(3n)), .icon-menu:not(:nth-of-type(3n))
+{ margin-right: 15px; }
+.status-menu-container .status-menu .status-button:nth-of-type(4), .icon-menu:nth-of-type(1)
+{ margin-left: 15px; }
+.status-menu-container .status-menu .status-button:nth-of-type(3n+1), .icon-menu:nth-of-type(3n+1)
+{ text-align: right; }
+.status-menu-container .status-menu .status-button:nth-of-type(3n), .icon-menu:nth-of-type(3n)
+{ text-align: left; }
 
-.status-menu .status-button:before { font-size: 14px; }
+.status-menu .status-button:before, .icon-menu:before { font-size: 14px; }
+
 .status-menu .status-button.all_anime:before { content: "All Anime"; }
 .status-menu .status-button.watching:before { content: "Watching"; }
 .status-menu .status-button.completed:before { content: "Completed"; }
@@ -348,58 +314,44 @@ body[data-owner="1"] .btn-menu .username {
 .status-menu .status-button.dropped:before { content: "Dropped"; }
 .status-menu .status-button.plantowatch:before { content: "Planned"; }
 
-.icon-menu:before { font-size: 14px; }
 .icon-menu.profile:before { content: "Profile"; }
 .icon-menu.quick-add:before { content: "Quick Add"; }
 .icon-menu.anime-list:before	{ content: "Animelist"; }
 .icon-menu.manga-list:before { content: "Mangalist"; }
 .icon-menu.history:before { content: "History"; }
-.icon-menu.export:before { content: "Export"; }
 .icon-menu.logout:before { content: "Logout"; }
 
 .status-menu .status-button:after { display: none !important; }
 
 /* HEADER BAR - SUBNAV RIGHT - EXTRA BUTTONS */
 
-body[data-owner="1"] .icon-menu.export {
+body[data-owner="1"] .icon-menu.export, body[data-owner="1"] .icon-menu.setting {
 	position: absolute;
 	top: 66px;
-	left: -19px;
 	
 	width: 55px !important;
 	height: 22px;
+	margin: 0;
 	
-	text-align: center;
-	line-height: 22px;
 	color: #0cd693;
+	line-height: 22px !important;
+	text-align: center;
 }
-body[data-owner="1"] .icon-menu.export:before {
-	font-size: 12px;
-}
-
 body[data-owner="1"] .icon-menu.setting:hover, body[data-owner="1"] .icon-menu.export:hover {
 	color: #fff;
 }
 
-body[data-owner="1"] .icon-menu.setting {
-	position: absolute;
-	top: 66px;
-	left: 36px;
-	
-	width: 55px !important;
-	height: 22px;
-	margin: 0 !important;
-	
-	color: #0cd693;
-	line-height: 22px;
-	text-align: center;
-	
-	transition: all 0.075s cubic-bezier(0.32,0.05,0.48,1);
+body[data-owner="1"] .icon-menu.export { left: -19px; }
+body[data-owner="1"] .icon-menu.export:before {
+	content: "Export";
+	font-size: 12px;
 }
+body[data-owner="1"] .icon-menu.setting { left: 36px; }
 body[data-owner="1"] .icon-menu.setting:before {
 	content: "SETTINGS";
 	font-size: 12px;
 }
+
 body[data-owner="1"] .icon-menu.setting .text {
 	position: absolute;
 	top: 28px !important;
@@ -427,9 +379,7 @@ body[data-owner="1"] .list-menu-float .icon-menu.setting .text a {
 	background-clip: content-box !important;
 	
 	color: #0cd693 !important;
-	font-size: 11px !important;
-	line-height: 20px !important;
-	font-family: Carrois Gothic SC;
+	font: 11px/20px Carrois Gothic SC !important;
 	text-align: center !important;
 	
 	opacity: 0;
@@ -587,29 +537,20 @@ body[data-owner="1"] .icon-menu.setting a:after {
 .list-table > tbody:first-of-type:before {
 	content: "SORT";
 	
-	line-height: 28px;
-	font-size: 12px;
 	color: #0cd693;
-	font-family: Carrois Gothic SC;
+	font: 12px/28px Carrois Gothic SC;
 	
 	transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1);
 }
 .list-table > tbody:first-of-type:hover:before { color: #fff; }
 .list-table > tbody:first-of-type:after {
-	content: "";
-	
-	position: absolute;
-	top: 0;
 	left: -9px;
 	
-	display: block;
 	width: 18px;
 	height: 28px;
 	background: #001a0e !important;
 	
-	transform: skew(30deg);
 	z-index: -1;
-	box-shadow: -2px 1px 0 1px #d60025;
 }
 .list-table-header {
 	position: absolute;
@@ -686,12 +627,8 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	transform: skew(30deg);
 	z-index: -1;
 }
-.list-table-header .header-title a:before {
-	left: -6px;
-}
-.list-table-header .header-title a:after {
-	right: -6px;
-}
+.list-table-header .header-title a:before { left: -6px; }
+.list-table-header .header-title a:after { right: -6px; }
 
 .list-table-header .header-title.status,
 .list-table-header .header-title.image,
@@ -769,9 +706,9 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 .list-unit .list-status-title .text {
 	width: 100%;
 	
-	letter-spacing: 1px;
 	color: #fff600;
 	font-family: Carrois Gothic SC;
+	letter-spacing: 1px;
 }
 
 /* HEADER BAR - SUBNAV LEFT */
@@ -786,22 +723,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	background: #001a0e;
 	
 	z-index: 7;
-	box-shadow: 0 1px 0 1px #d60025;
-}
-.stats:after {
-	content: "";
-	
-	position: absolute;
-	top: 0;
-	left: -9px;
-	
-	display: block;
-	width: 18px;
-	height: 28px;
-	background: #001a0e;
-	
-	transform: skew(30deg);
-	z-index: -1;
+	box-shadow: 1px 1px 0 1px #d60025;
 }
 .list-unit .list-status-title .stats a {
 	position: absolute;
@@ -809,11 +731,9 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	
 	width: 55px;
 	
-	text-align: center;
-	line-height: 28px;
-	font-size: 12px;
 	color: #0cd693;
-	font-family: Carrois Gothic SC;
+	font: 12px/28px Carrois Gothic SC;
+	text-align: center;
 	text-transform: uppercase;
 	
 	z-index: 1;
@@ -909,8 +829,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	z-index: 1;
 }
 .data.status:before {
-	font-family: FontAwesome;
-	font-size: 12px;
+	font: 12px FontAwesome;
 }
 .data.status.completed, .data.status.onhold, .data.status.dropped, .data.status.plantowatch {
 	display: block !important;
@@ -955,10 +874,8 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	max-width: 100%;
 	max-height: 45px;
 	
-	font-family: Open Sans;
-	line-height: 15px;
+	font: bold 11px/15px Open Sans !important;
 	text-indent: 14px;
-	font-size: 11px !important;
 	
 	overflow: hidden;
 	white-space: normal;
@@ -980,11 +897,9 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	height: 30px;
 	
 	color: #06754e !important;
-	font-family: Open Sans;
-	font-size: 9px !important;
-	line-height: 15px;
-	text-indent: 10px;
+	font: 9px/15px Open Sans !important;
 	text-align: center;
+	text-indent: 10px;
 	text-transform: uppercase;
 	white-space: normal;
 	
@@ -1019,9 +934,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	height: 20px;
 	
 	color: #0cd693 !important;
-	font-size: 11px !important;
-	font-family: Open Sans;
-	line-height: 20px;
+	font: 11px/20px Open Sans !important;
 	text-transform: uppercase;
 	
 	transition-property: color, opacity;
@@ -1036,16 +949,12 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 .add-edit-more .more a { top: 50px; }
 
 .data.progress:before, .data.season:before, .data.tags:before {
-	content: "";
-	position: absolute;
-	top: 0;
 	left: -1px;
 	
 	width: 2px;
 	height: 50px;
-	background: #000d07;
 	
-	transform: skew(30deg);
+	box-shadow: none;
 }
 .data.score {
 	position: relative;
@@ -1057,9 +966,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	z-index: 1;
 }
 .data.score a.link {
-	font-family: Carrois Gothic SC;
-	font-size: 16px !important;
-	line-height: 50px;
+	font: bold 16px/50px Carrois Gothic SC !important;
 }
 .data.score select {
 	margin: 15px 10px 15px 0;
@@ -1095,9 +1002,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	margin: 0;
 	
 	color: #0cd693 !important;
-	font-family: Carrois Gothic SC;
-	font-size: 14px;
-	line-height: 50px;
+	font: 14px/50px Carrois Gothic SC;
 }
 .data.progress span:nth-of-type(2):before {
 	content: "";
@@ -1198,10 +1103,8 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	top: 0;
 	left: 6px;
 	
-	font-family: FontAwesome;
-	font-size: 10px;
-	line-height: 50px;
 	color: #06754e;
+	font: 10px/50px FontAwesome;
 	
 	transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
 }
@@ -1214,12 +1117,10 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	max-height: 42px;
 	padding: 4px 0;
 	
-	font-size: 9px;
-	font-family: Open Sans;
-	line-height: 14px;
+	font: 9px/14px Open Sans;
 	text-align: left;
-	white-space: normal;
 	letter-spacing: -5.5px;
+	white-space: normal;
 	
 	overflow: hidden;
 	transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
@@ -1249,10 +1150,9 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 }
 .data.tags .edit:after {
 	content: "\f040";
-	font-family: FontAwesome;
-	font-size: 10px !important;
-	line-height: 50px;
+	
 	color: #06754e;
+	font: 10px/50px FontAwesome;
 	
 	transition: all 0.075s cubic-bezier(0.32,0.05,0.48,1);
 }
@@ -1272,8 +1172,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	outline-color: #0cd693 !important;
 	
 	color: #0cd693;
-	font-size: 11px;
-	font-family: initial !important;
+	font-size: 11px initial !important;
 	
 	resize: none;
 	z-index: 1;
@@ -1388,12 +1287,8 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	transform: skew(-30deg);
 	transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
 }
-.advanced-options-button a:before {
-	left: -9px;
-}
-.advanced-options-button a:after {
-	right: -9px;
-}
+.advanced-options-button a:before { left: -9px; }
+.advanced-options-button a:after { right: -9px; }
 #advanced-options .advanced-options-button a:hover, .advanced-options-button a:hover:before, .advanced-options-button a:hover:after {
 	background: #fff600;
 }
