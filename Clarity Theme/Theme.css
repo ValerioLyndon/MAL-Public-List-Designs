@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 9 */
+/* "Clarity" by Valerio Lyndon / Revision 10 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -471,6 +471,7 @@ body { background: #efefef; }
 	-o-background: linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0));
 	background: linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0));
 }
+#cover-image { display: none; }
 @-webkit-keyframes name-slide {
 	0% {
 		top: 12px;
@@ -558,7 +559,6 @@ body { background: #efefef; }
 	}
 }
 body:after {
-	content: "Valerio    \a       Lyndon";
 	position: absolute;
 	top: 55px;
 	left: 50%;
@@ -644,7 +644,7 @@ body:after {
 	
 	width: 150px;
 	height: 150px;
-	background: #fdd url(https://myanimelist.cdn-dena.com/images/userimages/5889451.jpg) no-repeat center top / cover;
+	background: #fdd no-repeat center top / cover;
 	border: 8px solid #fff;
 	border-radius: 50%;
 	
@@ -979,6 +979,8 @@ body:after {
 .list-table > tbody:nth-of-type(2n+1) { background: #fff; }
 .list-item:nth-of-type(2) { margin-top: -30px; }
 .list-table-data {
+	position: relative;
+	
 	display: block;
 	
 	font-size: 0;
@@ -1186,7 +1188,6 @@ body:after {
 	display: block;
 	width: 120px;
 	padding: 3px 0 !important;
-	margin-left: 650px;
 }
 
 .data.tags span { padding: 1px 0; }
@@ -1197,7 +1198,6 @@ body:after {
 	
 	font-size: 11px !important;
 	line-height: 15px;
-	white-space: nowrap;
 	
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
@@ -1217,66 +1217,15 @@ body:after {
 }
 	
 .data.tags span {
-	display:block;font-size:0!important;line-height:0}
+	display: block;
+	font-size: 0 !important;
+	line-height: 0;
+}
 	
-.data.tags a[href*="tag\="]{
+.data.tags a {
 	color: #081940;
 	background: #ebebeb;
 }
-.data.tags a[href*="tag\=Favourite"] {
-	position: absolute;
-	left: -32px;
-	top: 50%;
-	margin-top: -13px;
-	
-	width: 26px;
-	height: 26px;
-	padding: 0;
-	background: #fff;
-	border-radius: 50%;
-	
-	color:#ff65ad;
-	font-size: 0px !important;
-	line-height: 23px;
-	
-	overflow: hidden;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.2)	
-} .data.tags a[href*="tag\=Favourite"]:after { content: "♥"; font-size: 26px !important; }
-
-.data.tags a[href*="tag\=Family%20Friendly"] { background:#bcbcff }
-
-.data.tags a[href*="tag\=Hard%20Violence"]{background:rgba(214,148,148,1.0)}.data.tags a[href*="tag\=Violence"]{background:rgba(214,148,148,0.75)}.data.tags a[href*="tag\=Mild%20Violence"]{background:rgba(214,148,148,0.5)}.data.tags a[href*="tag\=No%20Violence"]{background:rgba(214,148,148,0.25)}
-
-.data.tags a[href*="tag\=Full%20Nudity"]{background:rgba(195,85,157,1.0)}.data.tags a[href*="tag\=Nudity"]{background:rgba(195,85,157,0.75)}.data.tags a[href*="tag\=Mild%20Nudity"]{background:rgba(195,85,157,0.5)}.data.tags a[href*="tag\=No%20Nudity"]{background:rgba(195,85,157,0.25)}
-
-.data.tags a[href*="tag\=Good%20Animation"],
-.data.tags a[href*="tag\=Good%20Audio"],
-.data.tags a[href*="tag\=Good%20Voice"],
-.data.tags a[href*="tag\=Funny"],
-.data.tags a[href*="tag\=Mildly%20Funny"]
-{background:#63a2ef}
-
-.data.tags a[href*="tag\=Tsundere"],
-.data.tags a[href*="tag\=Generic"],
-.data.tags a[href*="tag\=Emotional"]
-{ background: #9aedca; }
-
-.data.tags a[href*="tag\=Bad%20Animation"],
-.data.tags a[href*="tag\=Bad%20Audio"],
-.data.tags a[href*="tag\=Bad%20Voice"],
-.data.tags a[href*="tag\=Unfunny"],
-.data.tags a[href*="tag\=Harem"],
-.data.tags a[href*="tag\=Boring%20Patch"],
-.data.tags a[href*="tag\=Boring"],
-.data.tags a[href*="tag\=Mild%20Cringe"],
-.data.tags a[href*="tag\=Cringe"],
-.data.tags a[href*="tag\=Fan%20Service"],
-.data.tags a[href*="tag\=Quirky"]
-{ background: #28e970; }
-
-.data.tags a[href*="tag\=Dropped"],
-.data.tags a[href*="tag\=Try%20Again"]
-{ background: #6f4c4c; color: #fff; }
 
 .data.tags a.edit {
 	position: absolute;
@@ -1344,9 +1293,10 @@ body:after {
 .data.finished:before { content: "End" }
 .data.days:before { content: "Days" }
 
-.status:not(.plantowatch):not(.plantoread) ~ .data.priority, .anime .status:not(.plantowatch) ~ .data.type {
+.status:not(.plantowatch):not(.plantoread) ~ .data.priority {
 	display: none !important;
 }
+
 .data.priority {
 	width: 92px;
 	height: 74px !important;
@@ -1379,36 +1329,19 @@ body:after {
 }
 
 .data.type {
-	padding: 0 !important;
-	margin-left: -750px;
+	position: absolute;
+	top: 50%;
+	left: 78px;
 	
 	width: 100px;
 	height: 16px;
-	margin-top: -48px;
+	padding: 0 !important;
+	margin-top: -24px;
 	
 	text-align: left !important;
 	color: #BABABA;
 	line-height: 16px;
 	font-size: 10px;
-	
-	opacity: 0;
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
-	transition: all 0.2s ease;
-}
-.manga .data.type {
-	margin-top: -32px;
-	
-	opacity: 1;
-}
-.list-item:hover .data.type {
-	opacity: 1;
-	
-	-webkit-transition: all 0.2s ease;
-	-moz-transition: all 0.2s ease;
-	-o-transition: all 0.2s ease;
-	transition: all 0.2s ease;
 }
 
 .more-info .td1 {
