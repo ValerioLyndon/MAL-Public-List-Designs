@@ -10,4 +10,4 @@ I welcome anyone and everyone to use the Issues feature of GitHub here to notify
 
 ## Modification of These Themes
 
-Feel free to modify any of these themes as much as you want and use them however you want as long as you give give appropriate credit. To give credit just include my name somewhere noticable (not buried in sub menus or hard to read) on your theme's page. All my themes already include an extra bit of text in the footer of the page, as long as you don't remove that or make it impossible to read then you are already set.
+Feel free to modify any of these themes as much as you want and use them however you want as long as you give appropriate credit. To give credit just include my name somewhere noticable (not buried in sub menus or hard to read) on your theme's page. All my themes already include an extra bit of text in the footer of the page, as long as you don't remove that or make it impossible to read then you are already set.
