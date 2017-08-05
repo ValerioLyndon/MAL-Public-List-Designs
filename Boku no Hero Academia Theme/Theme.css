@@ -1,4 +1,4 @@
-/* Boku no Hero Academia Theme by Valerio Lyndon / Revision 1 */
+/* Boku no Hero Academia Theme by Valerio Lyndon / Revision 2 */
 
 @import url('https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Open+Sans:400,700');
 
@@ -178,7 +178,7 @@ body[data-owner="1"] .btn-menu .username {
 .header .header-info {
 	position: fixed;
 	top: calc(50% + 196px);
-	right: 0;
+	left: 0;
 	
 	width: 340px;
 	height: 24px;
@@ -192,8 +192,8 @@ body[data-owner="1"] .btn-menu .username {
 	text-transform: uppercase;
 	
 	box-shadow: 0px 1px 0 1px #d60025;
-	transform: rotate(90deg);
-	transform-origin: top right;
+	transform: rotate(-90deg);
+	transform-origin: top left;
 }
 .header-info:before, .header-info:after {
 	width: 13px;
@@ -355,7 +355,7 @@ body[data-owner="1"] .icon-menu.setting:before {
 body[data-owner="1"] .icon-menu.setting .text {
 	position: absolute;
 	top: 28px !important;
-	right: 12px !important;
+	right: 0 !important;
 	left: auto !important;
 	
 	display: block;
@@ -373,10 +373,9 @@ body[data-owner="1"] .list-menu-float .icon-menu.setting .text a {
 	
 	width: 100px !important;
 	height: 20px !important;
-	padding: 2px 0 0 !important;
+	padding: 2px 12px 0 !important;
 	border: none !important;
-	background: #001a0e !important;
-	background-clip: content-box !important;
+	background: #001a0e content-box !important;
 	
 	color: #0cd693 !important;
 	font: 11px/20px Carrois Gothic SC !important;
@@ -419,10 +418,10 @@ body[data-owner="1"] .icon-menu.setting a:before, body[data-owner="1"] .icon-men
 	z-index: -1;
 }
 body[data-owner="1"] .icon-menu.setting a:before {
-	left: -6px;
+	left: 6px;
 }
 body[data-owner="1"] .icon-menu.setting a:after {
-	right: -6px;
+	right: 6px;
 }
 
 /* HEADER BAR - SUBNAV RIGHT - SEARCH */
@@ -555,7 +554,7 @@ body[data-owner="1"] .icon-menu.setting a:after {
 .list-table-header {
 	position: absolute;
 	top: 28px;
-	left: 12px;
+	left: 0;
 	
 	display: block;
 }
@@ -602,7 +601,8 @@ body[data-owner="1"] .icon-menu.setting a:after {
 .list-table-header .header-title a {
 	width: 100px;
 	height: 20px;
-	background: #001a0e;
+	padding: 0 12px;
+	background: #001a0e content-box;
 	
 	color: #0cd693 !important;
 	font: normal 11px/20px Carrois Gothic SC;
@@ -627,8 +627,8 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	transform: skew(30deg);
 	z-index: -1;
 }
-.list-table-header .header-title a:before { left: -6px; }
-.list-table-header .header-title a:after { right: -6px; }
+.list-table-header .header-title a:before { left: 6px; }
+.list-table-header .header-title a:after { right: 6px; }
 
 .list-table-header .header-title.status,
 .list-table-header .header-title.image,
@@ -785,6 +785,8 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	font-size: 0;
 	text-align: left;
 	white-space: nowrap;
+	
+	overflow: hidden;
 }
 .list-table-data:before {
 	content: "";
@@ -870,6 +872,8 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	padding: 2px 4px 2px 74px !important;
 }
 .data.title .link.sort {
+	position: relative;
+	
 	display: inline-block;
 	max-width: 100%;
 	max-height: 45px;
@@ -881,6 +885,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	white-space: normal;
 	
 	transition: all 0.075s cubic-bezier(0.32,0.05,0.48,1);
+	z-index: 1;
 }
 .watching ~ .data.title .link.sort {
 	text-indent: 0;
@@ -1081,21 +1086,26 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	display: flex !important;
 	width: 0;
 	height: 50px;
-	padding-left: 20px !important;
+	padding: 0 0 0 20px !important;
 	background: #00150b;
 	
 	justify-content: center;
 	flex-direction: column;
 	
-	border-collapse: seperate !important;
-	transition-property: width;
-	transition-duration: 0.2s;
-	transition-timing-function: cubic-bezier(0.32,0.05,0.48,1);
+	transition: width 0.2s cubic-bezier(0.32,0.05,0.48,1);
 	z-index: 1;
 }
+.data.tags:before {
+	left: -2px;
+	
+	width: 20px;
+	height: 25px;
+	padding-bottom: 25px;
+	border-left: 1px solid #000d07;
+	background: #00150b content-box;
+}
 .data.tags:hover {
-	width: 190px;
-	padding-right: 10px !important;
+	width: 200px;
 }
 .data.tags:after {
 	content: "\f02c";
