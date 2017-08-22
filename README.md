@@ -6,7 +6,7 @@ Install Instructions and detailed info for all themes can be found [here](https:
 
 ## How to Report Issues
 
-I welcome anyone and everyone to use the Issues feature of GitHub here to notify me of problems or suggest me things. When you do though, please mention what theme you are talking about, IE. "Clarity", "Boku no Hero", etcetera.
+I welcome anyone and everyone to use the Issues feature of GitHub here to notify me of problems or suggest me things. When you do though, please mention what theme you are talking about, IE. "Clarity", "Tilt", "that one with Yui in front of a field", etcetera.
 
 ## Modification of These Themes
 
