@@ -1,4 +1,4 @@
-/* Boku no Hero Academia Theme by Valerio Lyndon / Revision 2 */
+/* Boku no Hero Academia Theme by Valerio Lyndon / Revision 3 */
 
 @import url('https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Open+Sans:400,700');
 
@@ -70,7 +70,7 @@ body {
 
 .header .header-title {
 	top: 3px;
-	left: calc(50% - 156px);
+	left: -6px;
 	
 	width: 312px;
 	height: 120px;
@@ -221,9 +221,9 @@ body[data-owner="1"] .btn-menu .username {
 .status-menu-container {
 	position: fixed;
 	top: 0;
-	left: calc(50% - 515px);
+	left: calc(50% - 522px);
 	
-	width: 1030px;
+	width: 1044px;
 	height: 64px;
 	border: none !important;
 	background: #000d07;
@@ -251,13 +251,13 @@ body[data-owner="1"] .btn-menu .username {
 }
 .list-menu-float {
 	top: 0;
-	right: calc(50% - 543px);
+	right: calc(50% - 528px);
 	z-index: 20;
 }
 
 .status-menu-container .status-menu {
 	position: relative;
-	left: -13px;
+	left: -6px;
 }
 .status-menu-container .status-menu:before, .status-menu-container .status-menu:after, .list-menu-float:before, .list-menu-float:after {
 	content: "";
@@ -341,12 +341,12 @@ body[data-owner="1"] .icon-menu.setting:hover, body[data-owner="1"] .icon-menu.e
 	color: #fff;
 }
 
-body[data-owner="1"] .icon-menu.export { left: -19px; }
+body[data-owner="1"] .icon-menu.export { left: -4px; }
 body[data-owner="1"] .icon-menu.export:before {
 	content: "Export";
 	font-size: 12px;
 }
-body[data-owner="1"] .icon-menu.setting { left: 36px; }
+body[data-owner="1"] .icon-menu.setting { left: 51px; }
 body[data-owner="1"] .icon-menu.setting:before {
 	content: "SETTINGS";
 	font-size: 12px;
@@ -1311,15 +1311,15 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 /* FOOTER */
 
 #footer-block {
-	height: 50px;
+	min-width: 1050px;
 	padding: 0;
 	background: #000d07;
 }
 #copyright {
-	padding: 0;
+	padding: 17px;
 	
 	color: #0cd693;
-	line-height: 50px;
+	font: 12px/16px Open Sans;
 	
 	transition: all 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
 	opacity: 0.5;
@@ -1329,4 +1329,43 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 }
 #copyright:after {
 	content: "- List design by Valerio Lyndon.";
+}
+
+/* SMALL SCREEN FIXES */
+
+@media (max-width: 1056px) {	
+	body {
+		background-attachment: fixed !important;
+	}
+	
+	.header,
+	.header .header-menu,
+	.status-menu-container,
+	.list-menu-float,
+	.list-table > tbody:first-of-type,
+	.list-unit .list-status-title .stats
+	{ position: absolute !important; }
+	
+	.header {
+		left: 369px;
+	}
+	.header .header-menu {
+		left: 332px;
+		right: auto;
+	}
+	.status-menu-container {
+		top: -64px;
+		left: -3px;
+	}
+	.list-menu-float {
+		left: 701px;
+	}
+	.list-table > tbody:first-of-type {
+		top: 2px;
+		left: 176px;
+	}
+	.list-unit .list-status-title .stats {
+		top: 2px;
+		left: 231px;
+	}
 }
