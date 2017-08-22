@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 11 */
+/* "Clarity" by Valerio Lyndon / Revision 12 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -525,7 +525,7 @@ body {
 		animation-timing-function: cubic-bezier(0,0,.75,1);
 	}
 }
-body:after {
+#cover-image-container:after {
 	position: absolute;
 	top: 55px;
 	left: 50%;
@@ -566,6 +566,7 @@ body:after {
 	
 	display: block;
 	width: 100%;
+	min-width: 1060px;
 	
 	z-index: 10;
 }
@@ -1322,6 +1323,7 @@ body:after {
 /* FOOTER */
 
 #footer-block {
+	min-width: 1060px;
 	box-shadow: -2px 0 2px rgba(0,0,0,0.2);
 	background: #fff;
 }

@@ -1,7 +1,7 @@
 .status-menu:after {
 	background-image: url(https://myanimelist.cdn-dena.com/images/userimages/5889451.jpg);
 }
-body:after {
+#cover-image-container:after {
 	content: "Valerio\a       Lyndon";
 }
 
@@ -23,7 +23,7 @@ body:after {
 	
 	overflow: hidden;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.2)	
-} .data.tags a[href*="tag\=Favourite"]:after { content: "♥"; font-size: 26px !important; }
+} .data.tags a[href*="tag\=Favourite"]:after, .data.tags a[href*="tag\=Favorite"]:after { content: "♥"; font-size: 26px !important; }
 
 .data.tags a[href*="tag\=Family%20Friendly"] { background:#bcbcff }
 
