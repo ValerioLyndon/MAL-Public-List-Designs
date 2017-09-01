@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 13 */
+/* "Clarity" by Valerio Lyndon / Revision 14 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -25,9 +25,7 @@ a, a:hover {
 	border-radius: 13px;
 	
 	color: #323232 !important;
-	font-size: 0;
-	font-weight: normal;
-	line-height: 26px;
+	font: normal 0/26px Arial, Verdana;
 	text-indent: 0;
 	text-align: left;
 	text-shadow: none;
@@ -81,7 +79,7 @@ a, a:hover {
 	
 	z-index: 1;
 }
-.icon-menu .text {
+.list-menu-float .icon-menu .text {
 	top: 0 !important;
 	left: 26px !important;
 	
@@ -89,8 +87,8 @@ a, a:hover {
 	width: auto !important;
 	height: 26px;
 	
-	font-size: 14px !important;
 	color: #323232 !important;
+	font-size: 14px !important;
 	
 	opacity: 1 !important;
 }
@@ -239,8 +237,7 @@ a, a:hover {
 	height: 26px !important;
 	width: 26px !important;
 	
-	font-size: 14px;
-	line-height: 26px;
+	font: 14px/26px Arial, Verdana;
 	color: #323232;
 	
 	-webkit-transition: all 0.3s ease;
@@ -251,22 +248,6 @@ a, a:hover {
 .header .header-title:hover:after {
 	color: #fff;
 }
-
-.icon-menu .text {
-	top: 0 !important;
-	left: 26px !important;
-	
-	display: inline-block;
-	width: auto !important;
-	height: 26px;
-	
-	font-size: 14px !important;
-	
-	color: #323232 !important;
-	opacity: 1 !important;
-}
-
-
 
 /* LOGIN ETC */
 
@@ -307,24 +288,31 @@ a, a:hover {
 
 .btn-menu #header-menu-button { display: none; }
 
-.header-info{
-	position:static;
+.header-info {
+	position: static;
 	
 	display: inline-block;
-	color: #323232;
-	margin:0!important;
-	font-size:12px!important;
-	padding: 0 6px;
 	height: 26px;
+	padding: 0 8px;
+	margin: 0 !important;
 	background: #fff;
-	line-height: 26px;
+	border-radius: 13px;
+	
+	color: #323232;
+	font: 12px/26px Arial, Verdana !important;
+	
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 	-webkit-order: 2;
 	-moz-order: 2;
 	order: 2;
-	border-radius: 13px;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
-.header-info a {color:#323232} 
+.header-info a {
+	color: #323232;
+}
+.header-info a:hover {
+	color: #1d439b;
+	text-decoration: none !important;
+}
 
 .header .header-menu .list-menu {
 	position: static;
@@ -340,22 +328,19 @@ a, a:hover {
 	box-shadow: none;
 }
 
-.header .icon-menu.manga-list {
-	position:static;
+.header .icon-menu.manga-list, .header .icon-menu.anime-list {
+	position: static;
 	
-	font-weight: normal!important;
-	line-height: 26px;
 	padding: 0;
-	text-align: left;
-	font-size: 0 !important;
 	
-	-webkit-transition: all 0.3s ease;
-	-moz-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	transition: all 0.3s ease;
+	font-size: 0 !important;
+	font-weight: normal !important;
 }
-.icon-menu.manga-list:hover{
-	color: #fff;
+.header .icon-menu.manga-list .text, .header .icon-menu.anime-list .text {
+	position: static !important;
+	
+	font: 14px/26px Arial, Verdana;
+	vertical-align: top;
 }
 .header .header-menu .list-menu .icon-menu svg.icon {
 	position: static;
@@ -367,14 +352,8 @@ a, a:hover {
 	fill: #323232;
 }
 .header .header-menu .list-menu .icon-menu:hover svg.icon { fill: #ffffff; }
-.header .header-menu .list-menu .icon-menu .text {
-	position: static;
-	
-	line-height: 26px;
-	text-align: left;
-	vertical-align: top;
-}
-.btn-list-setting{ display: none !important; }
+
+.btn-list-setting { display: none !important; }
 
 /* HEADER IMAGE */
 
@@ -761,9 +740,10 @@ a, a:hover {
 	background: #323232 !important;
 	border-radius: 13px 0 0 13px;
 	
-	text-align: center !important;
+	
 	color: #fff !important;
-	line-height: 26px;
+	font: 11px/26px Verdana, Arial !important;
+	text-align: center !important;
 	text-indent: -7.5px;
 	vertical-align: middle;
 	
@@ -807,11 +787,11 @@ a, a:hover {
 /* SUB NAV - EXTRAS - FILTERING */
 
 .list-status-title {
-	width:1060px!important;
-	height:64px !important;
-	background:none!important
+	width: 1060px !important;
+	height: 64px !important;
+	background: none !important;
 }
-.list-status-title .text{display:none!important}
+.list-status-title .text{ display: none !important }
 .list-status-title .stats {
 	position:absolute;
 	top: 10px;
@@ -829,7 +809,7 @@ a, a:hover {
 .stats a {
 	margin: 0 0 0 6px !important;
 	
-	font-size: 14px;
+	font: 14px/26px Arial, Verdana;
 }
 .stats a i {
 	width: 26px;
@@ -879,6 +859,8 @@ a, a:hover {
 	background: #fff !important;
 }
 .list-table-data {
+	position: relative;
+	
 	display: block;
 	
 	font-size: 0;
@@ -979,8 +961,8 @@ a, a:hover {
 	font-size: 10px; !important;
 }
 .data.title .link.sort:hover {
-	text-decoration: none !important;
 	color: #1d439b;
+	text-decoration: none !important;
 }
 
 .icon-watch { display: none !important; }
@@ -1026,7 +1008,7 @@ a, a:hover {
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
-.data.score a:hover {
+.data.score a:not(.edit-disabled):hover {
 	background: #323232;
 	
 	color: #fff;
@@ -1227,7 +1209,7 @@ a, a:hover {
 .data.type {
 	position: absolute;
 	top: 50%;
-	left: 78px;
+	left: 80px;
 	
 	width: 100px;
 	height: 16px;
