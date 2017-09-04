@@ -1,4 +1,4 @@
-/* "Tilt" Theme by Valerio Lyndon / Revision 3 */
+/* "Tilt" Theme by Valerio Lyndon / Revision 4 */
 
 @import url('https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Open+Sans:400,700');
 
@@ -16,6 +16,10 @@ body {
 	body {
 		background: #000 url(http://i.imgur.com/IJrzYGP.jpg) no-repeat center top / 100% scroll !important;
 	}
+}
+
+a:hover {
+	text-decoration: none !important;
 }
 
 /* COMPACT - BASE */
@@ -762,6 +766,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	display: block;
 	width: 1056px;
 	padding: 6px 0;
+	border: none !important;
 }
 
 /* LIST ITEM - BASE */
@@ -770,7 +775,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	display: inline-block !important;
 	width: 340px;
 	margin: 6px;
-	background: #001a0e;
+	background: #001a0e !important;
 	
 	vertical-align: top;
 }
@@ -1140,6 +1145,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	letter-spacing: 0;
 }
 .data.tags div span {
+	color: #0cd693;
 	vertical-align: middle !important;
 }
 .data.tags .edit {
@@ -1202,6 +1208,9 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	text-align: left;
 	font-family: Open Sans;
 }
+.more-info .td1.borderRBL {
+	color: #ccc;
+}
 .more-info a {
 	transition: color 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
 	color: #0cd693 !important;
@@ -1251,8 +1260,9 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	border-color: #0cd693;
 	border-width: 2px;
 	
-	text-transform: uppercase;
+	color: #f6f6f6;
 	font: 16px Carrois Gothic SC;
+	text-transform: uppercase;
 }
 #advanced-options .advanced-options-header .description {
 	font: 12px Open Sans;
@@ -1260,6 +1270,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 }
 
 #advanced-options .filter-widget span, #advanced-options .sort-widget span {
+	color: #f6f6f6;
 	font-family: Open Sans !important;
 }
 
