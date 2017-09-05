@@ -1,4 +1,4 @@
-/* "Tilt" Theme by Valerio Lyndon / Revision 4 */
+/* "Tilt" Theme by Valerio Lyndon / Revision 5 */
 
 @import url('https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Open+Sans:400,700');
 
@@ -1091,7 +1091,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	display: flex !important;
 	width: 0;
 	height: 50px;
-	padding: 0 0 0 20px !important;
+	padding: 0 0 0 7px !important;
 	background: #00150b;
 	
 	justify-content: center;
@@ -1101,13 +1101,14 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	z-index: 1;
 }
 .data.tags:before {
-	left: -2px;
+	left: -14px;
 	
-	width: 20px;
-	height: 25px;
-	padding-bottom: 25px;
-	border-left: 1px solid #000d07;
+	width: 30px;
+	height: 50px;
+	border-left: 2px solid #000d07;
 	background: #00150b content-box;
+	
+	z-index: -1;
 }
 .data.tags:hover {
 	width: 200px;
@@ -1116,7 +1117,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	content: "\f02c";
 	position: absolute;
 	top: 0;
-	left: 6px;
+	left: -7px;
 	
 	color: #06754e;
 	font: 10px/50px FontAwesome;
