@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 15 */
+/* "Clarity" by Valerio Lyndon / Revision 16 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -26,7 +26,9 @@ a, a:hover {
 .data.tags span a,
 .data.tags a.edit,
 .list-item:hover .data.tags a.edit,
-.data.priority
+.data.priority,
+#advanced-options #fancybox-close,
+#advanced-options .advanced-options-button a
 {
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
@@ -1113,6 +1115,20 @@ a, a:hover {
 	opacity: 1;
 }
 
+.data.tags textarea {
+	width: 100% !important;
+	height: 66px !important;
+	
+	border-color: #ddd;
+	background: #fff;
+	outline-color: #4065BA !important;
+	
+	color: #111;
+	
+	resize: none;
+	box-sizing: border-box;
+}
+
 .data.started, .data.finished, .data.days {
 	position: relative;
 	left: 12px;
@@ -1220,6 +1236,77 @@ a, a:hover {
 	margin: 0 auto;
 	
 	color: #323232;
+}
+
+/* FILTER BOX OVERLAY */
+
+#advanced-options {
+	border: none;
+	background: #fff;
+}
+
+#advanced-options #fancybox-close {
+    top: -13px;
+	right: -13px;
+	
+	width: 16px;
+	height: 16px;
+	padding: 2px;
+	background: #ebebeb;
+	border: 3px solid #fff;
+	border-radius: 13px;
+	
+	color: #323232;
+	text-align: center;
+	
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+}
+#advanced-options #fancybox-close:after {	
+	content: "\f00d";
+	
+	display: block;
+	margin-top: -1px;
+	
+	font: 16px FontAwesome;
+}
+#advanced-options #fancybox-close:hover {
+	background: #323232;
+	
+	color: #fff;
+}
+
+#advanced-options .advanced-options-header {
+	border-color: #323232;
+	
+	color: #111;
+}
+#advanced-options .advanced-options-button { border-color: #323232; }
+
+#advanced-options .filter-widget span, #advanced-options .sort-widget span { color: #111; }
+
+#advanced-options .sort-widget input[type=radio]:checked + label {
+    background-color: #4065BA;
+    border: #4065BA 1px solid;
+}
+
+#advanced-options .advanced-options-button a {
+	height: 14px;
+	background: #ebebeb;
+	border-radius: 13px;
+	
+	color: #111;
+	
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+}
+#advanced-options .advanced-options-button a:hover {
+	background: #323232;
+	
+	color: #fff;
+}
+
+#fancybox-overlay {
+	background: #000 !important;
+	opacity: 0.1 !important;
 }
 
 /* FOOTER */
