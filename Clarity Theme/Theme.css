@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 16 */
+/* "Clarity" by Valerio Lyndon / Revision 17 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -54,6 +54,7 @@ a, a:hover {
 
 .header .header-title,
 .header .header-title:before,
+.icon-menu,
 .list-menu-float .icon-menu,
 .icon-menu.quick-add:before,
 .stats a,
@@ -84,6 +85,7 @@ a, a:hover {
 }
 
 .header .header-title:hover,
+.icon-menu:hover,
 .list-menu-float .icon-menu:hover,
 .stats a:hover
 {
@@ -109,14 +111,14 @@ a, a:hover {
 	
 	text-align: left;
 	font-size: 0;
+	
+	z-index: 38;
 }
 .icon-menu, .list-menu-float form { display: inline-block !important; }
 .list-menu-float .icon-menu {
 	top: 74px;
 	
 	margin: 0 6px 0 0;
-	
-	z-index: 1;
 }
 .list-menu-float .icon-menu .text {
 	top: 0 !important;
@@ -144,10 +146,26 @@ a, a:hover {
 	fill: #323232;
 }
 
-.icon-menu.profile {
+[data-owner="1"] .list-menu-float .icon-menu.profile {
+	position: absolute;
+	left: 1px;
+	top: -43px;
+	
+	display: block !important;
+	width: 150px !important;
+	height: 150px !important;
+	background: none !important;
+	border-radius: 50%;
+	
+	font-size: 0;
+	
+	box-shadow: none;
+}
+
+[data-owner=""] .icon-menu.profile {
 	background-image: none !important;
 }
-.icon-menu.profile:before {
+[data-owner=""] .icon-menu.profile:before {
 	content: "\f007";
 	position: absolute;
 	top: 0;
@@ -163,10 +181,10 @@ a, a:hover {
 	color: #323232;
 	font-family: FontAwesome;
 }
-.icon-menu.profile:hover:before {
+[data-owner=""] .icon-menu.profile:hover:before {
 	color: #fff;
 }
-.icon-menu.profile:after {
+[data-owner=""] .icon-menu.profile:after {
 	content: "Profile";
 	position:absolute;
 	top: 0;
@@ -179,7 +197,7 @@ a, a:hover {
 	
 	color: #323232;
 }
-.icon-menu.profile:hover:after {
+[data-owner=""] .icon-menu.profile:hover:after {
 	color: #fff;
 }
 
@@ -292,7 +310,7 @@ a, a:hover {
 	font-size: 0 !important;
 }
 
-.btn-menu .username {
+.btn-menu a.username {
 	position: absolute;
 	left: 1px;
 	top: -7px;
@@ -305,8 +323,9 @@ a, a:hover {
 	
 	font-size: 0;
 
-	z-index: 26;
+	z-index: 36;
 }
+.btn-menu span.username { display: none !important; }
 
 .btn-menu #header-menu-button { display: none; }
 
@@ -329,10 +348,10 @@ a, a:hover {
 	order: 2;
 }
 .header-info a {
-	color: #323232;
+	color: #323232 !important;
 }
 .header-info a:hover {
-	color: #1d439b;
+	color: #1d439b !important;
 	text-decoration: none !important;
 }
 
@@ -354,6 +373,7 @@ a, a:hover {
 	position: static;
 	
 	padding: 0;
+	margin-right: 6px;
 	
 	font-size: 0 !important;
 	font-weight: normal !important;
@@ -555,8 +575,9 @@ a, a:hover {
 	width: 100%;
 	min-width: 1060px;
 	
-	z-index: 30 !important;
+	z-index: 30;
 }
+.fixed ~ .list-block:before, .fixed ~ .list-block:after { z-index: 40; }
 .list-block:before {
 	top: 318px;
 	
@@ -591,6 +612,7 @@ a, a:hover {
 	
 	z-index: 35 !important;
 }
+.status-menu-container.fixed { z-index: 45 !important; }
 
 .status-menu:after {
 	content:"";
@@ -622,7 +644,6 @@ a, a:hover {
 .status-menu-container:not(.fixed) .status-menu {
 	margin: 0 0 0 173px;
 }
-.status-menu-container.fixed { z-index: 35 !important; }
 .status-menu-container.fixed .status-menu {
 	margin: 0 0 0 71px;
 }
@@ -676,7 +697,7 @@ a, a:hover {
 	height: 30px;
 	background: none !important;
 	
-	z-index: 1;
+	z-index: 39;
 }
 .list-table > tbody:first-of-type:after {
 	content: "\f0dc";
@@ -817,17 +838,13 @@ a, a:hover {
 
 .list-stats {
 	position: absolute;
-	top: 418px;
+	top: 416px;
 	
 	width: 1060px !important;
 	background: none !important;
 	
 	font-weight: bold;
 	color:#323232!important;
-}
-
-.status-menu-container.fixed + .list-block .list-stats {
-	top: 36px;
 }
 
 /* LIST - BASE */
