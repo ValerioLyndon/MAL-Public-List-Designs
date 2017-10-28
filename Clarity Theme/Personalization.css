@@ -1,4 +1,4 @@
-/* Identifiers */
+/* Identity */
 
 .status-menu:after {
 	background-image: url(https://myanimelist.cdn-dena.com/images/userimages/5889451.jpg);
@@ -7,7 +7,7 @@
 	content: "Valerio\a       Lyndon";
 }
 
-/* Custom Codes */
+/* Modifications */
 
 .data.tags a[href*="tag\=Favourite"], .data.tags a[href*="tag\=Favorite"] {
 	position: absolute;
@@ -31,25 +31,26 @@
 
 /* Tag Colours */
 
-.data.tags a[href*="tag\=Family%20Friendly"] { background:#bcbcff }
+.data.tags a[href*="tag\=Family%20Friendly"] { background: #bcbcff; }
 
-.data.tags a[href*="tag\=Hard%20Violence"]{background:rgba(214,148,148,1.0)}
-.data.tags a[href*="tag\=Violence"]{background:rgba(214,148,148,0.75)}
-.data.tags a[href*="tag\=Mild%20Violence"]{background:rgba(214,148,148,0.5)}
-.data.tags a[href*="tag\=No%20Violence"]{background:rgba(214,148,148,0.25)}
+.data.tags a[href*="tag\=Hard%20Violence"] { background: rgba(214,148,148,1.0); }
+.data.tags a[href*="tag\=Violence"] { background: rgba(214,148,148,0.75); }
+.data.tags a[href*="tag\=Mild%20Violence"] { background: rgba(214,148,148,0.5); }
+.data.tags a[href*="tag\=No%20Violence"] { background: rgba(214,148,148,0.25); }
 
-.data.tags a[href*="tag\=Full%20Nudity"]{background:rgba(195,85,157,1.0)}
-.data.tags a[href*="tag\=Nudity"]{background:rgba(195,85,157,0.75)}
-.data.tags a[href*="tag\=Mild%20Nudity"]{background:rgba(195,85,157,0.5)}
-.data.tags a[href*="tag\=No%20Nudity"]{background:rgba(195,85,157,0.25)}
+.data.tags a[href*="tag\=Hard%20Nudity"] { background: rgba(195,85,157,1.0); }
+.data.tags a[href*="tag\=Nudity"] { background: rgba(195,85,157,0.75); }
+.data.tags a[href*="tag\=Mild%20Nudity"] { background: rgba(195,85,157,0.5); }
+.data.tags a[href*="tag\=No%20Nudity"] { background: rgba(195,85,157,0.25); }
 
+.data.tags a[href*="tag\=Good%20Writing"],
 .data.tags a[href*="tag\=Good%20Animation"],
 .data.tags a[href*="tag\=Good%20Audio"],
 .data.tags a[href*="tag\=Good%20Voice"],
 .data.tags a[href*="tag\=Funny"],
 .data.tags a[href*="tag\=Mildly%20Funny"],
 .data.tags a[href*="tag\=Moe"]
-{background:#63a2ef}
+{ background: #63a2ef; }
 
 .data.tags a[href*="tag\=Tsundere"],
 .data.tags a[href*="tag\=Generic"],
@@ -57,6 +58,7 @@
 .data.tags a[href*="tag\=Fan%20Service"]
 { background: #9aedca; }
 
+.data.tags a[href*="tag\=Bad%20Writing"],
 .data.tags a[href*="tag\=Bad%20Animation"],
 .data.tags a[href*="tag\=Bad%20Audio"],
 .data.tags a[href*="tag\=Bad%20Voice"],
