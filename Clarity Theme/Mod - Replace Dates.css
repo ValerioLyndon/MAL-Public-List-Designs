@@ -1,0 +1,33 @@
+.data.airing-started, .data.airing-finished {
+	position: relative;
+	left: 12px;
+	
+	display: inline-block !important;
+	width: 100px !important;
+	height: 14px;
+	padding: 0 !important;
+	border: none !important;
+	
+	color: #111;
+	font-size: 9px !important;
+	line-height: 14px;
+	text-align: left !important;
+	white-space: nowrap;
+	
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.data.airing-started { top: -10px; }
+.data.airing-finished { top: 10px; margin-left: -100px; }
+
+.data.airing-started:before, .data.airing-finished:before {
+	display: inline-block;
+	width: 27px;
+	padding-right: 4px;
+	border-right: 1px solid #9a9a9a;
+	
+	text-align: right;
+	color: #bababa;
+}
+.data.airing-started:before { content: "Aired" }
+.data.airing-finished:before { content: "to" }
