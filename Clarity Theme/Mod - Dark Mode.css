@@ -1,0 +1,227 @@
+/* "Clarity" by Valerio Lyndon Modification / Dark Mode / Revision 0 */
+
+body { background: #161616 !important; }
+
+a, a:hover {
+	color: #416abe;
+}
+
+/* BOX SHADOW */
+/* Nav Buttons */
+.header .header-title,
+.header-info,
+.icon-menu,
+.list-menu-float .icon-menu,
+.stats a,
+.list-table > tbody:first-of-type:after,
+.status-menu:after,
+/* Filter Box */
+#advanced-options #fancybox-close,
+#advanced-options .advanced-options-button a
+{ box-shadow: 0px 1px 2px rgba(0,0,0,0.8); }
+
+/* CONTENT BACKGROUND */
+/* Nav Buttons */
+.header .header-title,
+.header-info,
+.icon-menu,
+.list-menu-float .icon-menu,
+.stats a,
+.list-table > tbody:first-of-type:after,
+/* General */
+.list-block:before,
+.list-item,
+.data.priority,
+#footer-block,
+/* Filter Box */
+#advanced-options
+{ background: #212121 !important; }
+
+/* CONTENT TEXT */
+/* Nav Buttons */
+.header .header-title,
+.header .header-title:before,
+.header .header-title:after,
+.header-info,
+.header-info a,
+.icon-menu,
+.icon-menu.profile:after,
+.list-menu-float .icon-menu,
+.list-menu-float .icon-menu .text,
+.icon-menu.quick-add:before,
+.icon-menu:before,
+.stats a,
+.list-table > tbody:first-of-type:after,
+/* General */
+.status-menu .status-button.on,
+.list-stats,
+.list-table .list-table-data .data a,
+.list-table .list-table-data a:not(.edit-disabled):hover,
+.data.chapter span,
+.data.progress span,
+.data.volume span,
+.data.score select,
+.data.progress input,
+.list-table .more-info .more-content a,
+/* Filter Box */
+#advanced-options #fancybox-close
+{ color: #ababab !important; }
+
+/* HOVER TEXT */
+/* Nav Buttons */
+.header-info a:hover,
+/* General */
+.data.title .link.sort:hover,
+.list-table .more-info .more-content a:hover
+{ color: #416abe !important; }
+
+/* HIGHLIGHT CONTENT BACKGROUND */
+/* General */
+.data.score a,
+.data.tags a,
+.data.score select,
+.data.progress input,
+/* Filter Box */
+#advanced-options #fancybox-close
+{ background: #191919; }
+
+/* HIGHLIGHT CONTENT TEXT */
+.data.type,
+.data.title .add-edit-more span a,
+.add-edit-more,
+.data.progress:before,
+.data.chapter:before,
+.data.volume:before,
+.data.days:before,
+.data.finished:before,
+.data.started:before,
+.content-status
+{ color: #777 !important; }
+
+/* HIGHLIGHT HOVER TEXT */
+.data.title .add-edit-more span a:hover
+{ color: #999 !important; }
+
+/* SECONDARY TEXT */
+.data.days,
+.data.finished,
+.data.started,
+.more-info .td1,
+/* Filter Box */
+#advanced-options .advanced-options-header,
+#advanced-options .filter-widget span,
+#advanced-options .sort-widget span,
+#advanced-options .advanced-options-button a
+{ color: #959595; }
+
+/* CONTENT BACKGROUND // TEXT */
+/* Nav Buttons */
+.header .header-title:hover:before,
+.header .header-title:hover:after,
+.icon-menu:hover,
+.list-menu-float .icon-menu:hover .text,
+.icon-menu.setting:hover .text a,
+.icon-menu.profile:hover:after,
+.icon-menu:hover:before,
+.icon-menu.quick-add:hover:before,
+.stats a:hover,
+.list-table > tbody:first-of-type:hover:after,
+.list-table-header .header-title a,
+/* General */
+.list-table-data .data.tags span a:hover,
+.data.score a:not(.edit-disabled):hover,
+/* Filter Box */
+#advanced-options #fancybox-close:hover,
+#advanced-options .advanced-options-button a:hover
+{ color: #212121 !important; }
+
+/* CONTENT TEXT // BACKGROUND */
+/* Nav Buttons */
+.icon-menu.setting:hover .text a,
+.list-table-header .header-title a,
+/* General */
+.list-table-data .data.tags span a:hover,
+.data.score a:not(.edit-disabled):hover,
+/* Filter Box */
+#advanced-options #fancybox-close:hover,
+#advanced-options .advanced-options-button a:hover
+{ background: #ababab !important; }
+
+/* HOVER TEXT // BACKGROUND */
+/* Nav Buttons */
+.header .header-title:hover,
+.icon-menu:hover,
+.list-menu-float .icon-menu:hover,
+.icon-menu.setting:hover .text a:hover,
+.stats a:hover,
+.list-table > tbody:first-of-type:hover:after,
+.list-table-header .header-title a:hover
+{ background: #416abe !important; }
+
+.icon-menu svg,
+.list-menu-float .icon-menu svg
+{ fill: #ababab !important; }
+.icon-menu:hover svg,
+.list-menu-float .icon-menu:hover svg
+{ fill: #212121 !important; }
+
+/* IMAGES AND ONE-OFFS */
+.cover-block { background-color: #030303; }
+@media (max-width: 1920px) { .cover-block { background-image: url(https://i.imgur.com/ttwtPuS.jpg); }}
+@media (min-width: 1921px) { .cover-block { background-image: url(https://i.imgur.com/EovExMf.jpg); }}
+#cover-image-container {
+	background-image: url(https://i.imgur.com/kua63Mg.png);
+}
+#cover-image-container:after {
+	color: #f6f5ff;
+	text-shadow: 2px 2px 8px #e4bef4;
+}
+
+.cover-block:before { background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0)); }
+.list-block:after { background:  linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0)); }
+.status-menu:after {
+	background-color: #444;
+	border-color: #212121;
+}
+#search-box input,
+.data.tags textarea
+{
+	border-color: #444;
+	background: #191919;
+	color: #ababab;
+}
+.data.tags a.edit { background: #272727; }
+
+#advanced-options #fancybox-close { border-color: #212121; }
+#advanced-options .advanced-options-header,
+#advanced-options .advanced-options-button
+{ border-color: #ababab; }
+#advanced-options .advanced-options-button a { background: #323232; }
+#advanced-options input,
+#advanced-options select,
+#advanced-options input + label
+{
+	border-color: #444 !important;
+	background: #191919 !important;
+	color: #ababab !important;
+}
+#advanced-options input:checked + label {
+	background: #4065BA !important;
+	border-color: #4065BA !important;
+}
+#advanced-options input[disabled="disabled"],
+#advanced-options select[disabled="disabled"],
+#advanced-options .sort-widget input[disabled="disabled"] + label
+{
+	border-color: #444 !important;
+	background: #191919 !important;
+	color: #959595 !important;
+	opacity: 0.5 !important;
+}
+#fancybox-overlay {
+	opacity: 0.35 !important;
+}
+
+#copyright:after {
+	content: "\aList design by Valerio Lyndon / Yui art by Sakura Ruu / Background art by Monorisu.";
+}
