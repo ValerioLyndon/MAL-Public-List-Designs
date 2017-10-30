@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 18.3 */
+/* "Clarity" by Valerio Lyndon / Revision 19 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -11,9 +11,12 @@ a, a:hover {
 
 /* OPTIMIZATION - Transitions */
 
-.icon-menu.setting:hover,
-.icon-menu.setting:hover .text,
-.icon-menu.setting:hover .text a,
+.icon-menu:before,
+.icon-menu:after,
+.icon-menu svg,
+.icon-menu.setting,
+.icon-menu.setting .text,
+.icon-menu.setting .text a,
 .header .header-title:after,
 .status-menu:after,
 .fixed .status-menu:after,
@@ -25,7 +28,7 @@ a, a:hover {
 .data.score a,
 .data.tags span a,
 .data.tags a.edit,
-.list-item:hover .data.tags a.edit,
+.list-item .data.tags a.edit,
 .data.priority,
 #advanced-options #fancybox-close,
 #advanced-options .advanced-options-button a
@@ -54,6 +57,7 @@ a, a:hover {
 
 .header .header-title,
 .header .header-title:before,
+.header-info,
 .icon-menu,
 .list-menu-float .icon-menu,
 .icon-menu.quick-add:before,
@@ -219,32 +223,53 @@ a, a:hover {
 	color: #fff !important;
 }
 
-.icon-menu.setting:hover {
-	width: 120px !important;
-	overflow: visible;
-}
-.icon-menu.setting .text a, .icon-menu.setting .text { width: 0 !important; }
-.icon-menu.setting:hover .text {
-	width: 100px !important;
-	height: 54px !important;
+.icon-menu.setting { overflow: visible; }
+.icon-menu.setting:hover { width: 26px !important; }
+.icon-menu.setting .text {
+	top: -2px !important;
+	left: 0 !important;
+	
+	width: 240px !important;
+	height: 26px !important;
+	padding: 2px 0;
+	
+	font-size: 0 !important;
 	
 	opacity: 1 !important;
+	pointer-events: none;
+	overflow: visible;
+	z-index: -1;
 }
-.icon-menu.setting:hover .text a {
-	width: 100px !important;
+.icon-menu.setting:hover .text {
+	pointer-events: auto;
+}
+.icon-menu.setting .text a {
+	position: absolute !important;
+	top: 2px !important;
+	left: 13px !important;
+	
+	width: 0 !important;
 	height: 26px !important;
 	background: #323232 !important;
-	border-radius: 13px;
+	border-top: none !important;
+	border-radius: 0 13px 13px 0;
 	
-	line-height: 26px !important;
+	font: 14px/26px Arial, Verdana !important;
+	text-indent: 7.5px;
+	text-align: center;
+	white-space: nowrap;
+	
+	opacity: 0 !important;
+}
+.icon-menu.setting:hover .text a {
+	width: 120px !important;
+	border-radius: 0 13px 13px 0;
 	
 	opacity: 1 !important;
 }
-.icon-menu.setting:hover .text a:hover { background: #1d439b !important; }
-.icon-menu.setting .link-style-setting {
-	top: 28px !important;
-	border-top: none !important;
-}
+.icon-menu.setting:hover .text .link-list-setting { left: 120px !important; }
+.icon-menu.setting:hover .text .link-style-setting { left: 13px !important; }
+.icon-menu.setting .text a:hover { background: #1d439b !important; }
 
 /* HEADER */
 
@@ -332,17 +357,11 @@ a, a:hover {
 .header-info {
 	position: static;
 	
-	display: inline-block;
-	height: 26px;
+	width: auto !important;
 	padding: 0 8px;
 	margin: 0 !important;
-	background: #fff;
-	border-radius: 13px;
+	font-size: 12px;
 	
-	color: #323232 !important;
-	font: 12px/26px Arial, Verdana !important;
-	
-	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 	-webkit-order: 2;
 	-moz-order: 2;
 	order: 2;
@@ -763,7 +782,6 @@ a, a:hover {
 	background: #323232 !important;
 	border-radius: 13px 0 0 13px;
 	
-	
 	color: #fff !important;
 	font: 11px/26px Verdana, Arial !important;
 	text-align: center !important;
@@ -801,7 +819,14 @@ a, a:hover {
 .header-title.title a:after { content: "Title"; }
 .header-title.started a:after { content: "Started"; }
 .header-title.finished a:after { content: "Finished"; }
-.header-title.image, .header-title.tags, .header-title.days { display: none !important; }
+.header-title.status,
+.header-title.number,
+.header-title.image,
+.header-title.tags,
+.header-title.days,
+.header-title.studios,
+.header-title.licensor
+{ display: none !important; }
 
 /* SUB NAV - EXTRAS - FILTERING */
 
@@ -967,6 +992,7 @@ a, a:hover {
 	line-height: 16px;
 }
 .rewatching, .rereading, .content-status {
+	color: #bababa;
 	font-size: 10px !important;
 }
 .data.title .link.sort:hover {
@@ -1160,6 +1186,9 @@ a, a:hover {
 	font-size: 9px !important;
 	line-height: 14px;
 	text-align: left !important;
+	
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .data.started { top: -20px; }
 .data.finished { top: 0; margin-left: -100px; }
@@ -1332,7 +1361,8 @@ a, a:hover {
 	position: relative;
 	
 	min-width: 1060px;
-	padding: 17px 0;
+	height: 32px;
+	padding: 16px 0;
 	background: #fff;
 }
 #footer-block:before {
@@ -1354,7 +1384,9 @@ a, a:hover {
 	padding: 0;
 	
 	color: #9B9B9B;
+	line-height: 16px;
 }
 #copyright:after {
-	content: "- List design by Valerio Lyndon.";
+	content: "\aList design by Valerio Lyndon / Yui art by Ragho no Erika / Background art by Soyokaze.";
+	white-space: pre;
 }
