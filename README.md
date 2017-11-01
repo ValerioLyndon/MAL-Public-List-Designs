@@ -10,4 +10,8 @@ I welcome anyone and everyone to use the Issues feature of GitHub here to notify
 
 ## Modification of These Themes
 
-Feel free to modify any of these themes as much as you want and use them however you want as long as you give appropriate credit. To give credit just include my name somewhere noticable (not buried in sub menus or hard to read) on your theme's page. All my themes already include an extra bit of text in the footer of the page, as long as you don't remove that or make it impossible to read then you are already set.
+Feel free to modify any of these themes as much as you want and use them however you want. That said, if you are using any of my designs I do ask that you leave the sign off I place in the footers of my designs intact or replace it with an equally findable piece of information stating that I made the theme. At the end of the day, however, the only thing I care about is that you don't claim you made it. 
+
+Furthermore, I've taken to crediting artists in the footer alongside my self-insert list design credit. If you are modifying the themes images these will become irrelevant, therefore I recommend removing these artists credits and replacing them with the artist's name relevant to what you are using instead.
+
+And for a final note on this topic, I do not care if you take pieces of my code, modify it and mash it together with other code to create something new. That is the nature of things and I am perfectly fine with it. Go right ahead and create a frankenstein list design, as long as it is not my exact page layout and style, I don't wish for any credit.
