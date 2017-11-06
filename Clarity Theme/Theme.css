@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 19 */
+/* "Clarity" by Valerio Lyndon / Revision 19.1 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -696,12 +696,12 @@ a, a:hover {
 	line-height: 22px;
 }
 
-.status-button.all_anime:after { background-color: #4065BA !important; }
-.status-button.watching:after, .status-button.reading:after { background-color: #2db039 !important; }
-.status-button.completed:after { background-color: #26448f !important; }
-.status-button.onhold:after { background-color: #f9d457 !important; }
-.status-button.dropped:after { background-color: #a12f31 !important; }
-.status-button.plantowatch:after, .status-button.plantoread:after { background-color: #c3c3c3 !important; }
+.status-button.all_anime:after { background: #4065BA !important; }
+.status-button.watching:after, .status-button.reading:after { background: #2db039 !important; }
+.status-button.completed:after { background: #26448f !important; }
+.status-button.onhold:after { background: #f9d457 !important; }
+.status-button.dropped:after { background: #a12f31 !important; }
+.status-button.plantowatch:after, .status-button.plantoread:after { background: #c3c3c3 !important; }
 
 /* SUB NAV - EXTRAS - SORTING */
 
@@ -937,12 +937,15 @@ a, a:hover {
 	
 	overflow: hidden;
 }
-.data.image a { display: block !important; }
+.data.image a {
+	display: block !important;
+}
 .data.image img {
 	width: 64px !important;
-	height: auto !important;
+	height: 64px !important;
 	border: none !important;
-	margin-top: -16px;
+	
+	object-fit: cover;
 }
 .data.image .link { position: relative; }
 .data.image .link:after {
@@ -1169,6 +1172,7 @@ a, a:hover {
 	color: #111;
 	
 	resize: none;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
