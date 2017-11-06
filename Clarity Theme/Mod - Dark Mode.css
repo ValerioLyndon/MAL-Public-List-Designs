@@ -1,4 +1,4 @@
-/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.1 */
+/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.2 */
 
 body { background: #161616 !important; }
 
@@ -64,6 +64,7 @@ a, a:hover {
 .data.progress input,
 .data.priority,
 .list-table .more-info .more-content a,
+.list-unit .loading-space #loading-spinner,
 /* Filter Box */
 #advanced-options #fancybox-close
 { color: #ababab !important; }
