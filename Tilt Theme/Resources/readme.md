@@ -13,3 +13,5 @@ All images currently used are screenshots taken from the original anime.
 **Bakugou (Dropped):** Season 2 Episode 9 - Approximately 13:00
 
 **Todoroki (Plan to Watch):** Season 1 OP1
+
+**Background**: Season 2 Introductory Sequence - Found at the start of any episode belonging to the first half of season 2 or so.
