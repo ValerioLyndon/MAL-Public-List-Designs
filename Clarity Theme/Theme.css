@@ -1,9 +1,9 @@
-/* "Clarity" by Valerio Lyndon / Revision 19.1 */
+/* "Clarity" by Valerio Lyndon / Revision 19.2 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
 body {
-	background: #efefef !important;
+	background: #efefef none no-repeat center center / cover !important;
 }
 a, a:hover {
 	color: #1d439b;
@@ -1078,7 +1078,7 @@ a, a:hover {
 	color: #bababa;
 }
 
-.data.progress span .link:hover, .data.chapter span .link:hover, .data.volume span .link:hover {
+.data.progress span .link:not(.edit-disabled):hover, .data.chapter span .link:not(.edit-disabled):hover, .data.volume span .link:not(.edit-disabled):hover {
 	color: #787878 !important;
 	text-decoration: none !important;
 }
