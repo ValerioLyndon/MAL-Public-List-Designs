@@ -1,9 +1,10 @@
+/* "Clarity" Modification by Valerio Lyndon / Replace Dates / Revision 0.1 */
+
 .data.airing-started, .data.airing-finished {
 	position: relative;
-	left: 12px;
 	
 	display: inline-block !important;
-	width: 100px !important;
+	width: 110px !important;
 	height: 14px;
 	padding: 0 !important;
 	border: none !important;
@@ -18,11 +19,11 @@
 	text-overflow: ellipsis;
 }
 .data.airing-started { top: -10px; }
-.data.airing-finished { top: 10px; margin-left: -100px; }
+.data.airing-finished { top: 10px; margin-left: -110px; }
 
 .data.airing-started:before, .data.airing-finished:before {
 	display: inline-block;
-	width: 27px;
+	width: 37px;
 	padding-right: 4px;
 	border-right: 1px solid #9a9a9a;
 	
