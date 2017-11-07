@@ -1,4 +1,4 @@
-/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.3 */
+/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.4 */
 
 body { background: #161616 !important; }
 
@@ -176,7 +176,7 @@ a, a:hover {
 @media (max-width: 1920px) { .cover-block { background-image: url(https://i.imgur.com/ttwtPuS.jpg); }}
 @media (min-width: 1921px) { .cover-block { background-image: url(https://i.imgur.com/EovExMf.jpg); }}
 #cover-image-container {
-	background-image: url(https://i.imgur.com/kua63Mg.png);
+	background-image: url(https://i.imgur.com/2iSceJG.png);
 }
 #cover-image-container:after {
 	color: #f6f5ff;
