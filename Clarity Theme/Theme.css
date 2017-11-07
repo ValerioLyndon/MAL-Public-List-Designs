@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 19.2 */
+/* "Clarity" by Valerio Lyndon / Revision 19.3 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -26,6 +26,9 @@ a, a:hover {
 .list-table .list-table-header .header-title .link.sort,
 .data.image .link:after,
 .data.score a,
+.data.progress,
+.data.chapter,
+.data.volume,
 .data.tags span a,
 .data.tags a.edit,
 .list-item .data.tags a.edit,
@@ -908,8 +911,9 @@ a, a:hover {
 .data {
 	display: inline-block !important;
 	height: 100%;
+	padding: 0 !important;
 	border: none !important;
-	
+
 	font-size: 11px;
 }
 .list-table .list-table-data .data a {
@@ -931,13 +935,14 @@ a, a:hover {
 .data.image {
 	width: 64px;
 	height: 64px;
-	padding: 0 !important;
 	margin: 4px 0 4px 8px;
 	border-radius: 50%;
 	
 	overflow: hidden;
 }
 .data.image a {
+	position: relative;
+	
 	display: block !important;
 }
 .data.image img {
@@ -947,8 +952,7 @@ a, a:hover {
 	
 	object-fit: cover;
 }
-.data.image .link { position: relative; }
-.data.image .link:after {
+.data.image a:after {
 	content: "\f14c";
 	position: absolute;
 	top: 0;
@@ -966,7 +970,7 @@ a, a:hover {
 	
 	opacity: 0;
 }
-.data.image .link:hover:after {	
+.data.image a:hover:after {	
 	opacity: 1;
 }
 
@@ -975,14 +979,13 @@ a, a:hover {
 	
 	width: 632px;
 	height: 16px;
-	padding: 16px 0 0 8px !important;
-	margin-top: 16px;
+	padding: 32px 0 0 8px !important;
 	
 	line-height: 16px;
 }
 .data.title .link.sort {
 	position: absolute;
-	top: 0;
+	top: 16px;
 	left: 8px;
 	
 	display: inline-block;
@@ -1023,7 +1026,6 @@ a, a:hover {
 	
 	width: 26px;
 	height: 26px;
-	padding: 0 !important;
 }
 .data.score a {
 	display: block;
@@ -1108,7 +1110,6 @@ a, a:hover {
 }
 
 .data.tags {
-	display: block;
 	width: 120px;
 	padding: 3px 0 !important;
 }
@@ -1166,7 +1167,7 @@ a, a:hover {
 	height: 66px !important;
 	
 	border-color: #ddd;
-	background: #fff;
+	background: #ebebeb;
 	outline-color: #4065BA !important;
 	
 	color: #111;
@@ -1178,16 +1179,12 @@ a, a:hover {
 
 .data.started, .data.finished, .data.days {
 	position: relative;
-	left: 12px;
 	
-	display: inline-block !important;
-	width: 100px !important;
+	width: 110px;
 	height: 14px;
-	padding: 0 !important;
-	border: none !important;
 	
 	color: #111;
-	font-size: 9px !important;
+	font-size: 9px;
 	line-height: 14px;
 	text-align: left !important;
 	
@@ -1195,12 +1192,12 @@ a, a:hover {
 	text-overflow: ellipsis;
 }
 .data.started { top: -20px; }
-.data.finished { top: 0; margin-left: -100px; }
-.data.days { top: 20px; margin-left: -100px; }
+.data.finished { top: 0; margin-left: -110px; }
+.data.days { top: 20px; margin-left: -110px; }
 
 .data.started:before, .data.finished:before, .data.days:before {
 	display: inline-block;
-	width: 27px;
+	width: 37px;
 	padding-right: 4px;
 	border-right: 1px solid #9a9a9a;
 	
@@ -1211,16 +1208,20 @@ a, a:hover {
 .data.finished:before { content: "End" }
 .data.days:before { content: "Days" }
 
+.plantowatch ~ .data.progress, .plantoread ~ .data.chapter, .plantoread ~ .data.volume {
+	opacity: 0;
+}
+.list-item:hover .plantowatch ~ .data.progress, .list-item:hover .plantoread ~ .data.chapter, .list-item:hover .plantoread ~ .data.volume {
+	opacity: 1;
+}
 .status:not(.plantowatch):not(.plantoread) ~ .data.priority {
 	display: none !important;
 }
 
 .data.priority {
 	width: 92px;
-	height: 74px !important;
-	padding: 0 !important;
-	margin-left: -312px;
-	background: #fff;
+	height: 74px;
+	margin-left: -322px;
 	
 	color: #323232;
 	line-height: 74px;
@@ -1238,20 +1239,21 @@ a, a:hover {
 }
 
 .data.type {
-	position: absolute;
-	top: 50%;
-	left: 80px;
+	position: relative;
+	top: -16px;
 	
 	width: 100px;
 	height: 16px;
-	padding: 0 !important;
-	margin-top: -24px;
+	margin-left: -658px;
 	
 	text-align: left !important;
 	color: #BABABA;
 	line-height: 16px;
 	font-size: 10px;
 }
+.data.progress { margin-left: 558px; }
+.manga .data.type { margin-left: -750px; }
+.manga .data.tags { margin-left: 650px; }
 
 /* More Info */
 
