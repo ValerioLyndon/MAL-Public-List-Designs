@@ -1,4 +1,4 @@
-/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.2 */
+/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.3 */
 
 body { background: #161616 !important; }
 
@@ -31,7 +31,6 @@ a, a:hover {
 /* General */
 .list-block:before,
 .list-item,
-.data.priority,
 #footer-block,
 /* Filter Box */
 #advanced-options
@@ -160,7 +159,9 @@ a, a:hover {
 .icon-menu.setting:hover .text a:hover,
 .stats a:hover,
 .list-table > tbody:first-of-type:hover:after,
-.list-table-header .header-title a:hover
+.list-table-header .header-title a:hover,
+/* Header */
+.status-button.all_anime:after
 { background: #416abe !important; }
 
 .icon-menu svg,
@@ -195,7 +196,7 @@ a, a:hover {
 	background: #191919;
 	color: #ababab;
 }
-.data.tags a.edit { background: #272727; }
+.data.tags a.edit { background: #323232; }
 
 #advanced-options #fancybox-close { border-color: #212121; }
 #advanced-options .advanced-options-header,
