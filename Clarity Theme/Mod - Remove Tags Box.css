@@ -1,2 +1,3 @@
-.data.title { width: 752px; }
-.data.title .link.sort { max-width: 740px; }
+.data.title { width: 752px }
+.data.title .link.sort { max-width: 740px }
+.data.priority { margin-left: -192px }
