@@ -1,0 +1,42 @@
+/* "Clarity" Modification by Valerio Lyndon / Replace Tags - Dark Mode Compat / Revision 0 */
+
+.data.started {
+	margin-left: 120px;
+}
+
+.data.studio {
+	width: 120px;
+	padding: 3px 0 !important;
+	margin-left: -230px;
+}
+.data.studio span {
+	display: block;
+	padding: 1px 0;
+	
+	font-size: 0;
+	line-height: 0;
+}
+.data.studio a {
+	display: block;
+	padding: 1px;
+	background: #191919;
+	border-radius: 8.5px;
+	
+	color: #212121;
+	font-size: 11px;
+	line-height: 15px;
+	text-decoration: none !important;
+	
+	font-size: 11px;
+	text-decoration: none !important;
+	
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.list-table-data .data.studio span a:hover {
+	background: #ababab;
+	
+	color: #212121 !important;
+}
