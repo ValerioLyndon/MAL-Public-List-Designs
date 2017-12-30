@@ -1,7 +1,10 @@
-/* "Clarity" Modification by Valerio Lyndon / Replace Tags - Dark Mode Compat / Revision 0 */
+/* "Clarity" Modification by Valerio Lyndon / Replace Tags - Dark Mode Compat / Revision 0.1 */
 
 .data.started {
 	margin-left: 120px;
+}
+.data.priority {
+	margin-left: -212px;
 }
 
 .data.studio {
