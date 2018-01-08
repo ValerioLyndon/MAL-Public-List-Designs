@@ -1,4 +1,4 @@
-/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.4 */
+/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.5 */
 
 body { background: #161616 !important; }
 
@@ -82,7 +82,7 @@ a, a:hover {
 /* HIGHLIGHT CONTENT BACKGROUND */
 /* General */
 .data.score a,
-.data.tags a,
+.data.tags a:not(.edit),
 .data.score select,
 .data.progress input,
 /* Filter Box */
@@ -99,7 +99,9 @@ a, a:hover {
 .data.days:before,
 .data.finished:before,
 .data.started:before,
-.content-status
+.content-status,
+.rewatching,
+.rereading
 { color: #777 !important; }
 
 /* HIGHLIGHT HOVER TEXT */
@@ -156,7 +158,7 @@ a, a:hover {
 .header .header-title:hover,
 .icon-menu:hover,
 .list-menu-float .icon-menu:hover,
-.icon-menu.setting:hover .text a:hover,
+.icon-menu.setting .text a:hover,
 .stats a:hover,
 .list-table > tbody:first-of-type:hover:after,
 .list-table-header .header-title a:hover,
@@ -183,8 +185,18 @@ a, a:hover {
 	text-shadow: 2px 2px 8px #e4bef4;
 }
 
-.cover-block:before { background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0)); }
-.list-block:after { background:  linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0)); }
+.cover-block:before {
+	-webkit-background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0));
+	-moz-background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0));
+	-o-background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0));
+	background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0));
+}
+.list-block:after {
+	-webkit-background: linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
+	-moz-background: linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
+	-o-background: linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
+	background: linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
+}
 .status-menu:after {
 	background-color: #444;
 	border-color: #212121;
