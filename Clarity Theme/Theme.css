@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 19.3 */
+/* "Clarity" by Valerio Lyndon / Revision 19.4 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -22,6 +22,7 @@ a, a:hover {
 .fixed .status-menu:after,
 .status-menu-container:not(.fixed) .status-menu,
 .status-menu-container.fixed .status-menu,
+.status-button:after,
 .list-table-header .header-title,
 .list-table .list-table-header .header-title .link.sort,
 .data.image .link:after,
@@ -36,10 +37,10 @@ a, a:hover {
 #advanced-options #fancybox-close,
 #advanced-options .advanced-options-button a
 {
-	-webkit-transition: all 0.3s ease;
-	-moz-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease !important;
+	-moz-transition: all 0.3s ease !important;
+	-o-transition: all 0.3s ease !important;
+	transition: all 0.3s ease !important;
 }
 
 .header-info a,
@@ -50,16 +51,15 @@ a, a:hover {
 .add-edit-more span a,
 .more-info .td1 > div > a
 {
-	-webkit-transition: all 0.15s ease;
-	-moz-transition: all 0.15s ease;
-	-o-transition: all 0.15s ease;
-	transition: all 0.15s ease;
+	-webkit-transition: all 0.15s ease !important;
+	-moz-transition: all 0.15s ease !important;
+	-o-transition: all 0.15s ease !important;
+	transition: all 0.15s ease !important;
 }
 
 /* OPTIMIZATION - Nav Buttons */
 
 .header .header-title,
-.header .header-title:before,
 .header-info,
 .icon-menu,
 .list-menu-float .icon-menu,
@@ -111,7 +111,7 @@ a, a:hover {
 	display: block;
 	width: 904px;
 	height: 0;
-	padding-left: 156px;
+	padding-left: 155px;
 	margin: 0 auto;
 	border: none;
 	background: none;
@@ -254,7 +254,7 @@ a, a:hover {
 	width: 0 !important;
 	height: 26px !important;
 	background: #323232 !important;
-	border-top: none !important;
+	border: none !important;
 	border-radius: 0 13px 13px 0;
 	
 	font: 14px/26px Arial, Verdana !important;
@@ -288,12 +288,15 @@ a, a:hover {
 	-moz-order: 1;
 	order: 1;
 	
-	margin-left: 156px;
+	margin-left: 155px;
+	
 	z-index: 1;
 }
 .header .header-title:before {
 	content: "\f015";
+	display: inline-block;
 	
+	width: 26px;
 	background: none !important;
 	
 	font-size: 14px;
@@ -371,10 +374,10 @@ a, a:hover {
 }
 .header-info a {
 	color: #323232 !important;
+	text-decoration: none !important;
 }
 .header-info a:hover {
 	color: #1d439b !important;
-	text-decoration: none !important;
 }
 
 .header .header-menu .list-menu {
@@ -582,6 +585,8 @@ a, a:hover {
 
 .list-container {
 	position: static;
+	
+	width: 1060px;
 	background: none !important;
 	border: none;
 }
@@ -671,12 +676,13 @@ a, a:hover {
 }
 .status-menu .status-button {
 	display: inline-block !important;
-	height: 22px;
-	padding: 21px 0 !important;
+	height: 32px;
+	padding: 16px 0 !important;
 	margin: 0 15px !important;
 	
 	color: #9B9B9B !important;
-	line-height: 22px;
+	font-size: 17.6px !important;
+	line-height: 32px;
 	white-space: nowrap;
 	font-family: Oswald !important;
 	text-transform: uppercase;
@@ -789,7 +795,6 @@ a, a:hover {
 	font: 11px/26px Verdana, Arial !important;
 	text-align: center !important;
 	text-indent: -7.5px;
-	vertical-align: middle;
 	
 	opacity: 0;
 }
@@ -841,7 +846,7 @@ a, a:hover {
 }
 .list-status-title .text{ display: none !important }
 .list-status-title .stats {
-	position:absolute;
+	position: absolute;
 	top: 10px;
 	right: 32px !important;
 	
@@ -871,8 +876,8 @@ a, a:hover {
 	width: 1060px !important;
 	background: none !important;
 	
+	color: #323232 !important;
 	font-weight: bold;
-	color:#323232!important;
 }
 
 /* LIST - BASE */
@@ -997,7 +1002,7 @@ a, a:hover {
 	
 	line-height: 16px;
 }
-.rewatching, .rereading, .content-status {
+.content-status, .rewatching, .rereading {
 	color: #bababa;
 	font-size: 10px !important;
 }
@@ -1008,8 +1013,8 @@ a, a:hover {
 
 .icon-watch { display: none !important; }
 
-.content-status:before, .rewatching:before { content: "[" }
-.content-status:after, .rewatching:after { content: "] - " }
+.content-status:before, .rewatching:before, .rereading:before { content: "[" }
+.content-status:after, .rewatching:after, .rereading:after { content: "] - " }
 
 .add-edit-more { display: inline; float: none !important; }
 .add-edit-more { color: #BABABA; }
@@ -1114,30 +1119,26 @@ a, a:hover {
 	padding: 3px 0 !important;
 }
 
-.data.tags span { padding: 1px 0; }
-.data.tags span a {
-	display: block;
-	padding: 1px;
-	border-radius: 8.5px;
-	
-	font-size: 11px !important;
-	line-height: 15px;
-}
-.list-table-data .data.tags span a:hover {
-	background: #323232;
-	
-	color: #fff !important;
-	text-decoration: none !important;
-}
-	
 .data.tags span {
 	display: block;
+	padding: 1px 0;
+	
 	font-size: 0 !important;
 	line-height: 0;
 }
-	
-.data.tags a {
+.data.tags a:not(.edit) {
+	display: block;
+	padding: 1px;
 	background: #ebebeb;
+	border-radius: 8.5px;
+	
+	color: #fff !important;
+	font-size: 11px !important;
+	line-height: 15px;
+	text-decoration: none !important;
+}
+.list-table-data .data.tags span a:hover {
+	background: #323232;
 }
 
 .data.tags a.edit {
@@ -1279,7 +1280,6 @@ a, a:hover {
 /* LOADING SPINNER */
 
 .list-unit .loading-space {
-	height: 20px;
 	margin: 14px 0 22px;
 }
 .list-unit .loading-space #loading-spinner {
