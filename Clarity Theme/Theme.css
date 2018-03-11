@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 19.5 */
+/* "Clarity" by Valerio Lyndon / Revision 20.0 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -36,8 +36,11 @@ a, a:hover {
 .data.progress,
 .data.chapter,
 .data.volume,
-.data.tags span a,
+.data.tags a,
+.data.studio a,
+.data.licensor a,
 .data.tags a.edit,
+.data.tags a.edit:after,
 .list-item .data.tags a.edit,
 .data.priority,
 #advanced-options #fancybox-close,
@@ -53,6 +56,7 @@ a, a:hover {
 .data.chapter span .link,
 .data.volume span .link,
 .add-edit-more span a,
+.data.season a,
 .more-info .td1 > div > a
 {
 	-webkit-transition: all 0.15s ease !important;
@@ -80,7 +84,6 @@ a, a:hover {
 	text-indent: 0;
 	text-align: left;
 	text-shadow: none;
-	text-decoration: none !important;
 	white-space: nowrap;
 	vertical-align: top;
 	
@@ -725,9 +728,6 @@ a, a:hover {
 	
 	font-weight: normal !important;
 }
-.list-table-header .header-title:not(.status):not(.image):not(.tags):not(.days) {
-	margin-left: -13px;
-}
 .list-table > tbody:first-of-type:hover .header-title {
 	opacity: 1;
 }
@@ -738,6 +738,7 @@ a, a:hover {
 	height: 26px !important;
 	background: #323232 !important;
 	border-radius: 13px 0 0 13px;
+	margin-left: -13px;
 	
 	color: #fff !important;
 	font: 11px/26px Verdana, Arial !important;
@@ -745,6 +746,9 @@ a, a:hover {
 	text-indent: -7.5px;
 	
 	opacity: 0;
+}
+.list-table-header .header-title a.hover_info {
+	display: none !important;
 }
 .list-table-header .header-title a:hover {
 	background: #1d439b !important;
@@ -773,16 +777,10 @@ a, a:hover {
 .header-title.title a, .header-title.started a, .header-title.finished a { font-size: 0 !important; }
 .header-title.title a:after, .header-title.started a:after, .header-title.finished a:after { font-size: 11px !important; }
 .header-title.title a:after { content: "Title"; }
-.header-title.started a:after { content: "Started"; }
-.header-title.finished a:after { content: "Finished"; }
-.header-title.status,
-.header-title.number,
-.header-title.image,
-.header-title.tags,
-.header-title.days,
-.header-title.studios,
-.header-title.licensor
-{ display: none !important; }
+.header-title.started a[href*="order=3"]:after { content: "Started"; }
+.header-title.finished a[href*="order=2"]:after { content: "Finished"; }
+.header-title.started a[href*="order=14"]:after { content: "Air Start"; }
+.header-title.finished a[href*="order=15"]:after { content: "Air Finish"; }
 
 /* SUB NAV - EXTRAS - FILTERING */
 
@@ -849,6 +847,8 @@ a, a:hover {
 	
 	display: block;
 	width: 100%;
+	min-height: 64px;
+	max-width: 1060px;
 	border: none;
 	margin-bottom: 8px;
 	background: #fff !important;
@@ -874,14 +874,48 @@ a, a:hover {
 	-webkit-flex: 0 0 auto;
 	-moz-flex: 0 0 auto;
 	flex: 0 0 auto;
-
+	
+	color: #323232;
 	font-size: 11px;
 }
 .list-table .list-table-data .data a {
 	color: #323232 !important;
+	text-decoration: none !important;
 }
 .list-table .list-table-data a:not(.edit-disabled):hover {
-	color: #323232 !important;
+	color: #787878 !important;
+}
+
+/* LIST - ITEMS - ORDERS 1-9 (Basic - Left of Title) */
+
+.data.number {
+	position: relative;
+	top: -22px;
+	
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border-radius: 10px;
+	margin: 0 -28px 0 8px;
+	-webkit-order: 1;
+	-moz-order: 1;
+	order: 1;
+	
+	line-height: 20px;
+	font-weight: 700;
+	
+	z-index: 1;
+}
+.list-item:nth-child(n+101) .data.number {
+	text-indent: -7px;
+}
+.list-item:nth-child(n+1001) .data.number {
+	width: 27px;
+	margin-right: -35px;
+}
+.list-item:nth-child(n+10001) .data.number {
+	width: 34px;
+	margin-right: -42px;
 }
 
 .data.status {
@@ -891,9 +925,6 @@ a, a:hover {
 	
 	width: 1px !important;
 	padding: 0 !important;
-	-webkit-order: 1;
-	-moz-order: 1;
-	order: 1;
 }
 
 .data.image {
@@ -953,15 +984,35 @@ a, a:hover {
 	opacity: 1;
 }
 
-.data.title { 
+/* LIST - ITEMS - ORDERS 11-20 (Centre - Title & Progress Etc) */
+
+.data.type {
+	position: relative;
+	top: -16px;
+	
+	width: 92px;
+	height: 16px;
+	padding-left: 8px !important;
+	margin-right: -100px;
+	-webkit-order: 11;
+	-moz-order: 11;
+	order: 11;
+	
+	text-align: left !important;
+	color: #BABABA;
+	line-height: 16px;
+	font-size: 10px;
+}
+
+.data.title {
 	position: relative;
 	
-	width: 192px;
+	width: 142px;
 	height: 16px;
 	padding: 32px 0 0 8px !important;
-	-webkit-order: 4;
-	-moz-order: 4;
-	order: 4;
+	-webkit-order: 12;
+	-moz-order: 12;
+	order: 12;
 	-webkit-flex: 1 0 auto;
 	-moz-flex: 1 0 auto;
 	flex: 1 0 auto;
@@ -975,19 +1026,21 @@ a, a:hover {
 	
 	display: inline-block;
 	max-width: 100%;
+	padding-right: 16px;
 	overflow: hidden;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	
 	line-height: 16px;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
+.data.title .link.sort:hover {
+	color: #1d439b !important;
+}
 .content-status, .rewatching, .rereading {
 	color: #bababa;
 	font-size: 10px !important;
-}
-.data.title .link.sort:hover {
-	color: #1d439b !important;
-	text-decoration: none !important;
 }
 
 .icon-watch { display: none !important; }
@@ -1002,17 +1055,16 @@ a, a:hover {
 }
 .data.title .add-edit-more span a:hover {
 	color: #646464 !important;
-	text-decoration: none !important;
 }
 
 .data.score {
 	position: relative;
 	
-	width: 40px;
+	width: 26px;
 	height: 26px;
-	-webkit-order: 5;
-	-moz-order: 5;
-	order: 5;
+	-webkit-order: 13;
+	-moz-order: 13;
+	order: 13;
 }
 .data.score a {
 	display: block;
@@ -1028,7 +1080,6 @@ a, a:hover {
 	background: #323232;
 	
 	color: #fff !important;
-	text-decoration: none !important;
 }
 .data.score select {
 	position: absolute;
@@ -1053,7 +1104,9 @@ a, a:hover {
 
 .data.progress, .data.chapter, .data.volume {
 	width: 92px;
-	order: 7;
+	-webkit-order: 15;
+	-moz-order: 15;
+	order: 15;
 }
 .data.chapter {
 	margin-top: -34px;
@@ -1078,11 +1131,6 @@ a, a:hover {
 	color: #bababa;
 }
 
-.data.progress span .link:not(.edit-disabled):hover, .data.chapter span .link:not(.edit-disabled):hover, .data.volume span .link:not(.edit-disabled):hover {
-	color: #787878 !important;
-	text-decoration: none !important;
-}
-
 .completed ~ .data.progress span:after, .completed ~ .data.chapter span:after, .completed ~ .data.volume span:after {
 	content: " \f058";
 	position: relative;
@@ -1093,32 +1141,128 @@ a, a:hover {
 	font-size: 13px;
 }
 
-.data.tags {
-	width: 120px;
-	padding: 3px 0 !important;
-	order: 9;
+.data.priority {
+	width: 92px;
+	height: 74px;
+	margin-right: -92px;
+	-webkit-order: 14;
+	-moz-order: 14;
+	order: 14;
+	
+	color: #323232;
+	line-height: 74px;
+	
+	opacity: 1;
+	visibility: visible;
+}
+.status:not(.plantowatch):not(.plantoread) ~ .data.priority {
+	display: none !important;
+}
+.list-item:hover .data.priority {
+	opacity: 0;
+	visibility: hidden;
+}
+.data.priority:before {
+	content: "\f0a2";
+	font-family: FontAwesome;
 }
 
-.data.tags span {
+.data.rated {
+	width: 40px;
+	margin-right: 4px;
+	-webkit-order: 19;
+	-moz-order: 19;
+	order: 19;
+	-webkit-flex-shrink: 1;
+	-moz-flex-shrink: 1;
+	flex-shrink: 1;
+}
+.data.rated:before {
+    content: "Rated:";
+	display: block;
+    color: #bababa;
+}
+
+.data.magazine {
+	width: 90px;
+	margin-right: 4px;
+	-webkit-order: 19;
+	-moz-order: 19;
+	order: 19;
+	-webkit-flex-shrink: 1;
+	-moz-flex-shrink: 1;
+	flex-shrink: 1;
+}
+.data.magazine:before {
+    content: "Magazine:";
+	display: block;
+    color: #bababa;
+}
+
+.data.storage, .data.retail {
+	width: 60px;
+	margin-right: 4px;
+	-webkit-order: 19;
+	-moz-order: 19;
+	order: 19;
+	-webkit-flex-shrink: 1;
+	-moz-flex-shrink: 1;
+	flex-shrink: 1;
+}
+.data.storage:before, .data.retail:before {
+    content: "Storage:";
+	display: block;
+    color: #bababa;
+}
+
+.data.season {
+	width: 92px;
+	-webkit-order: 20;
+	-moz-order: 20;
+	order: 20;
+	
+}
+.data.season:before {
+    content: "Premiered:";
+	display: block;
+    color: #bababa;
+}
+
+/* LIST - ITEMS - ORDER 21 (Right of Centre - Tags, Studios, Etc) */
+
+.data.tags, .data.studio, .data.licensor {
+	width: 120px;
+	padding: 3px 0 !important;
+	margin-right: 8px;
+	-webkit-order: 21;
+	-moz-order: 21;
+	order: 21;
+	-webkit-flex-shrink: 1;
+	-moz-flex-shrink: 1;
+	flex-shrink: 1;
+}
+
+.data.tags span, .data.studio span, .data.licensor span {
 	display: block;
 	padding: 1px 0;
 	
 	font-size: 0 !important;
 	line-height: 0;
 }
-.data.tags a:not(.edit) {
+.data.tags a:not(.edit), .data.studio a, .data.licensor a {
 	display: block;
 	padding: 1px;
 	background: #ebebeb;
 	border-radius: 8.5px;
 	
-	color: #fff !important;
+	color: #323232 !important;
 	font-size: 11px !important;
 	line-height: 15px;
-	text-decoration: none !important;
 }
-.list-table-data .data.tags span a:hover {
+.list-table-data .data.tags span a:hover, .list-table-data .data.studio span a:hover, .list-table-data .data.licensor span a:hover {
 	background: #323232;
+	
+	color: #fff !important;
 }
 
 .data.tags a.edit {
@@ -1140,12 +1284,37 @@ a, a:hover {
 	opacity: 0.7;
 }
 .list-item:hover .data.tags a.edit:hover {
+	width: 25px !important;
+	
 	opacity: 1;
+}
+.data.tags a.edit:after {
+	content: "\f040";
+	position: absolute;
+	top: 50%;
+	right: 0;
+	
+	width: 100%;
+	height: 20px;
+	margin-top: -10px;
+	
+	color: rgba(50,50,50,0);
+	font: 0/20px FontAwesome;
+	text-align: center;
+}
+.data.tags a.edit:hover:after {
+	color: #323232;
+	font-size: 14px;
 }
 
 .data.tags textarea {
-	width: 100% !important;
-	height: 66px !important;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	
+	width: 530px !important;
+	height: 64px !important;
+	margin-top: -32px;
 	
 	border-color: #ddd;
 	background: #ebebeb;
@@ -1156,30 +1325,37 @@ a, a:hover {
 	resize: none;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+	z-index: 5;
 }
 
-.data.started, .data.finished, .data.days {
+/* LIST - ITEMS - ORDERS 22-40 (Right of Tags Etc) */
+
+.data.started, .data.finished, .data.days, .data.airing-started, .data.airing-finished {
 	position: relative;
 	
-	width: 110px;
+	width: 100px;
 	height: 14px;
+	overflow: hidden;
+	-webkit-order: 25;
+	-moz-order: 25;
+	order: 25;
 	
 	color: #111;
 	font-size: 9px;
 	line-height: 14px;
 	text-align: left !important;
-	order: 10;
-	
-	overflow: hidden;
 	text-overflow: ellipsis;
+	
 }
 .data.started { top: -20px; }
-.data.finished { top: 0; margin-left: -110px; }
-.data.days { top: 20px; margin-left: -110px; }
+.data.finished { top: 0; margin-left: -100px; }
+.data.days { top: 20px; margin-left: -100px; }
+.data.airing-started { top: -10px; }
+.data.airing-finished { top: 10px; margin-left: -100px; }
 
-.data.started:before, .data.finished:before, .data.days:before {
+.data.started:before, .data.finished:before, .data.days:before, .data.airing-started:before, .data.airing-finished:before {
 	display: inline-block;
-	width: 37px;
+	width: 29px;
 	padding-right: 4px;
 	border-right: 1px solid #9a9a9a;
 	
@@ -1189,52 +1365,14 @@ a, a:hover {
 .data.started:before { content: "Start" }
 .data.finished:before { content: "End" }
 .data.days:before { content: "Days" }
+.data.airing-started:before { content: "Aired" }
+.data.airing-finished:before { content: "to" }
 
 .plantowatch ~ .data.progress, .plantoread ~ .data.chapter, .plantoread ~ .data.volume {
 	opacity: 0;
 }
 .list-item:hover .plantowatch ~ .data.progress, .list-item:hover .plantoread ~ .data.chapter, .list-item:hover .plantoread ~ .data.volume {
 	opacity: 1;
-}
-.status:not(.plantowatch):not(.plantoread) ~ .data.priority {
-	display: none !important;
-}
-
-.data.priority {
-	width: 92px;
-	height: 74px;
-	margin-right: -92px;
-	order: 6;
-	
-	color: #323232;
-	line-height: 74px;
-	
-	opacity: 1;
-	visibility: visible;
-}
-.list-item:hover .data.priority {
-	opacity: 0;
-	visibility: hidden;
-}
-.data.priority:before {
-	content: "\f0a2";
-	font-family: FontAwesome;
-}
-
-.data.type {
-	position: relative;
-	top: -16px;
-	
-	width: 92px;
-	height: 16px;
-	padding-left: 8px !important;
-	margin-right: -100px;
-	order: 2;
-	
-	text-align: left !important;
-	color: #BABABA;
-	line-height: 16px;
-	font-size: 10px;
 }
 
 /* More Info */
