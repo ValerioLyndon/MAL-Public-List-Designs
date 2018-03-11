@@ -1,4 +1,4 @@
-/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.6 */
+/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.7 */
 
 body { background: #161616 none no-repeat center / cover fixed !important; }
 
@@ -29,6 +29,7 @@ a, a:hover {
 .stats a,
 .list-table > tbody:first-of-type:after,
 /* General */
+.data.number,
 .list-block:before,
 .list-item,
 #footer-block,
@@ -55,13 +56,14 @@ a, a:hover {
 .status-menu .status-button.on,
 .list-stats,
 .list-table .list-table-data .data a,
-.list-table .list-table-data a:not(.edit-disabled):hover,
+.data.number,
 .data.chapter span,
 .data.progress span,
 .data.volume span,
 .data.score select,
 .data.progress input,
 .data.priority,
+.data.tags a.edit:hover:after,
 .list-table .more-info .more-content a,
 .list-unit .loading-space #loading-spinner,
 /* Filter Box */
@@ -72,6 +74,7 @@ a, a:hover {
 /* Nav Buttons */
 .header-info a:hover,
 /* General */
+.list-table .list-table-data a:not(.edit-disabled):hover,
 .data.title .link.sort:hover,
 .list-table .more-info .more-content a:hover,
 .completed ~ .data.progress span:after,
@@ -83,6 +86,8 @@ a, a:hover {
 /* General */
 .data.score a,
 .data.tags a:not(.edit),
+.data.studio a,
+.data.licensor a,
 .data.score select,
 .data.progress input,
 /* Filter Box */
@@ -94,11 +99,18 @@ a, a:hover {
 .data.title .add-edit-more span a,
 .add-edit-more,
 .data.progress:before,
+.data.rated:before,
+.data.magazine:before,
+.data.storage:before,
+.data.retail:before,
+.data.season:before,
 .data.chapter:before,
 .data.volume:before,
-.data.days:before,
-.data.finished:before,
 .data.started:before,
+.data.finished:before,
+.data.days:before,
+.data.airing-started:before,
+.data.airing-finished:before,
 .content-status,
 .rewatching,
 .rereading
@@ -109,9 +121,11 @@ a, a:hover {
 { color: #999 !important; }
 
 /* SECONDARY TEXT */
-.data.days,
-.data.finished,
 .data.started,
+.data.finished,
+.data.days,
+.data.airing-started,
+.data.airing-finished,
 .more-info .td1,
 /* Filter Box */
 #advanced-options .advanced-options-header,
@@ -135,7 +149,10 @@ a, a:hover {
 .list-table-header .header-title a,
 /* General */
 .list-table-data .data.tags span a:hover,
+.list-table-data .data.studio span a:hover,
+.list-table-data .data.licensor span a:hover,
 .data.score a:not(.edit-disabled):hover,
+.data.score select,
 /* Filter Box */
 #advanced-options #fancybox-close:hover,
 #advanced-options .advanced-options-button a:hover
@@ -147,7 +164,10 @@ a, a:hover {
 .list-table-header .header-title a,
 /* General */
 .list-table-data .data.tags span a:hover,
+.list-table-data .data.studio span a:hover,
+.list-table-data .data.licensor span a:hover,
 .data.score a:not(.edit-disabled):hover,
+.data.score select,
 /* Filter Box */
 #advanced-options #fancybox-close:hover,
 #advanced-options .advanced-options-button a:hover
@@ -174,6 +194,13 @@ a, a:hover {
 { fill: #212121 !important; }
 
 /* IMAGES AND ONE-OFFS */
+.data {
+	color: #ababab;
+}
+.data.tags a.edit:after {
+	color: rgba(171,171,171,0) !important;
+}
+
 .cover-block { background-color: #030303; }
 @media (max-width: 1920px) { .cover-block { background-image: url(https://i.imgur.com/ttwtPuS.jpg); }}
 @media (min-width: 1921px) { .cover-block { background-image: url(https://i.imgur.com/EovExMf.jpg); }}
