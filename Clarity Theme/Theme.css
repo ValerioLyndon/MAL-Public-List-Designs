@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 20.0 */
+/* "Clarity" by Valerio Lyndon / Revision 20.1 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -1142,6 +1142,8 @@ a, a:hover {
 }
 
 .data.priority {
+	position: relative;
+	
 	width: 92px;
 	height: 74px;
 	margin-right: -92px;
@@ -1149,18 +1151,20 @@ a, a:hover {
 	-moz-order: 14;
 	order: 14;
 	
+	background: #fff;
 	color: #323232;
 	line-height: 74px;
 	
 	opacity: 1;
-	visibility: visible;
+	pointer-events: none;
+	z-index: 1;
 }
 .status:not(.plantowatch):not(.plantoread) ~ .data.priority {
 	display: none !important;
 }
 .list-item:hover .data.priority {
 	opacity: 0;
-	visibility: hidden;
+/* 	z-index: 0; */
 }
 .data.priority:before {
 	content: "\f0a2";
@@ -1365,15 +1369,9 @@ a, a:hover {
 .data.started:before { content: "Start" }
 .data.finished:before { content: "End" }
 .data.days:before { content: "Days" }
-.data.airing-started:before { content: "Aired" }
+.anime .data.airing-started:before { content: "Aired" }
+.manga .data.airing-started:before { content: "Issued" }
 .data.airing-finished:before { content: "to" }
-
-.plantowatch ~ .data.progress, .plantoread ~ .data.chapter, .plantoread ~ .data.volume {
-	opacity: 0;
-}
-.list-item:hover .plantowatch ~ .data.progress, .list-item:hover .plantoread ~ .data.chapter, .list-item:hover .plantoread ~ .data.volume {
-	opacity: 1;
-}
 
 /* More Info */
 
@@ -1464,10 +1462,9 @@ a, a:hover {
 	height: 14px;
 	background: #ebebeb;
 	border-radius: 13px;
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
 	
 	color: #111;
-	
-	box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
 }
 #advanced-options .advanced-options-button a:hover {
 	background: #323232;
@@ -1477,6 +1474,7 @@ a, a:hover {
 
 #fancybox-overlay {
 	background: #000 !important;
+	
 	opacity: 0.1 !important;
 }
 
@@ -1486,6 +1484,7 @@ footer {
 	position: absolute;
     bottom: 0;
     left: 0;
+	
     width: 100%;
 }
 #footer-block {
@@ -1503,7 +1502,6 @@ footer {
 	width: 100%;
 	min-width: 1060px;
 	height: 2px;
-	
 	background: -webkit-linear-gradient(to top,rgba(0,0,0,0.1),rgba(0,0,0,0));
 	background: linear-gradient(to top,rgba(0,0,0,0.1),rgba(0,0,0,0));
 }
