@@ -1,4 +1,4 @@
-/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.7 */
+/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.8 */
 
 body { background: #161616 none no-repeat center / cover fixed !important; }
 
@@ -32,6 +32,7 @@ a, a:hover {
 .data.number,
 .list-block:before,
 .list-item,
+.data.priority,
 #footer-block,
 /* Filter Box */
 #advanced-options
