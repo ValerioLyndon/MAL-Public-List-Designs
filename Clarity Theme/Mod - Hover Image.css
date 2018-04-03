@@ -1,4 +1,4 @@
-/* "Clarity" Modification by Valerio Lyndon / Hover Image / Revision 0 */
+/* "Clarity" Modification by Valerio Lyndon / Hover Image / Revision 0.1 */
 
 /* Before Code:
 @import url(https://malcat-gen.appspot.com/series?preset=dataimagelinkbefore);
@@ -16,7 +16,7 @@
 	
 	width: 150px;
 	height: 0;
-/* 	Aspect Ratio: 75:106 */
+/* 	Aspect Ratio: 3:4 OR 75:106 */
 	margin-top: 0;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -31,8 +31,8 @@
 	z-index: 50;
 }
 .list-item:hover .data.image a:before {
-	height: 212px;
-	margin-top: -106px;
+	height: 200px;
+	margin-top: -100px;
 	
 	opacity: 1;
 }
