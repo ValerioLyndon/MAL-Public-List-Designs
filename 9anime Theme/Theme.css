@@ -36,13 +36,10 @@ a {
 .list-container {
 	position: static;
 	
-	width: 1160px;
+	width: 1140px;
 	padding: 0 10px;
 	background: none !important;
 	border: none;
-	
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
 }
 
 .list-block {
@@ -490,12 +487,10 @@ a {
 	position: relative;
 	
 	display: block !important;
-	width: 1160px !important;
+	width: 1140px !important;
 	padding: 0 10px;
 	
 	text-align: left !important;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
 }
 .status-menu .status-button {
 	display: inline-block !important;
@@ -721,6 +716,7 @@ a {
 	position: relative;
 	top: -58px;
 	
+	width: 100% !important;
 	height: 0 !important;
 	background: none !important;
 	
@@ -1273,12 +1269,12 @@ footer {
 	z-index: 100 !important;
 }
 #fancybox-wrap {
-	top: 115px !important;
 	left: 50% !important;
 	
 	width: 1140px !important;
 	padding: 0 !important;
-	margin-left: -570px !important;
+    border: 10px solid #1e1c25;
+	margin-left: -580px !important;
 	
 	z-index: 250 !important;
 }
