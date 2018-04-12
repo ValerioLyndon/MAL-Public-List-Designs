@@ -1,4 +1,4 @@
-/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.8 */
+/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.9 */
 
 body { background: #161616 none no-repeat center / cover fixed !important; }
 
@@ -269,5 +269,5 @@ a, a:hover {
 }
 
 #copyright:after {
-	content: "\aList design by Valerio Lyndon / Yui art by Sakura Ruu / Background art by Monorisu.";
+	content: "\aList design by Valerio Lyndon.";
 }
