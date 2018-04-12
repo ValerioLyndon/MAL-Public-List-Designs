@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 20.1 */
+/* "Clarity" by Valerio Lyndon / Revision 20.2 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -1512,6 +1512,6 @@ footer {
 	line-height: 16px;
 }
 #copyright:after {
-	content: "\aList design by Valerio Lyndon / Yui art by Ragho no Erika / Background art by Soyokaze.";
+	content: "\aList design by Valerio Lyndon.";
 	white-space: pre;
 }
