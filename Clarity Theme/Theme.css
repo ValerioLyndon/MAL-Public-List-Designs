@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 20.3 */
+/* "Clarity" by Valerio Lyndon / Revision 20.4 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -53,6 +53,7 @@ a, a:hover {
 .header-info a,
 .data.title .link.sort,
 .data.progress span .link,
+a[class^="icon-add-"],
 .data.chapter span .link,
 .data.volume span .link,
 .add-edit-more span a,
@@ -1133,7 +1134,7 @@ a, a:hover {
 	color: #bababa;
 }
 
-.completed ~ .data.progress span:after, .completed ~ .data.chapter span:after, .completed ~ .data.volume span:after {
+.data.progress span:only-child:after, .data.chapter span:only-child:after, .data.volume span:only-child:after {
 	content: " \f058";
 	position: relative;
     top: 1px;
