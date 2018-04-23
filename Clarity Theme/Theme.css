@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 20.2 */
+/* "Clarity" by Valerio Lyndon / Revision 20.3 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -781,6 +781,8 @@ a, a:hover {
 .header-title.finished a[href*="order=2"]:after { content: "Finished"; }
 .header-title.started a[href*="order=14"]:after { content: "Air Start"; }
 .header-title.finished a[href*="order=15"]:after { content: "Air Finish"; }
+
+.list-table-header .header-title.tags { display: none !important; }
 
 /* SUB NAV - EXTRAS - FILTERING */
 
