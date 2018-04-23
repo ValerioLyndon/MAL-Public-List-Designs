@@ -1,4 +1,4 @@
-/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.9 */
+/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.10 */
 
 body { background: #161616 none no-repeat center / cover fixed !important; }
 
@@ -78,9 +78,9 @@ a, a:hover {
 .list-table .list-table-data a:not(.edit-disabled):hover,
 .data.title .link.sort:hover,
 .list-table .more-info .more-content a:hover,
-.completed ~ .data.progress span:after,
-.completed ~ .data.chapter span:after,
-.completed ~ .data.volume span:after
+.data.progress span:only-child:after,
+.data.chapter span:only-child:after,
+.data.volume span:only-child:after
 { color: #416abe !important; }
 
 /* HIGHLIGHT CONTENT BACKGROUND */
