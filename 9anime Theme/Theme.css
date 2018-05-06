@@ -1,4 +1,4 @@
-/* "9anime Adaption" by Valerio Lyndon / Revision 0 */
+/* "9anime Adaption" by Valerio Lyndon / Revision 0.2 */
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 @import url(https://malcat-gen.appspot.com/series?preset=dataimagelink);
@@ -67,7 +67,6 @@ a {
 .list-menu-float .icon-menu svg,
 .list-table-header .header-title.image,
 .data.status,
-.data.image .image,
 .icon-watch,
 #fancybox-outer > .fancy-bg,
 #advanced-options .advanced-options-header .description
@@ -802,10 +801,10 @@ a {
 	display: block;
 	width: 100%;
 	height: 80px;
-	background: rgba(0,0,0,0) -webkit-linear-gradient(top,rgba(255,255,255,0),#000);
-	background: rgba(0,0,0,0) -moz-linear-gradient(top,rgba(255,255,255,0),#000);
-	background: rgba(0,0,0,0) -o-linear-gradient(top,rgba(255,255,255,0),#000);
-	background: rgba(0,0,0,0) linear-gradient(top,rgba(255,255,255,0),#000);
+	background: -webkit-linear-gradient(to top, #000, rgba(255,255,255,0));
+	background: -moz-linear-gradient(to top, #000, rgba(255,255,255,0));
+	background: -o-linear-gradient(to top, #000, rgba(255,255,255,0));
+	background: linear-gradient(to top, #000, rgba(255,255,255,0));
 }
 .data.image {
 	position: absolute;
@@ -822,6 +821,16 @@ a {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
+}
+.data.image img {
+	position: relative;
+	
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover;
+	border: none !important;
+	
+	z-index: -1;
 }
 
 .data.title {
@@ -1439,7 +1448,7 @@ footer {
 	
 	text-align: left;
 }
-#advanced-options .advanced-options-button a {	
+#advanced-options .advanced-options-button a {
 	width: auto !important;
 	padding: 7px 18px;
 	border-radius: 2px;
