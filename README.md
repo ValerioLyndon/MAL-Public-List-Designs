@@ -2,11 +2,7 @@
 
 ## Theme Info
 
-Install Instructions and detailed info for all themes can be found [here](https://myanimelist.net/blog.php?eid=805506).
-
-## How to Report Issues
-
-I welcome anyone and everyone to use the Issues feature of GitHub here to notify me of problems or suggest me things. When you do though, please mention what theme you are talking about, IE. "Clarity", "Tilt", "that one with Yui in front of a field", etcetera.
+Detailed information and install instructions can be found on [MyAnimeList](https://myanimelist.net/blog.php?eid=805506).
 
 ## Modification of These Themes
 
