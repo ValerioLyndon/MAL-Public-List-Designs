@@ -1,4 +1,4 @@
-/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 0.10 */
+/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 1.0 */
 
 body { background: #161616 none no-repeat center / cover fixed !important; }
 
@@ -16,9 +16,9 @@ a, a:hover {
 .list-table > tbody:first-of-type:after,
 .status-menu:after,
 /* Filter Box */
-#advanced-options #fancybox-close,
+#fancybox-close,
 #advanced-options .advanced-options-button a
-{ box-shadow: 0px 1px 2px rgba(0,0,0,0.8); }
+{ box-shadow: 0px 1px 2px rgba(0,0,0,0.8) !important; }
 
 /* CONTENT BACKGROUND */
 /* Nav Buttons */
@@ -68,7 +68,13 @@ a, a:hover {
 .list-table .more-info .more-content a,
 .list-unit .loading-space #loading-spinner,
 /* Filter Box */
-#advanced-options #fancybox-close
+#advanced-options,
+#advanced-options [class*="-widget"] span:not(.widget-header),
+#advanced-options [class*="-widget"] input,
+#advanced-options [class*="-widget"] select,
+#advanced-options .sort-widget input[type=radio]:not(:disabled) + label,
+#advanced-options .advanced-options-button a,
+#fancybox-close
 { color: #ababab !important; }
 
 /* HOVER TEXT */
@@ -92,7 +98,9 @@ a, a:hover {
 .data.score select,
 .data.progress input,
 /* Filter Box */
-#advanced-options #fancybox-close
+#advanced-options .advanced-options-button a,
+#advanced-options #fancybox-close,
+#fancybox-outer #fancybox-close
 { background: #191919; }
 
 /* HIGHLIGHT CONTENT TEXT */
@@ -114,7 +122,9 @@ a, a:hover {
 .data.airing-finished:before,
 .content-status,
 .rewatching,
-.rereading
+.rereading,
+/* Filter Box */
+#advanced-options .advanced-options-header .description:hover:before
 { color: #777 !important; }
 
 /* HIGHLIGHT HOVER TEXT */
@@ -129,10 +139,8 @@ a, a:hover {
 .data.airing-finished,
 .more-info .td1,
 /* Filter Box */
-#advanced-options .advanced-options-header,
-#advanced-options .filter-widget span,
-#advanced-options .sort-widget span,
-#advanced-options .advanced-options-button a
+#advanced-options .advanced-options-header .description:before,
+#advanced-options .sort-widget input[type=radio]:not(:checked) + label i
 { color: #959595; }
 
 /* CONTENT BACKGROUND // TEXT */
@@ -155,8 +163,8 @@ a, a:hover {
 .data.score a:not(.edit-disabled):hover,
 .data.score select,
 /* Filter Box */
-#advanced-options #fancybox-close:hover,
-#advanced-options .advanced-options-button a:hover
+#advanced-options .advanced-options-button a:hover,
+#fancybox-close:hover
 { color: #212121 !important; }
 
 /* CONTENT TEXT // BACKGROUND */
@@ -170,8 +178,8 @@ a, a:hover {
 .data.score a:not(.edit-disabled):hover,
 .data.score select,
 /* Filter Box */
-#advanced-options #fancybox-close:hover,
-#advanced-options .advanced-options-button a:hover
+#advanced-options .advanced-options-button a:hover,
+#fancybox-close:hover
 { background: #ababab !important; }
 
 /* HOVER TEXT // BACKGROUND */
@@ -214,15 +222,11 @@ a, a:hover {
 }
 
 .cover-block:before {
-	-webkit-background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0));
-	-moz-background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0));
-	-o-background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0));
+	background: -webkit-linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0));
 	background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0));
 }
 .list-block:after {
-	-webkit-background: linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
-	-moz-background: linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
-	-o-background: linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
+	background: -webkit-linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
 	background: linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
 }
 .status-menu:after {
@@ -238,31 +242,47 @@ a, a:hover {
 }
 .data.tags a.edit { background: #323232; }
 
-#advanced-options #fancybox-close { border-color: #212121; }
-#advanced-options .advanced-options-header,
-#advanced-options .advanced-options-button
-{ border-color: #ababab; }
-#advanced-options .advanced-options-button a { background: #323232; }
-#advanced-options input,
-#advanced-options select,
-#advanced-options input + label
-{
-	border-color: #444 !important;
-	background: #191919 !important;
-	color: #ababab !important;
+#search-box.open {
+	background: #191919;
+	border-color: #444;
 }
-#advanced-options input:checked + label {
-	background: #4065BA !important;
-	border-color: #4065BA !important;
+#search-box:after {
+	background-image: -webkit-linear-gradient(to right, #191919 2px, rgba(25, 25, 25, 0) 9.5px, rgba(25, 25, 25, 0) 142.5px, #191919 150px);
+	background-image: linear-gradient(to right, #191919 2px, rgba(25, 25, 25, 0) 9.5px, rgba(25, 25, 25, 0) 142.5px, #191919 150px);
 }
-#advanced-options input[disabled="disabled"],
-#advanced-options select[disabled="disabled"],
-#advanced-options .sort-widget input[disabled="disabled"] + label
+
+#advanced-options [class*="-widget"] span:not(.widget-header),
+#advanced-options [class*="-widget"] input,
+#advanced-options [class*="-widget"] select,
+#advanced-options [class*="-widget"] label,
+#advanced-options [class*="-widget"] .widget-header,
+#advanced-options .aired-date span:nth-of-type(n+2) {
+	border-color: #777 !important;
+}
+
+#advanced-options [class*="-widget"] input:focus,
+#advanced-options [class*="-widget"] select:focus,
+#advanced-options option,
+#advanced-options .sort-widget input[type=radio]:not(:disabled) + label:hover
 {
-	border-color: #444 !important;
-	background: #191919 !important;
+	background-color: #444 !important;
+}
+#advanced-options .sort-widget input[type=radio]:not(:disabled):checked + label {
+	background: #777 !important;
+   border-color: #777;
+	color: #212121 !important;
+}
+#advanced-options input:disabled + label,
+#advanced-options :disabled {
 	color: #959595 !important;
-	opacity: 0.5 !important;
+}
+
+#fancybox-outer #fancybox-close {
+	border-color: #212121;
+}
+
+#fancybox-outer, #advanced-options {
+	box-shadow: 0 0 32px rgba(0,0,0,0.75);
 }
 #fancybox-overlay {
 	opacity: 0.35 !important;
