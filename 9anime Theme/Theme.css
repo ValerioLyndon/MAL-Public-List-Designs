@@ -1,4 +1,4 @@
-/* "9anime Adaption" by Valerio Lyndon / Revision 0.2 */
+/* "9anime Adaption" by Valerio Lyndon / Revision 0.3 */
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 @import url(https://malcat-gen.appspot.com/series?preset=dataimagelink);
@@ -1122,6 +1122,7 @@ a {
 	position: absolute;
 	top: 383px;
 	
+	max-width: 190px;
 	max-height: 84.5714px;
 	
 	color: #b4b4b4;
@@ -1137,6 +1138,9 @@ a {
 	max-height: 70.5714px;
 	padding: 5px 15px 0;
 	overflow-y: auto;
+}
+[data-owner=""] .data.tags div {
+	max-height: 89.57px;
 }
 .data.tags div:before {
 	content: "Tags: ";
