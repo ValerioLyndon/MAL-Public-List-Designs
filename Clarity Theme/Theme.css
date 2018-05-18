@@ -1,4 +1,4 @@
-/* "Clarity" by Valerio Lyndon / Revision 21.0 */
+/* "Clarity" by Valerio Lyndon / Revision 21.1 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -90,7 +90,7 @@ a[class^="icon-add-"],
 	border-radius: 13px;
 	
 	color: #323232 !important;
-	font: normal 0/26px Arial, Verdana;
+	font: normal 0/26px Arial, Verdana, sans-serif;
 	text-indent: 0;
 	text-align: left;
 	text-shadow: none;
@@ -270,7 +270,7 @@ a[class^="icon-add-"],
 	border: none !important;
 	border-radius: 0 13px 13px 0;
 	
-	font: 14px/26px Arial, Verdana !important;
+	font: 14px/26px Arial, Verdana, sans-serif !important;
 	text-indent: 7.5px;
 	text-align: center;
 	white-space: nowrap;
@@ -327,7 +327,7 @@ a[class^="icon-add-"],
 	height: 26px !important;
 	width: 26px !important;
 	
-	font: 14px/26px Arial, Verdana;
+	font: 14px/26px Arial, Verdana, sans-serif;
 	color: #323232;
 }
 .header .header-title:hover:after {
@@ -421,7 +421,7 @@ a[class^="icon-add-"],
 .header .icon-menu.manga-list .text, .header .icon-menu.anime-list .text {
 	position: static !important;
 	
-	font: 14px/26px Arial, Verdana;
+	font: 14px/26px Arial, Verdana, sans-serif;
 	vertical-align: top;
 }
 .header .header-menu .list-menu .icon-menu svg.icon {
@@ -479,7 +479,7 @@ a[class^="icon-add-"],
 	display: block;
 	width: 100%;
 	height: 50px;
-	background: -webkit-linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0));
+	background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.5),rgba(0,0,0,0));
 	background: linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0));
 }
 #cover-image { display: none; }
@@ -578,7 +578,7 @@ a[class^="icon-add-"],
 	top: 382px;
 	
 	height: 2px;
-	background: -webkit-linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0));
+	background: -webkit-linear-gradient(top,rgba(0,0,0,0.2),rgba(0,0,0,0));
 	background: linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0));
 }
 .status-menu-container.fixed ~ .list-block:before {
@@ -623,7 +623,7 @@ a[class^="icon-add-"],
 	width: 48px;
 	height: 48px;
 	
-	box-shadow: 0 0 0 transparent;
+	box-shadow: none;
 }
 
 .status-menu {
@@ -689,7 +689,7 @@ a[class^="icon-add-"],
 	width: 0;
 	height: 22px;
 	padding-right: 22px;
-	background: -webkit-linear-gradient(to right, #ebebeb 2px, rgba(235, 235, 235, 0) 9.5px, rgba(235, 235, 235, 0) 142.5px, #ebebeb 150px) content-box;
+	background: -webkit-linear-gradient(left, #ebebeb 2px, rgba(235, 235, 235, 0) 9.5px, rgba(235, 235, 235, 0) 142.5px, #ebebeb 150px) content-box;
 	background: linear-gradient(to right, #ebebeb 2px, rgba(235, 235, 235, 0) 9.5px, rgba(235, 235, 235, 0) 142.5px, #ebebeb 150px) content-box;
 	border: 2px solid transparent;
 	border-radius: 13px;
@@ -814,7 +814,7 @@ a[class^="icon-add-"],
 	margin-left: -13px;
 	
 	color: #fff !important;
-	font: 11px/26px Verdana, Arial !important;
+	font: 11px/26px Verdana, Arial, sans-serif !important;
 	text-align: center !important;
 	text-indent: -7.5px;
 	
@@ -883,7 +883,7 @@ a[class^="icon-add-"],
 .stats a {
 	margin: 0 0 0 6px !important;
 	
-	font: 14px/26px Arial, Verdana;
+	font: 14px/26px Arial, Verdana, sans-serif;
 }
 .stats a i {
 	width: 26px;
@@ -903,7 +903,10 @@ a[class^="icon-add-"],
 
 /* LIST - BASE */
 
-.list-block { margin: 64px 0 0 0; }
+.list-block {
+	min-height: initial;
+	margin: 64px 0 0 0;
+}
 .status-menu-container.fixed + .list-block {
 	margin-top: 128px !important;
 }
@@ -913,6 +916,22 @@ a[class^="icon-add-"],
 }
 .list-table {
 	border: none !important;
+}
+
+/* LIST - BASE - EMPTY TABLE */
+
+.list-table[data-items="[]"]:after {
+	content: "No entries found. Try another search query?";
+	
+	display: block;
+	width: 900px;
+	background: #fff;
+	border-radius: 16px;
+	margin: 32px auto;
+	
+	color: #323232;
+	font: 16px/32px Arial, Verdana, sans-serif;
+	text-align: center;
 }
 
 /* LIST - ITEMS */
@@ -1835,7 +1854,7 @@ footer {
 	width: 100%;
 	min-width: 1060px;
 	height: 2px;
-	background: -webkit-linear-gradient(to top,rgba(0,0,0,0.1),rgba(0,0,0,0));
+	background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.1),rgba(0,0,0,0));
 	background: linear-gradient(to top,rgba(0,0,0,0.1),rgba(0,0,0,0));
 }
 #copyright {
