@@ -1,6 +1,6 @@
 /* "9anime Adaption" by Valerio Lyndon / Revision 0.3 */
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
 @import url(https://malcat-gen.appspot.com/series?preset=dataimagelink);
 
 
@@ -167,16 +167,15 @@ a {
 	margin-left: -163.5px;
 	
 	overflow: visible;
-	text-indent: 0;
-	font-size: 0;
 	
+	font-size: 0;
+	text-indent: 0;
 }
 .anime .header .header-title:after { content: "Discover and discuss high quality anime online"; letter-spacing: .142rem }
 .manga .header .header-title:after { content: "Discover and discuss high quality manga online"; letter-spacing: .133rem }
 .header .header-title:after {
-	padding-top: 28px;
-	
 	display: block;
+	padding-top: 28px;
 	
 	color: #64377a;
 	font-size: .78rem;
