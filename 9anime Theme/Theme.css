@@ -19,6 +19,7 @@ body {
 	background-color: #16151c !important;
 	background-attachment: fixed !important;
 	background-size: cover;
+	background-position: center center;
 	min-width: 1160px;
 	min-height: 100%;
 	padding-bottom: 127.281px;
