@@ -1,4 +1,4 @@
-/* "9anime Adaption" by Valerio Lyndon / Revision 0.3 */
+/* "9anime Adaption" by Valerio Lyndon / Revision 0.4 */
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
 @import url(https://malcat-gen.appspot.com/series?preset=dataimagelink);
@@ -16,7 +16,9 @@ html, body {
 body {
 	position: relative;
 	
-	background: #16151c !important;
+	background-color: #16151c !important;
+	background-attachment: fixed !important;
+	background-size: cover;
 	min-width: 1160px;
 	min-height: 100%;
 	padding-bottom: 127.281px;
