@@ -1402,3 +1402,81 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 		left: 231px;
 	}
 }
+
+/* Temporary MAL Shutdown Fix */
+.initialize-tutorial {
+	position: fixed;
+	top: 0;
+	left: 0;
+	
+	display: block;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	background: none;
+	border: none;
+	
+	z-index: 9999;
+	pointer-events: none;
+}
+.initialize-tutorial:hover {
+	pointer-events: auto;
+}
+.initialize-tutorial:before {
+	content: "";
+	position: absolute;
+	top: -40px;
+	left: -45px;
+	
+	display: block;
+	width: 90px;
+	height: 80px;
+	background: #000d07;
+	border-bottom: 2px solid #d60025;
+	
+	pointer-events: auto;
+	transform: rotate(-45deg);
+}
+.initialize-tutorial:hover:before {
+	display: none;
+}
+.initialize-tutorial:after {
+	content: "\f129";
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	width: 30px;
+	height: 30px;
+	
+	color: #0cd693;
+	font: 20px/30px FontAwesome;
+	
+	z-index: 1;
+}
+.initialize-tutorial .initialize-tutorial__message {
+	position: relative;
+	
+	width: 450px;
+	height: 30px;
+	padding: 10px 10px 10px 30px;
+	background: #000d07;
+	border-bottom: 2px solid #d60025;
+	border-right: 2px solid #d60025;
+	
+	color: #0cd693;
+	line-height: 15px;
+	text-align: left;
+	
+	opacity: 0;
+	z-index: 1;
+}
+.initialize-tutorial:hover .initialize-tutorial__message {
+	opacity: 1;
+}
+.initialize-tutorial .initialize-tutorial__message a {
+	color: #0cd693;
+}
+.initialize-tutorial .initialize-tutorial__message a:hover {
+	text-decoration: underline !important;
+}

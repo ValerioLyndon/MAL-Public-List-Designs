@@ -16,7 +16,7 @@ html, body {
 body {
 	position: relative;
 	
-	background: #16151c center center / cover;
+	background: #16151c none center center / cover;
 	background-color: #16151c !important;
 	background-attachment: fixed !important;
 	min-width: 1160px;
@@ -1484,4 +1484,82 @@ footer {
 		left: 10px !important;
 		margin-left: 0 !important;
 	}
+}
+
+/* Temporary MAL Shutdown Fix */
+.initialize-tutorial {
+	position: fixed;
+	top: 0;
+	left: 0;
+	
+	display: block;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	background: none;
+	border: none;
+	
+	z-index: 9999;
+	pointer-events: none;
+}
+.initialize-tutorial:hover {
+	pointer-events: auto;
+}
+.initialize-tutorial:before {
+	content: "";
+	position: absolute;
+	top: -40px;
+	left: -45px;
+	
+	display: block;
+	width: 90px;
+	height: 80px;
+	background: #0b0a0d;
+	border-bottom: 2px solid #723f8c;
+	
+	pointer-events: auto;
+	transform: rotate(-45deg);
+}
+.initialize-tutorial:hover:before {
+	display: none;
+}
+.initialize-tutorial:after {
+	content: "\f129";
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	width: 30px;
+	height: 30px;
+	
+	color: #b4b4b4;
+	font: 20px/30px FontAwesome;
+	
+	z-index: 1;
+}
+.initialize-tutorial .initialize-tutorial__message {
+	position: relative;
+	
+	width: 450px;
+	height: 30px;
+	padding: 10px 10px 10px 30px;
+	background: #0b0a0d;
+	border-bottom: 2px solid #723f8c;
+	border-right: 2px solid #723f8c;
+	
+	color: #b4b4b4;
+	line-height: 15px;
+	text-align: left;
+	
+	opacity: 0;
+	z-index: 1;
+}
+.initialize-tutorial:hover .initialize-tutorial__message {
+	opacity: 1;
+}
+.initialize-tutorial .initialize-tutorial__message a {
+	color: #80479e;
+}
+.initialize-tutorial .initialize-tutorial__message a:hover {
+	text-decoration: underline !important;
 }

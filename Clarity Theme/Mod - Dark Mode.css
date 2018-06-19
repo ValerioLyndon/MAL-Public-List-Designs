@@ -294,3 +294,18 @@ a, a:hover {
 #copyright:after {
 	content: "\aList design by Valerio Lyndon.";
 }
+
+/* Temporary MAL Shutdown Fix */
+.initialize-tutorial:before {
+	background: #161616;
+}
+.initialize-tutorial:after {
+	color: #ababab;
+}
+.initialize-tutorial .initialize-tutorial__message {
+	background: #161616;
+	color: #ababab;
+}
+.initialize-tutorial .initialize-tutorial__message a {
+	color: #ababab;
+}
