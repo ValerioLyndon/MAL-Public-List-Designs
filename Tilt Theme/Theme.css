@@ -1404,7 +1404,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 }
 
 /* Temporary MAL Shutdown Fix */
-.initialize-tutorial {
+body .initialize-tutorial {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -1419,7 +1419,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	z-index: 9999;
 	pointer-events: none;
 }
-.initialize-tutorial:hover {
+body .initialize-tutorial:hover {
 	pointer-events: auto;
 }
 .initialize-tutorial:before {
