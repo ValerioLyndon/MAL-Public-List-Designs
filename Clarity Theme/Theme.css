@@ -1,6 +1,13 @@
-/* "Clarity" by Valerio Lyndon / Revision 21.1 */
+/* "Clarity" by Valerio Lyndon / Revision 21.1 + MAL Shutdown Fixes 4 */
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(https://fonts.gstatic.com/s/oswald/v16/TK3iWkUHHAIjg752GT8G.woff2) format('woff2');
+  unicode-range: U+0020-007F;
+}
 
 html {
 	position: relative;
