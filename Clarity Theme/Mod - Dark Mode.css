@@ -1,4 +1,4 @@
-/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 1.1 */
+/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 1.1 + MAL Shutdown Fixes 5 */
 
 body { background: #161616 none no-repeat center / cover fixed !important; }
 
@@ -304,8 +304,8 @@ a, a:hover {
 }
 .initialize-tutorial .initialize-tutorial__message {
 	background: #161616;
-	color: #ababab;
+	color: #ababab !important;
 }
 .initialize-tutorial .initialize-tutorial__message a {
-	color: #ababab;
+	color: #ababab !important;
 }
