@@ -419,6 +419,10 @@ a, a:hover { color: #416abe; }
 	color: #959595 !important;
 }
 
+#advanced-options [class*="-widget"] select  {
+	background-image: url(https://i.imgur.com/KF8oOyC.png);
+}
+
 
 
 
