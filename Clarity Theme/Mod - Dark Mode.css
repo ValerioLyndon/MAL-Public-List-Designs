@@ -1,27 +1,34 @@
-/* "Clarity" Modification by Valerio Lyndon / Dark Mode / Revision 1.1 + MAL Shutdown Fixes 5 */
+/**
+ * "Clarity" by Valerio Lyndon
+ * Dark Mode Modification
+ * Revision 1.2 + MAL Shutdown Fixes 5
+ */
+ 
+/**
+ * TABLE OF CONTENTS
+ * 
+ * GENERIC
+ * Background
+ * Text
+ * Box-Shadow
+ * 
+ * IMAGES
+ * 
+ * ONE-OFFS
+ * 
+ * OVERLAYS
+ * 
+ * MAL-SHUTDOWN-FIXES
+ */
 
-body { background: #161616 none no-repeat center / cover fixed !important; }
 
-a, a:hover {
-	color: #416abe;
-}
 
-/* BOX SHADOW */
-/* Nav Buttons */
-.header .header-title,
-.header-info,
-.icon-menu,
-.list-menu-float .icon-menu,
-.stats a,
-.list-table > tbody:first-of-type:after,
-.status-menu:after,
-/* Filter Box */
-#advanced-options #fancybox-close,
-#fancybox-outer #fancybox-close,
-#advanced-options .advanced-options-button a
-{ box-shadow: 0px 1px 2px rgba(0,0,0,0.8); }
 
-/* CONTENT BACKGROUND */
+
+/*==============================*\
+  !GENERIC-COLOURS
+\*==============================*/
+
 /* Nav Buttons */
 .header .header-title,
 .header-info,
@@ -36,11 +43,70 @@ a, a:hover {
 .list-item,
 .data.priority,
 #footer-block,
-/* Filter Box */
-#advanced-options
+/* Overlays */
+#advanced-options,
+#fancybox-outer
 { background: #212121 !important; }
 
-/* CONTENT TEXT */
+
+/* - - - - - - - - - - - - - - -*\
+  Highlight Background
+\*- - - - - - - - - - - - - - - */
+
+/* General */
+.data.score a,
+.data.tags a:not(.edit),
+.data.studio a,
+.data.licensor a,
+.data.score select,
+.data.progress input,
+/* Overlays */
+#advanced-options .advanced-options-button a,
+#advanced-options #fancybox-close,
+#fancybox-outer #fancybox-close
+{ background: #191919; }
+
+
+/* - - - - - - - - - - - - - - -*\
+  Text Colour for Background
+\*- - - - - - - - - - - - - - - */
+
+/* Nav Buttons */
+.icon-menu.setting:hover .text a,
+.list-table-header .header-title a,
+/* General */
+.list-table-data .data.tags span a:hover,
+.list-table-data .data.studio span a:hover,
+.list-table-data .data.licensor span a:hover,
+.data.score a:not(.edit-disabled):hover,
+.data.score select,
+/* Overlays */
+#advanced-options .advanced-options-button a:hover,
+#fancybox-close:hover
+{ background: #ababab !important; }
+
+
+/* - - - - - - - - - - - - - - -*\
+  Hover Text Colour for Background
+\*- - - - - - - - - - - - - - - */
+/* Nav Buttons */
+.header .header-title:hover,
+.icon-menu:hover,
+.list-menu-float .icon-menu:hover,
+.icon-menu.setting .text a:hover,
+.stats a:hover,
+.list-table > tbody:first-of-type:hover:after,
+.list-table-header .header-title a:hover,
+/* Header */
+.status-button.all_anime:after
+{ background: #416abe !important; }
+
+
+
+/*------------------------------*\
+  GENERIC @Text
+\*------------------------------*/
+
 /* Nav Buttons */
 .header .header-title,
 .header .header-title:before,
@@ -70,7 +136,7 @@ a, a:hover {
 .data.tags a.edit:hover:after,
 .list-table .more-info .more-content a,
 .list-unit .loading-space #loading-spinner,
-/* Filter Box */
+/* Overlays */
 #advanced-options,
 #advanced-options [class*="-widget"] span:not(.widget-header),
 #advanced-options [class*="-widget"] input,
@@ -80,7 +146,58 @@ a, a:hover {
 #fancybox-close
 { color: #ababab !important; }
 
-/* HOVER TEXT */
+
+/* - - - - - - - - - - - - - - -*\
+  Secondary Text
+\*- - - - - - - - - - - - - - - */
+
+.data.started,
+.data.finished,
+.data.days,
+.data.airing-started,
+.data.airing-finished,
+.more-info .td1,
+/* Overlays */
+#advanced-options .advanced-options-header .description:before,
+#advanced-options .sort-widget input[type=radio]:not(:checked) + label i
+{ color: #959595; }
+
+
+/* - - - - - - - - - - - - - - -*\
+  Dimmest Text
+\*- - - - - - - - - - - - - - - */
+
+.data.type,
+.data.title .add-edit-more span a,
+.add-edit-more,
+.data.progress:before,
+.data.rated:before,
+.data.magazine:before,
+.data.storage:before,
+.data.retail:before,
+.data.season:before,
+.data.season:empty:after,
+.data.chapter:before,
+.data.volume:before,
+.data.studio:empty:before,
+.data.licensor:empty:before,
+.data.started:before,
+.data.finished:before,
+.data.days:before,
+.data.airing-started:before,
+.data.airing-finished:before,
+.content-status,
+.rewatching,
+.rereading,
+/* Overlays */
+#advanced-options .advanced-options-header .description:hover:before
+{ color: #777 !important; }
+
+
+/* - - - - - - - - - - - - - - -*\
+  Hover Text
+\*- - - - - - - - - - - - - - - */
+
 /* Nav Buttons */
 .header-info a:hover,
 /* General */
@@ -92,61 +209,19 @@ a, a:hover {
 .data.volume span:only-child:after
 { color: #416abe !important; }
 
-/* HIGHLIGHT CONTENT BACKGROUND */
-/* General */
-.data.score a,
-.data.tags a:not(.edit),
-.data.studio a,
-.data.licensor a,
-.data.score select,
-.data.progress input,
-/* Filter Box */
-#advanced-options .advanced-options-button a,
-#advanced-options #fancybox-close,
-#fancybox-outer #fancybox-close
-{ background: #191919; }
 
-/* HIGHLIGHT CONTENT TEXT */
-.data.type,
-.data.title .add-edit-more span a,
-.add-edit-more,
-.data.progress:before,
-.data.rated:before,
-.data.magazine:before,
-.data.storage:before,
-.data.retail:before,
-.data.season:before,
-.data.chapter:before,
-.data.volume:before,
-.data.started:before,
-.data.finished:before,
-.data.days:before,
-.data.airing-started:before,
-.data.airing-finished:before,
-.content-status,
-.rewatching,
-.rereading,
-/* Filter Box */
-#advanced-options .advanced-options-header .description:hover:before
-{ color: #777 !important; }
+/* - - - - - - - - - - - - - - -*\
+  Dimmest Text Hover
+\*- - - - - - - - - - - - - - - */
 
-/* HIGHLIGHT HOVER TEXT */
 .data.title .add-edit-more span a:hover
 { color: #999 !important; }
 
-/* SECONDARY TEXT */
-.data.started,
-.data.finished,
-.data.days,
-.data.airing-started,
-.data.airing-finished,
-.more-info .td1,
-/* Filter Box */
-#advanced-options .advanced-options-header .description:before,
-#advanced-options .sort-widget input[type=radio]:not(:checked) + label i
-{ color: #959595; }
 
-/* CONTENT BACKGROUND // TEXT */
+/* - - - - - - - - - - - - - - -*\
+  Background Colour for Text
+\*- - - - - - - - - - - - - - - */
+
 /* Nav Buttons */
 .header .header-title:hover:before,
 .header .header-title:hover:after,
@@ -165,94 +240,157 @@ a, a:hover {
 .list-table-data .data.licensor span a:hover,
 .data.score a:not(.edit-disabled):hover,
 .data.score select,
-/* Filter Box */
+/* Overlays */
 #advanced-options .advanced-options-button a:hover,
 #fancybox-close:hover
 { color: #212121 !important; }
 
-/* CONTENT TEXT // BACKGROUND */
+
+
+/*------------------------------*\
+  GENERIC @Box-Shadow
+\*------------------------------*/
+
 /* Nav Buttons */
-.icon-menu.setting:hover .text a,
-.list-table-header .header-title a,
-/* General */
-.list-table-data .data.tags span a:hover,
-.list-table-data .data.studio span a:hover,
-.list-table-data .data.licensor span a:hover,
-.data.score a:not(.edit-disabled):hover,
-.data.score select,
-/* Filter Box */
-#advanced-options .advanced-options-button a:hover,
-#fancybox-close:hover
-{ background: #ababab !important; }
+.header .header-title,
+.header-info,
+.icon-menu,
+.list-menu-float .icon-menu,
+.stats a,
+.list-table > tbody:first-of-type:after,
+.status-menu:after,
+/* Overlays */
+#advanced-options #fancybox-close,
+#fancybox-outer #fancybox-close,
+#advanced-options .advanced-options-button a
+{ box-shadow: 0px 1px 2px rgba(0,0,0,0.8); }
 
-/* HOVER TEXT // BACKGROUND */
-/* Nav Buttons */
-.header .header-title:hover,
-.icon-menu:hover,
-.list-menu-float .icon-menu:hover,
-.icon-menu.setting .text a:hover,
-.stats a:hover,
-.list-table > tbody:first-of-type:hover:after,
-.list-table-header .header-title a:hover,
-/* Header */
-.status-button.all_anime:after
-{ background: #416abe !important; }
 
-.icon-menu svg,
-.list-menu-float .icon-menu svg
-{ fill: #ababab !important; }
-.icon-menu:hover svg,
-.list-menu-float .icon-menu:hover svg
-{ fill: #212121 !important; }
 
-/* IMAGES AND ONE-OFFS */
-.data {
-	color: #ababab;
-}
-.data.tags a.edit:after {
-	color: rgba(171,171,171,0) !important;
-}
+
+
+/*==============================*\
+  !THEME-IMAGES
+\*==============================*/
+
+/* Cover */
 
 .cover-block { background-color: #030303; }
+
 @media (max-width: 1920px) { .cover-block { background-image: url(https://i.imgur.com/ttwtPuS.jpg); }}
 @media (min-width: 1921px) { .cover-block { background-image: url(https://i.imgur.com/EovExMf.jpg); }}
-#cover-image-container {
-	background-image: url(https://i.imgur.com/2iSceJG.png);
-}
-#cover-image-container:after {
-	color: #f6f5ff;
-	text-shadow: 2px 2px 8px #e4bef4;
-}
 
 .cover-block:before {
 	background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
 	background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0));
 }
-.list-block:after {
-	background: -webkit-linear-gradient(top,rgba(0,0,0,0.8),rgba(0,0,0,0));
-	background: linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
+
+/* Character */
+
+#cover-image-container {
+	background-image: url(https://i.imgur.com/2iSceJG.png);
 }
-.status-menu:after {
-	background-color: #444;
-	border-color: #212121;
+
+/* Name Text */
+
+#cover-image-container:after {
+	color: #f6f5ff;
+	text-shadow: 2px 2px 8px #e4bef4;
 }
+
+
+
+/*==============================*\
+  !ONE-OFFS
+\*==============================*/
+
+body { background: #161616 none no-repeat center / cover fixed !important; }
+
+a, a:hover { color: #416abe; }
+
 #search-box input,
-.data.tags textarea
-{
+.data.tags textarea {
 	border-color: #444;
 	background: #191919;
 	color: #ababab;
 }
-.data.tags a.edit { background: #323232; }
+
+
+/* - - - - - - - - - - - - - - -*\
+  Header
+\*- - - - - - - - - - - - - - - */
+
+/* Background */
+
+.list-block:after {
+	background: -webkit-linear-gradient(top,rgba(0,0,0,0.8),rgba(0,0,0,0));
+	background: linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
+}
+
+/* Avatar */
+
+.status-menu:after {
+	background-color: #444;
+	border-color: #212121;
+}
+
+/* Search Bar */
 
 #search-box.open {
 	background: #191919;
 	border-color: #444;
 }
+
 #search-box:after {
 	background-image: -webkit-linear-gradient(left, #191919 2px, rgba(25, 25, 25, 0) 9.5px, rgba(25, 25, 25, 0) 142.5px, #191919 150px);
 	background-image: linear-gradient(to right, #191919 2px, rgba(25, 25, 25, 0) 9.5px, rgba(25, 25, 25, 0) 142.5px, #191919 150px);
 }
+
+
+/* Nav Buttons */
+
+.icon-menu svg, .list-menu-float .icon-menu svg { fill: #ababab !important; }
+.icon-menu:hover svg, .list-menu-float .icon-menu:hover svg { fill: #212121 !important; }
+
+
+/* - - - - - - - - - - - - - - -*\
+  List
+\*- - - - - - - - - - - - - - - */
+
+.data { color: #ababab; }
+
+.data.tags a.edit { background: #323232; }
+.data.tags a.edit:after { color: rgba(171,171,171,0) !important; }
+
+
+
+
+
+/*==============================*\
+  !OVERLAYS @Base
+\*==============================*/
+
+#fancybox-overlay {
+	opacity: 0.35 !important;
+}
+
+
+/* - - - - - - - - - - - - - - -*\
+  iframes
+\*- - - - - - - - - - - - - - - */
+
+#fancybox-outer #fancybox-close {
+	border-color: #212121;
+}
+
+#fancybox-outer, #advanced-options {
+	box-shadow: 0 0 32px rgba(0,0,0,0.75);
+}
+
+
+/* - - - - - - - - - - - - - - -*\
+  Filter Menu
+\*- - - - - - - - - - - - - - - */
 
 #advanced-options [class*="-widget"] span:not(.widget-header),
 #advanced-options [class*="-widget"] input,
@@ -266,36 +404,29 @@ a, a:hover {
 #advanced-options [class*="-widget"] input:focus,
 #advanced-options [class*="-widget"] select:focus,
 #advanced-options option,
-#advanced-options .sort-widget input[type=radio]:not(:disabled) + label:hover
-{
+#advanced-options .sort-widget input[type=radio]:not(:disabled) + label:hover {
 	background-color: #444 !important;
 }
+
 #advanced-options .sort-widget input[type=radio]:not(:disabled):checked + label {
 	background: #777 !important;
-   border-color: #777;
+	border-color: #777;
 	color: #212121 !important;
 }
+
 #advanced-options input:disabled + label,
 #advanced-options :disabled {
 	color: #959595 !important;
 }
 
-#fancybox-outer #fancybox-close {
-	border-color: #212121;
-}
 
-#fancybox-outer, #advanced-options {
-	box-shadow: 0 0 32px rgba(0,0,0,0.75);
-}
-#fancybox-overlay {
-	opacity: 0.35 !important;
-}
 
-#copyright:after {
-	content: "\aList design by Valerio Lyndon.";
-}
 
-/* Temporary MAL Shutdown Fix */
+
+/*==============================*\
+  !MAL-SHUTDOWN-FIXES
+\*==============================*/
+
 .initialize-tutorial:before {
 	background: #161616;
 }
