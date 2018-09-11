@@ -1,4 +1,4 @@
-/* "9anime Adaption" by Valerio Lyndon / Revision 0.4 + MAL Shutdown Fixes 5 */
+/* "9anime Adaption" by Valerio Lyndon / Revision 0.4 + MAL Shutdown Fixes 6 */
 
 @\import "https://fonts.googleapis.com/css?family=Roboto:400,500,700";
 @\import "https://malscraper.azurewebsites.net/covers/auto/presets/dataimagelink";
@@ -1485,7 +1485,14 @@ footer {
 	}
 }
 
-/* Temporary MAL Shutdown Fix */
+
+
+
+
+/*==============================*\
+  !MAL-SHUTDOWN-FIXES
+\*==============================*/
+
 body .initialize-tutorial {
 	position: fixed;
 	top: 0;
@@ -1504,6 +1511,7 @@ body .initialize-tutorial {
 body .initialize-tutorial:hover {
 	pointer-events: auto;
 }
+
 .initialize-tutorial:before {
 	content: "";
 	position: absolute;
@@ -1512,16 +1520,15 @@ body .initialize-tutorial:hover {
 	
 	display: block;
 	width: 90px;
-	height: 80px;
+	height: 74px;
 	background: #0b0a0d;
 	border-bottom: 2px solid #723f8c;
 	
 	pointer-events: auto;
 	transform: rotate(-45deg);
+	z-index: -1;
 }
-.initialize-tutorial:hover:before {
-	display: none;
-}
+
 .initialize-tutorial:after {
 	content: "\f129";
 	position: absolute;
@@ -1534,10 +1541,15 @@ body .initialize-tutorial:hover {
 	color: #b4b4b4;
 	font: 20px/30px FontAwesome;
 	
+	transition: all 0.3s ease;
 	z-index: 1;
 }
+
+.initialize-tutorial:hover:after { top: 10px; }
+
 .initialize-tutorial .initialize-tutorial__message {
 	position: relative;
+	left: -450px;
 	
 	width: 450px;
 	height: 30px;
@@ -1551,14 +1563,17 @@ body .initialize-tutorial:hover {
 	text-align: left;
 	
 	opacity: 0;
+	transition: all 0.3s ease;
 	z-index: 1;
 }
+
 .initialize-tutorial:hover .initialize-tutorial__message {
+	left: 0;
+	
 	opacity: 1;
 }
-.initialize-tutorial .initialize-tutorial__message a {
-	color: #80479e !important;
-}
-.initialize-tutorial .initialize-tutorial__message a:hover {
-	text-decoration: underline !important;
-}
+
+.initialize-tutorial .initialize-tutorial__message a { color: #80479e !important; }
+.initialize-tutorial .initialize-tutorial__message a:hover { text-decoration: underline !important; }
+
+.initialize-tutorial .initialize-tutorial__message .fa { display: none; }
