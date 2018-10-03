@@ -1,33 +1,75 @@
-/* "Tilt" Theme by Valerio Lyndon / Revision 6.1 + MAL Shutdown Fixes 6 */
+/**
+ * "Tilt" by Valerio Lyndon
+ * Revision 7.0 + MAL Shutdown Fixes 6
+ */
+
+/**
+ * TABLE OF CONTENTS
+ * 
+ * IMPORTS
+ * 
+ * OPTIMIZATIONS     : Page-wide repeated code.
+ * 
+ * PAGE-BASE         : Page-wide properties & widths.
+ * 
+ * HEADER
+ * Logo
+ * Nav&User-Icons
+ * Subnav-R
+ * Subnav-R-Search
+ * Subnav-R-Non-Owner
+ * Subnav-L-Sort-by
+ * Subnav-L-BTNs
+ * Log-in/Affinity
+ * 
+ * COVER
+ * 
+ * LIST              : Anime/manga listings.
+ * Status
+ * Image
+ * Title
+ * Add-Edit-More
+ * Score
+ * Progress
+ * Season-&-Studio
+ * Tags
+ * 
+ * 
+ * More-Info
+ * 
+ * FOOTER
+ * 
+ * FILTER-MENU       : Overlayed menus and iframes.
+ * 
+ * MEDIA-QUERY-FIXES : Fixes for small screens.
+ * 
+ * MAL-SHUTDOWN-FIXES
+ */
+
+
+
+
+
+/*==============================*\
+  !IMPORTS
+\*==============================*/
 
 @\import "https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Open+Sans:400,700";
 
-/* BASE PROPERTIES */
 
-body {
-	background-color: #000 !important;
-}
-@media (max-width: 2100px) {
-	body {
-		background: #000 url(http://i.imgur.com/oQ5LYfB.jpg) no-repeat center top / 2100px scroll !important;
-	}
-}
-@media (min-width: 2101px) {
-	body {
-		background: #000 url(http://i.imgur.com/IJrzYGP.jpg) no-repeat center top / 100% scroll !important;
-	}
-}
 
-a:hover {
-	text-decoration: none !important;
-}
 
-/* OPTIMIZATIONS */
+
+/*==============================*\
+  !OPTIMIZATIONS
+\*==============================*/
+
+/* Left Slants */
 
 .header:before, .header:after,
 .header-info:before, .header-info:after,
 .status-menu-container:before, .status-menu-container:after,
-.data.progress:before, .data.season:before, .data.tags:before,
+.data.progress:before, .data.chapter:before, .data.season:before, .data.tags:before,
 .list-table > tbody:first-of-type:after
 {
 	content: "";
@@ -41,6 +83,8 @@ a:hover {
 	box-shadow: -2px 1px 0 1px #d60025;
 }
 
+/* Right Slants */
+
 .header:after,
 .header-info:after,
 .status-menu-container:after
@@ -49,177 +93,55 @@ a:hover {
 	box-shadow: 2px 1px 0 1px #d60025;
 }
 
-/* HEADER BAR - BASE */
 
-.header {
-	position: fixed;
-	top: 0;
-	left: calc(50% - 150px);
-	
-	width: 300px;
-	height: 112px;
-	background: #000d07;
-	
-	z-index: 15;
-}
-.header:before, .header:after {
-	width: 170px;
-	height: 48px;
-}
-.header:before { left: -18px; }
-.header:after { right: -18px; }
 
-/* HEADER BAR - LOGO */
 
-.header .header-title {
-	top: 3px;
-	left: -6px;
-	
-	width: 312px;
-	height: 120px;
-	background: url(http://i.imgur.com/yH5Mc3g.png) no-repeat center center / contain scroll;
-	
-	transition: transform 0.3s cubic-bezier(0.32,0.05,0.48,1);
-	z-index: 1;
-}
-.header .header-title:hover {
-	transform: scale(0.975);
+
+/*==============================*\
+  !PAGE-BASE
+\*==============================*/
+
+body { background: #000 url(http://i.imgur.com/oQ5LYfB.jpg) no-repeat center top / 2100px auto scroll !important; }
+
+@media (min-width: 2101px) {
+	body { background: #000 url(http://i.imgur.com/IJrzYGP.jpg) no-repeat center top / 100% auto scroll !important; }
 }
 
-/* HEADER BAR - LINKS */
-
-.header .header-menu {
-	position: fixed;
-	top: 0 !important;
-	right: calc(50% - 528px);
-	
-	display: block;
-	width: 346px;
-	height: 48px;
-	padding: 8px 0;
-	
-	z-index: -1;
-}
-.btn-menu {
-	position: absolute;
-	top: 66px;
-	left: -24px;
-	
-	width: 130px;
-	height: 28px;
-	background: #001a0e;
-	box-shadow: -1px 1px 0 1px #d60025;
-	
-	font-size: 0 !important;
-}
-.list-menu {
-	position: absolute;
-	top: 66px !important;
-	left: -24px;
-	right: auto !important;
-	
-	display: block !important;
-	width: 130px;
-	height: 0;
-	border: none !important;
-	
-	box-shadow: none !important;
-}
-
-.btn-menu .username, .list-menu .manga-list {
-	position: absolute;
-	top: 0;
-	
-	display: block !important;
-	width: 55px !important;
-	height: 28px !important;
-	margin: 0 !important;
-	
-	color: #0cd693 !important;
-	font: normal 0/28px Carrois Gothic SC !important;
-	text-align: center !important;
-	text-transform: uppercase;
-	
-	cursor: pointer;
-	z-index: 1;
-	transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1) !important;
-}
-body[data-owner="1"] .btn-menu .username {
-	display: none !important;
-}
-.btn-menu .username:hover, .list-menu .manga-list:hover {
-	color: #fff !important;
+.list-container {
+	width: 100%;
+	min-width: 1056px;
 	background: none !important;
-}
-.btn-menu .username {
-	right: 55px;
-}
-.list-menu .manga-list {
-	right: 0;
-}
-.btn-menu .username:before {
-	content: "Profile";
-	
-	font-size: 12px;
-}
-.list-menu .manga-list:before {
-	content: "Manga" !important;
-	
-	font-size: 12px;
-}
-.list-menu .manga-list svg {
-	display: none !important;
+	border: none !important;
 }
 
-.btn-menu:hover .username, .btn-menu:hover ~ .list-menu .manga-list {
-	opacity: 1;
-	pointer-events: auto;
+.list-block {
+	margin: 0 !important;
+	background: rgba(0,0,0,0.5);
 }
 
-/* HEADER BAR - LOG IN & AFFINITY */
-
-.header .header-info {
-	position: fixed;
-	top: calc(50% + 196px);
-	left: 0;
-	
-	width: 340px;
-	height: 24px;
-	background: #000d07;
-	margin: 0;
-	
-	color: #0cd693;
-	font: 14px/24px Carrois Gothic SC;
-	text-align: center;
-	vertical-align: middle;
-	text-transform: uppercase;
-	
-	box-shadow: 0px 1px 0 1px #d60025;
-	transform: rotate(-90deg);
-	transform-origin: top left;
-}
-.header-info:before, .header-info:after {
-	width: 13px;
-	height: 24px;
-}
-.header-info:before { left: -6px; }
-.header-info:after { right: -6px; }
-.header .header-info a {
-	display: inline-block;
-	width: auto;
-	height: 16px;
-	margin: 0px;
-	
-	color: #fff600;
-	font: normal 14px/16px Carrois Gothic SC;
-	
-	transition: color 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
-}
-.header .header-info a:hover {
-	color: #fff;
+.list-unit {
+	width: 100% !important;
 }
 
-/* HEADER BAR - BASE CONTINUED */
+.list-table {
+	display: block;
+	width: 1056px;
+	padding: 6px 0;
+	border: none !important;
+}
+
+
+a:hover {
+	text-decoration: none !important;
+}
+
+
+
+
+
+/*==============================*\
+  !HEADER
+\*==============================*/
 
 .status-menu-container {
 	position: fixed;
@@ -234,10 +156,12 @@ body[data-owner="1"] .btn-menu .username {
 	box-shadow: 0 1px 0 1px #d60025;
 	z-index: 10;
 }
+
 .status-menu-container:before, .status-menu-container:after {
 	width: 36px;
 	height: 64px;
 }
+
 .status-menu-container:before { left: -18px; }
 .status-menu-container:after { right: -18px; }
 
@@ -252,6 +176,7 @@ body[data-owner="1"] .btn-menu .username {
 	font-size: 0;
 	text-align: left;
 }
+
 .list-menu-float {
 	top: 0;
 	right: calc(50% - 528px);
@@ -262,6 +187,7 @@ body[data-owner="1"] .btn-menu .username {
 	position: relative;
 	left: -6px;
 }
+
 .status-menu-container .status-menu:before, .status-menu-container .status-menu:after, .list-menu-float:before, .list-menu-float:after {
 	content: "";
 	position: absolute;
@@ -272,12 +198,60 @@ body[data-owner="1"] .btn-menu .username {
 	height: 52px;
 	background-color: #fff600;
 }
+
 .status-menu-container .status-menu:before, .list-menu-float:before { left: 116px; }
 .status-menu-container .status-menu:after, .list-menu-float:after { right: 116px; }
+
 .status-menu-container .status-menu:before, .status-menu-container .status-menu:after { transform: skew(30deg); }
 .list-menu-float:before, .list-menu-float:after { transform: skew(-30deg); }
 
-/* HEADER BAR - MAIN BUTTONS */
+
+
+/*------------------------------*\
+  HEADER @Logo
+\*------------------------------*/
+
+.header {
+	position: fixed;
+	top: 0;
+	left: calc(50% - 150px);
+	
+	width: 300px;
+	height: 112px;
+	background: #000d07;
+	
+	z-index: 15;
+}
+
+.header:before, .header:after {
+	width: 170px;
+	height: 48px;
+}
+
+.header:before { left: -18px; }
+.header:after { right: -18px; }
+
+.header .header-title {
+	top: 3px;
+	left: -6px;
+	
+	width: 312px;
+	height: 120px;
+	background: url(http://i.imgur.com/yH5Mc3g.png) no-repeat center center / contain scroll;
+	
+	transition: transform 0.3s cubic-bezier(0.32,0.05,0.48,1);
+	z-index: 1;
+}
+
+.header .header-title:hover {
+	transform: scale(0.975);
+}
+
+
+
+/*------------------------------*\
+  HEADER @Nav&User-Icons
+\*------------------------------*/
 
 .status-menu-container .status-menu .status-button, .list-menu-float .icon-menu {
 	display: inline-block;
@@ -288,21 +262,24 @@ body[data-owner="1"] .btn-menu .username {
 	background: none !important;
 	
 	color: #fff600;
-	font: normal 0 Carrois Gothic SC !important;
+	font: normal 0 "Carrois Gothic SC" !important;
 	text-align: center;
 	text-transform: uppercase;
 	
 	transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1);
 }
+
 .list-menu-float form { 
 	display: inline-block;
 }
+
 .status-menu-container .status-menu .status-button.on, .status-menu-container .status-menu .status-button:hover, .list-menu-float .icon-menu:hover { color: #fff; }
 
 .status-menu-container .status-menu .status-button:not(:nth-of-type(3n)), .icon-menu:not(:nth-of-type(3n))
 { margin-right: 15px; }
 .status-menu-container .status-menu .status-button:nth-of-type(4), .icon-menu:nth-of-type(1)
 { margin-left: 15px; }
+
 .status-menu-container .status-menu .status-button:nth-of-type(3n+1), .icon-menu:nth-of-type(3n+1)
 { text-align: right; }
 .status-menu-container .status-menu .status-button:nth-of-type(3n), .icon-menu:nth-of-type(3n)
@@ -311,22 +288,28 @@ body[data-owner="1"] .btn-menu .username {
 .status-menu .status-button:before, .icon-menu:before { font-size: 14px; }
 
 .status-menu .status-button.all_anime:before { content: "All Anime"; }
+.manga .status-menu .status-button.all_anime:before { content: "All Manga"; }
 .status-menu .status-button.watching:before { content: "Watching"; }
+.status-menu .status-button.reading:before { content: "Reading"; }
 .status-menu .status-button.completed:before { content: "Completed"; }
 .status-menu .status-button.onhold:before { content: "On Hold"; }
 .status-menu .status-button.dropped:before { content: "Dropped"; }
-.status-menu .status-button.plantowatch:before { content: "Planned"; }
+.status-menu .status-button.plantowatch:before, .status-menu .status-button.plantoread:before { content: "Planned"; }
 
 .icon-menu.profile:before { content: "Profile"; }
 .icon-menu.quick-add:before { content: "Quick Add"; }
-.icon-menu.anime-list:before	{ content: "Animelist"; }
+.icon-menu.anime-list:before { content: "Animelist"; }
 .icon-menu.manga-list:before { content: "Mangalist"; }
 .icon-menu.history:before { content: "History"; }
 .icon-menu.logout:before { content: "Logout"; }
 
 .status-menu .status-button:after { display: none !important; }
 
-/* HEADER BAR - SUBNAV RIGHT - EXTRA BUTTONS */
+
+
+/*------------------------------*\
+  HEADER @Subnav-R
+\*------------------------------*/
 
 body[data-owner="1"] .icon-menu.export, body[data-owner="1"] .icon-menu.setting {
 	position: absolute;
@@ -340,15 +323,15 @@ body[data-owner="1"] .icon-menu.export, body[data-owner="1"] .icon-menu.setting 
 	line-height: 22px !important;
 	text-align: center;
 }
-body[data-owner="1"] .icon-menu.setting:hover, body[data-owner="1"] .icon-menu.export:hover {
-	color: #fff;
-}
+
+body[data-owner="1"] .icon-menu.setting:hover, body[data-owner="1"] .icon-menu.export:hover { color: #fff; }
 
 body[data-owner="1"] .icon-menu.export { left: -4px; }
 body[data-owner="1"] .icon-menu.export:before {
 	content: "Export";
 	font-size: 12px;
 }
+
 body[data-owner="1"] .icon-menu.setting { left: 51px; }
 body[data-owner="1"] .icon-menu.setting:before {
 	content: "SETTINGS";
@@ -368,6 +351,7 @@ body[data-owner="1"] .icon-menu.setting .text {
 	opacity: 1 !important;
 	overflow: visible;
 }
+
 body[data-owner="1"] .list-menu-float .icon-menu.setting .text a {
 	position: absolute;
 	left: auto !important;
@@ -381,7 +365,7 @@ body[data-owner="1"] .list-menu-float .icon-menu.setting .text a {
 	background: #001a0e content-box !important;
 	
 	color: #0cd693 !important;
-	font: 11px/20px Carrois Gothic SC !important;
+	font: 11px/20px "Carrois Gothic SC" !important;
 	text-align: center !important;
 	
 	opacity: 0;
@@ -389,23 +373,26 @@ body[data-owner="1"] .list-menu-float .icon-menu.setting .text a {
 	transition-timing-function: cubic-bezier(0.32,0.05,0.48,1);
 	pointer-events: none;
 }
+
 body[data-owner="1"] .list-menu-float .icon-menu.setting:hover .text a {
 	opacity: 1;
 	pointer-events: auto;
 }
-body[data-owner="1"] .list-menu-float .icon-menu.setting .text a:hover {
-	color: #fff !important;
-}
+
+body[data-owner="1"] .list-menu-float .icon-menu.setting .text a:hover { color: #fff !important; }
+
 body[data-owner="1"] .list-menu-float .icon-menu.setting .text a:first-of-type {
 	top: 0px !important;
 	right: 0px !important;
 	transition-duration: 0.15s, 0.075s;
 }
+
 body[data-owner="1"] .list-menu-float .icon-menu.setting .text a:nth-of-type(2) {
 	top: 22px !important;
 	right: 12px !important;
 	transition-duration: 0.3s, 0.075s;
 }
+
 body[data-owner="1"] .icon-menu.setting a:before, body[data-owner="1"] .icon-menu.setting a:after {
 	content: "";
 	
@@ -420,14 +407,20 @@ body[data-owner="1"] .icon-menu.setting a:before, body[data-owner="1"] .icon-men
 	transform: skew(-30deg);
 	z-index: -1;
 }
+
 body[data-owner="1"] .icon-menu.setting a:before {
 	left: 6px;
 }
+
 body[data-owner="1"] .icon-menu.setting a:after {
 	right: 6px;
 }
 
-/* HEADER BAR - SUBNAV RIGHT - SEARCH */
+
+
+/*------------------------------*\
+  HEADER @Subnav-R-Search
+\*------------------------------*/
 
 .search-container {
 	position: absolute;
@@ -439,6 +432,7 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	background: #001a0e;
 	box-shadow: 0 1px 0 1px #d60025;
 }
+
 .search-container:after {
 	content: "";
 	
@@ -454,6 +448,7 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	transform: skew(-30deg);
 	box-shadow: 2px 1px 0 1px #d60025;
 }
+
 .search-container:before {
 	content: "";
 	position: absolute;
@@ -467,6 +462,7 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	
 	transform: skew(-30deg);
 }
+
 .status-menu-container .search-container #search-box {
 	position: absolute;
 	top: 0px;
@@ -478,6 +474,7 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	
 	overflow: visible;
 }
+
 .status-menu-container .search-container #search-box input {
 	padding: 1px 2px;
 	border: none;
@@ -487,9 +484,9 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	
 	z-index: 1;
 }
-.status-menu-container .search-container #search-box input:focus {
-	outline: none;
-}
+
+.status-menu-container .search-container #search-box input:focus { outline: none; }
+
 .status-menu-container .search-container #search-button {
 	position: absolute;
 	top: 3px;
@@ -510,12 +507,126 @@ body[data-owner="1"] .icon-menu.setting a:after {
 .list-menu-float .icon-menu:not(.profile):hover {
 	width: 100px;
 }
+
 .icon-menu.logout {
 	text-align: left;
 	margin: 0;
 }
 
-/* HEADER BAR - SORT FILTERS */
+
+
+/*------------------------------*\
+  HEADER @Subnav-R-Non-Owner
+\*------------------------------*/
+
+.header .header-menu {
+	position: fixed;
+	top: 0 !important;
+	right: calc(50% - 528px);
+	
+	display: block;
+	width: 346px;
+	height: 48px;
+	padding: 8px 0;
+	
+	z-index: -1;
+}
+
+.btn-menu {
+	position: absolute;
+	top: 66px;
+	left: -24px;
+	
+	width: 130px;
+	height: 28px;
+	background: #001a0e;
+	box-shadow: -1px 1px 0 1px #d60025;
+	
+	font-size: 0 !important;
+}
+
+.list-menu {
+	position: absolute;
+	top: 66px !important;
+	left: -24px;
+	right: auto !important;
+	
+	display: block !important;
+	width: 130px;
+	height: 0;
+	border: none !important;
+	
+	box-shadow: none !important;
+}
+
+.btn-menu .username, .list-menu .manga-list, .list-menu .anime-list {
+	position: absolute;
+	top: 0;
+	
+	display: block !important;
+	width: 55px !important;
+	height: 28px !important;
+	margin: 0 !important;
+	
+	color: #0cd693 !important;
+	font: normal 0/28px "Carrois Gothic SC" !important;
+	text-align: center !important;
+	text-transform: uppercase;
+	
+	cursor: pointer;
+	z-index: 1;
+	transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1) !important;
+}
+
+body[data-owner="1"] .btn-menu .username {
+	display: none !important;
+}
+
+.btn-menu .username:hover, .list-menu .manga-list:hover, .list-menu .anime-list:hover {
+	color: #fff !important;
+	background: none !important;
+}
+
+.btn-menu .username {
+	right: 55px;
+}
+
+.list-menu .manga-list, .list-menu .anime-list {
+	right: 0;
+}
+
+.btn-menu .username:before {
+	content: "Profile";
+	
+	font-size: 12px;
+}
+
+.list-menu .icon-menu.manga-list:before {
+	content: "Manga";
+	
+	font-size: 12px;
+}
+
+.list-menu .icon-menu.anime-list:before {
+	content: "Anime";
+	
+	font-size: 12px;
+}
+
+.list-menu .manga-list svg, .list-menu .anime-list svg {
+	display: none !important;
+}
+
+.btn-menu:hover .username, .btn-menu:hover ~ .list-menu .manga-list {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+
+
+/*------------------------------*\
+  HEADER @Subnav-L-Sort-by
+\*------------------------------*/
 
 .list-table > tbody:first-of-type {
 	position: fixed;
@@ -533,15 +644,18 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	box-shadow: 0 1px 0 1px #d60025;
 	z-index: 5;
 }
+
 .list-table > tbody:first-of-type:before {
 	content: "SORT";
 	
 	color: #0cd693;
-	font: 12px/28px Carrois Gothic SC;
+	font: 12px/28px "Carrois Gothic SC";
 	
 	transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1);
 }
+
 .list-table > tbody:first-of-type:hover:before { color: #fff; }
+
 .list-table > tbody:first-of-type:after {
 	left: -9px;
 	
@@ -551,6 +665,7 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	
 	z-index: -1;
 }
+
 .list-table-header {
 	position: absolute;
 	top: 28px;
@@ -578,24 +693,34 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	transition-timing-function: cubic-bezier(0.32,0.05,0.48,1);
 	pointer-events: none;
 }
+
 .list-table > tbody:first-of-type:hover .header-title {
 	opacity: 1;
 	pointer-events: auto;
 }
+
 .header-title.title {
 	top: 0px;
 	left: 0px;
 	transition-duration: 0.15s;
 }
+
 .header-title.score {
 	top: 22px;
 	left: 12px;
 	transition-duration: 0.3s;
 }
-.header-title.progress {
+
+.header-title.progress, .header-title.chapters {
 	top: 44px;
 	left: 24px;
 	transition-duration: 0.45s;
+}
+
+.header-title.volumes {
+	top: 66px;
+	left: 36px;
+	transition-duration: 0.6s;
 }
 
 .list-table-header .header-title a {
@@ -605,14 +730,16 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	background: #001a0e content-box;
 	
 	color: #0cd693 !important;
-	font: normal 11px/20px Carrois Gothic SC;
+	font: normal 11px/20px "Carrois Gothic SC";
 	text-transform: uppercase;
 	
 	transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1) !important;
 }
+
 .list-table-header .header-title a:hover {
 	color: #fff !important;
 }
+
 .list-table-header .header-title a:before, .list-table-header .header-title a:after {
 	content: "";
 	
@@ -627,6 +754,7 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	transform: skew(30deg);
 	z-index: -1;
 }
+
 .list-table-header .header-title a:before { left: 6px; }
 .list-table-header .header-title a:after { right: 6px; }
 
@@ -634,7 +762,8 @@ body[data-owner="1"] .icon-menu.setting a:after {
 .list-table-header .header-title.image,
 .list-table-header .header-title.tags,
 .list-table-header .header-title.started,
-.list-table-header .header-title.studio
+.list-table-header .header-title.studio,
+.list-table-header .header-title.magazine
 { display: none !important; }
 
 .list-table-header .header-title a .sort-icon {
@@ -646,10 +775,121 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	line-height: 12px;
 	color: #fff600 !important;
 }
+
 .sort-icon.fa-sort-asc { left: 12px; top: 6px; }
 .sort-icon.fa-sort-desc { right: 12px; bottom: 6px; }
 
-/* CHARACTER */
+
+
+/*------------------------------*\
+  HEADER @Subnav-L-BTNs
+\*------------------------------*/
+
+.list-unit .list-status-title .stats {
+	position: fixed;
+	top: 66px;
+	left: calc(50% - 288px);
+	
+	width: 130px;
+	height: 28px;
+	background: #001a0e;
+	
+	z-index: 7;
+	box-shadow: 1px 1px 0 1px #d60025;
+}
+
+.list-unit .list-status-title .stats a {
+	position: absolute;
+	top: 0;
+	
+	width: 55px;
+	
+	color: #0cd693;
+	font: 12px/28px "Carrois Gothic SC";
+	text-align: center;
+	text-transform: uppercase;
+	
+	z-index: 1;
+	transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1);
+}
+
+#show-stats-button { left: 0; }
+#advanced-options-button { left: 55px; }
+
+.stats a i { display: none; }
+
+.list-unit .list-status-title .stats a:hover {
+	color: #fff;
+	transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1);
+}
+
+.list-unit .list-stats {
+	width: 100%;
+	margin-top: -15px;
+	background: #000d07;
+	
+	color: #0cd693;
+	font-family: "Open Sans";
+}
+
+
+
+/*------------------------------*\
+  HEADER @Log-in/Affinity
+\*------------------------------*/
+
+.header .header-menu .header-info {
+	position: fixed;
+	top: calc(50% + 196px);
+	left: 0;
+	
+	width: 340px;
+	height: 24px;
+	background: #000d07;
+	box-shadow: 0px 1px 0 1px #d60025;
+	margin: 0;
+	
+	color: #0cd693;
+	font: 14px/24px "Carrois Gothic SC";
+	text-align: center;
+	vertical-align: middle;
+	text-transform: uppercase;
+	
+	transform: rotate(-90deg);
+	transform-origin: left top;
+}
+
+.header-info:before, .header-info:after {
+	width: 13px;
+	height: 24px;
+}
+
+.header-info:before { left: -6px; }
+.header-info:after { right: -6px; }
+
+.header .header-info a {
+	display: inline-block;
+	width: auto;
+	height: 16px;
+	margin: 0px;
+	
+	color: #fff600;
+	font: normal 14px/16px "Carrois Gothic SC";
+	
+	transition: color 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
+}
+
+.header .header-info a:hover {
+	color: #fff;
+}
+
+
+
+
+
+/*==============================*\
+  !COVER
+\*==============================*/
 
 .cover-block {
 	position: relative;
@@ -661,6 +901,7 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	
 	overflow: hidden;
 }
+
 .image-container {
 	position: absolute;
 	left: calc(50% - 625px);
@@ -675,6 +916,7 @@ body[data-owner="1"] .icon-menu.setting a:after {
 	background-position: 115px center;
 	background-attachment: scroll;
 }
+
 body[data-query*="\"status\":7"] .image-container { background-image: url(http://i.imgur.com/2dNxOcM.png); background-position: 20px center; }
 body[data-query*="\"status\":1"] .image-container { background-image: url(http://i.imgur.com/aPHWdRV.png); }
 body[data-query*="\"status\":2"] .image-container { background-image: url(http://i.imgur.com/Dv7xyGN.png); }
@@ -682,25 +924,10 @@ body[data-query*="\"status\":3"] .image-container { background-image: url(http:/
 body[data-query*="\"status\":4"] .image-container { background-image: url(http://i.imgur.com/dh42mXP.png); background-position: 570px center; }
 body[data-query*="\"status\":6"] .image-container { background-image: url(http://i.imgur.com/JQlB1VA.png); background-position: 670px center; }
 
-.btn-list-setting { display: none !important; }
+#cover-image, .btn-list-setting { display: none !important; }
 
-/* LIST BASE */
 
-.list-container {
-	width: 100%;
-	min-width: 1056px;
-	background: none !important;
-	border: none !important;
-}
-
-.list-block {
-	margin: 0 !important;
-	background: rgba(0,0,0,0.5);
-}
-.list-unit {
-	width: 100% !important;
-}
-
+/* List Header */
 
 .list-unit .list-status-title {
 	position: static;
@@ -710,69 +937,22 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	height: 64px;
 	background: #000d07;
 }
+
 .list-unit .list-status-title .text {
 	width: 100%;
 	
 	color: #fff600;
-	font-family: Carrois Gothic SC;
+	font-family: "Carrois Gothic SC";
 	letter-spacing: 1px;
 }
 
-/* HEADER BAR - SUBNAV LEFT */
 
-.list-unit .list-status-title .stats {
-	position: fixed;
-	top: 66px;
-	left: calc(50% - 288px);
-	
-	width: 130px;
-	height: 28px;
-	background: #001a0e;
-	
-	z-index: 7;
-	box-shadow: 1px 1px 0 1px #d60025;
-}
-.list-unit .list-status-title .stats a {
-	position: absolute;
-	top: 0;
-	
-	width: 55px;
-	
-	color: #0cd693;
-	font: 12px/28px Carrois Gothic SC;
-	text-align: center;
-	text-transform: uppercase;
-	
-	z-index: 1;
-	transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1);
-}
-#show-stats-button { left: 0; }
-#advanced-options-button { left: 55px; }
-.stats a i { display: none; }
-.list-unit .list-status-title .stats a:hover {
-	color: #fff;
-	transition: color 0.075s cubic-bezier(0.32,0.05,0.48,1);
-}
 
-.list-unit .list-stats {
-	width: 100%;
-	margin-top: -15px;
-	background: #000d07;
-	
-	color: #0cd693;
-	font-family: Open Sans;
-}
 
-/* LIST BASE CONTINUED */
 
-.list-table {
-	display: block;
-	width: 1056px;
-	padding: 6px 0;
-	border: none !important;
-}
-
-/* LIST ITEM - BASE */
+/*==============================*\
+  !LIST
+\*==============================*/
 
 .list-item {
 	display: inline-block !important;
@@ -782,21 +962,25 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	
 	vertical-align: top;
 }
+
 .list-table-data {
 	position: relative;
 	
 	display: block;
 	width: 340px;
-	height: auto;
-	min-height: 100px;
+	height: 100px;
+	
+	overflow: hidden;
 	
 	font-size: 0;
 	text-align: left;
 	white-space: nowrap;
 	
-	overflow: hidden;
 	z-index: 1;
 }
+
+/* Lower Background */
+
 .list-table-data:before {
 	content: "";
 	position: absolute;
@@ -811,17 +995,92 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	z-index: -1;
 }
 
-/* LIST ITEM - CONTENT */
 
-.list-table .list-table-data .data a {
-	color: #0cd693 !important;
+/* List Item Information */
+
+.data {
+	padding: 0 !important;
+	border: none !important;
+	
+	vertical-align: top !important;
 }
-.data a {
-	transition: color 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
-}
+
+.list-table .list-table-data .data a { color: #0cd693 !important; }
+
+.data a { transition: color 0.075s cubic-bezier(0.32, 0.05, 0.48, 1); }
+
 .list-table .list-table-data a:not(.edit-disabled):hover {
 	color: #fff600 !important;
 }
+
+
+/* Slants Between Items */
+
+.data.progress:before, .data.chapter:before, .data.season:before, .data.tags:before {
+	left: -1px;
+	
+	width: 2px;
+	height: 50px;
+	
+	box-shadow: none;
+}
+
+
+/* - - - - - - - - - - - - - - -*\
+  Loading Icon
+\*- - - - - - - - - - - - - - - */
+
+.list-unit .loading-space {
+	height: auto;
+	margin: 0;
+}
+
+.list-unit .loading-space i {
+	width: 20px;
+	margin: 0 auto 12px;
+}
+
+
+/* - - - - - - - - - - - - - - -*\
+  Empty Table Message
+\*- - - - - - - - - - - - - - - */
+
+.list-table[data-items="[]"] { text-align: center; }
+
+.list-table[data-items="[]"]:before, .list-table[data-items="[]"]:after {
+	position: relative;
+	
+	display: inline-block;
+	width: 550px;
+}
+
+.list-table[data-items="[]"]:before {
+	content: "";
+	
+	height: 48px;
+	background: #000d07;
+	margin-top: 26px;
+	
+	transform: skew(30deg);
+}
+
+.list-table[data-items="[]"]:after {
+	content: "No entries found. Perhaps your search terms are too restrictive?";
+	
+	padding: 16px;
+	margin-top: -48px;
+	
+	color: #0cd693;
+	font: 16px/16px "Open Sans";
+	
+	z-index: 1;
+}
+
+
+
+/*------------------------------*\
+  LIST @Status
+\*------------------------------*/
 
 .data.status {
 	position: absolute;
@@ -833,7 +1092,6 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	height: 12px;
 	background: none !important;
 	
-	line-height: 12px;
 	color: #0cd693;
 	text-align: center !important;
 	text-shadow: 0px 0px 3px #00150b;
@@ -841,16 +1099,25 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
 	z-index: 1;
 }
+
 .data.status:before {
-	font: 12px FontAwesome;
+	font: 12px/12px "FontAwesome";
 }
-.data.status.completed, .data.status.onhold, .data.status.dropped, .data.status.plantowatch {
+
+.data.status.completed, .data.status.onhold, .data.status.dropped, .data.status.plantoread {
 	display: block !important;
 }
+
 .data.status.completed:before { content : "\f00c"; }
 .data.status.onhold:before { content : "\f017"; }
 .data.status.dropped:before { content : "\f00d"; }
-.data.status.plantowatch:before { content: "\f02e"; }
+.data.status.plantowatch:before, .data.status.plantoread:before { content: "\f02e"; }
+
+
+
+/*------------------------------*\
+  LIST @Image
+\*------------------------------*/
 
 .data.image {
 	position: absolute;
@@ -869,6 +1136,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	
 	overflow: hidden;
 }
+
 .data.image .image {
 	width: 70px !important;
 	height: 98px !important;
@@ -876,12 +1144,19 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	margin-left: -1px;
 }
 
+
+
+/*------------------------------*\
+  LIST @Title
+\*------------------------------*/
+
 .data.title {
 	display: block !important;
 	width: calc(340px - 78px);
 	height: 46px;
 	padding: 2px 4px 2px 74px !important;
 }
+
 .data.title .link.sort {
 	position: relative;
 	
@@ -889,7 +1164,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	max-width: 100%;
 	max-height: 45px;
 	
-	font: bold 11px/15px Open Sans !important;
+	font: bold 11px/15px "Open Sans" !important;
 	text-indent: 14px;
 	
 	overflow: hidden;
@@ -898,10 +1173,14 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	transition: all 0.075s cubic-bezier(0.32,0.05,0.48,1);
 	z-index: 1;
 }
-.watching ~ .data.title .link.sort {
+
+.watching ~ .data.title .link.sort, .reading ~ .data.title .link.sort {
 	text-indent: 0;
 }
+
+
 .icon-watch { display: none !important; }
+
 
 .content-status, .rewatching {
 	position: absolute;
@@ -919,10 +1198,20 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	text-transform: uppercase;
 	white-space: normal;
 	
-	transform: rotateZ(60deg);
+	transform: rotate(60deg);
 }
+
+.manga .content-status { font-size: 8px !important; }
+
 .rewatching { font-size: 0 !important; }
+
 .rewatching:before { content: "Rewatch"; font-size: 9px !important; }
+
+
+
+/*------------------------------*\
+  LIST @Add-Edit-More
+\*------------------------------*/
 
 .add-edit-more {
 	position: absolute;
@@ -937,10 +1226,11 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	
 	transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
 }
-.add-edit-more:hover {
-	background: rgba(0,13,7,0.9);
-}
+
+.add-edit-more:hover { background: rgba(0,13,7,0.9); }
+
 .add-edit-more span { position: static !important; }
+
 .add-edit-more a {
 	position: absolute;
 	left: 0;
@@ -950,7 +1240,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	height: 20px;
 	
 	color: #0cd693 !important;
-	font: 11px/20px Open Sans !important;
+	font: 11px/20px "Open Sans" !important;
 	text-transform: uppercase;
 	
 	transition-property: color, opacity;
@@ -958,20 +1248,20 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	transition-timing-function: cubic-bezier(0.32,0.05,0.48,1);
 	opacity: 0;
 }
+
 .add-edit-more:hover a {
 	opacity: 1;
 }
+
 .add-edit-more .edit a, .add-edit-more .add a { top: 30px; }
 .add-edit-more .more a { top: 50px; }
 
-.data.progress:before, .data.season:before, .data.tags:before {
-	left: -1px;
-	
-	width: 2px;
-	height: 50px;
-	
-	box-shadow: none;
-}
+
+
+/*------------------------------*\
+  LIST @Score
+\*------------------------------*/
+
 .data.score {
 	position: relative;
 	
@@ -981,12 +1271,11 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	margin-left: 70px;
 	z-index: 1;
 }
-.data.score a.link {
-	font: bold 16px/50px Carrois Gothic SC !important;
-}
-.data.score select {
-	margin: 15px 10px 15px 0;
-}
+
+.data.score a.link { font: bold 16px/50px "Carrois Gothic SC" !important; }
+
+.data.score select { margin: 15px 10px 15px 0; }
+
 .data.score select, .data.score select option {
 	width: 40px;
 	height: 20px;
@@ -995,32 +1284,59 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	outline-color: #0cd693 !important;
 	
 	color: #0cd693;
-	font-family: Carrois Gothic SC;
+	font-family: "Carrois Gothic SC";
 }
 
-.data.progress {
+
+
+/*------------------------------*\
+  LIST @Progress
+\*------------------------------*/
+
+.data.progress, .data.chapter, .data.volume {
 	position: relative;
 	
 	display: inline-block !important;
 	width: auto;
-	height: 50px;
-	padding: 0 21px !important;
+	height: 20px;
+	padding: 15px 21px !important;
 	
 	text-align: left;
 	font-size: 0;
 }
-.data.progress span:nth-of-type(1) {
-	margin-right: 7px;
+
+.data.volume { padding-left: 0 !important; }
+
+.data.chapter div:before, .data.volume div:before {
+	margin-right: 3px;
+	
+	color: #0cd693;
+	font: 10px/15px "Open Sans";
+	
+	opacity: 0.5;
 }
-.data.progress span:only-of-type, .data.progress span .link, .data.progress span:nth-of-type(2) {
+
+.data.chapter div:before { content: "C"; }
+.data.volume div:before { content: "V"; }
+
+.data.progress span:nth-of-type(1), .data.chapter span:nth-of-type(1), .data.volume span:nth-of-type(1) { margin-right: 7px; }
+
+.data.progress span:only-of-type, .data.progress span .link, .data.progress span:nth-of-type(2),
+.data.chapter span:only-of-type, .data.chapter span .link, .data.chapter span:nth-of-type(2),
+.data.volume span:only-of-type, .data.volume span .link, .data.volume span:nth-of-type(2) {
 	position: relative;
 	
 	margin: 0;
 	
 	color: #0cd693 !important;
-	font: 14px/50px Carrois Gothic SC;
+	font: 14px/21px "Carrois Gothic SC";
 }
-.data.progress span:nth-of-type(2):before {
+
+/* Slash Number Divider */
+
+.data.progress span:nth-of-type(2):before,
+.data.chapter span:nth-of-type(2):before,
+.data.volume span:nth-of-type(2):before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -1033,25 +1349,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	transform: skew(10deg);
 }
 
-.data.progress .icon-add-episode {
-	display: inline-block;
-	margin: 20px 0 0 3px;
-	
-	line-height: 10px;
-	font-size: 10px;
-}
-.data.progress .icon-add-episode i:before {
-	content: "\f067";
-	
-	color: #06754e;
-	
-	transition: color 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
-}
-.data.progress .icon-add-episode:hover i:before {
-	color: #0cd693;
-}
-
-.data.progress span input {
+.data.progress span input, .data.chapter span input, .data.volume span input {
 	width: 24px !important;
 	height: 18px;
 	padding: 1px !important;
@@ -1060,30 +1358,67 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	outline-color: #0cd693 !important;
 	
 	color: #0cd693;
-	font-family: Carrois Gothic SC;
+	font-family: "Carrois Gothic SC";
 }
+
+
+/* Add Episode Icon */
+
+.data [class^="icon-add-"] {
+	display: inline-block;
+	margin: 0 0 0 3px;
+	
+	line-height: 10px;
+	font-size: 10px;
+}
+
+.data [class^="icon-add-"] i:before {
+	content: "\f067";
+	
+	color: #06754e;
+	
+	transition: color 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
+}
+
+.data [class^="icon-add-"]:hover i:before {
+	color: #0cd693;
+}
+
+
+
+/*------------------------------*\
+  LIST @Season-&-Studio
+\*------------------------------*/
 
 .data.season:before {
 	top: -9px;
 	left: 9px;
 }
+
 .data.season, .data.studio {	
 	display: inline-block !important;
 	width: 150px;
 	height: 16px;
 	padding: 0 21px !important;
 	
-	font: 9px/16px Open Sans;
+	font: 9px/16px "Open Sans";
 	text-align: left !important;
 }
+
+/* Season */
+
 .data.season {
 	position: relative;
 	
 	margin: 9px 0 0 -9px;
 }
+
+/* Studio */
+
 .data.studio {
 	margin: 25px 0 0 -183px;
 }
+
 .data.studio:after {
     content: "";
     position: absolute;
@@ -1093,10 +1428,16 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
     display: block;
     width: 15px;
     height: 50px;
-    background: linear-gradient(to right,rgba(0,22,9,0),rgb(0,22,9) 80%);
+    background: linear-gradient(to right, rgba(0,22,9,0), rgb(0,22,9) 80%);
 	
     transform: skew(30deg);
 }
+
+
+
+/*------------------------------*\
+  LIST @Tags
+\*------------------------------*/
 
 .data.tags {
 	position: absolute;
@@ -1115,6 +1456,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	transition: width 0.2s cubic-bezier(0.32,0.05,0.48,1);
 	z-index: 1;
 }
+
 .data.tags:before {
 	left: -14px;
 	
@@ -1125,9 +1467,9 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	
 	z-index: -1;
 }
-.data.tags:hover {
-	width: 200px;
-}
+
+.data.tags:hover { width: 200px; }
+
 .data.tags:after {
 	content: "\f02c";
 	position: absolute;
@@ -1135,20 +1477,20 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	left: -7px;
 	
 	color: #06754e;
-	font: 10px/10px FontAwesome;
+	font: 10px/10px "FontAwesome";
 	
 	transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
 }
-.data.tags:hover:after {
-	color: #0cd693;
-}
+
+.data.tags:hover:after { color: #0cd693; }
+
 .data.tags div {
 	display: inline-block;
 	width: 0;
 	max-height: 42px;
 	padding: 4px 0;
 	
-	font: 9px/14px Open Sans;
+	font: 9px/14px "Open Sans";
 	text-align: left;
 	letter-spacing: -5.5px;
 	white-space: normal;
@@ -1156,14 +1498,19 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	overflow: hidden;
 	transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
 }
+
 .data.tags:hover div {
 	width: 185px;
 	letter-spacing: 0;
 }
+
 .data.tags div span {
 	color: #0cd693;
 	vertical-align: middle !important;
 }
+
+/* Edit Button */
+
 .data.tags .edit {
 	position: absolute;
 	top: 0;
@@ -1178,21 +1525,26 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	opacity: 0;
 	pointer-events: none;
 }
+
 .data.tags:hover .edit {
 	opacity: 1;
 	pointer-events: auto;
 }
+
 .data.tags .edit:after {
 	content: "\f040";
 	
 	color: #06754e;
-	font: 10px/50px FontAwesome;
+	font: 10px/50px "FontAwesome";
 	
 	transition: all 0.075s cubic-bezier(0.32,0.05,0.48,1);
 }
+
 .data.tags .edit:hover:after {
 	color: #0cd693;
 }
+
+/* Edit Tags Text Area */
 
 .data.tags textarea {
 	position: absolute;
@@ -1206,58 +1558,67 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	outline-color: #0cd693 !important;
 	
 	color: #0cd693;
-	font-size: 11px initial !important;
+	font-size: 11px !important;
 	
 	resize: none;
 	z-index: 1;
 }
 
-.data {
-	padding: 0 !important;
-	border: none !important;
-	vertical-align: top !important;
-}
 
-/* LIST ITEM - MORE INFO */
+
+/*------------------------------*\
+  LIST @More-Info
+\*------------------------------*/
 
 .more-info {
 	border: none !important;
 	
+	font-family: "Open Sans";
 	text-align: left;
-	font-family: Open Sans;
 }
+
 .more-info .td1.borderRBL {
 	color: #ccc;
 }
+
 .more-info a {
-	transition: color 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
 	color: #0cd693 !important;
+	
+	transition: color 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
 }
+
 .more-info a:hover {
 	color: #fff600 !important;
 }
 
-/* LIST - LOADING SPINNER */
 
-.list-unit .loading-space {
-	height: auto;
-	margin: 0;
-}
-.list-unit .loading-space i {
-	width: 20px;
-	margin: 0 auto 12px;
-}
 
-/* FILTER BOX OVERLAY */
+
+
+/*==============================*\
+  !FILTER-MENU
+\*==============================*/
+
+#fancybox-overlay {
+	background: #000 !important;
+	opacity: 0.6 !important;
+}
 
 #advanced-options {
 	width: 100%;
+	min-width: 1056px;
 	padding: 30px 0 30px 0;
 	border: none;
 	background: #001a0e;
 	
-	font-family: Open Sans;
+	font-family: "Open Sans";
 }
+
+
+/* - - - - - - - - - - - - - - -*\
+  Close Button
+\*- - - - - - - - - - - - - - - */
+
 #advanced-options #fancybox-close {
 	right: calc(50% - 375px);
 	
@@ -1266,31 +1627,96 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	
 	text-align: center;
 	line-height: 32px;
+	
+	transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
 }
+
+#advanced-options #fancybox-close:hover {
+	background: #fff600;
+}
+
 #advanced-options #fancybox-close:before {
 	content: "\f00d";
 	
 	color: #001a0e;
-	font: 24px/30px FontAwesome;
+	font: 24px/30px "FontAwesome";
 }
+
+
+/* - - - - - - - - - - - - - - -*\
+  Headers
+\*- - - - - - - - - - - - - - - */
 
 #advanced-options .advanced-options-header {
 	border-color: #0cd693;
 	border-width: 2px;
 	
 	color: #fff;
-	font: 16px Carrois Gothic SC;
+	font: 16px "Carrois Gothic SC";
 	text-transform: uppercase;
 }
+
 #advanced-options .advanced-options-header .description {
-	font: 12px Open Sans;
+	font: 12px "Open Sans";
 	color: #ccc;
 }
 
+
+/* - - - - - - - - - - - - - - -*\
+  Items
+\*- - - - - - - - - - - - - - - */
+
 #advanced-options .filter-widget span, #advanced-options .sort-widget span {
 	color: #fff;
-	font-family: Open Sans !important;
+	font-family: "Open Sans" !important;
 }
+
+#advanced-options select, #advanced-options option { background-image: url(/img/pc/ownlist/icon_pulldown_triangle_disable.png); }
+
+#advanced-options select, #advanced-options option, #advanced-options input[type=text] {
+	background-color: #00150b;
+	border-color: #0cd693;
+	outline-color: #fff600;
+	
+	color: #0cd693;
+}
+
+#advanced-options select:disabled {
+	opacity: 0.6;
+}
+
+
+
+/* Sort Labels */
+
+#advanced-options .sort-widget input[type=radio] + label {
+	padding: 4px 0;
+	background: #0cd693 !important;
+	border: none !important;
+	border-radius: 5px;
+	margin-right: 5px;
+	
+	color: #001a0e !important;
+	
+	transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
+}
+
+#advanced-options .sort-widget input[type=radio]:disabled + label { opacity: 0.6; }
+
+#advanced-options .sort-widget input[type=radio]:checked + label, #advanced-options .sort-widget input[type=radio]:not(:disabled) + label:hover {
+	background: #fff600 !important;
+}
+
+#advanced-options .sort-widget input[type=radio]:disabled + label {
+	background: #00150b !important;
+	
+	color: #0cd693 !important;
+}
+
+
+/* - - - - - - - - - - - - - - -*\
+  Action Buttons
+\*- - - - - - - - - - - - - - - */
 
 #advanced-options .advanced-options-button {
 	width: 100%;
@@ -1298,6 +1724,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	border-width: 0;
 	background: #00150b;
 }
+
 #advanced-options .advanced-options-button a {
 	position: relative;
 	
@@ -1308,10 +1735,11 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	
 	color: #001a0e;
 	text-transform: uppercase;
-	font: 16px Carrois Gothic SC;
+	font: 16px "Carrois Gothic SC";
 	
 	transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
 }
+
 .advanced-options-button a:before, .advanced-options-button a:after {
 	content: "";
 	
@@ -1326,41 +1754,47 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	transform: skew(-30deg);
 	transition: all 0.2s cubic-bezier(0.32,0.05,0.48,1);
 }
+
 .advanced-options-button a:before { left: -9px; }
 .advanced-options-button a:after { right: -9px; }
-#advanced-options .advanced-options-button a:hover, .advanced-options-button a:hover:before, .advanced-options-button a:hover:after {
-	background: #fff600;
-}
 
-#fancybox-overlay {
-	background: #000 !important;
-	opacity: 0.6 !important;
-}
+#advanced-options .advanced-options-button a:hover, .advanced-options-button a:hover:before, .advanced-options-button a:hover:after { background: #fff600; }
 
-/* FOOTER */
+
+
+
+
+/*==============================*\
+  !FOOTER
+\*==============================*/
 
 #footer-block {
 	min-width: 1050px;
 	padding: 0;
 	background: #000d07;
 }
+
 #copyright {
 	padding: 17px;
 	
 	color: #0cd693;
-	font: 12px/16px Open Sans;
+	font: 12px/16px "Open Sans";
 	
-	transition: all 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
 	opacity: 0.5;
-}
-#copyright:hover {
-	opacity: 1;
-}
-#copyright:after {
-	content: "- List design by Valerio Lyndon.";
+	transition: all 0.075s cubic-bezier(0.32, 0.05, 0.48, 1);
 }
 
-/* SMALL SCREEN FIXES */
+#copyright:hover { opacity: 1; }
+
+#copyright:after { content: "List design by Valerio Lyndon."; }
+
+
+
+
+
+/*==============================*\
+  !MEDIA-QUERY-FIXES
+\*==============================*/
 
 @media (max-width: 1056px) {	
 	body {
@@ -1457,7 +1891,7 @@ body .initialize-tutorial:hover {
 	height: 30px;
 	
 	color: #0cd693;
-	font: 20px/30px FontAwesome;
+	font: 20px/30px "FontAwesome";
 	
 	transition: all 0.3s ease;
 	z-index: 1;
