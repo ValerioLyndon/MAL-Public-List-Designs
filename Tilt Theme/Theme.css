@@ -1,6 +1,6 @@
 /**
  * "Tilt" by Valerio Lyndon
- * Revision 7.0 + MAL Shutdown Fixes 6
+ * Revision 7.1 + MAL Shutdown Fixes 6
  */
 
 /**
@@ -1366,10 +1366,11 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 
 .data [class^="icon-add-"] {
 	display: inline-block;
-	margin: 0 0 0 3px;
+	margin: 5px 0 0 3px;
 	
-	line-height: 10px;
 	font-size: 10px;
+	line-height: 10px;
+	vertical-align: top;
 }
 
 .data [class^="icon-add-"] i:before {
