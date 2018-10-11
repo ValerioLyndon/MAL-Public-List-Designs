@@ -1,4 +1,4 @@
-/* "9anime Adaption" by Valerio Lyndon / Revision 0.4 + MAL Shutdown Fixes 6 */
+/* "9anime Adaption" by Valerio Lyndon / Revision 0.5 + MAL Shutdown Fixes 6 */
 
 @\import "https://fonts.googleapis.com/css?family=Roboto:400,500,700";
 @\import "https://malscraper.azurewebsites.net/covers/auto/presets/dataimagelink";
@@ -796,10 +796,11 @@ a {
 .data.image a:after {
 	content: "";
 	position: absolute;
+	left: -1px;
 	bottom: 0;
 
 	display: block;
-	width: 100%;
+	width: 192px;
 	height: 80px;
 	background: -webkit-linear-gradient(to top, #000, rgba(255,255,255,0));
 	background: -moz-linear-gradient(to top, #000, rgba(255,255,255,0));
@@ -967,12 +968,10 @@ a {
 	margin-left: 3px;
 }
 
-.data.volume span a:before, .data.volume span:only-child:before {
-	content: "Vol ";
-}
-.data.chapter span a:before, .data.chapter span:only-child:before {
-	Content: "Ch ";
-}
+.data.volume div:before, .data.chapter div:before { font-size: .9rem; }
+
+.data.volume div:before { content: "Vol "; }
+.data.chapter div:before { content: "Ch "; }
 
 .data.type {
 	position: absolute;
@@ -1007,7 +1006,7 @@ a {
 	background: #6d6d20;
 }
 
-.data.score, .data.season, .data.rated {
+.data.score, .data.season, .data.rated, .data.airing-started, .data.airing-finished {
 	position: absolute;
 	top: 260px;
 	
@@ -1027,7 +1026,7 @@ a {
 	font-weight: 500;
 	
 }
-.list-item:hover .data.score, .list-item:hover .data.season, .list-item:hover .data.rated {
+.list-item:hover .data.score, .list-item:hover .data.season, .list-item:hover .data.rated, .list-item:hover .data.airing-started, .list-item:hover .data.airing-finished {
 	top: 30px;
 	
 	opacity: 1;
@@ -1049,7 +1048,7 @@ a {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.data.season, .data.airing-started {
+.data.season {
 	left: 0;
 	
 	width: 52.52px;
@@ -1071,6 +1070,17 @@ a {
 	
 	margin-top: -1.3em;
 }
+
+.data.airing-started, .data.airing-finished {
+	color: #dadada;
+	font-size: 1rem;
+	line-height: 1.5em;
+	font-weight: 500;
+	word-wrap: break-word;
+}
+
+.data.airing-started { left: 0; }
+.data.airing-finished { right: 0; }
 
 .data.rated {
 	top: 270px;
