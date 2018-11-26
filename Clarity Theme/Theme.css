@@ -1,6 +1,6 @@
 /**
  * "Clarity" by Valerio Lyndon
- * Revision 21.2
+ * Revision 21.3
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -13,9 +13,7 @@
  * PAGE-BASE         : Page-wide properties & widths.
  * 
  * HEADER
- * Nav-Background
  * Cover
- * Avatar
  * Nav-Main          : Main Bar
  * Nav-Buttons-Top   : Located above main bar.
  * Nav-Buttons-L     : Below main bar on left. User menu.
@@ -188,14 +186,15 @@ body {
 .list-container {
 	position: static;
 	
-	width: 1060px;
+	width: 100%;
 	background: none !important;
 	border: none;
 }
 
 .list-block {
+	width: 1060px;
 	min-height: initial;
-	margin: 64px 0 0 0;
+	margin: 64px auto 0;
 }
 
 .status-menu-container.fixed + .list-block {
@@ -221,52 +220,8 @@ a, a:hover {
 
 
 /*==============================*\
-  !HEADER @Nav-Background
+  !HEADER @Cover
 \*==============================*/
-
-.list-block:before, .list-block:after {
-	content: "";
-	position: absolute;
-	left: 0;
-	
-	display: block;
-	width: 100%;
-	min-width: 1060px;
-	
-	z-index: 30;
-}
-
-.fixed ~ .list-block:before, .fixed ~ .list-block:after { z-index: 40; }
-.list-block:before {
-	top: 318px;
-	
-	height: 64px;
-	background: #fff;
-}
-
-.list-block:after {
-	top: 382px;
-	
-	height: 2px;
-	background: -webkit-linear-gradient(top,rgba(0,0,0,0.2),rgba(0,0,0,0));
-	background: linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0));
-}
-
-.status-menu-container.fixed ~ .list-block:before {
-	position: fixed;
-	top: 0;
-}
-
-.status-menu-container.fixed ~ .list-block:after {
-	position: fixed;
-	top: 64px;
-}
-
-
-
-/*------------------------------*\
-  HEADER @Cover
-\*------------------------------*/
 
 .cover-block {
 	position: absolute;
@@ -392,37 +347,6 @@ a, a:hover {
 		
 		animation-timing-function: cubic-bezier(0,0,.75,1);
 	}
-}
-
-
-
-/*------------------------------*\
-  HEADER @Avatar
-\*------------------------------*/
-
-.status-menu:after {
-	content:"";
-	position: absolute;
-	top: -51px;
-	left: -8px;
-	
-	width: 150px;
-	height: 150px;
-	background: #ddd no-repeat center top / cover;
-	border: 8px solid #fff;
-	border-radius: 50%;
-	
-	opacity: 1;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-}
-
-.fixed .status-menu:after {
-	top: 0px;
-	
-	width: 48px;
-	height: 48px;
-	
-	box-shadow: none;
 }
 
 
@@ -616,22 +540,86 @@ a, a:hover {
 
 .status-menu-container {
 	position: relative;
+	z-index: 35 !important;
 	
-	width: 1060px;
+	width: 100%;
+	min-width: 1060px;
 	height: 64px;
 	background: none;
 	border: none !important;
-	
-	z-index: 35 !important;
 }
+
 .status-menu-container.fixed { z-index: 45 !important; }
 
-.status-menu {
-	display: block !important;
+.status-menu-container:before, .status-menu-container:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	z-index: -1;
+	
+	display: block;
+	width: 100%;
 }
 
-.status-menu-container .status-menu { margin: 0 0 0 173px; }
-.status-menu-container.fixed .status-menu { margin: 0 0 0 71px; }
+.status-menu-container:before {
+	top: 0;
+	
+	height: 64px;
+	background: #fff;
+}
+
+.status-menu-container:after {
+	top: 64px;
+	
+	height: 2px;
+	background: -webkit-linear-gradient(top,rgba(0,0,0,0.2),rgba(0,0,0,0));
+	background: linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0));
+}
+
+.status-menu {
+	position: relative;
+	
+	display: block !important;
+	width: 1060px;
+	padding: 0 0 0 173px;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+.fixed .status-menu { padding: 0 0 0 71px; }
+
+/* - - - - - - - - - - - - - - -*\
+  Avatar
+\*- - - - - - - - - - - - - - - */
+
+.status-menu:after {
+	content:"";
+	position: absolute;
+	top: -51px;
+	left: -8px;
+	
+	width: 150px;
+	height: 150px;
+	background: #ddd no-repeat center top / cover;
+	border: 8px solid #fff;
+	border-radius: 50%;
+	
+	opacity: 1;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.fixed .status-menu:after {
+	top: 0px;
+	
+	width: 48px;
+	height: 48px;
+	
+	box-shadow: none;
+}
+
+/* - - - - - - - - - - - - - - -*\
+  Buttons
+\*- - - - - - - - - - - - - - - */
 
 .status-menu .status-button {
 	display: inline-block !important;
