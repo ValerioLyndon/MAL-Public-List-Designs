@@ -1,11 +1,9 @@
 /**
  * "Clarity" by Valerio Lyndon
  * Dark Mode Modification
- * Revision 2.0 + MAL Shutdown Fixes 5
- */
- 
-/**
- * TABLE OF CONTENTS
+ * Revision 2.1
+ * 
+ * = TABLE OF CONTENTS =
  * 
  * GENERIC
  * Background
@@ -17,8 +15,6 @@
  * ONE-OFFS
  * 
  * OVERLAYS
- * 
- * MAL-SHUTDOWN-FIXES
  */
 
 
@@ -39,7 +35,7 @@
 /* General */
 .list-table[data-items="[]"]:after,
 .data.number,
-.list-block:before,
+.status-menu-container:before,
 .list-item,
 .data.priority,
 #footer-block,
@@ -320,11 +316,16 @@ a, a:hover { color: #416abe; }
   Header
 \*- - - - - - - - - - - - - - - */
 
-/* Background */
+/* Header & Footer Shadows */
 
-.list-block:after {
-	background: -webkit-linear-gradient(top,rgba(0,0,0,0.8),rgba(0,0,0,0));
-	background: linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
+.status-menu-container:after {
+	background: -webkit-linear-gradient(top,rgba(0,0,0,0.6),rgba(0,0,0,0));
+	background: linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0));
+}
+
+#footer-block:before {
+	background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.3),rgba(0,0,0,0));
+	background: linear-gradient(to top,rgba(0,0,0,0.3),rgba(0,0,0,0));
 }
 
 /* Avatar */
@@ -420,26 +421,4 @@ a, a:hover { color: #416abe; }
 
 #advanced-options [class*="-widget"] select  {
 	background-image: url(https://i.imgur.com/KF8oOyC.png);
-}
-
-
-
-
-
-/*==============================*\
-  !MAL-SHUTDOWN-FIXES
-\*==============================*/
-
-.initialize-tutorial:before {
-	background: #161616;
-}
-.initialize-tutorial:after {
-	color: #ababab;
-}
-.initialize-tutorial .initialize-tutorial__message {
-	background: #161616;
-	color: #ababab !important;
-}
-.initialize-tutorial .initialize-tutorial__message a {
-	color: #ababab !important;
 }
