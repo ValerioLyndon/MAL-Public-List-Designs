@@ -1,10 +1,8 @@
 /**
  * "Tilt" by Valerio Lyndon
- * Revision 7.1 + MAL Shutdown Fixes 6
- */
-
-/**
- * TABLE OF CONTENTS
+ * Revision 7.2
+ * 
+ * = TABLE OF CONTENTS =
  * 
  * IMPORTS
  * 
@@ -33,8 +31,6 @@
  * Progress
  * Season-&-Studio
  * Tags
- * 
- * 
  * More-Info
  * 
  * FOOTER
@@ -42,8 +38,6 @@
  * FILTER-MENU       : Overlayed menus and iframes.
  * 
  * MEDIA-QUERY-FIXES : Fixes for small screens.
- * 
- * MAL-SHUTDOWN-FIXES
  */
 
 
@@ -762,8 +756,7 @@ body[data-owner="1"] .btn-menu .username {
 .list-table-header .header-title.image,
 .list-table-header .header-title.tags,
 .list-table-header .header-title.started,
-.list-table-header .header-title.studio,
-.list-table-header .header-title.magazine
+.list-table-header .header-title.studio
 { display: none !important; }
 
 .list-table-header .header-title a .sort-icon {
@@ -897,7 +890,7 @@ body[data-owner="1"] .btn-menu .username {
 	width: 100%;
 	min-width: 1056px;
 	height: 430px;
-	margin-top: 64px;
+	padding-top: 64px;
 	
 	overflow: hidden;
 }
@@ -1609,8 +1602,8 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 	width: 100%;
 	min-width: 1056px;
 	padding: 30px 0 30px 0;
-	border: none;
 	background: #001a0e;
+	border: none;
 	
 	font-family: "Open Sans";
 }
@@ -1818,7 +1811,7 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 		right: auto;
 	}
 	.status-menu-container {
-		top: -64px !important;
+		top: 0 !important;
 		left: -3px;
 	}
 	.status-menu-container:after {
@@ -1829,104 +1822,11 @@ body[data-query*="\"status\":6"] .image-container { background-image: url(http:/
 		left: 701px;
 	}
 	.list-table > tbody:first-of-type {
-		top: 2px;
+		top: 66px;
 		left: 176px;
 	}
 	.list-unit .list-status-title .stats {
-		top: 2px;
+		top: 66px;
 		left: 231px;
 	}
 }
-
-
-
-
-
-/*==============================*\
-  !MAL-SHUTDOWN-FIXES
-\*==============================*/
-
-body .initialize-tutorial {
-	position: fixed;
-	top: 0;
-	left: 0;
-	
-	display: block;
-	width: 40px;
-	height: 40px;
-	padding: 0;
-	background: none !important;
-	border: none !important;
-	
-	z-index: 9999;
-	pointer-events: none;
-}
-body .initialize-tutorial:hover {
-	pointer-events: auto;
-}
-
-.initialize-tutorial:before {
-	content: "";
-	position: absolute;
-	top: -40px;
-	left: -45px;
-	
-	display: block;
-	width: 90px;
-	height: 74px;
-	background: #000d07;
-	border-bottom: 2px solid #d60025;
-	
-	pointer-events: auto;
-	transform: rotate(-45deg);
-	z-index: -1;
-}
-
-.initialize-tutorial:after {
-	content: "\f129";
-	position: absolute;
-	top: 0;
-	left: 0;
-	
-	width: 30px;
-	height: 30px;
-	
-	color: #0cd693;
-	font: 20px/30px "FontAwesome";
-	
-	transition: all 0.3s ease;
-	z-index: 1;
-}
-
-.initialize-tutorial:hover:after { top: 10px; }
-
-.initialize-tutorial .initialize-tutorial__message {
-	position: relative;
-	left: -450px;
-	
-	width: 450px;
-	height: 30px;
-	padding: 10px 10px 10px 30px;
-	background: #000d07;
-	border-bottom: 2px solid #d60025;
-	border-right: 2px solid #d60025;
-	
-	color: #0cd693;
-	line-height: 15px;
-	text-align: left;
-	
-	opacity: 0;
-	transition: all 0.3s ease;
-	z-index: 1;
-}
-
-.initialize-tutorial:hover .initialize-tutorial__message {
-	left: 0;
-	
-	opacity: 1;
-}
-
-.initialize-tutorial .initialize-tutorial__message a { color: #0cd693 !important; }
-.initialize-tutorial .initialize-tutorial__message a:hover { text-decoration: underline !important; }
-
-.initialize-tutorial .initialize-tutorial__message .fa { display: none; }
