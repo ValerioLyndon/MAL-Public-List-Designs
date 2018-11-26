@@ -1,10 +1,8 @@
 /**
  * "Clarity" by Valerio Lyndon
- * Revision 21.2 + MAL Shutdown Fixes 6
- */
-
-/**
- * TABLE OF CONTENTS : Use CTRL+F to find items quickly.
+ * Revision 21.2
+ * 
+ * = TABLE OF CONTENTS =
  * 
  * IMPORTS
  * 
@@ -46,8 +44,6 @@
  * Base
  * iframes
  * Filter-Menu
- * 
- * MAL-SHUTDOWN-FIXES
  */
 
 
@@ -1983,12 +1979,9 @@ footer {
   OVERLAYS @iframes
 \*------------------------------*/
 
-#fancybox-outer [class^="fancy-"] {
-	display: none;
-}
-#fancybox-outer {
-	box-shadow: 0 0 32px rgba(0,0,0,0.5);
-}
+#fancybox-outer [class^="fancy-"] { display: none; }
+
+#fancybox-outer { box-shadow: 0 0 32px rgba(0,0,0,0.5); }
 
 #fancybox-outer #fancybox-close {
     top: -13px;
@@ -2348,95 +2341,3 @@ footer {
 	content: "\f00d  Close";
 	font: 12px/26px Arial, FontAwesome, sans-serif;
 }
-
-
-
-
-
-/*==============================*\
-  !MAL-SHUTDOWN-FIXES
-\*==============================*/
-
-body .initialize-tutorial {
-	position: fixed;
-	top: 0;
-	left: 0;
-	
-	display: block;
-	width: 40px;
-	height: 40px;
-	padding: 0;
-	background: none !important;
-	border: none !important;
-	
-	z-index: 9999;
-	pointer-events: none;
-}
-body .initialize-tutorial:hover {
-	pointer-events: auto;
-}
-
-.initialize-tutorial:before {
-	content: "";
-	position: absolute;
-	top: -40px;
-	left: -45px;
-	
-	display: block;
-	width: 90px;
-	height: 74px;
-	background: #fff;
-	border-bottom: 2px solid #4065BA;
-	
-	pointer-events: auto;
-	transform: rotate(-45deg);
-	z-index: -1;
-}
-
-.initialize-tutorial:after {
-	content: "\f129";
-	position: absolute;
-	top: 0;
-	left: 0;
-	
-	width: 30px;
-	height: 30px;
-	
-	color: #111;
-	font: 20px/30px FontAwesome;
-	
-	transition: all 0.3s ease;
-	z-index: 1;
-}
-
-.initialize-tutorial:hover:after { top: 10px; }
-
-.initialize-tutorial .initialize-tutorial__message {
-	position: relative;
-	left: -450px;
-	
-	width: 450px;
-	height: 30px;
-	padding: 10px 10px 10px 30px;
-	background: #fff;
-	border-bottom: 2px solid #4065BA;
-	border-right: 2px solid #4065BA;
-	
-	color: #111;
-	line-height: 15px;
-	text-align: left;
-	
-	opacity: 0;
-	transition: all 0.3s ease;
-	z-index: 1;
-}
-
-.initialize-tutorial:hover .initialize-tutorial__message {
-	left: 0;
-	
-	opacity: 1;
-}
-
-.initialize-tutorial .initialize-tutorial__message a { color: #111 !important; }
-
-.initialize-tutorial .initialize-tutorial__message .fa { display: none; }
