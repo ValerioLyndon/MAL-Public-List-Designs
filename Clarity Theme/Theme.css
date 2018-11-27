@@ -1,6 +1,6 @@
 /**
  * "Clarity" by Valerio Lyndon
- * Revision 21.3
+ * Revision 21.4
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1058,9 +1058,7 @@ a, a:hover {
 	z-index: -1;
 }
 
-.list-table > tbody:first-of-type:hover .list-table-header {
-	pointer-events: auto;
-}
+.list-table > tbody:first-of-type:hover .list-table-header { pointer-events: auto; }
 
 
 /* Items */
@@ -1085,29 +1083,30 @@ a, a:hover {
 .list-table-header .header-title a {
 	display: block !important;
 	
-	width: 0 !important;
+	width: 13px !important;
 	height: 26px !important;
 	background: #323232 !important;
 	border-radius: 13px 0 0 13px;
 	margin-left: -13px;
+	overflow: hidden;
+	box-sizing: border-box;
 	
 	color: #fff !important;
 	font: 11px/26px Verdana, Arial, sans-serif !important;
 	text-align: center !important;
 	text-indent: -7.5px;
+	white-space: normal !important;
 	
 	opacity: 0;
 }
 
-.list-table-header .header-title a.hover_info {
-	display: none !important;
-}
+tbody:first-of-type:hover .list-table-header .header-title.started a, tbody:first-of-type:hover .list-table-header .header-title.finished a { padding: 0 13px; }
 
-.list-table-header .header-title a:hover {
-	background: #1d439b !important;
-}
+.list-table-header .header-title a.hover_info { display: none !important; }
 
-.list-table > tbody:first-of-type:hover .list-table-header .header-title a {
+.list-table-header .header-title a:hover { background: #1d439b !important; }
+
+tbody:first-of-type:hover .list-table-header .header-title a {
 	width: 80px !important;
 	
 	opacity: 1;
@@ -1121,7 +1120,7 @@ a, a:hover {
 	height: 10px;
 	margin-left: -5px;
 	
-	color: #fff !important;
+	color: inherit !important;
 	font-size: 10px;
 	line-height: 10px;
 }
@@ -1130,14 +1129,13 @@ a, a:hover {
 
 /* Renames certain items */
 
-.header-title.title a, .header-title.started a, .header-title.finished a {	 font-size: 0 !important; }
-.header-title.title a:after, .header-title.started a:after, .header-title.finished a:after { font-size: 11px !important; }
+.header-title.title a {	 font-size: 0 !important; }
 
-.header-title.title a:after { content: "Title"; }
-.header-title.started a[href*="order=3"]:after { content: "Started"; }
-.header-title.finished a[href*="order=2"]:after { content: "Finished"; }
-.header-title.started a[href*="order=14"]:after { content: "Air Start"; }
-.header-title.finished a[href*="order=15"]:after { content: "Air Finish"; }
+.header-title.title a:after {
+	content: "Title";
+	
+	font-size: 11px !important;
+}
 
 /* Removes useless tags item */
 
@@ -2026,7 +2024,7 @@ footer {
 #advanced-options .advanced-options-button,
 #advanced-options [class*="-widget"]
 {
-	width: 550px;
+	width: 100%;
 	padding: 0;
 	border: none;
 }
@@ -2053,7 +2051,7 @@ footer {
 
 #advanced-options .advanced-options-header:before {
 	display: inline-block;
-	width: 69px;
+	width: 249px;
 	height: 100%;
 	padding-bottom: 7.5px;
 	
@@ -2123,7 +2121,7 @@ footer {
 }
 
 #advanced-options [class*="-widget"] .widget-header {
-	width: 70.5px;
+	width: 250.5px;
 	height: 26px;
 	padding: 11px 7.5px 11px 0;
 	border-right: 2px solid #bababa;
@@ -2190,17 +2188,17 @@ footer {
 }
 
 
-#advanced-options .airing-status select {
+#advanced-options .filter-widget[class*="-status"] select {
 	width: 197.5px !important;
 }
 
 
-#advanced-options .producer select {
+#advanced-options .producer select, #advanced-options .magazine select {
 	width: 387.5px !important;
 }
 
 
-#advanced-options .aired-date span:nth-of-type(n+2) {
+#advanced-options .filter-widget[class*="-date"] span:nth-of-type(n+2) {
 	display: inline-block;
 	width: 40px;
 	padding: 0 3px 0 7.5px;
@@ -2213,30 +2211,30 @@ footer {
 	font-style: italic;
 }
 
-#advanced-options .aired-date span:nth-of-type(3) {
+#advanced-options .filter-widget[class*="-date"] span:nth-of-type(3) {
 	margin-left: 7.5px !important;
 }
 
-#advanced-options .aired-date .year,
-#advanced-options .aired-date .month,
-#advanced-options .aired-date .day {
+#advanced-options .filter-widget[class*="-date"] .year,
+#advanced-options .filter-widget[class*="-date"] .month,
+#advanced-options .filter-widget[class*="-date"] .day {
 	border-radius: 0;
 	padding: 0 16px 0 7.5px;
 	border-left-width: 0;
 }
 
-#advanced-options .aired-date .year,
-#advanced-options .aired-date .month {
+#advanced-options .filter-widget[class*="-date"] .year,
+#advanced-options .filter-widget[class*="-date"] .month {
 	border-right: none;
 }
 
-#advanced-options .aired-date .day {
+#advanced-options .filter-widget[class*="-date"] .day {
 	border-radius: 0 13px 13px 0;
 }
 
-#advanced-options .aired-date .year { width: 60px !important; }
-#advanced-options .aired-date .month,
-#advanced-options .aired-date .day { width: 45px !important; }
+#advanced-options .filter-widget[class*="-date"] .year { width: 60px !important; }
+#advanced-options .filter-widget[class*="-date"] .month,
+#advanced-options .filter-widget[class*="-date"] .day { width: 45px !important; }
 
 #advanced-options .aired-season .year {
 	width: 60px !important;
