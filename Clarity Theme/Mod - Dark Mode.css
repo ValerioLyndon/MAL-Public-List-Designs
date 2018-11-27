@@ -1,7 +1,7 @@
 /**
  * "Clarity" by Valerio Lyndon
  * Dark Mode Modification
- * Revision 2.1
+ * Revision 2.2
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -397,7 +397,7 @@ a, a:hover { color: #416abe; }
 #advanced-options [class*="-widget"] select,
 #advanced-options [class*="-widget"] label,
 #advanced-options [class*="-widget"] .widget-header,
-#advanced-options .aired-date span:nth-of-type(n+2) {
+#advanced-options .filter-widget[class*="-date"] span:nth-of-type(n+2) {
 	border-color: #777 !important;
 }
 
