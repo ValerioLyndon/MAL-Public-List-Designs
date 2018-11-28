@@ -1,7 +1,7 @@
 /**
  * "Clarity" by Valerio Lyndon
  * Dark Mode Modification
- * Revision 2.2
+ * Revision 2.3
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -30,6 +30,7 @@
 .header-info,
 .icon-menu,
 .list-menu-float .icon-menu,
+.icon-menu.setting .text a,
 .stats a,
 .list-table > tbody:first-of-type:after,
 /* General */
@@ -113,6 +114,7 @@
 .icon-menu.profile:after,
 .list-menu-float .icon-menu,
 .list-menu-float .icon-menu .text,
+.icon-menu.setting .text a,
 .icon-menu.quick-add:before,
 .icon-menu:before,
 .stats a,
@@ -305,7 +307,10 @@ body { background: #161616 none no-repeat center / cover fixed !important; }
 a, a:hover { color: #416abe; }
 
 #search-box input,
-.data.tags textarea {
+.data.tags textarea,
+.data.progress input,
+.data.chapter input,
+.data.volume input {
 	border-color: #444;
 	background: #191919;
 	color: #ababab;
