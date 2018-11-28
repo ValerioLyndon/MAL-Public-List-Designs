@@ -1,6 +1,6 @@
 /**
  * "Clarity" by Valerio Lyndon
- * Revision 21.4
+ * Revision 21.5
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -212,7 +212,7 @@ body {
 
 
 a, a:hover {
-	color: #1d439b;
+	color: #4065ba;
 }
 
 
@@ -928,6 +928,7 @@ a, a:hover {
 	background: #323232 !important;
 	border: none !important;
 	border-radius: 0 13px 13px 0;
+	overflow: hidden;
 	
 	font: 14px/26px Arial, Verdana, sans-serif !important;
 	text-indent: 7.5px;
@@ -945,7 +946,6 @@ a, a:hover {
 }
 
 .icon-menu.setting:hover .text .link-list-setting { left: 120px !important; }
-.icon-menu.setting:hover .text .link-style-setting { left: 13px !important; }
 
 .icon-menu.setting .text a:hover { background: #1d439b !important; }
 
@@ -1397,7 +1397,7 @@ tbody:first-of-type:hover .list-table-header .header-title a {
 }
 
 .data.title .link.sort:hover {
-	color: #1d439b !important;
+	color: #4065BA !important;
 }
 
 .content-status, .rewatching, .rereading {
@@ -1546,6 +1546,20 @@ tbody:first-of-type:hover .list-table-header .header-title a {
 	color: #9696eb;
 	font-family: FontAwesome;
 	font-size: 13px;
+}
+
+.data.progress input, .data.chapter input, .data.volume input {
+	height: 15px;
+	padding: 0 1px;
+	background: #ebebeb;
+	border: 1px solid #ddd;
+	outline-color: #4065BA !important;
+	
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	
+	color: #111;
+	font: 11px Verdana, Arial, sans-serif;
 }
 
 
@@ -1755,7 +1769,7 @@ tbody:first-of-type:hover .list-table-header .header-title a {
 .data.tags textarea {
 	position: absolute;
 	top: 50%;
-	right: 0;
+	right: 4px;
 	
 	width: 530px !important;
 	height: 64px !important;
@@ -1897,7 +1911,7 @@ tbody:first-of-type:hover .list-table-header .header-title a {
 
 .list-table .more-info .more-content a { color: #323232 !important; }
 
-.list-table .more-info .more-content a:hover { color: #1d439b !important; }
+.list-table .more-info .more-content a:hover { color: #4065ba !important; }
 
 
 
