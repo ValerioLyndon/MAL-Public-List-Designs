@@ -1,0 +1,179 @@
+/**
+ * "Clarity" by Valerio Lyndon
+ * Winter Event Modification for Light Mode
+ * Revision 0.0
+ */
+
+/* - - - - - - - - - - - - - - -*\
+  Accent Colour for Background
+\*- - - - - - - - - - - - - - - */
+
+/* Nav Buttons */
+.header .header-title:hover,
+.icon-menu:hover,
+.list-menu-float .icon-menu:hover,
+.icon-menu.setting .text a:hover,
+.stats a:hover,
+.list-table > tbody:first-of-type:hover:after,
+.list-table-header .header-title a:hover,
+/* Header */
+#status-menu .status-button:after
+{ background: #ab2929 !important; }
+
+#status-menu .status-button.all_anime:after { background: #bb4646 !important; }
+#status-menu .status-button:after { background: #228b22 !important; }
+
+/* - - - - - - - - - - - - - - -*\
+  Accent Colour for Text
+\*- - - - - - - - - - - - - - - */
+
+/* Nav Buttons */
+.header-info a:hover,
+/* General */
+.list-table .list-table-data  .data:not(.score):not(.tags):not(.licensor):not(.studio) a:not(.edit-disabled):hover,
+.data.title .link.sort:hover,
+.list-table .more-info .more-content a:hover
+{ color: #be4141 !important; }
+
+/* - - - - - - - - - - - - - - -*\
+  Darker Text
+\*- - - - - - - - - - - - - - - */
+
+.data.type,
+.data.title .add-edit-more span a,
+.add-edit-more,
+.data.progress:before,
+.data.rated:before,
+.data.magazine:before,
+.data.storage:before,
+.data.retail:before,
+.data.season:before,
+.data.season:empty:after,
+.data.chapter:before,
+.data.volume:before,
+.data.studio:empty:before,
+.data.licensor:empty:before,
+.data.started:before,
+.data.finished:before,
+.data.days:before,
+.data.airing-started:before,
+.data.airing-finished:before,
+.content-status,
+.rewatching,
+.rereading
+{ color: #8a8a8a !important; }
+
+/* - - - - - - - - - - - - - - -*\
+  One-Offs
+\*- - - - - - - - - - - - - - - */
+
+.list-table .more-info .more-content a { border-bottom-color: #ab2929; }
+
+.data.tags textarea,
+.data.progress input, .data.chapter input, .data.volume input
+{ outline-color: #ab2929 !important; }
+
+/* - - - - - - - - - - - - - - -*\
+  Main Images
+\*- - - - - - - - - - - - - - - */
+
+/* Header */
+
+.cover-block { background-image: url(https://i.imgur.com/GWNr6Lx.jpg) !important; }
+
+#cover-image-container {
+	position: relative;
+	z-index: 1;
+	
+	width: 100%;
+	min-width: 1060px;
+	background-image: url(https://i.imgur.com/zcSVeSz.png) !important;
+	background-position: calc(50% + 430px) center;
+}
+
+#cover-image-container:after {
+	color: #fbf7eb;
+	text-shadow: 2px 2px 8px #d7ab34;
+}
+
+/* - - - - - - - - - - - - - - -*\
+  New Styling
+\*- - - - - - - - - - - - - - - */
+
+/* Header Fog */
+
+@keyframes fog {
+	0% { background-position: 0 bottom; }
+	100% { background-position: 447px bottom; }
+	
+	0%, 25%, 56%, 82%, 100% { opacity: 0.33; }
+	5% { opacity: 0.29; }
+	40% { opacity: 0.31; }
+	71% { opacity: 0.355; }
+	90% { opacity: 0.3; }
+}
+
+.cover-block:before { z-index: 2; }
+
+.cover-block:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	
+	width: 100%;
+	height: 100px;
+	background: transparent url(https://i.imgur.com/zNZTnVZ.png) repeat-x 0 top / 447px 100px;
+	
+	opacity: 0.33;
+	animation: fog 120s linear 0s infinite both;
+}
+
+/* Header Lines */
+
+.status-menu-container:before {
+	height: 56px;
+	border-width: 4px 0;
+	border-style: solid;
+	border-color: #d7ab34;
+}
+
+.status-menu:after {
+	left: -4px;
+	top: -47px;
+	
+	border-width: 4px;
+	box-shadow: 0 0 0 4px #d7ab34;
+}
+
+.fixed .status-menu:after { top: 4px; }
+
+/* List */
+
+body {
+	background-image:
+		linear-gradient(to right, rgba(239,239,239,0.6), rgba(239,239,239,0.8) 20%, rgba(239,239,239,0.9), rgba(239,239,239,0.8) 80%, rgba(239,239,239,0.6)),
+		url(https://i.imgur.com/lQRdGCV.jpg)
+		!important;
+	background-position: center !important;
+}
+
+.list-item, .data.priority {
+	background: #fff no-repeat center / cover fixed !important;
+	background-image:
+		linear-gradient(to right, rgba(255,255,255,0.8), rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.84), rgba(255,255,255,0.9) 70%, rgba(255,255,255,0.8)),
+		url(https://i.imgur.com/lQRdGCV.jpg)
+		!important;
+}
+
+.list-item { box-shadow: 0 1px 5px rgba(0,0,0,0.25); }
+
+.list-item:hover .data.tags a.edit { opacity: 0.9; }
+
+.data.score a,
+.data.tags a:not(.edit),
+.data.studio a,
+.data.licensor a,
+.data.progress input {
+	background: rgba(255,255,255,0.93);
+}
