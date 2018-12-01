@@ -215,6 +215,9 @@ a, a:hover {
 	color: #4065ba;
 }
 
+/* Remove Tutorial/Notices */
+.initialize-tutorial { display: none !important; }
+
 
 
 
@@ -1588,13 +1591,9 @@ tbody:first-of-type:hover .list-table-header .header-title a {
 	z-index: 1;
 }
 
-.status:not(.plantowatch):not(.plantoread) ~ .data.priority {
-	display: none !important;
-}
+.status:not(.plantowatch):not(.plantoread) ~ .data.priority { display: none !important; }
 
-.list-item:hover .data.priority {
-	opacity: 0;
-}
+.list-item:hover .data.priority { opacity: 0; }
 
 .data.priority:before {
 	content: "\f0a2";

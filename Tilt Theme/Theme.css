@@ -129,6 +129,9 @@ a:hover {
 	text-decoration: none !important;
 }
 
+/* Remove Tutorial/Notices */
+.initialize-tutorial { display: none !important; }
+
 
 
 
