@@ -1,7 +1,7 @@
 /**
  * "Clarity" by Valerio Lyndon
  * Winter Event Modification for Light Mode
- * Revision 0.0
+ * Revision 0.1
  */
 
 /* - - - - - - - - - - - - - - -*\
@@ -158,7 +158,7 @@ body {
 	background-position: center !important;
 }
 
-.list-item, .data.priority {
+.list-item, .data.priority, .list-table[data-items="[]"]:after {
 	background: #fff no-repeat center / cover fixed !important;
 	background-image:
 		linear-gradient(to right, rgba(255,255,255,0.8), rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.84), rgba(255,255,255,0.9) 70%, rgba(255,255,255,0.8)),
@@ -166,7 +166,7 @@ body {
 		!important;
 }
 
-.list-item { box-shadow: 0 1px 5px rgba(0,0,0,0.25); }
+.list-item, .list-table[data-items="[]"]:after { box-shadow: 0 1px 5px rgba(0,0,0,0.25); }
 
 .list-item:hover .data.tags a.edit { opacity: 0.9; }
 

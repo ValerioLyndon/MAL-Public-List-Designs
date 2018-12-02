@@ -1,7 +1,7 @@
 /**
  * "Clarity" by Valerio Lyndon
  * Winter Event Modification for Dark Mode
- * Revision 0.0
+ * Revision 0.1
  */
 
 /* - - - - - - - - - - - - - - -*\
@@ -30,7 +30,7 @@
 /* Nav Buttons */
 .header-info a:hover,
 /* General */
-.list-table .list-table-data  .data:not(.score) a:not(.edit-disabled):hover,
+.list-table .list-table-data  .data:not(.score):not(.tags):not(.licensor):not(.studio) a:not(.edit-disabled):hover,
 .data.title .link.sort:hover,
 .list-table .more-info .more-content a:hover
 { color: #be4141 !important; }
@@ -132,7 +132,7 @@ body {
 	background-position: center !important;
 }
 
-.list-item, .data.priority {
+.list-item, .data.priority, .list-table[data-items="[]"]:after {
 	background: #212121 no-repeat center / cover fixed !important;
 	background-image:
 		linear-gradient(to right, rgba(33,33,33,0.75), rgba(33,33,33,0.94) 30%, rgba(33,33,33,0.895), rgba(33,33,33,0.94) 70%, rgba(33,33,33,0.75)),
@@ -140,7 +140,7 @@ body {
 		!important;
 }
 
-.list-item { box-shadow: 0 1px 5px rgba(0,0,0,0.42); }
+.list-item, .list-table[data-items="[]"]:after { box-shadow: 0 1px 5px rgba(0,0,0,0.42); }
 
 .list-item:hover .data.tags a.edit { opacity: 0.9; }
 
@@ -148,5 +148,6 @@ body {
 .data.tags a:not(.edit),
 .data.studio a,
 .data.licensor a,
-.data.progress input
-{ background: rgba(25,25,25,0.9); }
+.data.progress input {
+	background: rgba(25,25,25,0.9) !important;
+}
