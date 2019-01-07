@@ -1,85 +1,28 @@
 /**
  * "Clarity" by Valerio Lyndon
  * Winter Event Modification for Light Mode
- * Revision 0.2
+ * Revision 0.3
  */
 
-/* - - - - - - - - - - - - - - -*\
-  Accent Colour for Background
-\*- - - - - - - - - - - - - - - */
+:root {
+	--text-h: #be4141;
+	--text-dim: #8a8a8a;
+	--text-dim-h: #be4141;
+	--accent: #be4141;
+	
+	--btn-head-bg-h: #ab2929;
+	
+	--edit-btn: #eee;
+}
 
-/* Nav Buttons */
-.header .header-title:hover,
-.icon-menu:hover,
-.list-menu-float .icon-menu:hover,
-.icon-menu.setting .text a:hover,
-.stats a:hover,
-.list-table > tbody:first-of-type:hover:after,
-.list-table-header .header-title a:hover,
-/* Header */
-#status-menu .status-button:after
-{ background: #ab2929 !important; }
-
-#status-menu .status-button.all_anime:after { background: #bb4646 !important; }
-#status-menu .status-button:after { background: #228b22 !important; }
 
 /* - - - - - - - - - - - - - - -*\
-  Accent Colour for Text
-\*- - - - - - - - - - - - - - - */
-
-/* Nav Buttons */
-.header-info a:hover,
-/* General */
-.list-table .list-table-data  .data:not(.score):not(.tags):not(.licensor):not(.studio) a:not(.edit-disabled):hover,
-.data.title .link.sort:hover,
-.list-table .more-info .more-content a:hover
-{ color: #be4141 !important; }
-
-/* - - - - - - - - - - - - - - -*\
-  Darker Text
-\*- - - - - - - - - - - - - - - */
-
-.data.type,
-.data.title .add-edit-more span a,
-.add-edit-more,
-.data.progress:before,
-.data.rated:before,
-.data.magazine:before,
-.data.storage:before,
-.data.retail:before,
-.data.season:before,
-.data.season:empty:after,
-.data.chapter:before,
-.data.volume:before,
-.data.studio:empty:before,
-.data.licensor:empty:before,
-.data.started:before,
-.data.finished:before,
-.data.days:before,
-.data.airing-started:before,
-.data.airing-finished:before,
-.content-status,
-.rewatching,
-.rereading
-{ color: #8a8a8a !important; }
-
-/* - - - - - - - - - - - - - - -*\
-  One-Offs
-\*- - - - - - - - - - - - - - - */
-
-.list-table .more-info .more-content a { border-bottom-color: #ab2929; }
-
-.data.tags textarea,
-.data.progress input, .data.chapter input, .data.volume input
-{ outline-color: #ab2929 !important; }
-
-/* - - - - - - - - - - - - - - -*\
-  Main Images
+  New Styling
 \*- - - - - - - - - - - - - - - */
 
 /* Header */
 
-.cover-block { background-image: url(https://i.imgur.com/GWNr6Lx.jpg) !important; }
+.cover-block { background-image: url(https://i.imgur.com/t53PJcs.jpg) !important; }
 
 #cover-image-container {
 	position: relative;
@@ -95,10 +38,6 @@
 	color: #fbf7eb;
 	text-shadow: 2px 2px 8px #d7ab34;
 }
-
-/* - - - - - - - - - - - - - - -*\
-  New Styling
-\*- - - - - - - - - - - - - - - */
 
 /* Header Fog */
 
@@ -129,7 +68,10 @@
 	animation: fog 120s linear 0s infinite both;
 }
 
-/* Header Lines */
+/* Nav */
+
+#status-menu .status-button.all_anime:after { background: #bb4646 !important; }
+#status-menu .status-button:after { background: #228b22 !important; }
 
 .status-menu-container:before {
 	height: 56px;
@@ -153,7 +95,7 @@
 body {
 	background-image:
 		linear-gradient(to right, rgba(239,239,239,0.6), rgba(239,239,239,0.8) 20%, rgba(239,239,239,0.9), rgba(239,239,239,0.8) 80%, rgba(239,239,239,0.6)),
-		url(https://i.imgur.com/lQRdGCV.jpg)
+		url(https://i.imgur.com/f4429G9.jpg)
 		!important;
 	background-position: center !important;
 	background-attachment: fixed !important;
@@ -163,7 +105,7 @@ body {
 	background: #fff no-repeat center / cover fixed !important;
 	background-image:
 		linear-gradient(to right, rgba(255,255,255,0.8), rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.84), rgba(255,255,255,0.9) 70%, rgba(255,255,255,0.8)),
-		url(https://i.imgur.com/lQRdGCV.jpg)
+		url(https://i.imgur.com/f4429G9.jpg)
 		!important;
 }
 
@@ -171,9 +113,8 @@ body {
 
 .list-item:hover .data.tags a.edit { opacity: 0.9; }
 
-.data.score a,
-.data.tags a:not(.edit),
-.data.studio a,
-.data.licensor a {
-	background: rgba(255,255,255,0.93);
-}
+.data.score a, .data.tags a:not(.edit), .data.studio a, .data.licensor a { background: rgba(255,255,255,0.93); }
+
+.list-table .more-info .more-content a { border-bottom-color: #ab2929; }
+
+.data.tags textarea, .data.progress input, .data.chapter input, .data.volume input { outline-color: #ab2929 !important; }
