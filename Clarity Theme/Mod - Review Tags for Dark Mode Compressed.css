@@ -1,6 +1,0 @@
-/* "Clarity" by Valerio Lyndon / Review Tags Modification for Dark Mode / Revision 0.0 */
-
-/* Raise or lower this number to change how wide the box is. Make sure not to remove the "px" at the end. */
-.data.tags { width: 240px; }
-
-.data.tags div:not(:empty){padding:2px 8px;background:#191919;border-radius:8.5px}.data.tags span{display:inline;font-size:11px!important;cursor:text}.data.tags a:not(.edit){display:inline;padding:0;background:0 0;pointer-events:none}
