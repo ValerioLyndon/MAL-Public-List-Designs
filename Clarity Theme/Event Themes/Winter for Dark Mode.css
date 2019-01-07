@@ -1,7 +1,7 @@
 /**
  * "Clarity" by Valerio Lyndon
  * Winter Event Modification for Dark Mode
- * Revision 0.1
+ * Revision 0.2
  */
 
 /* - - - - - - - - - - - - - - -*\
@@ -130,9 +130,10 @@ body {
 		url(https://i.imgur.com/lQRdGCV.jpg)
 		!important;
 	background-position: center !important;
+	background-attachment: fixed !important;
 }
 
-.list-item, .data.priority, .list-table[data-items="[]"]:after {
+.list-item, .data.number, .data.priority, .list-table[data-items="[]"]:after {
 	background: #212121 no-repeat center / cover fixed !important;
 	background-image:
 		linear-gradient(to right, rgba(33,33,33,0.75), rgba(33,33,33,0.94) 30%, rgba(33,33,33,0.895), rgba(33,33,33,0.94) 70%, rgba(33,33,33,0.75)),
@@ -147,7 +148,6 @@ body {
 .data.score a,
 .data.tags a:not(.edit),
 .data.studio a,
-.data.licensor a,
-.data.progress input {
-	background: rgba(25,25,25,0.9) !important;
+.data.licensor a {
+	background: rgba(25,25,25,0.9);
 }
