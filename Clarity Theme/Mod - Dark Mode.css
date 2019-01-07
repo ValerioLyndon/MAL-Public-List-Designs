@@ -1,253 +1,73 @@
 /**
  * "Clarity" by Valerio Lyndon
  * Dark Mode Modification
- * Revision 2.3
- * 
- * = TABLE OF CONTENTS =
- * 
- * GENERIC
- * Background
- * Text
- * Box-Shadow
- * 
- * IMAGES
- * 
- * ONE-OFFS
- * 
- * OVERLAYS
+ * Revision 3.0
  */
 
+/* - - - - - - - - - - - - - - -*\
+  Variables
+\*- - - - - - - - - - - - - - - */
 
+:root {
+                 /* Primary Customization */
+    --banner: url(https://i.imgur.com/WaLokPG.jpg);
+ --character: url(https://i.imgur.com/h8HW1jf.png);
+	
+	              /* Generic Colours */
+             --pbg: #161616;
+              --bg: #212121;
+         --bg-dark: #444;
+            --text: #ababab;
+          --text-h: #416abe;
+        --text-dim: #777;
+      --text-dim-h: #999;
+       --text-dark: #ababab;
+            --icon: #959595;
+          --accent: #416abe;
 
+                 /* Button Colours */
+          --btn-bg: #191919;
+        --btn-bg-h: #ababab;
+   --btn-head-bg-h: #416abe;
+      --btn-text-h: #212121;
 
+                 /* Header Colours */
+      --text-head: #9b9b9b;
+    --text-head-h: #ababab;
 
-/*==============================*\
-  !GENERIC-COLOURS
-\*==============================*/
+                 /* Status Colours */
+        --watching: #2db039;
+       --completed: #26448f;
+          --onhold: #f9d457;
+         --dropped: #a12f31;
+     --plantowatch: #c3c3c3;
 
-/* Nav Buttons */
-.header .header-title,
-.header-info,
-.icon-menu,
-.list-menu-float .icon-menu,
-.icon-menu.setting .text a,
-.stats a,
-.list-table > tbody:first-of-type:after,
-/* General */
-.list-table[data-items="[]"]:after,
-.data.number,
-.status-menu-container:before,
-.list-item,
-.data.priority,
-#footer-block,
-/* Overlays */
-#advanced-options,
-#fancybox-outer
-{ background: #212121 !important; }
+                 /* Single-Use Colours */
+        --cover-bg: #090909;
+        --edit-btn: #323232;
+       --checkmark: #416abe;
+}
 
 
 /* - - - - - - - - - - - - - - -*\
-  Highlight Background
+  Non-Variables
 \*- - - - - - - - - - - - - - - */
 
-/* General */
-.data.score a,
-.data.tags a:not(.edit),
-.data.studio a,
-.data.licensor a,
-.data.score select,
-.data.progress input,
-/* Overlays */
-#advanced-options .advanced-options-button a,
-#advanced-options #fancybox-close,
-#fancybox-outer #fancybox-close
-{ background: #191919; }
+/* Cover */
+
+.cover-block:before { background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0)); }
+
+#cover-image-container:after {
+	color: #f6f5ff;
+	text-shadow: 2px 2px 8px #e4bef4;
+}
 
 
-/* - - - - - - - - - - - - - - -*\
-  Text Colour for Background
-\*- - - - - - - - - - - - - - - */
+/* Shadows */
 
-/* Nav Buttons */
-.icon-menu.setting:hover .text a,
-.list-table-header .header-title a,
-/* General */
-.list-table-data .data.tags span a:hover,
-.list-table-data .data.studio span a:hover,
-.list-table-data .data.licensor span a:hover,
-.data.score a:not(.edit-disabled):hover,
-.data.score select,
-/* Overlays */
-#advanced-options .advanced-options-button a:hover,
-#fancybox-close:hover
-{ background: #ababab !important; }
+.status-menu-container:after { background: linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0)); }
 
-
-/* - - - - - - - - - - - - - - -*\
-  Hover Text Colour for Background
-\*- - - - - - - - - - - - - - - */
-/* Nav Buttons */
-.header .header-title:hover,
-.icon-menu:hover,
-.list-menu-float .icon-menu:hover,
-.icon-menu.setting .text a:hover,
-.stats a:hover,
-.list-table > tbody:first-of-type:hover:after,
-.list-table-header .header-title a:hover,
-/* Header */
-.status-button.all_anime:after
-{ background: #416abe !important; }
-
-
-
-/*------------------------------*\
-  GENERIC @Text
-\*------------------------------*/
-
-/* Nav Buttons */
-.header .header-title,
-.header .header-title:before,
-.header .header-title:after,
-.header-info,
-.header-info a,
-.icon-menu,
-.icon-menu.profile:after,
-.list-menu-float .icon-menu,
-.list-menu-float .icon-menu .text,
-.icon-menu.setting .text a,
-.icon-menu.quick-add:before,
-.icon-menu:before,
-.stats a,
-.list-table > tbody:first-of-type:after,
-/* General */
-.list-table[data-items="[]"]:after,
-.status-menu .status-button.on,
-.list-stats,
-.list-table .list-table-data .data a,
-.data.number,
-.data.chapter span,
-.data.progress span,
-.data.volume span,
-.data.score select,
-.data.progress input,
-.data.priority,
-.data.tags a.edit:hover:after,
-.list-table .more-info .more-content a,
-.list-unit .loading-space #loading-spinner,
-/* Overlays */
-#advanced-options,
-#advanced-options [class*="-widget"] span:not(.widget-header),
-#advanced-options [class*="-widget"] input,
-#advanced-options [class*="-widget"] select,
-#advanced-options .sort-widget input[type=radio]:not(:disabled) + label,
-#advanced-options .advanced-options-button a,
-#fancybox-close
-{ color: #ababab !important; }
-
-
-/* - - - - - - - - - - - - - - -*\
-  Secondary Text
-\*- - - - - - - - - - - - - - - */
-
-.data.started,
-.data.finished,
-.data.days,
-.data.airing-started,
-.data.airing-finished,
-.more-info .td1,
-/* Overlays */
-#advanced-options .advanced-options-header .description:before,
-#advanced-options .sort-widget input[type=radio]:not(:checked) + label i
-{ color: #959595; }
-
-
-/* - - - - - - - - - - - - - - -*\
-  Dimmest Text
-\*- - - - - - - - - - - - - - - */
-
-.data.type,
-.data.title .add-edit-more span a,
-.add-edit-more,
-.data.progress:before,
-.data.rated:before,
-.data.magazine:before,
-.data.storage:before,
-.data.retail:before,
-.data.season:before,
-.data.season:empty:after,
-.data.chapter:before,
-.data.volume:before,
-.data.studio:empty:before,
-.data.licensor:empty:before,
-.data.started:before,
-.data.finished:before,
-.data.days:before,
-.data.airing-started:before,
-.data.airing-finished:before,
-.content-status,
-.rewatching,
-.rereading,
-/* Overlays */
-#advanced-options .advanced-options-header .description:hover:before
-{ color: #777 !important; }
-
-
-/* - - - - - - - - - - - - - - -*\
-  Hover Text
-\*- - - - - - - - - - - - - - - */
-
-/* Nav Buttons */
-.header-info a:hover,
-/* General */
-.list-table .list-table-data a:not(.edit-disabled):hover,
-.data.title .link.sort:hover,
-.list-table .more-info .more-content a:hover,
-.data.progress span:only-child:after,
-.data.chapter span:only-child:after,
-.data.volume span:only-child:after
-{ color: #416abe !important; }
-
-
-/* - - - - - - - - - - - - - - -*\
-  Dimmest Text Hover
-\*- - - - - - - - - - - - - - - */
-
-.data.title .add-edit-more span a:hover
-{ color: #999 !important; }
-
-
-/* - - - - - - - - - - - - - - -*\
-  Background Colour for Text
-\*- - - - - - - - - - - - - - - */
-
-/* Nav Buttons */
-.header .header-title:hover:before,
-.header .header-title:hover:after,
-.icon-menu:hover,
-.list-menu-float .icon-menu:hover .text,
-.icon-menu.setting:hover .text a,
-.icon-menu.profile:hover:after,
-.icon-menu:hover:before,
-.icon-menu.quick-add:hover:before,
-.stats a:hover,
-.list-table > tbody:first-of-type:hover:after,
-.list-table-header .header-title a,
-/* General */
-.list-table-data .data.tags span a:hover,
-.list-table-data .data.studio span a:hover,
-.list-table-data .data.licensor span a:hover,
-.data.score a:not(.edit-disabled):hover,
-.data.score select,
-/* Overlays */
-#advanced-options .advanced-options-button a:hover,
-#fancybox-close:hover
-{ color: #212121 !important; }
-
-
-
-/*------------------------------*\
-  GENERIC @Box-Shadow
-\*------------------------------*/
+#footer-block:before { background: linear-gradient(to top,rgba(0,0,0,0.3),rgba(0,0,0,0)); }
 
 /* Nav Buttons */
 .header .header-title,
@@ -264,126 +84,9 @@
 { box-shadow: 0px 1px 2px rgba(0,0,0,0.8); }
 
 
-
-
-
-/*==============================*\
-  !THEME-IMAGES
-\*==============================*/
-
-/* Cover */
-
-.cover-block { background-color: #030303; }
-
-@media (max-width: 1920px) { .cover-block { background-image: url(https://i.imgur.com/ttwtPuS.jpg); }}
-@media (min-width: 1921px) { .cover-block { background-image: url(https://i.imgur.com/EovExMf.jpg); }}
-
-.cover-block:before {
-	background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));
-	background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0));
-}
-
-/* Character */
-
-#cover-image-container {
-	background-image: url(https://i.imgur.com/2iSceJG.png);
-}
-
-/* Name Text */
-
-#cover-image-container:after {
-	color: #f6f5ff;
-	text-shadow: 2px 2px 8px #e4bef4;
-}
-
-
-
-/*==============================*\
-  !ONE-OFFS
-\*==============================*/
-
-body { background: #161616 none no-repeat center / cover fixed !important; }
-
-a, a:hover { color: #416abe; }
-
-#search-box input,
-.data.tags textarea,
-.data.progress input,
-.data.chapter input,
-.data.volume input {
-	border-color: #444;
-	background: #191919;
-	color: #ababab;
-}
-
-
-/* - - - - - - - - - - - - - - -*\
-  Header
-\*- - - - - - - - - - - - - - - */
-
-/* Header & Footer Shadows */
-
-.status-menu-container:after {
-	background: -webkit-linear-gradient(top,rgba(0,0,0,0.6),rgba(0,0,0,0));
-	background: linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0));
-}
-
-#footer-block:before {
-	background: -webkit-linear-gradient(bottom,rgba(0,0,0,0.3),rgba(0,0,0,0));
-	background: linear-gradient(to top,rgba(0,0,0,0.3),rgba(0,0,0,0));
-}
-
-/* Avatar */
-
-.status-menu:after {
-	background-color: #444;
-	border-color: #212121;
-}
-
-/* Search Bar */
-
-#search-box.open {
-	background: #191919;
-	border-color: #444;
-}
-
-#search-box:after {
-	background-image: -webkit-linear-gradient(left, #191919 2px, rgba(25, 25, 25, 0) 9.5px, rgba(25, 25, 25, 0) 142.5px, #191919 150px);
-	background-image: linear-gradient(to right, #191919 2px, rgba(25, 25, 25, 0) 9.5px, rgba(25, 25, 25, 0) 142.5px, #191919 150px);
-}
-
-
-/* Nav Buttons */
-
-.icon-menu svg, .list-menu-float .icon-menu svg { fill: #ababab !important; }
-.icon-menu:hover svg, .list-menu-float .icon-menu:hover svg { fill: #212121 !important; }
-
-
-/* - - - - - - - - - - - - - - -*\
-  List
-\*- - - - - - - - - - - - - - - */
-
-.data { color: #ababab; }
-
-.data.tags a.edit { background: #323232; }
-.data.tags a.edit:after { color: rgba(171,171,171,0) !important; }
-
-
-
-
-
-/*==============================*\
-  !OVERLAYS @Base
-\*==============================*/
+/* Overlays */
 
 #fancybox-overlay { opacity: 0.35 !important; }
-
-
-/* - - - - - - - - - - - - - - -*\
-  iframes
-\*- - - - - - - - - - - - - - - */
-
-#fancybox-outer #fancybox-close { border-color: #212121; }
 
 #fancybox-outer, #advanced-options { box-shadow: 0 0 32px rgba(0,0,0,0.75); }
 
@@ -392,38 +95,4 @@ a, a:hover { color: #416abe; }
 	filter: invert(87.8%) hue-rotate(197deg);
 }
 
-
-/* - - - - - - - - - - - - - - -*\
-  Filter Menu
-\*- - - - - - - - - - - - - - - */
-
-#advanced-options [class*="-widget"] span:not(.widget-header),
-#advanced-options [class*="-widget"] input,
-#advanced-options [class*="-widget"] select,
-#advanced-options [class*="-widget"] label,
-#advanced-options [class*="-widget"] .widget-header,
-#advanced-options .filter-widget[class*="-date"] span:nth-of-type(n+2) {
-	border-color: #777 !important;
-}
-
-#advanced-options [class*="-widget"] input:focus,
-#advanced-options [class*="-widget"] select:focus,
-#advanced-options option,
-#advanced-options .sort-widget input[type=radio]:not(:disabled) + label:hover {
-	background-color: #444 !important;
-}
-
-#advanced-options .sort-widget input[type=radio]:not(:disabled):checked + label {
-	background: #777 !important;
-	border-color: #777;
-	color: #212121 !important;
-}
-
-#advanced-options input:disabled + label,
-#advanced-options :disabled {
-	color: #959595 !important;
-}
-
-#advanced-options [class*="-widget"] select  {
-	background-image: url(https://i.imgur.com/KF8oOyC.png);
-}
+#advanced-options [class*="-widget"] select { background-image: url(https://i.imgur.com/KF8oOyC.png); }
