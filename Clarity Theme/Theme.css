@@ -1,6 +1,6 @@
 /**
  * "Clarity" by Valerio Lyndon
- * Revision 22.0
+ * Revision 22.1
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -916,7 +916,7 @@ a, a:hover {
 	
 	color: var(--btn-text-h) !important;
 	font: 14px/26px Arial, Verdana, sans-serif !important;
-	text-indent: 7.5px;
+	text-indent: 9px;
 	text-align: center;
 	white-space: nowrap;
 	
@@ -1021,7 +1021,6 @@ a, a:hover {
 
 .list-table > tbody:first-of-type:hover:after {
 	background: var(--btn-head-bg-h) !important;
-	
 	color: var(--btn-text-h) !important;
 }
 
@@ -1047,54 +1046,50 @@ a, a:hover {
 
 /* Items */
 
-.list-table-header .header-title {
+.list-table .list-table-header .header-title {
 	position: relative;
 	
-	display: inline-block !important;
+	display: inline-block;
 	width: auto !important;
-	height: auto !important;
+	height: auto;
 	padding: 0 !important;
-	border: none !important;
-	background: none !important;
+	border: none;
+	background: none;
 	
-	font-weight: normal !important;
+	font-weight: normal;
 }
 
 .list-table > tbody:first-of-type:hover .header-title {
 	opacity: 1;
 }
 
-.list-table-header .header-title a {
-	display: block !important;
-	
-	width: 13px !important;
-	height: 26px !important;
-	background: var(--btn-bg-h) !important;
+.list-table .list-table-header .header-title .link.sort {
+	display: block;
+	width: 13px;
+	height: 26px;
+	background: var(--btn-bg-h);
 	border-radius: 13px 0 0 13px;
 	margin-left: -13px;
 	overflow: hidden;
 	box-sizing: border-box;
 	
 	color: var(--btn-text-h) !important;
-	font: 11px/26px Verdana, Arial, sans-serif !important;
-	text-align: center !important;
-	text-indent: -7.5px;
-	white-space: normal !important;
+	font: 11px/26px Verdana, Arial, sans-serif;
+	text-align: center;
+	text-indent: -9px;
+	white-space: normal;
 	
 	opacity: 0;
 }
 
-tbody:first-of-type:hover .list-table-header .header-title.started a, tbody:first-of-type:hover .list-table-header .header-title.finished a { padding: 0 13px; }
+.list-table tbody:first-of-type:hover .list-table-header .header-title .link.sort {
+	width: 80px;
+	opacity: 1;
+}
 
 .list-table-header .header-title a.hover_info { display: none !important; }
 
-.list-table-header .header-title a:hover { background: var(--btn-head-bg-h) !important; }
-
-tbody:first-of-type:hover .list-table-header .header-title a {
-	width: 80px !important;
-	
-	opacity: 1;
-}
+.list-table .list-table-header .header-title .link.sort:hover { background: var(--btn-head-bg-h); }
 
 .list-table-header .header-title a .sort-icon {
 	position: absolute;
@@ -1108,17 +1103,23 @@ tbody:first-of-type:hover .list-table-header .header-title a {
 	font-size: 10px;
 	line-height: 10px;
 }
+
 .sort-icon.fa-sort-asc { top: 2px; }
 .sort-icon.fa-sort-desc { bottom: 2px; }
 
+/* Fixes for airing & publishing dates */
+
+.anime tbody:first-of-type:hover .header-title.started a, .anime tbody:first-of-type:hover .header-title.finished a { padding: 0 13px; }
+
+.manga tbody:first-of-type:hover .header-title.started a, .manga tbody:first-of-type:hover .header-title.finished a { width: 100px !important; }
+
 /* Renames certain items */
 
-.header-title.title a {	 font-size: 0 !important; }
+.header-title.title a { font-size: 0 !important; }
 
 .header-title.title a:after {
 	content: "Title";
-	
-	font-size: 11px !important;
+	font-size: 11px;
 }
 
 /* Removes useless tags item */
@@ -1755,12 +1756,16 @@ tbody:first-of-type:hover .list-table-header .header-title a {
 	color: var(--text-dim);
 }
 
-.data.started:before { content: "Start" }
-.data.finished:before { content: "End" }
-.data.days:before { content: "Days" }
-.anime .data.airing-started:before { content: "Aired" }
-.manga .data.airing-started:before { content: "Issued" }
-.data.airing-finished:before { content: "to" }
+.data.started:before { content: "Start"; }
+.data.finished:before { content: "End"; }
+.data.days:before { content: "Days"; }
+.data.airing-started:before { content: "Aired"; }
+.manga .data.airing-started:before { content: "Issued"; }
+.data.airing-finished:before { content: "to"; }
+
+.manga .data.airing-started, .manga .data.airing-finished { width: 107px; }
+.manga .data.airing-finished { margin-left: -107px; }
+.manga .data.airing-started:before, .manga .data.airing-finished:before { width: 36px; }
 
 
 
