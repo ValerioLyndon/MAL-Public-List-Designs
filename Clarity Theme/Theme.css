@@ -1,6 +1,6 @@
 /**
  * "Clarity" by Valerio Lyndon
- * Revision 22.1
+ * Revision 22.2
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1197,7 +1197,7 @@ a, a:hover {
 \*- - - - - - - - - - - - - - - */
 
 .list-table[data-items="[]"]:after {
-	content: "No entries found. Perhaps your search terms are too restrictive?";
+	content: "No entries found. Try another category?";
 	
 	display: block;
 	width: 900px;
@@ -1209,6 +1209,15 @@ a, a:hover {
 	font: 16px/32px Arial, Verdana, sans-serif;
 	text-align: center;
 }
+
+[data-owner="1"] .list-table[data-items="[]"]:after {
+	content: "No entries found. Why not add some?";
+}
+
+[data-query*='"s":'] .list-table[data-items="[]"]:after {
+	content: "No entries found. Perhaps your search terms are too restrictive?";
+}
+
 
 
 
@@ -1382,6 +1391,7 @@ a, a:hover {
 .data.type {
 	position: relative;
 	top: -16px;
+	z-index: 1;
 	
 	width: 92px;
 	height: 16px;
