@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.0.0
+ * Version 1.0.1
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -14,7 +14,7 @@
  * 
  * HEADER
  * 
- * LIST-MENU
+ * USER-MENU
  * 
  * COVER
  * 
@@ -77,13 +77,13 @@
 	 * min value: 0% / max value: 100%
 	 *  
 	 * imageBrightness(Hov) / Changes lightness of cover images / Higher = Brighter.
-	 * min value: 0 / max value: 1
+	 * min value: 0% / max value: 100%
 	 */
 	
 	--toggleStats: hidden;
 	--bgDimness: 50%;
-	--imageBrightness: 0.52;
-	--imageBrightnessHov: 0.32;
+	--imageBrightness: 52%;
+	--imageBrightnessHov: 32%;
 	
 	/* THEME
 	 * 
@@ -316,7 +316,11 @@ body:before {
 	border: none;
 	flex-flow: row wrap;
 	justify-content: center;
-	
+}
+
+/* Remove Tutorial/Notices */
+.initialize-tutorial {
+	display: none !important;
 }
 
 /*==============================*\
@@ -478,7 +482,7 @@ body:before {
 }
 
 /*==============================*\
-  !LIST-MENU
+  !USER-MENU
 \*------------------------------*/
 
 .list-menu-float {
@@ -763,6 +767,7 @@ body:before {
 	position: fixed;
 	padding-left: 42px;
 	background: hsl(var(--bgAlt));
+	pointer-events: auto;
 }
 
 #status-menu .status-menu {
@@ -1079,13 +1084,6 @@ body:before {
 	transform: scale(1);
 }
 
-@-moz-document url-prefix() {
-	.list-item {
-		/* Firefox Performance Tweak */
-		will-change: transform;
-	}
-}
-
 .list-table-data {
 	display: flex;
 	width: 50%;
@@ -1119,7 +1117,6 @@ body:before {
 	color: hsl(var(--textLinkHov)) !important;
 }
 
-.data.title,
 .data.score,
 .data.progress,
 .data.chapter {
@@ -1261,13 +1258,14 @@ body:before {
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
 .data.title {
+	z-index: 9;
 	order: 95;
 	opacity: 1;
 }
 
 .data.title .link {
 	position: absolute;
-	bottom: 30px;
+	bottom: 27px;
 	left: 0;
 	
 	max-width: 100%;
@@ -1284,7 +1282,7 @@ body:before {
 	display: none !important;
 }
 
-.content-status {
+.content-status, .rewatching {
 	position: absolute;
 	top: 15px;
 	left: 7.5px;
@@ -1294,6 +1292,7 @@ body:before {
 	line-height: 1;
 	letter-spacing: 1.5px;
 	text-transform: uppercase;
+	text-shadow: 0.84px 0.6px 1.68px #000;
 	
 	transform: rotate(90deg);
 	transform-origin: left top;
@@ -1351,7 +1350,7 @@ body:before {
 .data.chapter,
 .data.score {
 	position: absolute;
-	bottom: 15px;
+	bottom: 12px;
 	height: 15px;
 	white-space: nowrap;
 }
@@ -1507,7 +1506,7 @@ span:nth-of-type(2):after {
 	
 	width: calc(50% - 6px);
 	padding: 0 6px 0 0 !important;
-	height: 151px;
+	height: 152px;
 	overflow-x: hidden;
 	overflow-y: auto;
 } 
@@ -2248,6 +2247,14 @@ body #fancybox-inner {
 
 [data-owner=""] .list-unit .loading-space i[style*="block"] {
 	background-image: url(https://i.imgur.com/1NLFsAe.png);
+}
+
+/* Firefox Performance Tweak */
+
+@-moz-document url-prefix() {
+	.list-item {
+		will-change: transform;
+	}
 }
 
 /*==============================*\
