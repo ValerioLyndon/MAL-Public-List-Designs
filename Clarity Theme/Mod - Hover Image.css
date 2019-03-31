@@ -1,6 +1,6 @@
-/* "Clarity" Modification by Valerio Lyndon / Hover Image / Revision 0.2 */
+/* "Clarity" Modification by Valerio Lyndon / Hover Image / Revision 0.3 */
 
-.data.image {
+.data.image a {
 	overflow: visible;
 }
 
