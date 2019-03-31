@@ -1,6 +1,6 @@
 /**
  * "Clarity" by Valerio Lyndon
- * Revision 22.2
+ * Revision 22.3
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1244,24 +1244,21 @@ a, a:hover {
 .data.image {
 	width: 64px;
 	height: 64px;
-	border-radius: 50%;
 	margin: 4px 0 4px 8px;
-	
-	overflow: hidden;
 	order: 1;
 }
 
 .data.image a {
 	position: relative;
-	
 	display: block !important;
+	border-radius: 50%;
+	overflow: hidden;
 }
 
 .data.image img {
 	width: 64px !important;
 	height: 64px !important;
 	border: none !important;
-	
 	object-fit: cover;
 }
 
@@ -1277,13 +1274,12 @@ a, a:hover {
 	height: 100%;
 	background: rgba(0,0,0,0.5);
 	
-	font-family: FontAwesome;
 	color: #fff;
-	font-size: 30px;
-	line-height: 64px;
+	font: 30px/64px FontAwesome;
 	
 	opacity: 0;
 }
+
 .data.image a:hover:after {	
 	opacity: 1;
 }
