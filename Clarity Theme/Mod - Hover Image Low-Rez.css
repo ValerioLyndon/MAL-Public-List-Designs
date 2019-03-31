@@ -1,16 +1,12 @@
-/* "Clarity" Modification by Valerio Lyndon / Low-Rez Hover Image / Revision 0.2 */
-
-.data.image {
-	overflow: visible;
-	border-radius: 0;
-}
+/* "Clarity" Modification by Valerio Lyndon / Low-Rez Hover Image / Revision 0.3 */
 
 .data.image .link {
+	overflow: visible;
 	height: 64px;
 }
 
 .data.image .link:after {
-	transition-property: opacity, top !important;
+	transition-property: top !important;
 	border-radius: 50%;
 }
 
