@@ -1,6 +1,6 @@
 /**
  * "Clarity" by Valerio Lyndon
- * Revision 22.3
+ * Revision 22.4
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1441,13 +1441,25 @@ a, a:hover {
 	display: block;
 	width: 40px;
 	height: 26px;
-	background: var(--btn-bg-h);
+	padding: 0 9px;
+	background: var(--btn-bg-h) url(https://i.imgur.com/KF8oOyC.png) no-repeat 20px center / 16px auto;
+	border: none;
 	border-radius: 13px;
-	
-	line-height: 26px;
-	color: var(--btn-text-h);
-	
 	box-shadow: none !important;
+	
+	color: var(--btn-text-h);
+	font: bold 1.1em/26px Verdana, Arial, sans-serif;
+	
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+@-moz-document url-prefix() {
+	.data.score select {
+		padding: 0 16px 0 0;
+		text-align: center;
+	}
 }
 
 .data.score select:focus {
@@ -2068,7 +2080,7 @@ footer {
 
 #advanced-options [class*="-widget"] select {
 	padding-right: 16px;
-	background: transparent url(https://i.imgur.com/hFijppc.png) no-repeat center right / 16px auto;
+	background: transparent url(https://i.imgur.com/hFijppc.png) no-repeat right center / 16px auto;
 }
 
 #advanced-options [class*="-widget"] input:focus,
