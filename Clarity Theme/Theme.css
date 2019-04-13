@@ -1,6 +1,6 @@
 /**
  * "Clarity" by Valerio Lyndon
- * Revision 22.4
+ * Revision 22.5
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -92,7 +92,7 @@
                  /* Status Colours */
         --watching: #2db039;
        --completed: #26448f;
-          --onhold: #f9d457;
+          --onhold: #f1c83e;
          --dropped: #a12f31;
      --plantowatch: #c3c3c3;
 
@@ -265,8 +265,7 @@ a, a:hover {
 	width: 100%;
 	min-width: 1060px;
 	height: 318px;
-	background: var(--cover-bg) no-repeat center center / cover scroll;
-	background-image: var(--banner);
+	background: var(--cover-bg) var(--banner) no-repeat center center / cover scroll;
 }
 
 /* Gradient */
@@ -291,7 +290,7 @@ a, a:hover {
   Character Image
 \*- - - - - - - - - - - - - - - */
 
-.cover-block .image-container {
+#list-container #cover-image-container {
 	display: block !important;
 	width: 1060px;
 	height: 100%;
@@ -584,8 +583,7 @@ a, a:hover {
 	
 	width: 150px;
 	height: 150px;
-	background: var(--bg-dark) no-repeat center top / cover;
-	background-image: var(--avatar);
+	background: var(--bg-dark) var(--avatar) no-repeat center top / cover;
 	border: 8px solid var(--bg);
 	border-radius: 50%;
 	
@@ -1234,6 +1232,15 @@ a, a:hover {
 	height: 100%;
 	padding: 0 !important;
 }
+
+.status.all_anime:after	{ background: var(--accent) !important; }
+.status.watching:after,
+.status.reading:after	{ background: var(--watching) !important; }
+.status.completed:after	{ background: var(--completed) !important; }
+.status.onhold:after		{ background: var(--onhold) !important; }
+.status.dropped:after	{ background: var(--dropped) !important; }
+.status.plantowatch:after,
+.status.plantoread:after	{ background: var(--plantowatch) !important; }
 
 
 
@@ -2013,7 +2020,7 @@ footer {
 	width: 20.5px;
 	
 	color: var(--icon);
-	font: 14px/1 FontAwesome;
+	font: 14px/26px FontAwesome;
 	text-align: center;
 	
 	pointer-events: auto;
