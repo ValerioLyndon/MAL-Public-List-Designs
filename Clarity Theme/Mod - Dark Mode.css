@@ -1,7 +1,7 @@
 /**
  * "Clarity" by Valerio Lyndon
  * Dark Mode Modification
- * Revision 3.1
+ * Revision 3.2
  */
 
 /* - - - - - - - - - - - - - - -*\
@@ -34,13 +34,6 @@
                  /* Header Colours */
       --text-head: #9b9b9b;
     --text-head-h: #ababab;
-
-                 /* Status Colours */
-        --watching: #2db039;
-       --completed: #26448f;
-          --onhold: #f9d457;
-         --dropped: #a12f31;
-     --plantowatch: #c3c3c3;
 
                  /* Single-Use Colours */
         --cover-bg: #090909;
