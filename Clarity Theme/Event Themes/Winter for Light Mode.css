@@ -1,7 +1,7 @@
 /**
  * "Clarity" by Valerio Lyndon
  * Winter Event Modification for Light Mode
- * Revision 0.4
+ * Revision 0.5
  */
 
 :root {
@@ -24,7 +24,7 @@
 
 .cover-block { background-image: url(https://i.imgur.com/t53PJcs.jpg) !important; }
 
-#cover-image-container {
+#list-container #cover-image-container {
 	position: relative;
 	z-index: 1;
 	
