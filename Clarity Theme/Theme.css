@@ -1233,14 +1233,13 @@ a, a:hover {
 	padding: 0 !important;
 }
 
-.status.all_anime:after	{ background: var(--accent) !important; }
-.status.watching:after,
-.status.reading:after	{ background: var(--watching) !important; }
-.status.completed:after	{ background: var(--completed) !important; }
-.status.onhold:after		{ background: var(--onhold) !important; }
-.status.dropped:after	{ background: var(--dropped) !important; }
-.status.plantowatch:after,
-.status.plantoread:after	{ background: var(--plantowatch) !important; }
+.status.watching,
+.status.reading { background: var(--watching) !important; }
+.status.completed { background: var(--completed) !important; }
+.status.onhold { background: var(--onhold) !important; }
+.status.dropped { background: var(--dropped) !important; }
+.status.plantowatch,
+.status.plantoread { background: var(--plantowatch) !important; }
 
 
 
