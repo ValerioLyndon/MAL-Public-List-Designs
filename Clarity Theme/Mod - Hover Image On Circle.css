@@ -1,0 +1,35 @@
+/* "Clarity" Modification by Valerio Lyndon / Hover Image on Circle / Revision 0.3 */
+
+.data.image a {
+	overflow: visible;
+}
+
+.data.image a:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -166px;
+	z-index: 50;
+	
+	width: 150px;
+	height: 0;
+	background: var(--bg-dark) no-repeat center / cover;
+	border-radius: 8px;
+	box-shadow: 0 0 2px #000;
+	
+	opacity: 0;
+	pointer-events: none;
+	transition: all 0.3s ease;
+}
+
+.data.image:hover a:before {
+	top: calc(50% - 100px);
+	
+	height: 200px;
+	
+	opacity: 1;
+}
+
+.data.image img, .data.image a:after {
+	border-radius: 50%;
+}
