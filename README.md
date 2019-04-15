@@ -6,6 +6,4 @@ Detailed information and install instructions can be found on [MyAnimeList](http
 
 ## Modification of These Themes
 
-Feel free to modify any of these themes as much as you want and use them however you want. That said, if you are using any of my designs I do ask that you leave the sign off I place in the footers of my designs intact or replace it with an equally findable piece of information stating that I made the theme. At the end of the day, however, the only thing I care about is that you don't claim you made it.
-
-On a different note, I do not care if you take pieces of my code, modify it and mash it together with other code to create something new. That is the nature of things and I am perfectly fine with it. Go right ahead and create a frankenstein list design, as long as it is sufficiently transformative I do not wish for any credit.
+Feel free to modify and use any of these themes however you wish to. My one request is that you do not claim credit for the original themes. I do not mind if you take snippets of code to create something new. Code being reused is commonplace; If the visible output is noticeably different, that's all that matters.
