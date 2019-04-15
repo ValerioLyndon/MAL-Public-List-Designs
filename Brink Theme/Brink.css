@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.0.1
+ * Version 1.0.2
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -56,12 +56,14 @@
  * MODS
  */
 
+
 /*==============================*\
   !IMPORTS
 \*------------------------------*/
 
 @\import "https://malscraper.azurewebsites.net/covers/auto/presets/dataimagelink";
 @\import "https://fonts.googleapis.com/css?family=Sarabun:400,700";
+
 
 /*==============================*\
   !VARIABLES
@@ -87,8 +89,13 @@
 	
 	/* THEME
 	 * 
-	 * Colours are HSL values but without their surrounding parenthesis.
-	 * For help with HSL, Google "HSL color picker".
+	 * Colours are HSL values but without their surrounding parentheses.
+	 * To get the correct values, simply strip away the surrounding parenthesis and blurb.
+	 * For instance, "hsl(244, 42%, 82%)" would simply become "244, 42%, 82%".
+	 * For help with HSL: https://www.w3schools.com/colors/colors_hsl.asp
+	 * 
+	 * This theme was made with a dark theme in mind, light themes may look rather poor.
+	 * More advanced CSS may be required if this is the case.
 	 */
 	
 	--bg: 240, 3%, 9%;
@@ -113,7 +120,8 @@
 	--planned: 56, 18%, 56%;
 	
 	/* INTERNALS
-	 * For use internally.
+	 * 
+	 * More advanced theme details, used throughout the theme.
 	 */
 	
 	--font: "Sarabun", "Segoe UI", "Arial", "FontAwesome", sans-serif;
@@ -133,6 +141,7 @@
 	--arrowDn: url(https://files.catbox.moe/m9ot24.svg);
 	--arrowLt: url(https://files.catbox.moe/68o5bn.svg);
 }
+
 
 /*==============================*\
   !PAGE-BASE @Scrollbars
@@ -212,6 +221,7 @@ textarea::-webkit-scrollbar-thumb:horizontal {
 	border-width: 1px 0;
 }
 
+
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Generic
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
@@ -253,6 +263,7 @@ body #fancybox-close:hover,
 	border-color: hsl(var(--btnAccent));
 	color: hsl(var(--accent));
 }
+
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Containers
@@ -322,6 +333,7 @@ body:before {
 .initialize-tutorial {
 	display: none !important;
 }
+
 
 /*==============================*\
   !HEADER
@@ -467,19 +479,23 @@ body:before {
 }
 
 #header-menu-dropdown .icon-menu:after {
-	content: "Swap to Manga";
 	display: inline-block;
 	
 	font-size: 14px;
 	text-indent: 5px;
 	
 	transition: inherit;
+} #header-menu-dropdown .icon-menu.manga-list:after {
+	content: "Swap to Manga";
+} #header-menu-dropdown .icon-menu.anime-list:after {
+	content: "Swap to Anime";
 }
 
 #header-menu-dropdown .icon-menu svg,
 .header .header-menu .list-menu .icon-menu .text {
 	display: none;
 }
+
 
 /*==============================*\
   !USER-MENU
@@ -663,6 +679,7 @@ body:before {
 	pointer-events: none;
 }
 
+
 /*==============================*\
   !COVER
 \*------------------------------*/
@@ -748,6 +765,7 @@ body:before {
 	--accent: var(--planned);
 }
 
+
 /* Base */
 
 #status-menu {
@@ -831,6 +849,7 @@ body:before {
 	content: none;
 }
 
+
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Search
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
@@ -895,6 +914,7 @@ body:before {
 	display: none;
 }
 
+
 /*==============================*\
   !SORT-BUTTONS @Filters
 \*------------------------------*/
@@ -929,6 +949,7 @@ body:before {
 .list-unit .list-status-title .stats a:first-child {
 	display: none;
 }
+
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Sort-By
@@ -1044,6 +1065,7 @@ body:before {
 	display: none !important;
 }
 
+
 /*==============================*\
   !LIST
 \*------------------------------*/
@@ -1060,6 +1082,7 @@ body:before {
 [data-query*='"s":'] .list-table[data-items="[]"]:after {
 	content: "No entries found. Perhaps your search terms are too restrictive?";
 }
+
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Item-Base
@@ -1115,12 +1138,6 @@ body:before {
 	transition: all var(--timeText) var(--bezierFast);
 } .list-table .list-table-data .data a:not(.edit-disabled):hover {
 	color: hsl(var(--textLinkHov)) !important;
-}
-
-.data.score,
-.data.progress,
-.data.chapter {
-	z-index: 10;
 }
 
 /* Dynamic Columns */
@@ -1224,21 +1241,16 @@ body:before {
 	position: absolute;
 	left: 0;
 	top: 0;
+	z-index: 15 !important;
 	
 	width: 100% !important;
 	height: 100%;
+	background: none !important;
+	border-bottom-width: 4px !important;
+	border-radius: 6px;
 	
 	pointer-events: none;
-}
-
-.data.status {
-	z-index: 15 !important;
-	background: none !important;
-	border-radius: 6px;
-	border-bottom-width: 4px !important;
-}
-
-.data.status.watching,
+} .data.status.watching,
 .data.status.reading {
 	border-color: hsl(var(--current));
 } .data.status.completed {
@@ -1351,10 +1363,13 @@ body:before {
 .data.score {
 	position: absolute;
 	bottom: 12px;
+	z-index: 10;
 	height: 15px;
 	white-space: nowrap;
 }
 
+
+/* Score */
 
 .data.score {
 	left: 12px;
@@ -1495,6 +1510,7 @@ span:nth-of-type(2):after {
 	display: none !important;
 }
 
+
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Tags
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
@@ -1571,6 +1587,7 @@ span:nth-of-type(2):after {
 	resize: none;
 }
 
+
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Number
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
@@ -1590,6 +1607,7 @@ span:nth-of-type(2):after {
 	font-size: 12px;
 }
 
+
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Type
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
@@ -1601,6 +1619,7 @@ span:nth-of-type(2):after {
 .data.type {
 	order: 10;
 }
+
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Rated
@@ -1618,6 +1637,7 @@ span:nth-of-type(2):after {
 	content: "Unrated";
 }
 
+
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Season
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
@@ -1633,6 +1653,7 @@ span:nth-of-type(2):after {
 .data.season:empty:before {
 	content: "Unknown";
 }
+
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Studio/@Licensor/@Magazine
@@ -1658,6 +1679,7 @@ span:nth-of-type(2):after {
 	content: "Unknown";
 	color: hsl(var(--textDim));
 }
+
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Dates
@@ -1706,6 +1728,7 @@ span:nth-of-type(2):after {
 	content: "Days";
 }
 
+
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Priority
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
@@ -1723,6 +1746,7 @@ span:nth-of-type(2):after {
 	display: none !important;
 }
 
+
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Storage
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
@@ -1736,6 +1760,7 @@ span:nth-of-type(2):after {
 .data.retail {
 	order: 95;
 }
+
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @More-Info
@@ -1812,6 +1837,7 @@ span:nth-of-type(2):after {
 	display: initial;
 }
 
+
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Loading-Icon
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
@@ -1838,6 +1864,7 @@ span:nth-of-type(2):after {
 	}
 }
 
+
 /*==============================*\
   !OVERLAYS
 \*------------------------------*/
@@ -1855,6 +1882,7 @@ body #fancybox-close {
 #fancybox-close:before {
 	content: "Close";
 }
+
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @iFrames
@@ -1893,6 +1921,7 @@ body #fancybox-inner {
 .list-unit .list-status-title .stats a:first-child {
 	display: none;
 }
+
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Filter-Menu
@@ -2101,6 +2130,7 @@ body #fancybox-inner {
 	box-shadow: none;
 }
 
+
 /*==============================*\
   !FOOTER
 \*------------------------------*/
@@ -2150,6 +2180,7 @@ body #fancybox-inner {
 	/*Toggle*/
 	visibility: var(--toggleStats);
 }
+
 
 /*==============================*\
   !MEDIA-QUERIES
@@ -2223,6 +2254,7 @@ body #fancybox-inner {
 	}
 }
 
+
 /*==============================*\
   !FIXES
 \*------------------------------*/
@@ -2256,6 +2288,7 @@ body #fancybox-inner {
 		will-change: transform;
 	}
 }
+
 
 /*==============================*\
   !MODS
