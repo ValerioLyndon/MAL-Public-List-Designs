@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.0.2
+ * Version 1.0.3
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -275,6 +275,7 @@ html {
 
 body {
 	background-position: center;
+	background-image: none;
 } body.ownlist {
 	position: relative;
 	
