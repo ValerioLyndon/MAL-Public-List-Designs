@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.0.3
+ * Version 1.1.0
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -71,8 +71,11 @@
 
 :root {
 	/* USER OPTIONS
-	 *  
+	 * 
 	 * toggleStats / Toggles list statistics (found in the footer)
+	 * valid values: visible / hidden
+	 * 
+	 * togglePV / Toggles anime preview video icons.
 	 * valid values: visible / hidden
 	 *  
 	 * bgDimness / Changes dimming of background / Higher = Dimmer.
@@ -83,6 +86,7 @@
 	 */
 	
 	--toggleStats: hidden;
+	--togglePV: hidden;
 	--bgDimness: 50%;
 	--imageBrightness: 52%;
 	--imageBrightnessHov: 32%;
@@ -90,7 +94,7 @@
 	/* THEME
 	 * 
 	 * Colours are HSL values but without their surrounding parentheses.
-	 * To get the correct values, simply strip away the surrounding parenthesis and blurb.
+	 * To get the correct values, simply strip away the surrounding parentheses and blurb.
 	 * For instance, "hsl(244, 42%, 82%)" would simply become "244, 42%, 82%".
 	 * For help with HSL: https://www.w3schools.com/colors/colors_hsl.asp
 	 * 
@@ -245,7 +249,7 @@ body #fancybox-close,
 	width: 96px;
 	height: 32px;
 	padding: 0;
-	background: hsl(var(--btn)) linear-gradient(45deg, hsl(var(--btn)) 75%, hsl(var(--btnLight)) 0%);
+	background: hsl(var(--btn)) linear-gradient(45deg, hsl(var(--btn)) 75%, hsl(var(--btnLight)) 0%) !important;
 	border: 2px solid hsl(var(--btn));
 	border-radius: 3px;
 	margin: 0;
@@ -544,10 +548,16 @@ body:before {
 	text-align: center;
 	
 	transition: inherit;
-} .list-container:before {
+} /* Icon for logged out users */
+.list-container:before {
 	z-index: 200;
-	filter: sepia(1) saturate(500) hue-rotate(240deg) opacity(0.6);
-}.header + .list-menu-float + .list-container:before {
+	filter:
+		sepia(1)
+		saturate(500)
+		hue-rotate(240deg)
+		opacity(0.6);
+} /* Hide for logged in users */
+.list-menu-float + .list-container:before {
 	content: none;
 }
 
@@ -1291,8 +1301,38 @@ body:before {
 }
 
 
-.icon-watch {
-	display: none !important;
+.title [class^="icon-watch"] {
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	z-index: 1;
+	
+	width: 24px;
+	height: 24px;
+	background: none;
+	margin: 0;
+	overflow: visible;
+	
+	font-size: 0;
+	text-indent: 0;
+	
+	/*Toggle*/
+	visibility: var(--togglePV);
+}
+
+[class^="icon-watch"]:after {
+	content: "\f144";
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	width: 100%;
+	height: 100%;
+	
+	color: hsl(var(--textDim));
+	font-size: 22px;
+	line-height: 22px;
+	text-align: center;
 }
 
 .content-status, .rewatching {
@@ -1309,6 +1349,7 @@ body:before {
 	
 	transform: rotate(90deg);
 	transform-origin: left top;
+	pointer-events: none;
 }
 
 
@@ -1523,7 +1564,7 @@ span:nth-of-type(2):after {
 	
 	width: calc(50% - 6px);
 	padding: 0 6px 0 0 !important;
-	height: 152px;
+	height: 148px;
 	overflow-x: hidden;
 	overflow-y: auto;
 } 
@@ -1546,7 +1587,6 @@ span:nth-of-type(2):after {
 .data.tags a {
 	display: inline-block;
 	padding-right: 15px;
-	
 	font: 12px/15px var(--font) !important;
 	vertical-align: top;
 	overflow-wrap: break-word;
@@ -1555,7 +1595,6 @@ span:nth-of-type(2):after {
 .list-table .list-table-data .tags .edit {
 	width: auto;
 	float: right;
-	
 	color: hsl(var(--textBright)) !important;
 }
 
@@ -1705,11 +1744,6 @@ span:nth-of-type(2):after {
 	margin: 0;
 }
 
-.data.finished:before,
-.data.airing-finished:before {
-	content: "to ";
-}
-
 .data[class*="started"]:before {
 	display: block;
 	color: hsl(var(--textDim));
@@ -1722,6 +1756,12 @@ span:nth-of-type(2):after {
 	content: "Aired";
 } .manga .data.airing-started:before {
 	content: "Published";
+}
+
+.data.finished:before,
+.data.airing-finished:before {
+	content: "to ";
+	color: hsl(var(--textDim));
 }
 
 
@@ -1776,7 +1816,7 @@ span:nth-of-type(2):after {
 	width: 100%;
 	height: 100%;
 	border: none !important;
-	border-radius: 6px;
+	border-radius: 5px;
 	overflow: hidden;
 	
 	opacity: 0;
@@ -1808,7 +1848,7 @@ span:nth-of-type(2):after {
 	height: calc(100% - 37px);
 	padding: 0 !important;
 	background: hsla(var(--bgAlt), 0.96);
-	border-radius: 6px;
+	border-radius: 6px 6px 0 0;
 	box-shadow: 0 0 3.36px 1.68px hsla(0, 0%, 0%, 50%);
 	margin-top: 37px;
 	overflow-x: hidden;
@@ -1849,6 +1889,7 @@ span:nth-of-type(2):after {
 }
 
 .list-unit .loading-space i {
+	width: 24px;
 	height: 24px;
 	background: url(https://files.catbox.moe/qs9f3v.svg) center / auto no-repeat;
 	margin: 0 auto;
