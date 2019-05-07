@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.1.0
+ * Version 1.1.1
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1176,6 +1176,8 @@ body:before {
 	
 	text-align: left !important;
 	overflow-wrap: break-word;
+	
+	cursor: default;
 }
 
 /* Icons */
@@ -1408,6 +1410,7 @@ body:before {
 	z-index: 10;
 	height: 15px;
 	white-space: nowrap;
+	cursor: default;
 }
 
 
@@ -1640,6 +1643,7 @@ span:nth-of-type(2):after {
 	font-weight: bold;
 	
 	opacity: 0.53;
+	cursor: default;
 }
 
 .data.number:before {
