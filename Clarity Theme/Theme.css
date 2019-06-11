@@ -1,6 +1,6 @@
 /**
  * "Clarity" by Valerio Lyndon
- * Revision 22.5
+ * Revision 22.6
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -660,6 +660,7 @@ a, a:hover {
 	border: none;
 	border-radius: 13px;
 	outline: none;
+	color: var(--text);
 }
 
 #search-box.open input {
