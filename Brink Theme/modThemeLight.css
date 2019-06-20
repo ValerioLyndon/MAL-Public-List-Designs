@@ -3,19 +3,19 @@
 \* - - - - - - - - - - - - - - -*/
 
 :root {
-           --bg: 0, 0%, 100%;
-        --bgAlt: 0, 0%, 92%;
-          --btn: 240, 3%, 91%;
-     --btnLight: 240, 3%, 87%;
-    --btnAccent: 240, 70%, 87%;
-       --border: 240, 3%, 91%;
-
-   --textBright: 0, 0%, 10%;
-      --textMid: 0, 0%, 22%;
-      --textDim: 0, 0%, 30%;
---textProminent: 27, 94%, 80%;
-  --textLinkHov: 240, 50%, 80%;
-     --textIcon: 0, 0%, 26%;
+	--bg: 0, 0%, 100%;
+	--bgAlt: 0, 0%, 92%;
+	--btn: 240, 3%, 91%;
+	--btnLight: 240, 3%, 87%;
+	--btnAccent: 240, 70%, 87%;
+	--border: 240, 3%, 91%;
+	
+	--textBright: 0, 0%, 10%;
+	--textMid: 0, 0%, 22%;
+	--textDim: 0, 0%, 30%;
+	--textProminent: 27, 94%, 80%;
+	--textLinkHov: 240, 50%, 80%;
+	--textIcon: 0, 0%, 26%;
 	
 	--arrowUp: url(https://files.catbox.moe/iph712.svg);
 	--arrowRt: url(https://files.catbox.moe/4m6un3.svg);
