@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.1.1
+ * Version 1.1.2
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -190,7 +190,7 @@
 
 *::-webkit-scrollbar-thumb {
 	background: hsl(var(--accent)) content-box;
-	border: 0px solid transparent;
+	border: 0 solid transparent;
 } *::-webkit-scrollbar-thumb:vertical {
 	border-width: 0 2px;
 } *::-webkit-scrollbar-thumb:horizontal {
@@ -402,8 +402,10 @@ body:before {
 
 .header .header-menu .btn-menu {
 	height: 15px;
+	align-self: flex-end;
 	color: hsl(var(--textBright));
 	font-size: 12px;
+	cursor: text;
 } [data-owner="1"] .header .header-menu .btn-menu {
 	font-size: 14px;
 }
@@ -411,7 +413,6 @@ body:before {
 .header .btn-menu #header-menu-button {
 	font-weight: normal;
 	pointer-events: none;
-	cursor: text;
 }
 
 #header-menu-button i {
@@ -554,7 +555,7 @@ body:before {
 	filter:
 		sepia(1)
 		saturate(500)
-		hue-rotate(240deg)
+		hue-rotate(289.5deg)
 		opacity(0.6);
 } /* Hide for logged in users */
 .list-menu-float + .list-container:before {
@@ -1149,6 +1150,8 @@ body:before {
 	transition: all var(--timeText) var(--bezierFast);
 } .list-table .list-table-data .data a:not(.edit-disabled):hover {
 	color: hsl(var(--textLinkHov)) !important;
+} .list-table .list-table-data a.edit-disabled {
+	pointer-events: none;
 }
 
 /* Dynamic Columns */
