@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.1.2
+ * Version 1.1.3
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -316,8 +316,8 @@ body:before {
 .list-block {
 	position: relative;
 	width: 100%;
+	min-height: calc(100vh - (184px + 30vw));
 	padding-top: 0;
-	min-height: auto;
 	margin: 0 auto;
 }
 
@@ -1993,12 +1993,6 @@ body #fancybox-inner {
 	font-family: var(--font);
 }
 
-@media (min-width: 1600px) {
-	#advanced-options {
-		padding: 0 85px 12px;
-	}
-}
-
 #advanced-options:before {
 	content: "";
 	position: absolute;
@@ -2070,8 +2064,8 @@ body #fancybox-inner {
 #advanced-options .sort-widget label {
 	height: 24px !important;
 	background: hsl(var(--btn)) calc(100% - 5px) center / auto no-repeat;
-	border-radius: 3px;
 	border: none !important;
+	border-radius: 3px;
 	margin-right: 2%;
 	flex: 0 1 auto;
 	
@@ -2236,11 +2230,7 @@ body #fancybox-inner {
 \*------------------------------*/
 
 @media (max-width: 700px) {
-	#fancybox-wrap {
-		left: calc(50% - (190px + (350px * 0.4))) !important;
-		width: calc(380px + (700px * 0.4)) !important;
-	}
-	
+	/* Headers */
 	#status-menu.fixed .status-button {
 		pointer-events: none;
 		opacity: 0;
@@ -2249,9 +2239,26 @@ body #fancybox-inner {
 	#status-menu.fixed .search-container {
 		width: calc(100% - 71px);
 	}
+	
+	/* List Area */
+	.list-block {
+		min-height: calc(100vh - (184px + (700px * 0.3)));
+	}
+	
+	/* Overlays */
+	body #fancybox-wrap {
+		left: calc(50% - (190px + (700px * 0.2))) !important;
+		width: calc(380px + (700px * 0.4)) !important;
+	}
+	
+	#advanced-options {
+		position: absolute;
+		padding: 0 calc(40px) 12px;
+	}
 }
 
 @media (max-width: 980px) {
+	/* Headers */
 	.list-block {
 		padding-top: 44px;
 	}
@@ -2282,7 +2289,15 @@ body #fancybox-inner {
 	}
 }
 
+@media (min-width: 1600px) {
+	/* Overlays */
+	#advanced-options {
+		padding: 0 85px 12px;
+	}
+}
+
 @media (min-width: 1804px) {
+	/* Headers */
 	#status-menu .search-container {
 		width: calc(169px + (1804px * 0.035));
 	} #status-menu:not(.fixed) .search-container {
@@ -2303,6 +2318,12 @@ body #fancybox-inner {
 	}
 }
 
+@media (min-width: 1920px) {
+	/* List Area */
+	.list-block {
+		min-height: calc(100vh - (184px + (1920px * 0.3)));
+	}
+}
 
 /*==============================*\
   !FIXES
