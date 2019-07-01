@@ -1,5 +1,5 @@
 /*------------------------------*\
-| - - - Light Theme V1.0.0 - - - |
+| - - - Light Theme V1.1.0 - - - |
 \* - - - - - - - - - - - - - - -*/
 
 :root {
@@ -81,6 +81,17 @@ body #fancybox-close,
 
 #status-menu .status-button {
 	text-shadow: none;
+}
+
+/* Empty List Table */
+
+.list-table[data-items="[]"]:before {
+	background-image: url(https://i.imgur.com/OzsJEdu.png);
+	background-blend-mode: darken;
+}
+
+.list-table[data-items="[]"]:after {
+	background: none;
 }
 
 /* List Items */
