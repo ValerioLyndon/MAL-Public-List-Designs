@@ -1,5 +1,5 @@
 /*------------------------------*\
-| - - - Light Theme V1.1.0 - - - |
+| - - - Light Theme V1.1.1 - - - |
 \* - - - - - - - - - - - - - - -*/
 
 :root {
@@ -118,15 +118,19 @@ body #fancybox-close,
 	color: hsl(var(--textMid));
 }
 
-/* Other */
+/* Footer */
+
+#copyright {
+	color: hsla(var(--textDim), 80%);
+}
+
+/* Overlays */
+
+body #fancybox-inner { filter: none; }
 
 #advanced-options .sort-widget select:disabled,
 #advanced-options .filter-widget select:disabled {
 	background-blend-mode: darken;
-}
-
-#copyright {
-	color: hsla(var(--textDim), 80%);
 }
 
 /* Readability Mod Tweaks */
