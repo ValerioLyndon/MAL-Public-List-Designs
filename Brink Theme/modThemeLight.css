@@ -1,6 +1,8 @@
 /*------------------------------*\
-| - - - Light Theme V1.1.1 - - - |
+| - - - Light Theme V1.1.2 - - - |
 \* - - - - - - - - - - - - - - -*/
+
+/* User */
 
 :root {
 	--bg: 0, 0%, 100%;
@@ -16,7 +18,11 @@
 	--textProminent: 27, 94%, 80%;
 	--textLinkHov: 240, 50%, 80%;
 	--textIcon: 0, 0%, 26%;
-	
+}
+
+/* Internal */
+
+:root {
 	--arrowUp: url(https://files.catbox.moe/iph712.svg);
 	--arrowRt: url(https://files.catbox.moe/4m6un3.svg);
 	--arrowDn: url(https://files.catbox.moe/wb6rq1.svg);
@@ -75,6 +81,7 @@ body #fancybox-close,
 	box-shadow: none;
 }
 
+.list-table .list-table-header,
 .data.image {
 	box-shadow: none;
 }
