@@ -241,7 +241,7 @@ textarea::-webkit-scrollbar-thumb:horizontal {
 
 html {
 	box-sizing: border-box;
-} *, *:before, *:after {
+} *, *::before, *::after {
 	box-sizing: inherit;
 }
 
@@ -252,7 +252,7 @@ a {
 /* Buttons */
 
 .list-unit .list-status-title .stats a,
-.list-table > tbody:first-of-type:after,
+.list-table > tbody:first-of-type::after,
 body #fancybox-close,
 #advanced-options .advanced-options-button a {
 	width: 96px;
@@ -271,7 +271,7 @@ body #fancybox-close,
 	
 	transition: all var(--timeButton) var(--bezierFast);
 } .list-unit .list-status-title .stats a:hover,
-.list-table > tbody:first-of-type:hover:after,
+.list-table > tbody:first-of-type:hover::after,
 body #fancybox-close:hover,
 #advanced-options .advanced-options-button a:hover {
 	border-color: hsl(var(--btnAccent));
@@ -316,7 +316,7 @@ body {
 	font: 12px var(--font);
 }
 
-body:before {
+body::before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -458,10 +458,10 @@ body:before {
 
 .header-info a[href="/login.php"], .header-info a[href="/register.php"] {
 	font-size: 0;
-} .header-info a[href="/login.php"]:before {
+} .header-info a[href="/login.php"]::before {
 	content: "Login";
 	font-size: 12px;
-} .header-info a[href="/register.php"]:before {
+} .header-info a[href="/register.php"]::before {
 	content: "Register";
 	font-size: 12px;
 }
@@ -495,7 +495,7 @@ body:before {
 	color: hsl(var(--accent));
 }
 
-#header-menu-dropdown .icon-menu:before {
+#header-menu-dropdown .icon-menu::before {
 	content: "\f021";
 	
 	font-size: 14px;
@@ -504,16 +504,16 @@ body:before {
 	transition: inherit;
 }
 
-#header-menu-dropdown .icon-menu:after {
+#header-menu-dropdown .icon-menu::after {
 	display: inline-block;
 	
 	font-size: 14px;
 	text-indent: 5px;
 	
 	transition: inherit;
-} #header-menu-dropdown .icon-menu.manga-list:after {
+} #header-menu-dropdown .icon-menu.manga-list::after {
 	content: "Swap to Manga";
-} #header-menu-dropdown .icon-menu.anime-list:after {
+} #header-menu-dropdown .icon-menu.anime-list::after {
 	content: "Swap to Anime";
 }
 
@@ -552,8 +552,8 @@ body:before {
 	transition-delay: 0s;
 }
 
-.list-menu-float:after,
-.list-container:before {
+.list-menu-float::after,
+.list-container::before {
 	content: "";
 	position: fixed;
 	left: 0;
@@ -570,7 +570,7 @@ body:before {
 	
 	transition: inherit;
 } /* Icon for logged out users */
-.list-container:before {
+.list-container::before {
 	z-index: 200;
 	filter:
 		sepia(1)
@@ -578,11 +578,11 @@ body:before {
 		hue-rotate(289.5deg)
 		opacity(0.6);
 } /* Hide for logged in users */
-.list-menu-float + .list-container:before {
+.list-menu-float + .list-container::before {
 	content: none;
 }
 
-.list-menu-float:before {
+.list-menu-float::before {
 	content: "USER MENU";
 	position: absolute;
 	left: 0;
@@ -601,12 +601,12 @@ body:before {
 	
 	transition: color calc(var(--timeMenu) * 0.3) ease-in-out var(--delayMenu);
 	pointer-events: none;
-} .list-menu-float:hover:before {
+} .list-menu-float:hover::before {
 	color: hsl(var(--textBright));
 	transition: color calc(var(--timeMenu) * 0.7) ease-in-out calc(var(--timeMenu) * 0.3);
 }
 
-#list-container:after {
+#list-container::after {
 	content: "";
 	position: fixed;
 	top: 0;
@@ -619,7 +619,7 @@ body:before {
 	
 	transition: all var(--timeMenu) var(--bezierSmooth) var(--delayMenu);
 	pointer-events: none;
-} .list-menu-float:hover ~ #list-container:after {
+} .list-menu-float:hover ~ #list-container::after {
 	background: hsla(0, 0%, 0%, 78%);
 	transition-delay: 0s;
 }
@@ -639,7 +639,7 @@ body:before {
 	display: none;
 }
 
-.ownlist .list-menu-float .icon-menu:after,
+.ownlist .list-menu-float .icon-menu::after,
 .ownlist .list-menu-float .icon-menu:not(.setting) .text,
 .ownlist .list-menu-float .icon-menu.setting .text .link-list-setting,
 .ownlist .list-menu-float .icon-menu.setting .text .link-style-setting {
@@ -659,7 +659,7 @@ body:before {
 	
 	opacity: 1;
 	transition: inherit;
-} .ownlist .list-menu-float .icon-menu:hover:after,
+} .ownlist .list-menu-float .icon-menu:hover::after,
 .ownlist .list-menu-float .icon-menu:not(.setting):hover .text,
 .ownlist .list-menu-float .icon-menu.setting .text .link-list-setting:hover,
 .ownlist .list-menu-float .icon-menu.setting .text .link-style-setting:hover {
@@ -685,7 +685,7 @@ body:before {
 	order: 9 !important;
 }
 
-.ownlist .list-menu-float .icon-menu.profile:after {
+.ownlist .list-menu-float .icon-menu.profile::after {
 	content: "Profile";
 	display: block;
 }
@@ -696,9 +696,9 @@ body:before {
 .ownlist .list-menu-float .icon-menu.export,
 .ownlist .list-menu-float .icon-menu.logout {
 	margin-top: 15px;
-} .ownlist .list-menu-float .icon-menu.quick-add:before,
-.ownlist .list-menu-float .icon-menu.export:before,
-.ownlist .list-menu-float .icon-menu.logout:before {
+} .ownlist .list-menu-float .icon-menu.quick-add::before,
+.ownlist .list-menu-float .icon-menu.export::before,
+.ownlist .list-menu-float .icon-menu.logout::before {
 	content: "";
 	position: absolute;
 	top: -8px;
@@ -741,7 +741,7 @@ body:before {
 	object-fit: cover;
 }
 
-#cover-image-container:after {
+#cover-image-container::after {
 	content: "";
 	position: absolute;
 	bottom: 0;
@@ -763,7 +763,7 @@ body:before {
 
 /* Top Bar */
 
-.list-block:before, #status-menu:before {
+.list-block::before, #status-menu::before {
 	content: "";
 	position: absolute;
 	top: -62px;
@@ -772,27 +772,27 @@ body:before {
 	width: 100%;
 	height: 2px;
 	background: hsl(var(--bg)) linear-gradient(to right, hsla(var(--accent), 1), hsla(var(--accent), 0.55));
-} #status-menu:before {
+} #status-menu::before {
 	position: fixed;
 	top: 42px;
 	height: 0;
 	transition: inherit;
-} #status-menu.fixed:before {
+} #status-menu.fixed::before {
 	height: 2px;
-} [data-query*='status":1'] .list-block:before,
-[data-query*='status":1'] #status-menu:before {
+} [data-query*='status":1'] .list-block::before,
+[data-query*='status":1'] #status-menu::before {
 	--accent: var(--current);
-} [data-query*='status":2'] .list-block:before,
-[data-query*='status":2'] #status-menu:before {
+} [data-query*='status":2'] .list-block::before,
+[data-query*='status":2'] #status-menu::before {
 	--accent: var(--completed);
-} [data-query*='status":3'] .list-block:before,
-[data-query*='status":3'] #status-menu:before {
+} [data-query*='status":3'] .list-block::before,
+[data-query*='status":3'] #status-menu::before {
 	--accent: var(--paused);
-} [data-query*='status":4'] .list-block:before,
-[data-query*='status":4'] #status-menu:before {
+} [data-query*='status":4'] .list-block::before,
+[data-query*='status":4'] #status-menu::before {
 	--accent: var(--dropped);
-} [data-query*='status":6'] .list-block:before,
-[data-query*='status":6'] #status-menu:before {
+} [data-query*='status":6'] .list-block::before,
+[data-query*='status":6'] #status-menu::before {
 	--accent: var(--planned);
 }
 
@@ -856,28 +856,28 @@ body:before {
 	font-weight: bold;
 }
 
-#status-menu .status-button:before {
+#status-menu .status-button::before {
 	font-size: 18px;
 	transition: inherit;
 }
 
-#status-menu .status-button.all_anime:before {
+#status-menu .status-button.all_anime::before {
 	content: "ALL";
-} #status-menu .status-button.watching:before,
-#status-menu .status-button.reading:before {
+} #status-menu .status-button.watching::before,
+#status-menu .status-button.reading::before {
 	content: "CURRENT";
-} #status-menu .status-button.completed:before {
+} #status-menu .status-button.completed::before {
 	content: "COMPLETED";
-} #status-menu .status-button.onhold:before {
+} #status-menu .status-button.onhold::before {
 	content: "PAUSED";
-} #status-menu .status-button.dropped:before {
+} #status-menu .status-button.dropped::before {
 	content: "DROPPED";
-} #status-menu .status-button.plantowatch:before,
-#status-menu .status-button.plantoread:before {
+} #status-menu .status-button.plantowatch::before,
+#status-menu .status-button.plantoread::before {
 	content: "PLANNED";
 }
 
-#status-menu .status-button:after {
+#status-menu .status-button::after {
 	content: none;
 }
 
@@ -925,7 +925,7 @@ body:before {
 	color: hsl(var(--textBright));
 }
 
-#status-menu .search-container #search-box:after {
+#status-menu .search-container #search-box::after {
 	content: "\f002";
 	position: absolute;
 	top: 0;
@@ -999,7 +999,7 @@ body:before {
 	pointer-events: auto;
 }
 
-.list-table > tbody:first-of-type:after {
+.list-table > tbody:first-of-type::after {
 	content: "\f0dc  Order";
 	position: absolute;
 	top: 0;
@@ -1012,7 +1012,7 @@ body:before {
 	pointer-events: auto;
 }
 
-.list-table > tbody:first-of-type:before {
+.list-table > tbody:first-of-type::before {
 	content: "";
 	
 	display: block;
@@ -1080,9 +1080,9 @@ body:before {
 	color: hsl(var(--accent));
 	font: 10.5px var(--font);
 	vertical-align: baseline;
-} .list-table .list-table-header .header-title .fa-sort-asc:before {
+} .list-table .list-table-header .header-title .fa-sort-asc::before {
 	content: "ASC";
-} .list-table .list-table-header .header-title .fa-sort-desc:before {
+} .list-table .list-table-header .header-title .fa-sort-desc::before {
 	content: "DESC";
 }
 
@@ -1100,8 +1100,8 @@ body:before {
 \*------------------------------*/
 
 /* Empty Table Message */
-.list-table[data-items="[]"]:before,
-.list-table[data-items="[]"]:after {
+.list-table[data-items="[]"]::before,
+.list-table[data-items="[]"]::after {
 	content: "";
 	display: block;
 	width: calc(224px * 3);
@@ -1113,7 +1113,7 @@ body:before {
 }
 
 /* No Entries (Generic/Non-Owner) */
-.list-table[data-items="[]"]:after {
+.list-table[data-items="[]"]::after {
 	content: "No entries found.";
 	background:
 		linear-gradient(
@@ -1127,21 +1127,21 @@ body:before {
 	font-size: 18px;
 	text-align: center;
 } /* No Entries (Owner) */
-[data-owner="1"] .list-table[data-items="[]"]:after {
+[data-owner="1"] .list-table[data-items="[]"]::after {
 	content: "No entries found. Why not add some?";
 } /* No Entries (Bad Search) */
-[data-query*='"s":'] .list-table[data-items="[]"]:after {
+[data-query*='"s":'] .list-table[data-items="[]"]::after {
 	content: "No entries found. Perhaps your search terms are too restrictive?";
 }
 
 @media (min-width: calc(224px * 5 + 33px)) {
-	.list-table[data-items="[]"]:before,
-	.list-table[data-items="[]"]:after {
+	.list-table[data-items="[]"]::before,
+	.list-table[data-items="[]"]::after {
 		width: calc(224px * 5);
 		padding: 48px calc((224px * 2.5) - 90px);
 	}
 	
-	.list-table[data-items="[]"]:after {
+	.list-table[data-items="[]"]::after {
 		background:
 		linear-gradient(
 			to right,
@@ -1154,13 +1154,13 @@ body:before {
 }
 
 @media (min-width: calc(224px * 7 + 33px)) {
-	.list-table[data-items="[]"]:before,
-	.list-table[data-items="[]"]:after {
+	.list-table[data-items="[]"]::before,
+	.list-table[data-items="[]"]::after {
 		width: calc(224px * 7);
 		padding: 48px calc((224px * 3.5) - 90px);
 	}
 	
-	.list-table[data-items="[]"]:after {
+	.list-table[data-items="[]"]::after {
 		background:
 		linear-gradient(
 			to right,
@@ -1262,18 +1262,18 @@ body:before {
 
 /* Icons */
 
-.data.type:after,
-.data.rated:after,
-.data.season:after,
-.data.started:after,
-.data.days:before,
-.data.airing-started:after,
-.data.studio:after,
-.data.licensor:after,
-.data.magazine:after,
-.data.priority:after,
-.data.storage:after,
-.data.retail:after {
+.data.type::after,
+.data.rated::after,
+.data.season::after,
+.data.started::after,
+.data.days::before,
+.data.airing-started::after,
+.data.studio::after,
+.data.licensor::after,
+.data.magazine::after,
+.data.priority::after,
+.data.storage::after,
+.data.retail::after {
 	position: absolute;
 	top: 0;
 	left: -3px;
@@ -1292,7 +1292,7 @@ body:before {
 .data.image,
 .data.image .link,
 .data.image .image,
-.data.image .link:after {
+.data.image .link::after {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -1323,7 +1323,7 @@ body:before {
 		opacity(var(--imageBrightnessHov));
 }
 
-.data.image .link:after {
+.data.image .link::after {
 	content: "";
 	background: no-repeat center / cover scroll;
 	background-image: inherit;
@@ -1406,7 +1406,7 @@ body:before {
 	visibility: var(--togglePV);
 }
 
-[class^="icon-watch"]:after {
+[class^="icon-watch"]::after {
 	content: "\f144";
 	position: absolute;
 	top: 0;
@@ -1475,7 +1475,7 @@ body:before {
 	font-size: 0;
 }
 
-.add-edit-more .more a:before {
+.add-edit-more .more a::before {
 	content: "NOTES";
 	font-size: 12px;
 	vertical-align: top;
@@ -1507,17 +1507,17 @@ body:before {
 	opacity: 1;
 }
 
-[data-query*='"status":7'] .watching ~ .data.score:before,
-[data-query*='"status":7'] .reading ~ .data.score:before {
+[data-query*='"status":7'] .watching ~ .data.score::before,
+[data-query*='"status":7'] .reading ~ .data.score::before {
 	content: "Current |";
-} [data-query*='"status":7'] .completed ~ .data.score:before {
+} [data-query*='"status":7'] .completed ~ .data.score::before {
 	content: "Completed |";
-} [data-query*='"status":7'] .onhold ~ .data.score:before {
+} [data-query*='"status":7'] .onhold ~ .data.score::before {
 	content: "Paused |";
-} [data-query*='"status":7'] .dropped ~ .data.score:before {
+} [data-query*='"status":7'] .dropped ~ .data.score::before {
 	content: "Dropped |";
-} [data-query*='"status":7'] .plantowatch ~ .data.score:before,
-[data-query*='"status":7'] .plantoread ~ .data.score:before {
+} [data-query*='"status":7'] .plantowatch ~ .data.score::before,
+[data-query*='"status":7'] .plantoread ~ .data.score::before {
 	content: "Planned |";
 }
 
@@ -1526,7 +1526,7 @@ body:before {
 	vertical-align: top;
 }
 
-.data.score .link:before {
+.data.score .link::before {
 	content: " Scored ";
 	font-size: 12px;
 	font-weight: normal;
@@ -1539,7 +1539,7 @@ body:before {
 	display: none;
 }
 
-[class*="planto"] ~ .data.score:before {
+[class*="planto"] ~ .data.score::before {
 	content: "Planned" !important;
 }
 
@@ -1556,8 +1556,8 @@ body:before {
 
 .progress div, .chapter div { font-size: 0; }
 
-.progress span:first-of-type:not(:only-of-type) a:after,
-.chapter span:first-of-type:not(:only-of-type) a:after {
+.progress span:first-of-type:not(:only-of-type) a::after,
+.chapter span:first-of-type:not(:only-of-type) a::after {
 	content: " of ";
 }
 
@@ -1595,17 +1595,17 @@ body:before {
 	font-size: 14px;
 }
 
-.progress span:last-of-type:after {
+.progress span:last-of-type::after {
 	content: "ep";
-} .chapter span:last-of-type:after {
+} .chapter span:last-of-type::after {
 	content: "ch";
 }
 
-span:nth-of-type(2):after {
+span:nth-of-type(2)::after {
 	color: hsl(var(--textBright));
 	text-shadow: inherit;
 	transition: all var(--timeItem) var(--bezierFast);
-} [data-owner="1"] .list-item:hover span:nth-of-type(2):after {
+} [data-owner="1"] .list-item:hover span:nth-of-type(2)::after {
 	color: transparent;
 	text-shadow: none;
 }
@@ -1629,7 +1629,7 @@ span:nth-of-type(2):after {
 	text-shadow: inherit;
 }
 
-[class^="icon-add-"] .fa:before {
+[class^="icon-add-"] .fa::before {
 	content: "\f067";
 }
 
@@ -1685,15 +1685,15 @@ span:nth-of-type(2):after {
 	color: hsl(var(--textBright)) !important;
 }
 
-.data.tags a:after {
+.data.tags a::after {
 	position: absolute;
 	top: 1px;
 	right: 0;
 	display: inline-block;
 	color: hsl(var(--textIcon));
-} .data.tags span a:after {
+} .data.tags span a::after {
 	content: "\f02b";
-} .data.tags .edit:after {
+} .data.tags .edit::after {
 	content: "\f040";
 }
 
@@ -1730,7 +1730,7 @@ span:nth-of-type(2):after {
 	cursor: default;
 }
 
-.data.number:before {
+.data.number::before {
 	content: "#";
 	font-size: 12px;
 }
@@ -1740,7 +1740,7 @@ span:nth-of-type(2):after {
   @Type
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-.data.type:after {
+.data.type::after {
 	content: "\f069";
 }
 
@@ -1753,7 +1753,7 @@ span:nth-of-type(2):after {
   @Rated
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-.data.rated:after {
+.data.rated::after {
 	content: "\f129";
 }
 
@@ -1761,7 +1761,7 @@ span:nth-of-type(2):after {
 	order: 20;
 }
 
-.data.rated:empty:before {
+.data.rated:empty::before {
 	content: "Unrated";
 }
 
@@ -1770,7 +1770,7 @@ span:nth-of-type(2):after {
   @Season
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-.data.season:after {
+.data.season::after {
 	content: "\f1bb";
 }
 
@@ -1778,7 +1778,7 @@ span:nth-of-type(2):after {
 	order: 30;
 }
 
-.data.season:empty:before {
+.data.season:empty::before {
 	content: "Unknown";
 }
 
@@ -1787,11 +1787,11 @@ span:nth-of-type(2):after {
   @Studio/@Licensor/@Magazine
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-.data.studio:after {
+.data.studio::after {
 	content: "\f0b1";
-} .data.licensor:after {
+} .data.licensor::after {
 	content: "\f19c";
-} .data.magazine:after {
+} .data.magazine::after {
 	content: "\f02d";
 }
 
@@ -1801,9 +1801,9 @@ span:nth-of-type(2):after {
 	order: 50;
 }
 
-.data.studio:empty:before,
-.data.licensor:empty:before,
-.data.magazine:empty:before {
+.data.studio:empty::before,
+.data.licensor:empty::before,
+.data.magazine:empty::before {
 	content: "Unknown";
 	color: hsl(var(--textDim));
 }
@@ -1813,11 +1813,11 @@ span:nth-of-type(2):after {
   @Dates
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-.data.started:after {
+.data.started::after {
 	content: "\f073";
-} .data.airing-started:after {
+} .data.airing-started::after {
 	content: "\f073";
-} .data.days:before {
+} .data.days::before {
 	content: "\f017";
 }
 
@@ -1832,28 +1832,28 @@ span:nth-of-type(2):after {
 	margin: 0;
 }
 
-.data[class*="started"]:before {
+.data[class*="started"]::before {
 	display: block;
 	color: hsl(var(--textDim));
 	font-size: 12px;
-} .anime .data.started:before {
+} .anime .data.started::before {
 	content: "Watched";
-} .manga .data.started:before {
+} .manga .data.started::before {
 	content: "Read";
-} .anime .data.airing-started:before {
+} .anime .data.airing-started::before {
 	content: "Aired";
-} .manga .data.airing-started:before {
+} .manga .data.airing-started::before {
 	content: "Published";
 }
 
-.data.finished:before,
-.data.airing-finished:before {
+.data.finished::before,
+.data.airing-finished::before {
 	content: "to ";
 	color: hsl(var(--textDim));
 }
 
 
-.data.days:after {
+.data.days::after {
 	content: "Days";
 }
 
@@ -1862,7 +1862,7 @@ span:nth-of-type(2):after {
   @Priority
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-.data.priority:after {
+.data.priority::after {
 	content: "\f005";
 }
 
@@ -1880,8 +1880,8 @@ span:nth-of-type(2):after {
   @Storage
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-.data.storage:after,
-.data.retail:after {
+.data.storage::after,
+.data.retail::after {
 	content: "\f1c0";
 }
 
@@ -2000,7 +2000,7 @@ body #fancybox-close {
 	box-shadow: none;
 }
 
-#fancybox-close:before {
+#fancybox-close::before {
 	content: "Close";
 }
 
@@ -2068,7 +2068,7 @@ body #fancybox-inner {
 	font-family: var(--font);
 }
 
-#advanced-options:before {
+#advanced-options::before {
 	content: "";
 	position: absolute;
 	top: -2px;
@@ -2277,7 +2277,7 @@ body #fancybox-inner {
 	color: hsl(var(--textDim))
 }
 
-#copyright:after {
+#copyright::after {
 	content: "List design by Valerio Lyndon.";
 }
 
@@ -2434,8 +2434,8 @@ body #fancybox-inner {
 	background-image: url(https://i.imgur.com/g0WEEth.png);
 }
 
-[data-owner=""] .list-menu-float:after,
-[data-owner=""] .list-container:before {
+[data-owner=""] .list-menu-float::after,
+[data-owner=""] .list-container::before {
 	background-image: url(https://i.imgur.com/Ly6A4ph.png);
 }
 
