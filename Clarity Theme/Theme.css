@@ -1,6 +1,6 @@
 /**
  * "Clarity" by Valerio Lyndon
- * Revision 22.6
+ * Revision 22.7
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1660,7 +1660,8 @@ a, a:hover {
 
 /* Empty box message. */
 .data.studio:empty:before,
-.data.licensor:empty:before {
+.data.licensor:empty:before,
+.data.magazine:empty:before {
 	display: block;
 	padding: 1px;
 	
@@ -1672,6 +1673,7 @@ a, a:hover {
 
 .data.studio:empty:before { content: "Unknown\aStudio"; }
 .data.licensor:empty:before { content: "Unknown\aLicensor"; }
+.data.magazine:empty:before { content: "Unknown\aMagazine"; }
 
 
 .data.tags textarea {
