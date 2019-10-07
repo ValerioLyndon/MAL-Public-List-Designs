@@ -1,47 +1,61 @@
-/**
- * "Clarity" by Valerio Lyndon
- * Revision 22.8
- * 
- * = TABLE OF CONTENTS =
- * 
- * IMPORTS
- * 
- * OPTIMIZATIONS     : Page-wide repeated code.
- * Variables
- * Transitions
- * Nav-Buttons
- * 
- * PAGE-BASE         : Page-wide properties & widths.
- * 
- * HEADER
- * Cover
- * Nav-Main          : Main Bar
- * Nav-Buttons-Top   : Located above main bar.
- * Nav-Buttons-L     : Below main bar on left. User menu.
- * Nav-Buttons-R     : Below main bar on right. Stats & Filters.
- * Sort-By           : Sort menu.
- * 
- * LIST              : Anime/manga listings.
- * Base
- * Status
- * Image             : Image/Number
- * Title             : Title/Type
- * Score
- * Progress
- * Priority
- * Generic-Columns   : Rated/Magazine/Storage/Season
- * Tags              : Tags/Studio/Licensors
- * Dates             : Started/Finished/Airing/Etc
- * More-Info
- * 
- * FOOTER
- * 
- * OVERLAYS          : Overlayed menus and iframes.
- * Base
- * iframes
- * Filter-Menu
- */
+/*==============================*\
+  "Clarity" by Valerio Lyndon
+  R22.8
 
+| == = == THEME CONTENTS == = == |
+
+! IMPORTS
+
+! OPTIMIZATIONS
+? repeated code & more
+@ Variables
+@ Transitions
+@ Nav-Buttons
+
+! PAGE-BASE
+? generic containers
+
+! HEADER
+@ Cover
+@ Nav-Main
+? main Bar
+@ Nav-Buttons-Top
+? located above main bar
+@ Nav-Buttons-L
+? below main bar on left
+@ Nav-Buttons-R
+? below main bar on right
+@ Sort-By
+? sort menu
+
+! LIST
+? anime/manga listings
+@ Base
+@ Status
+@ Image
+? image/number
+@ Title
+? title/type
+@ Score
+@ Progress
+@ Priority
+@ Generic-Columns
+? rated/magazine/storage/season
+@ Tags
+? tags/studio/licensors
+@ Dates
+? started/finished/airing/etc
+@ More-Info
+
+! FOOTER
+
+! OVERLAYS
+? overlayed menus and iframes
+@ Base
+@ iframes
+@ Filter-Menu
+
+\*==============================*/
 
 
 
@@ -61,45 +75,45 @@
 \*==============================*/
 
 :root {
-                 /* Primary Customization */
-           --name: none;
-         --avatar: none;
-         --banner: url(https://i.imgur.com/VoPJz2S.jpg);
-      --character: url(https://i.imgur.com/6IPyngH.png);
+	/* Primary Customization */
+	--name: none;
+	--avatar: none;
+	--banner: url(https://i.imgur.com/VoPJz2S.jpg);
+	--character: url(https://i.imgur.com/6IPyngH.png);
 
-                 /* Generic Colours */
-             --pbg: #efefef;
-              --bg: #fff;
-         --bg-dark: #ddd;
-            --text: #323232;
-          --text-h: #787878;
-        --text-dim: #bababa;
-      --text-dim-h: #646464;
-       --text-dark: #111;
-            --icon: #323232;
-          --accent: #4065ba;
+	/* Generic Colours */
+	--pbg: #efefef;
+	--bg: #fff;
+	--bg-dark: #ddd;
+	--text: #323232;
+	--text-h: #787878;
+	--text-dim: #bababa;
+	--text-dim-h: #646464;
+	--text-dark: #111;
+	--icon: #323232;
+	--accent: #4065ba;
 
-                 /* Button Colours */
-          --btn-bg: #ebebeb;
-        --btn-bg-h: #323232;
-   --btn-head-bg-h: #1d439b;
-      --btn-text-h: #fff;
+	/* Button Colours */
+	--btn-bg: #ebebeb;
+	--btn-bg-h: #323232;
+	--btn-head-bg-h: #1d439b;
+	--btn-text-h: #fff;
 
-                 /* Header Colours */
-        --text-head: #9b9b9b;
-      --text-head-h: #787878;
+	/* Header Colours */
+	--text-head: #9b9b9b;
+	--text-head-h: #787878;
 
-                 /* Status Colours */
-        --watching: #2db039;
-       --completed: #26448f;
-          --onhold: #f1c83e;
-         --dropped: #a12f31;
-     --plantowatch: #c3c3c3;
+	/* Status Colours */
+	--watching: #2db039;
+	--completed: #26448f;
+	--onhold: #f1c83e;
+	--dropped: #a12f31;
+	--plantowatch: #c3c3c3;
 
-                 /* Single-Use Colours */
-        --cover-bg: #323232;
-        --edit-btn: #d9d9d9;
-       --checkmark: #9696eb;
+	/* Single-Use Colours */
+	--cover-bg: #323232;
+	--edit-btn: #d9d9d9;
+	--checkmark: #9696eb;
 }
 
 

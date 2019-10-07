@@ -1,8 +1,6 @@
-/* 
- * "Clarity" by Valerio Lyndon
- * Review Tags Modification
- * Revision 0.1
- */
+/*-S-T-A-R-T--------------------*\
+| Review Tags R0.1               |
+\*------------------------------*/
 
 /* Raise or lower this number to change how wide the box is. Make sure not to remove the "px" from the end of the number. */
 .data.tags { width: 240px; }
@@ -28,3 +26,5 @@
 	
 	pointer-events: none;
 }
+
+/*------------------------E-N-D-*/

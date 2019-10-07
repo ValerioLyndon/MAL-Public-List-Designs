@@ -1,4 +1,6 @@
-/* "Clarity" Modification by Valerio Lyndon / Low-Rez Hover Image / Revision 0.3 */
+/*-S-T-A-R-T--------------------*\
+| Hover Image Low-Rez R0.3       |
+\*------------------------------*/
 
 .data.image .link {
 	overflow: visible;
@@ -45,3 +47,5 @@
 	pointer-events: none;
 	animation: img-in 0.3s ease;
 }
+
+/*------------------------E-N-D-*/

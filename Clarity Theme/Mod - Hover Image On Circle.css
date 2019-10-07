@@ -1,4 +1,6 @@
-/* "Clarity" Modification by Valerio Lyndon / Hover Image on Circle / Revision 0.3 */
+/*-S-T-A-R-T--------------------*\
+| Hover Image on Circle R0.3     |
+\*------------------------------*/
 
 .data.image a {
 	overflow: visible;
@@ -33,3 +35,5 @@
 .data.image img, .data.image a:after {
 	border-radius: 50%;
 }
+
+/*------------------------E-N-D-*/

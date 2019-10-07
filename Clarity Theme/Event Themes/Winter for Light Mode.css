@@ -1,8 +1,6 @@
-/**
- * "Clarity" by Valerio Lyndon
- * Winter Event Modification for Light Mode
- * Revision 0.5
- */
+/*-S-T-A-R-T--------------------*\
+| Winter Event (Light) R0.5      |
+\*------------------------------*/
 
 :root {
 	--text-h: #be4141;
@@ -118,3 +116,5 @@ body {
 .list-table .more-info .more-content a { border-bottom-color: #ab2929; }
 
 .data.tags textarea, .data.progress input, .data.chapter input, .data.volume input { outline-color: #ab2929 !important; }
+
+/*------------------------E-N-D-*/

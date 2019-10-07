@@ -1,8 +1,6 @@
-/**
- * "Clarity" by Valerio Lyndon
- * Dark Mode Modification
- * Revision 3.2
- */
+/*-S-T-A-R-T--------------------*\
+| Dark Mode R3.2                 |
+\*------------------------------*/
 
 /* - - - - - - - - - - - - - - -*\
   Variables
@@ -94,3 +92,5 @@
 }
 
 #advanced-options [class*="-widget"] select { background-image: url(https://i.imgur.com/KF8oOyC.png); }
+
+/*------------------------E-N-D-*/
