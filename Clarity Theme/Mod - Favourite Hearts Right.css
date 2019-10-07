@@ -1,0 +1,26 @@
+/*-S-T-A-R-T--------------------*\
+| Favourite Hearts (Right) R0.4  |
+\*------------------------------*/
+
+.data.tags span { padding: 0; }
+.data.tags span a { margin: 1px 0; }
+.data.tags span a[href*="=Favourite"], .data.tags span a[href*="=Favorite"] {
+	position: absolute;
+	left: 1068px;
+	top: calc(50% - 13px);
+	
+	width: 26px;
+	height: 26px;
+	padding: 0;
+	background: var(--bg);
+	border-radius: 50%;
+	
+	color: #ff65ad !important;
+	font-size: 0 !important;
+	line-height: 23px;
+	
+	overflow: hidden;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+} .data.tags span a[href*="=Favourite"]:before, .data.tags span a[href*="=Favorite"]:before { content: "♥"; font-size: 26px; }
+
+/*------------------------E-N-D-*/

@@ -1,0 +1,5 @@
+/*-S-T-A-R-T--------------------*\
+| Category Headers (Basic) R0.3  |
+\*------------------------------*/
+[data-query*='"status":7']:not([data-query*=order]):not([data-query*=order]):not([data-query*='tag"']):not([data-query*='"s"']) .list-item:nth-child(2){margin-top:32px}[data-query*='"status":7']:not([data-query*=order]):not([data-query*=order]):not([data-query*='tag"']):not([data-query*='"s"']) .list-item:before{position:absolute;top:-40px;left:0;display:block;width:100%;height:32px;color:var(--text-head);font:20px/32px Oswald;text-align:center;letter-spacing:1px;text-transform:uppercase;pointer-events:none}
+/*------------------------E-N-D-*/

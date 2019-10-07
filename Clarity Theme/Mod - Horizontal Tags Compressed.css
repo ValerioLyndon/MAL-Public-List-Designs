@@ -1,0 +1,5 @@
+/*-S-T-A-R-T--------------------*\
+| Horizontal Tags R0.2           |
+\*------------------------------*/
+.list-table-data{padding-bottom:11px}.data.tags{position:absolute;left:0;top:0;display:flex!important;width:0;height:100%;padding:0!important;align-items:flex-end}.data.tags div{max-width:980px;margin:0 0 4px 80px;font-size:0;white-space:nowrap}.data.tags span{display:inline-block;padding:0}.data.tags span a{padding:1px 8px!important;margin:0 4px 0 0;white-space:nowrap}.data.tags span a[href*="=Favo"]{padding:0!important}.data.tags a.edit{right:-1060px}.data.tags textarea{right:-1060px}
+/*------------------------E-N-D-*/

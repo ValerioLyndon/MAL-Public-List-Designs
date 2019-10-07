@@ -1,0 +1,24 @@
+/*-S-T-A-R-T--------------------*\
+| Header Outline R0.0            |
+\*------------------------------*/
+
+/* Change colour of border here. */
+:root { --header-border: #9ca5fe; }
+
+.status-menu-container:before {
+	height: 56px;
+	border-width: 4px 0;
+	border-style: solid;
+	border-color: var(--header-border);
+}
+
+.status-menu:after {
+	left: -4px;
+	top: -47px;
+	border-width: 4px;
+	box-shadow: 0 0 0 4px var(--header-border);
+} .fixed .status-menu:after {
+	top: 4px;
+}
+
+/*------------------------E-N-D-*/
