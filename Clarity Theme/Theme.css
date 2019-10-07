@@ -1,6 +1,6 @@
 /**
  * "Clarity" by Valerio Lyndon
- * Revision 22.7
+ * Revision 22.8
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1678,17 +1678,15 @@ a, a:hover {
 
 .data.tags textarea {
 	position: absolute;
-	top: 50%;
+	top: 3px;
 	right: 4px;
 	z-index: 5;
 	
 	width: 530px !important;
-	height: 64px !important;
+	height: calc(100% - 6px) !important;
 	background: var(--btn-bg);
 	border: 1px solid var(--bg-dark);
 	outline-color: var(--accent) !important;
-	margin-top: -32px;
-	
 	box-sizing: border-box;
 	resize: none;
 	
