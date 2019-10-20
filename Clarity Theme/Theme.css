@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R22.8
+  R23.0
 
 | == = == THEME CONTENTS == = == |
 
@@ -90,6 +90,7 @@
 	--text-dim: #bababa;
 	--text-dim-h: #646464;
 	--text-dark: #111;
+	--shadow: rgba(0,0,0,0.2);
 	--icon: #323232;
 	--accent: #4065ba;
 
@@ -183,6 +184,8 @@
 	width: 26px !important;
 	background: var(--bg) !important;
 	border-radius: 13px;
+	box-shadow: 0px 1px 2px var(--shadow);
+	overflow: hidden;
 	
 	color: var(--text) !important;
 	font: normal 0/26px Arial, Verdana, sans-serif;
@@ -190,9 +193,6 @@
 	text-align: left;
 	white-space: nowrap;
 	vertical-align: top;
-	
-	overflow: hidden;
-	box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
 	
 	transition: all 0.3s ease !important;
 }
@@ -204,7 +204,6 @@
 {
 	width: 100px !important;
 	background: var(--btn-head-bg-h) !important;
-	
 	color: var(--btn-text-h) !important;
 }
 
@@ -292,7 +291,7 @@ a, a:hover {
 	display: block;
 	width: 100%;
 	height: 50px;
-	background: linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0));
+	background: linear-gradient(to top,rgba(0,0,0,0.5),transparent);
 }
 
 /* Hide unnecessary container & change image button */
@@ -570,7 +569,7 @@ a, a:hover {
 	top: 64px;
 	
 	height: 2px;
-	background: linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0));
+	background: linear-gradient(to bottom,var(--shadow),transparent);
 }
 
 .status-menu {
@@ -602,7 +601,7 @@ a, a:hover {
 	border-radius: 50%;
 	
 	opacity: 1;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	box-shadow: 0 1px 2px var(--shadow);
 }
 
 .fixed .status-menu:after {
@@ -1701,10 +1700,18 @@ a, a:hover {
 	background: var(--btn-bg);
 	border: 1px solid var(--bg-dark);
 	outline-color: var(--accent) !important;
-	box-sizing: border-box;
 	resize: none;
 	
 	color: var(--text);
+}
+
+@-moz-document url-prefix() {
+	.data.tags textarea {
+		width: 524px !important;
+		height: calc(100% - 14px) !important;
+		padding: 2px;
+		box-sizing: initial !important;
+	}
 }
 
 
@@ -1870,7 +1877,7 @@ footer {
 	width: 100%;
 	min-width: 1060px;
 	height: 2px;
-	background: linear-gradient(to top,rgba(0,0,0,0.1),rgba(0,0,0,0));
+	background: linear-gradient(to top,rgba(0,0,0,0.1),transparent);
 }
 
 #copyright {
@@ -1895,7 +1902,6 @@ footer {
 
 #fancybox-overlay {
 	background: #000 !important;
-	
 	opacity: 0.2 !important;
 }
 
@@ -1924,7 +1930,7 @@ footer {
 	color: var(--text);
 	text-align: center;
 	
-	box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+	box-shadow: 0px 1px 2px var(--shadow);
 }
 
 #fancybox-outer #fancybox-close:after {	
@@ -2231,7 +2237,7 @@ footer {
 	padding: 0;
 	background: var(--btn-bg);
 	border-radius: 13px;
-	box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+	box-shadow: 0px 1px 2px var(--shadow);
 	
 	color: var(--text-dark);
 	line-height: 26px;
@@ -2268,4 +2274,53 @@ footer {
 #advanced-options #fancybox-close:after {
 	content: "\f00d  Close";
 	font: 12px/26px Arial, FontAwesome, sans-serif;
+}
+
+
+
+/*------------------------------*\
+  OVERLAYS @Other
+\*------------------------------*/
+
+/* Rewatching Box */
+
+#fancybox-wrap[style*="width: 320px;"] {
+	height: 120px !important;
+}
+
+[style*="width: 320px;"] #fancybox-inner {
+	height: calc(100% - 20px) !important;
+}
+
+div[style^="width: 300px;"] {
+	display: flex;
+	height: 100% !important;
+	flex-flow: column nowrap;
+	justify-content: center;
+	color: var(--text);
+	font-size: 13px !important;
+}
+
+div[style^="width: 300px;"] div {
+	font-size: 0;
+}
+
+div[style^="width: 300px;"] input {
+	display: block;
+	width: 240px;
+	height: 26px;
+	background: var(--btn-bg);
+	border: none;
+	border-radius: 13px;
+	box-shadow: 0 1px 2px var(--shadow);
+	margin: 0 auto 5px;
+	color: var(--text);
+	font: normal 12px/26px Arial,Verdana,sans-serif;
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+
+div[style^="width: 300px;"] input:hover {
+	background: var(--btn-bg-h);
+	color: var(--btn-text-h);
 }
