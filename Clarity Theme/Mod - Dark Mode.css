@@ -1,5 +1,5 @@
 /*-S-T-A-R-T--------------------*\
-| Dark Mode R3.2                 |
+| Dark Mode R3.3                 |
 \*------------------------------*/
 
 /* - - - - - - - - - - - - - - -*\
@@ -7,36 +7,37 @@
 \*- - - - - - - - - - - - - - - */
 
 :root {
-                 /* Primary Customization */
-    --banner: url(https://i.imgur.com/WaLokPG.jpg);
- --character: url(https://i.imgur.com/h8HW1jf.png);
-	
-	              /* Generic Colours */
-             --pbg: #161616;
-              --bg: #212121;
-         --bg-dark: #444;
-            --text: #ababab;
-          --text-h: #416abe;
-        --text-dim: #777;
-      --text-dim-h: #999;
-       --text-dark: #ababab;
-            --icon: #959595;
-          --accent: #416abe;
+	/* Primary Customization */
+	--banner: url(https://i.imgur.com/WaLokPG.jpg);
+	--character: url(https://i.imgur.com/h8HW1jf.png);
 
-                 /* Button Colours */
-          --btn-bg: #191919;
-        --btn-bg-h: #ababab;
-   --btn-head-bg-h: #416abe;
-      --btn-text-h: #212121;
+	/* Generic Colours */
+	--pbg: #161616;
+	--bg: #212121;
+	--bg-dark: #444;
+	--text: #ababab;
+	--text-h: #416abe;
+	--text-dim: #777;
+	--text-dim-h: #999;
+	--text-dark: #ababab;
+	--shadow: rgba(0,0,0,0.8);
+	--icon: #959595;
+	--accent: #416abe;
 
-                 /* Header Colours */
-      --text-head: #9b9b9b;
-    --text-head-h: #ababab;
+	/* Button Colours */
+	--btn-bg: #191919;
+	--btn-bg-h: #ababab;
+	--btn-head-bg-h: #416abe;
+	--btn-text-h: #212121;
 
-                 /* Single-Use Colours */
-        --cover-bg: #090909;
-        --edit-btn: #323232;
-       --checkmark: #416abe;
+	/* Header Colours */
+	--text-head: #9b9b9b;
+	--text-head-h: #ababab;
+
+	/* Single-Use Colours */
+	--cover-bg: #090909;
+	--edit-btn: #323232;
+	--checkmark: #416abe;
 }
 
 
@@ -59,20 +60,6 @@
 .status-menu-container:after { background: linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0)); }
 
 #footer-block:before { background: linear-gradient(to top,rgba(0,0,0,0.3),rgba(0,0,0,0)); }
-
-/* Nav Buttons */
-.header .header-title,
-.header-info,
-.icon-menu,
-.list-menu-float .icon-menu,
-.stats a,
-.list-table > tbody:first-of-type:after,
-.status-menu:after,
-/* Overlays */
-#advanced-options #fancybox-close,
-#fancybox-outer #fancybox-close,
-#advanced-options .advanced-options-button a
-{ box-shadow: 0px 1px 2px rgba(0,0,0,0.8); }
 
 
 /* List */
