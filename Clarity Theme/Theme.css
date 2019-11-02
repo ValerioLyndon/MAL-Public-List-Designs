@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R23.0
+  R23.1
 
 | == = == THEME CONTENTS == = == |
 
@@ -273,7 +273,7 @@ a, a:hover {
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: -5;
+	z-index: 25;
 	
 	width: 100%;
 	min-width: 1060px;
@@ -365,6 +365,7 @@ a, a:hover {
 \*------------------------------*/
 
 .header {
+	z-index: 30;
 	display: flex;
 	height: 36px;
 	margin-top: 282px;
@@ -523,8 +524,6 @@ a, a:hover {
 	border-radius: 50%;
 	
 	font-size: 0;
-
-	z-index: 36;
 }
 
 .btn-menu span.username { display: none !important; }
