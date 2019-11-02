@@ -1,9 +1,6 @@
 /*-S-T-A-R-T--------------------*\
-| Character Renders R0.2         |
+| Character Renders R0.3         |
 \*------------------------------*/
-
-.cover-block { z-index: 25; }
-.header { z-index: 36; }
 
 footer:before, footer:after {
 	content: "";
