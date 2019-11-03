@@ -1,0 +1,5 @@
+/*-S-T-A-R-T--------------------*\
+| Tag Desc Basis Vertical R1.2   |
+\*------------------------------*/
+.data.tags span a{position:relative}.data.tags span a:not([href*="=Favo"]):after,.data.tags span a:not([href*="=Favo"]):before{position:absolute;z-index:5;display:block;transition:all .15s ease;pointer-events:none;opacity:0}.data.tags span a:not([href*="=Favo"]):after{top:50%;left:-215px;width:200px;height:auto;padding:4px 8px;background:var(--btn-bg);border:1px solid var(--text-dim);border-radius:4px;box-sizing:border-box;color:var(--text);font:11px/15px Arial,Verdana;text-align:left;white-space:pre-wrap;transform:translateY(-50%)}.data.tags span a:not([href*="=Favo"]):before{content:"";top:calc(50% - 5px);left:-15px;border-width:5px;border-style:solid;border-color:transparent transparent transparent var(--text-dim)}.data.tags span a:hover::after{left:-210px;opacity:1}.data.tags span a:not([href*="=Favo"]):hover:before{left:-10px;opacity:1}
+/*------------------------E-N-D-*/

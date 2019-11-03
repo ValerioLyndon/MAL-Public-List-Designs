@@ -1,0 +1,66 @@
+/*-S-T-A-R-T--------------------*\
+| Tag Desc Basis Horizontal R1.2 |
+\*------------------------------*/
+
+.data.tags span a { position: relative; }
+
+.data.tags span a:not([href*="=Favo"])::after, .data.tags span a:not([href*="=Favo"])::before {
+	position: absolute;
+	z-index: 5;
+	
+	display: block;
+	
+	opacity: 0;
+	transition: all 0.15s efase;
+	pointer-events: none;
+}
+
+.data.tags span a:not([href*="=Favo"])::after {
+	top: 27px;
+	left: calc(50% - 345px);
+	
+	width: auto;
+	max-width: 340px;
+	height: auto;
+	padding: 4px 8px;
+	background: var(--btn-bg);
+	border: 1px solid var(--text-dim);
+	border-radius: 4px;
+	box-sizing: border-box;
+	
+	color: var(--text);
+	font: 11px/15px Arial, Verdana;
+	text-align: left;
+	white-space: pre-wrap;
+	
+	transform: translateX(-50%) translateX(340px);
+}
+
+.data.tags span a:not([href*="=Favo"])::before {
+	content: "";
+	top: 17px;
+	left: 50%;
+	
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent transparent var(--text-dim) transparent;
+	margin-left: -10px;
+}
+
+.data.tags span a:hover::after {
+	left: calc(50% - 340px);
+	opacity: 1;
+}
+
+.data.tags span a:not([href*="=Favo"]):hover::before {
+	margin-left: -5px;
+	opacity: 1;
+}
+
+.data.tags span:not([href*="=Favo"]) a::after { transform: translateX(-17%) translateX(340px); }
+.data.tags span:not([href*="=Favo"]):nth-child(n+3) a::after { transform: translateX(-33%) translateX(340px); }
+.data.tags span:not([href*="=Favo"]):nth-child(n+5) a::after { transform: translateX(-50%) translateX(340px); }
+.data.tags span:not([href*="=Favo"]):nth-child(n+7) a::after { transform: translateX(-67%) translateX(340px); }
+.data.tags span:not([href*="=Favo"]):nth-child(n+9) a::after { transform: translateX(-83%) translateX(340px); }
+
+/*------------------------E-N-D-*/
