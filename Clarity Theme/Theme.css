@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R23.1
+  R23.2
 
 | == = == THEME CONTENTS == = == |
 
@@ -80,6 +80,7 @@
 	--avatar: none;
 	--banner: url(https://i.imgur.com/VoPJz2S.jpg);
 	--character: url(https://i.imgur.com/6IPyngH.png);
+	--background: none;
 
 	/* Generic Colours */
 	--pbg: #efefef;
@@ -223,7 +224,7 @@ html {
 
 body {
 	padding-bottom: 64px;
-	background: var(--pbg) no-repeat center / cover fixed !important;
+	background: var(--pbg) var(--background) no-repeat center / cover fixed !important;
 }
 
 .list-container {
