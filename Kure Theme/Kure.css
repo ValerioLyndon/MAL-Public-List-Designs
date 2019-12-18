@@ -1,0 +1,1223 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\
+| Kure (name subject to change)  |
+| by Valerio Lyndon              |
+| Version 0.4.1                  |
+|                                |
+|   This theme is incomplete.    |
+| Functionality is limited and   |
+| the design is not completed.   |
+| I would appreciate you fixing  |
+| issues yourself where possible.|
+| If I had the desire to edit    |
+| this theme, I would do it on   |
+| my own time. Thank you.        |       
+\*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/* IMPORTS */
+@\import "https://fonts.googleapis.com/css?family=Muli:400,700|Playball";
+
+/* ad area found on theme 10 */
+div[style="padding-top: 8px"] {
+	display: none;
+}
+
+/* VARIABLES */
+
+:root {
+	/* Images */
+	--banner: url(https://i.imgur.com/XnyA9re.png);
+	--background: url(https://i.imgur.com/K9x805M.jpg);
+	
+	/* Colours */
+	--page: 0, 80%, 6%;
+	--content: 0, 10%, 12%;
+	--button: 0, 50%, 7%;
+	--accent: 0, 60%, 50%;
+	
+	--text: 0, 40%, 80%;
+	--link: 0, 90%, 84%;
+	--link-h: 0, 100%, 95%;
+	--link-header: 0, 6%, 62%;
+	--link-header-h: 0, 40%, 86%;
+	--icon: 0, 35%, 72%;
+	--text-shadow: 0, 53%, 57%;
+	--shadow: 0, 0%, 0%;
+	--tint: 21, 100%, 50%;
+	--tint-gradient-1: 0, 0%, 0%;
+	--tint-gradient-2: 0, 0%, 100%;
+	
+	/* Meta */
+	--transition-text: 0.08s ease-out;
+	--transition-button: 0.11s ease-out;
+	--fontset: "Lexend Deca", sans-serif;
+	--fontset: "Montserrat", sans-serif;
+	--fontset: 'Muli', 'FontAwesome', sans-serif;
+	--fontset-heading: 'Playball', 'FontAwesome', cursive;
+}
+
+/* SCROLLBARS */
+
+/* Firefox */
+* {
+	scrollbar-color: hsl(var(--accent)) hsl(var(--button));
+}
+
+/* Chrome */
+
+*::-webkit-scrollbar {
+	background: hsl(var(--button));
+}
+
+*::-webkit-scrollbar-button:vertical:single-button {
+	background: transparent center / 10px auto no-repeat;
+	height: 17px;
+} *::-webkit-scrollbar-button:vertical:single-button:start {
+	background-image: url(https://i.imgur.com/Cu2u9Hu.png);
+} *::-webkit-scrollbar-button:vertical:single-button:end {
+	background-image: url(https://i.imgur.com/0YI7VxA.png);
+} *::-webkit-scrollbar-button:horizontal:single-button {
+	background: transparent center / auto 10px no-repeat;
+} *::-webkit-scrollbar-button:horizontal:single-button:start {
+	background-image: url(https://i.imgur.com/BArw1oI.png);
+} *::-webkit-scrollbar-button:horizontal:single-button:end {
+	background-image: url(https://i.imgur.com/vqOtoms.png);
+}
+
+*::-webkit-scrollbar-corner {
+	background: hsl(var(--button));
+}
+
+*::-webkit-scrollbar-thumb {
+	background: hsl(var(--accent)) content-box;
+	border: 0 solid transparent;
+} *::-webkit-scrollbar-thumb:vertical {
+	border-width: 0 2px;
+} *::-webkit-scrollbar-thumb:horizontal {
+	border-width: 2px 0;
+} *::-webkit-scrollbar-thumb:hover {
+	background-color: hsla(var(--accent), 75%);
+}
+
+*::-webkit-scrollbar-track {
+	width: 5px;
+}
+
+/* box-sizing tweak */
+
+:root {
+	box-sizing: border-box;
+} *, *::before, *::after {
+	box-sizing: inherit;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+/* CONTAINERS */
+
+html {
+	font: 13px var(--fontset);
+}
+
+body.ownlist {
+	position: relative;
+	display: flex;
+	min-width: 1140px;
+	background: hsl(var(--tint)) no-repeat center / cover fixed !important;
+	background-image:
+		linear-gradient(15deg, hsl(var(--tint-gradient-1)), hsl(var(--tint-gradient-2))),
+		var(--background)
+		!important;
+	background-blend-mode: overlay;
+	flex-flow: column nowrap;
+	color: hsl(var(--text)) !important;
+	font: inherit;
+}
+
+body::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-width: 1140px;
+	height: 100%;
+	background: hsl(var(--page)) var(--background) no-repeat center / cover fixed;
+	opacity: 0.7;
+	filter: saturate(0.5) brightness(0.5);
+}
+
+.list-container {
+	width: 100%;
+	background: none !important;
+	border: none;
+}
+
+.list-block {
+	min-height: 720px;
+	margin-top: 96px !important;
+}
+
+.list-unit {
+	width: 1120px;
+	padding: 0 250px 0 70px;
+}
+
+.list-table {
+	width: 100%;
+	border: none;
+}
+
+/* COVER */
+
+.cover-block {
+	display: block;
+	width: 100%;
+	height: 280px;
+	background: #010101;
+	overflow: hidden;
+}
+
+#cover-image-container {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: hsl(var(--tint)) no-repeat center / cover;
+	background-image:
+		linear-gradient(15deg, hsl(var(--tint-gradient-1)), hsl(var(--tint-gradient-2))),
+		var(--banner);
+	background-blend-mode: overlay;
+	box-shadow: inset 0 -16px 6px -12px hsla(var(--shadow), 65%);
+} .cover-block #cover-image-container.hide {
+	display: block !important;
+}
+
+#cover-image-container::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--banner) no-repeat center / cover;
+	opacity: 0.4;
+	animation: banner-fade 1.2s ease-out 0.5s backwards;
+}
+
+@keyframes banner-fade {
+	from {
+		opacity: 0;
+		transform: translateX(2%) scale(1.15);
+	} to {
+		opacity: 0.4;
+		transform: none;
+	}
+}
+
+#cover-image-container::after {
+	content: '';
+	position: absolute;
+	top: 45px;
+	left: 860px;
+	opacity: 0.7;
+}
+
+#cover-image-container .btn-list-setting {
+	display: none;
+}
+
+.list-unit .list-status-title {
+	position: static;
+	display: block;
+	width: 100%;
+	height: 0;
+}
+
+.list-unit .list-status-title .text {
+	position: absolute;
+	left: 0;
+	top: 280px;
+	display: block;
+	width: 100%;
+	height: 46px;
+	padding: 0 10px 0 calc(50% - 534px);
+	background: hsl(var(--content));
+	--gradient-size: 22px;
+	--gradient-fade1: 30%;
+	--gradient-fade2: 90%;
+	background-image:
+		linear-gradient(
+			to right,
+			hsla(var(--content), var(--gradient-fade1)),
+			hsla(var(--content), var(--gradient-fade2))
+		), repeating-linear-gradient(
+			45deg,
+			hsla(var(--accent), 50%),
+			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.1),
+			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.9),
+			hsla(var(--accent), 50%) var(--gradient-size)
+		), repeating-linear-gradient(
+			135deg,
+			hsla(var(--accent), 50%),
+			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.1),
+			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.9),
+			hsla(var(--accent), 50%) var(--gradient-size)
+		);
+	border-bottom: 6px solid hsl(var(--accent));
+	box-shadow: 0 1px 3px hsla(var(--shadow), 50%);
+	color: hsl(var(--text));
+	text-shadow: 0 2px 4px hsla(var(--shadow), 75%);
+	font-size: 0;
+	text-align: left;
+	cursor: default;
+	animation: slide-in 2.5s cubic-bezier(.1,.7,.5,1) 0.5s backwards;
+} .list-unit .list-status-title .text::before {
+	font: 5rem/26px var(--fontset);
+	font: normal 7rem/16px var(--fontset-heading);
+} .list-unit.all_anime .list-status-title .text::before {
+	content: 'all anime';
+} .list-unit.all_manga .list-status-title .text::before {
+	content: 'all manga';
+} .list-unit.watching .list-status-title .text::before,
+.list-unit.reading .list-status-title .text::before {
+	content: 'current';
+} .list-unit.completed .list-status-title .text::before {
+	content: 'completed';
+} .list-unit.onhold .list-status-title .text::before {
+	content: 'paused';
+} .list-unit.dropped .list-status-title .text::before {
+	content: 'dropped';
+} .list-unit.plantowatch .list-status-title .text::before,
+.list-unit.plantoread .list-status-title .text::before {
+	content: 'planned';
+}
+
+@keyframes slide-in {
+	0% {
+		color: hsla(var(--text), 0%);
+		text-shadow: 0 2px 4px hsla(var(--shadow), 0%);
+		text-indent: 560px;
+	} 50% {
+		color: hsl(var(--text));
+	} 100% {
+		text-shadow: 0 2px 4px hsla(var(--shadow), 75%);
+		text-indent: 0;
+	}
+}
+
+/* HEADER MENU */
+
+.header {
+	position: absolute;
+	left: 0;
+	top: 280px;
+	z-index: 1;
+	display: flex;
+	width: 100%;
+	height: 0;
+	padding-right: calc(50% - 394px);
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+	align-items: flex-start;
+	color: hsl(var(--text));
+}
+
+.header a {
+	color: hsl(var(--link));
+	transition: color var(--transition-text) !important;
+} .header a:hover {
+	color: hsl(var(--link-h));
+}
+
+.header .header-title {
+	position: absolute;
+	top: 5px;
+	right: calc(50% - 560px);
+	width: 86px;
+	height: 30px;
+	background: hsla(var(--button), 80%);
+	border-radius: 4px;
+	order: 1;
+	font-size: 0;
+	text-indent: 0;
+} .header .header-title::before {
+	content: 'Go Home';
+	color: hsl(var(--link));
+	font: bold 1.2rem/30px var(--fontset);
+	transition: color var(--transition-text);
+} .header .header-title:hover::before {
+	color: hsl(var(--link-h));
+}
+
+.header .header-menu {
+	position: static;
+	display: flex;
+	width: 400px;
+	height: 40px;
+	flex-flow: row wrap;
+	justify-content: flex-end;
+	align-content: space-evenly;
+	order: 2;
+}
+
+/* Viewing X's Xlist */
+
+.header .header-menu .btn-menu {
+	width: auto;
+	flex: 0 1 auto;
+	order: 1;
+	color: hsl(var(--text));
+	font-size: 1rem;
+	text-align: left;
+	white-space: nowrap;
+}
+
+.header .header-menu .btn-menu .fa {
+	display: none;
+}
+
+#header-menu-button {
+	color: hsl(var(--text));
+	font-weight: normal;
+	cursor: text;
+}
+
+/* Shared Anime/Affinity/History */
+
+.header .header-info {
+	width: 100%;
+	margin: 0;
+	flex: 0 0 auto;
+	order: 3;
+	text-align: right;
+}
+
+/* Swap List */
+
+#header-menu-dropdown {
+	position: static;
+	display: block;
+	background: none;
+	border: none;
+	box-shadow: none;
+	flex: 0 1 auto;
+	order: 2;
+	white-space: nowrap;
+}
+
+#header-menu-dropdown::before {
+	content: ' - ';
+	white-space: pre;
+}
+
+#header-menu-dropdown .icon-menu {
+	display: inline-block;
+	width: auto;
+	height: auto;
+	background: none;
+	border-radius: 3px;
+	color: hsl(var(--link));
+	font: 1rem var(--fontset);
+} #header-menu-dropdown .icon-menu:hover {
+	color: hsl(var(--link-h));
+}
+
+#header-menu-dropdown .icon-menu::before {
+	content: '\f021';
+} #header-menu-dropdown .icon-menu::after {
+	content: 'Swap List';
+	margin-left: 3px;
+	font-weight: bold;
+}
+
+#header-menu-dropdown .icon-menu .text,
+#header-menu-dropdown svg {
+	display: none;
+}
+
+#header-menu-dropdown span {
+	position: static;
+}
+
+/* USER MENU */
+
+.list-menu-float {
+	position: sticky;
+	top: 376px;
+	top: 10px;
+	z-index: 100;
+	display: flex;
+	width: 30px;
+	height: 0;
+	margin: 376px 0 -376px calc(50% - 560px);
+	border: none;
+	flex-flow: column nowrap;
+}
+
+.list-menu-float .icon-menu {
+	width: 40px !important;
+	height: 40px;
+	background-color: hsla(var(--content), 80%) !important;
+	background-size: 0 !important;
+	background-repeat: no-repeat !important;
+	border-radius: 4px;
+	margin-bottom: 5px;
+	flex: 0 0 auto;
+	transition: all var(--transition-button);
+} .list-menu-float .icon-menu:hover {
+	width: 170px !important;
+	background-color: hsl(var(--content)) !important;
+}
+
+.list-menu-float .icon-menu svg.icon {
+	fill: hsl(var(--text)) !important;
+}
+
+.list-menu-float .icon-menu.quick-add svg.icon-quick-add,
+.list-menu-float .icon-menu.anime-list svg.icon-anime-list,
+.list-menu-float .icon-menu.manga-list svg.icon-manga-list {
+	top: 10px;
+	width: 18px;
+}
+
+.list-menu-float .icon-menu.history svg.icon-history,
+.list-menu-float .icon-menu.setting svg.icon-setting {
+	top: 10px;
+	left: 12px;
+	width: 17px;
+}
+
+.list-menu-float .icon-menu.export svg.icon-export {
+	top: 9px;
+	left: 12px;
+	width: 16px;
+}
+
+.list-menu-float .icon-menu.logout svg.icon-logout {
+	top: 12px;
+	left: 12px;
+	width: 18px;
+}
+
+.list-menu-float .icon-menu .text {
+	left: 40px;
+	top: 0;
+	color: hsl(var(--text));
+	font: bold 1.2rem/40px var(--fontset);
+	text-align: left;
+	opacity: 1;
+	transition: width var(--transition-button);
+} .list-menu-float .icon-menu:hover .text {
+	left: 40px;
+	width: 130px;
+}
+
+.list-menu-float .icon-menu.setting .text {
+	height: 83px !important;
+	opacity: 1;
+	transition: width var(--transition-button);
+} .list-menu-float .icon-menu.setting:hover .text {
+	width: 130px;
+}
+
+.list-menu-float .icon-menu.setting .text .link-list-setting,
+.list-menu-float .icon-menu.setting .text .link-style-setting {
+	padding: 0 10px;
+	color: hsl(var(--text)) !important;
+	opacity: 1;
+} .list-menu-float .icon-menu.setting:hover .text .link-list-setting,
+.list-menu-float .icon-menu.setting:hover .text .link-style-setting {
+	width: 130px;
+	height: 40px;
+	font: inherit;
+}
+
+.list-menu-float .icon-menu.setting:hover .text .link-list-setting {
+	background: none;
+}
+
+.list-menu-float .icon-menu.setting .text .link-style-setting {
+	position: absolute;
+	top: 43px !important;
+	background: hsla(var(--content), 80%);
+	border-radius: 4px;
+} .list-menu-float .icon-menu.setting:hover .text .link-style-setting {
+	background: hsl(var(--content));
+	border: none;
+}
+
+.list-menu-float .icon-menu.profile::before {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	display: block;
+	width: 34px;
+	height: 34px;
+	border-radius: 4px;
+	background: transparent no-repeat center top / cover;
+	background-image: inherit;
+}
+
+.list-menu-float .icon-menu.profile::after {
+	content: "Profile";
+	position: absolute;
+	top: 0;
+	left: 50px;
+	width: 0;
+	height: 40px;
+	overflow: hidden;
+	color: hsl(var(--text));
+	font: bold 1.2rem/40px var(--fontset);
+	text-align: left;
+	transition: width var(--transition-button);
+} .list-menu-float .icon-menu.profile:hover::after {
+	width: 110px;
+}
+
+/* RIGHT SIDEBAR */
+
+#status-menu,
+.list-unit .list-status-title .stats,
+.list-table > tbody:first-of-type {
+	position: absolute;
+	left: calc(50% + 340px);
+	top: 376px;
+	width: 220px;
+	height: calc(100% - 376px);
+	background: none;
+	border: none;
+} #status-menu.fixed {
+	position: absolute;
+} .list-unit .list-status-title .stats {
+	top: calc(376px + 252px);
+	height: calc(100% - 376px - 252px);
+} .list-table > tbody:first-of-type {
+	top: calc(376px + 292px);
+	height: calc(100% - 376px - 292px);
+}
+
+#status-menu .status-menu,
+.stats #advanced-options-button,
+.list-table-header {
+	position: sticky;
+	z-index: 5;
+	display: flex;
+	align-items: flex-start;
+	border-radius: 4px;
+	background: hsla(var(--content), 80%);
+	flex-flow: column nowrap;
+} #status-menu .status-menu {
+	top: 50px;
+	height: 202px;
+	margin-top: 40px;
+} .stats #advanced-options-button {
+	z-index: 3;
+	top: 262px;
+	height: 30px;
+	padding: 0 10px;
+	margin: 0;
+	flex-flow: row nowrap;
+	color: hsl(var(--link));
+	font: bold 1.2rem/30px var(--fontset);
+	transition: color var(--transition-text);
+} .stats #advanced-options-button::before {
+	content: 'Advanced ';
+	white-space: pre;
+} .stats #advanced-options-button:hover {
+	color: hsl(var(--link-h));
+} .list-table-header {
+	top: 302px;
+	z-index: 4;
+	padding: 5px 10px 10px;
+}
+
+/* Search */
+
+#status-menu .search-container {
+	top: -40px;
+	right: 0;
+	display: flex;
+	width: 100%;
+	height: 30px;
+	background: hsla(var(--content), 80%);
+	border-radius: 4px;
+	flex-flow: row-reverse nowrap;
+	transition: background-color var(--transition-button)
+} #status-menu .search-container:focus-within {
+	background: hsl(var(--content));
+}
+
+#status-menu #search-box {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	margin-left: -30px;
+}
+
+#status-menu #search-box input {
+	height: 100%;
+	padding: 0 10px 0 35px;
+	color: hsl(var(--text));
+	background: none;
+	border: none;
+}
+
+#status-menu #search-button {
+	display: block;
+	width: 20px;
+	height: 100%;
+	margin: 0;
+	color: hsl(var(--icon));
+	pointer-events: none;
+}
+
+#status-menu #search-button .fa {
+	line-height: 26px;
+}
+
+/* Headings */
+
+.status-menu::before,
+.list-table-header::before {
+	font-size: 1.2rem;
+	line-height: 26px;
+	font-weight: bold;
+} .status-menu::before {
+	content: 'Filter List';
+	height: 36px;
+	padding: 5px 10px;
+} .list-table-header::before {
+	content: 'Sort List';
+	height: 26px;
+	margin-bottom: 5px;
+}
+
+/* Buttons */
+
+.stats .fa {
+	display: none;
+}
+
+.list-table .list-table-header .header-title {
+	display: block;
+	width: auto !important;
+	height: auto;
+	padding: 0 !important;
+	background: none;
+	border: none;
+	padding: 0;
+	font-size: 0;
+	text-align: left;
+}
+
+#status-menu .status-button,
+.list-table .list-table-header .header-title .link.sort {
+	height: 26px;
+	padding: 0 10px;
+	color: hsl(var(--link));
+	font: normal 1.2rem/26px var(--fontset);
+	text-align: left;
+	transition: color var(--transition-text);
+} #status-menu .status-button {
+	margin: 0 10px;
+	font-size: 0;
+	line-height: 0;
+} #status-menu .status-button.on {
+	pointer-events: none;
+} #status-menu .status-button:hover,
+.list-table .list-table-header .header-title .link.sort:hover {
+	color: hsl(var(--link-h));
+}
+
+#status-menu .status-button::before {
+	font-size: 1.2rem;
+	line-height: 26px;
+	color: hsl(var(--link));
+	transition: inherit;
+} #status-menu .status-button:nth-child(1)::before {
+	content: 'All';
+} #status-menu .status-button:nth-child(2)::before {
+	content: 'Current';
+} #status-menu .status-button:nth-child(3)::before {
+	content: 'Completed';
+} #status-menu .status-button:nth-child(4)::before {
+	content: 'Paused';
+} #status-menu .status-button:nth-child(5)::before {
+	content: 'Dropped';
+} #status-menu .status-button:nth-child(6)::before {
+	content: 'Planned';
+} #status-menu .status-button:hover::before {
+	color: hsl(var(--link-h));
+} #status-menu .status-button.on::before {
+	color: hsla(var(--link), 50%);
+}
+
+#status-menu .status-button::after {
+	display: none;
+}
+
+.header-title.image {
+	display: none !important;
+}
+
+/* STATS */
+
+.stats #show-stats-button {
+	position: absolute;
+	top: calc(-252px + -91px);
+	right: calc(96px);
+	z-index: 10;
+	width: 60px;
+	height: 30px;
+	background: hsla(var(--button), 80%);
+	border-radius: 4px;
+	margin: 0;
+	color: hsl(var(--link));
+	font: bold 1.2rem/30px var(--fontset);
+	text-align: center;
+	transition: color var(--transition-text);
+} .stats #show-stats-button:hover {
+	color: hsl(var(--link-h));
+}
+
+.list-unit .list-stats {
+	width: 100%;
+	background: hsla(var(--content), 80%);
+	border-radius: 4px;
+	margin-bottom: 10px;
+	color: hsl(var(--text));
+	transition: background-color var(--transition-button);
+} .list-unit .list-stats:hover {
+	background: hsl(var(--content));
+}
+
+/* LIST */
+
+.list-item {
+	display: block;
+	background: hsla(var(--content), 80%) !important;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	transition: background-color var(--transition-button);
+	/* unused
+ 	animation: slide-up 1.5s cubic-bezier(.16,.74,.59,1) 0s; */
+} .list-item:hover {
+	background: hsla(var(--content), 100%) !important;
+}
+
+/* unused
+@keyframes slide-up {
+	from {
+		transform: translateY(150px);
+	} to {
+		transform: none;
+	}
+} */
+
+.list-table-data,
+.more-info[style*="block"] {
+	position: relative;
+	display: block !important;
+	padding: 5px 15px 10px;
+	border: none;
+	align-items: center;
+} .list-table-data {
+	display: flex !important;
+	min-height: 40px;
+	padding: 0 80px 0 5px;
+}
+
+.list-table .list-table-data .data {
+	display: block;
+	padding: 0;
+	margin-left: 10px;
+	border: none;
+	flex: 0 0 auto;
+}
+
+.list-table .list-table-data .data a {
+	color: hsl(var(--link)) !important;
+	transition: color var(--transition-text);
+} .list-table .list-table-data .data a:not(.edit-disabled):hover {
+	color: hsl(var(--link-h)) !important;
+}
+
+/* List Items */
+
+body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
+	display: none;
+}
+
+.list-table .list-table-data .data.status {
+	position: absolute;
+	top: -8px;
+	left: 0;
+	width: auto;
+	background: none !important;
+	color: hsla(var(--text), 50%);
+	font: bold 1.1rem/16px var(--fontset);
+	text-shadow: 0 1px 3px hsla(var(--content), 100%);
+	order: 80;
+} .data.status[class$="ing"]::before {
+	content: 'Current';
+} .data.status.completed::before {
+	content: 'Completed';
+} .data.status.onhold::before {
+	content: 'Paused';
+} .data.status.dropped::before {
+	content: 'Dropped';
+} .data.status[class*="planto"]::before {
+	content: 'Planned';
+}
+
+/* unused alternate style
+
+body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
+	display: none;
+}
+
+.list-table .list-table-data .data.status {
+	width: auto;
+	background: none !important;
+	color: hsla(var(--text), 50%);
+	order: 80;
+} .data.status[class$="ing"]::before {
+	content: 'Current';
+} .data.status.completed::before {
+	content: 'Completed';
+} .data.status.onhold::before {
+	content: 'Paused';
+} .data.status.dropped::before {
+	content: 'Dropped';
+} .data.status[class*="planto"]::before {
+	content: 'Planned';
+} */
+
+/* Image */
+
+.list-table .list-table-data .data.image {
+	width: 40px;
+	height: 40px;
+	margin: 5px 0 5px 10px;
+	border-radius: 20px;
+	order: 5;
+	overflow: hidden;
+}
+
+.list-table .list-table-data .data.image .link,
+.list-table .list-table-data .data.image .image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border: none;
+}
+
+/* Title */
+
+.list-table .list-table-data .data.title {
+	padding: 0;
+	flex: 1 1 auto;
+	order: 15;
+}
+
+.list-table .list-table-data .data.title .link {
+	vertical-align: middle;
+}
+
+.content-status,
+.rewatching,
+.rereading {
+	color: hsla(var(--text), 50%) !important;
+	vertical-align: middle;
+}
+
+.icon-watch {
+	display: none !important;
+}
+
+/* Add-edit-more */
+
+.list-table .list-table-data .data.title .add-edit-more {
+	position: absolute;
+	right: 15px;
+	top: calc(50% - 13px);
+	display: flex;
+	margin: 0;
+	font-size: 0;
+}
+
+.list-table .list-table-data .data.title .add-edit-more a {
+	display: block;
+	width: 26px;
+	height: 26px;
+	background: hsla(var(--button));
+	border-radius: 50%;
+	margin-left: 3px;
+	text-align: center;
+	opacity: 0.5;
+	transition: opacity var(--transition-button);
+} .list-table .list-table-data .data.title .add-edit-more a:hover {
+	opacity: 1;
+}
+
+.add-edit-more a::after {
+	font-size: 1.2rem;
+	line-height: 26px;
+	transition: color var(--transition-button);
+} .add-edit-more .add a::after {
+	content: '\f067';
+} .add-edit-more .edit a::after {
+	content: '\f040';
+	line-height: 24px;
+} .add-edit-more .more a::after {
+	content: '\f141';
+}
+
+/* Number */
+
+.list-table .list-table-data .data.number {
+	position: absolute;
+	top: calc(50% - 1rem);
+	right: calc(100% + 10px);
+	height: 2rem;
+	order: 1;
+	text-shadow: 1px 1px 2px hsl(var(--content));
+	font-size: 1.2rem;
+	line-height: 2rem;
+}
+
+/* Score */
+
+.list-table .list-table-data .data.score {
+	width: 2ch;
+	/* Using a fixed height prevents jitter when bringing up selection box */
+	height: 3ch;
+	order: 10;
+}
+
+.list-table .list-table-data .data.score .link {
+	/* These properties centre the link 100% of the time */
+	display: block;
+	width: 3ch;
+	height: 3ch;
+	margin-left: 50%;
+	line-height: 3ch;
+	transform: translateX(-50%);
+}
+
+.data.score select {
+	position: relative;
+	z-index: 1;
+	width: calc(2ch + 30px);
+	height: 3ch;
+	background: hsl(var(--button));
+	border: 1px solid hsl(var(--accent));
+	border-radius: 3px;
+	margin-left: -15px;
+	color: hsl(var(--text));
+}
+
+.data.score .link:not([style*="none"]) ~ select {
+	/* Hides selection box while Javascript is working, preventing jitter. */
+	display: none;
+}
+
+/* Progress */
+
+.list-table .list-table-data .data.progress,
+.list-table .list-table-data .data.chapter,
+.list-table .list-table-data .data.volume {
+	order: 20;
+	text-align: right;
+	font-size: 1.1rem;
+}
+
+.list-table .list-table-data .data.progress span:last-of-type::after {
+	content: 'eps';
+	color: hsla(var(--text), 65%);
+} .list-table .list-table-data .data.chapter span:last-of-type::after {
+	content: 'ch';
+	color: hsla(var(--text), 65%);
+}
+
+.list-table .list-table-data .data a[class^="icon-add"] {
+	color: hsla(var(--link), 65%) !important;
+} .list-table .list-table-data .data a[class^="icon-add"]:hover {
+	color: hsl(var(--link-h)) !important;
+}
+
+.list-table .list-table-data .data.type {
+	width: 70px;
+	order: 22;
+}
+
+.list-table .list-table-data .data.started,
+.list-table .list-table-data .data.finished,
+.list-table .list-table-data .data.airing-started,
+.list-table .list-table-data .data.airing-finished {
+	width: 60px;
+	order: 17;
+}
+
+.list-table .list-table-data .data.days {
+	width: 30px;
+}
+
+.list-table .list-table-data .data.season {
+	width: 90px;
+}
+
+.list-table .list-table-data .data.studio,
+.list-table .list-table-data .data.licensor,
+.list-table .list-table-data .data.magazine {
+	width: 100px;
+}
+
+.list-table .list-table-data .data.tags {
+	width: 100px;
+}
+
+.list-table .list-table-data .data.storage {
+	width: 70px;
+}
+
+/* More Content */
+
+.more-content {
+	padding: 0 !important;
+}
+
+.more-content::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	background: linear-gradient(
+			to right,
+			hsla(var(--content),0%) 0%,
+			hsla(var(--content),100%) 30px,
+			hsla(var(--content),100%) calc(100% - 30px),
+			hsla(var(--content),0%) 100%
+		)
+}
+
+.more-info td,
+.more-info table,
+.more-info tbody,
+.more-info tr {
+	display: block;
+}
+
+/* Remove unwanted info */
+
+.td1::first-line {
+	font-size: 0;
+	line-height: 0;
+}
+
+.more-info br,
+.more-info div:first-of-type {
+	display: none;
+}
+
+.anime .more-info small ~ br,
+.manga .more-info br:nth-of-type(n+9) {
+	display: initial;
+}
+
+/* Loading Spinner */
+
+/* FOOTER */
+
+footer {
+	position: relative;
+	z-index: 1;
+}
+
+#footer-block {
+	height: 43px;
+	padding: 10px 0 10px;
+	background: hsl(var(--content));
+	--gradient-size: 22px;
+	--gradient-fade1: 70%;
+	--gradient-fade2: 93%;
+	background-image:
+		linear-gradient(
+			to right,
+			hsla(var(--content), var(--gradient-fade2)),
+			hsla(var(--content), var(--gradient-fade1)) calc(50% - 300px),
+			hsla(var(--content), var(--gradient-fade1)) calc(50% + 300px),
+			hsla(var(--content), var(--gradient-fade2))
+		), repeating-linear-gradient(
+			45deg,
+			hsla(var(--accent), 50%),
+			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.1),
+			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.9),
+			hsla(var(--accent), 50%) var(--gradient-size)
+		), repeating-linear-gradient(
+			135deg,
+			hsla(var(--accent), 50%),
+			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.1),
+			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.9),
+			hsla(var(--accent), 50%) var(--gradient-size)
+		);
+	border-top: 3px solid hsl(var(--accent));
+	box-shadow: 0 -1px 3px hsla(var(--shadow), 50%);
+	color: hsl(var(--text));
+}
+
+#copyright {
+	padding: 0;
+	color: hsl(var(--text));
+	font: 1rem/20px var(--fontset);
+}
+
+#copyright::after {
+	content: 'List design by Valerio Lyndon.';
+}
+
+/* OVERLAYS */
+
+#fancybox-overlay {
+	background: linear-gradient(15deg, hsl(var(--tint1)), hsla(var(--tint2), 66.7%));
+}
+
+#fancybox-wrap {
+	position: fixed;
+	top: 10px !important;
+	left: calc(50% - 490px) !important;
+	width: 800px !important;
+	max-height: calc(100% - 20px);
+	padding: 0;
+}
+
+div.fancy-bg {
+	display: none;
+}
+
+#fancybox-inner {
+	top: 0 !important;
+	left: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+/* Filter Menu */
+
+#advanced-options[style*="block"] ~ #fancybox-overlay {
+	opacity: 0.2 !important;
+}
+
+#advanced-options {
+	position: fixed;
+	top: 10px;
+	left: calc(50% - 490px);
+	margin: 0;
+	width: 800px;
+}
