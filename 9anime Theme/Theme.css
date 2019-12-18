@@ -1,4 +1,4 @@
-/* "9anime Adaption" by Valerio Lyndon / Revision 0.5 */
+/* "9anime Adaption" by Valerio Lyndon / Revision 0.6 */
 
 @\import "https://fonts.googleapis.com/css?family=Roboto:400,500,700";
 @\import "https://malscraper.azurewebsites.net/covers/auto/presets/dataimagelink";
@@ -1027,7 +1027,6 @@ a {
 	font-size: 1.1rem;
 	line-height: 1.3em;
 	font-weight: 500;
-	
 }
 .list-item:hover .data.score, .list-item:hover .data.season, .list-item:hover .data.rated, .list-item:hover .data.airing-started, .list-item:hover .data.airing-finished {
 	top: 30px;
@@ -1091,10 +1090,11 @@ a {
 	
 	width: auto;
 	min-width: 20px;
-	height: auto;
+	height: calc(1.3em + 1px);
 	padding: 1px 4px 0 !important;
 	background: #dadada;
 	border-radius: 2px;
+	overflow: hidden;
 	
 	color: #000;
 	font-size: .9rem;
@@ -1103,6 +1103,10 @@ a {
 }
 .list-item:hover .data.rated {
 	top: 40px;
+}
+.data.rated:after {
+	content: "?";
+	display: block;
 }
 
 .data.studio, .data.magazine {
