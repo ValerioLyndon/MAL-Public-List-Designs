@@ -1,5 +1,5 @@
 /*-S-T-A-R-T--------------------*\
-| Winter Event (Light) R0.5      |
+| Winter Event (Light) R0.6      |
 \*------------------------------*/
 
 :root {
@@ -101,7 +101,7 @@ body {
 
 .list-table { --btn-bg: rgba(255,255,255,0.93); }
 
-.list-item, .data.number, .data.priority, .list-table[data-items="[]"]:after {
+.list-item, .data.number, .data.priority, .list-table[data-items="[]"]:after, .data.status:before, .data.status:after {
 	background: #fff no-repeat center / cover fixed !important;
 	background-image:
 		linear-gradient(to right, rgba(255,255,255,0.8), rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.84), rgba(255,255,255,0.9) 70%, rgba(255,255,255,0.8)),
@@ -109,7 +109,7 @@ body {
 		!important;
 }
 
-.list-item, .list-table[data-items="[]"]:after { box-shadow: 0 1px 5px rgba(0,0,0,0.25); }
+.list-item, .list-table[data-items="[]"]:after, .data.status:before, .data.status:after { box-shadow: 0 1px 5px rgba(0,0,0,0.25); }
 
 .list-item:hover .data.tags a.edit { opacity: 0.9; }
 
