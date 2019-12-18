@@ -1,0 +1,5 @@
+/*------------------------------*\
+|* Improve  Readability  v1.1.0 *|
+\* - - - - - - - - - - - - - - -*/
+
+.data.title{position:absolute;bottom:0;left:0;z-index:9;width:100%;padding:7px 0 27px!important;background:hsla(var(--btn),85%);border-radius:0 0 6px 6px}.data.title .link{position:static;display:inline-block}.add-edit-more{top:auto;bottom:267px}.content-status,.rewatching{top:auto;bottom:270px;height:15px}
