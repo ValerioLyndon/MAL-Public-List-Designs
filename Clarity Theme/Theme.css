@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R23.2
+  R23.3
 
 | == = == THEME CONTENTS == = == |
 
@@ -366,7 +366,7 @@ a, a:hover {
 \*------------------------------*/
 
 .header {
-	z-index: 30;
+	z-index: 36;
 	display: flex;
 	height: 36px;
 	margin-top: 282px;
@@ -515,7 +515,7 @@ a, a:hover {
 
 .btn-menu a.username {
 	position: absolute;
-	left: 1px;
+	left: 0;
 	top: -7px;
 	
 	display: block;
@@ -802,7 +802,7 @@ a, a:hover {
 
 [data-owner="1"] .list-menu-float .icon-menu.profile {
 	position: absolute;
-	left: 1px;
+	left: 0;
 	top: -43px;
 	
 	display: block !important;
