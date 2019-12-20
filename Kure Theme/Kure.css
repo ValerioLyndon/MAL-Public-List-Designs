@@ -1,7 +1,7 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\
 | Kure (name subject to change)  |
 | by Valerio Lyndon              |
-| Version 0.4.1                  |
+| Version 0.4.2                  |
 |                                |
 |   This theme is incomplete.    |
 | Functionality is limited and   |
@@ -25,7 +25,7 @@ div[style="padding-top: 8px"] {
 
 :root {
 	/* Images */
-	--banner: url(https://i.imgur.com/XnyA9re.png);
+	--banner: url(https://i.imgur.com/lnTv8jR.jpg);
 	--background: url(https://i.imgur.com/K9x805M.jpg);
 	
 	/* Colours */
