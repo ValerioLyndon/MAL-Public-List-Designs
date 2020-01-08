@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R23.3
+  R24.0
 
 | == = == THEME CONTENTS == = == |
 
@@ -32,6 +32,7 @@
 ? anime/manga listings
 @ Base
 @ Status
+@ Number
 @ Image
 ? image/number
 @ Title
@@ -1258,6 +1259,44 @@ a, a:hover {
 
 
 /*------------------------------*\
+  LIST @Number
+\*------------------------------*/
+
+.data.number {
+	position: relative;
+	top: -22px;
+	
+	width: 20px;
+	height: 20px;
+	background: var(--bg);
+	border-radius: 10px;
+	margin: 0 -28px 0 8px;
+	
+	order: 1;
+	
+	line-height: 20px;
+	font-weight: 700;
+	
+	z-index: 1;
+}
+
+.list-item:nth-child(n+101) .data.number {
+	text-indent: -7px;
+}
+
+.list-item:nth-child(n+1001) .data.number {
+	width: 27px;
+	margin-right: -35px;
+}
+
+.list-item:nth-child(n+10001) .data.number {
+	width: 34px;
+	margin-right: -42px;
+}
+
+
+
+/*------------------------------*\
   LIST @Image
 \*------------------------------*/
 
@@ -1302,43 +1341,6 @@ a, a:hover {
 
 .data.image a:hover:after {	
 	opacity: 1;
-}
-
-
-/* - - - - - - - - - - - - - - -*\
-  Number
-\*- - - - - - - - - - - - - - - */
-
-.data.number {
-	position: relative;
-	top: -22px;
-	
-	width: 20px;
-	height: 20px;
-	background: var(--bg);
-	border-radius: 10px;
-	margin: 0 -28px 0 8px;
-	
-	order: 1;
-	
-	line-height: 20px;
-	font-weight: 700;
-	
-	z-index: 1;
-}
-
-.list-item:nth-child(n+101) .data.number {
-	text-indent: -7px;
-}
-
-.list-item:nth-child(n+1001) .data.number {
-	width: 27px;
-	margin-right: -35px;
-}
-
-.list-item:nth-child(n+10001) .data.number {
-	width: 34px;
-	margin-right: -42px;
 }
 
 
@@ -1404,6 +1406,10 @@ a, a:hover {
 .icon-watch { display: none !important; }
 
 
+/* - - - - - - - - - - - - - - -*\
+  Type
+\*- - - - - - - - - - - - - - - */
+
 .data.type {
 	position: relative;
 	top: -16px;
@@ -1420,6 +1426,13 @@ a, a:hover {
 	color: var(--text-dim);
 	line-height: 16px;
 	font-size: 10px;
+}
+
+/* modify .type when .number is present */
+
+.data.number + td:not(.image) ~ .type {
+	margin-left: 28px;
+	margin-right: -128px;
 }
 
 
@@ -1550,30 +1563,40 @@ a, a:hover {
 \*------------------------------*/
 
 .data.priority {
-	position: relative;
-	
 	width: 92px;
 	height: 74px;
 	background: var(--bg);
-	margin-right: -92px;
 	
 	order: 14;
 	
 	color: var(--text);
 	line-height: 74px;
-	
+	z-index: 1;
+}
+
+.data.priority:before {
+	content: "\f0a2";
+	font-family: FontAwesome;
+}
+
+/* fix for all anime page */
+
+.status:not(.plantowatch):not(.plantoread) ~ .data.priority { display: none !important; }
+
+/* modify .priority when .progress is present */
+
+.data.progress ~ .priority, .data.chapter ~ .priority, .data.volume ~ .priority {
+	position: relative;
+	margin-right: -92px;
 	opacity: 1;
 	pointer-events: none;
 	z-index: 1;
 }
 
-.status:not(.plantowatch):not(.plantoread) ~ .data.priority { display: none !important; }
-
-.list-item:hover .data.priority { opacity: 0; }
-
-.data.priority:before {
-	content: "\f0a2";
-	font-family: FontAwesome;
+.list-item:hover .progress ~ .priority,
+.list-item:hover .chapter ~ .priority,
+.list-item:hover .volume ~ .priority {
+	opacity: 0;
 }
 
 
