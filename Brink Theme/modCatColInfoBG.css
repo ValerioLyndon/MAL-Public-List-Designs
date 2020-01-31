@@ -1,0 +1,18 @@
+/*------------------------------*\
+|*  Category-Coloured  Info BG  *|
+|* - - - - -  V1.0.0  - - - - - *|
+\* - - - - - - - - - - - - - - -*/
+
+.data.watching ~ .title::before,
+.data.reading ~ .title::before {
+    background: hsla(var(--current), 85%);
+} .data.completed ~ .title::before {
+    background: hsla(var(--completed), 85%);
+} .data.onhold ~ .title::before {
+    background: hsla(var(--paused), 85%);
+} .data.dropped ~ .title::before {
+    background: hsla(var(--dropped), 85%);
+} .data.plantowatch ~ .title::before,
+.data.plantoread ~ .title::before {
+    background: hsla(var(--planned), 85%);
+}
