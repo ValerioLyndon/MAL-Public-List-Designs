@@ -1,5 +1,5 @@
 /*------------------------------*\
-| - - - Light Theme V1.1.2 - - - |
+|* - -  Light Theme V1.2.0  - - *|
 \* - - - - - - - - - - - - - - -*/
 
 /* User */
@@ -18,6 +18,16 @@
 	--textProminent: 27, 94%, 80%;
 	--textLinkHov: 240, 50%, 80%;
 	--textIcon: 0, 0%, 26%;
+}
+
+/* List Item Specific Colours */
+
+.list-item {
+	--bg: 240, 1.5%, 4.5%;
+	--textBright: 0, 0%, 100%;
+	--textDim: 0, 0%, 80%;
+	--textLinkHov: 240, 50%, 80%;
+	--textIcon: 0, 0%, 83%;
 }
 
 /* Internal */
@@ -103,14 +113,6 @@ body #fancybox-close,
 
 /* List Items */
 
-.list-item {
-	--bg: 240, 1.5%, 4.5%;
-	--textBright: 0, 0%, 100%;
-	--textDim: 0, 0%, 80%;
-	--textLinkHov: 240, 50%, 80%;
-	--textIcon: 0, 0%, 83%;
-}
-
 .data.image {
 	background: hsl(var(--bg));
 }
@@ -119,6 +121,10 @@ body #fancybox-close,
 	font-weight: bold;
 	text-shadow: 1px 0 1px #000,
 		0 0 2px #000;
+}
+
+.data.title::before {
+	background: hsla(240, 1.5%, 4.5%, 50%);
 }
 
 .more-content {
@@ -133,15 +139,11 @@ body #fancybox-close,
 
 /* Overlays */
 
-body #fancybox-inner { filter: none; }
+body #fancybox-frame {
+	filter: none;
+}
 
 #advanced-options .sort-widget select:disabled,
 #advanced-options .filter-widget select:disabled {
 	background-blend-mode: darken;
-}
-
-/* Readability Mod Tweaks */
-
-.data.title {
-	background: hsla(240, 1.5%, 4.5%, 50%) !important;
 }
