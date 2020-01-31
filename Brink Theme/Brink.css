@@ -1,61 +1,62 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.2.0
+ * Version 1.3.0
  * 
  * = TABLE OF CONTENTS =
  * 
- * IMPORTS
+ ! IMPORTS
  * 
- * VARIABLES-USER
+ ! VARIABLES
+ @ User
+ @ Internal
  * 
- * VARIABLES-INTERNAL
+ ! PAGE-BASE
+ @ Scrollbars
+ @ Generic
+ @ Containers
  * 
- * PAGE-BASE
- * Scrollbars
- * Generic
- * Containers
+ ! HEADER
  * 
- * HEADER
+ ! USER-MENU
  * 
- * USER-MENU
+ ! COVER
  * 
- * COVER
+ ! STATUS-MENU
+ @ Search
  * 
- * STATUS-MENU
- * Search
+ ! SORT-BUTTONS
+ @ Filters
+ @ Sort-By
  * 
- * SORT-BUTTONS
- * Filters
- * Sort-By
+ ! LIST
+ @ Item-Base
+ @ Image
+ @ Status
+ @ Title
+ @ Progress/Score
+ @ Tags
+ @ Number
+ @ Type
+ @ Rated
+ @ Season
+ @ Studio/Licensor/Magazine
+ @ Dates
+ @ Priority
+ @ Storage
+ @ More-Info
+ @ Loading-Icon
  * 
- * LIST
- * Item-Base
- * Image
- * Status
- * Title
- * Progress/Score
- * Tags
- * Number
- * Type
- * Rated
- * Season
- * Studio/Licensor/Magazine
- * Dates
- * Priority
- * Storage
- * More-Info
- * Loading-Icon
+ ! OVERLAYS
+ @ iFrames
+ @ Rewatch-Box
+ @ Filter-Menu
  * 
- * OVERLAYS
- * iFrames
- * Filter-Menu
+ ! FOOTER
  * 
- * FOOTER
+ ! MEDIA-QUERIES
  * 
- * MEDIA-QUERIES
+ ! FIXES
  * 
- * FIXES
- * 
- * MODS
+ ! MODS
  */
 
 
@@ -68,7 +69,7 @@
 
 
 /*==============================*\
-  !VARIABLES-USER
+  !VARIABLES @User
 \*------------------------------*/
 
 :root {
@@ -80,6 +81,9 @@
 	 * togglePV / Toggles anime preview video icons.
 	 * valid values: visible / hidden
 	 * 
+	 * toggleInfoBG / Toggles background on list items for improved readability.
+	 * valid values: visible / hidden
+	 * 
 	 * bgDimness / Changes dimming of background / Higher = Dimmer.
 	 * min value: 0% / max value: 100%
 	 * 
@@ -89,6 +93,7 @@
 	
 	--toggleStats: hidden;
 	--togglePV: hidden;
+	--toggleInfoBG: hidden;
 	--bgDimness: 50%;
 	--imageBrightness: 52%;
 	--imageBrightnessHov: 32%;
@@ -127,14 +132,14 @@
 }
 
 
-/*==============================*\
-  !VARIABLES-INTERNAL
-\*------------------------------*/
-
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+  @Internal
+\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+	
 :root {
 	/* INTERNALS
 	 * 
-	 * More advanced theme details, used throughout the theme.
+	 * More advanced variables.
 	 */
 	
 	--font: "Sarabun", "Segoe UI", "Arial", "FontAwesome", sans-serif;
@@ -254,7 +259,8 @@ a {
 .list-unit .list-status-title .stats a,
 .list-table > tbody:first-of-type::after,
 body #fancybox-close,
-#advanced-options .advanced-options-button a {
+#advanced-options .advanced-options-button a,
+div[style^="width: 300px;"] input {
 	width: 96px;
 	height: 32px;
 	padding: 0;
@@ -262,6 +268,7 @@ body #fancybox-close,
 	border: 2px solid hsl(var(--btn));
 	border-radius: 3px;
 	box-shadow: -0.5px 0.7px 2.1px hsla(0, 0%, 0%, 35%);
+	outline: none;
 	margin: 0;
 	
 	color: hsl(var(--textBright));
@@ -273,7 +280,8 @@ body #fancybox-close,
 } .list-unit .list-status-title .stats a:hover,
 .list-table > tbody:first-of-type:hover::after,
 body #fancybox-close:hover,
-#advanced-options .advanced-options-button a:hover {
+#advanced-options .advanced-options-button a:hover,
+div[style^="width: 300px;"] input:hover {
 	border-color: hsl(var(--btnAccent));
 	color: hsl(var(--accent));
 }
@@ -378,7 +386,7 @@ body::before {
 
 .header a {
 	color: hsl(var(--textBright));
-	transition: all var(--timeText) var(--bezierFast);
+	transition: color var(--timeText) var(--bezierFast);
 } .header a:hover {
 	color: hsl(var(--textLinkHov));
 }
@@ -497,19 +505,15 @@ body::before {
 
 #header-menu-dropdown .icon-menu::before {
 	content: "\f021";
-	
 	font-size: 14px;
 	vertical-align: top;
-	
 	transition: inherit;
 }
 
 #header-menu-dropdown .icon-menu::after {
 	display: inline-block;
-	
 	font-size: 14px;
 	text-indent: 5px;
-	
 	transition: inherit;
 } #header-menu-dropdown .icon-menu.manga-list::after {
 	content: "Swap to Manga";
@@ -841,27 +845,19 @@ body::before {
 	border-radius: 3px;
 	flex: 0 1 auto;
 
-	color: hsla(var(--textDim), 60%);
 	font: 0/30px var(--font);
 	text-shadow: -0.6px 0.84px 1.68px #000;
 	
-	transition: all var(--timeButtonLarge) var(--bezierSmooth);
-} #status-menu .status-button:hover {
-	color: hsl(var(--textBright));
-	line-height: 26px;
-}
-
-#status-menu .status-button.on {
-	color: hsl(var(--textBright));
-	font-weight: bold;
+	transform: none;
 }
 
 #status-menu .status-button::before {
+	color: hsla(var(--textDim), 60%);
 	font-size: 18px;
-	transition: inherit;
-}
-
-#status-menu .status-button.all_anime::before {
+	display: block;
+	transition: all var(--timeButtonLarge) var(--bezierSmooth);
+	pointer-events: none;
+} #status-menu .status-button.all_anime::before {
 	content: "ALL";
 } #status-menu .status-button.watching::before,
 #status-menu .status-button.reading::before {
@@ -875,6 +871,12 @@ body::before {
 } #status-menu .status-button.plantowatch::before,
 #status-menu .status-button.plantoread::before {
 	content: "PLANNED";
+} #status-menu .status-button.on::before {
+	color: hsl(var(--textBright));
+	font-weight: bold;
+} #status-menu .status-button:hover::before {
+	color: hsl(var(--textBright));
+	transform: translateY(-2px);
 }
 
 #status-menu .status-button::after {
@@ -923,6 +925,7 @@ body::before {
 	line-height: 28px;
 } #status-menu .search-container #search-box input:focus {
 	color: hsl(var(--textBright));
+	outline: none;
 }
 
 #status-menu .search-container #search-box::after {
@@ -1367,16 +1370,36 @@ body::before {
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
 .data.title {
+	position: absolute;
+	bottom: 0;
+	left: 0;
 	z-index: 9;
+	
+	width: 100%;
+	padding: 5px 0 27px !important;
 	order: 95;
+	
 	opacity: 1;
 }
 
-.data.title .link {
+.data.title::before {
+	content: '';
 	position: absolute;
-	bottom: 27px;
+	top: 0;
 	left: 0;
+	z-index: -1;
 	
+	width: 100%;
+	height: 100%;
+	background: hsla(var(--btn), 85%);
+	border-radius: 0 0 6px 6px;
+	
+	/*Toggle*/
+	visibility: var(--toggleInfoBG);
+}
+
+.data.title .link {
+	display: inline-block;
 	max-width: 100%;
 	max-height: 64px;
 	padding: 5px 12px;
@@ -1389,15 +1412,15 @@ body::before {
 
 .title [class^="icon-watch"] {
 	position: absolute;
-	top: -8px;
+	bottom: 284px;
 	right: -8px;
 	z-index: 1;
 	
 	width: 24px;
 	height: 24px;
 	background: none;
+	border-radius: 50%;
 	margin: 0;
-	overflow: visible;
 	
 	font-size: 0;
 	text-indent: 0;
@@ -1421,10 +1444,14 @@ body::before {
 	text-align: center;
 }
 
-.content-status, .rewatching {
+.content-status,
+.rewatching,
+.rereading {
 	position: absolute;
-	top: 15px;
+	bottom: 270px;
 	left: 7.5px;
+	
+	height: 15px;
 	
 	color: hsl(var(--textProminent)) !important;
 	font-size: 12px !important;
@@ -1441,7 +1468,7 @@ body::before {
 
 .add-edit-more {
 	position: absolute;
-	top: 6px;
+	bottom: 267px;
 	right: 6px;
 	
 	width: auto;
@@ -1488,6 +1515,7 @@ body::before {
 
 .data.progress,
 .data.chapter,
+.data.volume,
 .data.score {
 	position: absolute;
 	bottom: 12px;
@@ -1546,7 +1574,9 @@ body::before {
 
 /* Progress */
 
-.data.progress, .data.chapter {
+.data.progress,
+.data.chapter,
+.data.volume {
 	right: 12px;
 	text-align: right !important;
 	opacity: .64;
@@ -1554,44 +1584,54 @@ body::before {
 
 /* Remove Slash */
 
-.progress div, .chapter div { font-size: 0; }
+.progress div,
+.chapter div,
+.volume div {
+	font-size: 0;
+}
 
 .progress span:first-of-type:not(:only-of-type) a::after,
-.chapter span:first-of-type:not(:only-of-type) a::after {
+.chapter span:first-of-type:not(:only-of-type) a::after,
+.volume span:first-of-type:not(:only-of-type) a::after {
 	content: " of ";
 }
 
 /* Watched # */
 
 .data.progress a,
-.data.chapter a {
+.data.chapter a,
+.data.volume a {
 	font-size: 12px;
 }
 
 /* Watched # - Planned */
 
 .plantowatch ~ .data.progress span:first-of-type,
-.plantoread ~ .data.chapter span:first-of-type {
+.plantoread ~ .data.chapter span:first-of-type,
+.plantoread ~ .data.volume span:first-of-type {
 	opacity: 0;
 	transition: all var(--timeItem) var(--bezierFast);
 }
 
 .list-item:hover .plantowatch ~ .data.progress span:first-of-type,
-.list-item:hover .plantoread ~ .data.chapter span:first-of-type {
+.list-item:hover .plantoread ~ .data.chapter span:first-of-type,
+.list-item:hover .plantoread ~ .data.volume span:first-of-type {
 	opacity: 1;
 }
 
 /* Total # */
 
 .progress span:nth-of-type(2),
-.chapter span:nth-of-type(2) {
+.chapter span:nth-of-type(2),
+.volume span:nth-of-type(2) {
 	font-size: 12px;
 }
 
 /* Total # - Completed */
 
 .progress span:only-of-type,
-.chapter span:only-of-type {
+.chapter span:only-of-type,
+.volume span:only-of-type {
 	font-size: 14px;
 }
 
@@ -1599,6 +1639,8 @@ body::before {
 	content: "ep";
 } .chapter span:last-of-type::after {
 	content: "ch";
+} .volume span:last-of-type::after {
+	content: "vol";
 }
 
 span:nth-of-type(2)::after {
@@ -1635,7 +1677,7 @@ span:nth-of-type(2)::after {
 
 /* Remove Unsupported Items */
 
-.data.volume {
+.data.chapter + .data.volume {
 	display: none !important;
 }
 
@@ -1871,7 +1913,7 @@ span:nth-of-type(2)::after {
 	order: 90;
 }
 
-.status:not([class*="planto"]).data.priority {
+.status:not([class*="planto"]) ~ .data.priority {
 	display: none !important;
 }
 
@@ -2031,6 +2073,9 @@ body #fancybox-inner {
 	position: static;
 	width: 100% !important;
 	border-radius: 4px;
+}
+
+body #fancybox-frame {
 	filter:
 		sepia(20%)
 		invert(91.5%);
@@ -2042,8 +2087,56 @@ body #fancybox-inner {
 	right: 20px;
 }
 
-.list-unit .list-status-title .stats a:first-child {
-	display: none;
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+  @Rewatch-Box
+\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+#fancybox-wrap:not([style*="width: 1000px;"]) {
+	left: calc(50% - 160px) !important;
+	width: auto !important;
+	height: auto !important;
+}
+
+#fancybox-wrap:not([style*="width: 1000px;"]) #fancybox-close {
+	display: none !important;
+}
+
+#fancybox-wrap:not([style*="width: 1000px;"]) #fancybox-outer {
+	padding: 12px;
+}
+
+#fancybox-wrap:not([style*="width: 1000px;"]) #fancybox-inner {
+	width: auto !important;
+	height: auto !important;
+}
+
+div[style^="width: 300px;"] {
+	width: 100% !important;
+	height: 100% !important;
+	font: 0/0 var(--font) !important;
+}
+
+div[style^="width: 300px;"]::before {
+	content: 'Finished rewatching?';
+	color: hsl(var(--textMid));
+	font-size: 14px;
+	line-height: 1;
+}
+
+div[style^="width: 300px;"] div {
+	display: flex;
+	margin-top: 9px !important;
+}
+
+div[style^="width: 300px;"] input {
+	width: auto;
+	padding: 0 12px;
+	font-family: inherit;
+	cursor: pointer;
+	text-transform: capitalize;
+} div[style^="width: 300px;"] input + input {
+	margin-left: 9px;
 }
 
 
@@ -2443,11 +2536,17 @@ body #fancybox-inner {
 	background-image: url(https://i.imgur.com/1NLFsAe.png);
 }
 
-/* Firefox Performance Tweak */
+/* Firefox Tweaks & Fixes */
 
 @-moz-document url-prefix() {
+	/* Performance */
 	.list-item {
 		will-change: transform;
+	}
+	
+	/* Visual Tweaks */
+	.data.title {
+		padding-top: 2px !important;
 	}
 }
 
