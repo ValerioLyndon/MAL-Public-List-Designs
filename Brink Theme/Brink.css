@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.3.0
+ * Version 1.3.1
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -166,6 +166,7 @@
 \*------------------------------*/
 
 /* Firefox */
+
 * {
 	scrollbar-color: hsl(var(--accent)) hsl(var(--bgAlt));
 }
@@ -2178,11 +2179,6 @@ div[style^="width: 300px;"] input {
 	right: calc(40px + 0.05 * (100vw - 700px));
 }
 
-#advanced-options .sort-widget .widget-header,
-#advanced-options .filter-widget .widget-header {
-	font-family: var(--font);
-}
-
 #advanced-options div {
 	padding: 12px 0;
 }
@@ -2204,12 +2200,9 @@ div[style^="width: 300px;"] input {
 
 #advanced-options .sort-widget,
 #advanced-options .filter-widget {
-	position: relative;
-	
 	display: flex;
 	width: 100%;
-	padding-left: 108px;
-	padding-right: 12px;
+	padding: 12px 12px 0 108px;
 }
 
 #advanced-options .sort-widget:last-of-type,
@@ -2223,11 +2216,11 @@ div[style^="width: 300px;"] input {
 	padding-left: 12px;
 	margin-left: -108px;
 	flex: 0 0 auto;
-	
-	font-size: 13px;
+	font: 13px/22px var(--font);
 }
 
-#advanced-options input, #advanced-options .sort-widget select,
+#advanced-options input,
+#advanced-options .sort-widget select,
 #advanced-options .filter-widget select,
 #advanced-options .sort-widget label {
 	height: 24px !important;
@@ -2240,7 +2233,8 @@ div[style^="width: 300px;"] input {
 	color: hsl(var(--textMid));
 }
 
-#advanced-options .sort-widget select, #advanced-options .filter-widget select {
+#advanced-options .sort-widget select,
+#advanced-options .filter-widget select {
 	background-image: var(--arrowDn);
 }
 
@@ -2331,7 +2325,6 @@ div[style^="width: 300px;"] input {
 	width: 100%;
 	padding: 12px 0;
 	border: none;
-	
 	font-size: 0;
 	text-align: left;
 }
