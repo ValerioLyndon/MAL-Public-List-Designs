@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.3.1
+ * Version 1.4.0
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -78,10 +78,13 @@
 	 * toggleStats / Toggles list statistics (found in the footer)
 	 * valid values: visible / hidden
 	 * 
-	 * togglePV / Toggles anime preview video icons.
+	 * togglePV / Toggles anime preview & video links.
 	 * valid values: visible / hidden
 	 * 
 	 * toggleInfoBG / Toggles background on list items for improved readability.
+	 * valid values: visible / hidden
+	 * 
+	 * toggleTopRatings / Toggles banners on top of highly rated items.
 	 * valid values: visible / hidden
 	 * 
 	 * bgDimness / Changes dimming of background / Higher = Dimmer.
@@ -93,9 +96,10 @@
 	
 	--toggleStats: hidden;
 	--togglePV: hidden;
-	--toggleInfoBG: hidden;
+	--toggleInfoBG: visible;
+	--toggleTopRatings: visible;
 	--bgDimness: 50%;
-	--imageBrightness: 52%;
+	--imageBrightness: 63%;
 	--imageBrightnessHov: 32%;
 	
 	/* THEME COLOURS
@@ -104,9 +108,6 @@
 	 * To get the correct values, simply strip away the surrounding parentheses and blurb.
 	 * For instance, "hsl(244, 42%, 82%)" would simply become "244, 42%, 82%".
 	 * For help with HSL: https://www.w3schools.com/colors/colors_hsl.asp
-	 * 
-	 * This theme was made with a dark theme in mind, light themes may look rather poor.
-	 * More advanced CSS may be required if this is the case.
 	 */
 	
 	--bg: 240, 3%, 9%;
@@ -129,6 +130,9 @@
 	--paused: 80, 91%, 23%;
 	--dropped: 6, 44%, 46%;
 	--planned: 56, 18%, 56%;
+	
+	--goldRating: var(--textProminent);
+	--silverRating: var(--textDim);
 }
 
 
@@ -1413,36 +1417,38 @@ body::before {
 
 .title [class^="icon-watch"] {
 	position: absolute;
-	bottom: 284px;
-	right: -8px;
+	bottom: 12px;
+	right: 7.5px;
 	z-index: 1;
 	
-	width: 24px;
-	height: 24px;
+	width: auto;
+	height: 15px;
 	background: none;
-	border-radius: 50%;
 	margin: 0;
 	
 	font-size: 0;
 	text-indent: 0;
+	text-shadow: 0.84px 0.6px 1.68px #000;
+	
+	opacity: 1 !important;
+	transform: rotate(90deg);
+	transform-origin: right bottom;
 	
 	/*Toggle*/
 	visibility: var(--togglePV);
 }
 
 [class^="icon-watch"]::after {
-	content: "\f144";
-	position: absolute;
-	top: 0;
-	left: 0;
-	
-	width: 100%;
-	height: 100%;
+	content: "\f144  VIDEOS";
 	
 	color: hsl(var(--textDim));
-	font-size: 22px;
-	line-height: 22px;
-	text-align: center;
+	font-size: 12px;
+	line-height: 1;
+	letter-spacing: 1.5px;
+	
+	transition: color var(--timeText) var(--bezierFast);
+} .title [class^="icon-watch"]:hover::after {
+	color: hsl(var(--textHov));
 }
 
 .content-status,
@@ -1527,7 +1533,9 @@ body::before {
 }
 
 
-/* Score */
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+  Score
+\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
 .data.score {
 	left: 12px;
@@ -1536,30 +1544,36 @@ body::before {
 	opacity: 1;
 }
 
-[data-query*='"status":7'] .watching ~ .data.score::before,
+.data.score::before {
+	white-space: pre;
+	vertical-align: top;
+} [data-query*='"status":7'] .watching ~ .data.score::before,
 [data-query*='"status":7'] .reading ~ .data.score::before {
-	content: "Current |";
+	content: "Current | ";
 } [data-query*='"status":7'] .completed ~ .data.score::before {
-	content: "Completed |";
+	content: "Completed | ";
 } [data-query*='"status":7'] .onhold ~ .data.score::before {
-	content: "Paused |";
+	content: "Paused | ";
 } [data-query*='"status":7'] .dropped ~ .data.score::before {
-	content: "Dropped |";
+	content: "Dropped | ";
 } [data-query*='"status":7'] .plantowatch ~ .data.score::before,
 [data-query*='"status":7'] .plantoread ~ .data.score::before {
-	content: "Planned |";
+	content: "Planned | ";
 }
 
 .data.score .link {
+	display: inline-flex;
 	font-size: 14px !important;
 	vertical-align: top;
+	text-transform: capitalize;
 }
 
 .data.score .link::before {
-	content: " Scored ";
+	content: "Scored ";
 	font-size: 12px;
 	font-weight: normal;
 	vertical-align: top;
+	white-space: pre;
 }
 
 /* Planned */
@@ -1572,8 +1586,75 @@ body::before {
 	content: "Planned" !important;
 }
 
+/* Not Rated */
 
-/* Progress */
+.score-na {
+	font-size: 0;
+	order: -1;
+} .score-na::before {
+	content: "Not ";
+	font-size: 12px;
+	font-weight: normal;
+}
+
+/* Top Rated Banners for 9 & 10 rated items. These do not display on ordered lists. */
+
+body:not([data-query*='order":4']) .score-9::before,
+body:not([data-query*='order":4']) .score-10::before {
+	content: "";
+	position: absolute;
+	left: -12px;
+	bottom: 282px;
+	z-index: -1;
+	
+	width: 210px;
+	height: 6px;
+	border-top: 2px solid hsl(var(--goldRating));
+	border-radius: 6px 6px 0 0;
+	
+	pointer-events: none;
+	
+	/*Toggle*/
+	visibility: var(--toggleTopRatings);
+} body:not([data-query*="order"]) .score-9::before {
+	border-color: hsl(var(--silverRating));
+}
+
+body:not([data-query*='order":4']) .score-9::after,
+body:not([data-query*='order":4']) .score-10::after {
+	content: "TOP RATED";
+	position: absolute;
+	left: 43px;
+	bottom: 277px;
+	z-index: -1;
+	
+	width: 100px;
+	height: 16px;
+	border-radius: 3px;
+	background: hsl(var(--goldRating));
+	
+	color: hsl(var(--bg));
+	font: bold 13px/13px var(--font);
+	text-align: center;
+	letter-spacing: 1px;
+	text-shadow: none;
+	
+	pointer-events: none;
+	visibility: var(--toggleTopRatings);
+} body:not([data-query*='order":4']) .score-9::after {
+	background: hsl(var(--silverRating));
+}
+
+/* Prevent change score box layout flicker (caused by default list functions) */
+
+.data.score a:not([style="display: none;"]) + select {
+	display: none;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+  Progress
+\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
 .data.progress,
 .data.chapter,
@@ -1626,6 +1707,7 @@ body::before {
 .chapter span:nth-of-type(2),
 .volume span:nth-of-type(2) {
 	font-size: 12px;
+	vertical-align: top;
 }
 
 /* Total # - Completed */
@@ -1680,6 +1762,14 @@ span:nth-of-type(2)::after {
 
 .data.chapter + .data.volume {
 	display: none !important;
+}
+
+/* Prevent change episode box layout flicker (caused by default list functions) */
+
+.progress a + input,
+.chapter a + input,
+.volume a + input {
+	display: none;
 }
 
 
