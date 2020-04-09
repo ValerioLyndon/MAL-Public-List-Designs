@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.4.0
+ * Version 1.4.1
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1448,7 +1448,7 @@ body::before {
 	
 	transition: color var(--timeText) var(--bezierFast);
 } .title [class^="icon-watch"]:hover::after {
-	color: hsl(var(--textHov));
+	color: hsl(var(--textLinkHov));
 }
 
 .content-status,
