@@ -1,5 +1,5 @@
 /*------------------------------*\
-|* - -  Light Theme V1.2.0  - - *|
+|* - -  Light Theme V1.3.0  - - *|
 \* - - - - - - - - - - - - - - -*/
 
 :root {
@@ -16,6 +16,9 @@
 	--textProminent: 27, 94%, 80%;
 	--textLinkHov: 240, 50%, 80%;
 	--textIcon: 0, 0%, 26%;
+	
+	--goldRating: 27, 87%, 67%;
+	--silverRating: 0, 0%, 80%;
 }
 
 /* List Item Specific Colours */
