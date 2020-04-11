@@ -1,0 +1,745 @@
+/* ==UserStyle==
+@name           Brink Modification - Edit Overlay
+@namespace      V.L
+@description    An addition for MyAnimeList lists using the "Brink" theme that changes the look of the edit overlay.
+@version        1.0.0
+@author         Valerio Lyndon
+@homepageURL    https://github.com/ValerioLyndon/MAL-Public-List-Designs
+@supportURL     https://github.com/ValerioLyndon/MAL-Public-List-Designs/issues
+@license        MIT
+@preprocessor   uso
+
+@var select theme "Switch theme." {
+	"Dark:Dark": `
+	:root {
+		--bg: 240, 3%, 9%;
+		--bgAlt: 240, 3%, 14%;
+		--btn: 240, 3%, 16%;
+		--btnLight: 240, 2.7%, 19%;
+		--btnAccent: 240, 17%, 34%;
+		--border: 240, 5%, 6%;
+		
+		--textBright: 0, 0%, 100%;
+		--textMid: 0, 0%, 88%;
+		--textDim: 0, 0%, 80%;
+		--textProminent: 27, 87%, 67%;
+		--textLinkHov: 240, 50%, 80%;
+		--textIcon: 0, 0%, 83%;
+		
+		--arrowUp: url(https://files.catbox.moe/uure2q.svg);
+		--arrowRt: url(https://files.catbox.moe/lqi5fy.svg);
+		--arrowDn: url(https://files.catbox.moe/m9ot24.svg);
+		--arrowLt: url(https://files.catbox.moe/68o5bn.svg);
+		--checkmark: url(https://files.catbox.moe/wvc642.svg);
+		--resize: url(https://files.catbox.moe/hbzcq9.svg);
+	}`,
+	
+	"light:Light": `
+	:root {
+		--bg: 0, 0%, 100%;
+		--bgAlt: 0, 0%, 92%;
+		--btn: 240, 3%, 91%;
+		--btnLight: 240, 3%, 87%;
+		--btnAccent: 240, 70%, 87%;
+		--border: 240, 3%, 91%;
+		
+		--textBright: 0, 0%, 10%;
+		--textMid: 0, 0%, 22%;
+		--textDim: 0, 0%, 30%;
+		--textProminent: 27, 94%, 80%;
+		--textLinkHov: 240, 50%, 80%;
+		--textIcon: 0, 0%, 26%;
+		
+		--arrowUp: url(https://files.catbox.moe/iph712.svg);
+		--arrowRt: url(https://files.catbox.moe/4m6un3.svg);
+		--arrowDn: url(https://files.catbox.moe/wb6rq1.svg);
+		--arrowLt: url(https://files.catbox.moe/7xccvf.svg);
+		--checkmark: url(https://files.catbox.moe/gfdj8s.svg);
+		--resize: url(https://files.catbox.moe/xicpo1.svg);
+	}
+	
+	.page-common select.inputtext:disabled {
+		background-blend-mode: darken;
+	}`
+}
+
+@var select advancedToggle "Always show the advanced menu." {
+	"yes:Yes": `
+		#advanced-button {
+			display: none;
+		}
+		
+		.advanced {
+			display: block !important;
+		}`,
+	"no:No": ""
+}
+
+@var select hidePriority "Hide priority." {
+	"no:No": "",
+	"yes:Yes": ".advanced tr:nth-of-type(2) { display: none !important; }"
+}
+
+@var select hideStorage "Hide storage." {
+	"no:No": "",
+	"yes:Yes": ".advanced tr:nth-of-type(3) { display: none !important; }"
+}
+
+@var select hideRewatchValue "Hide rewatch value." {
+	"no:No": "",
+	"yes:Yes": ".advanced tr:nth-of-type(5) { display: none !important; }"
+}
+
+@var select hideExtras "Hide Discussion & SNS options." {
+	"no:No": "",
+	"yes:Yes": ".advanced tr:nth-of-type(7), .advanced tr:nth-of-type(8) { display: none !important; }"
+}
+
+@var select hideHelp "Hide information tips." {
+	"yes:Yes": ".fa-question-circle { display: none; }",
+	"no:No": ""
+}
+==/UserStyle== */
+
+@-moz-document regexp("https://myanimelist\\.net/ownlist/.+/edit\\?hideLayout") {
+	/*==============================*\
+	  !FONTS
+	\*------------------------------*/
+	
+	/* from https://fonts.googleapis.com/css?family=Sarabun:400,700 */
+	
+	/* latin */
+	@font-face {
+		font-family: 'Sarabun';
+		font-style: normal;
+		font-weight: 400;
+		src: local('Sarabun Regular'), local('Sarabun-Regular'), url(https://fonts.gstatic.com/s/sarabun/v6/DtVjJx26TKEr37c9aBVJnw.woff2) format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+	/* latin-ext */
+	@font-face {
+		font-family: 'Sarabun';
+		font-style: normal;
+		font-weight: 400;
+		src: local('Sarabun Regular'), local('Sarabun-Regular'), url(https://fonts.gstatic.com/s/sarabun/v6/DtVjJx26TKEr37c9aBtJn2QN.woff2) format('woff2');
+		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+	}
+	/* latin */
+	@font-face {
+		font-family: 'Sarabun';
+		font-style: normal;
+		font-weight: 700;
+		src: local('Sarabun Bold'), local('Sarabun-Bold'), url(https://fonts.gstatic.com/s/sarabun/v6/DtVmJx26TKEr37c9YK5silss6w.woff2) format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+	/* latin-ext */
+	@font-face {
+		font-family: 'Sarabun';
+		font-style: normal;
+		font-weight: 700;
+		src: local('Sarabun Bold'), local('Sarabun-Bold'), url(https://fonts.gstatic.com/s/sarabun/v6/DtVmJx26TKEr37c9YK5silUs6zDX.woff2) format('woff2');
+		unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+	}
+	
+	
+	/*==============================*\
+	  !VARIABLES
+	\*------------------------------*/
+	
+	:root {
+		--font: "Sarabun", "Segoe UI", "Arial", "FontAwesome", sans-serif;
+		
+		--timeText: 60ms;
+		--timeButton: 160ms;
+		--timeButtonLarge: 260ms;
+		--timeItem: 120ms;
+		--timeMenu: 350ms;
+		--bezierFast: cubic-bezier(.38,.32,.25,1);
+		--bezierSmooth: cubic-bezier(.45,.32,.25,1);
+		--bezierItemBounce: cubic-bezier(.6,.48,.7,1.45);
+		--delayMenu: 333.4ms;
+		
+		/* THEME */
+		
+		--accent: 240, 75%, 77%;
+		--current: 35, 49%, 46%;
+		--completed: 324, 49%, 46%;
+		--paused: 80, 91%, 23%;
+		--dropped: 6, 44%, 46%;
+		--planned: 56, 18%, 56%;
+		
+	}
+	
+	/*[[theme]]*/
+	
+	
+	/*==============================*\
+	  !PAGE-BASE @Scrollbars
+	\*------------------------------*/
+	
+	/* Firefox */
+	
+	* {
+		scrollbar-color: hsl(var(--accent)) hsl(var(--bgAlt));
+	}
+	
+	/* Chrome */
+	
+	*::-webkit-scrollbar {
+		background: hsl(var(--bgAlt));
+	}
+	
+	*::-webkit-scrollbar-button:vertical {
+		background: transparent center / 10px auto no-repeat;
+	} *::-webkit-scrollbar-button:vertical:start {
+		background-image: var(--arrowUp);
+	} *::-webkit-scrollbar-button:vertical:end {
+		background-image: var(--arrowDn);
+	} *::-webkit-scrollbar-button:horizontal {
+		background: transparent center / auto 10px no-repeat;
+	} *::-webkit-scrollbar-button:horizontal:start {
+		background-image: var(--arrowLt);
+	} *::-webkit-scrollbar-button:horizontal:end {
+		background-image: var(--arrowRt);
+	}
+	
+	*::-webkit-scrollbar-corner {
+		background: hsl(var(--bgAlt));
+	} *::-webkit-resizer {
+		background: var(--resize) center / auto no-repeat hsl(var(--bgAlt));
+		border: none;
+	}
+	
+	*::-webkit-scrollbar-thumb {
+		background: hsl(var(--accent)) content-box;
+		border: 0 solid transparent;
+	} *::-webkit-scrollbar-thumb:vertical {
+		border-width: 0 2px;
+	} *::-webkit-scrollbar-thumb:horizontal {
+		border-width: 2px 0;
+	} *::-webkit-scrollbar-thumb:hover {
+		background-color: hsla(var(--accent), 70%);
+	} 
+	
+	*::-webkit-scrollbar-track {
+		width: 5px;
+	}
+	
+	
+	/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+	  @Generic
+	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+	
+	html {
+		box-sizing: border-box;
+	} *, *::before, *::after {
+		box-sizing: inherit;
+	}
+	
+	.page-common a, .page-common a:visited {
+		color: hsl(var(--textDim));
+		text-decoration: none !important;
+		transition: color var(--timeText) var(--bezierFast);
+	} .page-common a:hover {
+		color: hsl(var(--textLinkHov)) !important;
+	}
+	
+	
+	/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+	  @Containers
+	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+	
+	body.page-common {
+		padding: 2px 12px 68px;
+		background: hsl(var(--bg));
+		color: hsl(var(--textMid));
+		font: 13px var(--font);
+	}
+	
+	/*==============================*\
+	  !TABLE
+	\*------------------------------*/
+	
+	#dialog {
+		width: 100% !important;
+		min-width: 560px;
+		max-width: 700px;
+		padding: 0 20px;
+		border: none;
+		margin: 0 auto;
+	}
+	
+	#dialog td {
+		padding: 0;
+		border: none;
+		font-size: 13px;
+	}
+	
+	.normal_header {
+		display: none;
+	}
+	
+	#main-form table,
+	#main-form td:first-child {
+		display: block;
+	}
+	
+	#main-form tbody {
+		display: flex;
+		flex-flow: row wrap;
+	}
+	
+	#main-form tr {
+		display: flex;
+		padding: 12px 6px 0;
+		width: 33.3334%;
+		flex-flow: column nowrap;
+		flex: 1 1 auto;
+	}
+	
+	#main-form td:first-child {
+		width: 100%;
+		height: 26px;
+		color: hsl(var(--textDim));
+		font-size: 13px;
+		line-height: 22px;
+	}
+	
+	#main-form td:last-child {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: top;
+		height: auto;
+	}
+	
+	#main-form td {
+		padding: 0;
+	}
+	
+	/* Advanced Button Toggle */
+	
+	#main-form #advanced-button {
+		height: 44px !important;
+		padding: 12px 6px 0;
+	}
+	
+	#main-form #advanced-button .separator {
+		display: none;
+	}
+	
+	#main-form #advanced-button .toggle-button {
+		width: 130px;
+		height: 24px;
+		padding: 0 4px 0 8px;
+		background: hsl(var(--btn));
+		border: 2px solid hsl(var(--btn));
+		border-radius: 3px;
+		margin-top: 4px;
+		
+		color: hsl(var(--textBright));
+		font: 12px/18px var(--font);
+		text-align: center;
+		vertical-align: top;
+		
+		transition: all var(--timeButton) var(--bezierFast);
+	} #main-form #advanced-button:hover .toggle-button {
+		border-color: hsl(var(--btnAccent));
+		color: hsl(var(--accent));
+	}
+	
+	/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+	  @Fields
+	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+	
+	.page-common .textarea,
+	.page-common .inputtext {
+		height: 24px;
+		padding: 4px;
+		background: hsl(var(--btn)) calc(100% - 5px) center / auto no-repeat;
+		border: none !important;
+		border-radius: 3px;
+		margin-right: 6px;
+		
+		color: hsl(var(--textMid));
+		font: 12px/1 var(--font);
+		
+		transition: all var(--timeButton) var(--bezierFast);
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	} .page-common select.inputtext {
+		padding: 4px 20px 4px 4px;
+		background-image: var(--arrowDn);
+	} .page-common select.inputtext:disabled {
+		background-blend-mode: soft-light;
+		opacity: .57;
+	}
+	
+	/* Checkboxes */
+	
+	.page-common label {
+		display: inline-block;
+		margin-top: 6px;
+		font-size: 12px !important;
+		line-height: 18px;
+	}
+	
+	.page-common label * {
+		font-size: 12px;
+		vertical-align: top;
+	}
+	
+	.page-common input[type="checkbox"] {
+		width: 18px;
+		height: 18px;
+		border-radius: 3px;
+		background: var(--checkmark) center / 12px auto no-repeat hsl(var(--btn));
+		background-blend-mode: soft-light;
+		border: 2px solid hsl(var(--btn));
+		margin: 0;
+		
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	} .page-common input[type="checkbox"]:checked {
+		border-color: hsl(var(--btnAccent));
+		background-blend-mode: initial;
+	}
+	
+	/* Information Tips */
+	
+	.fa-question-circle {
+		margin-top: 5px;
+	}
+	
+	
+	/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+	  @Header
+	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+	
+	#main-form table:first-child tr:nth-child(1) {
+		width: 100%;
+		flex-direction: row;
+	}
+	
+	#main-form table:first-child tr:nth-child(1) td:first-child {
+		display: none;
+	}
+	
+	#main-form table:first-child tr:nth-child(1) td {
+		height: 32px;
+		padding: 0;
+		margin-left: -12px;
+		
+		font-size: 18px;
+		line-height: 28px;
+		text-transform: uppercase;
+	}
+	
+	#main-form table:first-child tr:nth-child(1) td:last-child:before {
+		content: "EDITING ";
+		font-size: 18px;
+		line-height: 28px;
+		white-space: pre;
+	}
+	
+	#main-form table:first-child tr:nth-child(1) a {
+		color: hsl(var(--textMid));
+	}
+	
+	
+	/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+	  @Status
+	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+	
+	#main-form table:first-child tr:nth-child(2) td:first-child {
+		height: 20px;
+	}
+	
+	#main-form table:first-child tr:nth-child(2) select {
+		margin-top: 6px;
+	}
+	
+	
+	/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+	  @Progress
+	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+	
+	#main-form table:first-child tr:nth-child(3) td:last-child,
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(4) td:last-child {
+		display: block;
+		font-size: 13px;
+	}
+	
+	#main-form table:first-child tr:nth-child(3) td:last-child > *,
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(4) td:last-child > * {
+		vertical-align: top;
+		line-height: 18px;
+	}
+	
+	
+	/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+	  @Dates
+	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+	
+	.ownlist_anime_update #main-form table:first-child tr:nth-child(5) td:first-child,
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(7) td:first-child,
+	#main-form table:first-child tr:nth-child(6) td:first-child {
+		height: 20px;
+	}
+	
+	.ownlist_anime_update #main-form table:first-child tr:nth-child(5) select,
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(7) select,
+	#main-form table:first-child tr:nth-child(6) select {
+		margin-top: 6px;
+	}
+	
+	.ownlist_anime_update #main-form table:first-child tr:nth-child(5) td:first-child:after,
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(7) td:first-child:after,
+	#main-form table:first-child tr:nth-child(6) td:first-child:after {
+		content: " YYYY/MM/DD";
+		display: inline;
+		color: hsla(var(--textDim),0.5);
+		font-size: 10px;
+		line-height: 10px;
+	}
+	
+	.ownlist_anime_update #main-form table:first-child tr:nth-child(5) td:last-child,
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(7) td:last-child,
+	#main-form table:first-child tr:nth-child(6) td:last-child {
+		font-size: 0;
+	}
+	
+	/* Month */
+	.ownlist_anime_update #main-form table:first-child tr:nth-child(5) select:nth-of-type(1),
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(7) select:nth-of-type(1),
+	#main-form table:first-child tr:nth-child(6) select:nth-of-type(1) {
+		width: 54px;
+		order: 2;
+	} /* Day */
+	.ownlist_anime_update #main-form table:first-child tr:nth-child(5) select:nth-of-type(2),
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(7) select:nth-of-type(2),
+	#main-form table:first-child tr:nth-child(6) select:nth-of-type(2) {
+		width: 45px;
+		order: 3;
+	} /* Year */
+	.ownlist_anime_update #main-form table:first-child tr:nth-child(5) select:nth-of-type(3),
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(7) select:nth-of-type(3),
+	#main-form table:first-child tr:nth-child(6) select:nth-of-type(3) {
+		width: 60px;
+		order: 1;
+	}
+	
+	
+	.ownlist_anime_update #main-form table:first-child tr:nth-child(5) label,
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(7) label,
+	#main-form table:first-child tr:nth-child(6) label {
+		order: 4;
+		font-size: 13px;
+	}
+	
+	.ownlist_anime_update #main-form table:first-child tr:nth-child(5) td > small,
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(7) td > small,
+	#main-form table:first-child tr:nth-child(6) td > small {
+		display: block;
+		width: 100%;
+		margin-top: 6px;
+		order: 5;
+	}
+		
+	.ownlist_anime_update #main-form table:first-child tr:nth-child(5) td > small a,
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(7) td > small a,
+	#main-form table:first-child tr:nth-child(6) td > small a {
+		display: block;
+		width: 171px;
+		height: 24px;
+		padding: 0;
+		background: hsl(var(--btn));
+		border: 2px solid hsl(var(--btn));
+		border-radius: 3px;
+		
+		color: hsl(var(--textBright));
+		font: 12px/18px var(--font);
+		text-align: center;
+		
+		transition: all var(--timeButton) var(--bezierFast);
+	} .ownlist_anime_update #main-form table:first-child tr:nth-child(5) td > small a:hover,
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(7) td > small a:hover,
+	#main-form table:first-child tr:nth-child(6) td > small a:hover {
+		border-color: hsl(var(--btnAccent));
+		color: hsl(var(--accent));
+	}
+	
+	.ownlist_anime_update #main-form table:first-child tr:nth-child(5) select:disabled + small a,
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(7) select:disabled + small a,
+	.ownlist_anime_update #main-form table:first-child tr:nth-child(6) select:disabled + small a,
+	.ownlist_manga_update #main-form table:first-child tr:nth-child(6) select:disabled + small a {
+		opacity: 0.54;
+		pointer-events: none;
+	}
+	
+	
+	/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+	  @Comments & @Tags
+	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+	
+	#main-form table:last-of-type textarea {
+		width: 100%;
+		height: 98px;
+		min-height: 68px;
+		line-height: 15px;
+		resize: vertical;
+	}
+	
+	/* Tags */
+	
+	#main-form table:last-of-type tr:nth-child(1) {
+		order: -1;
+	}
+	
+	/* Comments */
+	
+	#main-form table:last-of-type tr:nth-child(6) {
+		width: 66.6667%;
+		order: -2;
+	}
+	
+	
+	/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+	  @Storage
+	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+	
+	#main-form #storage_div {
+		display: block !important;
+		height: 0;
+		margin: 6px 0 0 !important;
+		overflow: hidden;
+		transition: height var(--timeButton) var(--bezierSmooth);
+	} #main-form #storage_div:not([style*="none"]) {
+		height: 24px;
+	}
+	
+	@keyframes storageReveal {
+		from {
+			height: 0;
+		} to {
+			height: 24px;
+		}
+	}
+	
+	
+	/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+	  @Rewatched
+	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+	
+	#main-form table:last-of-type tr:nth-child(4) td:first-child {
+		overflow: hidden;
+	}
+	
+	#main-form table:last-of-type tr:nth-child(4) td:first-child::before {
+		display: block;
+	}
+	
+	.ownlist_anime_update #main-form table:last-of-type tr:nth-child(4) td:first-child::before {
+		content: "Total Times Re-watched";
+	} .ownlist_manga_update #main-form table:last-of-type tr:nth-child(4) td:first-child::before {
+		content: "Total Times Re-read";
+	}
+	
+	
+	/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+	  @Discuss/@SNS
+	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+	
+	#main-form table:last-of-type tr:nth-child(7),
+	#main-form table:last-of-type tr:nth-child(8) {
+		width: 100%;
+	}
+	
+	
+	/*==============================*\
+	  !BUTTONS
+	\*------------------------------*/
+	
+	#top-submit-buttons {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		display: flex !important;
+		width: 100%;
+		height: 56px;
+		padding: 12px 20px;
+		background: hsl(var(--bg));
+		margin: 0 !important;
+	}
+	
+	#top-submit-buttons .inputButton {
+		width: 96px;
+		height: 32px;
+		padding: 0;
+		background: hsl(var(--btn)) linear-gradient(45deg, hsl(var(--btn)) 75%, hsl(var(--btnLight)) 0%) !important;
+		border: 2px solid hsl(var(--btn));
+		border-radius: 3px;
+		outline: none;
+		margin: 0;
+		
+		color: hsl(var(--textBright));
+		font: 14px/26px var(--font);
+		text-align: center;
+		
+		transition: all var(--timeButton) var(--bezierFast);
+	} #top-submit-buttons .inputButton:hover {
+		border-color: hsl(var(--btnAccent));
+		color: hsl(var(--accent));
+	}
+	
+	div[style="text-align: left;"] + .mt8 {
+		display: none;
+	}
+	
+	
+	/*==============================*\
+	  !EXTRA
+	\*------------------------------*/
+	
+	/*[[advancedToggle]]*/
+	/*[[hidePriority]]*/
+	/*[[hideStorage]]*/
+	/*[[hideRewatchValue]]*/
+	/*[[hideExtras]]*/
+	/*[[hideHelp]]*/
+}
+
+@-moz-document regexp("https\://myanimelist.net/animelist/.*") {
+	@media (min-width: 1050px) {
+		body[data-owner='1'] #fancybox-wrap {
+			left: calc(50% - (190px + (1050px * 0.2))) !important;
+			width: calc(380px + (1050px * 0.4)) !important;
+		}
+	}
+	
+	body[data-owner='1'] #fancybox-outer {
+		padding: 0;
+		border-radius: 0;
+	}
+	
+	body[data-owner='1'] #fancybox-outer::before {
+		content: "";
+		position: absolute;
+		top: -2px;
+		left: 0;
+		
+		width: 100%;
+		height: 2px;
+		background: hsl(var(--bg)) linear-gradient(to right, hsla(var(--accent), 1), hsla(var(--accent), 0.55));
+	}
+	
+	body[data-owner='1'] #fancybox-inner {
+		max-height: 700px;
+		border-radius: 0;
+	}
+	
+	body[data-owner='1'] #fancybox-frame {
+		filter: none;
+	}
+}
