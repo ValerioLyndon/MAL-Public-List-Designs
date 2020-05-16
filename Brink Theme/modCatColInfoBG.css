@@ -1,7 +1,11 @@
 /*------------------------------*\
 |*  Category-Coloured  Info BG  *|
-|* - - - - -  V1.0.0  - - - - - *|
+|* - - - - -  V1.1.0  - - - - - *|
 \* - - - - - - - - - - - - - - -*/
+
+.data.status {
+	display: none !important;
+}
 
 .data.watching ~ .title::before,
 .data.reading ~ .title::before {
