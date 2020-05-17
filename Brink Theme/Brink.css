@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.4.1
+ * Version 1.4.2
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1616,7 +1616,7 @@ body:not([data-query*='order":4']) .score-10::before {
 	
 	/*Toggle*/
 	visibility: var(--toggleTopRatings);
-} body:not([data-query*="order"]) .score-9::before {
+} body:not([data-query*='order":4']) .score-9::before {
 	border-color: hsl(var(--silverRating));
 }
 
@@ -2321,6 +2321,7 @@ div[style^="width: 300px;"] input {
 	flex: 0 1 auto;
 	
 	color: hsl(var(--textMid));
+	font: 13px/16px var(--font);
 }
 
 #advanced-options .sort-widget select,
