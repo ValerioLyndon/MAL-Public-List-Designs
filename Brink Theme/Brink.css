@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.4.2
+ * Version 1.4.3
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1588,10 +1588,10 @@ body::before {
 
 /* Not Rated */
 
-.score-na {
+.data .score-na {
 	font-size: 0;
 	order: -1;
-} .score-na::before {
+} .data .score-na::before {
 	content: "Not ";
 	font-size: 12px;
 	font-weight: normal;
@@ -1599,8 +1599,8 @@ body::before {
 
 /* Top Rated Banners for 9 & 10 rated items. These do not display on ordered lists. */
 
-body:not([data-query*='order":4']) .score-9::before,
-body:not([data-query*='order":4']) .score-10::before {
+body:not([data-query*='order":4']) .data .score-9::before,
+body:not([data-query*='order":4']) .data .score-10::before {
 	content: "";
 	position: absolute;
 	left: -12px;
@@ -1616,12 +1616,12 @@ body:not([data-query*='order":4']) .score-10::before {
 	
 	/*Toggle*/
 	visibility: var(--toggleTopRatings);
-} body:not([data-query*='order":4']) .score-9::before {
+} body:not([data-query*='order":4']) .data .score-9::before {
 	border-color: hsl(var(--silverRating));
 }
 
-body:not([data-query*='order":4']) .score-9::after,
-body:not([data-query*='order":4']) .score-10::after {
+body:not([data-query*='order":4']) .data .score-9::after,
+body:not([data-query*='order":4']) .data .score-10::after {
 	content: "TOP RATED";
 	position: absolute;
 	left: 43px;
@@ -1641,7 +1641,7 @@ body:not([data-query*='order":4']) .score-10::after {
 	
 	pointer-events: none;
 	visibility: var(--toggleTopRatings);
-} body:not([data-query*='order":4']) .score-9::after {
+} body:not([data-query*='order":4']) .data .score-9::after {
 	background: hsl(var(--silverRating));
 }
 
