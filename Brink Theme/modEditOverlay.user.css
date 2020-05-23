@@ -2,7 +2,7 @@
 @name           Brink Modification - Edit Overlay
 @namespace      V.L
 @description    An addition for MyAnimeList lists using the "Brink" theme that changes the look of the edit overlay.
-@version        1.0.0
+@version        1.0.1
 @author         Valerio Lyndon
 @homepageURL    https://github.com/ValerioLyndon/MAL-Public-List-Designs
 @supportURL     https://github.com/ValerioLyndon/MAL-Public-List-Designs/issues
@@ -256,11 +256,16 @@
 		font: 13px var(--font);
 	}
 	
+	tbody, tr, td {
+		display: block;
+	}
+	
 	/*==============================*\
 	  !TABLE
 	\*------------------------------*/
 	
 	#dialog {
+		display: block;
 		width: 100% !important;
 		min-width: 560px;
 		max-width: 700px;
@@ -426,13 +431,15 @@
 		display: none;
 	}
 	
-	#main-form table:first-child tr:nth-child(1) td {
-		height: 32px;
+	#main-form table:first-child tr:nth-child(1) td:last-child {
+		display: block;
+		width: 100%;
+		min-height: 32px;
 		padding: 0;
-		margin-left: -12px;
 		
 		font-size: 18px;
 		line-height: 28px;
+		text-indent: -12px;
 		text-transform: uppercase;
 	}
 	
@@ -739,7 +746,11 @@
 		border-radius: 0;
 	}
 	
-	body[data-owner='1'] #fancybox-frame {
+	body[data-owner='1'] #fancybox-frame[src*="https://myanimelist.net/ownlist/"][src*="edit?hideLayout"] {
 		filter: none;
+	}
+	
+	body[data-owner='1'] #fancybox-frame:not([src*="https://myanimelist.net/ownlist/"]):not([src*="edit?hideLayout"]) {
+		height: calc(100% - 56px);
 	}
 }
