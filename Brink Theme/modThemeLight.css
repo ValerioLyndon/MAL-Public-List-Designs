@@ -1,5 +1,5 @@
 /*------------------------------*\
-|* - -  Light Theme V1.3.0  - - *|
+|* - -  Light Theme V1.4.0  - - *|
 \* - - - - - - - - - - - - - - -*/
 
 /* User */
@@ -126,7 +126,7 @@ body #fancybox-close,
 		0 0 2px #000;
 }
 
-.data.title::before {
+.data.title {
 	background: hsla(240, 1.5%, 4.5%, 50%);
 }
 
