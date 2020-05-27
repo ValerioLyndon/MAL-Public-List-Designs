@@ -1,22 +1,22 @@
 /*------------------------------*\
 |*  Category-Coloured  Info BG  *|
-|* - - - - -  V1.1.0  - - - - - *|
+|* - - - - -  V1.2.0  - - - - - *|
 \* - - - - - - - - - - - - - - -*/
 
 .data.status {
 	display: none !important;
 }
 
-.data.watching ~ .title::before,
-.data.reading ~ .title::before {
-    background: hsla(var(--current), 85%);
-} .data.completed ~ .title::before {
-    background: hsla(var(--completed), 85%);
-} .data.onhold ~ .title::before {
-    background: hsla(var(--paused), 85%);
-} .data.dropped ~ .title::before {
-    background: hsla(var(--dropped), 85%);
-} .data.plantowatch ~ .title::before,
-.data.plantoread ~ .title::before {
-    background: hsla(var(--planned), 85%);
+.data.watching ~ .title,
+.data.reading ~ .title {
+    background: hsla(var(--current), var(--infoBGOpacity));
+} .data.completed ~ .title {
+    background: hsla(var(--completed), var(--infoBGOpacity));
+} .data.onhold ~ .title {
+    background: hsla(var(--paused), var(--infoBGOpacity));
+} .data.dropped ~ .title {
+    background: hsla(var(--dropped), var(--infoBGOpacity));
+} .data.plantowatch ~ .title,
+.data.plantoread ~ .title {
+    background: hsla(var(--planned), var(--infoBGOpacity));
 }
