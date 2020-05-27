@@ -1,0 +1,55 @@
+/*------------------------------*\
+|*  Per-Category Images v1.0.0  *|
+\* - - - - - - - - - - - - - - -*/
+
+.ownlist[data-query*='status":7'] {
+	/* All Anime */
+	--background-image: url(URLHERE);
+	--cover-image: url(URLHERE);
+} .ownlist[data-query*='status":1'] {
+	/* Current */
+	--background-image: url(URLHERE);
+	--cover-image: url(URLHERE);
+} .ownlist[data-query*='status":2'] {
+	/* Completed */
+	--background-image: url(URLHERE);
+	--cover-image: url(URLHERE);
+} .ownlist[data-query*='status":3'] {
+	/* Paused */
+	--background-image: url(URLHERE);
+	--cover-image: url(URLHERE);
+} .ownlist[data-query*='status":4'] {
+	/* Dropped */
+	--background-image: url(URLHERE);
+	--cover-image: url(URLHERE);
+} .ownlist[data-query*='status":6'] {
+	/* Planned */
+	--background-image: url(URLHERE);
+	--cover-image: url(URLHERE);
+}
+
+/* Internals */
+
+body.ownlist {
+	background-image: var(--background-image);
+}
+
+#cover-image-container {
+	display: block !important;
+}
+
+#cover-image-container::before {
+	content: "";
+	display: block;
+	width: 100%;
+	max-width: initial;
+	height: 30vw;
+	min-height: calc(700px * 0.3);
+	max-height: calc(1920px * 0.3);
+	background: var(--cover-image) center / cover;
+}
+
+/* Remove default image */
+#cover-image {
+	display: none;
+}
