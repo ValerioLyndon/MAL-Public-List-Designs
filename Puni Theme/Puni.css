@@ -1,7 +1,7 @@
 /* * * * * * * * * * * * * *\
 |* Puni Theme              *|
 |* by Valerio Lyndon       *|
-|* v1.1.0                  *|
+|* v1.1.1                  *|
 \* * * * * * * * * * * * * */
 
 @\import "https://fonts.googleapis.com/css?family=Varela+Round";
@@ -26,7 +26,7 @@
 	--shadow-dark: hsla(0, 0%, 0%, .53);
 	--popup-backing: hsla(0, 0%, 0%, .73);
 	
-	/* Rating info text. Please note, line breaks are not allowed.
+	/* Info text. Please note, line breaks are not allowed.
 	 * Instead, use "\a " (including the space after it).
 	 * This will be interpreted as a line break by the code.
 	 * Additionally, add a backslash before any double quote i.e. \"
@@ -779,7 +779,7 @@ body.ownlist {
 .list-unit .list-status-title .text::after {
 	content: var(--information);
 	position: absolute;
-	left: calc(50% - 170px);
+	left: calc(50% - 159px);
 	bottom: 5px;
 	display: block;
 	min-width: 150px;
