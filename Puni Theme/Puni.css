@@ -1,7 +1,7 @@
 /* * * * * * * * * * * * * *\
 |* Puni Theme              *|
 |* by Valerio Lyndon       *|
-|* v1.0.0                  *|
+|* v1.1.0                  *|
 \* * * * * * * * * * * * * */
 
 @\import "https://fonts.googleapis.com/css?family=Varela+Round";
@@ -32,7 +32,7 @@
 	 * Additionally, add a backslash before any double quote i.e. \"
 	 */
 	 
-	--rating-info: "Rating Info\a \a Completed\a   8-10 - my all time favorite anime.\a   7 - not as exceptional as 8-10 ones but still my all time favorite anime!!\a   No score - a decent anime that I enjoyed to some extent. Not my all time favorite.\a \a Dropped\a   No score and with 0 episodes watched - I wasn't too interested in this anime. That doesn't mean I think it's bad.\a   No score (tried watching, reflected on episode count) - this anime didn't interest me despite me hoping it would and watching it. That doesn't mean I think it's bad.\a   1 - this anime is wrong and I do not recommend it to anyone.";
+	--information: "Rating Info\a \a 10 - Masterpiece\a 9 - Great\a 8 - Very Good\a 7 - Good\a 6 - Fine\a 5 - Average\a 4 - Very Bad\a 3 - Bad\a 2 - Horrible\a 1 - Appalling";
 	
 	/* Default Images - will be overridden by category-specific codes.
 	 */
@@ -763,25 +763,27 @@ body.ownlist {
 }
 
 .list-unit .list-status-title .text::before {
-	content: '\f123';
+	content: '\f05a';
 	position: absolute;
-	right: calc(50% + 160px);
+	left: calc(50% - 170px);
 	bottom: -29px;
 	padding: 0 4px;
 	font-size: 1.1rem;
 	line-height: 24px;
+	font-weight: normal;
 	text-shadow: 0 0 2px var(--shadow-light);
 	pointer-events: auto;
 	cursor: help;
 }
 
 .list-unit .list-status-title .text::after {
-	content: var(--rating-info);
+	content: var(--information);
 	position: absolute;
-	left: calc(50% - 300px);
+	left: calc(50% - 170px);
 	bottom: 5px;
 	display: block;
-	width: 400px;
+	min-width: 150px;
+	max-width: 400px;
 	height: auto;
 	background: var(--popup-backing);
 	padding: 10px;
@@ -792,8 +794,10 @@ body.ownlist {
 	letter-spacing: 0;
 	text-align: left;
 	white-space: pre-wrap;
+	overflow-wrap: break-word;
 	opacity: 0;
 	transition: opacity var(--time-medium);
+	transform: translateX(-50%);
 } .list-unit .list-status-title .text:hover::after {
 	opacity: 1;
 }
