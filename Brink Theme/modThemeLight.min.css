@@ -1,34 +1,22 @@
 /*------------------------------*\
-|* - -  Light Theme V1.4.0  - - *|
+|* - -  Light Theme V1.5.0  - - *|
 \* - - - - - - - - - - - - - - -*/
 
 :root {
 	--bg: 0, 0%, 100%;
 	--bgAlt: 0, 0%, 92%;
 	--btn: 240, 3%, 91%;
-	--btnLight: 240, 3%, 87%;
+	--btnAlt: 240, 3%, 91%;
+	--btnLight: 0, 0%, 0%, 0%;
 	--btnAccent: 240, 70%, 87%;
 	--border: 240, 3%, 91%;
 	
-	--textBright: 0, 0%, 10%;
-	--textMid: 0, 0%, 22%;
-	--textDim: 0, 0%, 30%;
+	--text: 0, 0%, 10%;
 	--textProminent: 27, 94%, 80%;
 	--textLinkHov: 240, 50%, 80%;
-	--textIcon: 0, 0%, 26%;
 	
 	--goldRating: 27, 87%, 67%;
 	--silverRating: 0, 0%, 80%;
 }
 
-/* List Item Specific Colours */
-
-.list-item {
-	--bg: 240, 1.5%, 4.5%;
-	--textBright: 0, 0%, 100%;
-	--textDim: 0, 0%, 80%;
-	--textLinkHov: 240, 50%, 80%;
-	--textIcon: 0, 0%, 83%;
-}
-
-:root{--arrowUp:url(https://files.catbox.moe/iph712.svg);--arrowRt:url(https://files.catbox.moe/4m6un3.svg);--arrowDn:url(https://files.catbox.moe/wb6rq1.svg);--arrowLt:url(https://files.catbox.moe/7xccvf.svg)}[data-owner=""]{--arrowUp:url(https://i.imgur.com/PIvCNue.png);--arrowRt:url(https://i.imgur.com/t42REdK.png);--arrowDn:url(https://i.imgur.com/zpdE5s3.png);--arrowLt:url(https://i.imgur.com/luhyy72.png)}*{scrollbar-color:hsl(var(--btnAccent)) hsl(var(--bgAlt))}::-webkit-scrollbar-thumb{background-color:hsl(var(--btnAccent))}::-webkit-scrollbar-thumb:hover{background-color:hsla(var(--btnAccent),70%)}#status-menu.fixed,.header{background:hsl(var(--bg))}.header .header-title,.list-menu-float:after,.list-unit .loading-space i{filter:invert(.785)}.list-container:before{filter:sepia(1) saturate(500) hue-rotate(calc(60deg + (180deg * .785))) opacity(.6) invert(.785)}#advanced-options .advanced-options-button a,#status-menu .search-container #search-box,.list-table>tbody:first-of-type:after,.list-unit .list-status-title .stats a,body #fancybox-close{background:hsl(var(--btn))!important;box-shadow:none}.data.image,.list-table .list-table-header{box-shadow:none}#status-menu .status-button{text-shadow:none}.list-table[data-items="[]"]:before{background-image:url(https://i.imgur.com/OzsJEdu.png);background-blend-mode:darken}.list-table[data-items="[]"]:after{background:0 0}.data.image{background:hsl(var(--bg))}.content-status,.rewatching{font-weight:700;text-shadow:1px 0 1px #000,0 0 2px #000}.data.title{background:hsla(240,1.5%,4.5%,50%)}.more-content{color:hsl(var(--textMid))}#copyright{color:hsla(var(--textDim),80%)}body #fancybox-frame{filter:none}#advanced-options .filter-widget select:disabled,#advanced-options .sort-widget select:disabled{background-blend-mode:darken}
+:root{--arrowUp:url(https://files.catbox.moe/iph712.svg);--arrowRt:url(https://files.catbox.moe/4m6un3.svg);--arrowDn:url(https://files.catbox.moe/wb6rq1.svg);--arrowLt:url(https://files.catbox.moe/7xccvf.svg)}[data-owner=""]{--arrowUp:url(https://i.imgur.com/PIvCNue.png);--arrowRt:url(https://i.imgur.com/t42REdK.png);--arrowDn:url(https://i.imgur.com/zpdE5s3.png);--arrowLt:url(https://i.imgur.com/luhyy72.png)}*{scrollbar-color:hsl(var(--btnAccent)) hsl(var(--bgAlt))}::-webkit-scrollbar-thumb{background-color:hsl(var(--btnAccent))}::-webkit-scrollbar-thumb:hover{background-color:hsla(var(--btnAccent),70%)}#status-menu.fixed,.header{background:hsl(var(--bg))}.header .header-title,.list-menu-float:after,.list-unit .loading-space i{filter:invert(.785)}.list-container:before{filter:invert(.785) opacity(.35)}#advanced-options .advanced-options-button a,#status-menu .search-container #search-box,.list-table>tbody:first-of-type:after,.list-unit .list-status-title .stats a,body #fancybox-close{box-shadow:none}.data.image,.list-table .list-table-header{box-shadow:none}#status-menu .status-button{text-shadow:none}.list-table[data-items="[]"]:before{background-image:url(https://i.imgur.com/OzsJEdu.png);background-blend-mode:darken}.list-table[data-items="[]"]:after{background:0 0}.list-item{--text:0,0%,100%}.data.image{background:hsl(240,1.5%,4.5%)}.content-status,.rewatching{font-weight:700;text-shadow:1px 0 1px #000,0 0 2px #000}.data.title{background:hsla(240,1.5%,4.5%,50%)}.more-content,.score-10::after,.score-10::before,.score-9::after,.score-9::before{--text:0,0%,10%;color:hsl(var(--text))!important}body #fancybox-frame{filter:none}#advanced-options .filter-widget select:disabled,#advanced-options .sort-widget select:disabled{background-blend-mode:darken}
