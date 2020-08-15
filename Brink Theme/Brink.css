@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.4.4
+ * Version 1.5.0
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -84,7 +84,7 @@
 	 * toggleTopRatings / Toggles banners on top of highly rated items.
 	 * valid values: visible / hidden
 	 * 
-	 * bgDimness / Changes dimming of background / Higher = Dimmer.
+	 * bgDimness / Changes dimming of background image / Higher = Dimmer.
 	 * min value: 0% / max value: 100%
 	 * 
 	 * bannerVignetteOpacity / Changes opacity of banner image vignette / Higher = More Opaque.
@@ -92,6 +92,9 @@
 	 * 
 	 * imageBrightness(Hov) / Changes lightness of cover images / Higher = Brighter.
 	 * min value: 0% / max value: 100%
+	 * 
+	 * imageBlurHov / Changes blurring of cover images / Higher = More
+	 * valid values: any positive number value, ending in "px"
 	 * 
 	 * infoBGOpacity / Changes opacity of background on list items for improved readability / Set to 0% to hide
 	 * min value: 0% / max value: 100%
@@ -102,8 +105,9 @@
 	--toggleTopRatings: visible;
 	--bgDimness: 50%;
 	--bannerVignetteOpacity: 90%;
-	--imageBrightness: 63%;
-	--imageBrightnessHov: 32%;
+	--imageBrightness: 66%;
+	--imageBrightnessHov: 35%;
+	--imageBlurHov: 2px;
 	--infoBGOpacity: 85%;
 	
 	/* THEME COLOURS
@@ -119,17 +123,15 @@
 	--bg: 240, 3%, 9%;
 	--bgAlt: 240, 3%, 14%;
 	--btn: 240, 3%, 16%;
-	--btnLight: 240, 2.7%, 19%;
+	--btnAlt: 240, 3.5%, 21%;
+	--btnLight: 240, 100%, 94%, 4%;
 	--btnAccent: 240, 17%, 34%;
 	--border: 240, 5%, 6%;
 	--accent: 240, 75%, 77%;
 	
-	--textBright: 0, 0%, 100%;
-	--textMid: 0, 0%, 88%;
-	--textDim: 0, 0%, 80%;
+	--text: 0, 0%, 100%;
 	--textProminent: 27, 87%, 67%;
 	--textLinkHov: 240, 50%, 80%;
-	--textIcon: 0, 0%, 83%;
 	
 	--current: 35, 49%, 46%;
 	--completed: 324, 49%, 46%;
@@ -137,8 +139,8 @@
 	--dropped: 6, 44%, 46%;
 	--planned: 56, 18%, 56%;
 	
-	--goldRating: var(--textProminent);
-	--silverRating: var(--textDim);
+	--goldRating: 31, 100%, 70%;
+	--silverRating: 0, 0%, 80%;
 }
 
 
@@ -267,33 +269,38 @@ html {
 
 a {
 	text-decoration: none !important;
+	transition: color var(--timeText) var(--bezierFast);
 }
 
 /* Buttons */
 
+#header-menu-dropdown .icon-menu,
 .list-unit .list-status-title .stats a,
 .list-table > tbody:first-of-type::after,
+#status-menu .search-container #search-box,
 body #fancybox-close,
 #advanced-options .advanced-options-button a,
 div[style^="width: 300px;"] input {
 	width: 96px;
 	height: 32px;
 	padding: 0;
-	background: linear-gradient(45deg, hsl(var(--btn)) 75%, hsl(var(--btnLight)) 0%) hsl(var(--btn)) !important;
+	background: linear-gradient(45deg, hsl(var(--btn)) calc(100% - 20px), hsla(var(--btnLight)) 0%) hsl(var(--btn)) !important;
 	border: 2px solid hsl(var(--btn));
 	border-radius: 3px;
 	box-shadow: -0.5px 0.7px 2.1px hsla(0, 0%, 0%, 35%);
 	outline: none;
 	margin: 0;
 	
-	color: hsl(var(--textBright));
-	font-size: 14px;
-	line-height: 26px;
+	color: hsl(var(--text));
+	font: normal 14px/26px var(--font);
 	text-align: center;
+	white-space: nowrap;
 	
 	transition: all var(--timeButton) var(--bezierFast);
-} .list-unit .list-status-title .stats a:hover,
+} #header-menu-dropdown .icon-menu:hover,
+.list-unit .list-status-title .stats a:hover,
 .list-table > tbody:first-of-type:hover::after,
+#status-menu .search-container #search-box:focus-within,
 body #fancybox-close:hover,
 #advanced-options .advanced-options-button a:hover,
 div[style^="width: 300px;"] input:hover {
@@ -335,7 +342,7 @@ body {
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	
-	color: hsl(var(--textMid)) !important;
+	color: hsla(var(--text), 88%) !important;
 	font: 12px var(--font);
 }
 
@@ -400,8 +407,7 @@ body::before {
 }
 
 .header a {
-	color: hsl(var(--textBright));
-	transition: color var(--timeText) var(--bezierFast);
+	color: hsl(var(--text));
 } .header a:hover {
 	color: hsl(var(--textLinkHov));
 }
@@ -416,7 +422,7 @@ body::before {
 	height: 24px;
 	background: url(https://files.catbox.moe/8q5kjg.svg) left 4px / auto 20px no-repeat;
 	
-	color: hsl(var(--textBright));
+	color: hsl(var(--text));
 	
 	opacity: 0.94;
 	transition: all var(--timeButton) var(--bezierFast);
@@ -446,7 +452,7 @@ body::before {
 .header .header-menu .btn-menu {
 	height: 15px;
 	align-self: flex-end;
-	color: hsl(var(--textBright));
+	color: hsl(var(--text));
 	font-size: 12px;
 	cursor: text;
 } [data-owner="1"] .header .header-menu .btn-menu {
@@ -468,12 +474,12 @@ body::before {
 	height: 15px;
 	margin: 0;
 	
-	color: hsl(var(--textDim));
+	color: hsla(var(--text), 75%);
 }
 
 .header .header-menu .header-info,
 .header .header-menu .header-info a {
-	color: hsl(var(--textDim));
+	color: hsla(var(--text), 75%);
 	font-weight: normal;
 } .header .header-menu .header-info a:hover {
 	color: hsl(var(--textLinkHov));
@@ -502,20 +508,10 @@ body::before {
 }
 
 #header-menu-dropdown .icon-menu {
+	--btn: var(--btnAlt);
 	width: 130px;
-	height: 32px;
-	background: hsl(var(--btnLight));
-	border: 2px solid hsl(var(--btnLight));
-	border-radius: 3px;
-	
-	color: hsl(var(--textBright));
-	font: normal 0/26px var(--font);
-	white-space: nowrap;
-	
-	transition: all var(--timeButton) var(--bezierFast);
-} #header-menu-dropdown .icon-menu:hover {
-	border-color: hsl(var(--btnAccent));
-	color: hsl(var(--accent));
+	font-size: 0;
+	box-shadow: none;
 }
 
 #header-menu-dropdown .icon-menu::before {
@@ -583,7 +579,7 @@ body::before {
 	box-sizing: initial;
 	background: url(https://files.catbox.moe/0tnlh6.svg) center / auto no-repeat;
 	
-	color: hsl(var(--textBright));
+	color: hsl(var(--text));
 	font: 21px/42px "FontAwesome";
 	text-align: center;
 	
@@ -591,11 +587,7 @@ body::before {
 } /* Icon for logged out users */
 .list-container::before {
 	z-index: 200;
-	filter:
-		sepia(1)
-		saturate(500)
-		hue-rotate(289.5deg)
-		opacity(0.6);
+	filter: opacity(0.35);
 } /* Hide for logged in users */
 .list-menu-float + .list-container::before {
 	content: none;
@@ -621,7 +613,7 @@ body::before {
 	transition: color calc(var(--timeMenu) * 0.3) ease-in-out var(--delayMenu);
 	pointer-events: none;
 } .list-menu-float:hover::before {
-	color: hsl(var(--textBright));
+	color: hsl(var(--text));
 	transition: color calc(var(--timeMenu) * 0.7) ease-in-out calc(var(--timeMenu) * 0.3);
 }
 
@@ -672,7 +664,7 @@ body::before {
 	border-left: 4px solid transparent;
 	overflow: visible;
 	
-	color: hsl(var(--textBright));
+	color: hsl(var(--text));
 	font: 15px/20px var(--font);
 	text-align: left;
 	
@@ -725,7 +717,7 @@ body::before {
 	
 	width: calc(100% - 20px);
 	height: 1px;
-	background: hsla(var(--textBright), 12%);
+	background: hsla(var(--text), 12%);
 	
 	pointer-events: none;
 }
@@ -867,7 +859,7 @@ body::before {
 }
 
 #status-menu .status-button::before {
-	color: hsla(var(--textDim), 60%);
+	color: hsla(var(--text), 48%);
 	font-size: 18px;
 	display: block;
 	transition: all var(--timeButtonLarge) var(--bezierSmooth);
@@ -887,10 +879,10 @@ body::before {
 #status-menu .status-button.plantoread::before {
 	content: "PLANNED";
 } #status-menu .status-button.on::before {
-	color: hsl(var(--textBright));
+	color: hsl(var(--text));
 	font-weight: bold;
 } #status-menu .status-button:hover::before {
-	color: hsl(var(--textBright));
+	color: hsl(var(--text));
 	transform: translateY(-2px);
 }
 
@@ -915,31 +907,22 @@ body::before {
 
 #status-menu .search-container #search-box {
 	width: 100%;
-	height: 32px;
-	background: hsl(var(--btn)) linear-gradient(45deg, hsl(var(--btn)) 85%, hsl(var(--btnLight)) 0%);
-	border: 2px solid hsl(var(--btn));
-	border-radius: 3px;
-	box-shadow: -0.5px 0.7px 2.1px hsla(0, 0%, 0%, 35%);
-	margin: 0;
-	
 	transition:
 		box-shadow var(--timeMenu) var(--bezierFast),
 		border-color var(--timeButton) var(--bezierFast);
 } #status-menu.fixed .search-container #search-box {
+	--btn: var(--btnAlt);
 	box-shadow: none;
-} #status-menu .search-container #search-box:focus-within {
-	border-color: hsla(var(--btnAccent));
 }
 
 #status-menu .search-container #search-box input {
 	background: none;
 	padding: 2px 6px 2px 30px;
 	border: none;
-	
-	color: hsl(var(--textDim));
+	color: hsla(var(--text), 80%);
 	line-height: 28px;
 } #status-menu .search-container #search-box input:focus {
-	color: hsl(var(--textBright));
+	color: hsl(var(--text));
 	outline: none;
 }
 
@@ -951,7 +934,7 @@ body::before {
 	
 	width: 24px;
 	
-	color: hsl(var(--textIcon));
+	color: hsla(var(--text), 83%);
 	font-size: 16px;
 	line-height: 30px;
 	text-align: center;
@@ -1080,7 +1063,7 @@ body::before {
 	border-left: 2px solid hsl(var(--btn));
 	border-right: 2px solid transparent;
 	
-	color: hsl(var(--textBright)) !important;
+	color: hsl(var(--text)) !important;
 	font-size: 13px !important;
 	line-height: 30px;
 	font-weight: normal;
@@ -1088,7 +1071,7 @@ body::before {
 	
 	transition: all var(--timeButton) var(--bezierFast) !important;
 } .list-table .list-table-header .header-title a:hover {
-	background: hsl(var(--btnLight));
+	background: hsla(var(--btnLight));
 	border-left-color: hsl(var(--btnAccent));
 	line-height: 28px;
 }
@@ -1206,7 +1189,7 @@ body::before {
 	margin: calc((300px * -0.025) + 12px) calc((210px * -0.025) + 12px);
 	flex: 0 0 auto;
 	
-	color: hsl(var(--textBright));
+	color: hsl(var(--text));
 	
 	transform: scale(0.95);
 	transition: all var(--timeItem) var(--bezierItemBounce);
@@ -1241,8 +1224,8 @@ body::before {
 }
 
 .list-table .list-table-data .data a {
-	color: hsl(var(--textBright)) !important;
-	transition: all var(--timeText) var(--bezierFast);
+	color: hsl(var(--text)) !important;
+	transition-property: all;
 } .list-table .list-table-data .data a:not(.edit-disabled):hover {
 	color: hsl(var(--textLinkHov)) !important;
 } .list-table .list-table-data a.edit-disabled {
@@ -1299,7 +1282,7 @@ body::before {
 	width: 16px;
 	height: 15px;
 	
-	color: hsl(var(--textIcon));
+	color: hsla(var(--text), 83%);
 	text-align: center;
 }
 
@@ -1338,7 +1321,8 @@ body::before {
 } .list-item:hover .data.image .link {
 	filter:
 		brightness(var(--imageBrightnessHov))
-		opacity(var(--imageBrightnessHov));
+		opacity(var(--imageBrightnessHov))
+		blur(var(--imageBlurHov));
 }
 
 .data.image .link::after {
@@ -1437,7 +1421,7 @@ body::before {
 [class^="icon-watch"]::after {
 	content: "\f144  VIDEOS";
 	
-	color: hsl(var(--textDim));
+	color: hsla(var(--text), 80%);
 	font-size: 12px;
 	line-height: 1;
 	letter-spacing: 1.5px;
@@ -1458,6 +1442,7 @@ body::before {
 	
 	color: hsl(var(--textProminent)) !important;
 	font-size: 12px !important;
+	font-weight: bold;
 	line-height: 1;
 	letter-spacing: 1.5px;
 	text-transform: uppercase;
@@ -1496,8 +1481,6 @@ body::before {
 	font-size: 12px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	
-	transition: all var(--timeText) var(--bezierFast);
 } .add-edit-more span:nth-of-type(1) a {
 	padding-right: 4.5px;
 } .add-edit-more .more a {
@@ -1568,7 +1551,6 @@ body::before {
 	content: "Scored ";
 	font-size: 12px;
 	font-weight: normal;
-	vertical-align: top;
 	white-space: pre;
 }
 
@@ -1723,7 +1705,7 @@ body:not([data-query*='order":4']) .data .score-10::after {
 }
 
 span:nth-of-type(2)::after {
-	color: hsl(var(--textBright));
+	color: hsl(var(--text));
 	text-shadow: inherit;
 	transition: all var(--timeItem) var(--bezierFast);
 } [data-owner="1"] .list-item:hover span:nth-of-type(2)::after {
@@ -1740,13 +1722,13 @@ span:nth-of-type(2)::after {
 	
 	display: inline-block;
 	
-	color: hsla(var(--textIcon), 0%) !important;
+	color: hsla(var(--text), 0%) !important;
 	font-size: 12px !important;
 	text-shadow: none;
 	
 	transition: all var(--timeItem) var(--bezierFast);
 } .list-table .list-item:hover .data [class^="icon-add-"] {
-	color: hsl(var(--textIcon)) !important;
+	color: hsla(var(--text), 83%) !important;
 	text-shadow: inherit;
 }
 
@@ -1811,7 +1793,7 @@ span:nth-of-type(2)::after {
 .list-table .list-table-data .tags .edit {
 	width: auto;
 	float: right;
-	color: hsl(var(--textBright)) !important;
+	color: hsl(var(--text)) !important;
 }
 
 .data.tags a::after {
@@ -1819,7 +1801,7 @@ span:nth-of-type(2)::after {
 	top: 1px;
 	right: 0;
 	display: inline-block;
-	color: hsl(var(--textIcon));
+	color: hsla(var(--text), 83%);
 } .data.tags span a::after {
 	content: "\f02b";
 } .data.tags .edit::after {
@@ -1934,7 +1916,7 @@ span:nth-of-type(2)::after {
 .data.licensor:empty::before,
 .data.magazine:empty::before {
 	content: "Unknown";
-	color: hsl(var(--textDim));
+	color: hsla(var(--text), 80%);
 }
 
 
@@ -1963,7 +1945,7 @@ span:nth-of-type(2)::after {
 
 .data[class*="started"]::before {
 	display: block;
-	color: hsl(var(--textDim));
+	color: hsla(var(--text), 80%);
 	font-size: 12px;
 } .anime .data.started::before {
 	content: "Watched";
@@ -1978,7 +1960,7 @@ span:nth-of-type(2)::after {
 .data.finished::before,
 .data.airing-finished::before {
 	content: "to ";
-	color: hsl(var(--textDim));
+	color: hsla(var(--text), 80%);
 }
 
 
@@ -2062,11 +2044,19 @@ span:nth-of-type(2)::after {
 	overflow-x: hidden;
 	overflow-y: auto;
 	
+	backdrop-filter: blur(var(--imageBlurHov));
 	pointer-events: auto;
 }
 
 .more-content table {
 	padding: 9px 15px 12px !important
+}
+
+.list-table .more-info .more-content a {
+	color: hsl(var(--text));
+	text-decoration: underline hsla(var(--text), 50%) !important;
+} .list-table .more-info .more-content a:hover {
+	color: hsl(var(--textLinkHov));
 }
 
 /* Remove unwanted info */
@@ -2205,7 +2195,7 @@ div[style^="width: 300px;"] {
 
 div[style^="width: 300px;"]::before {
 	content: 'Finished rewatching?';
-	color: hsl(var(--textMid));
+	color: hsla(var(--text), 88%);
 	font-size: 14px;
 	line-height: 1;
 }
@@ -2243,7 +2233,7 @@ div[style^="width: 300px;"] input {
 	box-shadow: -1.6px 2.24px 4.48px hsla(0, 0%, 0%, 70%);
 	border: none;
 	
-	color: hsl(var(--textMid));
+	color: hsla(var(--text), 88%);
 	font-family: var(--font);
 }
 
@@ -2315,7 +2305,7 @@ div[style^="width: 300px;"] input {
 	margin-right: 2%;
 	flex: 0 1 auto;
 	
-	color: hsl(var(--textMid));
+	color: hsla(var(--text), 88%);
 	font: 13px/16px var(--font);
 }
 
@@ -2385,10 +2375,10 @@ div[style^="width: 300px;"] input {
 	width: 12%;
 	padding: 0;
 	background: hsl(var(--btn)) !important;
-	border: 2px solid hsl(var(--btnLight)) !important;
+	border: 2px solid hsla(var(--btnLight)) !important;
 	margin: 0;
 	
-	color: hsl(var(--textMid)) !important;
+	color: hsla(var(--text), 88%) !important;
 	line-height: 18px;
 	
 	transition: all var(--timeButton) var(--bezierFast);
@@ -2441,12 +2431,13 @@ div[style^="width: 300px;"] input {
 #copyright {
 	display: inline-block;
 	padding: 0;
-	color: hsla(var(--textDim), 50%);
+	color: hsla(var(--text), 40%);
 	font: inherit;
+	text-shadow: -0.6px 0.84px 1.68px hsl(var(--bg));
 	transition: color var(--timeText) var(--bezierFast);
 	cursor: text;
 } #copyright:hover {
-	color: hsl(var(--textDim))
+	color: hsla(var(--text), 100%)
 }
 
 #copyright::after {
@@ -2464,7 +2455,7 @@ div[style^="width: 300px;"] input {
 	background: none;
 	margin: 0 auto;
 	
-	color: hsla(var(--textDim), 50%);
+	color: hsla(var(--text), 40%);
 	font: 12px/16px var(--font);
 	
 	/*Toggle*/
