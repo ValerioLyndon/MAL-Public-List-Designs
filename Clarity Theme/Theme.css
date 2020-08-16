@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R25.0
+  R25.1
 
 | == = == THEME CONTENTS == = == |
 
@@ -95,6 +95,8 @@
 	--shadow: rgba(0,0,0,0.2);
 	--icon: #323232;
 	--accent: #4065ba;
+	--banner-text: #fff;
+	--banner-text-shadow: rgba(0,0,0,0.45);
 
 	/* Button Colours */
 	--btn-bg: #ebebeb;
@@ -327,11 +329,11 @@ a, a:hover {
 	
 	margin-left: -475px;
 	
-	color: #fff;
+	color: var(--banner-text);
 	font: bold 60px/60px Oswald;
 	text-align: left;
 	letter-spacing: 15px;
-	text-shadow: 1px 4px 7px rgba(0,0,0,0.45);
+	text-shadow: 1px 4px 7px var(--banner-text-shadow);
 	text-transform: uppercase;
 	white-space: pre;
 	
@@ -654,6 +656,7 @@ a, a:hover {
 .status-menu-container .search-container {
 	top: 19px;
 	right: 0;
+	z-index: 1;
 }
 
 #search-box {
@@ -953,11 +956,11 @@ a, a:hover {
   HEADER @Nav-Buttons-R
 \*------------------------------*/
 
-.list-status-title {
-	width: 1060px !important;
-	height: 64px !important;
+.list-unit .list-status-title {
+	width: 1060px;
+	height: 64px;
 	margin-top: -64px;
-	background: none !important;
+	background: none;
 }
 
 .list-status-title .text { display: none !important }
