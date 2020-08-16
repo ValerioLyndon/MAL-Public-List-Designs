@@ -1,5 +1,5 @@
 /*-S-T-A-R-T--------------------*\
-| Dark Mode R3.3                 |
+| Dark Mode R3.4                 |
 \*------------------------------*/
 
 /* - - - - - - - - - - - - - - -*\
@@ -23,6 +23,8 @@
 	--shadow: rgba(0,0,0,0.8);
 	--icon: #959595;
 	--accent: #416abe;
+	--banner-text: #f6f5ff;
+	--banner-text-shadow: #e4bef4;
 
 	/* Button Colours */
 	--btn-bg: #191919;
@@ -48,11 +50,6 @@
 /* Cover */
 
 .cover-block:before { background: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0)); }
-
-#cover-image-container:after {
-	color: #f6f5ff;
-	text-shadow: 2px 2px 8px #e4bef4;
-}
 
 
 /* Shadows */
