@@ -1,0 +1,67 @@
+/*------------------------------*\
+|*  Hide Hentai Covers  v1.0.0  *|
+\* - - - - - - - - - - - - - - -*/
+
+.data.tags {
+	overflow: initial;
+	opacity: 1;
+}
+
+.data.tags span {
+	min-height: initial;
+	margin-bottom: 0;
+}
+
+.data.tags a {
+	min-height: 15px;
+	margin-bottom: 4px;
+	opacity: 0;
+	transition:
+		color var(--timeText) var(--bezierFast),
+		opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
+} .list-item:hover .data.tags a {
+	opacity: 1;
+}
+
+.data.tags a[href$="tag=Hentai"] {
+	position: absolute;
+	z-index: 5;
+	top: -51px;
+	right: -12px;
+	width: 210px;
+	height: 300px;
+	padding: 120px 0 0 0;
+	background: hsla(0, 0%, 0%, 50%);
+	border-radius: 6px;
+	color: hsl(var(--textProminent)) !important;
+	font: 22px/24px var(--font) !important;
+	text-align: center;
+	text-transform: uppercase;
+	opacity: 1;
+	backdrop-filter: blur(4px);
+	transition: opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
+	pointer-events: none;
+} .list-item:hover .data.tags a[href$="tag=Hentai"] {
+	opacity: 0;
+}
+
+@supports not (backdrop-filter: blur(4px)) {
+	.data.tags a[href$="tag=Hentai"] {
+		background: hsla(0, 0%, 0%, 80%);
+	}
+}
+
+.data.tags a[href$="tag=Hentai"]::before {
+	content: "EXPLICIT CONTENT";
+	display: block;
+	height: 57px;
+	padding: 3px 0 30px;
+	background: hsla(var(--btn), var(--infoBGOpacity));
+	box-shadow: -1.2px 1.68px 3.36px hsla(0,0%,0%,35%);
+	margin-bottom: -30px;
+	font-size: 15px;
+}
+
+.data.tags a[href$="tag=Hentai"]::after {
+	content: none;
+}
