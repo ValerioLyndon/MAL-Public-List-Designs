@@ -1,5 +1,5 @@
 /*------------------------------*\
-|* - -  Light Theme V1.5.0  - - *|
+|* - -  Light Theme V1.5.1  - - *|
 \* - - - - - - - - - - - - - - -*/
 
 /* User */
@@ -99,6 +99,7 @@ body #fancybox-close,
 /* List Items */
 
 .list-item {
+	--btn: 240, 1.5%, 4.5%;
 	--text: 0, 0%, 100%;
 }
 
@@ -112,10 +113,6 @@ body #fancybox-close,
 	text-shadow:
 		1px 0 1px #000,
 		0 0 2px #000;
-}
-
-.data.title {
-	background: hsla(240, 1.5%, 4.5%, 50%);
 }
 
 .score-10::before,
