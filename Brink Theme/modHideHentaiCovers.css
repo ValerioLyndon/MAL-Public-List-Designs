@@ -1,5 +1,5 @@
 /*------------------------------*\
-|*  Hide Hentai Covers  v1.0.0  *|
+|*  Hide Hentai Covers  v1.0.1  *|
 \* - - - - - - - - - - - - - - -*/
 
 .data.tags {
@@ -19,7 +19,8 @@
 	transition:
 		color var(--timeText) var(--bezierFast),
 		opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
-} .list-item:hover .data.tags a {
+} .list-item:hover,
+.list-item:focus-within .data.tags a {
 	opacity: 1;
 }
 
@@ -41,7 +42,8 @@
 	backdrop-filter: blur(4px);
 	transition: opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
 	pointer-events: none;
-} .list-item:hover .data.tags a[href$="tag=Hentai"] {
+} .list-item:hover .data.tags a[href$="tag=Hentai"],
+.list-item:focus-within .data.tags a[href$="tag=Hentai"] {
 	opacity: 0;
 }
 
