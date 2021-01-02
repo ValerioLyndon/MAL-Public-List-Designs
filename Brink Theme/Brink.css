@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.5.0
+ * Version 1.5.1
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -126,7 +126,6 @@
 	--btnAlt: 240, 3.5%, 21%;
 	--btnLight: 240, 100%, 94%, 4%;
 	--btnAccent: 240, 17%, 34%;
-	--border: 240, 5%, 6%;
 	--accent: 240, 75%, 77%;
 	
 	--text: 0, 0%, 100%;
@@ -284,11 +283,10 @@ div[style^="width: 300px;"] input {
 	width: 96px;
 	height: 32px;
 	padding: 0;
-	background: linear-gradient(45deg, hsl(var(--btn)) calc(100% - 20px), hsla(var(--btnLight)) 0%) hsl(var(--btn)) !important;
+	background: linear-gradient(225deg, hsla(var(--btnLight)) 20px, hsl(var(--btn)) 20px) hsl(var(--btn)) !important;
 	border: 2px solid hsl(var(--btn));
 	border-radius: 3px;
 	box-shadow: -0.5px 0.7px 2.1px hsla(0, 0%, 0%, 35%);
-	outline: none;
 	margin: 0;
 	
 	color: hsl(var(--text));
@@ -298,14 +296,21 @@ div[style^="width: 300px;"] input {
 	
 	transition: all var(--timeButton) var(--bezierFast);
 } #header-menu-dropdown .icon-menu:hover,
+#header-menu-dropdown .icon-menu:focus,
 .list-unit .list-status-title .stats a:hover,
+.list-unit .list-status-title .stats a:focus,
 .list-table > tbody:first-of-type:hover::after,
+.list-table > tbody:first-of-type:focus::after,
 #status-menu .search-container #search-box:focus-within,
 body #fancybox-close:hover,
+body #fancybox-close:focus,
 #advanced-options .advanced-options-button a:hover,
-div[style^="width: 300px;"] input:hover {
+#advanced-options .advanced-options-button a:focus,
+div[style^="width: 300px;"] input:hover,
+div[style^="width: 300px;"] input:focus {
 	border-color: hsl(var(--btnAccent));
 	color: hsl(var(--accent));
+	outline: none;
 }
 
 /* Animations */
@@ -408,7 +413,8 @@ body::before {
 
 .header a {
 	color: hsl(var(--text));
-} .header a:hover {
+} .header a:hover,
+.header a:focus {
 	color: hsl(var(--textLinkHov));
 }
 
@@ -426,7 +432,8 @@ body::before {
 	
 	opacity: 0.94;
 	transition: all var(--timeButton) var(--bezierFast);
-} .header .header-title:hover {
+} .header .header-title:hover,
+.header .header-title:focus {
 	opacity: 0.6;
 }
 
@@ -481,7 +488,8 @@ body::before {
 .header .header-menu .header-info a {
 	color: hsla(var(--text), 75%);
 	font-weight: normal;
-} .header .header-menu .header-info a:hover {
+} .header .header-menu .header-info a:hover,
+.header .header-menu .header-info a:focus {
 	color: hsl(var(--textLinkHov));
 }
 
@@ -554,7 +562,7 @@ body::before {
 	background: hsl(var(--bg));
 	border: none;
 	box-shadow: -1.2px 1.68px 3.36px hsla(0, 0%, 0%, 50%);
-	border-right: 2px solid hsl(var(--border));
+	border-right: 1px solid hsl(var(--bgAlt));
 	margin: 0 !important;
 	flex-flow: column nowrap;
 	
@@ -562,7 +570,8 @@ body::before {
 	line-height: 0;
 	
 	transition: all var(--timeMenu) var(--bezierSmooth) var(--delayMenu);
-} .list-menu-float:hover {
+} .list-menu-float:hover,
+.list-menu-float:focus-within {
 	left: 0;
 	transition-delay: 0s;
 }
@@ -599,10 +608,10 @@ body::before {
 	left: 0;
 	top: -42px;
 	
-	width: 179px;
+	width: 180px;
 	height: 42px;
 	padding-left: 47px;
-	border-right: 2px solid hsl(var(--border));
+	border-right: 1px solid hsl(var(--bgAlt));
 	background: inherit;
 	box-sizing: initial;
 	
@@ -612,7 +621,8 @@ body::before {
 	
 	transition: color calc(var(--timeMenu) * 0.3) ease-in-out var(--delayMenu);
 	pointer-events: none;
-} .list-menu-float:hover::before {
+} .list-menu-float:hover::before,
+.list-menu-float:focus-within::before {
 	color: hsl(var(--text));
 	transition: color calc(var(--timeMenu) * 0.7) ease-in-out calc(var(--timeMenu) * 0.3);
 }
@@ -630,7 +640,8 @@ body::before {
 	
 	transition: all var(--timeMenu) var(--bezierSmooth) var(--delayMenu);
 	pointer-events: none;
-} .list-menu-float:hover ~ #list-container::after {
+} .list-menu-float:hover ~ #list-container::after,
+.list-menu-float:focus-within ~ #list-container::after {
 	background: hsla(0, 0%, 0%, 78%);
 	transition-delay: 0s;
 }
@@ -640,9 +651,7 @@ body::before {
 	width: 100% !important;
 	height: auto;
 	background: none !important;
-	
 	text-align: left;
-	
 	transition: all var(--timeButton) var(--bezierFast);
 }
 
@@ -671,9 +680,13 @@ body::before {
 	opacity: 1;
 	transition: inherit;
 } .ownlist .list-menu-float .icon-menu:hover::after,
+.ownlist .list-menu-float .icon-menu:focus::after,
 .ownlist .list-menu-float .icon-menu:not(.setting):hover .text,
+.ownlist .list-menu-float .icon-menu:not(.setting):focus .text,
 .ownlist .list-menu-float .icon-menu.setting .text .link-list-setting:hover,
-.ownlist .list-menu-float .icon-menu.setting .text .link-style-setting:hover {
+.ownlist .list-menu-float .icon-menu.setting .text .link-list-setting:focus,
+.ownlist .list-menu-float .icon-menu.setting .text .link-style-setting:hover,
+.ownlist .list-menu-float .icon-menu.setting .text .link-style-setting:focus {
 	background: hsl(var(--bgAlt));
 	border-color: hsl(var(--accent));
 	line-height: 16px;
@@ -881,7 +894,8 @@ body::before {
 } #status-menu .status-button.on::before {
 	color: hsl(var(--text));
 	font-weight: bold;
-} #status-menu .status-button:hover::before {
+} #status-menu .status-button:hover::before,
+#status-menu .status-button:focus::before {
 	color: hsl(var(--text));
 	transform: translateY(-2px);
 }
@@ -1039,7 +1053,8 @@ body::before {
 	opacity: 0;
 	transform: translateX(-50%);
 	transition: all var(--timeButtonLarge) var(--bezierFast);
-} .list-table tbody:first-of-type:hover .list-table-header {
+} .list-table tbody:first-of-type:hover .list-table-header,
+.list-table tbody:first-of-type:focus-within .list-table-header {
 	opacity: 1;
 }
 
@@ -1070,7 +1085,8 @@ body::before {
 	text-indent: -1px;
 	
 	transition: all var(--timeButton) var(--bezierFast) !important;
-} .list-table .list-table-header .header-title a:hover {
+} .list-table .list-table-header .header-title a:hover,
+.list-table .list-table-header .header-title a:focus {
 	background: hsla(var(--btnLight));
 	border-left-color: hsl(var(--btnAccent));
 	line-height: 28px;
@@ -1193,7 +1209,8 @@ body::before {
 	
 	transform: scale(0.95);
 	transition: all var(--timeItem) var(--bezierItemBounce);
-} .list-item:hover {
+} .list-item:hover,
+.list-item:focus-within {
 	transform: scale(1);
 }
 
@@ -1219,14 +1236,16 @@ body::before {
 	transition:
 		all var(--timeButton) var(--bezierFast),
 		opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
-} .list-item:hover .data:not(.image) {
+} .list-item:hover .data:not(.image),
+.list-item:focus-within .data:not(.image){
 	opacity: 1;
 }
 
 .list-table .list-table-data .data a {
 	color: hsl(var(--text)) !important;
 	transition-property: all;
-} .list-table .list-table-data .data a:not(.edit-disabled):hover {
+} .list-table .list-table-data .data a:not(.edit-disabled):hover,
+.list-table .list-table-data .data a:not(.edit-disabled):focus {
 	color: hsl(var(--textLinkHov)) !important;
 } .list-table .list-table-data a.edit-disabled {
 	pointer-events: none;
@@ -1318,7 +1337,8 @@ body::before {
 		brightness(var(--imageBrightness))
 		opacity(var(--imageBrightness));
 	transition: filter var(--timeItem) var(--bezierFast) !important;
-} .list-item:hover .data.image .link {
+} .list-item:hover .data.image .link,
+.list-item:focus-within .data.image .link {
 	filter:
 		brightness(var(--imageBrightnessHov))
 		opacity(var(--imageBrightnessHov))
@@ -1427,7 +1447,8 @@ body::before {
 	letter-spacing: 1.5px;
 	
 	transition: color var(--timeText) var(--bezierFast);
-} .title [class^="icon-watch"]:hover::after {
+} .title [class^="icon-watch"]:hover::after,
+.title [class^="icon-watch"]:focus::after {
 	color: hsl(var(--textLinkHov));
 }
 
@@ -1466,7 +1487,8 @@ body::before {
 	
 	opacity: 0;
 	transition: inherit;
-} .list-item:hover .add-edit-more {
+} .list-item:hover .add-edit-more,
+.list-item:focus-within .add-edit-more {
 	opacity: 1;
 }
 
@@ -1577,8 +1599,8 @@ body::before {
 
 /* Top Rated Banners for 9 & 10 rated items. These do not display on ordered lists. */
 
-body:not([data-query*='order":4']) .data .score-9::before,
-body:not([data-query*='order":4']) .data .score-10::before {
+.data .score-9::before,
+.data .score-10::before {
 	content: "";
 	position: absolute;
 	left: -12px;
@@ -1594,12 +1616,12 @@ body:not([data-query*='order":4']) .data .score-10::before {
 	
 	/*Toggle*/
 	visibility: var(--toggleTopRatings);
-} body:not([data-query*='order":4']) .data .score-9::before {
+} .data .score-9::before {
 	border-color: hsl(var(--silverRating));
 }
 
-body:not([data-query*='order":4']) .data .score-9::after,
-body:not([data-query*='order":4']) .data .score-10::after {
+.data .score-9::after,
+.data .score-10::after {
 	content: "TOP RATED";
 	position: absolute;
 	left: 43px;
@@ -1619,7 +1641,7 @@ body:not([data-query*='order":4']) .data .score-10::after {
 	
 	pointer-events: none;
 	visibility: var(--toggleTopRatings);
-} body:not([data-query*='order":4']) .data .score-9::after {
+} .data .score-9::after {
 	background: hsl(var(--silverRating));
 }
 
@@ -1674,8 +1696,11 @@ body:not([data-query*='order":4']) .data .score-10::after {
 }
 
 .list-item:hover .plantowatch ~ .data.progress span:first-of-type,
+.list-item:focus-within .plantowatch ~ .data.progress span:first-of-type,
 .list-item:hover .plantoread ~ .data.chapter span:first-of-type,
-.list-item:hover .plantoread ~ .data.volume span:first-of-type {
+.list-item:focus-within .plantoread ~ .data.chapter span:first-of-type,
+.list-item:hover .plantoread ~ .data.volume span:first-of-type,
+.list-item:focus-within .plantoread ~ .data.volume span:first-of-type {
 	opacity: 1;
 }
 
@@ -1708,7 +1733,8 @@ span:nth-of-type(2)::after {
 	color: hsl(var(--text));
 	text-shadow: inherit;
 	transition: all var(--timeItem) var(--bezierFast);
-} [data-owner="1"] .list-item:hover span:nth-of-type(2)::after {
+} [data-owner="1"] .list-item:hover span:nth-of-type(2)::after
+,[data-owner="1"] .list-item:focus-within span:nth-of-type(2)::after {
 	color: transparent;
 	text-shadow: none;
 }
@@ -1727,7 +1753,8 @@ span:nth-of-type(2)::after {
 	text-shadow: none;
 	
 	transition: all var(--timeItem) var(--bezierFast);
-} .list-table .list-item:hover .data [class^="icon-add-"] {
+} .list-table .list-item:hover .data [class^="icon-add-"],
+.list-table .list-item:focus-within .data [class^="icon-add-"] {
 	color: hsla(var(--text), 83%) !important;
 	text-shadow: inherit;
 }
@@ -2022,7 +2049,8 @@ span:nth-of-type(2)::after {
 	transition: all calc(var(--timeItem) * 1.5) var(--bezierFast);
 	animation: var(--timeItem) var(--bezierFast) backwards fade-in;
 	pointer-events: none;
-} .list-item:hover .more-info {
+} .list-item:hover .more-info,
+.list-item:focus-within .more-info {
 	opacity: 1;
 }
 
@@ -2055,7 +2083,8 @@ span:nth-of-type(2)::after {
 .list-table .more-info .more-content a {
 	color: hsl(var(--text));
 	text-decoration: underline hsla(var(--text), 50%) !important;
-} .list-table .more-info .more-content a:hover {
+} .list-table .more-info .more-content a:hover,
+.list-table .more-info .more-content a:focus {
 	color: hsl(var(--textLinkHov));
 }
 
@@ -2389,6 +2418,7 @@ div[style^="width: 300px;"] input {
 	border-radius: 0 3px 3px 0;
 	border-left-width: 0 !important;
 } #advanced-options .sort-widget :not(:disabled) + label:hover,
+#advanced-options .sort-widget :not(:disabled) + label:focus,
 #advanced-options .sort-widget :not(:disabled):checked + label {
 	border-color: hsl(var(--btnAccent)) !important;
 	color: hsl(var(--accent)) !important;
