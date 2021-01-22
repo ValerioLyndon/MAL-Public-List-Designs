@@ -14,6 +14,8 @@
 	--text-dark: #111;
 	--icon: #323232;
 	--accent: #4065ba;
+	--banner-text: #fff;
+	--banner-text-shadow: rgba(0,0,0,0.45);
 
 	/* Button Colours */
 	--btn-bg: #ebebeb;
