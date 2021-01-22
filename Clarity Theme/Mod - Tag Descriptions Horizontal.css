@@ -1,5 +1,5 @@
 /*-S-T-A-R-T--------------------*\
-| Tag Desc Basis Horizontal R1.2 |
+| Tag Desc Basis Horizontal R1.3 |
 \*------------------------------*/
 
 .data.tags span a { position: relative; }
@@ -11,7 +11,7 @@
 	display: block;
 	
 	opacity: 0;
-	transition: all 0.15s efase;
+	transition: all 0.15s ease;
 	pointer-events: none;
 }
 
