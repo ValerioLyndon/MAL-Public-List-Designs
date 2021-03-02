@@ -18,6 +18,7 @@
 	
 	--goldRating: 27, 87%, 67%;
 	--silverRating: 0, 0%, 80%;
+	--bronzeRating: 23, 45%, 57%;
 }
 
 /* Internal */
@@ -114,10 +115,9 @@ body #fancybox-close,
 		0 0 2px #000;
 }
 
-.score-10::before,
 .score-10::after,
-.score-9::before,
 .score-9::after,
+.score-8::after,
 .more-content {
 	--text: 0, 0%, 10%;
 	color: hsl(var(--text)) !important;
