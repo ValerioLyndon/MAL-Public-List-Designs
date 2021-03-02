@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.5.1
+ * Version 1.6.0
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -81,7 +81,7 @@
 	 * togglePV / Toggles anime preview & video links.
 	 * valid values: visible / hidden
 	 * 
-	 * toggleTopRatings / Toggles banners on top of highly rated items.
+	 * toggleTopRating(Gold/Silver/Bronze) / Toggles banners on top of highly rated items.
 	 * valid values: visible / hidden
 	 * 
 	 * bgDimness / Changes dimming of background image / Higher = Dimmer.
@@ -102,7 +102,9 @@
 	
 	--toggleStats: hidden;
 	--togglePV: hidden;
-	--toggleTopRatings: visible;
+	--toggleTopRatingGold: visible;
+	--toggleTopRatingSilver: visible;
+	--toggleTopRatingBronze: hidden;
 	--bgDimness: 50%;
 	--bannerVignetteOpacity: 90%;
 	--imageBrightness: 66%;
@@ -140,6 +142,7 @@
 	
 	--goldRating: 31, 100%, 70%;
 	--silverRating: 0, 0%, 80%;
+	--bronzeRating: 23, 40%, 48%;
 }
 
 
@@ -153,6 +156,8 @@
 	 * More advanced variables.
 	 * Changing the font incorrectly may result in visual bugs.
 	 */
+	
+	--listW: 100vw;
 	
 	--font: "Sarabun", "Segoe UI", "Arial", "FontAwesome", sans-serif;
 	
@@ -371,9 +376,17 @@ body::before {
 .list-block {
 	position: relative;
 	width: 100%;
-	min-height: calc(100vh - (184px + 30vw));
+	min-height: calc(100vh - 184px + 30vw);
 	padding-top: 0;
 	margin: 0 auto;
+}
+
+/* Adjusts list to size correctly with banner. See BANNER for its sizing rules. */
+
+@media (min-width: 1920px) {
+	.list-block {
+		min-height: calc(100vh - 184px + (1920px * 0.3));
+	}
 }
 
 .list-unit {
@@ -382,8 +395,7 @@ body::before {
 
 .list-table {
 	display: flex;
-	width: calc(100% - 16px);
-	max-width: 1788px;
+	width: calc(var(--listW) - 16px);
 	border: none;
 	flex-flow: row wrap;
 	justify-content: center;
@@ -828,18 +840,20 @@ body::before {
 	
 	width: 100%;
 	height: 42px;
-	padding: 0 calc(198px + 0.07 * (100vw - 980px));
 	background: none;
 	border: none;
 	margin: 17px 0 3px;
+	
 	pointer-events: none;
 } #status-menu.fixed {
 	position: fixed;
+	
 	z-index: 150;
 	width: calc(100% - 86px);
-	padding-left: 0;
+	padding-right: calc(189px + 0.07 * (var(--listW) - 980px));
 	background: hsl(var(--bgAlt));
 	margin: 0 0 0 86px;
+	
 	animation: var(--timeMenu) var(--bezierFast) fade-in;
 	pointer-events: auto;
 }
@@ -848,9 +862,9 @@ body::before {
 	position: static;
 	
 	display: flex;
-	height: 42px;
-	min-width: 570px;
+	width: calc(var(--listW) - (396px + 0.14 * (var(--listW) - 980px)));
 	max-width: 700px;
+	height: 42px;
 	margin: 0 auto;
 	justify-content: space-around;
 	align-items: center;
@@ -861,7 +875,7 @@ body::before {
 #status-menu .status-button {
 	display: block;
 	height: 32px;
-	padding: 0 12px;
+	padding: 0 9px;
 	border-radius: 3px;
 	flex: 0 1 auto;
 
@@ -872,9 +886,9 @@ body::before {
 }
 
 #status-menu .status-button::before {
+	display: block;
 	color: hsla(var(--text), 48%);
 	font-size: 18px;
-	display: block;
 	transition: all var(--timeButtonLarge) var(--bezierSmooth);
 	pointer-events: none;
 } #status-menu .status-button.all_anime::before {
@@ -912,11 +926,11 @@ body::before {
 #status-menu .search-container {
 	position: absolute;
 	top: 5px;
-	right: 20px;
-	width: calc(169px + 0.07 * (100vw - 980px));
+	right: calc(20px + (50% - var(--listW) * 0.5));
+	width: calc(169px + 0.07 * (var(--listW) - 980px));
 } #status-menu.fixed .search-container {
 	right: 12px;
-	width: calc(177px + 0.07 * (100vw - 980px));
+	width: calc(177px + 0.07 * (var(--listW) - 980px));
 }
 
 #status-menu .search-container #search-box {
@@ -966,7 +980,7 @@ body::before {
 .list-unit .list-status-title {
 	position: absolute;
 	top: -40px;
-	left: 20px;
+	left: calc(20px + (50% - var(--listW) * 0.5));
 	z-index: 30;
 	
 	width: 80px;
@@ -980,14 +994,13 @@ body::before {
 
 .list-unit .list-status-title .stats {
 	position: static;
-	
 	font-size: 0;
 	white-space: nowrap;
 }
 
 .list-unit .list-status-title .stats a {
 	display: inline-block;
-	width: calc(80px + 0.035 * (100vw - 980px));
+	width: calc(80px + 0.035 * (var(--listW) - 980px));
 }
 
 .list-unit .list-status-title .stats a:first-child {
@@ -1002,10 +1015,10 @@ body::before {
 .list-table > tbody:first-of-type {
 	position: absolute;
 	top: -40px;
-	left: calc(109px + 0.035 * (100vw - 980px));
+	left: calc(109px + (0.035 * (var(--listW) - 980px)) + (50% - var(--listW) * 0.5));
 	z-index: 35;
 	
-	width: calc(80px + 0.035 * (100vw - 980px));
+	width: calc(80px + 0.035 * (var(--listW) - 980px));
 	height: 32px;
 	background: none !important;
 	
@@ -1122,9 +1135,11 @@ body::before {
 	content: "";
 	display: block;
 	width: calc(224px * 3);
+	max-width: 100%;
 	height: 309px;
 	background: url(https://i.imgur.com/5G6hsJk.png) hsl(var(--bg));
 	background-blend-mode: screen;
+	background-position-x: center;
 	padding: 48px calc((224px * 1.5) - 90px);
 	margin: 0 auto;
 }
@@ -1151,7 +1166,7 @@ body::before {
 	content: "No entries found. Perhaps your search terms are too restrictive?";
 }
 
-@media (min-width: calc(224px * 5 + 33px)) {
+@media (min-width: 1150.5px) {
 	.list-table[data-items="[]"]::before,
 	.list-table[data-items="[]"]::after {
 		width: calc(224px * 5);
@@ -1170,7 +1185,7 @@ body::before {
 	}
 }
 
-@media (min-width: calc(224px * 7 + 33px)) {
+@media (min-width: 1597.5px) {
 	.list-table[data-items="[]"]::before,
 	.list-table[data-items="[]"]::after {
 		width: calc(224px * 7);
@@ -1597,8 +1612,9 @@ body::before {
 	font-weight: normal;
 }
 
-/* Top Rated Banners for 9 & 10 rated items. These do not display on ordered lists. */
+/* Top Rated Banners for highly rated items. */
 
+.data .score-8::before,
 .data .score-9::before,
 .data .score-10::before {
 	content: "";
@@ -1609,29 +1625,35 @@ body::before {
 	
 	width: 210px;
 	height: 6px;
-	border-top: 2px solid hsl(var(--goldRating));
+	border-top: 2px solid hsl(var(--text));
 	border-radius: 6px 6px 0 0;
 	
 	pointer-events: none;
-	
-	/*Toggle*/
-	visibility: var(--toggleTopRatings);
+} .data .score-10::before {
+	border-color: hsl(var(--goldRating));
+	visibility: var(--toggleTopRatingGold);
 } .data .score-9::before {
 	border-color: hsl(var(--silverRating));
+	visibility: var(--toggleTopRatingSilver);
+} .data .score-8::before {
+	border-color: hsl(var(--bronzeRating));
+	visibility: var(--toggleTopRatingBronze);
 }
 
+.data .score-8::after,
 .data .score-9::after,
 .data .score-10::after {
 	content: "TOP RATED";
 	position: absolute;
-	left: 43px;
+	left: 93px;
 	bottom: 277px;
 	z-index: -1;
 	
-	width: 100px;
+	min-width: 100px;
 	height: 16px;
+	padding: 0 10px;
 	border-radius: 3px;
-	background: hsl(var(--goldRating));
+	background: hsl(var(--text));
 	
 	color: hsl(var(--bg));
 	font: bold 13px/13px var(--font);
@@ -1639,13 +1661,20 @@ body::before {
 	letter-spacing: 1px;
 	text-shadow: none;
 	
+	transform: translateX(-50%);
 	pointer-events: none;
-	visibility: var(--toggleTopRatings);
+} .data .score-10::after {
+	background: hsl(var(--goldRating));
+	visibility: var(--toggleTopRatingGold);
 } .data .score-9::after {
 	background: hsl(var(--silverRating));
+	visibility: var(--toggleTopRatingSilver);
+} .data .score-8::after {
+	background: hsl(var(--bronzeRating));
+	visibility: var(--toggleTopRatingBronze);
 }
 
-/* Prevent change score box layout flicker (caused by default list functions) */
+/* Prevent "change score box" layout flicker (a bug that is present on default list CSS) */
 
 .data.score a:not([style="display: none;"]) + select {
 	display: none;
@@ -2253,17 +2282,24 @@ div[style^="width: 300px;"] input {
 	position: fixed;
 	top: calc(50px + 10vh);
 	
-	width: calc(630px + 0.111 * (100vw - 700px));
+	--pad: 100vw;
+	width: calc(630px + 0.111 * (var(--pad) - 700px));
 	min-width: 630px;
 	max-width: 730px;
 	height: auto;
-	padding: 0 calc(40px + 0.05 * (100vw - 700px)) 12px;
+	padding: 0 calc(40px + 0.05 * (var(--pad) - 700px)) 12px;
 	background: hsl(var(--bg));
 	box-shadow: -1.6px 2.24px 4.48px hsla(0, 0%, 0%, 70%);
 	border: none;
 	
 	color: hsla(var(--text), 88%);
 	font-family: var(--font);
+}
+
+@media (min-width: 1600px) {
+	#advanced-options {
+		--pad: 1600px;
+	}
 }
 
 #advanced-options::before {
@@ -2280,7 +2316,7 @@ div[style^="width: 300px;"] input {
 #advanced-options #fancybox-close {
 	top: auto;
 	bottom: 24px;
-	right: calc(40px + 0.05 * (100vw - 700px));
+	right: calc(40px + 0.05 * (var(--pad) - 700px));
 }
 
 #advanced-options div {
@@ -2497,27 +2533,12 @@ div[style^="width: 300px;"] input {
   !MEDIA-QUERIES
 \*------------------------------*/
 
-@media (max-width: 700px) {
-	/* List Area */
+/* This section:
+ * - Moves and resizes many elements to display better on small lists.
+ */
+@media (max-width: 926px) {
 	.list-block {
-		min-height: calc(100vh - (184px + (700px * 0.3)));
-	}
-	
-	/* Overlays */
-	body #fancybox-wrap {
-		left: calc(50% - (190px + (700px * 0.2))) !important;
-		width: calc(380px + (700px * 0.4)) !important;
-	}
-	
-	#advanced-options {
-		position: absolute;
-		padding: 0 calc(40px) 12px;
-	}
-}
-
-@media (max-width: 980px) {
-	/* Headers */
-	.list-block {
+		min-height: calc(100vh - 184px + (700px * 0.3));
 		padding-top: 44px;
 	}
 	
@@ -2531,12 +2552,17 @@ div[style^="width: 300px;"] input {
 	#status-menu:not(.fixed) .status-menu {
 		position: relative;
 		top: -42px;
+		width: 560px;
 	}
 	
 	#status-menu:not(.fixed) .search-container {
 		top: 49px;
 		left: calc(50% - 32px);
 		width: 250px;
+	}
+	
+	#status-menu .status-button {
+		padding: 0 6px;
 	}
 	
 	#status-menu.fixed .status-button {
@@ -2556,8 +2582,6 @@ div[style^="width: 300px;"] input {
 		top: -53px;
 	}
 	
-	/* Buttons */
-	
 	.list-unit .list-status-title {
 		top: 4px;
 		left: calc(50% - 218px);
@@ -2572,41 +2596,58 @@ div[style^="width: 300px;"] input {
 		left: calc(50% - 125px);
 		width: 84px;
 	}
-}
-
-@media (min-width: 1600px) {
-	/* Overlays */
+	
+	body #fancybox-wrap {
+		left: calc(50% - (190px + (700px * 0.2))) !important;
+		width: calc(380px + (700px * 0.4)) !important;
+	}
+	
 	#advanced-options {
-		padding: 0 85px 12px;
+		position: absolute;
+		padding: 0 40px 12px;
 	}
 }
 
-@media (min-width: 1804px) {
-	/* Headers */
-	#status-menu .search-container {
-		width: calc(169px + (1804px * 0.035));
-	} #status-menu:not(.fixed) .search-container {
-		right: calc(8px + (50% - 1804px * 0.5));
-	}
-	
-	.list-unit .list-status-title {
-		left: calc(8px + (50% - 1804px * 0.5));
-	}
-	
-	.list-unit .list-status-title .stats a {
-		width: calc(80px + (1804px * 0.0175));
-	}
-	
-	.list-table > tbody:first-of-type {
-		left: calc(97px + (1804px * 0.0175) + (50% - 1804px * 0.5));
-		width: calc(80px + (1804px * 0.0175));
+/* These sections:
+ * - Adjust list width to fit an amount of list item columns
+ *   min-width formula: 223.5px (list item) * # (columns) + 16px (extra spacing) + 17px (scrollbar)
+ *   listW formula: 223.5px (list item) * # (columns) + 16px (extra spacing)
+ */
+ 
+@media (min-width: 0px) {
+	:root {
+		/*3*/
+		--listW: 686.5px;
 	}
 }
-
-@media (min-width: 1920px) {
-	/* List Area */
-	.list-block {
-		min-height: calc(100vh - (184px + (1920px * 0.3)));
+@media (min-width: 927px) {
+	:root {
+		/*4*/
+		--listW: 910px;
+	}
+}
+@media (min-width: 1150.5px) {
+	:root {
+		/*5*/
+		--listW: 1133.5px;
+	}
+}
+@media (min-width: 1374px) {
+	:root {
+		/*6*/
+		--listW: 1357px;
+	}
+}
+@media (min-width: 1597.5px) {
+	:root {
+		/*7*/
+		--listW: 1580.5px;
+	}
+}
+@media (min-width: 1821px) {
+	:root {
+		/*8*/
+		--listW: 1804px;
 	}
 }
 
@@ -2614,7 +2655,9 @@ div[style^="width: 300px;"] input {
   !FIXES
 \*------------------------------*/
 
-/* MAL Security Fix */
+/* MAL Security Fix
+ * - Replaces SVG files with PNG due to SVG getting blocked by MAL.
+ */
 
 [data-owner=""] {
 	--arrowUp: url(https://i.imgur.com/Cu2u9Hu.png);
