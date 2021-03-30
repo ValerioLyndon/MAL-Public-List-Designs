@@ -1,6 +1,6 @@
 /**
  * "Tilt" by Valerio Lyndon
- * Revision 8.0
+ * Revision 9.0
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1211,7 +1211,7 @@ body[data-owner="1"] .btn-menu .username {
 .icon-watch { display: none !important; }
 
 
-.content-status, .rewatching {
+.content-status, .rewatching, .rereading {
 	position: absolute;
 	top: 60px;
 	left: 90px;
@@ -1232,9 +1232,15 @@ body[data-owner="1"] .btn-menu .username {
 
 .manga .content-status { font-size: 8px !important; }
 
-.rewatching { font-size: 0 !important; }
+.rewatching, .rereading { font-size: 0 !important; }
 
-.rewatching:before { content: "Rewatch"; font-size: 9px !important; }
+.rewatching:before, .rereading:before {
+	font-size: 9px !important;
+} .rewatching:before {
+	content: "Rewatch";
+} .rereading:before {
+	content: "Reread";
+}
 
 
 
