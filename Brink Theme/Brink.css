@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.6.0
+ * Version 1.6.1
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -376,7 +376,8 @@ body::before {
 .list-block {
 	position: relative;
 	width: 100%;
-	min-height: calc(100vh - 184px + 30vw);
+	/* 42px + 30vw + 62px + 60px */
+	min-height: calc(100vh - (164px + 30vw));
 	padding-top: 0;
 	margin: 0 auto;
 }
@@ -385,7 +386,7 @@ body::before {
 
 @media (min-width: 1920px) {
 	.list-block {
-		min-height: calc(100vh - 184px + (1920px * 0.3));
+		min-height: calc(100vh - (164px + (1920px * 0.3)));
 	}
 }
 
@@ -2141,7 +2142,8 @@ span:nth-of-type(2)::after {
 
 .list-unit .loading-space {
 	height: auto;
-	margin: 18px 0 0;
+	padding-top: 18px;
+	margin: 0;
 }
 
 .list-unit .loading-space i {
@@ -2512,7 +2514,7 @@ div[style^="width: 300px;"] input {
 
 .list-unit .list-stats {
 	position: absolute;
-	bottom: -32px;
+	bottom: -14px;
 	left: 0;
 	
 	display: block !important;
@@ -2538,7 +2540,7 @@ div[style^="width: 300px;"] input {
  */
 @media (max-width: 926px) {
 	.list-block {
-		min-height: calc(100vh - 184px + (700px * 0.3));
+		min-height: calc(100vh - (164px + (700px * 0.3)));
 		padding-top: 44px;
 	}
 	
