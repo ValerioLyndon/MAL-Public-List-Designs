@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R25.1
+  R25.2
 
 | == = == THEME CONTENTS == = == |
 
@@ -263,7 +263,7 @@ a, a:hover {
 }
 
 /* Remove Tutorial/Notices */
-.initialize-tutorial { display: none !important; }
+.initialize-tutorial, #recaptcha-terms { display: none !important; }
 
 
 
