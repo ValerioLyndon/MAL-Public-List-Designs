@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.6.1
+ * Version 1.6.2
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -403,7 +403,8 @@ body::before {
 }
 
 /* Remove Tutorial/Notices */
-.initialize-tutorial {
+.initialize-tutorial,
+#recaptcha-terms {
 	display: none !important;
 }
 
