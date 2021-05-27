@@ -1,0 +1,43 @@
+/*-S-T-A-R-T--------------------*\
+| Theme Colours                  |
+\*------------------------------*/
+
+:root {
+	/* Generic Colours */
+	--pbg: #161616;
+	--bg: #212121;
+	--bg-dark: #444;
+	--text: #ababab;
+	--text-h: #416abe;
+	--text-dim: #777;
+	--text-dim-h: #999;
+	--text-dark: #ababab;
+	--icon: #959595;
+	--accent: #416abe;
+	--banner-text: #f6f5ff;
+	--banner-text-shadow: #e4bef4;
+
+	/* Button Colours */
+	--btn-bg: #191919;
+	--btn-bg-h: #ababab;
+	--btn-head-bg-h: #416abe;
+	--btn-text-h: #212121;
+
+	/* Header Colours */
+	--text-head: #9b9b9b;
+	--text-head-h: #ababab;
+
+	/* Status Colours */
+	--watching: #2db039;
+	--completed: #26448f;
+	--onhold: #f1c83e;
+	--dropped: #a12f31;
+	--plantowatch: #c3c3c3;
+
+	/* Single-Use Colours */
+	--cover-bg: #090909;
+	--edit-btn: #323232;
+	--checkmark: #416abe;
+}
+
+/*------------------------E-N-D-*/
