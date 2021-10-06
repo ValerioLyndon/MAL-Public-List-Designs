@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R25.2
+  R26.0
 
 | == = == THEME CONTENTS == = == |
 
@@ -151,6 +151,8 @@
 .data.score a,
 .data.tags a,
 .data.tags a.edit:after,
+.data.genre a,
+.data.demographic a,
 .data.studio a,
 .data.licensor a,
 .data.priority,
@@ -1659,7 +1661,7 @@ a, a:hover {
   LIST @Tags
 \*------------------------------*/
 
-.data.tags, .data.studio, .data.licensor {
+.data.tags, .data.genre, .data.demographic, .data.studio, .data.licensor {
 	width: 120px;
 	padding: 3px 0 !important;
 	margin-right: 8px;
@@ -1667,8 +1669,11 @@ a, a:hover {
 	order: 21;
 	flex-shrink: 1;
 }
+.data.studio, .data.licensor {
+	order: 22;
+}
 
-.data.tags span, .data.studio span, .data.licensor span {
+.data.tags span, .data.genre span, .data.demographic span, .data.studio span, .data.licensor span {
 	display: block;
 	padding: 1px 0;
 	
@@ -1677,6 +1682,8 @@ a, a:hover {
 }
 
 .data.tags a:not(.edit),
+.data.genre a,
+.data.demographic a,
 .data.studio a,
 .data.licensor a {
 	display: block;
@@ -1690,6 +1697,8 @@ a, a:hover {
 }
 
 .list-table .list-table-data .tags span a:hover,
+.list-table .list-table-data .genre span a:hover,
+.list-table .list-table-data .demographic span a:hover,
 .list-table .list-table-data .studio span a:hover,
 .list-table .list-table-data .licensor span a:hover {
 	background: var(--btn-bg-h);
@@ -1699,6 +1708,8 @@ a, a:hover {
 
 /* Empty box message. */
 .data.studio:empty:before,
+.data.genre:empty:before,
+.data.demographic:empty:before,
 .data.licensor:empty:before,
 .data.magazine:empty:before {
 	display: block;
@@ -1710,9 +1721,11 @@ a, a:hover {
 	white-space: pre;
 }
 
-.data.studio:empty:before { content: "Unknown\aStudio"; }
-.data.licensor:empty:before { content: "Unknown\aLicensor"; }
-.data.magazine:empty:before { content: "Unknown\aMagazine"; }
+.data.genre:empty:before { content: "Unknown\a Genre"; }
+.data.demographic:empty:before { content: "Unknown\a Demographic"; }
+.data.studio:empty:before { content: "Unknown\a Studio"; }
+.data.licensor:empty:before { content: "Unknown\a Licensor"; }
+.data.magazine:empty:before { content: "Unknown\a Magazine"; }
 
 
 .data.tags textarea {
