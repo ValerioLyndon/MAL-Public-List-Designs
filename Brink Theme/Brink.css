@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.6.2
+ * Version 1.7.0
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -38,7 +38,7 @@
  @ Type
  @ Rated
  @ Season
- @ Studio/Licensor/Magazine
+ @ Genre/Demographic/Studio/Licensor/Magazine
  @ Dates
  @ Priority
  @ Storage
@@ -1278,6 +1278,8 @@ body::before {
 .data.days,
 .data.airing-started,
 .data.airing-finished,
+.data.genre,
+.data.demographic,
 .data.studio,
 .data.licensor,
 .data.magazine,
@@ -1305,6 +1307,8 @@ body::before {
 .data.started::after,
 .data.days::before,
 .data.airing-started::after,
+.data.genre::after,
+.data.demographic::after,
 .data.studio::after,
 .data.licensor::after,
 .data.magazine::after,
@@ -1949,19 +1953,31 @@ span:nth-of-type(2)::after {
 
 .data.season:empty::before {
 	content: "Unknown";
+	color: hsla(var(--text), 50%);
 }
 
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
-  @Studio/@Licensor/@Magazine
+  @Genre/@Demographic/@Studio
+  /@Licensor/@Magazine
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-.data.studio::after {
+.data.genre::after {
+	content: "\f02c";
+} .data.genre + .data.genre::after,
+.data.demographic::after {
+	content: "\f200";
+} .data.studio::after {
 	content: "\f0b1";
 } .data.licensor::after {
 	content: "\f19c";
 } .data.magazine::after {
 	content: "\f02d";
+}
+
+.data.genre,
+.data.demographic {
+	order: 45;
 }
 
 .data.studio,
@@ -1970,11 +1986,13 @@ span:nth-of-type(2)::after {
 	order: 50;
 }
 
+.data.genre:empty::before,
+.data.demographic:empty::before,
 .data.studio:empty::before,
 .data.licensor:empty::before,
 .data.magazine:empty::before {
 	content: "Unknown";
-	color: hsla(var(--text), 80%);
+	color: hsla(var(--text), 50%);
 }
 
 
