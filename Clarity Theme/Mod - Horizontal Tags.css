@@ -1,5 +1,5 @@
 /*-S-T-A-R-T--------------------*\
-| Horizontal Tags R0.2           |
+| Horizontal Tags R0.3           |
 \*------------------------------*/
 
 .list-table-data {
@@ -10,6 +10,7 @@
 	position: absolute;
 	left: 0;
 	top: 0;
+	z-index: 2;
 	
 	display: flex !important;
 	width: 0;
