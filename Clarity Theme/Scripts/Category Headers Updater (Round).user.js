@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MalFox Headers (Clarity Round Style)
 // @namespace    V.L
-// @version      1.0
+// @version      1.1
 // @description  Generates CSS for modern list category headers and updates user CSS automatically.
 // @author       Valerio Lyndon
 // @match        https://myanimelist.net/animelist/*
@@ -63,7 +63,7 @@ function updateCss(newCss) {
 
 	if(style === false)
 	{
-		alert('Failed to update Custom CSS');
+		alert('MalFox failed to update your Custom CSS with new header locations.');
 		return false;
 	}
 
@@ -90,7 +90,7 @@ function updateCss(newCss) {
 	
 	if(finalCss.length >= 65535)
 	{
-		alert('Your MAL Custom CSS may be longer than the max allowed length. If your CSS has been cut off at the end, you will need to resolve this issue.');
+		alert(`Your Custom CSS may be longer than the maximum allowed length. Please visit your style page at https://myanimelist.net/ownlist/style/theme/${style} and check if your CSS has been cut off at the end.\n\n If you do not see the "MALFOX END" marker at the bottom of your CSS, you need to reduce your CSS length. Make sure to remove the "MALFOX START" marker and anything after it to prevent issue with this script later on.`);
 	}
 
 	/* Update the pages CSS to make sure no page reload is required */
@@ -207,7 +207,7 @@ function preliminary()
 
 		if(failures > 3)
 		{
-			alert('Failed to update headers.');
+			alert('MalFox failed to fetch your list info while updating CSS headers. If this error appears more than once, please report it in the forum thread. https://myanimelist.net/forum/?topicid=1723114');
 			return;
 		}
 
@@ -216,11 +216,20 @@ function preliminary()
 };
 
 // Check if it should run
-modernStyle = (document.getElementById("list_surround")) ? false : true;
-listOwner = document.body.getAttribute('data-owner') === '1' ? true : false;
+isModernStyle = (document.getElementById("list_surround")) ? false : true;
+isListOwner = document.body.getAttribute('data-owner') === '1' ? true : false;
+isClarity = $('#advanced-options-button').css('width') === '26px' && $('#advanced-options-button').css('height') === '26px' && $('#advanced-options-button').css('border-top-left-radius') === '13px' ? true : false
 
-if(modernStyle && listOwner) {
+if(isModernStyle && isListOwner && isClarity) {
 	preliminary();
 } else {
-	console.log('Headers are disabled on clasic lists and other user lists.');
+	if(!isModernStyle) {
+		console.log("[MalFox] Headers are disabled on clasic lists.");
+	}
+	else if(!isListOwner) {
+		console.log("[MalFox] Headers are disabled on other users' lists.");
+	}
+	else if(!isClarity) {
+		console.log("[MalFox] Headers are disabled on lists that aren't using the Clarity theme. If you are using the Clarity theme, there has been an error in the code.");
+	}
 }
