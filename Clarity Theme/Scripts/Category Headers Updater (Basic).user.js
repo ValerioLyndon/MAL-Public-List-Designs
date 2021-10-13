@@ -1,17 +1,18 @@
 // ==UserScript==
 // @name         MalFox Headers (Clarity Basic Style)
 // @namespace    V.L
-// @version      1.1
+// @version      2.0
 // @description  Generates CSS for modern list category headers and updates user CSS automatically.
 // @author       Valerio Lyndon
 // @match        https://myanimelist.net/animelist/*
 // @match        https://myanimelist.net/mangalist/*
 // @run-at       document-end
-// @grant        none
+// @grant        GM_setValue
+// @grant        GM_getValue
 // @licence      MIT
 // ==/UserScript==
 
-templateCss = `[data-query*='"status":7']:not([data-query*='order']):not([data-query*='tag"']):not([data-query*='"s"']) .list-item:nth-child($index){margin-top:48px;}[data-query*='"status":7']:not([data-query*='order']):not([data-query*='tag"']):not([data-query*='"s"']) .list-item:nth-child($index):before{content:'$content'}`;
+templateCss = `.$type[data-query*='"status":7']:not([data-query*='order']):not([data-query*='tag"']):not([data-query*='"s"']) .list-item:nth-child($index){margin-top:48px;}.$type[data-query*='"status":7']:not([data-query*='order']):not([data-query*='tag"']):not([data-query*='"s"']) .list-item:nth-child($index):before{content:'$content'}`;
 
 animeManga = window.location.href.replace("https://myanimelist.net/", "").split("/")[0].replace("list", "");
 
@@ -84,9 +85,11 @@ function updateCss(newCss) {
 	currentCss = cssEle.text();
 
 	/* Remove any previously added malfox CSS */
-	currentCss = currentCss.replaceAll(/\/\*MALFOX.START(.|\n)*?MALFOX.END\*\//g, '');
+	replace = `\\n{0,2}\\/\\*malfox.${animeManga}.{0,1}start(.|\\n)*?malfox.${animeManga}.{0,1}end\\*\\/`;
+	expression = new RegExp(replace, "gi");
+	currentCss = currentCss.replaceAll(expression, '');
 
-	finalCss = currentCss + '\n\n/*MALFOX START*/\n/* DO NOT remove or restyle the MALFOX START or MALFOX END markers and DO NOT place any of your own code between these two markers. Doing so can cause deletion of your code. */\n' + newCss + '/*MALFOX END*/';
+	finalCss = `${currentCss}\n\n/*MALFOX ${animeManga.toUpperCase()} START*/\n/* DO NOT remove or restyle the MALFOX START or MALFOX END markers and DO NOT place any of your own code between these two markers. Doing so can cause deletion of your code. */\n${newCss}/*MALFOX ${animeManga.toUpperCase()} END*/`;
 	
 	if(finalCss.length >= 65535)
 	{
@@ -112,6 +115,8 @@ function updateCss(newCss) {
 	request2.open("post", styleUrl, false);
 	request2.setRequestHeader("Content-Type", `multipart/form-data; boundary=${boundary}`);
 	request2.send(req2header);
+
+	GM_setValue('lastRun', Date.now());
 
 	return true;
 }
@@ -145,91 +150,107 @@ function primary() {
 		6: 0
 	};
 
-	for(i = 0; i < data.length; i++) {
-		itemsPerStatus[data[i]['status']]++;
-	}
+	// fetch and search list info for total amount in each category
+	baseUrl = window.location.href.split('?')[0];
+	offset = 0;
+	failures = 0;
+	faildelay = 0;
+	(function fetchListInfo()
+	{
+		/* will take a list URL:
+		https://myanimelist.net/animelist/Valerio_Lyndon?status=2
+		and return:
+		https://myanimelist.net/animelist/Valerio_Lyndon/load.json?status=7 */
+		dataUrl = `${baseUrl}/load.json?status=7&offset=${offset}`;
 
-	itemsPerCategory = {};
-	for(var [category, count] of Object.entries(itemsPerStatus)) {
-		if(count > 0) {
-			itemsPerCategory[categories[category]] = count;
+		$.getJSON(dataUrl, function(json)
+		{
+			failures = 0;
+			
+			// add count to total
+			for(i = 0; i < json.length; i++) {
+				var status = json[i]['status'];
+				itemsPerStatus[status]++;
+				if(status === 6) {
+					generateCss();
+					return;
+				}
+			}
+
+			if(json.length === 300)
+			{
+				offset += 300;
+				fetchListInfo();
+			} else {
+				generateCss();
+				return;
+			}
+		}).fail(function()
+		{
+			failures++;
+			faildelay += 3000;
+
+			if(failures > 3)
+			{
+				alert('MalFox failed to fetch your list info while updating CSS headers. If this error appears more than once, please report it in the forum thread. https://myanimelist.net/forum/?topicid=1723114');
+				return;
+			}
+
+			setTimeout(fetchListInfo, faildelay);
+		});
+	})();
+
+	// Generates CSS once list info is fetched. This function is called from fetchListInfo function.
+	function generateCss() {
+		// provides items per category. plantowatch will not list the correct amount since the fetch tool stops after 1 for optimization reasons
+		itemsPerCategory = {};
+		for(var [category, count] of Object.entries(itemsPerStatus)) {
+			if(count > 0) {
+				itemsPerCategory[categories[category]] = count;
+			}
 		}
+
+		// create css
+		outputCss = '';
+
+		var currentPosition = 2;
+		for(var [category, count] of Object.entries(itemsPerCategory)) {
+			var position = currentPosition;
+
+			outputCss +=  templateCss.replaceAll('$index', position).replaceAll('$content', category).replaceAll('$type', animeManga) + '\n';
+
+			currentPosition += count;
+		}
+
+		// update user css
+		updateCss(outputCss);
 	}
-
-	// create css
-	outputCss = '';
-
-	var currentPosition = 2;
-	for(var [category, count] of Object.entries(itemsPerCategory)) {
-		var position = currentPosition;
-
-		outputCss +=  templateCss.replaceAll('$index', position).replaceAll('$content', category) + '\n';
-
-		currentPosition += count;
-	}
-
-	// update user css
-	updateCss(outputCss);
 }
 
-
-// preliminary data fetch which then calls primary function
-var data = [];
-baseUrl = window.location.href.split('?')[0];
-offset = 0;
-failures = 0;
-faildelay = 0;
-function preliminary()
-{
-	/* will take a list URL:
-	https://myanimelist.net/animelist/Valerio_Lyndon?status=2
-	and return:
-	https://myanimelist.net/animelist/Valerio_Lyndon/load.json?status=7 */
-	dataUrl = `${baseUrl}/load.json?status=7&offset=${offset}`;
-
-	$.getJSON(dataUrl, function(json)
-	{
-		failures = 0;
-		data = data.concat(json);
-
-		if(json.length === 300)
-		{
-			offset += 300;
-			preliminary();
-		} else {
-			primary();
-			return;
-		}
-	}).fail(function()
-	{
-		failures++;
-		faildelay += 3000;
-
-		if(failures > 3)
-		{
-			alert('MalFox failed to fetch your list info while updating CSS headers. If this error appears more than once, please report it in the forum thread. https://myanimelist.net/forum/?topicid=1723114');
-			return;
-		}
-
-		setTimeout(preliminary, faildelay);
-	});
-};
-
 // Check if it should run
+timeSinceLastRun = Date.now() - GM_getValue('lastRun');
 isModernStyle = (document.getElementById("list_surround")) ? false : true;
 isListOwner = document.body.getAttribute('data-owner') === '1' ? true : false;
+let searchParams = new URLSearchParams(window.location.search);
+isPreview = searchParams.has('preview');
 isClarity = $('#advanced-options-button').css('width') === '26px' && $('#advanced-options-button').css('height') === '26px' && $('#advanced-options-button').css('border-top-left-radius') === '13px' ? true : false
 
-if(isModernStyle && isListOwner && isClarity) {
-	preliminary();
-} else {
-	if(!isModernStyle) {
-		console.log("[MalFox] Headers are disabled on clasic lists.");
-	}
-	else if(!isListOwner) {
-		console.log("[MalFox] Headers are disabled on other users' lists.");
-	}
-	else if(!isClarity) {
-		console.log("[MalFox] Headers are disabled on lists that aren't using the Clarity theme. If you are using the Clarity theme, there has been an error in the code.");
-	}
+if(!isModernStyle) {
+	console.log("[MalFox] Headers are disabled on clasic lists.");
+}
+else if(!isListOwner) {
+	console.log("[MalFox] Headers are disabled on other users' lists.");
+}
+else if(isPreview) {
+	console.log("[MalFox] Headers are disabled while previewing list.")
+}
+else if(!isClarity) {
+	console.log("[MalFox] Headers are disabled on lists that aren't using the Clarity theme. If you are using the Clarity theme, there has been an error in the code.");
+}
+else if(timeSinceLastRun < 60000) {
+	timeUntilNextRun = Math.floor((60000 - timeSinceLastRun) / 1000);
+	console.log(`[MalFox] Headers will not update more than once a minute. Please wait ${timeUntilNextRun} seconds and try again.`);
+}
+else {
+	primary();
 }
