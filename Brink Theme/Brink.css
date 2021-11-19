@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.7.1
+ * Version 1.7.2
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1114,11 +1114,11 @@ body::before {
 .list-table .list-table-header .header-title .sort-icon {
 	margin-left: 1px;
 	color: hsl(var(--accent));
-	font: 10.5px var(--font);
+	font: 10.5px var(--font) !important;
 	vertical-align: baseline;
-} .list-table .list-table-header .header-title .fa-sort-asc::before {
+} .list-table .list-table-header .header-title .fa-sort-up::before {
 	content: "ASC";
-} .list-table .list-table-header .header-title .fa-sort-desc::before {
+} .list-table .list-table-header .header-title .fa-sort-down::before {
 	content: "DESC";
 }
 
@@ -1798,7 +1798,7 @@ span:nth-of-type(2)::after {
 	text-shadow: inherit;
 }
 
-[class^="icon-add-"] .fa::before {
+[class^="icon-add-"] i::before {
 	content: "\f067";
 }
 
