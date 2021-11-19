@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R27.0
+  R27.1
 
 | == = == THEME CONTENTS == = == |
 
@@ -1132,8 +1132,8 @@ i.fa-chart-column::before {
 	line-height: 10px;
 }
 
-.sort-icon.fa-sort-asc { top: 2px; }
-.sort-icon.fa-sort-desc { bottom: 2px; }
+.sort-icon.fa-sort-up { top: 2px; }
+.sort-icon.fa-sort-down { bottom: 2px; }
 
 /* Fixes for airing & publishing dates */
 
