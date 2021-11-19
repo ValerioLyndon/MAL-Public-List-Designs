@@ -1,6 +1,6 @@
 /**
  * "Tilt" by Valerio Lyndon
- * Revision 9.0
+ * Revision 10.0
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -50,6 +50,7 @@
 \*==============================*/
 
 @\import "https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Open+Sans:400,700";
+@\import "https://valeriolyndon.github.io/MAL-Public-List-Designs/resources/font-awesome-4.7.0/css/font-awesome-force-legacy.min.css";
 
 
 
@@ -1138,7 +1139,7 @@ body[data-owner="1"] .btn-menu .username {
 	height: 12px;
 	margin-right: 2px;
 	
-	font: 12px/12px "FontAwesome";
+	font: 12px/12px "FontAwesome 4", "FontAwesome";
 	text-align: center;
 }
 
@@ -1528,7 +1529,7 @@ body[data-owner="1"] .btn-menu .username {
 	left: -7px;
 	
 	color: var(--text-dark);
-	font: 10px/10px "FontAwesome";
+	font: 10px/10px "FontAwesome 4", "FontAwesome";
 	
 	transition: color 0.2s cubic-bezier(0.32,0.05,0.48,1);
 }
@@ -1587,7 +1588,7 @@ body[data-owner="1"] .btn-menu .username {
 	content: "\f040";
 	
 	color: var(--text-dark);
-	font: 10px/50px "FontAwesome";
+	font: 10px/50px "FontAwesome 4", "FontAwesome";
 	
 	transition: inherit;
 }
@@ -1690,7 +1691,7 @@ a#fancybox-close:before {
 	content: "\f00d";
 	
 	color: var(--bg-common);
-	font: 24px/30px "FontAwesome";
+	font: 24px/30px "FontAwesome 4", "FontAwesome";
 }
 
 
