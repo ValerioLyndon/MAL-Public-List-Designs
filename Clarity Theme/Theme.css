@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R26.0
+  R27.0
 
 | == = == THEME CONTENTS == = == |
 
@@ -66,6 +66,7 @@
 \*==============================*/
 
 @\import "https://fonts.googleapis.com/css?family=Oswald";
+@\import "https://valeriolyndon.github.io/MAL-Public-List-Designs/resources/font-awesome-4.7.0/css/font-awesome-force-legacy.min.css";
 
 
 
@@ -119,6 +120,11 @@
 	--cover-bg: #323232;
 	--edit-btn: #d9d9d9;
 	--checkmark: #9696eb;
+
+	/* Other */
+	--font-1: Arial, Verdana, "FontAwesome 4", FontAwesome, sans-serif;
+	--font-2: Verdana, Arial, "FontAwesome 4", FontAwesome, sans-serif;
+	--font-icon: "FontAwesome 4", FontAwesome;
 }
 
 
@@ -194,7 +200,7 @@
 	overflow: hidden;
 	
 	color: var(--text) !important;
-	font: normal 0/26px Arial, Verdana, sans-serif;
+	font: normal 0/26px var(--font-1);
 	text-indent: 0;
 	text-align: left;
 	white-space: nowrap;
@@ -420,7 +426,7 @@ a, a:hover {
 	background: none !important;
 	
 	font-size: 14px;
-	font-family: FontAwesome;
+	font-family: var(--font-icon);
 	text-align: center !important;
 }
 
@@ -435,7 +441,7 @@ a, a:hover {
 	height: 26px !important;
 	width: 26px !important;
 	
-	font: 14px/26px Arial, Verdana, sans-serif;
+	font: 14px/26px var(--font-1);
 	color: var(--text);
 }
 
@@ -472,7 +478,7 @@ a, a:hover {
 .header .icon-menu.manga-list .text, .header .icon-menu.anime-list .text {
 	position: static !important;
 	
-	font: 14px/26px Arial, Verdana, sans-serif;
+	font: 14px/26px var(--font-1);
 	vertical-align: top;
 }
 
@@ -842,7 +848,7 @@ a, a:hover {
 	line-height: 26px;
 	text-align: center;
 	color: var(--text);
-	font-family: FontAwesome;
+	font-family: var(--font-icon);
 }
 
 [data-owner=""] .icon-menu.profile:hover:before {
@@ -883,7 +889,7 @@ a, a:hover {
 	
 	font-size: 14px;
 	text-align: center;
-	font-family: FontAwesome;
+	font-family: var(--font-icon);
 	
 	box-shadow: none;
 }
@@ -933,7 +939,7 @@ a, a:hover {
 	overflow: hidden;
 	
 	color: var(--btn-text-h) !important;
-	font: 14px/26px Arial, Verdana, sans-serif !important;
+	font: 14px/26px var(--font-1) !important;
 	text-indent: 9px;
 	text-align: center;
 	white-space: nowrap;
@@ -984,12 +990,16 @@ a, a:hover {
 .stats a {
 	margin: 0 0 0 6px !important;
 	
-	font: 14px/26px Arial, Verdana, sans-serif;
+	font: 14px/26px var(--font-1);
 }
 
 .stats a i {
 	width: 26px;
 	text-align: center;
+}
+
+i.fa-chart-column::before {
+	content: "\f080";
 }
 
 
@@ -1033,7 +1043,7 @@ a, a:hover {
 	margin: 2px;
 	
 	font-size: 14px;
-	font-family: FontAwesome;
+	font-family: var(--font-icon);
 	text-align: center;
 }
 
@@ -1092,7 +1102,7 @@ a, a:hover {
 	box-sizing: border-box;
 	
 	color: var(--btn-text-h) !important;
-	font: 11px/26px Verdana, Arial, sans-serif;
+	font: 11px/26px var(--font-2);
 	text-align: center;
 	text-indent: -9px;
 	white-space: normal;
@@ -1224,7 +1234,7 @@ a, a:hover {
 	margin: 32px auto;
 	
 	color: var(--text);
-	font: 16px/32px Arial, Verdana, sans-serif;
+	font: 16px/32px var(--font-1);
 	text-align: center;
 }
 
@@ -1339,7 +1349,7 @@ a, a:hover {
 	background: rgba(0,0,0,0.5);
 	
 	color: #fff;
-	font: 30px/64px FontAwesome;
+	font: 30px/64px var(--font-icon);
 	
 	opacity: 0;
 }
@@ -1486,7 +1496,7 @@ a, a:hover {
 	box-shadow: none !important;
 	
 	color: var(--btn-text-h);
-	font: bold 1.1em/26px Verdana, Arial, sans-serif;
+	font: bold 1.1em/26px var(--font-2);
 	
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -1544,7 +1554,7 @@ a, a:hover {
     top: 1px;
 	
 	color: var(--checkmark);
-	font-family: FontAwesome;
+	font-family: var(--font-icon);
 	font-size: 13px;
 }
 
@@ -1558,7 +1568,7 @@ a, a:hover {
 	box-sizing: border-box;
 	
 	color: var(--text-dark);
-	font: 11px Verdana, Arial, sans-serif;
+	font: 11px var(--font-2);
 }
 
 
@@ -1581,7 +1591,7 @@ a, a:hover {
 
 .data.priority:before {
 	content: "\f0a2";
-	font-family: FontAwesome;
+	font-family: var(--font-icon);
 }
 
 /* fix for all anime page */
@@ -1791,7 +1801,7 @@ a, a:hover {
 	margin-top: -10px;
 	
 	color: var(--text);
-	font: 0/20px FontAwesome;
+	font: 0/20px var(--font-icon);
 	text-align: center;
 	
 	opacity: 0;
@@ -1996,7 +2006,7 @@ footer {
 	display: block;
 	margin-top: -1px;
 	
-	font: 16px/1 FontAwesome;
+	font: 16px/1 var(--font-icon);
 }
 
 #fancybox-outer #fancybox-close:hover {
@@ -2097,7 +2107,7 @@ footer {
 	width: 20.5px;
 	
 	color: var(--icon);
-	font: 14px/26px FontAwesome;
+	font: 14px/26px var(--font-icon);
 	text-align: center;
 	
 	pointer-events: auto;
@@ -2322,15 +2332,15 @@ footer {
 
 #advanced-options .btn-apply:before {
 	content: "\f00c  ";
-	font-family: FontAwesome;
+	font-family: var(--font-icon);
 }
 #advanced-options .btn-clear:before {
 	content: "\f12d  ";
-	font-family: FontAwesome;
+	font-family: var(--font-icon);
 }
 #advanced-options #fancybox-close:after {
 	content: "\f00d  Close";
-	font: 12px/26px Arial, FontAwesome, sans-serif;
+	font: 12px/26px var(--font-1);
 }
 
 
@@ -2372,7 +2382,7 @@ div[style^="width: 300px;"] input {
 	box-shadow: 0 1px 2px var(--shadow);
 	margin: 0 auto 5px;
 	color: var(--text);
-	font: normal 12px/26px Arial,Verdana,sans-serif;
+	font: normal 12px/26px var(--font-1);
 	transition: all 0.3s ease;
 	cursor: pointer;
 }
