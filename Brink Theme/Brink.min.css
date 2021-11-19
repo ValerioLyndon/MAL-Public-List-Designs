@@ -3,7 +3,10 @@
 |* - -   by Valerio Lyndon  - - *|
 \* - - - - - - - - - - - - - - -*/
 
+/*Cover images*/
 @\import "https://malscraper.azurewebsites.net/covers/auto/presets/dataimagelink";
+
+/*Fonts*/
 @\import "https://fonts.googleapis.com/css?family=Sarabun:400,700";
 @\import "https://valeriolyndon.github.io/MAL-Public-List-Designs/resources/font-awesome-4.7.0/css/font-awesome-force-legacy.min.css";
 
