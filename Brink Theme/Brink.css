@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.7.0
+ * Version 1.7.1
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -66,6 +66,7 @@
 
 @\import "https://malscraper.azurewebsites.net/covers/auto/presets/dataimagelink";
 @\import "https://fonts.googleapis.com/css?family=Sarabun:400,700";
+@\import "https://valeriolyndon.github.io/MAL-Public-List-Designs/resources/font-awesome-4.7.0/css/font-awesome-force-legacy.min.css";
 
 
 /*==============================*\
@@ -159,7 +160,7 @@
 	
 	--listW: 100vw;
 	
-	--font: "Sarabun", "Segoe UI", "Arial", "FontAwesome", sans-serif;
+	--font: "Sarabun", "Segoe UI", "Arial", "FontAwesome 4", "FontAwesome", sans-serif;
 	
 	--timeText: 60ms;
 	--timeButton: 160ms;
