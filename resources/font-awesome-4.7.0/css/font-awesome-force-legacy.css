@@ -21,7 +21,11 @@
 /* force v4 */
 .fa, .fas, .fa-solid, .far, .fa-regular, .fal, .fa-light, .fat, .fa-thin, .fad, .fa-duotone, .fab, .fa-brands {
   display: inline-block;
-  font: normal normal normal 14px/1 "FontAwesome 4";
+  font-size: 14px;
+  line-height: 1;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  font-style: normal !important;
   font-family: "FontAwesome 4", "FontAwesome" !important;
   font-size: inherit;
   text-rendering: auto;
