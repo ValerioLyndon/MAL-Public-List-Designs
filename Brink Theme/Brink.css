@@ -1440,7 +1440,7 @@ body::before {
 }
 
 
-.title [class^="icon-watch"] {
+.malicon {
 	position: absolute;
 	bottom: 12px;
 	right: 7.5px;
@@ -1451,7 +1451,7 @@ body::before {
 	background: none;
 	margin: 0;
 	
-	font-size: 0;
+	font-size: 0 !important;
 	text-indent: 0;
 	text-shadow: 0.84px 0.6px 1.68px #000;
 	
@@ -1463,17 +1463,18 @@ body::before {
 	visibility: var(--togglePV);
 }
 
-[class^="icon-watch"]::after {
+.malicon::after {
 	content: "\f144  VIDEOS";
 	
 	color: hsla(var(--text), 80%);
 	font-size: 12px;
 	line-height: 1;
 	letter-spacing: 1.5px;
+	white-space: nowrap;
 	
 	transition: color var(--timeText) var(--bezierFast);
-} .title [class^="icon-watch"]:hover::after,
-.title [class^="icon-watch"]:focus::after {
+} .malicon:hover::after,
+.malicon:focus::after {
 	color: hsl(var(--textLinkHov));
 }
 
@@ -2715,6 +2716,7 @@ div[style^="width: 300px;"] input {
 	/* Visual Tweaks */
 	.data.title {
 		padding-top: 2px !important;
+		font-size: 0;
 	}
 }
 
