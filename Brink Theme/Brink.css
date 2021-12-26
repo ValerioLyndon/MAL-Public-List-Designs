@@ -1442,8 +1442,8 @@ body::before {
 
 .malicon {
 	position: absolute;
-	bottom: 12px;
-	right: 7.5px;
+	bottom: -4px;
+	right: 217px;
 	z-index: 1;
 	
 	width: auto;
