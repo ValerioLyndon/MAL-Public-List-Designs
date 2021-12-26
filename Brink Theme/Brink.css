@@ -1468,6 +1468,7 @@ body::before {
 	
 	color: hsla(var(--text), 80%);
 	font-size: 12px;
+	font-style: normal;
 	line-height: 1;
 	letter-spacing: 1.5px;
 	white-space: nowrap;
