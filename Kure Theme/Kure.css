@@ -16,9 +16,13 @@
 /* IMPORTS */
 @\import "https://fonts.googleapis.com/css?family=Muli:400,700|Playball";
 
-/* ad area found on theme 10 */
+/* REMOVALS */
+
+/* Tutorial & MAL shutdown messages */
+.initialize-tutorial,
+/* Ad area found on theme 10 */
 div[style="padding-top: 8px"] {
-	display: none;
+	display: none !important;
 }
 
 /* VARIABLES */
@@ -49,8 +53,6 @@ div[style="padding-top: 8px"] {
 	/* Meta */
 	--transition-text: 0.08s ease-out;
 	--transition-button: 0.11s ease-out;
-	--fontset: "Lexend Deca", sans-serif;
-	--fontset: "Montserrat", sans-serif;
 	--fontset: 'Muli', 'FontAwesome', sans-serif;
 	--fontset-heading: 'Playball', 'FontAwesome', cursive;
 }
@@ -225,6 +227,10 @@ body::before {
 }
 
 #cover-image-container .btn-list-setting {
+	display: none;
+}
+
+#cover-image {
 	display: none;
 }
 
