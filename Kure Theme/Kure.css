@@ -1220,7 +1220,10 @@ footer {
 /* OVERLAYS */
 
 #fancybox-overlay {
-	background: linear-gradient(15deg, hsl(var(--tint1)), hsla(var(--tint2), 66.7%));
+	background: rgba(0,0,0,0.5) !important;
+	opacity: 1 !important;
+	-webkit-backdrop-filter: blur(1px);
+	backdrop-filter: blur(1px);
 }
 
 #fancybox-wrap {
@@ -1244,10 +1247,6 @@ div.fancy-bg {
 }
 
 /* Filter Menu */
-
-#advanced-options[style*="block"] ~ #fancybox-overlay {
-	opacity: 0.2 !important;
-}
 
 #advanced-options {
 	position: fixed;
