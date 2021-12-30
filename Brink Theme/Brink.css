@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.7.2
+ * Version 1.7.3
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1425,6 +1425,8 @@ body::before {
 	border-radius: 0 0 6px 6px;
 	order: 95;
 	
+	font-size: 0;
+	
 	opacity: 1;
 }
 
@@ -1440,7 +1442,15 @@ body::before {
 }
 
 
-.title [class^="icon-watch"] {
+div[class^="icon-watch"] {
+	display: inline;
+}
+
+.mal-icon {
+	position: static !important;
+}
+
+.malicon {
 	position: absolute;
 	bottom: 12px;
 	right: 7.5px;
@@ -1448,14 +1458,10 @@ body::before {
 	
 	width: auto;
 	height: 15px;
-	background: none;
-	margin: 0;
 	
-	font-size: 0;
-	text-indent: 0;
+	font-size: 0 !important;
 	text-shadow: 0.84px 0.6px 1.68px #000;
 	
-	opacity: 1 !important;
 	transform: rotate(90deg);
 	transform-origin: right bottom;
 	
@@ -1463,17 +1469,19 @@ body::before {
 	visibility: var(--togglePV);
 }
 
-[class^="icon-watch"]::after {
+.malicon::after {
 	content: "\f144  VIDEOS";
 	
 	color: hsla(var(--text), 80%);
 	font-size: 12px;
+	font-style: normal;
 	line-height: 1;
 	letter-spacing: 1.5px;
+	white-space: nowrap;
 	
 	transition: color var(--timeText) var(--bezierFast);
-} .title [class^="icon-watch"]:hover::after,
-.title [class^="icon-watch"]:focus::after {
+} .malicon:hover::after,
+.malicon:focus::after {
 	color: hsl(var(--textLinkHov));
 }
 
