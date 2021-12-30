@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.7.2
+ * Version 1.7.3
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1425,6 +1425,8 @@ body::before {
 	border-radius: 0 0 6px 6px;
 	order: 95;
 	
+	font-size: 0;
+	
 	opacity: 1;
 }
 
@@ -1440,22 +1442,26 @@ body::before {
 }
 
 
+div[class^="icon-watch"] {
+	display: inline;
+}
+
+.mal-icon {
+	position: static !important;
+}
+
 .malicon {
-	position: fixed;
+	position: absolute;
 	bottom: 12px;
-	right: 217px;
+	right: 7.5px;
 	z-index: 1;
 	
 	width: auto;
 	height: 15px;
-	background: none;
-	margin: 0;
 	
 	font-size: 0 !important;
-	text-indent: 0;
 	text-shadow: 0.84px 0.6px 1.68px #000;
 	
-	opacity: 1 !important;
 	transform: rotate(90deg);
 	transform-origin: right bottom;
 	
@@ -2717,7 +2723,6 @@ div[style^="width: 300px;"] input {
 	/* Visual Tweaks */
 	.data.title {
 		padding-top: 2px !important;
-		font-size: 0;
 	}
 }
 
