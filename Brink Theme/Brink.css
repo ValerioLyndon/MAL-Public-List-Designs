@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.7.3
+ * Version 1.7.4
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -46,6 +46,7 @@
  @ Loading-Icon
  * 
  ! OVERLAYS
+ @ GDPR
  @ iFrames
  @ Rewatch-Box
  @ Filter-Menu
@@ -349,7 +350,7 @@ body {
 	
 	min-width: 700px;
 	min-height: 100%;
-	padding: 42px 0 60px;
+	padding: 42px 0 60px !important;
 	
 	background-color: hsl(var(--bg)) !important;
 	background-size: cover;
@@ -614,7 +615,8 @@ body::before {
 } /* Icon for logged out users */
 .list-container::before {
 	z-index: 200;
-	filter: opacity(0.35);
+	filter: brightness(0.35);
+	cursor: not-allowed;
 } /* Hide for logged in users */
 .list-menu-float + .list-container::before {
 	content: none;
@@ -2215,6 +2217,23 @@ body #fancybox-close {
 
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+  @GDPR
+\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+#gdpr-modal-bottom {
+	filter: invert(0.9) hue-rotate(180deg);
+}
+
+#gdpr-modal-bottom .modal-wrapper {
+	width: 100%;
+}
+
+#gdpr-modal-bottom .text {
+	width: 100%;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @iFrames
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
@@ -2519,7 +2538,7 @@ div[style^="width: 300px;"] input {
 	bottom: 0;
 	left: 0;
 	
-	width: 100%;
+	width: 100% !important;
 	height: 60px;
 	padding: 22px 0;
 	background: none;
