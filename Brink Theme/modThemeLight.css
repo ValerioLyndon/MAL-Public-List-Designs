@@ -1,5 +1,5 @@
 /*------------------------------*\
-|* - -  Light Theme V1.5.2  - - *|
+|* - -  Light Theme V1.7.0  - - *|
 \* - - - - - - - - - - - - - - -*/
 
 /* User */
@@ -124,6 +124,10 @@ body #fancybox-close,
 }
 
 /* Overlays */
+
+#gdpr-modal-bottom {
+	filter: none;
+}
 
 body #fancybox-frame {
 	filter: none;
