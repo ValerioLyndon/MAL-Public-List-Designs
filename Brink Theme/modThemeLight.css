@@ -1,5 +1,5 @@
 /*------------------------------*\
-|* - -  Light Theme V1.7.0  - - *|
+|* - -  Light Theme V1.7.1  - - *|
 \* - - - - - - - - - - - - - - -*/
 
 /* User */
@@ -108,7 +108,8 @@ body #fancybox-close,
 }
 
 .content-status,
-.rewatching {
+.rewatching,
+.malicon {
 	font-weight: bold;
 	text-shadow:
 		1px 0 1px #000,
