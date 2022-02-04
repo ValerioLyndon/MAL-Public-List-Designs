@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.7.4
+ * Version 1.8.0
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -47,6 +47,7 @@
  * 
  ! OVERLAYS
  @ GDPR
+ @ Streaming
  @ iFrames
  @ Rewatch-Box
  @ Filter-Menu
@@ -83,7 +84,7 @@
 	 * toggleStats / Toggles list statistics (found in the footer)
 	 * valid values: visible / hidden
 	 * 
-	 * togglePV / Toggles anime preview & video links.
+	 * toggleStreaming / Toggles anime streaming service button.
 	 * valid values: visible / hidden
 	 * 
 	 * toggleTopRating(Gold/Silver/Bronze) / Toggles banners on top of highly rated items.
@@ -106,7 +107,7 @@
 	 */
 	
 	--toggleStats: hidden;
-	--togglePV: hidden;
+	--toggleStreaming: visible;
 	--toggleTopRatingGold: visible;
 	--toggleTopRatingSilver: visible;
 	--toggleTopRatingBronze: hidden;
@@ -281,6 +282,16 @@ a {
 	transition: color var(--timeText) var(--bezierFast);
 }
 
+a,
+.header a {
+	color: hsl(var(--text));
+} a:hover,
+a:focus,
+.header a:hover,
+.header a:focus {
+	color: hsl(var(--textLinkHov));
+}
+
 /* Buttons */
 
 #header-menu-dropdown .icon-menu,
@@ -428,13 +439,6 @@ body::before {
 	height: 42px;
 	background: hsl(var(--bgAlt));
 	box-shadow: 0 1.68px 3.36px hsla(0, 0%, 0%, 50%);
-}
-
-.header a {
-	color: hsl(var(--text));
-} .header a:hover,
-.header a:focus {
-	color: hsl(var(--textLinkHov));
 }
 
 /* Left Area */
@@ -1138,77 +1142,63 @@ body::before {
 \*------------------------------*/
 
 /* Empty Table Message */
-.list-table[data-items="[]"]::before,
-.list-table[data-items="[]"]::after {
-	content: "";
+.list-table[data-items="[]"]::before {
+	--items: 3;
+	--offset: 12.5%;
+	
 	display: block;
-	width: calc(224px * 3);
+	width: calc(224px * var(--items));
 	max-width: 100%;
 	height: 309px;
-	background: url(https://i.imgur.com/5G6hsJk.png) hsl(var(--bg));
-	background-blend-mode: screen;
+	background: url(https://files.catbox.moe/zl9hm9.png);
 	background-position-x: center;
-	padding: 48px calc((224px * 1.5) - 90px);
+	padding: 48px calc((224px * var(--items) * .5) - 90px);
 	margin: 0 auto;
-}
-
-/* No Entries (Generic/Non-Owner) */
-.list-table[data-items="[]"]::after {
-	content: "No entries found.";
-	background:
-		linear-gradient(
-			to right,
-			hsla(var(--bg), 100%),
-			hsla(var(--bg), 0%) 12.5%,
-			hsla(var(--bg), 0%) 87.5%,
-			hsla(var(--bg), 100%)
-		);
-	margin-top: -309px;
 	font-size: 18px;
 	text-align: center;
-} /* No Entries (Owner) */
-[data-owner="1"] .list-table[data-items="[]"]::after {
+	
+	--mask:
+		linear-gradient(
+			to right,
+			#0000,
+			#000f var(--offset),
+			#000a calc(100% - var(--offset)),
+			#0000
+		),
+		linear-gradient(
+			to top,
+			#0000,
+			#000a 30%,
+			#000f 80%
+		);
+	-webkit-mask-image: var(--mask);
+	mask-image: var(--mask);
+	-webkit-mask-composite: source-in;
+	mask-composite: intersect;
+	
+	/* No Entries (Generic/Non-Owner) */
+	content: "No entries found.";
+}
+[data-owner="1"] .list-table[data-items="[]"]::before {
+	/* No Entries (Owner) */
 	content: "No entries found. Why not add some?";
-} /* No Entries (Bad Search) */
-[data-query*='"s":'] .list-table[data-items="[]"]::after {
+}
+[data-query*='"s":'] .list-table[data-items="[]"]::before {
+	/* No Entries (Bad Search) */
 	content: "No entries found. Perhaps your search terms are too restrictive?";
 }
 
 @media (min-width: 1150.5px) {
-	.list-table[data-items="[]"]::before,
-	.list-table[data-items="[]"]::after {
-		width: calc(224px * 5);
-		padding: 48px calc((224px * 2.5) - 90px);
-	}
-	
-	.list-table[data-items="[]"]::after {
-		background:
-		linear-gradient(
-			to right,
-			hsla(var(--bg), 100%),
-			hsla(var(--bg), 0%) 20%,
-			hsla(var(--bg), 0%) 80%,
-			hsla(var(--bg), 100%)
-		);
+	.list-table[data-items="[]"]::before {
+		--items: 5;
+		--offset: 20%;
 	}
 }
 
 @media (min-width: 1597.5px) {
-	.list-table[data-items="[]"]::before,
-	.list-table[data-items="[]"]::after {
-		width: calc(224px * 7);
-		padding: 48px calc((224px * 3.5) - 90px);
-	}
-	
-	.list-table[data-items="[]"]::after {
-		background:
-		linear-gradient(
-			to right,
-			hsla(var(--bg), 100%),
-			hsla(var(--bg), 0%) 25%,
-			hsla(var(--bg), 0%) 85%,
-			hsla(var(--bg), 100%)
-		);
+	.list-table[data-items="[]"]::before {
+		--items: 7;
+		--offset: 25%;
 	}
 }
 
@@ -1468,11 +1458,11 @@ div[class^="icon-watch"] {
 	transform-origin: right bottom;
 	
 	/*Toggle*/
-	visibility: var(--togglePV);
+	visibility: var(--toggleStreaming);
 }
 
 .malicon::after {
-	content: "\f144  VIDEOS";
+	content: "\f144  WATCH";
 	
 	color: hsla(var(--text), 80%);
 	font-size: 12px;
@@ -2215,6 +2205,20 @@ body #fancybox-close {
 	content: "Close";
 }
 
+/* Header bars */
+
+#advanced-options::before,
+.modal-content::before {
+	content: "";
+	position: absolute;
+	top: -2px;
+	left: 0;
+	
+	width: 100%;
+	height: 2px;
+	background: linear-gradient(to right, hsla(var(--accent), 1), hsla(var(--accent), 0.55)) hsl(var(--bg));
+}
+
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @GDPR
@@ -2230,6 +2234,40 @@ body #fancybox-close {
 
 #gdpr-modal-bottom .text {
 	width: 100%;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+  @Streaming
+\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.modal,
+.modal-backdrop {
+	transition-duration: var(--timeMenu) !important;
+	transition-timing-function: var(--bezierSmooth) !important;
+}
+.modal-backdrop.show {
+	opacity: 0.78 !important;
+}
+
+.modal-content {
+	background: hsl(var(--bg)) !important;
+	border: none !important;
+	border-radius: 0 !important;
+	box-shadow: -1.6px 2.24px 4.48px hsla(0, 0%, 0%, 70%);
+}
+
+.modal-header,
+.modal-body .broadcasts {
+	border-color: hsla(var(--text), 12%) !important;
+}
+
+.broadcast a:hover {
+	background: hsl(var(--bgAlt)) !important;
+}
+
+.btn-close {
+	filter: invert(1);
 }
 
 
@@ -2352,17 +2390,6 @@ div[style^="width: 300px;"] input {
 	#advanced-options {
 		--pad: 1600px;
 	}
-}
-
-#advanced-options::before {
-	content: "";
-	position: absolute;
-	top: -2px;
-	left: 0;
-	
-	width: 100%;
-	height: 2px;
-	background: linear-gradient(to right, hsla(var(--accent), 1), hsla(var(--accent), 0.55)) hsl(var(--bg));
 }
 
 #advanced-options #fancybox-close {
