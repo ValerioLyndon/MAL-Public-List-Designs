@@ -1,5 +1,5 @@
 /*------------------------------*\
-|* - -  Light Theme V1.7.1  - - *|
+|* - -  Light Theme V1.8.0  - - *|
 \* - - - - - - - - - - - - - - -*/
 
 /* User */
@@ -88,12 +88,7 @@ body #fancybox-close,
 /* Empty List Table */
 
 .list-table[data-items="[]"]:before {
-	background-image: url(https://i.imgur.com/OzsJEdu.png);
-	background-blend-mode: darken;
-}
-
-.list-table[data-items="[]"]:after {
-	background: none;
+	background-image: url(https://files.catbox.moe/bme7h2.png);
 }
 
 /* List Items */
