@@ -2208,7 +2208,7 @@ body #fancybox-close {
 /* Header bars */
 
 #advanced-options::before,
-.modal-content::before {
+.mal-modal-content::before {
 	content: "";
 	position: absolute;
 	top: -2px;
@@ -2241,24 +2241,24 @@ body #fancybox-close {
   @Streaming
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-.modal,
-.modal-backdrop {
+.mal-modal,
+.mal-modal-backdrop {
 	transition-duration: var(--timeMenu) !important;
 	transition-timing-function: var(--bezierSmooth) !important;
 }
-.modal-backdrop.show {
+.mal-modal-backdrop.show {
 	opacity: 0.78 !important;
 }
 
-.modal-content {
+.mal-modal-content {
 	background: hsl(var(--bg)) !important;
 	border: none !important;
 	border-radius: 0 !important;
 	box-shadow: -1.6px 2.24px 4.48px hsla(0, 0%, 0%, 70%);
 }
 
-.modal-header,
-.modal-body .broadcasts {
+.mal-modal-header,
+.mal-modal-body .broadcasts {
 	border-color: hsla(var(--text), 12%) !important;
 }
 
