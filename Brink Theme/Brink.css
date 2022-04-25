@@ -2224,16 +2224,18 @@ body #fancybox-close {
   @GDPR
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-#gdpr-modal-bottom {
-	filter: invert(0.9) hue-rotate(180deg);
-}
-
 #gdpr-modal-bottom .modal-wrapper {
+	filter: invert(0.9) hue-rotate(180deg);
 	width: 100%;
+	margin: 0;
 }
 
 #gdpr-modal-bottom .text {
 	width: 100%;
+}
+
+#gdpr-modal-bottom a {
+	color: #1d439b;
 }
 
 
