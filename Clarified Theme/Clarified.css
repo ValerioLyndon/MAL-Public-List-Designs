@@ -1,0 +1,2072 @@
+/**
+ * "Clarified" by Valerio Lyndon
+ * a Tokyo Revengers design
+ * v1.1.0
+ */
+
+
+
+/*=========
+  !IMPORTS
+  =========*/
+
+@\import "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap";
+
+
+
+/*=========
+  !PAGE-BASE
+  =========*/
+
+/* Scrollbars */
+
+html {
+	scrollbar-color: var(--scroll-thumb) var(--content-background);
+}
+
+
+*, *::before, *::after {
+	box-sizing: inherit;
+} html {
+	box-sizing: border-box;
+}
+
+body.ownlist {
+	position: relative;
+	min-width: 1060px;
+	background-color: var(--page-background) !important;
+	background-size: cover;
+	color: var(--content-text) !important;
+}
+
+body.ownlist,
+.cover-block .image-container:hover .btn-list-setting,
+.list-menu-float .icon-menu .text,
+.status-menu-container .status-menu .status-button,
+.list-unit .list-status-title .text,
+.list-table .list-table-data .tags .edit,
+#footer-block,
+#advanced-options,
+#advanced-options .sort-widget .widget-header,
+#advanced-options .filter-widget .widget-header,
+div[style^="width: 300px;"],
+input,
+textarea,
+select {
+	font-family: "Noto Sans", Arial, "Helvetica Neue", Helvetica, FontAwesome, sans-serif !important;
+}
+
+a,
+.list-table .list-table-data .data a {
+	color: var(--content-text) !important;
+}
+a:not(.edit-disabled):not(.hover_info):hover,
+.header a:hover,
+.list-table .list-table-data .data a:not(.edit-disabled):hover,
+.list-table .list-table-header .header-title .link.sort:hover {
+	color: var(--content-link) !important;
+	text-decoration: underline;
+}
+
+input,
+textarea,
+select {
+	background: var(--content-highlight);
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	color: var(--content-text);
+}
+
+select,
+#advanced-options select,
+#advanced-options select:disabled {
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%23888888'><polygon points='0,0 100,0 50,50'/></svg>");
+	background-size: 10px auto;
+	background-position: calc(100% - 6px) calc(50% + 3px);
+	background-repeat: no-repeat;
+}
+
+.list-container {
+	width: 100%;
+	padding-top: 75px;
+	background: none !important;
+	border: none;
+}
+
+.list-block {
+	width: 100%;
+	min-height: calc(100vh - 575px  - 190px);
+	margin: 0 !important;
+}
+
+.list-unit {
+	width: 100%;
+	background: none;
+}
+
+.list-table {
+	display: block;
+	width: 1060px;
+	border: none;
+}
+
+/* Ad area */
+div[style="padding-top: 8px"] {
+	padding: 0 !important;
+}
+
+
+
+/*=========
+  !HEADER
+  =========*/
+
+.header {
+	width: 100%;
+	height: 400px;
+	color: var(--image-text);
+	line-height: 20px;
+	text-shadow: var(--image-shadow);
+}
+
+.header a {
+	color: var(--image-text) !important;
+}
+
+.header .header-title {
+	top: auto;
+	left: calc(50% + 456px);
+	bottom: 15px;
+	width: 74px;
+	height: 32px;
+	padding: 6px;
+	background: var(--image-background);
+	border-radius: 3px;
+	font-size: 0;
+	text-indent: 0;
+	text-decoration: none !important;
+}
+.header .header-title::before {
+	content: "\f015  Home";
+	font-size: 14px;
+}
+.header .header-title:hover::before {
+	text-decoration: underline;
+}
+
+.header .header-menu {
+	top: auto !important;
+	bottom: 15px;
+	left: calc(50% - 530px);
+	right: auto;
+	padding: 6px;
+	background: var(--image-background);
+	border-radius: 3px;
+	text-align: left;
+}
+
+.header .header-menu .btn-menu {
+	font-size: 14px;
+	text-align: left;
+	cursor: text;
+}
+
+#header-menu-button {
+	font-weight: normal;
+	color: inherit;
+	pointer-events: none;
+}
+#header-menu-button i {
+	display: none;
+}
+
+.header .header-info {
+	display: inline;
+	margin: 0;
+	font-size: 14px;
+}
+#header-menu-dropdown::before {
+	content: " -";
+	white-space: pre;
+}
+
+#header-menu-dropdown {
+	position: static;
+	display: inline !important;
+	background: none;
+	border: none;
+	box-shadow: none;
+	vertical-align: baseline;
+}
+#header-menu-dropdown .icon-menu {
+	display: inline;
+	background: none;
+	color: var(--image-text);
+	transition: none;
+}
+#header-menu-dropdown .icon-menu:hover {
+	color: var(--content-link);
+	text-decoration: underline;
+}
+#header-menu-dropdown svg,
+#header-menu-dropdown .text {
+	position: static;
+	fill: currentcolor;
+	color: inherit;
+}
+#header-menu-dropdown svg {
+	height: 16px;
+	vertical-align: top;
+	margin-top: 2px;
+}
+
+
+
+/*=========
+  !USER-MENU
+  =========*/
+
+.list-menu-float {
+	position: absolute;
+	top: 391px;
+	left: calc(50% + 322px);
+	z-index: 15;
+	display: block;
+	width: 170px;
+	background: var(--content-background);
+	border: none;
+	box-shadow: var(--medium-shadow);
+	padding: 12px;
+	border-radius: 6px;
+	visibility: hidden;
+} .list-menu-float:hover {
+	visibility: visible;
+}
+
+.list-menu-float::before {
+	content: "";
+	position: absolute;
+	left: 49px;
+	top: -38px;
+	width: 72px;
+	height: 32px;
+	background: var(--image-background);
+	border-radius: 3px;
+	visibility: visible;
+}
+
+.list-menu-float .icon-menu.profile {
+	position: absolute;
+	top: -32px;
+	left: 55px;
+	width: 60px;
+	height: 38px;
+	padding: 0;
+	background-size: 0px;
+	background-repeat: no-repeat;
+	color: var(--image-text) !important;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: bold;
+	white-space: nowrap;
+	text-shadow: var(--image-shadow);
+	opacity: 1;
+	visibility: visible;
+} .list-menu-float:hover .icon-menu.profile {
+	color: var(--content-link) !important;
+}
+.list-menu-float .icon-menu.profile::before {
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: inherit;
+	background-size: cover;
+	border-radius: 50%;
+	vertical-align: top;
+}
+.list-menu-float .icon-menu.profile::after {
+	content: "User";
+}
+
+.list-menu-float .icon-menu {
+	width: auto;
+	height: auto;
+	float: left;
+	clear: both;
+	padding: 3px 0 3px 24px;
+	background-color: transparent !important;
+	color: var(--content-text);
+	text-align: left;
+	/* opacity is only to fix flicker in firefox while using visibility on its own */
+	opacity: 0;
+	transition: none;
+} .list-menu-float .icon-menu:hover {
+	color: var(--content-link);
+}
+.list-menu-float:hover .icon-menu {
+	opacity: 1;
+}
+
+.list-menu-float .icon-menu svg.icon,
+.list-menu-float .icon-menu:hover svg.icon {
+	left: 0 !important;
+	top: 50% !important;
+	height: 16px;
+	color: inherit;
+	fill: currentcolor;
+	vertical-align: top;
+	transform: translateY(-50%);
+}
+
+.list-menu-float .icon-menu .text,
+.list-menu-float .icon-menu:hover .text,
+.list-menu-float .icon-menu.setting .text,
+.list-menu-float .icon-menu.setting:hover .text,
+.list-menu-float .icon-menu.setting .text .link-list-setting,
+.list-menu-float .icon-menu.setting .text .link-style-setting,
+.list-menu-float .icon-menu.setting:hover .text .link-list-setting,
+.list-menu-float .icon-menu.setting:hover .text .link-style-setting,
+.list-menu-float .icon-menu.setting .text .link-list-setting:hover,
+.list-menu-float .icon-menu.setting .text .link-style-setting:hover {
+	position: static !important;
+	width: auto;
+	height: auto;
+	background: none !important;
+	border: none;
+	overflow: visible;
+	color: inherit;
+	font-size: 14px;
+	line-height: 19px;
+	text-align: left;
+	opacity: 1 !important;
+	transition: none;
+} .list-menu-float .icon-menu:not(.setting):hover .text,
+.list-menu-float .icon-menu.setting .text a:hover {
+	text-decoration: underline !important;
+}
+
+.list-menu-float .icon-menu.setting {
+	padding: 0;
+}
+
+.list-menu-float .icon-menu.setting svg.icon {
+	display: none;
+}
+
+.list-menu-float .icon-menu.setting .text .link-list-setting, .list-menu-float .icon-menu.setting .text .link-style-setting {
+	padding: 3px 0;
+	color: var(--content-text) !important;
+} .list-menu-float .icon-menu.setting .text .link-list-setting:hover,
+.list-menu-float .icon-menu.setting .text .link-style-setting:hover {
+	color: var(--content-link) !important;
+}
+
+.list-menu-float .icon-menu.setting .text a::before {
+	width: 24px;
+	display: inline-block;
+	font-weight: bold;
+	font-size: 16px;
+}
+.list-menu-float .icon-menu.setting .text .link-list-setting::before {
+	content: "\f013";
+}
+.list-menu-float .icon-menu.setting .text .link-style-setting::before {
+	content: "\f53f";
+}
+
+
+
+/*=========
+  !BACKGROUND
+  =========*/
+
+body::before {
+	content: "";
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	min-width: 1060px;
+	height: 1080px;
+	pointer-events: none;
+	background: url(https://files.catbox.moe/4qakey.webp) center bottom / contain no-repeat;
+	opacity: var(--auxiliary-background-image-opacity);
+}
+
+
+
+/*=========
+  !COVER
+  =========*/
+
+.header::before,
+.header::after {
+	content: "";
+	position: absolute;
+	pointer-events: none;
+}
+.header::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 400px;
+	background: var(--cover) / cover var(--inverse-background);
+	box-shadow: inset 0 -2px 8px rgba(0,0,0,0.18);
+}
+.header::after {
+	top: calc(50% - 60px);
+	left: calc(50% - 200px + (330px * var(--multiplier)));
+	width: 400px;
+	height: 120px;
+	background: url(https://i.imgur.com/dO2SV6w.png) center / contain no-repeat;
+	animation: intro 1s cubic-bezier(.13,.59,.39,1.1) 0.5s backwards 1, shrink 1.5s cubic-bezier(.3,.29,.12,1) 4s forwards 1;
+	transform-origin: center;
+}
+@keyframes intro {
+	0% {
+		opacity: 0;
+		transform: translateX(calc(140px * var(--multiplier)));
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+@keyframes shrink {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translate(calc(100px * var(--multiplier)),-170px) scale(0.5);
+	}
+}
+
+.cover-block {
+	width: 1060px;
+}
+
+#cover-image-container {
+	padding: 0;
+}
+
+.btn-list-setting {
+	display: none !important;
+}
+
+#cover-image {
+	width: 1060px;
+	max-width: initial;
+	border-radius: 6px;
+	margin: 0 auto 15px;
+	box-shadow: var(--mild-shadow);
+}
+
+
+
+/*=========
+  !STATUS-MENU
+  =========*/
+
+.status-menu-container {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 60px;
+	background: var(--content-background);
+	border: none;
+	box-shadow: var(--medium-shadow);
+}
+#status-menu.fixed {
+	z-index: 10;
+}
+
+#status-menu .status-menu {
+	position: relative;
+	display: flex;
+	width: 1060px;
+	justify-content: left;
+}
+
+#status-menu .status-button {
+	padding: 0 6px 0 12px;
+	margin-right: 7px;
+	color: var(--content-text);
+	font-size: 16px;
+	line-height: 60px;
+}
+
+.status-button:nth-of-type(1)::before {
+	content: "\f621  ";
+}
+.status-button:nth-of-type(2)::before {
+	content: "\f06e  ";
+}
+.status-button:nth-of-type(3)::before {
+	content: "\f00c  ";
+}
+.status-button:nth-of-type(4)::before {
+	content: "\f04c  ";
+}
+.status-button:nth-of-type(5)::before {
+	content: "\f00d  ";
+}
+.status-button:nth-of-type(6)::before {
+	content: "\f141  ";
+}
+
+#status-menu .status-button::after {
+	bottom: 25%;
+	width: 0;
+	height: 50%;
+	background: none;
+	border-left: 2px dotted var(--border);
+	opacity: 0;
+}
+#status-menu .status-button + .status-button::after {
+	opacity: 1;
+}
+
+/* @Search */
+
+.status-menu-container .search-container {
+	top: 0;
+}
+
+.status-menu-container .search-container #search-box {
+	width: 140px !important;
+	height: 24px;
+	background: var(--content-highlight);
+	border-radius: 3px;
+	margin-top: 18px;
+}
+#search-box::before {
+	content: "Search for a title...";
+	display: block;
+	height: 0px;
+	padding-left: 3px;
+	line-height: 24px;
+	pointer-events: none;
+	opacity: 0.5;
+}
+#search-box:focus-within::before {
+	opacity: 0;
+}
+
+.status-menu-container .search-container #search-box input {
+	padding: 3px;
+	background: none;
+	border: none;
+}
+#search-box input:not(:focus) {
+	opacity: 0;
+}
+
+.status-menu-container .search-container #search-button {
+	color: var(--content-text);
+	font-size: 16px;
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+#search-button i {
+	line-height: 24px;
+}
+
+
+
+/*=========
+  !CATEGORY-HEADER
+  =========*/
+
+.list-unit .list-status-title {
+	width: 1042px;
+	background: none;
+	margin: 0 auto 15px;
+}
+
+.list-unit .list-status-title .text {
+	width: auto;
+	padding: 0 6px;
+	background: var(--page-background);
+	border-radius: 6px;
+	float: left;
+	line-height: 38px;
+	color: var(--content-text);
+	text-align: left;
+}
+
+.list-unit .list-status-title .stats {
+	height: 38px;
+	right: 0;
+	height: auto;
+	padding: 12px 12px 12px 0;
+	background: var(--page-background);
+	border-radius: 6px;
+	line-height: 1;
+}
+
+.list-unit .list-status-title .stats a {
+	margin: 0 0 0 12px;
+	color: var(--content-text);
+	font-size: 14px;
+	font-weight: bold;
+} .list-unit .list-status-title .stats a:hover {
+	color: var(--content-link);
+}
+
+
+
+/*=========
+  !STATS
+  =========*/
+
+.list-unit .list-stats {
+	width: 1042px;
+	padding: 0 6px;
+	background: var(--page-background);
+	border-radius: 6px;
+	margin: -9px auto 15px !important;
+	color: var(--content-text);
+	font-size: 14px;
+	text-align: left;
+}
+.list-unit .list-stats[style*="block;"] {
+	height: 30px !important;
+}
+
+
+
+/*=========
+  !LIST
+  =========*/
+
+.list-table > tbody {
+	display: block;
+	width: 1060px;
+	background: var(--content-background) !important;
+	box-shadow: var(--mild-shadow);
+	border-radius: 6px;
+	margin-bottom: 6px;
+}
+
+.list-item {
+	min-height: 64px;
+	padding: 3px 0;
+}
+
+.list-table > tbody:first-of-type {
+	position: sticky;
+	top: 65px;
+	z-index: 10;
+	box-shadow: var(--medium-shadow);
+}
+
+.list-item tr {
+	padding: 3px;
+}
+
+tr.list-table-data {
+	position: relative;
+	display: grid;
+	padding: 3px 23px 3px 10px;
+	grid-template-columns: 0fr [number] 21px [status] 0fr [image] 1fr [title] repeat(47, 0fr);
+	grid-template-rows: auto 0fr [tags] 0fr [genre] 0fr [demographic];
+	grid-gap: 0px;
+	align-items: center;
+}
+
+.list-table-header {
+	display: flex;
+	padding: 0 23px 0 10px;
+}
+
+.list-table .list-table-data .data {
+	padding: 0;
+	border: none;
+	margin-right: 3px;
+}
+
+
+/*---------
+  @List-Header
+  ---------*/
+
+.list-table .list-table-header .header-title {
+	position: relative;
+	height: auto;
+	padding: 15px 0;
+	background: none;
+	border: none;
+	flex: 0 0 auto;
+	margin-right: 3px;
+	line-height: 15px;
+}.list-table .list-table-header .header-title .link,
+.list-table .list-table-header .header-title .link.sort {
+	transition: none;
+	color: var(--content-text);
+}
+
+.list-table .list-table-header .header-title .sort-icon {
+	font-size: 11px;
+	color: var(--content-link);
+}
+
+/* column icon styles */
+.header-title a::before {
+	font-size: 11px;
+	vertical-align: top;
+	display: inline-block;
+}
+.header-title a:hover::before {
+	text-decoration: underline;
+}
+
+/* description on hover for icons, activated by adding "content" property later on specific column headers */
+.header-title a::after {
+	position: absolute;
+	top: -17px;
+	left: 50%;
+	z-index: 1;
+	padding: 3px;
+	background: var(--content-background);
+	box-shadow: var(--mild-shadow);
+	color: var(--content-text);
+	font-size: 11px;
+	text-indent: 0;
+	transform: translateX(-50%);
+	pointer-events: none;
+}
+.header-title a[href*="order2=0"]:not([href*="order="]):hover::after {
+	content: "Reset sort";
+}
+
+/* hidden column headers */
+.header-title.finished + .days,
+.header-title.tags,
+.header-title.genre {
+	display: none !important;
+}
+
+
+/*---------
+  @Status
+  ---------*/
+
+.header-title.status {
+	width: 18px !important;
+	order: 2;
+}
+
+.header-title.status::before {
+	content: "\f621";
+}
+
+.data.status {
+	width: 18px !important;
+	height: 18px;
+	border-radius: 50%;
+	margin-left: auto;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	color: var(--inverse-text);
+	line-height: 18px;
+}
+.data.status.watching::after,
+.data.status.reading::after {
+	content: "\f06e ";
+} .data.status.completed::after {
+	content: "\f00c ";
+} .data.status.onhold::after {
+	content: "\f04c ";
+} .data.status.dropped::after {
+	content: "\f00d ";
+} .data.status.plantowatch::after,
+.data.status.plantoread::after {
+/* 	content: "\f2f2 "; */
+	content: "\f141 ";
+}
+
+
+/*---------
+  @Number
+  ---------*/
+
+.header-title.number,
+.data.number {
+	width: 32px !important;
+	margin-left: -10px;
+	order: 1;
+}
+
+.header-title.number {
+	font-family: var(--icon-font);
+}
+
+.data.number {
+	grid-column-start: 1;
+	grid-row-start: 1;
+}
+
+
+/*---------
+  @Image
+  ---------*/
+
+.header-title.image {
+	width: 56px !important;
+	text-indent: 6px;
+	order: 3;
+}
+
+.data.image {
+	width: 50px;
+	height: 50px;
+	margin-left: 6px;
+	grid-column-start: 3;
+	grid-row-start: 1;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.list-table .list-table-data .data.image .image {
+	width: 50px;
+	height: 50px;
+	border: none;
+	object-fit: cover;
+}
+.data.image:hover .image {
+	opacity: 0.5;
+}
+
+
+/*---------
+  @Type
+  ---------*/
+
+.header-title.type,
+.data.type {
+	width: 50px !important;
+	order: 40;
+}
+
+
+/*---------
+  @Title
+  ---------*/
+
+.header-title.title {
+	width: 50% !important;
+	flex: 1 1 auto !important;
+	order: 5;
+}
+
+.data.title {
+	padding: 0 6px !important;
+	grid-column-start: 3;
+	grid-column-end: 5;
+	grid-row-start: 1;
+}
+.data.image + .title {
+	margin-left: 59px;
+}
+
+/* Icon Watch */
+
+.icon-watch2 {
+	float: right;
+	line-height: 16px;
+}
+
+.mal-icon {
+	margin-left: 3px;
+}
+
+.malicon {
+	color: var(--inverse-background) !important;
+	line-height: inherit;
+}
+
+/* Content Status */
+
+.list-table .list-table-data .data.title .rewatching,
+.list-table .list-table-data .data.title .rereading,
+.list-table .list-table-data .data.title .content-status {
+	padding: 0 4px;
+	border: 1px dashed var(--border);
+	border-radius: 3px;
+	float: right;
+	color: var(--content-text);
+	line-height: 16px;
+}
+
+/*---------
+  @Add-Edit-More
+  ---------*/
+
+.list-table .list-table-data .data.title .add-edit-more {
+	position: absolute;
+	right: 0;
+	top: -3px;
+	z-index: 4;
+	width: 26px;
+	padding: 3px;
+	height: calc(100% + 6px);
+	border-radius: 6px;
+	background: var(--content-highlight);
+/* 	border-left: 2px dotted var(--border); */
+	margin: 0;
+	font-size: 0;
+	line-height: 0;
+}
+.list-table .list-table-data .tags .edit {
+	position: absolute;
+	right: 3px;
+	top: 47px;
+	z-index: 4;
+}
+
+.add-edit-more a,
+.list-table .list-table-data .tags .edit {
+	display: flex;
+	width: auto;
+	height: 20px;
+	border-radius: 3px;
+	margin-bottom: 4px;
+	float: right;
+	clear: both;
+	color: var(--content-text) !important;
+	font-size: 0;
+	line-height: 20px;
+	text-align: center;
+	white-space: nowrap;
+}
+#list-container .add-edit-more a:hover,
+#list-container .list-table .list-table-data .tags .edit:hover {
+	background: var(--inverse-background);
+	color: var(--inverse-text) !important;
+	font-size: 12px;
+	padding: 0 0 0 6px;
+}
+
+.add-edit-more a::before,
+.tags .edit::before {
+	width: 20px;
+	font-size: 12px;
+	line-height: 20px;
+	margin-left: 3px;
+	order: 1;
+}
+.add-edit-more a:hover::before {
+	
+}
+.add-edit-more .add a::before {
+	content: "\2b";
+	font-family: var(--icon-font);
+}
+.add-edit-more .edit a::before {
+	content: "\f304";
+}
+.add-edit-more .more a::before {
+	content: "\e3d6";
+}
+.data.tags .edit::before {
+	content: "\e211";
+	
+}
+.data.tags .edit::after {
+	content: " Tags";
+	white-space: pre;
+}
+
+
+/*---------
+  @Score
+  ---------*/
+
+.header-title.score,
+.data.score {
+	width: 23px !important;
+	order: 7;
+}
+
+.header-title.score a {
+	font-size: 0 !important;
+}
+.header-title.score a::before {
+	content: "Scr.";
+}
+
+.data.score a {
+	display: block;
+	width: 23px;
+	height: 23px;
+	background: var(--button);
+	border-radius: 50%;
+	line-height: 23px;
+}
+
+.data.score select {
+	position: relative;
+	background: var(--button);
+	height: 23px;
+	width: 43px;
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	margin-left: -10px;
+	color: var(--content-text);
+}
+
+/* Prevent layout flicker while opening or closing score input field. This issue is present on the default list CSS */
+.data.score a:not([style="display: none;"]) + select {
+	display: none;
+}
+
+
+/*---------
+  @Progress
+  @Priority
+  ---------*/
+
+.header-title.progress,
+.header-title.chapters,
+.header-title.volumes,
+.header-title.priority {
+	width: 90px !important;
+	order: 10;
+}
+
+.data.progress,
+.data.chapter,
+.data.volume,
+.data.priority {
+	display: flex !important;
+	width: 90px;
+	height: 100%;
+	order: 10;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Progress */
+
+[class^="icon-add-"] i {
+	font-weight: 400;
+}
+
+/* Priority */
+
+.header-title.progress ~ .priority,
+.header-title.chapters ~ .priority,
+.header-title.volumes ~ .priority {
+	width: 20px !important;
+	margin-left: -23px;
+}
+.header-title.progress ~ .priority a,
+.header-title.chapters ~ .priority a,
+.header-title.volumes ~ .priority a {
+	font-size: 0 !important;
+}
+.header-title.progress ~ .priority a::before,
+.header-title.chapters ~ .priority a::before,
+.header-title.volumes ~ .priority a::before {
+	content: "\f0f3";
+	font-size: 11px;
+}
+.header-title.progress ~ .priority a:hover::after,
+.header-title.chapters ~ .priority a:hover::after,
+.header-title.volumes ~ .priority a:hover::after {
+	content: "Priority";
+}
+
+.data.progress ~ .priority,
+.data.chapter ~ .priority,
+.data.volume ~ .priority {
+	background: var(--content-background);
+	margin-left: -93px;
+	pointer-events: none;
+}
+.data.progress:hover ~ .priority,
+.data.chapter:hover ~ .priority,
+.data.volume:hover ~ .priority {
+	opacity: 0;
+}
+
+.data.priority::before {
+	content: "\f0f3 ";
+	margin-right: 3px;
+}
+
+/* Hide priority column on non-planned items */
+.data.status:not([class*="planto"]) ~ .priority {
+	display: none;
+}
+
+
+/*---------
+  @Dates
+  @Started
+  @Finished
+  @Days
+  @Airing
+  ---------*/
+
+/* Header
+
+Includes various jank code that only exists to properly position the season column.
+
+Please MAL I am begging you, just add another selector to the date column headers so I don't have to do these awful hacks anymore. I just want a .header-title.started.user-started and .header-title.started.airing-started selector please. */
+
+.header-title.days {
+	width: 70px !important;
+	order: 25;
+}
+
+.header-title.started,
+.header-title.finished {
+	width: auto !important;
+	background: var(--content-background) !important;
+	order: 25;
+	text-align: left !important;
+	font-size: 0;
+}
+.header-title.started {
+	margin-right: 46px !important;
+}
+.header-title.finished {
+	margin-left: -46px !important;
+}
+.header-title.started + .started {
+	margin-left: -46px !important;
+}
+.header-title.started + .started + .finished {
+	margin-right: 49px !important;
+}
+
+.header-title.started a,
+.header-title.finished a {
+	width: 33px;
+	font-size: 0 !important;
+	text-indent: 6px;
+}
+.header-title.finished a {
+	width: 37px;
+}
+
+.header-title.started a::before {
+	content: "\f251";
+}
+.header-title a[href*="order=3"]:hover::after,
+.header-title a[href*="order=-3"]:hover::after {
+	content: "User Started";
+}
+.header-title a[href*="order=14"]:hover::after,
+.header-title a[href*="order=-14"]:hover::after {
+	content: "Airing Started";
+}
+.header-title a[href*="order=12"]:hover::after,
+.header-title a[href*="order=-12"]:hover::after {
+	content: "Publishing Started";
+}
+
+.header-title.finished a::before {
+	content: "\f253";
+}
+.header-title a[href*="order=2"]:hover::after,
+.header-title a[href*="order=-2"]:hover::after {
+	content: "User Finished";
+}
+.header-title a[href*="order=15"]:hover::after,
+.header-title a[href*="order=-15"]:hover::after {
+	content: "Airing Finished";
+}
+.header-title a[href*="order=13"]:hover::after,
+.header-title a[href*="order=-13"]:hover::after {
+	content: "Publishing Finished";
+}
+
+.header-title.started::before {
+	content: "Season";
+	position: absolute;
+	left: 0;
+	z-index: -1;
+	width: 46px;
+	text-align: center;
+	font-size: 11px;
+	line-height: 15px;
+}
+.header-title.started + .started::before {
+	left: calc(100% + 40px);
+}
+
+/* Column */
+
+.data.started,
+.data.finished,
+.data.days,
+.data.airing-started,
+.data.airing-finished {
+	position: relative;
+	display: flex !important;
+	width: 70px;
+	height: 14px;
+	flex-flow: row wrap;
+	overflow: hidden;
+	order: 25;
+	font-size: 10px;
+	line-height: 14px;
+	text-align: left !important;
+}
+.data.started {
+	top: -20px;
+}
+.data.finished {
+	top: 0;
+	margin: 20px 0 20px -73px;
+}
+.data.started ~ .data.days {
+	top: 20px;
+	margin-left: -73px;
+}
+.data.airing-started {
+	top: -10px;
+}
+.data.airing-finished {
+	top: 10px;
+	margin-left: -73px;
+}
+
+/* Icons */
+.data.started:before,
+.data.finished:before,
+.data.days:before,
+.data.airing-started:before,
+.data.airing-finished:before {
+	display: inline-block;
+	width: 14px;
+	margin-right: 3px;
+	flex: 0 0 auto;
+	text-align: right;
+}
+.data.started:before,
+.data.airing-started:before {
+	content: "\f251";
+}
+.data.finished:before,
+.data.airing-finished:before {
+	content: "\f253";
+}
+.data.days:before {
+	content: "\e29e";
+}
+.data.days:hover:before {
+	content: "\e29e  Days";
+	width: 70px;
+	margin-left: 4px;
+	text-align: left;
+	cursor: help;
+}
+
+/* Empty column text - thanks to its fixed width, any text in the column will push this to the next line, which hides it due to "overflow: hidden" on the parent. */
+.data.airing-started::after,
+.data.airing-finished::after,
+.data.started::after,
+.data.finished::after,
+.data.days::after {
+	content: "None";
+	display: block;
+	width: calc(70px - 21px);
+	opacity: 0.35;
+}
+
+
+/*---------
+  @Generic
+  @Rated
+  @Magazine
+  @Storage
+  @Retail
+  @Season
+  ---------*/
+
+.data.rated,
+.data.magazine,
+.data.storage,
+.data.retail,
+.data.season {
+	height: 1.5em;
+	margin-right: 4px;
+	overflow: hidden;
+	line-height: 1.5em;
+}
+.header-title.rated,
+.data.rated {
+	width: 40px !important;
+	order: 28;
+}
+.header-title.magazine,
+.data.magazine {
+	width: 90px !important;
+	order: 26;
+}
+.header-title.storage,
+.header-title.retail,
+.data.storage,
+.data.retail {
+	width: 72px !important;
+	order: 19;
+}
+
+/* Season */
+
+.data.season {
+	position: relative;
+	width: 43px;
+	order: 26;
+	height: auto;
+}
+
+.data.season span {
+	display: flex;
+	height: 3em;
+	overflow: hidden;
+	flex-flow: column-reverse nowrap;
+	line-height: 3em;
+	font-weight: bold;
+}
+
+.data.season a {
+	width: 4ch;
+	margin: 0 0 0 auto;
+}
+.data.season a::first-line {
+	font-size: 9px;
+	font-weight: 400;
+}
+
+.data.season a::after {
+	position: absolute;
+	left: 0;
+	font-size: 1.5em;
+	opacity: 0.35;
+}
+.data.season a[href$="winter"]::after {
+	content: "\f2dc";
+}
+.data.season a[href$="summer"]::after {
+	content: "\f763";
+}
+.data.season a[href$="fall"]::after {
+	content: "\f06c";
+}
+.data.season a[href$="spring"]::after {
+	content: "\f801";
+}
+
+/* Empty column text - thanks to its fixed width, any text in the column will push this to the next line, which hides it due to "overflow: hidden" on the parent. */
+.data.rated::after,
+.data.magazine::after,
+.data.storage::after,
+.data.retail::after,
+.data.season:empty::after {
+	content: "None";
+	display: block;
+	opacity: 0.35;
+}
+.data.rated::after {
+	content: "N/A";
+	width: 40px;
+}
+.data.magazine::after {
+	width: 90px;
+}
+.data.storage::after,
+.data.retail::after {
+	width: 72px;
+}
+
+.data.storage:empty::after {
+	content: "fuck";
+}
+
+
+/*---------
+  @Tags
+  @Genres
+  @Demographic
+  @Studio
+  @Licensor
+  ---------*/
+
+.data.tags,
+.data.genre,
+.data.demographic,
+.data.studio,
+.data.licensor {
+	order: 35;
+	line-height: 1;
+}
+.header-title.demographic,
+.data.demographic {
+	width: 80px !important;
+	order: 35;
+}
+
+.manga .header-title:not(.genre) + .demographic {
+	display: none;
+}
+
+/* Empty Columns */
+
+.data.demographic:empty::after,
+.data.licensor:empty::after,
+.data.studio:empty::after,
+.data.genre:empty::after {
+	content: "None";
+	font-size: 11px;
+	display: block;
+	opacity: 0.35;
+}
+
+/* Studio & Licensor */
+
+.header-title.studio,
+.header-title.licensor {
+	width: 100px !important;
+	order: 35;
+}
+
+.data.studio,
+.data.licensor {
+	display: flex !important;
+	flex-flow: column nowrap;
+	align-items: center;
+	width: 100px;
+	font-size: 0;
+}
+
+.data.studio a,
+.data.licensor a {
+	display: inline-block;
+	max-width: 100px;
+	overflow: hidden;
+	font-size: 11px;
+	line-height: 16px;
+	white-space: nowrap;
+	text-overflow: ellipsis; /*other browsers*/
+	text-overflow: ".."; /*firefox*/
+}
+
+.data.studio span + span,
+.data.licensor span + span {
+	min-width: 70px;
+	border-top: 2px dotted var(--border);
+	margin-top: 2px;
+}
+
+/* Tags & Genre & Manga Demographic */
+
+.data.tags,
+.data.genre {
+	grid-column-start: 1;
+	grid-column-end: 51;
+}
+.data.tags,
+.data.genre {
+	width: 100%;
+	grid-row-start: tags;
+	text-align: left !important;
+}
+.data.tags {
+	width: 60%;
+	margin-left: auto;
+	text-align: right !important;
+}
+.data.tags ~ .genre {
+	width: 40%;
+}
+/* I'm begging you to add a .demographic class to the mangalist, same as the animelist has */
+.data.genre + .genre {
+	width: 80px;
+	grid-column-start: initial;
+	grid-row-start: initial;
+	grid-column-end: initial;
+	order: 35;
+	text-align: center !important;
+}
+
+.data.tags div,
+.data.genre {
+	font-size: 0;
+}
+
+.data.tags div:not(:empty),
+.data.genre:not(:empty) {
+	margin-top: 3px;
+}
+.data.genre + .genre {
+	margin-top: 0;
+}
+
+.data.tags span a,
+.data.genre a[href*="genre="] {
+	display: inline-block;
+	padding: 3px;
+	border: 1px solid var(--border);
+	border-radius: 3px;
+	margin-right: 3px;
+	font-size: 11px;
+}
+.data.genre a[href*="demographic="] {
+	font-size: 11px;
+}
+.list-table .list-table-data .data.tags span a:hover,
+.list-table .list-table-data .data.genre span a[href*="genre="]:hover {
+	background: var(--inverse-background);
+	color: var(--inverse-text) !important;
+}
+
+.data.tags span a::before,
+.data.genre span a::before {
+	margin-right: 3px;
+}
+.data.tags span a::before {
+	content: "\23";
+	font-family: var(--icon-font);
+}
+.data.genre span a[href*="genre="]::before {
+	content: "\f02b";
+}
+
+.data.tags textarea {
+	width: calc(100% - 6px) !important;
+	margin-top: 3px;
+	float: left;
+	font-size: 12px;
+	resize: vertical;
+}
+
+
+/*---------
+  @Empty-Table
+  ---------*/
+
+.list-table[data-items="[]"] > tbody {
+	display: none;
+}
+
+.list-table[data-items="[]"]::after {
+	display: block;
+	width: 600px;
+	height: 60px;
+	padding: 20px;
+	background: var(--content-background);
+	border-radius: 6px;
+	box-shadow: var(--mild-shadow);
+	margin: 30px auto 0;
+	font-size: 14px;
+	line-height: 20px;
+	text-align: center;
+	
+	/* No Entries (Generic/Non-Owner) */
+	content: "No entries found.";
+}
+[data-owner="1"] .list-table[data-items="[]"]::after {
+	/* No Entries (Owner) */
+	content: "No entries found. Why not add some?";
+}
+[data-query*='"s":'] .list-table[data-items="[]"]::after,
+[data-query*='"airing_status":'] .list-table[data-items="[]"]::after,
+[data-query*='"producer":'] .list-table[data-items="[]"]::after,
+[data-query*='"aired_from_year":'] .list-table[data-items="[]"]::after,
+[data-query*='"aired_to_year":'] .list-table[data-items="[]"]::after,
+[data-query*='"season":'] .list-table[data-items="[]"]::after {
+	/* No Entries (Bad Search) */
+	content: "No entries found. Perhaps your search terms are too restrictive?";
+}
+
+
+/*---------
+  @More-Info
+  ---------*/
+
+.list-table .more-info[style$="table-row;"] {
+	display: block !important;
+	border: none;
+	border-top: 1px dashed var(--border);
+	margin-top: 10px;
+}
+
+.td1 div a::before {
+	content: "\f075  ";
+	font-weight: bold;
+}
+
+.td1 a {
+	color: var(--content-link) !important;
+}
+
+
+/*---------
+  @Loading
+  ---------*/
+
+.list-unit .loading-space {
+	margin: 0;
+	height: auto;
+}
+
+#loading-spinner {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	margin: 15px auto 0;
+	animation: none;
+}
+#loading-spinner::before,
+#loading-spinner::after {
+	content: "\f3f4";
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 40px;
+	line-height: 40px;
+	text-align: center;
+	animation: 800ms ease-in-out 0s infinite custom-spin; 
+}
+#loading-spinner::after {
+	animation-delay: -0.15s;
+}
+@keyframes custom-spin {
+	from {
+		transform: rotate(-60deg);
+	} to {
+		transform: rotate(300deg);
+	}
+}
+
+
+
+
+
+
+
+
+/*=========
+  !FOOTER
+  =========*/
+
+#footer-block {
+	width: 700px !important;
+	padding: 25px 0;
+	margin: 40px auto;
+	background: var(--inverse-background);
+	line-height: 18px;
+}
+
+/* Logo */
+#footer-block::before {
+	content: "";
+	display: block;
+	height: 30px;
+	margin-bottom: 18px;
+	background: url(https://i.imgur.com/cQMtze0.png) center / contain no-repeat;
+}
+
+#copyright,
+#recaptcha-terms {
+	color: var(--inverse-text);
+}
+
+#recaptcha-terms a {
+	color: inherit !important;
+}
+
+#copyright::before {
+	content: "Tokyo Revengers images ©Ken Wakui, KODANSHA / TOKYO REVENGERS Anime Production Committee.\a ";
+	white-space: pre-wrap;
+}
+#copyright:after {
+	content: "\a List design by Valerio Lyndon.";
+	white-space: pre-wrap;
+}
+#recaptcha-terms {
+	margin: 0;
+	font-size: 9px;
+	line-height: 16px;
+}
+#recaptcha-terms::before {
+	content: "Background photo created by evening_tao - www.freepik.com\a ";
+	white-space: pre-wrap;
+}
+
+
+
+/*=========
+  !OVERLAYS
+  =========*/
+
+#fancybox-overlay {
+	background: #010001 !important;
+}
+
+#fancybox-wrap {
+	box-sizing: initial;
+}
+
+#fancybox-outer {
+	background: var(--content-background);
+}
+
+#fancybox-inner {
+	color: var(--content-text);
+}
+
+/* Close Button */
+
+body #fancybox-close {
+	top: -8px;
+	right: -8px;
+	width: 24px;
+	height: 24px;
+	background: var(--button);
+	border: none;
+	border-radius: 50%;
+	color: var(--text);
+	text-align: center;
+	text-decoration: none;
+}
+body #fancybox-close:hover {
+	background: var(--inverse-background);
+	color: var(--inverse-text) !important;
+}
+body #fancybox-close:after {	
+	content: "\f00d";
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 700;
+}
+
+
+/*---------
+  @Filter
+  ---------*/
+
+#advanced-options {
+	position: fixed;
+	top: calc(20px + 10vh);
+	padding: 32px 0;
+	background: var(--content-background);
+	border: none;
+	color: var(--content-text);
+}
+
+/* Headers */
+
+#advanced-options .advanced-options-header {
+	line-height: 30px;
+	border-bottom: 1px dashed var(--border);
+}
+
+#advanced-options .advanced-options-header .description {
+	margin: 0;
+	color: transparent;
+	vertical-align: baseline;
+	pointer-events: none;
+}
+#advanced-options .advanced-options-header .description:hover {
+	color: inherit;
+	pointer-events: auto;
+}
+
+#advanced-options .advanced-options-header .description:before {
+	content: "\f05a";
+	width: 21px;
+	color: var(--content-text);
+	font-size: 14px;
+	margin-right: 3px;
+	pointer-events: auto;
+}
+#advanced-options .advanced-options-header .description:hover:before {
+	color: var(--content-link);
+}
+
+/* Fields */
+
+#advanced-options [class*="-widget"] {
+	display: flex;
+}
+
+#advanced-options [class*="-widget"] .widget-header {
+	padding-left: 6px;
+	line-height: 26px;
+}
+
+#advanced-options input[type="text"],
+#advanced-options select,
+#advanced-options label {
+	height: 26px;
+	border-radius: 4px;
+	background-color: var(--content-highlight) !important;
+	border-color: var(--border) !important;
+	color: var(--content-text) !important;
+}
+#advanced-options select:disabled,
+#advanced-options input[type="radio"]:disabled + label {
+	opacity: 0.5;
+}
+#advanced-options .sort-widget input[type="radio"]:checked:not(:disabled) + label {
+	background-color: var(--inverse-background) !important;
+	color: var(--inverse-text) !important;
+}
+
+/* Specific Fields */
+
+#advanced-options .filter-widget[class*="-date"] span:nth-of-type(n+2) {
+	display: inline-block;
+	width: 40px;
+	padding: 0 3px 0 6px;
+	background: var(--content-highlight);
+	border: 1px solid var(--border);
+	border-right: none;
+	border-radius: 4px 0 0 4px;
+	margin-right: 0 !important;
+	
+	line-height: 24px;
+	font-style: italic;
+}
+
+#advanced-options .filter-widget[class*="-date"] span:nth-of-type(3) {
+	margin-left: 6px;
+}
+
+#advanced-options .filter-widget[class*="-date"] .year,
+#advanced-options .filter-widget[class*="-date"] .month,
+#advanced-options .filter-widget[class*="-date"] .day {
+	border-radius: 0;
+	padding-left: 6px;
+	border-left-width: 0;
+	margin: 0;
+}
+#advanced-options .filter-widget[class*="-date"] .year,
+#advanced-options .filter-widget[class*="-date"] .month {
+	border-right: none;
+}
+#advanced-options .filter-widget[class*="-date"] .day {
+	border-radius: 0 4px 4px 0;
+}
+#advanced-options .filter-widget[class*="-date"] .year {
+	width: 60px !important;
+}
+#advanced-options .filter-widget[class*="-date"] .month,
+#advanced-options .filter-widget[class*="-date"] .day {
+	width: 45px !important;
+}
+
+#advanced-options .sort-widget input[type=radio] + label {
+	width: 60px !important;
+	margin-right: 6px;
+	line-height: 14px;
+}
+
+/* Buttons */
+
+#advanced-options .advanced-options-button {
+	border-color: var(--border);
+	border-top-style: dashed;
+}
+
+#advanced-options .btn-apply,
+#advanced-options .btn-clear {
+	width: 90px;
+	background: var(--button);
+	transition: none;
+}
+#advanced-options .btn-apply:hover,
+#advanced-options .btn-clear:hover {
+	background: var(--inverse-background);
+	color: var(--inverse-text) !important;
+}
+
+
+/*---------
+  @Streaming
+  ---------*/
+
+.mal-modal-content {
+	background: var(--content-background) !important;
+}
+
+.mal-modal * {
+	border-color: var(--border) !important;
+}
+
+.broadcast a:hover {
+	background: var(--content-highlight) !important;
+}
+
+button.btn-close {
+	color: var(--content-text) !important;
+}
+
+
+/*---------
+  @Rewatching-Box
+  ---------*/
+
+div[style^="width: 300px;"] input {
+	border-radius: 4px;
+	background: var(--button);
+	border: 2px solid var(--button);
+	cursor: pointer;
+	margin-top: 3px;
+}
+div[style^="width: 300px;"] input:hover {
+	color: var(--content-link);
+}
+
+
+
+/*=========
+  !THEME
+  =========*/
+
+:root {
+	/* core colours */
+	--official-red: #ec1c24;
+	--official-grey: #161516;
+	
+	/* status colours */
+/* 	--all-items: var(--content-text);
+	--current: #2db039;
+	--completed: #26448f;
+	--onhold: #f1c83e;
+	--dropped: #a12f31;
+	--planned: #c3c3c3; */
+	--all-items: var(--content-text);
+	--current: hsl(125, 70%, 29.7%);
+	--completed: hsl(223, 40%, 51.2%);
+	--onhold: hsl(46, 60%, 32.45%);
+	--dropped: hsl(359, 55%, 51.25%);
+	--planned: hsl(0, 0%, 43.72%);
+	
+	--image-background: rgba(22,21,22,0.41);
+	--image-text: #fff;
+	--image-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	
+	--icon-font: FontAwesome, "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+@media (prefers-color-scheme: light) {
+	:root {
+		/* Colour scheme property ensures correct scrollbar colours on modern browsers. Older browsers will probably still have a light scrollbar */
+		color-scheme: light;
+		
+		--page-background: #fefdf4;
+		--page-background: #f2f1e6;
+		--content-background: #fff;
+		--content-highlight: #eeeaee;
+		--button: var(--content-highlight);
+		--border: #cec8ce;
+		--content-text: var(--official-grey);
+		--content-link: var(--official-red);
+		--inverse-background: var(--official-grey);
+		--inverse-text: #fff;
+		--scroll-thumb: var(--border);
+
+		--mild-shadow: rgba(255, 255, 255, 0.4) 0px 2px 6px, rgba(0, 0, 0, 0.2) 0px 3px 8px;
+		--medium-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
+		
+		--auxiliary-background-image-opacity: 0.5;
+	}
+	
+	/* Images */
+	
+	body[data-query*='"status":7'] {
+		--cover: url(https://i.imgur.com/kMocb1i.jpg) center 40%;
+		--multiplier: 0;
+	}
+	body[data-query*='"status":1'] {
+		--cover: url(https://i.imgur.com/qFaw63c.jpg) center 40%;
+		--multiplier: -1;
+	}
+	body[data-query*='"status":2'] {
+		--cover: url(https://i.imgur.com/CgMTcAO.jpg) center;
+		--multiplier: 1;
+	}
+	body[data-query*='"status":3'] {
+		--cover: url(https://i.imgur.com/O1FUMwa.jpg) center top;
+		--multiplier: -1;
+	}
+	body[data-query*='"status":4'] {
+		--cover: url(https://i.imgur.com/d0MU2XO.jpg) center;
+		--multiplier: 1;
+	}
+	body[data-query*='"status":6'] {
+		--cover: url(https://i.imgur.com/IQjxPJA.jpg) center top;
+		--multiplier: -1;
+	}
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* Colour scheme property ensures correct scrollbar colours on modern browsers. Older browsers will probably still have a light scrollbar */
+		color-scheme: dark;
+		
+		--page-background: var(--official-grey);
+		--content-background: #212121;
+		--content-highlight: #2b2b2b;
+		--button: var(--content-highlight);
+		--border: var(--official-grey);
+		--content-text: #ababab;
+		--content-link: var(--official-red);
+		--inverse-background: var(--official-red);
+		--inverse-text: var(--official-grey);
+		--scroll-thumb: var(--official-red);
+
+		--mild-shadow: rgba(21, 21, 21, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.14) 0px 3px 8px;
+		--medium-shadow: rgba(0, 0, 0, 0.55) 0px 3px 8px;
+		
+		--auxiliary-background-image-opacity: 0.15;
+	}
+	
+	/* Images */
+	
+	body[data-query*='"status":7'] {
+		--cover: url(https://i.imgur.com/NfWBnV5.jpg) center 40%;
+		--multiplier: 0;
+	}
+	body[data-query*='"status":1'] {
+		--cover: url(https://i.imgur.com/mk8JV6t.jpg) center 40%;
+		--multiplier: -1;
+	}
+	body[data-query*='"status":2'] {
+		--cover: url(https://i.imgur.com/fLhBigS.jpg) center;
+		--multiplier: 1;
+	}
+	body[data-query*='"status":3'] {
+		--cover: url(https://i.imgur.com/xCjrh0Q.jpg) center top;
+		--multiplier: -1;
+	}
+	body[data-query*='"status":4'] {
+		--cover: url(https://i.imgur.com/L5kuy7B.jpg) center;
+		--multiplier: 1;
+	}
+	body[data-query*='"status":6'] {
+		--cover: url(https://i.imgur.com/XuZjtp8.jpg) center top;
+		--multiplier: -1;
+	}
+	
+	/* Other tweaks */
+	
+	#footer-block::before {
+		filter: invert(1);
+	}
+	
+	#gdpr-modal-bottom {
+		filter: invert(0.9) hue-rotate(180deg);
+	}
+}
