@@ -1,7 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * a Tokyo Revengers design
- * v1.1.0
+ * v1.2.0
  */
 
 
@@ -414,33 +413,6 @@ body::before {
 	height: 400px;
 	background: var(--cover) / cover var(--inverse-background);
 	box-shadow: inset 0 -2px 8px rgba(0,0,0,0.18);
-}
-.header::after {
-	top: calc(50% - 60px);
-	left: calc(50% - 200px + (330px * var(--multiplier)));
-	width: 400px;
-	height: 120px;
-	background: url(https://i.imgur.com/dO2SV6w.png) center / contain no-repeat;
-	animation: intro 1s cubic-bezier(.13,.59,.39,1.1) 0.5s backwards 1, shrink 1.5s cubic-bezier(.3,.29,.12,1) 4s forwards 1;
-	transform-origin: center;
-}
-@keyframes intro {
-	0% {
-		opacity: 0;
-		transform: translateX(calc(140px * var(--multiplier)));
-	}
-	100% {
-		opacity: 1;
-		transform: translateX(0);
-	}
-}
-@keyframes shrink {
-	0% {
-		transform: translateY(0);
-	}
-	100% {
-		transform: translate(calc(100px * var(--multiplier)),-170px) scale(0.5);
-	}
 }
 
 .cover-block {
@@ -1673,9 +1645,9 @@ Please MAL I am begging you, just add another selector to the date column header
 #footer-block::before {
 	content: "";
 	display: block;
-	height: 30px;
+	height: 45px;
 	margin-bottom: 18px;
-	background: url(https://i.imgur.com/cQMtze0.png) center / contain no-repeat;
+	background: url(/images/mal-logo-large.png) center / contain no-repeat;
 }
 
 #copyright,
@@ -1687,10 +1659,6 @@ Please MAL I am begging you, just add another selector to the date column header
 	color: inherit !important;
 }
 
-#copyright::before {
-	content: "Tokyo Revengers images ©Ken Wakui, KODANSHA / TOKYO REVENGERS Anime Production Committee.\a ";
-	white-space: pre-wrap;
-}
 #copyright:after {
 	content: "\a List design by Valerio Lyndon.";
 	white-space: pre-wrap;
@@ -1938,8 +1906,8 @@ div[style^="width: 300px;"] input:hover {
 
 :root {
 	/* core colours */
-	--official-red: #ec1c24;
-	--official-grey: #161516;
+	--myanimelist-blue: #2e51a2;
+	--neutral: #161516;
 	
 	/* status colours */
 /* 	--all-items: var(--content-text);
@@ -1972,9 +1940,9 @@ div[style^="width: 300px;"] input:hover {
 		--content-highlight: #eeeaee;
 		--button: var(--content-highlight);
 		--border: #cec8ce;
-		--content-text: var(--official-grey);
-		--content-link: var(--official-red);
-		--inverse-background: var(--official-grey);
+		--content-text: var(--neutral);
+		--content-link: var(--myanimelist-blue);
+		--inverse-background: var(--neutral);
 		--inverse-text: #fff;
 		--scroll-thumb: var(--border);
 
@@ -1982,33 +1950,14 @@ div[style^="width: 300px;"] input:hover {
 		--medium-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
 		
 		--auxiliary-background-image-opacity: 0.5;
+		
+		--cover: url(https://files.catbox.moe/wo4fg1.jpg) center bottom;
 	}
 	
-	/* Images */
+	/* Other tweaks */
 	
-	body[data-query*='"status":7'] {
-		--cover: url(https://i.imgur.com/kMocb1i.jpg) center 40%;
-		--multiplier: 0;
-	}
-	body[data-query*='"status":1'] {
-		--cover: url(https://i.imgur.com/qFaw63c.jpg) center 40%;
-		--multiplier: -1;
-	}
-	body[data-query*='"status":2'] {
-		--cover: url(https://i.imgur.com/CgMTcAO.jpg) center;
-		--multiplier: 1;
-	}
-	body[data-query*='"status":3'] {
-		--cover: url(https://i.imgur.com/O1FUMwa.jpg) center top;
-		--multiplier: -1;
-	}
-	body[data-query*='"status":4'] {
-		--cover: url(https://i.imgur.com/d0MU2XO.jpg) center;
-		--multiplier: 1;
-	}
-	body[data-query*='"status":6'] {
-		--cover: url(https://i.imgur.com/IQjxPJA.jpg) center top;
-		--multiplier: -1;
+	#footer-block::before {
+		filter: brightness(100);
 	}
 }
 @media (prefers-color-scheme: dark) {
@@ -2016,54 +1965,29 @@ div[style^="width: 300px;"] input:hover {
 		/* Colour scheme property ensures correct scrollbar colours on modern browsers. Older browsers will probably still have a light scrollbar */
 		color-scheme: dark;
 		
-		--page-background: var(--official-grey);
+		--page-background: var(--neutral);
 		--content-background: #212121;
 		--content-highlight: #2b2b2b;
 		--button: var(--content-highlight);
-		--border: var(--official-grey);
+		--border: var(--neutral);
 		--content-text: #ababab;
-		--content-link: var(--official-red);
-		--inverse-background: var(--official-red);
-		--inverse-text: var(--official-grey);
-		--scroll-thumb: var(--official-red);
+		--content-link: var(--myanimelist-blue);
+		--inverse-background: var(--myanimelist-blue);
+		--inverse-text: var(--neutral);
+		--scroll-thumb: var(--myanimelist-blue);
 
 		--mild-shadow: rgba(21, 21, 21, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.14) 0px 3px 8px;
 		--medium-shadow: rgba(0, 0, 0, 0.55) 0px 3px 8px;
 		
 		--auxiliary-background-image-opacity: 0.15;
-	}
-	
-	/* Images */
-	
-	body[data-query*='"status":7'] {
-		--cover: url(https://i.imgur.com/NfWBnV5.jpg) center 40%;
-		--multiplier: 0;
-	}
-	body[data-query*='"status":1'] {
-		--cover: url(https://i.imgur.com/mk8JV6t.jpg) center 40%;
-		--multiplier: -1;
-	}
-	body[data-query*='"status":2'] {
-		--cover: url(https://i.imgur.com/fLhBigS.jpg) center;
-		--multiplier: 1;
-	}
-	body[data-query*='"status":3'] {
-		--cover: url(https://i.imgur.com/xCjrh0Q.jpg) center top;
-		--multiplier: -1;
-	}
-	body[data-query*='"status":4'] {
-		--cover: url(https://i.imgur.com/L5kuy7B.jpg) center;
-		--multiplier: 1;
-	}
-	body[data-query*='"status":6'] {
-		--cover: url(https://i.imgur.com/XuZjtp8.jpg) center top;
-		--multiplier: -1;
+		
+		--cover: url(https://files.catbox.moe/wo4fg1.jpg) center bottom;
 	}
 	
 	/* Other tweaks */
 	
 	#footer-block::before {
-		filter: invert(1);
+		filter: brightness(100) invert(1);
 	}
 	
 	#gdpr-modal-bottom {
