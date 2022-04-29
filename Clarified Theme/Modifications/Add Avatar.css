@@ -1,0 +1,28 @@
+/* START of Add Avatar Mod v0.1.0 */
+
+.header .header-menu {
+	left: calc(50% - 530px + 155px);
+}
+
+.status-menu {
+	padding-left: 150px;
+}
+
+.status-menu::before {
+	content: "";
+	width: 140px;
+	height: 140px;
+	border-radius: 6px;
+	margin: -71px 0 0 -150px;
+	background: no-repeat center top / cover var(--content-highlight);
+	border: 3px solid var(--content-background);
+	background-image: url(https://i.imgur.com/0IaceDs.gif);
+	transition: all 0.1s ease-out;
+}
+.fixed .status-menu::before {
+	width: 60px;
+	height: 60px;
+	margin-top: 0;
+}
+
+/* END of Add Avatar Mod */
