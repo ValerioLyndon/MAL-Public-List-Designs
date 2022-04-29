@@ -1,6 +1,55 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v1.3.0
+ * v1.3.1
+ * 
+***TABLE*OF*CONTENTS***
+ * 
+ ! IMPORTS
+ ? External assets such as fonts.
+ * 
+ ! PAGE-BASE
+ ? Primary page elements, such as the body, in addition to common selectors.
+ @ Background
+ * 
+ ! COVER
+ @ Cover-Image
+ @ Simple-Buttons
+ @ User-Menu
+ * 
+ ! CATEGORY-MENU
+ ? Category/status menu bar & search bar.
+ * 
+ ! LIST
+ ? List items, column headers, stat & filter buttons, and loading icon.
+ @ List-Header
+ @ Stats
+ @ Side-Buttons / Add-Edit-More
+ @ Status
+ @ Number
+ @ Image
+ @ Type
+ @ Title
+ @ Score
+ @ Progress
+ @ Priority
+ @ Dates // Started / Finished / Days / Airing
+ @ Generic // Rated / Magazione / Storage / Retail / Season
+ @ Tags / Genres / Demographic / Studio / Licensor
+ @ Empty-Table
+ @ More-Info
+ @ Loading
+ * 
+ ! FOOTER
+ * 
+ ! OVERLAYS
+ @ Filter-Menu
+ @ Streaming-Info
+ @ Rewatching-Box
+ * 
+ ! THEME
+ ? Colours, images, and custom code for light and dark modes.
+ * 
+ ! MODS
  */
 
 
@@ -23,7 +72,6 @@ html {
 	scrollbar-color: var(--scroll-thumb) var(--content-background);
 }
 
-
 *, *::before, *::after {
 	box-sizing: inherit;
 } html {
@@ -37,6 +85,8 @@ body.ownlist {
 	background-size: cover;
 	color: var(--content-text) !important;
 }
+
+/* Font */
 
 body.ownlist,
 .cover-block .image-container:hover .btn-list-setting,
@@ -55,6 +105,8 @@ select {
 	font-family: "Noto Sans", Arial, "Helvetica Neue", Helvetica, FontAwesome, sans-serif !important;
 }
 
+/* Links */
+
 a,
 .list-table .list-table-data .data a {
 	color: var(--content-text) !important;
@@ -66,6 +118,8 @@ a:not(.edit-disabled):not(.hover_info):hover,
 	color: var(--content-link) !important;
 	text-decoration: underline;
 }
+
+/* Forms */
 
 input,
 textarea,
@@ -84,6 +138,8 @@ select,
 	background-position: calc(100% - 6px) calc(50% + 3px);
 	background-repeat: no-repeat;
 }
+
+/* Other containers */
 
 .list-container {
 	width: 100%;
@@ -109,16 +165,89 @@ select,
 	border: none;
 }
 
+.list-unit .list-status-title {
+	width: 1060px;
+	height: 0;
+	background: none;
+	margin: 0 auto;
+}
+
+.list-unit .list-status-title .text {
+	display: none;
+}
+
 /* Ad area */
 div[style="padding-top: 8px"] {
 	padding: 0 !important;
 }
 
 
+/*---------
+  @Background
+  ---------*/
+
+body::before {
+	content: "";
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	min-width: 1060px;
+	height: 1080px;
+	pointer-events: none;
+	background: url(https://files.catbox.moe/4qakey.webp) center bottom / contain no-repeat;
+	opacity: var(--auxiliary-background-image-opacity);
+}
+
+
 
 /*=========
-  !HEADER
+  !COVER
   =========*/
+
+/*---------
+  @Cover-Image
+  ---------*/
+
+.header::before,
+.header::after {
+	content: "";
+	position: absolute;
+	pointer-events: none;
+}
+.header::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 400px;
+	background: var(--cover) / cover var(--inverse-background);
+	box-shadow: inset 0 -2px 8px rgba(0,0,0,0.18);
+}
+
+.cover-block {
+	width: 1060px;
+}
+
+#cover-image-container {
+	padding: 0;
+}
+
+.btn-list-setting {
+	display: none !important;
+}
+
+#cover-image {
+	width: 1060px;
+	max-width: initial;
+	border-radius: 6px;
+	margin: 0 auto 15px;
+	box-shadow: var(--mild-shadow);
+}
+
+/*---------
+  @Buttons
+  ---------*/
 
 .header {
 	width: 100%;
@@ -220,10 +349,9 @@ div[style="padding-top: 8px"] {
 }
 
 
-
-/*=========
-  !USER-MENU
-  =========*/
+/*---------
+  @User-Menu
+  ---------*/
 
 .list-menu-float {
 	position: absolute;
@@ -377,68 +505,7 @@ div[style="padding-top: 8px"] {
 
 
 /*=========
-  !BACKGROUND
-  =========*/
-
-body::before {
-	content: "";
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	z-index: -1;
-	width: 100%;
-	min-width: 1060px;
-	height: 1080px;
-	pointer-events: none;
-	background: url(https://files.catbox.moe/4qakey.webp) center bottom / contain no-repeat;
-	opacity: var(--auxiliary-background-image-opacity);
-}
-
-
-
-/*=========
-  !COVER
-  =========*/
-
-.header::before,
-.header::after {
-	content: "";
-	position: absolute;
-	pointer-events: none;
-}
-.header::before {
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 400px;
-	background: var(--cover) / cover var(--inverse-background);
-	box-shadow: inset 0 -2px 8px rgba(0,0,0,0.18);
-}
-
-.cover-block {
-	width: 1060px;
-}
-
-#cover-image-container {
-	padding: 0;
-}
-
-.btn-list-setting {
-	display: none !important;
-}
-
-#cover-image {
-	width: 1060px;
-	max-width: initial;
-	border-radius: 6px;
-	margin: 0 auto 15px;
-	box-shadow: var(--mild-shadow);
-}
-
-
-
-/*=========
-  !STATUS-MENU
+  !CATEGORY-MENU
   =========*/
 
 .status-menu-container {
@@ -563,50 +630,6 @@ body::before {
 
 #search-button i {
 	line-height: 24px;
-}
-
-
-
-/*=========
-  !CATEGORY-HEADER
-  =========*/
-
-.list-unit .list-status-title {
-	width: 1060px;
-	height: 0;
-	background: none;
-	margin: 0 auto;
-}
-
-.list-unit .list-status-title .text {
-	display: none;
-}
-
-
-
-/*=========
-  !STATS
-  =========*/
-
-.list-unit .list-stats {
-	position: sticky;
-	top: 65px;
-	z-index: 11;
-	width: 1034px;
-	padding: 0 12px;
-	height: 45px !important;
-	background: none;
-	margin: 0 auto -45px !important;
-	color: var(--content-text);
-	font-size: 13px;
-	line-height: 45px;
-	transform: translateX(-13px);
-	pointer-events: none;
-}
-/* Hides the text on the column headers. I could instead simply add a background to .list-stats, but that causes the Stats button to layer incorrectly and is more likely to cause glitchy visuals */
-.list-unit .list-stats[style*="block;"] + .list-table > tbody:first-of-type .header-title {
-	visibility: hidden;
-	pointer-events: none;
 }
 
 
@@ -741,6 +764,125 @@ tr.list-table-data {
 .header-title.tags,
 .header-title.genre {
 	display: none !important;
+}
+
+
+/*---------
+  @Stats
+  ---------*/
+
+.list-unit .list-stats {
+	position: sticky;
+	top: 65px;
+	z-index: 11;
+	width: 1034px;
+	padding: 0 12px;
+	height: 45px !important;
+	background: none;
+	margin: 0 auto -45px !important;
+	color: var(--content-text);
+	font-size: 13px;
+	line-height: 45px;
+	transform: translateX(-13px);
+	pointer-events: none;
+}
+/* Hides the text on the column headers. I could instead simply add a background to .list-stats, but that causes the Stats button to layer incorrectly and is more likely to cause glitchy visuals */
+.list-unit .list-stats[style*="block;"] + .list-table > tbody:first-of-type .header-title {
+	visibility: hidden;
+	pointer-events: none;
+}
+
+
+/*---------
+  @Side-Buttons
+  @Add-Edit-More
+  ---------*/
+
+.list-unit .list-status-title {
+	position: sticky;
+	top: 65px;
+	z-index: 11;
+}
+
+.list-table .list-table-data .data.title .add-edit-more,
+.list-unit .list-status-title .stats {
+	position: absolute;
+	right: 0;
+	top: -3px;
+	z-index: 4;
+	width: 26px;
+	padding: 3px;
+	height: calc(100% + 6px);
+	border-radius: 6px;
+	background: var(--content-highlight);
+	margin: 0;
+	font-size: 0;
+	line-height: 0;
+}
+.list-unit .list-status-title .stats {
+	top: 0;
+	height: 45px;
+	padding: 1px 3px 0;
+	z-index: 13;
+}
+.list-table .list-table-data .tags .edit {
+	position: absolute;
+	right: 3px;
+	top: 47px;
+	z-index: 4;
+}
+
+.add-edit-more a,
+.list-unit .list-status-title .stats a,
+.list-table .list-table-data .tags .edit {
+	display: flex;
+	width: auto;
+	height: 20px;
+	border-radius: 3px;
+	margin: 0 0 4px;
+	float: right;
+	clear: both;
+	color: var(--content-text) !important;
+	font-size: 0;
+	line-height: 20px;
+	text-align: center;
+	white-space: nowrap;
+}
+#list-container .add-edit-more a:hover,
+.list-unit .list-status-title .stats a:hover,
+#list-container .list-table .list-table-data .tags .edit:hover {
+	background: var(--inverse-background);
+	color: var(--inverse-text) !important;
+	font-size: 12px;
+	padding: 0 0 0 6px;
+}
+
+.add-edit-more a::before,
+.tags .edit::before,
+.list-unit .list-status-title .stats i {
+	width: 20px;
+	font-size: 12px;
+	line-height: 20px;
+	margin-left: 3px;
+	order: 1;
+}
+.add-edit-more .add a::before {
+	content: "\2b";
+	font-family: var(--icon-font);
+}
+.add-edit-more .edit a::before {
+	content: "\f304";
+}
+.add-edit-more .more a::before {
+	content: "\e3d6";
+}
+.data.tags .edit::before {
+	content: "\e211";
+	
+}
+.data.tags .edit::after {
+	content: " Tags";
+	white-space: pre;
 }
 
 
@@ -900,97 +1042,6 @@ tr.list-table-data {
 	float: right;
 	color: var(--content-text);
 	line-height: 16px;
-}
-
-/*---------
-  @Add-Edit-More
-  ---------*/
-
-.list-unit .list-status-title {
-	position: sticky;
-	top: 65px;
-	z-index: 11;
-}
-
-.list-table .list-table-data .data.title .add-edit-more,
-.list-unit .list-status-title .stats {
-	position: absolute;
-	right: 0;
-	top: -3px;
-	z-index: 4;
-	width: 26px;
-	padding: 3px;
-	height: calc(100% + 6px);
-	border-radius: 6px;
-	background: var(--content-highlight);
-	margin: 0;
-	font-size: 0;
-	line-height: 0;
-}
-.list-unit .list-status-title .stats {
-	top: 0;
-	height: 45px;
-	padding: 1px 3px 0;
-	z-index: 13;
-}
-.list-table .list-table-data .tags .edit {
-	position: absolute;
-	right: 3px;
-	top: 47px;
-	z-index: 4;
-}
-
-.add-edit-more a,
-.list-unit .list-status-title .stats a,
-.list-table .list-table-data .tags .edit {
-	display: flex;
-	width: auto;
-	height: 20px;
-	border-radius: 3px;
-	margin: 0 0 4px;
-	float: right;
-	clear: both;
-	color: var(--content-text) !important;
-	font-size: 0;
-	line-height: 20px;
-	text-align: center;
-	white-space: nowrap;
-}
-#list-container .add-edit-more a:hover,
-.list-unit .list-status-title .stats a:hover,
-#list-container .list-table .list-table-data .tags .edit:hover {
-	background: var(--inverse-background);
-	color: var(--inverse-text) !important;
-	font-size: 12px;
-	padding: 0 0 0 6px;
-}
-
-.add-edit-more a::before,
-.tags .edit::before,
-.list-unit .list-status-title .stats i {
-	width: 20px;
-	font-size: 12px;
-	line-height: 20px;
-	margin-left: 3px;
-	order: 1;
-}
-.add-edit-more .add a::before {
-	content: "\2b";
-	font-family: var(--icon-font);
-}
-.add-edit-more .edit a::before {
-	content: "\f304";
-}
-.add-edit-more .more a::before {
-	content: "\e3d6";
-}
-.data.tags .edit::before {
-	content: "\e211";
-	
-}
-.data.tags .edit::after {
-	content: " Tags";
-	white-space: pre;
 }
 
 
@@ -1762,7 +1813,7 @@ body #fancybox-close:after {
 
 
 /*---------
-  @Filter
+  @Filter-Menu
   ---------*/
 
 #advanced-options {
@@ -1903,7 +1954,7 @@ body #fancybox-close:after {
 
 
 /*---------
-  @Streaming
+  @Streaming-Info
   ---------*/
 
 .mal-modal-content {
