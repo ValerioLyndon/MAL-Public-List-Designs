@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v1.2.0
+ * v1.3.0
  */
 
 
@@ -87,7 +87,7 @@ select,
 
 .list-container {
 	width: 100%;
-	padding-top: 75px;
+	padding-top: 78px;
 	background: none !important;
 	border: none;
 }
@@ -462,63 +462,78 @@ body::before {
 }
 
 #status-menu .status-button {
-	padding: 0 6px 0 12px;
-	margin-right: 7px;
-	color: var(--content-text);
-	font-size: 16px;
-	line-height: 60px;
+	height: 30px;
+	padding: 0 12px;
+	margin-top: 15px;
+	font-size: 0;
+	text-decoration: none;
+}
+#status-menu .status-button.on:not(:hover) {
+	color: var(--page-category) !important;
+}
+#status-menu .status-button ~ .status-button {
+	border-left: 2px dotted var(--border);
 }
 
+.status-button::before {
+	font: 700 17px/30px "Roboto Condensed", Oswald, var(--icon-font) !important;
+}
 .status-button:nth-of-type(1)::before {
-	content: "\f621  ";
+	content: "\f621  EVERYTHING";
 }
 .status-button:nth-of-type(2)::before {
-	content: "\f06e  ";
+	content: "\f06e  CURRENT";
 }
 .status-button:nth-of-type(3)::before {
-	content: "\f00c  ";
+	content: "\f00c  COMPLETED";
 }
 .status-button:nth-of-type(4)::before {
-	content: "\f04c  ";
+	content: "\f04c  PAUSED";
 }
 .status-button:nth-of-type(5)::before {
-	content: "\f00d  ";
+	content: "\f00d  DROPPED";
 }
 .status-button:nth-of-type(6)::before {
-	content: "\f141  ";
+	content: "\f141  PLANNED";
 }
 
 #status-menu .status-button::after {
-	bottom: 25%;
-	width: 0;
-	height: 50%;
-	background: none;
-	border-left: 2px dotted var(--border);
+	left: 12px;
+	bottom: 2px;
+	width: calc(100% - 24px);
+	height: 2px;
+	background: var(--content-link);
 	opacity: 0;
+	transition: none;
 }
-#status-menu .status-button + .status-button::after {
+#status-menu .status-button:hover::after {
 	opacity: 1;
 }
 
 /* @Search */
 
 .status-menu-container .search-container {
-	top: 0;
+	top: 16px;
+	right: 0;
+	display: flex;
+	height: 28px;
+	background: var(--content-highlight);
+	border-radius: 3px;
+	align-items: center;
 }
 
 .status-menu-container .search-container #search-box {
-	width: 140px !important;
-	height: 24px;
-	background: var(--content-highlight);
-	border-radius: 3px;
-	margin-top: 18px;
+	width: auto !important;
+	height: 100%;
+	overflow: visible;
+	margin: 0;
 }
 #search-box::before {
 	content: "Search for a title...";
 	display: block;
 	height: 0px;
 	padding-left: 3px;
-	line-height: 24px;
+	line-height: 28px;
 	pointer-events: none;
 	opacity: 0.5;
 }
@@ -527,7 +542,8 @@ body::before {
 }
 
 .status-menu-container .search-container #search-box input {
-	padding: 3px;
+	width: 170px;
+	padding: 3px 24px 3px 3px;
 	background: none;
 	border: none;
 }
@@ -536,8 +552,11 @@ body::before {
 }
 
 .status-menu-container .search-container #search-button {
+	width: 24px;
+	margin: 0 0 0 -24px;
 	color: var(--content-text);
 	font-size: 16px;
+	text-align: center;
 	opacity: 0.5;
 	pointer-events: none;
 }
@@ -553,39 +572,14 @@ body::before {
   =========*/
 
 .list-unit .list-status-title {
-	width: 1042px;
+	width: 1060px;
+	height: 0;
 	background: none;
-	margin: 0 auto 15px;
+	margin: 0 auto;
 }
 
 .list-unit .list-status-title .text {
-	width: auto;
-	padding: 0 6px;
-	background: var(--page-background);
-	border-radius: 6px;
-	float: left;
-	line-height: 38px;
-	color: var(--content-text);
-	text-align: left;
-}
-
-.list-unit .list-status-title .stats {
-	height: 38px;
-	right: 0;
-	height: auto;
-	padding: 12px 12px 12px 0;
-	background: var(--page-background);
-	border-radius: 6px;
-	line-height: 1;
-}
-
-.list-unit .list-status-title .stats a {
-	margin: 0 0 0 12px;
-	color: var(--content-text);
-	font-size: 14px;
-	font-weight: bold;
-} .list-unit .list-status-title .stats a:hover {
-	color: var(--content-link);
+	display: none;
 }
 
 
@@ -595,17 +589,24 @@ body::before {
   =========*/
 
 .list-unit .list-stats {
-	width: 1042px;
-	padding: 0 6px;
-	background: var(--page-background);
-	border-radius: 6px;
-	margin: -9px auto 15px !important;
+	position: sticky;
+	top: 65px;
+	z-index: 11;
+	width: 1034px;
+	padding: 0 12px;
+	height: 45px !important;
+	background: none;
+	margin: 0 auto -45px !important;
 	color: var(--content-text);
-	font-size: 14px;
-	text-align: left;
+	font-size: 13px;
+	line-height: 45px;
+	transform: translateX(-13px);
+	pointer-events: none;
 }
-.list-unit .list-stats[style*="block;"] {
-	height: 30px !important;
+/* Hides the text on the column headers. I could instead simply add a background to .list-stats, but that causes the Stats button to layer incorrectly and is more likely to cause glitchy visuals */
+.list-unit .list-stats[style*="block;"] + .list-table > tbody:first-of-type .header-title {
+	visibility: hidden;
+	pointer-events: none;
 }
 
 
@@ -633,6 +634,7 @@ body::before {
 	top: 65px;
 	z-index: 10;
 	box-shadow: var(--medium-shadow);
+	border-bottom: 2px solid var(--page-category);
 }
 
 .list-item tr {
@@ -658,6 +660,26 @@ tr.list-table-data {
 	padding: 0;
 	border: none;
 	margin-right: 3px;
+}
+
+/* Category colour variables */
+
+.status.watching ~ td,
+.status.reading ~ td {
+	--local-category: var(--current);
+}
+.status.completed ~ td {
+	--local-category: var(--completed);
+}
+.status.onhold ~ td {
+	--local-category: var(--onhold);
+}
+.status.dropped ~ td {
+	--local-category: var(--dropped);
+}
+.status.plantowatch ~ td,
+.status.plantoread ~ td {
+	--local-category: var(--planned);
 }
 
 
@@ -736,6 +758,7 @@ tr.list-table-data {
 }
 
 .data.status {
+	z-index: 1;
 	width: 18px !important;
 	height: 18px;
 	border-radius: 50%;
@@ -745,6 +768,7 @@ tr.list-table-data {
 	grid-row-start: 1;
 	color: var(--inverse-text);
 	line-height: 18px;
+	pointer-events: none;
 }
 .data.status.watching::after,
 .data.status.reading::after {
@@ -757,7 +781,6 @@ tr.list-table-data {
 	content: "\f00d ";
 } .data.status.plantowatch::after,
 .data.status.plantoread::after {
-/* 	content: "\f2f2 "; */
 	content: "\f141 ";
 }
 
@@ -788,25 +811,30 @@ tr.list-table-data {
   ---------*/
 
 .header-title.image {
-	width: 56px !important;
+	width: 54px !important;
 	text-indent: 6px;
 	order: 3;
 }
 
 .data.image {
-	width: 50px;
-	height: 50px;
-	margin-left: 6px;
+	width: 60px;
+	height: 60px;
+	margin-left: -12px;
 	grid-column-start: 3;
 	grid-row-start: 1;
-	border-radius: 50%;
-	overflow: hidden;
+}
+
+.data.image a {
+	width: 100%;
+	height: 100%;
+	border-radius: 30px;
 }
 
 .list-table .list-table-data .data.image .image {
-	width: 50px;
-	height: 50px;
-	border: none;
+	width: 100%;
+	height: 100%;
+	border: 2px solid var(--local-category) !important;
+	border-radius: 30px;
 	object-fit: cover;
 }
 .data.image:hover .image {
@@ -842,7 +870,7 @@ tr.list-table-data {
 	grid-row-start: 1;
 }
 .data.image + .title {
-	margin-left: 59px;
+	margin-left: 57px;
 }
 
 /* Icon Watch */
@@ -878,7 +906,14 @@ tr.list-table-data {
   @Add-Edit-More
   ---------*/
 
-.list-table .list-table-data .data.title .add-edit-more {
+.list-unit .list-status-title {
+	position: sticky;
+	top: 65px;
+	z-index: 11;
+}
+
+.list-table .list-table-data .data.title .add-edit-more,
+.list-unit .list-status-title .stats {
 	position: absolute;
 	right: 0;
 	top: -3px;
@@ -888,10 +923,15 @@ tr.list-table-data {
 	height: calc(100% + 6px);
 	border-radius: 6px;
 	background: var(--content-highlight);
-/* 	border-left: 2px dotted var(--border); */
 	margin: 0;
 	font-size: 0;
 	line-height: 0;
+}
+.list-unit .list-status-title .stats {
+	top: 0;
+	height: 45px;
+	padding: 1px 3px 0;
+	z-index: 13;
 }
 .list-table .list-table-data .tags .edit {
 	position: absolute;
@@ -901,12 +941,13 @@ tr.list-table-data {
 }
 
 .add-edit-more a,
+.list-unit .list-status-title .stats a,
 .list-table .list-table-data .tags .edit {
 	display: flex;
 	width: auto;
 	height: 20px;
 	border-radius: 3px;
-	margin-bottom: 4px;
+	margin: 0 0 4px;
 	float: right;
 	clear: both;
 	color: var(--content-text) !important;
@@ -916,6 +957,7 @@ tr.list-table-data {
 	white-space: nowrap;
 }
 #list-container .add-edit-more a:hover,
+.list-unit .list-status-title .stats a:hover,
 #list-container .list-table .list-table-data .tags .edit:hover {
 	background: var(--inverse-background);
 	color: var(--inverse-text) !important;
@@ -924,15 +966,13 @@ tr.list-table-data {
 }
 
 .add-edit-more a::before,
-.tags .edit::before {
+.tags .edit::before,
+.list-unit .list-status-title .stats i {
 	width: 20px;
 	font-size: 12px;
 	line-height: 20px;
 	margin-left: 3px;
 	order: 1;
-}
-.add-edit-more a:hover::before {
-	
 }
 .add-edit-more .add a::before {
 	content: "\2b";
@@ -1910,12 +1950,6 @@ div[style^="width: 300px;"] input:hover {
 	--neutral: #161516;
 	
 	/* status colours */
-/* 	--all-items: var(--content-text);
-	--current: #2db039;
-	--completed: #26448f;
-	--onhold: #f1c83e;
-	--dropped: #a12f31;
-	--planned: #c3c3c3; */
 	--all-items: var(--content-text);
 	--current: hsl(125, 70%, 29.7%);
 	--completed: hsl(223, 40%, 51.2%);
@@ -1923,12 +1957,32 @@ div[style^="width: 300px;"] input:hover {
 	--dropped: hsl(359, 55%, 51.25%);
 	--planned: hsl(0, 0%, 43.72%);
 	
+	/* variables that are the same across themes */
 	--image-background: rgba(22,21,22,0.41);
 	--image-text: #fff;
 	--image-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	
 	--icon-font: FontAwesome, "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
+body[data-query*='"status":7'] {
+	--page-category: var(--all-items);
+}
+body[data-query*='"status":1'] {
+	--page-category: var(--current);
+}
+body[data-query*='"status":2'] {
+	--page-category: var(--completed);
+}
+body[data-query*='"status":3'] {
+	--page-category: var(--onhold);
+}
+body[data-query*='"status":4'] {
+	--page-category: var(--dropped);
+}
+body[data-query*='"status":6'] {
+	--page-category: var(--planned);
+}
+
 @media (prefers-color-scheme: light) {
 	:root {
 		/* Colour scheme property ensures correct scrollbar colours on modern browsers. Older browsers will probably still have a light scrollbar */
@@ -1994,3 +2048,10 @@ div[style^="width: 300px;"] input:hover {
 		filter: invert(0.9) hue-rotate(180deg);
 	}
 }
+
+
+
+/*=========
+  !MODS
+  =========*/
+
