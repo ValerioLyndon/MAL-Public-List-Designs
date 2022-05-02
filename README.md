@@ -9,7 +9,7 @@ Detailed information and install instructions can be found on [MyAnimeList](http
 You can report issues either of two ways:
 
 - Open an issue here on Github, clearly describing the issue and which theme it is relating to.
-- Or, reply to the [respective forum thread](https://myanimelist.net/blog.php?eid=805506 on MyAnimeList.
+- Or, reply to the [respective forum thread](https://myanimelist.net/blog.php?eid=805506) on MyAnimeList.
 
 ## Providing Feedback
 
