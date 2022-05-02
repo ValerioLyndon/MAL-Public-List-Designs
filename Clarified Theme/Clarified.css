@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v1.3.1
+ * v1.3.2
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -1164,7 +1164,7 @@ tr.list-table-data {
 
 /* Hide priority column on non-planned items */
 .data.status:not([class*="planto"]) ~ .priority {
-	display: none;
+	display: none !important;
 }
 
 
