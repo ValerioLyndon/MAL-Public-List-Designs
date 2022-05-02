@@ -6,7 +6,10 @@ Detailed information and install instructions can be found on [MyAnimeList](http
 
 ## Reporting Issues
 
-The fastest way to contact me is through the [respective forum thread](https://myanimelist.net/blog.php?eid=805506) (preferred) or my [MAL profile](https://myanimelist.net/profile/Valerio_Lyndon). You can open an Issue here on GitHub, but I do not check here very often and may take a while to respond.
+You can report issues either of two ways:
+
+- Open an issue here on Github, clearly describing the issue and which theme it is relating to.
+- Or, reply to the [respective forum thread](https://myanimelist.net/blog.php?eid=805506 on MyAnimeList.
 
 ## Providing Feedback
 
