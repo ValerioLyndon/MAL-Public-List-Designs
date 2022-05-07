@@ -1348,6 +1348,10 @@ div[style="padding-top: 8px"] {
 	content: 'List design by Valerio Lyndon.';
 }
 
+#recaptcha-terms {
+	display: none;
+}
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~*\
   !OVERLAYS
 \*~~~~~~~~~~~~~~~~~~~~~~~~~*/
