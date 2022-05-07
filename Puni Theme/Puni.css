@@ -52,6 +52,7 @@
 	 */
 	
 	--font: 'Varela Round', 'Arial', 'FontAwesome', sans-serif;
+	--icon: 'FontAwesome', 'Varela Round', 'Arial', sans-serif;
 	--time-short: 120ms ease;
 	--time-medium: 200ms ease;
 	
@@ -801,7 +802,7 @@ div[style="padding-top: 8px"] {
 	background: var(--popup-backing);
 	padding: 10px;
 	border-radius: 6px;
-	color: hsl(var_-text-bright));
+	color: hsl(var(--text-bright));
 	font: 1rem/1 var(--font);
 	text-shadow: none;
 	letter-spacing: 0;
@@ -1127,12 +1128,12 @@ div[style="padding-top: 8px"] {
 
 .add-edit-more a::after {
 	color: hsl(var(--text-bright));
-	font: 14px/19px var(--font);
+	font: 14px/19px var(--icon);
 	transition: color var(--time-short);
 } .add-edit-more a:hover::after {
 	color: hsla(var(--text-bright), 0.6);
 } .add-edit-more .add a::after {
-	content: '\f067';
+	content: '\2b';
 } .add-edit-more .edit a::after {
 	content: '\f040';
 } .add-edit-more .more a::after {
