@@ -903,7 +903,8 @@ div[style="padding-top: 8px"] {
 	transition: all var(--time-medium);
 }
 
-.list-item::before {
+.list-item::before,
+.mal-modal-content::before {
 	content: '';
 	position: absolute;
 	width: 100%;
@@ -1101,7 +1102,7 @@ div[style="padding-top: 8px"] {
 	color: hsl(var(--text-bright));
 }
 
-/* Add Edit More Buttons */
+/* Add Edit More Buttons + Streaming Button */
 
 .add-edit-more {
 	position: absolute;
@@ -1112,12 +1113,12 @@ div[style="padding-top: 8px"] {
 	line-height: 0;
 }
 
-.add-edit-more a {
+.add-edit-more a,
+#list-container .mal-icon {
 	display: inline-block;
 	width: 19px;
 	height: 19px;
 	border-radius: 50%;
-	margin-bottom: 4px;
 	font-size: 0;
 	text-align: center;
 }
@@ -1134,6 +1135,22 @@ div[style="padding-top: 8px"] {
 	content: '\f040';
 } .add-edit-more .more a::after {
 	content: '\f142';
+}
+
+#list-container .mal-icon {
+	position: absolute;
+	top: -3px;
+	left: 267px;
+	opacity: 1;
+}
+
+#list-container .malicon {
+	color: hsl(var(--text-bright));
+	line-height: 19px;
+}
+
+#list-container .mal-icon:hover .malicon {
+	color: hsla(var(--text-bright), 0.6);
 }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ *\
@@ -1419,6 +1436,29 @@ body #fancybox-close::after {
 	width: 30px;
 	font: 24px/30px var(--font);
 	text-align: center;
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ *\
+  @Streaming
+\* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.mal-modal .mal-modal-dialog .mal-modal-content {
+	background: hsl(var(--accent-dark)) !important;
+	color: hsl(var(--text-dark));
+}
+
+.mal-modal .mal-modal-dialog .mal-modal-content .mal-modal-body .broadcasts .broadcast a:hover {
+	background: hsl(var(--midtone));
+	color: hsl(var(--accent-bright));
+}
+
+.mal-modal-content > div,
+.broadcasts {
+	border-color: hsl(var(--relief)) !important;
+}
+
+.mal-modal a {
+	color: hsl(var(--text-dark));
 }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ *\
