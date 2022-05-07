@@ -210,6 +210,7 @@ input {
 html {
 	min-width: 750px;
 	box-sizing: border-box;
+	overflow: hidden;
 	font: 13.2px/1 var(--font);
 } *, *::before, *::after {
 	box-sizing: inherit;
@@ -220,7 +221,11 @@ html {
 \* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
 body.ownlist {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
 	background: var(--background-image) center / cover fixed;
+	overflow: auto;
 	color: hsl(var(--text-dark));
 	font: inherit;
 }
@@ -1332,6 +1337,7 @@ div[style="padding-top: 8px"] {
 #footer-block {
 	position: relative;
 	z-index: 1;
+	width: 100% !important;
 	height: 50px;
 	background: none;
 	margin-top: -50px;
