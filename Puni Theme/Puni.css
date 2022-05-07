@@ -196,10 +196,12 @@ body[data-query*='status":6'] {
   @Basic Items
 \* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-a {
+a,
+.list-table .more-info .more-content a {
 	color: hsl(var(--accent-bright));
 	transition: color var(--time-short);
-} a:hover {
+} a:hover,
+.list-table .more-info .more-content a:hover {
 	color: hsl(var(--accent-bright), 0.6);
 }
 
@@ -235,7 +237,7 @@ body.ownlist {
 	width: 100%;
 	flex-flow: column nowrap;
 	border: none;
-	background: none;
+	background: none !important;
 }
 
 /* Ad area */
@@ -452,7 +454,7 @@ div[style="padding-top: 8px"] {
 	width: 130px !important;
 	height: 32px;
 	padding: 0 8px;
-	background: hsl(var(--accent-dark));
+	background: hsl(var(--accent-dark)) !important;
 	overflow: hidden;
 	text-align: right;
 	opacity: 0;
@@ -461,7 +463,7 @@ div[style="padding-top: 8px"] {
 		opacity 100ms ease;
 } .list-menu-float .icon-menu:not(.profile):hover,
 .ownlist .list-menu-float .icon-menu ~ .icon-menu.setting .text a:hover {
-	background: hsl(var(--accent-bright));
+	background: hsl(var(--accent-bright)) !important;
 } .list-menu-float:hover .icon-menu:not(.profile),
 .ownlist .list-menu-float:hover .icon-menu ~ .icon-menu.setting .text a {
 	opacity: 1;
@@ -520,7 +522,7 @@ div[style="padding-top: 8px"] {
 	font: 1.1rem/32px var(--font);
 }
 
-.list-menu-float .icon-menu.setting {
+.ownlist .list-menu-float .icon-menu.setting {
 	width: auto;
 	height: auto;
 	background: none !important;
@@ -929,11 +931,11 @@ div[style="padding-top: 8px"] {
 }
 
 .list-table .list-table-data .data a {
-	color: hsl(var(--text-dark));
+	color: hsl(var(--text-dark)) !important;
 	text-decoration: none !important;
 	transition: color var(--time-short);
 } .list-table .list-table-data .data a:not(.edit-disabled):hover {
-	color: hsla(var(--text-dark), .6);
+	color: hsla(var(--text-dark), .6) !important;
 }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ *\
