@@ -934,6 +934,10 @@ div[style="padding-top: 8px"] {
   @Generic Items
 \* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
+.data {
+	order: 100;
+}
+
 .data.score,
 .data.progress,
 .data.chapter,
@@ -978,6 +982,10 @@ div[style="padding-top: 8px"] {
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ *\
   @Image & @Status
 \* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.data.status {
+	display: none !important;
+}
 
 .list-table .list-table-data .data.image {
 	position: absolute;
