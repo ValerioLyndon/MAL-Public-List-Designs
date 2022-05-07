@@ -233,6 +233,12 @@ body.ownlist {
 	background: none;
 }
 
+/* Ad area */
+
+div[style="padding-top: 8px"] {
+	padding: 0 !important;
+}
+
 .list-block {
 	position: relative;
 	min-height: calc(100vh - 412px);
