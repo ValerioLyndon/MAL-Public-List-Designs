@@ -93,7 +93,7 @@
 				"conflicts": ["horizontal"],
 				"css": {"bottom": "https://raw.githubusercontent.com/ValerioLyndon/MAL-Public-List-Designs/master/Clarity%20Theme/Mod%20-%20Review%20Tags%20Compressed.css"},
 				"options": {
-					"review-v": {
+					"width": {
 						"name": "Section Width",
 						"type": "text/size",
 						"description": "This represents the maximum width. The actual width may be smaller to make room for other columns.",
@@ -129,37 +129,37 @@
 				"description": "Adds two optional character renders on the left and right of the list. Do note that the renders will not be properly visible at low resolutions. I recommend having at least a 1600x900 monitor to add renders, as they purposefully do not intersect the center list area.",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Character%20Renders.css"},
 				"options": {
-					"render-li": {
+					"left-img": {
 						"name": "Left Image",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(Left Render[\\s\\S\\n]*?-image: )url\\(URLHERE\\)", "$1{{{insert}}}"]],
 						"default": ""
 					},
-					"render-ri": {
+					"right-img": {
 						"name": "Right Image",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(Right Render[\\s\\S\\n]*?-image: )url\\(URLHERE\\)", "$1{{{insert}}}"]],
 						"default": ""
 					},
-					"render-la": {
+					"left-align": {
 						"name": "Left Alignment",
 						"type": "text/value/background-position",
 						"replacements": [["RegExp/(Left Render[\\s\\S\\n]*?-position: )left bottom", "$1{{{insert}}}"]],
 						"default": "left bottom"
 					},
-					"render-ra": {
+					"right-align": {
 						"name": "Right Alignment",
 						"type": "text/value/background-position",
 						"replacements": [["RegExp/(Right Render[\\s\\S\\n]*?-position: )right bottom", "$1{{{insert}}}"]],
 						"default": "right bottom"
 					},
-					"render-ls": {
+					"left-size": {
 						"name": "Left Size",
 						"type": "text/value/background-size",
 						"replacements": [["RegExp/(Left Render[\\s\\S\\n]*?;)", "$1\nbackground-size: {{{insert}}};"]],
 						"default": "contain"
 					},
-					"render-rs": {
+					"right-size": {
 						"name": "Right Size",
 						"type": "text/value/background-size",
 						"replacements": [["RegExp/(Right Render[\\s\\S\\n]*?;)", "$1\nbackground-size: {{{insert}}};"]],
@@ -173,32 +173,32 @@
 				"description": "[i]This will override your earlier choice of image.[/i]",
 				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Banner Image      |\n\\*------------------------------*/\n\n/* All Anime */\n[data-query*='status\":7'] { --banner: url(URLHERE); }\n/* Watching/Reading */\n[data-query*='status\":1'] { --banner: url(URLHERE); }\n/* Completed */\n[data-query*='status\":2'] { --banner: url(URLHERE); }\n/* Onhold */\n[data-query*='status\":3'] { --banner: url(URLHERE); }\n/* Dropped */\n[data-query*='status\":4'] { --banner: url(URLHERE); }\n/* Planned */\n[data-query*='status\":6'] { --banner: url(URLHERE); }\n\n/*------------------------E-N-D-*/"},
 				"options": {
-					"cat-banner-7": {
+					"7": {
 						"name": "All Anime/Manga Image",
 						"type": "text/image_url",
 						"replacements": [["7'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
 					},
-					"cat-banner-1": {
+					"1": {
 						"name": "Watching/Reading Image",
 						"type": "text/image_url",
 						"replacements": [["1'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
 					},
-					"cat-banner-2": {
+					"2": {
 						"name": "Completed Image",
 						"type": "text/image_url",
 						"replacements": [["2'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
 					},
-					"cat-banner-3": {
+					"3": {
 						"name": "On Hold Image",
 						"type": "text/image_url",
 						"replacements": [["3'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
 					},
-					"cat-banner-4": {
+					"4": {
 						"name": "Dropped Image",
 						"type": "text/image_url",
 						"replacements": [["4'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
 					},
-					"cat-banner-6": {
+					"6": {
 						"name": "Plan to Watch/Read Image",
 						"type": "text/image_url",
 						"replacements": [["6'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
@@ -211,32 +211,32 @@
 				"description": "[i]This will override your earlier choice of image.[/i]",
 				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Character Image   |\n\\*------------------------------*/\n\n/* All Anime */\n[data-query*='status\":7'] { --character: url(URLHERE); }\n/* Watching/Reading */\n[data-query*='status\":1'] { --character: url(URLHERE); }\n/* Completed */\n[data-query*='status\":2'] { --character: url(URLHERE); }\n/* Onhold */\n[data-query*='status\":3'] { --character: url(URLHERE); }\n/* Dropped */\n[data-query*='status\":4'] { --character: url(URLHERE); }\n/* Planned */\n[data-query*='status\":6'] { --character: url(URLHERE); }\n\n/*------------------------E-N-D-*/"},
 				"options": {
-					"cat-character-7": {
+					"7": {
 						"name": "All Anime/Manga Image",
 						"type": "text/image_url",
 						"replacements": [["7'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
 					},
-					"cat-character-1": {
+					"1": {
 						"name": "Watching/Reading Image",
 						"type": "text/image_url",
 						"replacements": [["1'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
 					},
-					"cat-character-2": {
+					"2": {
 						"name": "Completed Image",
 						"type": "text/image_url",
 						"replacements": [["2'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
 					},
-					"cat-character-3": {
+					"3": {
 						"name": "On Hold Image",
 						"type": "text/image_url",
 						"replacements": [["3'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
 					},
-					"cat-character-4": {
+					"4": {
 						"name": "Dropped Image",
 						"type": "text/image_url",
 						"replacements": [["4'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
 					},
-					"cat-character-6": {
+					"6": {
 						"name": "Plan to Watch/Read Image",
 						"type": "text/image_url",
 						"replacements": [["6'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
@@ -249,32 +249,32 @@
 				"description": "[i]This will override your earlier choice of image.[/i]",
 				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Background Image  |\n\\*------------------------------*/\n\n/* All Anime */\nbody[data-query*='status\":7'] { --background: url(URLHERE); }\n/* Watching/Reading */\nbody[data-query*='status\":1'] { --background: url(URLHERE); }\n/* Completed */\nbody[data-query*='status\":2'] { --background: url(URLHERE); }\n/* Onhold */\nbody[data-query*='status\":3'] { --background: url(URLHERE); }\n/* Dropped */\nbody[data-query*='status\":4'] { --background: url(URLHERE); }\n/* Planned */\nbody[data-query*='status\":6'] { --background: url(URLHERE); }\n\n/*------------------------E-N-D-*/"},
 				"options": {
-					"cat-background-7": {
+					"7": {
 						"name": "All Anime/Manga Image",
 						"type": "text/image_url",
 						"replacements": [["7'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
 					},
-					"cat-background-1": {
+					"1": {
 						"name": "Watching/Reading Image",
 						"type": "text/image_url",
 						"replacements": [["1'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
 					},
-					"cat-background-2": {
+					"2": {
 						"name": "Completed Image",
 						"type": "text/image_url",
 						"replacements": [["2'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
 					},
-					"cat-background-3": {
+					"3": {
 						"name": "On Hold Image",
 						"type": "text/image_url",
 						"replacements": [["3'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
 					},
-					"cat-background-4": {
+					"4": {
 						"name": "Dropped Image",
 						"type": "text/image_url",
 						"replacements": [["4'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
 					},
-					"cat-background-6": {
+					"6": {
 						"name": "Plan to Watch/Read Image",
 						"type": "text/image_url",
 						"replacements": [["6'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
@@ -287,7 +287,7 @@
 				"description": "Add a colour overlay to darken or accent your background image.",
 				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Background Tint                |\n\\*------------------------------*/\n\nbody::before {\n\t/* change colour here */\n\tbackground: rgba(0, 0, 0, 0.8);\n\t\n\tcontent: \"\";\n\tz-index: -1;\n\tposition: fixed;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n}\n\n/*------------------------E-N-D-*/"},
 				"options": {
-					"background-tint-c": {
+					"colour": {
 						"name": "Tint Colour",
 						"type": "color",
 						"replacements": [["rgba(0, 0, 0, 0.8)", "{{{insert}}}"]],
@@ -301,7 +301,7 @@
 				"description": "Useful for displaying more of your background image. [i]This will not work without a background image.[/i]",
 				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Transparent List Rows          |\n\\*------------------------------*/\n\n:root {\n\t/* Change colour here */\n\t--row-tint: rgba(33,33,33,0.8);\n}\n\n.list-item, .data.priority, .data.number, .data.status:before, .data.status:after {\n\tbackground: linear-gradient(var(--row-tint),var(--row-tint)), var(--background) no-repeat center / cover fixed transparent !important;\n}\n\n/*------------------------E-N-D-*/"},
 				"options": {
-					"transparent-rows-c": {
+					"colour": {
 						"name": "Tint Colour",
 						"type": "color",
 						"replacements": [["rgba(33,33,33,0.8)", "{{{insert}}}"]],
@@ -315,7 +315,7 @@
 				"description": "Modify the banner height to your preference.",
 				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Change Banner Height           |\n\\*------------------------------*/\n\n/*Change number here*/\n:root { --banner-height: 318px; }\n\n.cover-block { height: var(--banner-height); }\n.header { margin-top: calc(var(--banner-height) - 36px); }\n.list-stats { top: calc(var(--banner-height) + 98px); }\n\n/*------------------------E-N-D-*/"},
 				"options": {
-					"banner-height-v": {
+					"height": {
 						"name": "Height",
 						"type": "text/size",
 						"replacements": [["--banner-height: 318px;", "--banner-height: {{{insert}}};"]],
@@ -329,7 +329,7 @@
 				"description": "Increase the width of the coloured bar that indicates whether the entry is completed, dropped, etc.",
 				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Change Status Bar Width        |\n\\*------------------------------*/\n\n.data.status { width: 2px !important; }\n.list-table-data { padding-left: 0px; }\n\n/*------------------------E-N-D-*/"},
 				"options": {
-					"status-width-v": {
+					"width": {
 						"name": "Width",
 						"type": "text/size",
 						"replacements": [["2px", "{{{insert}}}"]],
@@ -344,7 +344,7 @@
 				"conflicts": ["header-line-cat"],
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Header%20Outline%20Compressed.css"},
 				"options": {
-					"header-line-c": {
+					"colour": {
 						"name": "color",
 						"type": "color",
 						"replacements": [["#9ca5fe", "{{{insert}}}"]],
@@ -371,7 +371,7 @@
 				"description": "Create your own theme by replacing all the theme colours as you desire.",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Theme%20Colours.css"},
 				"options": {
-					"colours-base": {
+					"base": {
 						"name": "Colour Base",
 						"description": "Provides the base colours for your custom theme.",
 						"type": "select",
@@ -392,7 +392,7 @@
 						"replacements": [["RegExp/--pbg: .*?;", "--pbg: {{{insert}}};"]]
 					},
 					"--bg": {
-						"name": "textarea/content Background",
+						"name": "Content Background",
 						"type": "color",
 						"replacements": [["RegExp/--bg: .*?;", "--bg: {{{insert}}};"]]
 					},
@@ -447,17 +447,20 @@
 						"replacements": [["RegExp/--banner-text-shadow: .*?;", "--banner-text-shadow: {{{insert}}};"]]
 					},
 					"--btn-bg": {
-						"name": "Buttons (todo)",
+						"name": "Button Background",
+						"description": "Background for secondary content (score, tags, search bar, etcetera).",
 						"type": "color",
 						"replacements": [["RegExp/--btn-bg: .*?;", "--btn-bg: {{{insert}}};"]]
 					},
 					"--btn-bg-h": {
-						"name": "Buttons (todo)",
+						"name": "Buttons Background (hover state)",
+						"description": "Background for secondary content on hover. Also serves as a secondary colour for header buttons.",
 						"type": "color",
 						"replacements": [["RegExp/--btn-bg-h: .*?;", "--btn-bg-h: {{{insert}}};"]]
 					},
 					"--btn-head-bg-h": {
-						"name": "Buttons (todo)",
+						"name": "Buttons Background (header, hover state)",
+						"description": "Background for header buttons on hover.",
 						"type": "color",
 						"replacements": [["RegExp/--btn-head-bg-h: .*?;", "--btn-head-bg-h: {{{insert}}};"]]
 					},
@@ -502,7 +505,8 @@
 						"replacements": [["RegExp/--plantowatch: .*?;", "--plantowatch: {{{insert}}};"]]
 					},
 					"--cover-bg": {
-						"name": "Cover Background (displays underneath cover image)",
+						"name": "Cover Background",
+						"description": "Colour used behind the cover image.",
 						"type": "color",
 						"replacements": [["RegExp/--cover-bg: .*?;", "--cover-bg: {{{insert}}};"]]
 					},
@@ -650,7 +654,7 @@
 				"description": "Who turned the lights on?",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modThemeLight.min.css"},
 				"options": {
-					"light-d": {
+					"dynamic": {
 						"name": "Dynamic Mode",
 						"description": "With this enabled, the list will automatically switch between light and dark modes depending on the visitor preference.",
 						"type": "toggle",
@@ -673,62 +677,62 @@
 				"description": "Add background and banner images per category as desired.",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modPerCategoryImages.css"},
 				"options": {
-					"cat-images-7b": {
+					"7b": {
 						"name": "All Anime/Manga Background",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(:7[\\s\\S\\n]*?--background-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
 					},
-					"cat-images-7c": {
+					"7c": {
 						"name": "All Anime/Manga Banner",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(:7[\\s\\S\\n]*?--banner-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
 					},
-					"cat-images-1b": {
+					"1b": {
 						"name": "Current Background",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(:1[\\s\\S\\n]*?--background-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
 					},
-					"cat-images-1c": {
+					"1c": {
 						"name": "Current Banner",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(:1[\\s\\S\\n]*?--banner-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
 					},
-					"cat-images-2b": {
+					"2b": {
 						"name": "Completed Background",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(:2[\\s\\S\\n]*?--background-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
 					},
-					"cat-images-2c": {
+					"2c": {
 						"name": "Completed Banner",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(:2[\\s\\S\\n]*?--banner-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
 					},
-					"cat-images-3b": {
+					"3b": {
 						"name": "Paused Background",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(:3[\\s\\S\\n]*?--background-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
 					},
-					"cat-images-3c": {
+					"3c": {
 						"name": "Paused Banner",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(:3[\\s\\S\\n]*?--banner-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
 					},
-					"cat-images-4b": {
+					"4b": {
 						"name": "Dropped Background",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(:4[\\s\\S\\n]*?--background-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
 					},
-					"cat-images-4c": {
+					"4c": {
 						"name": "Dropped Banner",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(:4[\\s\\S\\n]*?--banner-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
 					},
-					"cat-images-6b": {
+					"6b": {
 						"name": "Planned Background",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(:6[\\s\\S\\n]*?--background-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
 					},
-					"cat-images-6c": {
+					"6c": {
 						"name": "Planned Banner",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(:6[\\s\\S\\n]*?--banner-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
@@ -741,14 +745,14 @@
 				"description": "This mod will darken and blur [i](if supported by your browser)[/i] any covers with the tag \"Hentai\".",
 				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modHideHentaiCovers.min.css"},
 				"options": {
-					"hide-tag-t": {
+					"tag": {
 						"name": "Tag to Target",
 						"description": "Want to apply this mod to a tag other than \"Hentai\"? Input your tag here. Tag must be in URL format.",
 						"type": "text",
 						"replacements": [["Hentai","{{{insert}}}"]],
 						"default": "Hentai"
 					},
-					"hide-tag-c": {
+					"text": {
 						"name": "Text to Display",
 						"description": "You can also change the \"Explicit Content\" text here.",
 						"type": "text/content",
