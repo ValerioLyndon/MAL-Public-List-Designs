@@ -207,7 +207,7 @@
 				"tags": ["per-category options", "additional imagery"]
 			},
 			"cat-character": {
-				"name": "Per-category Character Images",
+				"name": "Per-category Character Image",
 				"description": "[i]This will override your earlier choice of image.[/i]",
 				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Character Image   |\n\\*------------------------------*/\n\n/* All Anime */\n[data-query*='status\":7'] { --character: url(URLHERE); }\n/* Watching/Reading */\n[data-query*='status\":1'] { --character: url(URLHERE); }\n/* Completed */\n[data-query*='status\":2'] { --character: url(URLHERE); }\n/* Onhold */\n[data-query*='status\":3'] { --character: url(URLHERE); }\n/* Dropped */\n[data-query*='status\":4'] { --character: url(URLHERE); }\n/* Planned */\n[data-query*='status\":6'] { --character: url(URLHERE); }\n\n/*------------------------E-N-D-*/"},
 				"options": {
@@ -245,7 +245,7 @@
 				"tags": ["per-category options", "additional imagery"]
 			},
 			"cat-background": {
-				"name": "Per-category Background Images",
+				"name": "Per-category Background Image",
 				"description": "[i]This will override your earlier choice of image.[/i]",
 				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Background Image  |\n\\*------------------------------*/\n\n/* All Anime */\nbody[data-query*='status\":7'] { --background: url(URLHERE); }\n/* Watching/Reading */\nbody[data-query*='status\":1'] { --background: url(URLHERE); }\n/* Completed */\nbody[data-query*='status\":2'] { --background: url(URLHERE); }\n/* Onhold */\nbody[data-query*='status\":3'] { --background: url(URLHERE); }\n/* Dropped */\nbody[data-query*='status\":4'] { --background: url(URLHERE); }\n/* Planned */\nbody[data-query*='status\":6'] { --background: url(URLHERE); }\n\n/*------------------------E-N-D-*/"},
 				"options": {
@@ -673,7 +673,7 @@
 				"tags": ["per-category options", "visual style"]
 			},
 			"cat-images": {
-				"name": "Per-Category Images",
+				"name": "Per-Category Image",
 				"description": "Add background and banner images per category as desired.",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modPerCategoryImages.css"},
 				"options": {
@@ -894,7 +894,7 @@
 		"name": "Puni",
 		"author": "Valerio Lyndon",
 		"image": "https://i.imgur.com/XXfIzkA.jpg",
-		"css": "@\\import \"https://valeriolyndon.github.io/MAL-Public-List-Designs/Puni%20Theme/Puni.css\";",
+		"css": "@\\import \"https://dl.dropboxusercontent.com/s/xc7k2vfq0f9tg8a/Puni%20v1.2.0.css\";\n\n:root{\n}",
 		"type": "modern",
 		"columns": {
 			"animelist": {
@@ -913,10 +913,744 @@
 				"Image": true
 			}
 		},
-		"help": "https://myanimelist.net/forum/?topicid=393503",
+		"help": "https://myanimelist.net/forum/?topicid=393503&show=350#msg60418317",
+		"options": {
+			"info": {
+				"name": "Info Popup",
+				"description": "Normally used for the rating information, but can be used for any text you want.",
+				"type": "textarea/content",
+				"replacements": [["}","\t--information: {{{insert}}};\n}"]],
+				"default": "Rating Info\n\n10 - Masterpiece\n9 - Great\n8 - Very Good\n7 - Good\n6 - Fine\n5 - Average\n4 - Very Bad\n3 - Bad\n2 - Horrible\n1 - Appalling"
+			}
+		},
 		"mods": {
-			"theme": {
-				"name": "todo"
+			"theme-global": {
+				"name": "Custom Global Theme",
+				"description": "Change colours and images for all categories. This will get overwritten by per-category themes. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* Global Theme */\nbody[data-query] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--: midtone{{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-dar: {{{insekrt}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			},
+			"theme-all": {
+				"name": "Custom All Anime Theme",
+				"description": "Change colours and images for the All Anime/Manga page. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* All Anime Theme */\nbody[data-query*='\"status\":7'] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--: midtone{{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-dar: {{{insekrt}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			},
+			"theme-current": {
+				"name": "Custom Current Theme",
+				"description": "Change colours and images for the Current page. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* Current Theme */\nbody[data-query*='\"status\":1'] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--: midtone{{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-dar: {{{insekrt}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			},
+			"theme-completed": {
+				"name": "Custom Completed Theme",
+				"description": "Change colours and images for the Completed page. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* Completed Theme */\nbody[data-query*='\"status\":2'] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--: midtone{{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-dar: {{{insekrt}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			},
+			"theme-paused": {
+				"name": "Custom Paused Theme",
+				"description": "Change colours and images for the Paused page. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* Paused Theme */\nbody[data-query*='\"status\":3'] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--: midtone{{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-dar: {{{insekrt}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			},
+			"theme-dropped": {
+				"name": "Custom Dropped Theme",
+				"description": "Change colours and images for the Dropped page. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* Dropped Theme */\nbody[data-query*='\"status\":4'] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--: midtone{{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-dar: {{{insekrt}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			},
+			"theme-planned": {
+				"name": "Custom Planned Theme",
+				"description": "Change colours and images for the Planned page. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* Planned Theme */\nbody[data-query*='\"status\":6'] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--: midtone{{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--accent-dar: {{{insekrt}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "",
+						"type": "text",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
 			}
 		}
 	},
