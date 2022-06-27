@@ -1,0 +1,787 @@
+{
+	"json_version": 0.2,
+	"data": {
+		"name": "Puni",
+		"author": "Valerio Lyndon",
+		"css": "@\\import \"https://dl.dropboxusercontent.com/s/xc7k2vfq0f9tg8a/Puni%20v1.2.0.css\";\n\n:root{\n}",
+		"type": "modern",
+		"columns": {
+			"animelist": {
+				"Score": true,
+				"Episodes": true,
+				"Storage": true,
+				"Tags": true,
+				"Image": true
+			},
+			"mangalist": {
+				"Score": true,
+				"Chapters": true,
+				"Volumes": true,
+				"Retail Manga": true,
+				"Tags": true,
+				"Image": true
+			}
+		},
+		"help": "https://myanimelist.net/forum/?topicid=393503&show=350#msg60418317",
+		"options": {
+			"info": {
+				"name": "Info Popup",
+				"description": "Normally used for the rating information, but can be used for any text you want.",
+				"type": "textarea/content",
+				"replacements": [["}","\t--information: {{{insert}}};\n}"]],
+				"default": "Rating Info\n\n10 - Masterpiece\n9 - Great\n8 - Very Good\n7 - Good\n6 - Fine\n5 - Average\n4 - Very Bad\n3 - Bad\n2 - Horrible\n1 - Appalling"
+			}
+		},
+		"mods": {
+			"theme-global": {
+				"name": "Custom Global Theme",
+				"description": "Change colours and images for all categories. This will get overwritten by per-category themes. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* Global Theme */\nbody[data-query] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--background-image: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--banner-image: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--banner-character: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "Relief Colour",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "Midtone Colour",
+						"type": "text",
+						"replacements": [["}","\t--midtone: {{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "Accent Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "Accent Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--accent-dark: {{{insert}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "Complementary Colour",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "Popup Backing Colour",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			},
+			"theme-all": {
+				"name": "Custom All Anime Theme",
+				"description": "Change colours and images for the All Anime/Manga page. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* All Anime Theme */\nbody[data-query*='\"status\":7'] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--background-image: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--banner-image: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--banner-character: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "Relief Colour",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "Midtone Colour",
+						"type": "text",
+						"replacements": [["}","\t--midtone: {{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "Accent Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "Accent Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--accent-dark: {{{insert}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "Complementary Colour",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "Popup Backing Colour",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			},
+			"theme-current": {
+				"name": "Custom Current Theme",
+				"description": "Change colours and images for the Current page. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* Current Theme */\nbody[data-query*='\"status\":1'] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--background-image: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--banner-image: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--banner-character: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "Relief Colour",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "Midtone Colour",
+						"type": "text",
+						"replacements": [["}","\t--midtone: {{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "Accent Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "Accent Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--accent-dark: {{{insert}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "Complementary Colour",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "Popup Backing Colour",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			},
+			"theme-completed": {
+				"name": "Custom Completed Theme",
+				"description": "Change colours and images for the Completed page. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* Completed Theme */\nbody[data-query*='\"status\":2'] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--background-image: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--banner-image: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--banner-character: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "Relief Colour",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "Midtone Colour",
+						"type": "text",
+						"replacements": [["}","\t--midtone: {{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "Accent Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "Accent Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--accent-dark: {{{insert}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "Complementary Colour",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "Popup Backing Colour",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			},
+			"theme-paused": {
+				"name": "Custom Paused Theme",
+				"description": "Change colours and images for the Paused page. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* Paused Theme */\nbody[data-query*='\"status\":3'] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--background-image: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--banner-image: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--banner-character: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "Relief Colour",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "Midtone Colour",
+						"type": "text",
+						"replacements": [["}","\t--midtone: {{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "Accent Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "Accent Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--accent-dark: {{{insert}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "Complementary Colour",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "Popup Backing Colour",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			},
+			"theme-dropped": {
+				"name": "Custom Dropped Theme",
+				"description": "Change colours and images for the Dropped page. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* Dropped Theme */\nbody[data-query*='\"status\":4'] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--background-image: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--banner-image: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--banner-character: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "Relief Colour",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "Midtone Colour",
+						"type": "text",
+						"replacements": [["}","\t--midtone: {{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "Accent Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "Accent Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--accent-dark: {{{insert}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "Complementary Colour",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "Popup Backing Colour",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			},
+			"theme-planned": {
+				"name": "Custom Planned Theme",
+				"description": "Change colours and images for the Planned page. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/* Planned Theme */\nbody[data-query*='\"status\":6'] {\n}"},
+				"options": {
+					"background-image": {
+						"name": "Background Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--background-image: {{{insert}}};\n}"]]
+					},
+					"banner-image": {
+						"name": "Banner Image",
+						"type": "text/image_url",
+						"replacements": [["}","\t--banner-image: {{{insert}}};\n}"]]
+					},
+					"banner-character": {
+						"name": "Banner Character Images",
+						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"type": "text/value/background",
+						"replacements": [["}","\t--banner-character: {{{insert}}};\n}"]],
+						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
+					},
+					"--text-bright": {
+						"name": "Text Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
+					},
+					"--text-dark": {
+						"name": "Text Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
+					},
+					"--relief": {
+						"name": "Relief Colour",
+						"type": "text",
+						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
+					},
+					"--midtone": {
+						"name": "Midtone Colour",
+						"type": "text",
+						"replacements": [["}","\t--midtone: {{{insert}}};\n}"]]
+					},
+					"--accent-bright": {
+						"name": "Accent Colour - Bright",
+						"type": "text",
+						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
+					},
+					"--accent-dark": {
+						"name": "Accent Colour - Dark",
+						"type": "text",
+						"replacements": [["}","\t--accent-dark: {{{insert}}};\n}"]]
+					},
+					"--complementary": {
+						"name": "Complementary Colour",
+						"type": "text",
+						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
+					},
+					"--shadow-light": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-light: {{{insert}}};\n}"]]
+					},
+					"--shadow-dark": {
+						"name": "Shadow Colour - Light",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--shadow-dark: {{{insert}}};\n}"]]
+					},
+					"--popup-backing": {
+						"name": "Popup Backing Colour",
+						"description": "Use a regular colour value here.",
+						"type": "color",
+						"replacements": [["}","\t--popup-backing: {{{insert}}};\n}"]]
+					},
+					"--pokeball-outer": {
+						"name": "Pokeball Border",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-outer: {{{insert}}};\n}"]]
+					},
+					"--pokeball-top": {
+						"name": "Pokeball Top",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-top: {{{insert}}};\n}"]]
+					},
+					"--pokeball-bottom": {
+						"name": "Pokeball Bottom",
+						"type": "color",
+						"replacements": [["}","\t--pokeball-bottom: {{{insert}}};\n}"]]
+					},
+					"pattern-primary": {
+						"name": "Image Pattern 1",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-pokeballs: {{{insert}}};\n}"]]
+					},
+					"pattern-secondary": {
+						"name": "Image Pattern 2",
+						"type": "text/image_url",
+						"replacements": [["}","\t--pattern-stars: {{{insert}}};\n}"]]
+					},
+					"pattern-opacity": {
+						"name": "Pattern Opacity on Backgrounds",
+						"type": "text/value/opacity",
+						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
+					}
+				}
+			}
+		}
+	}
+}

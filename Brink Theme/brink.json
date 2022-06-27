@@ -1,0 +1,349 @@
+{
+	"json_version": 0.2,
+	"data": {
+		"name": "Brink",
+		"author": "Valerio Lyndon",
+		"css": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/Brink.min.css",
+		"type": "modern",
+		"help": "https://myanimelist.net/forum/?topicid=1772180",
+		"columns": {
+			"mode": "greylist",
+			"animelist": {
+				"Image": true,
+				"Score": true,
+				"Progress": true
+			},
+			"mangalist": {
+				"Image": true,
+				"Score": true,
+				"Chapters": true
+			}
+		},
+		"options": {
+			"--imageBrightness": {
+				"name": "Cover Image Brightness",
+				"type": "text/value/opacity",
+				"replacements": [["--imageBrightness: 66%;", "--imageBrightness: {{{insert}}};"]],
+				"default": "66%"
+			},
+			"--imagebrightnessHov": {
+				"name": "Cover Image Brightness (hover state)",
+				"type": "text/value/opacity",
+				"replacements": [["--imageBrightnessHov: 35%;", "--imageBrightnessHov: {{{insert}}};"]],
+				"default": "35%"
+			},
+			"--imageBlurHov": {
+				"name": "Image blur amount (while hovered).",
+				"type": "text/size",
+				"replacements": [["--imageBlurHov: 2px;", "--imageBlurHov: {{{insert}}};"]],
+				"default": "2px"
+			},
+			"--infoBGOpacity": {
+				"name": "Opacity of title/information background.",
+				"type": "text/value/opacity",
+				"replacements": [["--infoBGOpacity: 85%;", "--infoBGOpacity: {{{insert}}};"]],
+				"default": "85%"
+			},
+			"--toggleStats": {
+				"name": "List Statistics",
+				"description": "Enables list statistics being shown in the footer.",
+				"type": "toggle",
+				"replacements": [["--toggleStats: hidden;", "--toggleStats: hidden;", "--toggleStats: visible;"]]
+			},
+			"--toggleStreaming": {
+				"name": "Watch Button",
+				"description": "Enables the \"Watch\" button with streaming services watch options.",
+				"type": "toggle",
+				"replacements": [["--toggleStreaming: visible;", "--toggleStreaming: hidden;", "--toggleStreaming: visible;"]],
+				"default": true
+			},
+			"--toggleTopRatedGold": {
+				"name": "Top Rated - Gold for 10★",
+				"type": "toggle",
+				"replacements": [["--toggleTopRatingGold: visible;", "--toggleTopRatingGold: hidden;", "--toggleTopRatingGold: visible;"]],
+				"default": true
+			},
+			"--toggleTopRatedSilver": {
+				"name": "Top Rated - Silver for 9★",
+				"type": "toggle",
+				"replacements": [["--toggleTopRatingSilver: visible;", "--toggleTopRatingSilver: hidden;", "--toggleTopRatingSilver: visible;"]],
+				"default": true
+			},
+			"--toggleTopRatedBronze": {
+				"name": "Top Rated - Bronze for 8★",
+				"type": "toggle",
+				"replacements": [["--toggleTopRatingBronze: hidden;", "--toggleTopRatingBronze: hidden;", "--toggleTopRatingBronze: visible;"]]
+			},
+			"--bgDimness": {
+				"name": "Background Dimming",
+				"type": "text/value/opacity",
+				"replacements": [["--bgDimness: 50%;", "--bgDimness: {{{insert}}};;"]],
+				"default": "50%"
+			},
+			"--bannerVignetteOpacity": {
+				"name": "Banner Vignette Opacity",
+				"type": "text/value/opacity",
+				"replacements": [["--bannerVignetteOpacity: 90%;", "--bannerVignetteOpacity: {{{insert}}};"]],
+				"default": "90%"
+			}
+		},
+		"mods": {
+			"hd-images": {
+				"name": "High-resolution Cover Images",
+				"description": "If you want higher resolution images, this should do it. [b]Will increase page load times[/b].",
+				"css": {"import": "@\\import \"https://malscraper.azurewebsites.net/covers/all/anime/presets/dataimagelink\";\n@\\import \"https://malscraper.azurewebsites.net/covers/all/manga/presets/dataimagelink\";"},
+				"options": {
+					"username": {
+						"name": "Your MyAnimeList Username",
+						"description": "Must be entered exactly as it appears on MyAnimeList. This is not required, but will reduce the impact on page loads slightly.",
+						"type": "text",
+						"replacements": [
+							["all/anime/presets", "anime/{{{insert}}}/presets"],
+							["all/manga/presets", "manga/{{{insert}}}/presets"]
+						]
+					}
+				},
+				"tags": ["imagery"]
+			},
+			"light": {
+				"name": "Light Theme",
+				"description": "Who turned the lights on?",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modThemeLight.min.css"},
+				"options": {
+					"dynamic": {
+						"name": "Dynamic Mode",
+						"description": "With this enabled, the list will automatically switch between light and dark modes depending on the visitor preference.",
+						"type": "toggle",
+						"replacements": [
+							[":root", ":root", "@media (prefers-color-scheme: light) {:root"],
+							["RegExp/$", "", "}"]
+						]
+					}
+				},
+				"tags": ["visual style"]
+			},
+			"cat-info": {
+				"name": "Category-Coloured Title Backgrounds",
+				"description": "Adds some extra per-category flavouring to list items.",
+				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modCatColInfoBG.css"},
+				"tags": ["per-category options", "visual style"]
+			},
+			"cat-images": {
+				"name": "Per-Category Image",
+				"description": "Add background and banner images per category as desired.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modPerCategoryImages.css"},
+				"options": {
+					"7b": {
+						"name": "All Anime/Manga Background",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:7[\\s\\S\\n]*?--background-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
+					},
+					"7c": {
+						"name": "All Anime/Manga Banner",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:7[\\s\\S\\n]*?--banner-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
+					},
+					"1b": {
+						"name": "Current Background",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:1[\\s\\S\\n]*?--background-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
+					},
+					"1c": {
+						"name": "Current Banner",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:1[\\s\\S\\n]*?--banner-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
+					},
+					"2b": {
+						"name": "Completed Background",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:2[\\s\\S\\n]*?--background-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
+					},
+					"2c": {
+						"name": "Completed Banner",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:2[\\s\\S\\n]*?--banner-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
+					},
+					"3b": {
+						"name": "Paused Background",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:3[\\s\\S\\n]*?--background-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
+					},
+					"3c": {
+						"name": "Paused Banner",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:3[\\s\\S\\n]*?--banner-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
+					},
+					"4b": {
+						"name": "Dropped Background",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:4[\\s\\S\\n]*?--background-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
+					},
+					"4c": {
+						"name": "Dropped Banner",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:4[\\s\\S\\n]*?--banner-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
+					},
+					"6b": {
+						"name": "Planned Background",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:6[\\s\\S\\n]*?--background-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
+					},
+					"6c": {
+						"name": "Planned Banner",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:6[\\s\\S\\n]*?--banner-image: )url\\(URLHERE\\);", "$1{{{insert}}};"]]
+					}
+				},
+				"tags": ["per-category options", "imagery"]
+			},
+			"hide-tag": {
+				"name": "Hide Hentai Covers",
+				"description": "This mod will darken and blur [i](if supported by your browser)[/i] any covers with the tag \"Hentai\".",
+				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modHideHentaiCovers.min.css"},
+				"options": {
+					"tag": {
+						"name": "Tag to Target",
+						"description": "Want to apply this mod to a tag other than \"Hentai\"? Input your tag here. Tag must be in URL format.",
+						"type": "text",
+						"replacements": [["Hentai","{{{insert}}}"]],
+						"default": "Hentai"
+					},
+					"text": {
+						"name": "Text to Display",
+						"description": "You can also change the \"Explicit Content\" text here.",
+						"type": "text/content",
+						"replacements": [["\"EXPLICIT CONTENT\"","{{{insert}}}"]],
+						"default": "EXPLICIT CONTENT"
+					}
+				},
+				"tags": ["functionality"]
+			},
+			"num-items": {
+				"css": {"bottom": "/*------------------------------*\\\n|*     Number of Columns       *|\n\\* - - - - - - - - - - - - - - -*/\n\n.list-table {\n\t/* To adjust number of columns, change the first number inside the calc() function. Default (and maximum) is 8. */\n\tmax-width: calc( 5 * 224px );\n}"}
+			},
+			"theme": {
+				"name": "Custom Theme Colours",
+				"description": "Create your own theme by replacing all the theme colours as you desire. Colours are HSL values with their surrounding parentheses removed.",
+				"css": {"bottom": "/*------------------------------*\\\n|*     Custom Theme Colours     *|\n\\* - - - - - - - - - - - - - - -*/\n\n:root {\n\t--bg: 240, 3%, 9%;\n\t--bgAlt: 240, 3%, 14%;\n\t--btn: 240, 3%, 16%;\n\t--btnAlt: 240, 3.5%, 21%;\n\t--btnLight: 240, 100%, 94%, 4%;\n\t--btnAccent: 240, 17%, 34%;\n\t--accent: 240, 75%, 77%;\n\t\n\t--text: 0, 0%, 100%;\n\t--textProminent: 27, 87%, 67%;\n\t--textLinkHov: 240, 50%, 80%;\n\t\n\t--current: 35, 49%, 46%;\n\t--completed: 324, 49%, 46%;\n\t--paused: 80, 91%, 23%;\n\t--dropped: 6, 44%, 46%;\n\t--planned: 56, 18%, 56%;\n\t\n\t--goldRating: 31, 100%, 70%;\n\t--silverRating: 0, 0%, 80%;\n\t--bronzeRating: 23, 40%, 48%;\n}"},
+				"options": {
+					"--bg": {
+						"name": "Background",
+						"type": "text/value",
+						"replacements": [["--bg: 240, 3%, 9%;", "--bg: {{{insert}}};"]],
+						"default": "240, 3%, 9%"
+					},
+					"--bgAlt": {
+						"name": "Alternate Background",
+						"type": "text/value",
+						"replacements": [["--bgAlt: 240, 3%, 14%;", "--bgAlt: {{{insert}}};"]],
+						"default": "240, 3%, 14%"
+					},
+					"--btn": {
+						"name": "Button Backing",
+						"type": "text/value",
+						"replacements": [["--btn: 240, 3%, 16%;", "--btn: {{{insert}}};"]],
+						"default": "240, 3%, 16%"
+					},
+					"--btnAlt": {
+						"name": "\"Swap To\" Button Backing",
+						"type": "text/value",
+						"replacements": [["--btnAlt: 240, 3.5%, 21%;", "--btnAlt: {{{insert}}};"]],
+						"default": "240, 3.5%, 21%"
+					},
+					"--btnLight": {
+						"name": "Button Accent",
+						"type": "text/value",
+						"replacements": [["--btnLight: 240, 100%, 94%, 4%;", "--btnLight: {{{insert}}};"]],
+						"default": "240, 100%, 94%, 4%"
+					},
+					"--btnAccent": {
+						"name": "Button Border",
+						"type": "text/value",
+						"replacements": [["--btnAccent: 240, 17%, 34%;", "--btnAccent: {{{insert}}};"]],
+						"default": "240, 17%, 34%"
+					},
+					"--accent": {
+						"name": "Accent Colour",
+						"type": "text/value",
+						"replacements": [["--accent: 240, 75%, 77%;", "--accent: {{{insert}}};"]],
+						"default": "240, 75%, 77%"
+					},
+					"--text": {
+						"name": "Text",
+						"type": "text/value",
+						"replacements": [["--text: 0, 0%, 100%;", "--text: {{{insert}}};"]],
+						"default": "0, 0%, 100%"
+					},
+					"--textProminent": {
+						"name": "Content Status Text",
+						"description": "Re-watching/airing/etc texts.",
+						"type": "text/value",
+						"replacements": [["--textProminent: 27, 87%, 67%;", "--textProminent: {{{insert}}};"]],
+						"default": "27, 87%, 67%"
+					},
+					"--textLinkHov": {
+						"name": "Link Text",
+						"type": "text/value",
+						"replacements": [["--textLinkHov: 240, 50%, 80%;", "--textLinkHov: {{{insert}}};"]],
+						"default": "240, 50%, 80%"
+					},
+					"--current": {
+						"name": "Category - Current",
+						"type": "text/value",
+						"replacements": [["--current: 35, 49%, 46%;", "--current: {{{insert}}};"]],
+						"default": "35, 49%, 46%"
+					},
+					"--completed": {
+						"name": "Category - Completed",
+						"type": "text/value",
+						"replacements": [["--completed: 324, 49%, 46%;", "--completed: {{{insert}}};"]],
+						"default": "324, 49%, 46%"
+					},
+					"--paused": {
+						"name": "Category - Paused",
+						"type": "text/value",
+						"replacements": [["--paused: 80, 91%, 23%;", "--paused: {{{insert}}};"]],
+						"default": "80, 91%, 23%"
+					},
+					"--dropped": {
+						"name": "Category - Dropped",
+						"type": "text/value",
+						"replacements": [["--dropped: 6, 44%, 46%;", "--dropped: {{{insert}}};"]],
+						"default": "6, 44%, 46%"
+					},
+					"--planned": {
+						"name": "Category - Planned",
+						"type": "text/value",
+						"replacements": [["--planned: 56, 18%, 56%;", "--planned: {{{insert}}};"]],
+						"default": "56, 18%, 56%"
+					},
+					"--goldRating": {
+						"name": "Top Rated 10★",
+						"type": "text/value",
+						"replacements": [["--goldRating: 31, 100%, 70%;", "--goldRating: {{{insert}}};"]],
+						"default": "31, 100%, 70%"
+					},
+					"--silverRating": {
+						"name": "Top Rated 9★",
+						"type": "text/value",
+						"replacements": [["--silverRating: 0, 0%, 80%;", "--silverRating: {{{insert}}};"]],
+						"default": "0, 0%, 80%"
+					},
+					"--bronzeRating": {
+						"name": "Top Rated 8★",
+						"type": "text/value",
+						"replacements": [["--bronzeRating: 23, 40%, 48%;", "--bronzeRating: {{{insert}}};"]],
+						"default": "23, 40%, 48%"
+					}
+				},
+				"tags": ["visual style"]
+			},
+			"edit-overlay": {
+				"name": "Edit Overlay Redesign",
+				"description": "Adds styling to the overlay popup that shows when you edit a list entry. See the linked guide to install.",
+				"url": "https://myanimelist.net/forum/?topicid=1772180",
+				"tags": ["visual style"]
+			}
+		}
+	}
+}

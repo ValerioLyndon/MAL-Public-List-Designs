@@ -1,0 +1,546 @@
+{
+	"json_version": 0.2,
+	"data": {
+		"name": "Clarity",
+		"author": "Valerio Lyndon",
+		"css": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Theme%20-%20Compressed.css",
+		"type": "modern",
+		"help": "https://myanimelist.net/forum/?topicid=1723114",
+		"options": {
+			"text": {
+				"name": "Name/Banner Text",
+				"type": "textarea/content",
+				"replacements": [["--name:none;", "--name:{{{insert}}};"]],
+				"default": ""
+			},
+			"avatar": {
+				"name": "Avatar",
+				"description": "[url=https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Clarity#how-to-find-your-myanimelist-avatar-url]Want to use your MyAnimeList avatar?[/url]",
+				"type": "text/image_url",
+				"replacements": [["--avatar:none;", "--avatar:{{{insert}}};"]],
+				"default": ""
+			},
+			"banner": {
+				"name": "Banner",
+				"type": "text/image_url",
+				"replacements": [["--banner:url(https://i.imgur.com/VoPJz2S.jpg);", "}body{--banner:{{{insert}}};}:root{"]],
+				"default": "https://i.imgur.com/VoPJz2S.jpg"
+			},
+			"character": {
+				"name": "Character",
+				"type": "text/image_url",
+				"replacements": [["--character:url(https://i.imgur.com/6IPyngH.png);", "}body{--character:{{{insert}}};}:root{"]],
+				"default": "https://i.imgur.com/6IPyngH.png"
+			},
+			"background": {
+				"name": "Background",
+				"type": "text/image_url",
+				"replacements": [["--background:none;", "--background:{{{insert}}};"]],
+				"default": ""
+			}
+		},
+		"mods": {
+			"dark": {
+				"name": "Dark Mode",
+				"description": "Darker visuals. 100% fewer flashbangs!",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Dark%20Mode%20Compressed.css"}
+			},
+			"image-row": {
+				"name": "Image Hover Mod (On Row variant)",
+				"description": "Adds larger images on mouse hover. Will slow down page loads.",
+				"conflicts": ["image-img"],
+				"css": {
+					"import": "@\\import \"https://malscraper.azurewebsites.net/covers/all/anime/presets/dataimagelinkbefore\";\n@\\import \"https://malscraper.azurewebsites.net/covers/all/manga/presets/dataimagelinkbefore\";",
+					"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Hover%20Image%20Compressed.css"
+				},
+				"options": {
+					"username": {
+						"name": "Your MyAnimeList Username",
+						"description": "Must be entered exactly as it appears on MyAnimeList. This is not required, but will reduce the impact on page loads slightly.",
+						"type": "text",
+						"replacements": [		["all/anime/presets", "anime/{{{insert}}}/presets"],
+							["all/manga/presets", "manga/{{{insert}}}/presets"]
+						],
+						"default": ""
+					}
+				},
+				"tags": ["visual flare", "additional imagery"]
+			},
+			"image-img": {
+				"name": "Image Hover Mod (On Image variant)",
+				"description": "Adds larger images on mouse hover. Will slow down page loads.",
+				"conflicts": ["image-row"],
+				"css": {
+					"import": "@\\import \"https://malscraper.azurewebsites.net/covers/all/anime/presets/dataimagelinkbefore\";\n@\\import \"https://malscraper.azurewebsites.net/covers/all/manga/presets/dataimagelinkbefore\";",
+					"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Hover%20Image%20On%20Circle%20Compressed.css"
+				},
+				"options": {
+					"username": {
+						"name": "Your MyAnimeList Username",
+						"description": "Must be entered exactly as it appears on MyAnimeList. This is not required, but will reduce the impact on page loads slightly.",
+						"type": "text",
+						"replacements": [		["all/anime/presets", "anime/{{{insert}}}/presets"],
+							["all/manga/presets", "manga/{{{insert}}}/presets"]
+						],
+						"default": ""
+					}
+				},
+				"tags": ["visual flare", "additional imagery"]
+			},
+			"review": {
+				"name": "Review-style/note-style Tags",
+				"description": "Widens the tag box and condenses it all into one cohesive paragraph, disabling tag functionality. Great for mini-reviews or quick notes.",
+				"conflicts": ["horizontal"],
+				"css": {"bottom": "https://raw.githubusercontent.com/ValerioLyndon/MAL-Public-List-Designs/master/Clarity%20Theme/Mod%20-%20Review%20Tags%20Compressed.css"},
+				"options": {
+					"width": {
+						"name": "Section Width",
+						"type": "text/size",
+						"description": "This represents the maximum width. The actual width may be smaller to make room for other columns.",
+						"replacements": [["240px", "{{{insert}}}"]],
+						"default": "240px"
+					}
+				},
+				"tags": ["tags"]
+			},
+			"horizontal": {
+				"name": "Horizontal Tags",
+				"description": "Convert the vertical tags into a horizontal line across the bottom of each list item.",
+				"conflicts": ["review"],
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Horizontal%20Tags%20Compressed.css"},
+				"tags": ["visual flare", "tags"]
+			},
+			"fav-l": {
+				"name": "Favourite Hearts (Left variant)",
+				"description": "This modification changes the appearance of any tag called \"Favourite\" or \"Favorite\" to display at the side of the list entry as a heart.\n\n[b]Limitations:[/b][list][*]This mod [u]cannot detect[/u] your MAL favourites. It only changes the appearance of correctly labelled [b]tags[/b], nothing more. Due to this, however, you can have more than 20 entries tagged as favourites. Part of why I made this was to circumvent the item limit on non-supporter profiles.[*]If using the left-side Favourite Tag with the unedited Image Hover mod then the hover image will cover up the tag on mouse-over. You can avoid this by using the right-side version or the On Row variant of the Image Hover mod.[/list]",
+				"conflicts": ["fav-r"],
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Favourite%20Hearts%20Left%20Compressed.css"},
+				"tags": ["tags"]
+			},
+			"fav-r": {
+				"name": "Favourite Hearts (Right variant)",
+				"description": "This modification changes the appearance of any tag called \"Favourite\" or \"Favorite\" to display at the side of the list entry as a heart.\n\n[b]Limitations:[/b][list][*]This mod [u]cannot detect[/u] your MAL favourites. It only changes the appearance of correctly labelled [b]tags[/b], nothing more. Due to this, however, you can have more than 20 entries tagged as favourites. Part of why I made this was to circumvent the item limit on non-supporter profiles.[*]If using the left-side Favourite Tag with the unedited Image Hover mod then the hover image will cover up the tag on mouse-over. You can avoid this by using the right-side version or the On Row variant of the Image Hover mod.[/list]",
+				"conflicts": ["fav-l"],
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Favourite%20Hearts%20Right%20Compressed.css"},
+				"tags": ["tags"]
+			},
+			"render": {
+				"name": "Character Renders",
+				"description": "Adds two optional character renders on the left and right of the list. Do note that the renders will not be properly visible at low resolutions. I recommend having at least a 1600x900 monitor to add renders, as they purposefully do not intersect the center list area.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Character%20Renders.css"},
+				"options": {
+					"left-img": {
+						"name": "Left Image",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(Left Render[\\s\\S\\n]*?-image: )url\\(URLHERE\\)", "$1{{{insert}}}"]],
+						"default": ""
+					},
+					"right-img": {
+						"name": "Right Image",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(Right Render[\\s\\S\\n]*?-image: )url\\(URLHERE\\)", "$1{{{insert}}}"]],
+						"default": ""
+					},
+					"left-align": {
+						"name": "Left Alignment",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(Left Render[\\s\\S\\n]*?-position: )left bottom", "$1{{{insert}}}"]],
+						"default": "left bottom"
+					},
+					"right-align": {
+						"name": "Right Alignment",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(Right Render[\\s\\S\\n]*?-position: )right bottom", "$1{{{insert}}}"]],
+						"default": "right bottom"
+					},
+					"left-size": {
+						"name": "Left Size",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(Left Render[\\s\\S\\n]*?;)", "$1\nbackground-size: {{{insert}}};"]],
+						"default": "contain"
+					},
+					"right-size": {
+						"name": "Right Size",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(Right Render[\\s\\S\\n]*?;)", "$1\nbackground-size: {{{insert}}};"]],
+						"default": "contain"
+					}
+				},
+				"tags": ["visual flare", "additional imagery", "in-depth customisation"]
+			},
+			"cat-banner": {
+				"name": "Per-category Banner Images",
+				"description": "[i]This will override your earlier choice of image.[/i]",
+				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Banner Image      |\n\\*------------------------------*/\n\n/* All Anime */\n[data-query*='status\":7'] { --banner: url(URLHERE); }\n/* Watching/Reading */\n[data-query*='status\":1'] { --banner: url(URLHERE); }\n/* Completed */\n[data-query*='status\":2'] { --banner: url(URLHERE); }\n/* Onhold */\n[data-query*='status\":3'] { --banner: url(URLHERE); }\n/* Dropped */\n[data-query*='status\":4'] { --banner: url(URLHERE); }\n/* Planned */\n[data-query*='status\":6'] { --banner: url(URLHERE); }\n\n/*------------------------E-N-D-*/"},
+				"options": {
+					"7": {
+						"name": "All Anime/Manga Image",
+						"type": "text/image_url",
+						"replacements": [["7'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
+					},
+					"1": {
+						"name": "Watching/Reading Image",
+						"type": "text/image_url",
+						"replacements": [["1'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
+					},
+					"2": {
+						"name": "Completed Image",
+						"type": "text/image_url",
+						"replacements": [["2'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
+					},
+					"3": {
+						"name": "On Hold Image",
+						"type": "text/image_url",
+						"replacements": [["3'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
+					},
+					"4": {
+						"name": "Dropped Image",
+						"type": "text/image_url",
+						"replacements": [["4'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
+					},
+					"6": {
+						"name": "Plan to Watch/Read Image",
+						"type": "text/image_url",
+						"replacements": [["6'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
+					}
+				},
+				"tags": ["per-category options", "additional imagery"]
+			},
+			"cat-character": {
+				"name": "Per-category Character Image",
+				"description": "[i]This will override your earlier choice of image.[/i]",
+				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Character Image   |\n\\*------------------------------*/\n\n/* All Anime */\n[data-query*='status\":7'] { --character: url(URLHERE); }\n/* Watching/Reading */\n[data-query*='status\":1'] { --character: url(URLHERE); }\n/* Completed */\n[data-query*='status\":2'] { --character: url(URLHERE); }\n/* Onhold */\n[data-query*='status\":3'] { --character: url(URLHERE); }\n/* Dropped */\n[data-query*='status\":4'] { --character: url(URLHERE); }\n/* Planned */\n[data-query*='status\":6'] { --character: url(URLHERE); }\n\n/*------------------------E-N-D-*/"},
+				"options": {
+					"7": {
+						"name": "All Anime/Manga Image",
+						"type": "text/image_url",
+						"replacements": [["7'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
+					},
+					"1": {
+						"name": "Watching/Reading Image",
+						"type": "text/image_url",
+						"replacements": [["1'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
+					},
+					"2": {
+						"name": "Completed Image",
+						"type": "text/image_url",
+						"replacements": [["2'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
+					},
+					"3": {
+						"name": "On Hold Image",
+						"type": "text/image_url",
+						"replacements": [["3'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
+					},
+					"4": {
+						"name": "Dropped Image",
+						"type": "text/image_url",
+						"replacements": [["4'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
+					},
+					"6": {
+						"name": "Plan to Watch/Read Image",
+						"type": "text/image_url",
+						"replacements": [["6'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
+					}
+				},
+				"tags": ["per-category options", "additional imagery"]
+			},
+			"cat-background": {
+				"name": "Per-category Background Image",
+				"description": "[i]This will override your earlier choice of image.[/i]",
+				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Background Image  |\n\\*------------------------------*/\n\n/* All Anime */\nbody[data-query*='status\":7'] { --background: url(URLHERE); }\n/* Watching/Reading */\nbody[data-query*='status\":1'] { --background: url(URLHERE); }\n/* Completed */\nbody[data-query*='status\":2'] { --background: url(URLHERE); }\n/* Onhold */\nbody[data-query*='status\":3'] { --background: url(URLHERE); }\n/* Dropped */\nbody[data-query*='status\":4'] { --background: url(URLHERE); }\n/* Planned */\nbody[data-query*='status\":6'] { --background: url(URLHERE); }\n\n/*------------------------E-N-D-*/"},
+				"options": {
+					"7": {
+						"name": "All Anime/Manga Image",
+						"type": "text/image_url",
+						"replacements": [["7'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
+					},
+					"1": {
+						"name": "Watching/Reading Image",
+						"type": "text/image_url",
+						"replacements": [["1'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
+					},
+					"2": {
+						"name": "Completed Image",
+						"type": "text/image_url",
+						"replacements": [["2'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
+					},
+					"3": {
+						"name": "On Hold Image",
+						"type": "text/image_url",
+						"replacements": [["3'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
+					},
+					"4": {
+						"name": "Dropped Image",
+						"type": "text/image_url",
+						"replacements": [["4'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
+					},
+					"6": {
+						"name": "Plan to Watch/Read Image",
+						"type": "text/image_url",
+						"replacements": [["6'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
+					}
+				},
+				"tags": ["per-category options", "additional imagery", "background image"]
+			},
+			"background-tint": {
+				"name": "Tint the Background Image",
+				"description": "Add a colour overlay to darken or accent your background image.",
+				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Background Tint                |\n\\*------------------------------*/\n\nbody::before {\n\t/* change colour here */\n\tbackground: rgba(0, 0, 0, 0.8);\n\t\n\tcontent: \"\";\n\tz-index: -1;\n\tposition: fixed;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n}\n\n/*------------------------E-N-D-*/"},
+				"options": {
+					"colour": {
+						"name": "Tint Colour",
+						"type": "color",
+						"replacements": [["rgba(0, 0, 0, 0.8)", "{{{insert}}}"]],
+						"default": "rgba(0, 0, 0, 0.8)"
+					}
+				},
+				"tags": ["background image", "transparency"]
+			},
+			"transparent-rows": {
+				"name": "Transparent List Rows",
+				"description": "Useful for displaying more of your background image. [i]This will not work without a background image.[/i]",
+				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Transparent List Rows          |\n\\*------------------------------*/\n\n:root {\n\t/* Change colour here */\n\t--row-tint: rgba(33,33,33,0.8);\n}\n\n.list-item, .data.priority, .data.number, .data.status:before, .data.status:after {\n\tbackground: linear-gradient(var(--row-tint),var(--row-tint)), var(--background) no-repeat center / cover fixed transparent !important;\n}\n\n/*------------------------E-N-D-*/"},
+				"options": {
+					"colour": {
+						"name": "Tint Colour",
+						"type": "color",
+						"replacements": [["rgba(33,33,33,0.8)", "{{{insert}}}"]],
+						"default": "rgba(33,33,33,0.8)"
+					}
+				},
+				"tags": ["background image", "transparency", "visual flare"]
+			},
+			"banner-height": {
+				"name": "Change Banner Height",
+				"description": "Modify the banner height to your preference.",
+				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Change Banner Height           |\n\\*------------------------------*/\n\n/*Change number here*/\n:root { --banner-height: 318px; }\n\n.cover-block { height: var(--banner-height); }\n.header { margin-top: calc(var(--banner-height) - 36px); }\n.list-stats { top: calc(var(--banner-height) + 98px); }\n\n/*------------------------E-N-D-*/"},
+				"options": {
+					"height": {
+						"name": "Height",
+						"type": "text/size",
+						"replacements": [["--banner-height: 318px;", "--banner-height: {{{insert}}};"]],
+						"default": "318px"
+					}
+				},
+				"tags": ["proportions"]
+			},
+			"status-width": {
+				"name": "Change Category Bar Width",
+				"description": "Increase the width of the coloured bar that indicates whether the entry is completed, dropped, etc.",
+				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Change Status Bar Width        |\n\\*------------------------------*/\n\n.data.status { width: 2px !important; }\n.list-table-data { padding-left: 0px; }\n\n/*------------------------E-N-D-*/"},
+				"options": {
+					"width": {
+						"name": "Width",
+						"type": "text/size",
+						"replacements": [["2px", "{{{insert}}}"]],
+						"default": "2px"
+					}
+				},
+				"tags": ["proportions"]
+			},
+			"header-line": {
+				"name": "Coloured Line on Header",
+				"description": "Adds a coloured line around the header bar and avatar for some extra flair. Single colour variant.",
+				"conflicts": ["header-line-cat"],
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Header%20Outline%20Compressed.css"},
+				"options": {
+					"colour": {
+						"name": "color",
+						"type": "color",
+						"replacements": [["#9ca5fe", "{{{insert}}}"]],
+						"default": "#9ca5fe"
+					}
+				},
+				"tags": ["visual flare"]
+			},
+			"header-line-cat": {
+				"name": "Coloured Line on Header - Category-coloured",
+				"description": "Adds a coloured line around the header bar and avatar for some extra flair. Category-coloured variant.",
+				"conflicts": ["header-line"],
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Header%20Outline%20Category-Coloured%20Compressed.css"},
+				"tags": ["visual flare", "per-category options"]
+			},
+			"cat-header": {
+				"name": "Category-coloured Header Text",
+				"description": "Colours the header to match the referenced categories.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Category-Coloured%20Header%20Text%20Compressed.css"},
+				"tags": ["per-category options"]
+			},
+			"colours": {
+				"name": "Custom Theme Colours",
+				"description": "Create your own theme by replacing all the theme colours as you desire.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Theme%20Colours.css"},
+				"options": {
+					"base": {
+						"name": "Colour Base",
+						"description": "Provides the base colours for your custom theme.",
+						"type": "select",
+						"selections": {
+							"light": {
+								"label": "Light",
+								"replacements": [["RegExp/^[\\s\\S\\n]*$", "/*-S-T-A-R-T--------------------*\\\n| Theme Colours                  |\n\\*------------------------------*/\n\n:root {\n\t/* Generic Colours */\n\t--pbg: #efefef;\n\t--bg: #fff;\n\t--bg-dark: #ddd;\n\t--text: #323232;\n\t--text-h: #787878;\n\t--text-dim: #bababa;\n\t--text-dim-h: #646464;\n\t--text-dark: #111;\n\t--icon: #323232;\n\t--accent: #4065ba;\n\t--banner-text: #fff;\n\t--banner-text-shadow: rgba(0,0,0,0.45);\n\n\t/* Button Colours */\n\t--btn-bg: #ebebeb;\n\t--btn-bg-h: #323232;\n\t--btn-head-bg-h: #1d439b;\n\t--btn-text-h: #fff;\n\n\t/* Header Colours */\n\t--text-head: #9b9b9b;\n\t--text-head-h: #787878;\n\n\t/* Status Colours */\n\t--watching: #2db039;\n\t--completed: #26448f;\n\t--onhold: #f1c83e;\n\t--dropped: #a12f31;\n\t--plantowatch: #c3c3c3;\n\n\t/* Single-Use Colours */\n\t--cover-bg: #323232;\n\t--edit-btn: #d9d9d9;\n\t--checkmark: #9696eb;\n}\n\n/*------------------------E-N-D-*/"]]
+							},
+							"dark": {
+								"label": "Dark",
+								"replacements": [["RegExp/^[\\s\\S\\n]*$", "/*-S-T-A-R-T--------------------*\\\n| Theme Colours                  |\n\\*------------------------------*/\n\n:root {\n\t/* Generic Colours */\n\t--pbg: #161616;\n\t--bg: #212121;\n\t--bg-dark: #444;\n\t--text: #ababab;\n\t--text-h: #416abe;\n\t--text-dim: #777;\n\t--text-dim-h: #999;\n\t--text-dark: #ababab;\n\t--icon: #959595;\n\t--accent: #416abe;\n\t--banner-text: #f6f5ff;\n\t--banner-text-shadow: #e4bef4;\n\n\t/* Button Colours */\n\t--btn-bg: #191919;\n\t--btn-bg-h: #ababab;\n\t--btn-head-bg-h: #416abe;\n\t--btn-text-h: #212121;\n\n\t/* Header Colours */\n\t--text-head: #9b9b9b;\n\t--text-head-h: #ababab;\n\n\t/* Status Colours */\n\t--watching: #2db039;\n\t--completed: #26448f;\n\t--onhold: #f1c83e;\n\t--dropped: #a12f31;\n\t--plantowatch: #c3c3c3;\n\n\t/* Single-Use Colours */\n\t--cover-bg: #090909;\n\t--edit-btn: #323232;\n\t--checkmark: #416abe;\n}\n\n/*------------------------E-N-D-*/"]]
+							}
+						}
+					},
+					"--pbg": {
+						"name": "Page Background",
+						"type": "color",
+						"replacements": [["RegExp/--pbg: .*?;", "--pbg: {{{insert}}};"]]
+					},
+					"--bg": {
+						"name": "Content Background",
+						"type": "color",
+						"replacements": [["RegExp/--bg: .*?;", "--bg: {{{insert}}};"]]
+					},
+					"--bg-dark": {
+						"name": "Darker Background",
+						"type": "color",
+						"replacements": [["RegExp/--bg-dark: .*?;", "--bg-dark: {{{insert}}};"]]
+					},
+					"--text": {
+						"name": "Generic Text",
+						"type": "color",
+						"replacements": [["RegExp/--text: .*?;", "--text: {{{insert}}};"]]
+					},
+					"--text-h": {
+						"name": "Generic Text (hover state)",
+						"type": "color",
+						"replacements": [["RegExp/--text-h: .*?;", "--text-h: {{{insert}}};"]]
+					},
+					"--text-dim": {
+						"name": "De-emphasised Text",
+						"type": "color",
+						"replacements": [["RegExp/--text-dim: .*?;", "--text-dim: {{{insert}}};"]]
+					},
+					"--text-dim-h": {
+						"name": "De-emphasised Text (hover state)",
+						"type": "color",
+						"replacements": [["RegExp/--text-dim-h: .*?;", "--text-dim-h: {{{insert}}};"]]
+					},
+					"--text-dark": {
+						"name": "Darker Text",
+						"type": "color",
+						"replacements": [["RegExp/--text-dark: .*?;", "--text-dark: {{{insert}}};"]]
+					},
+					"--icon": {
+						"name": "Icons",
+						"type": "color",
+						"replacements": [["RegExp/--icon: .*?;", "--icon: {{{insert}}};"]]
+					},
+					"--accent": {
+						"name": "Accent (anime titles & all anime colour)",
+						"type": "color",
+						"replacements": [["RegExp/--accent: .*?;", "--accent: {{{insert}}};"]]
+					},
+					"--banner-text": {
+						"name": "Banner Name Text",
+						"type": "color",
+						"replacements": [["RegExp/--banner-text: .*?;", "--banner-text: {{{insert}}};"]]
+					},
+					"--banner-text-shadow": {
+						"name": "Banner Name Text Shadow",
+						"type": "color",
+						"replacements": [["RegExp/--banner-text-shadow: .*?;", "--banner-text-shadow: {{{insert}}};"]]
+					},
+					"--btn-bg": {
+						"name": "Button Background",
+						"description": "Background for secondary content (score, tags, search bar, etcetera).",
+						"type": "color",
+						"replacements": [["RegExp/--btn-bg: .*?;", "--btn-bg: {{{insert}}};"]]
+					},
+					"--btn-bg-h": {
+						"name": "Buttons Background (hover state)",
+						"description": "Background for secondary content on hover. Also serves as a secondary colour for header buttons.",
+						"type": "color",
+						"replacements": [["RegExp/--btn-bg-h: .*?;", "--btn-bg-h: {{{insert}}};"]]
+					},
+					"--btn-head-bg-h": {
+						"name": "Buttons Background (header, hover state)",
+						"description": "Background for header buttons on hover.",
+						"type": "color",
+						"replacements": [["RegExp/--btn-head-bg-h: .*?;", "--btn-head-bg-h: {{{insert}}};"]]
+					},
+					"--btn-text-h": {
+						"name": "Button Text",
+						"type": "color",
+						"replacements": [["RegExp/--btn-text-h: .*?;", "--btn-text-h: {{{insert}}};"]]
+					},
+					"--text-head": {
+						"name": "Category Text",
+						"type": "color",
+						"replacements": [["RegExp/--text-head: .*?;", "--text-head: {{{insert}}};"]]
+					},
+					"--text-head-h": {
+						"name": "Category Text (hover state)",
+						"type": "color",
+						"replacements": [["RegExp/--text-head-h: .*?;", "--text-head-h: {{{insert}}};"]]
+					},
+					"--watching": {
+						"name": "Watching/Reading Status",
+						"type": "color",
+						"replacements": [["RegExp/--watching: .*?;", "--watching: {{{insert}}};"]]
+					},
+					"--completed": {
+						"name": "Completed Status",
+						"type": "color",
+						"replacements": [["RegExp/--completed: .*?;", "--completed: {{{insert}}};"]]
+					},
+					"--onhold": {
+						"name": "On Hold Status",
+						"type": "color",
+						"replacements": [["RegExp/--onhold: .*?;", "--onhold: {{{insert}}};"]]
+					},
+					"--dropped": {
+						"name": "Dropped Status",
+						"type": "color",
+						"replacements": [["RegExp/--dropped: .*?;", "--dropped: {{{insert}}};"]]
+					},
+					"--plantowatch": {
+						"name": "Plan to Watch/Read Status",
+						"type": "color",
+						"replacements": [["RegExp/--plantowatch: .*?;", "--plantowatch: {{{insert}}};"]]
+					},
+					"--cover-bg": {
+						"name": "Cover Background",
+						"description": "Colour used behind the cover image.",
+						"type": "color",
+						"replacements": [["RegExp/--cover-bg: .*?;", "--cover-bg: {{{insert}}};"]]
+					},
+					"--edit-btn": {
+						"name": "Edit Button",
+						"type": "color",
+						"replacements": [["RegExp/--edit-btn: .*?;", "--edit-btn: {{{insert}}};"]]
+					},
+					"--checkmark": {
+						"name": "Completed Checkmark",
+						"type": "color",
+						"replacements": [["RegExp/--checkmark: .*?;", "--checkmark: {{{insert}}};"]]
+					}
+				},
+				"tags": ["in-depth customisation"]
+			},
+			"info-category-headers": {
+				"name": "Section/category Headers",
+				"description": "If you want section/category headers on the all anime page, just like classic lists, this is as close as you'll get. See the linked guide to install.",
+				"url": "https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Install-Section-Category-Headers",
+				"tags": ["visual flare"]
+			},
+			"info-coloured-tags": {
+				"name": "DIY Coloured Tags",
+				"description": "Want to add some visual flare to your tag system? Check the linked guide for information on how to.",
+				"url": "https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.",
+				"tags": ["tags", "visual flare", "in-depth customisation"]
+			},
+			"info-tag-descriptions": {
+				"name": "DIY Tag Descriptions",
+				"description": "Want to explain your tag system to your list visitors, or perhaps just remind yourself? Tag descriptions can be useful! Check the linked guide for information on how to.",
+				"url": "https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-tag-descriptions-on-hover.",
+				"tags": ["tags", "in-depth customisation"]
+			}
+		}
+	}
+}
