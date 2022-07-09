@@ -45,10 +45,9 @@
 				"description": "Darker visuals. 100% fewer flashbangs!",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Dark%20Mode%20Compressed.css"}
 			},
-			"image-row": {
-				"name": "Image Hover Mod (On Row variant)",
+			"image-hover": {
+				"name": "Image Hover Mod",
 				"description": "Adds larger images on mouse hover. Will slow down page loads.",
-				"conflicts": ["image-img"],
 				"css": {
 					"import": "@\\import \"https://malscraper.azurewebsites.net/covers/all/anime/presets/dataimagelinkbefore\";\n@\\import \"https://malscraper.azurewebsites.net/covers/all/manga/presets/dataimagelinkbefore\";",
 					"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Hover%20Image%20Compressed.css"
@@ -58,31 +57,28 @@
 						"name": "Your MyAnimeList Username",
 						"description": "Must be entered exactly as it appears on MyAnimeList. This is not required, but will reduce the impact on page loads slightly.",
 						"type": "text",
-						"replacements": [		["all/anime/presets", "anime/{{{insert}}}/presets"],
+						"replacements": [
+							["all/anime/presets", "anime/{{{insert}}}/presets"],
 							["all/manga/presets", "manga/{{{insert}}}/presets"]
 						],
 						"default": ""
-					}
-				},
-				"tags": ["visual flare", "additional imagery"]
-			},
-			"image-img": {
-				"name": "Image Hover Mod (On Image variant)",
-				"description": "Adds larger images on mouse hover. Will slow down page loads.",
-				"conflicts": ["image-row"],
-				"css": {
-					"import": "@\\import \"https://malscraper.azurewebsites.net/covers/all/anime/presets/dataimagelinkbefore\";\n@\\import \"https://malscraper.azurewebsites.net/covers/all/manga/presets/dataimagelinkbefore\";",
-					"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Hover%20Image%20On%20Circle%20Compressed.css"
-				},
-				"options": {
-					"username": {
-						"name": "Your MyAnimeList Username",
-						"description": "Must be entered exactly as it appears on MyAnimeList. This is not required, but will reduce the impact on page loads slightly.",
-						"type": "text",
-						"replacements": [		["all/anime/presets", "anime/{{{insert}}}/presets"],
-							["all/manga/presets", "manga/{{{insert}}}/presets"]
-						],
-						"default": ""
+					},
+					"hover": {
+						"name": "Activation Method",
+						"description": "When do you want the image to display: when hovering the entire row, or only the image?",
+						"type": "select",
+						"selections": {
+							"on-row": {
+								"label": "On Row",
+								"replacements": []
+							},
+							"on-img": {
+								"label": "On Image",
+								"replacements": [
+									[".list-item:hover .data.image a:before", ".data.image:hover a:before"]
+								]
+							}
+						}
 					}
 				},
 				"tags": ["visual flare", "additional imagery"]
@@ -110,18 +106,27 @@
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Horizontal%20Tags%20Compressed.css"},
 				"tags": ["visual flare", "tags"]
 			},
-			"fav-l": {
-				"name": "Favourite Hearts (Left variant)",
-				"description": "This modification changes the appearance of any tag called \"Favourite\" or \"Favorite\" to display at the side of the list entry as a heart.\n\n[b]Limitations:[/b][list][*]This mod [u]cannot detect[/u] your MAL favourites. It only changes the appearance of correctly labelled [b]tags[/b], nothing more. Due to this, however, you can have more than 20 entries tagged as favourites. Part of why I made this was to circumvent the item limit on non-supporter profiles.[*]If using the left-side Favourite Tag with the unedited Image Hover mod then the hover image will cover up the tag on mouse-over. You can avoid this by using the right-side version or the On Row variant of the Image Hover mod.[/list]",
-				"conflicts": ["fav-r"],
+			"fav": {
+				"name": "Favourite Heart Tags",
+				"description": "This modification changes the appearance of any tag called \"Favourite\" or \"Favorite\" to display at the side of the list entry as a heart.\n\n[b]Limitations:[/b][list][*]This mod [u]cannot detect[/u] your MAL favourites. It only changes the appearance of correctly labelled [b]tags[/b], nothing more. Due to this, however, you can have more than 20 entries tagged as favourites. Part of why I made this was to circumvent the item limit on non-supporter profiles.[*]If using the left alignment with the unedited Image Hover mod then the hover image will cover up the tag on mouse-over. You can avoid this by setting the alignment to the right or using the On Image variant of the Image Hover Mod.[/list]",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Favourite%20Hearts%20Left%20Compressed.css"},
-				"tags": ["tags"]
-			},
-			"fav-r": {
-				"name": "Favourite Hearts (Right variant)",
-				"description": "This modification changes the appearance of any tag called \"Favourite\" or \"Favorite\" to display at the side of the list entry as a heart.\n\n[b]Limitations:[/b][list][*]This mod [u]cannot detect[/u] your MAL favourites. It only changes the appearance of correctly labelled [b]tags[/b], nothing more. Due to this, however, you can have more than 20 entries tagged as favourites. Part of why I made this was to circumvent the item limit on non-supporter profiles.[*]If using the left-side Favourite Tag with the unedited Image Hover mod then the hover image will cover up the tag on mouse-over. You can avoid this by using the right-side version or the On Row variant of the Image Hover mod.[/list]",
-				"conflicts": ["fav-l"],
-				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Favourite%20Hearts%20Right%20Compressed.css"},
+				"options": {
+					"align": {
+						"name": "Positioning",
+						"description": "Choose whether the tag gets positioned on the right or left of list items.",
+						"type": "select",
+						"selections": {
+							"left": {
+								"label": "Left",
+								"replacements": [["left:-34px", "left:-34px"]]
+							},
+							"right": {
+								"label": "Right",
+								"replacements": [["left:-34px", "left:1068px"]]
+							}
+						}
+					}
+				},
 				"tags": ["tags"]
 			},
 			"render": {
