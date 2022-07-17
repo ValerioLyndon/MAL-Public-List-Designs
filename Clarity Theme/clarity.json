@@ -176,37 +176,37 @@
 			"cat-banner": {
 				"name": "Per-category Banner Images",
 				"description": "[i]This will override your earlier choice of image.[/i]",
-				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Banner Image      |\n\\*------------------------------*/\n\n/* All Anime */\n[data-query*='status\":7'] { --banner: url(URLHERE); }\n/* Watching/Reading */\n[data-query*='status\":1'] { --banner: url(URLHERE); }\n/* Completed */\n[data-query*='status\":2'] { --banner: url(URLHERE); }\n/* Onhold */\n[data-query*='status\":3'] { --banner: url(URLHERE); }\n/* Dropped */\n[data-query*='status\":4'] { --banner: url(URLHERE); }\n/* Planned */\n[data-query*='status\":6'] { --banner: url(URLHERE); }\n\n/*------------------------E-N-D-*/"},
+				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Banner Image      |\n\\*------------------------------*/\n/*------------------------E-N-D-*/"},
 				"options": {
 					"7": {
 						"name": "All Anime/Manga Image",
 						"type": "text/image_url",
-						"replacements": [["7'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":7'] { \t--banner: {{{insert}}}; }\n/*--"]]
 					},
 					"1": {
 						"name": "Watching/Reading Image",
 						"type": "text/image_url",
-						"replacements": [["1'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":1'] { \t--banner: {{{insert}}}; }\n/*--"]]
 					},
 					"2": {
 						"name": "Completed Image",
 						"type": "text/image_url",
-						"replacements": [["2'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":2'] { \t--banner: {{{insert}}}; }\n/*--"]]
 					},
 					"3": {
 						"name": "On Hold Image",
 						"type": "text/image_url",
-						"replacements": [["3'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":3'] { \t--banner: {{{insert}}}; }\n/*--"]]
 					},
 					"4": {
 						"name": "Dropped Image",
 						"type": "text/image_url",
-						"replacements": [["4'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":4'] { \t--banner: {{{insert}}}; }\n/*--"]]
 					},
 					"6": {
 						"name": "Plan to Watch/Read Image",
 						"type": "text/image_url",
-						"replacements": [["6'] { --banner: url(URLHERE)", "7'] { --banner: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":6'] { \t--banner: {{{insert}}}; }\n/*--"]]
 					}
 				},
 				"tags": ["per-category options", "additional imagery"]
@@ -214,37 +214,37 @@
 			"cat-character": {
 				"name": "Per-category Character Image",
 				"description": "[i]This will override your earlier choice of image.[/i]",
-				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Character Image   |\n\\*------------------------------*/\n\n/* All Anime */\n[data-query*='status\":7'] { --character: url(URLHERE); }\n/* Watching/Reading */\n[data-query*='status\":1'] { --character: url(URLHERE); }\n/* Completed */\n[data-query*='status\":2'] { --character: url(URLHERE); }\n/* Onhold */\n[data-query*='status\":3'] { --character: url(URLHERE); }\n/* Dropped */\n[data-query*='status\":4'] { --character: url(URLHERE); }\n/* Planned */\n[data-query*='status\":6'] { --character: url(URLHERE); }\n\n/*------------------------E-N-D-*/"},
+				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Character Image   |\n\\*------------------------------*/\n/*------------------------E-N-D-*/"},
 				"options": {
 					"7": {
 						"name": "All Anime/Manga Image",
 						"type": "text/image_url",
-						"replacements": [["7'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":7'] { \t--character: {{{insert}}}; }\n/*--"]]
 					},
 					"1": {
 						"name": "Watching/Reading Image",
 						"type": "text/image_url",
-						"replacements": [["1'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":1'] { \t--character: {{{insert}}}; }\n/*--"]]
 					},
 					"2": {
 						"name": "Completed Image",
 						"type": "text/image_url",
-						"replacements": [["2'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":2'] { \t--character: {{{insert}}}; }\n/*--"]]
 					},
 					"3": {
 						"name": "On Hold Image",
 						"type": "text/image_url",
-						"replacements": [["3'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":3'] { \t--character: {{{insert}}}; }\n/*--"]]
 					},
 					"4": {
 						"name": "Dropped Image",
 						"type": "text/image_url",
-						"replacements": [["4'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":4'] { \t--character: {{{insert}}}; }\n/*--"]]
 					},
 					"6": {
 						"name": "Plan to Watch/Read Image",
 						"type": "text/image_url",
-						"replacements": [["6'] { --character: url(URLHERE)", "7'] { --character: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":6'] { \t--character: {{{insert}}}; }\n/*--"]]
 					}
 				},
 				"tags": ["per-category options", "additional imagery"]
@@ -252,37 +252,37 @@
 			"cat-background": {
 				"name": "Per-category Background Image",
 				"description": "[i]This will override your earlier choice of image.[/i]",
-				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Background Image  |\n\\*------------------------------*/\n\n/* All Anime */\nbody[data-query*='status\":7'] { --background: url(URLHERE); }\n/* Watching/Reading */\nbody[data-query*='status\":1'] { --background: url(URLHERE); }\n/* Completed */\nbody[data-query*='status\":2'] { --background: url(URLHERE); }\n/* Onhold */\nbody[data-query*='status\":3'] { --background: url(URLHERE); }\n/* Dropped */\nbody[data-query*='status\":4'] { --background: url(URLHERE); }\n/* Planned */\nbody[data-query*='status\":6'] { --background: url(URLHERE); }\n\n/*------------------------E-N-D-*/"},
+				"css": {"bottom": "/*-S-T-A-R-T--------------------*\\\n| Per-Category Background Image  |\n\\*------------------------------*/\n/*------------------------E-N-D-*/"},
 				"options": {
 					"7": {
 						"name": "All Anime/Manga Image",
 						"type": "text/image_url",
-						"replacements": [["7'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":7'] { \t--background: {{{insert}}}; }\n/*--"]]
 					},
 					"1": {
 						"name": "Watching/Reading Image",
 						"type": "text/image_url",
-						"replacements": [["1'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":1'] { \t--background: {{{insert}}}; }\n/*--"]]
 					},
 					"2": {
 						"name": "Completed Image",
 						"type": "text/image_url",
-						"replacements": [["2'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":2'] { \t--background: {{{insert}}}; }\n/*--"]]
 					},
 					"3": {
 						"name": "On Hold Image",
 						"type": "text/image_url",
-						"replacements": [["3'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":3'] { \t--background: {{{insert}}}; }\n/*--"]]
 					},
 					"4": {
 						"name": "Dropped Image",
 						"type": "text/image_url",
-						"replacements": [["4'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":4'] { \t--background: {{{insert}}}; }\n/*--"]]
 					},
 					"6": {
 						"name": "Plan to Watch/Read Image",
 						"type": "text/image_url",
-						"replacements": [["6'] { --background: url(URLHERE)", "7'] { --background: {{{insert}}}"]]
+						"replacements": [["/*--", "[data-query*='status\":6'] { \t--background: {{{insert}}}; }\n/*--"]]
 					}
 				},
 				"tags": ["per-category options", "additional imagery", "background image"]
