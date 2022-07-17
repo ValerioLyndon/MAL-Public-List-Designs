@@ -218,9 +218,6 @@
 				},
 				"tags": ["functionality"]
 			},
-			"num-items": {
-				"css": {"bottom": "/*------------------------------*\\\n|*     Number of Columns       *|\n\\* - - - - - - - - - - - - - - -*/\n\n.list-table {\n\t/* To adjust number of columns, change the first number inside the calc() function. Default (and maximum) is 8. */\n\tmax-width: calc( 5 * 224px );\n}"}
-			},
 			"theme": {
 				"name": "Custom Theme Colours",
 				"description": "Create your own theme by replacing all the theme colours as you desire. Colours are HSL values with their surrounding parentheses removed.",
