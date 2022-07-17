@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MalFox Headers (Clarity Basic Style)
 // @namespace    V.L
-// @version      2.0
+// @version      2.1
 // @description  Generates CSS for modern list category headers and updates user CSS automatically.
 // @author       Valerio Lyndon
 // @match        https://myanimelist.net/animelist/*
@@ -15,6 +15,36 @@
 templateCss = `.$type[data-query*='"status":7']:not([data-query*='order']):not([data-query*='tag"']):not([data-query*='"s"']) .list-item:nth-child($index){margin-top:48px;}.$type[data-query*='"status":7']:not([data-query*='order']):not([data-query*='tag"']):not([data-query*='"s"']) .list-item:nth-child($index):before{content:'$content'}`;
 
 animeManga = window.location.href.replace("https://myanimelist.net/", "").split("/")[0].replace("list", "");
+
+function debug_info() {
+	// Browser version
+    var ua=navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*([\d\.]+)/i) || [];
+    if(/trident/i.test(M[1])){
+        tem=/\brv[ :]+(\d+)/g.exec(ua) || [];
+        return {name:'IE',version:(tem[1]||'')};
+        }
+    if(M[1]==='Chrome'){
+        tem=ua.match(/\bEdg\/(\d+)/)
+        if(tem!=null)   {return {name:'Edge(Chromium)', version:tem[1]};}
+        tem=ua.match(/\bOPR\/(\d+)/)
+        if(tem!=null)   {return {name:'Opera', version:tem[1]};}
+        }
+    M=M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+    if((tem=ua.match(/version\/(\d+)/i))!=null) {M.splice(1,1,tem[1]);}
+	var browser = `${M[0]} ${M[1]}`;
+	
+    return `MalFox v2.1 // ${browser}`;
+ }
+
+function report(msg, details = false) {
+    if(details) {
+        debug = debug_info();
+
+        msg += `\n\nDetails: ${details}.\n${debug}`
+    }
+
+    alert(msg);
+}
 
 function updateCss(newCss) {
 	/* Determine theme currently being used */
@@ -64,7 +94,7 @@ function updateCss(newCss) {
 
 	if(style === false)
 	{
-		alert('MalFox failed to update your Custom CSS with new header locations.');
+		report('MalFox failed to update your header locations.', 'MalFox could not identify the selected list style');
 		return false;
 	}
 
@@ -90,10 +120,10 @@ function updateCss(newCss) {
 	currentCss = currentCss.replaceAll(expression, '');
 
 	finalCss = `${currentCss}\n\n/*MALFOX ${animeManga.toUpperCase()} START*/\n/* DO NOT remove or restyle the MALFOX START or MALFOX END markers and DO NOT place any of your own code between these two markers. Doing so can cause deletion of your code. */\n${newCss}/*MALFOX ${animeManga.toUpperCase()} END*/`;
-	
+
 	if(finalCss.length >= 65535)
 	{
-		alert(`Your Custom CSS may be longer than the maximum allowed length. Please visit your style page at https://myanimelist.net/ownlist/style/theme/${style} and check if your CSS has been cut off at the end.\n\n If you do not see the "MALFOX END" marker at the bottom of your CSS, you need to reduce your CSS length. Make sure to remove the "MALFOX START" marker and anything after it to prevent issue with this script later on.`);
+		report(`Your Custom CSS may be longer than the maximum allowed length. Please visit your style page at https://myanimelist.net/ownlist/style/theme/${style} and check if your CSS has been cut off at the end.\n\n If you do not see the "MALFOX END" marker at the bottom of your CSS, you need to reduce your CSS length. Make sure to remove the "MALFOX START" marker and anything after it to prevent issue with this script later on.`);
 	}
 
 	/* Update the pages CSS to make sure no page reload is required */
@@ -192,7 +222,7 @@ function primary() {
 
 			if(failures > 3)
 			{
-				alert('MalFox failed to fetch your list info while updating CSS headers. If this error appears more than once, please report it in the forum thread. https://myanimelist.net/forum/?topicid=1723114');
+				report('MalFox failed to update your header locations.', 'MalFox failed to fetch list info while updating your headers. If this error appears more than once, please report it in the forum thread. https://myanimelist.net/forum/?topicid=1723114');
 				return;
 			}
 

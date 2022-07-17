@@ -1,7 +1,7 @@
 /* * * * * * * * * * * * * *\
 |* Puni Theme              *|
 |* by Valerio Lyndon       *|
-|* v1.1.1                  *|
+|* v1.2.0                  *|
 \* * * * * * * * * * * * * */
 
 @\import "https://fonts.googleapis.com/css?family=Varela+Round";
@@ -52,6 +52,7 @@
 	 */
 	
 	--font: 'Varela Round', 'Arial', 'FontAwesome', sans-serif;
+	--icon: 'FontAwesome', 'Varela Round', 'Arial', sans-serif;
 	--time-short: 120ms ease;
 	--time-medium: 200ms ease;
 	
@@ -196,10 +197,12 @@ body[data-query*='status":6'] {
   @Basic Items
 \* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
-a {
+a,
+.list-table .more-info .more-content a {
 	color: hsl(var(--accent-bright));
 	transition: color var(--time-short);
-} a:hover {
+} a:hover,
+.list-table .more-info .more-content a:hover {
 	color: hsl(var(--accent-bright), 0.6);
 }
 
@@ -210,6 +213,7 @@ input {
 html {
 	min-width: 750px;
 	box-sizing: border-box;
+	overflow: hidden;
 	font: 13.2px/1 var(--font);
 } *, *::before, *::after {
 	box-sizing: inherit;
@@ -220,7 +224,11 @@ html {
 \* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
 body.ownlist {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
 	background: var(--background-image) center / cover fixed;
+	overflow: auto;
 	color: hsl(var(--text-dark));
 	font: inherit;
 }
@@ -230,7 +238,13 @@ body.ownlist {
 	width: 100%;
 	flex-flow: column nowrap;
 	border: none;
-	background: none;
+	background: none !important;
+}
+
+/* Ad area */
+
+div[style="padding-top: 8px"] {
+	padding: 0 !important;
 }
 
 .list-block {
@@ -441,7 +455,7 @@ body.ownlist {
 	width: 130px !important;
 	height: 32px;
 	padding: 0 8px;
-	background: hsl(var(--accent-dark));
+	background: hsl(var(--accent-dark)) !important;
 	overflow: hidden;
 	text-align: right;
 	opacity: 0;
@@ -450,7 +464,7 @@ body.ownlist {
 		opacity 100ms ease;
 } .list-menu-float .icon-menu:not(.profile):hover,
 .ownlist .list-menu-float .icon-menu ~ .icon-menu.setting .text a:hover {
-	background: hsl(var(--accent-bright));
+	background: hsl(var(--accent-bright)) !important;
 } .list-menu-float:hover .icon-menu:not(.profile),
 .ownlist .list-menu-float:hover .icon-menu ~ .icon-menu.setting .text a {
 	opacity: 1;
@@ -509,7 +523,7 @@ body.ownlist {
 	font: 1.1rem/32px var(--font);
 }
 
-.list-menu-float .icon-menu.setting {
+.ownlist .list-menu-float .icon-menu.setting {
 	width: auto;
 	height: auto;
 	background: none !important;
@@ -788,7 +802,7 @@ body.ownlist {
 	background: var(--popup-backing);
 	padding: 10px;
 	border-radius: 6px;
-	color: hsl(var_-text-bright));
+	color: hsl(var(--text-bright));
 	font: 1rem/1 var(--font);
 	text-shadow: none;
 	letter-spacing: 0;
@@ -892,7 +906,8 @@ body.ownlist {
 	transition: all var(--time-medium);
 }
 
-.list-item::before {
+.list-item::before,
+.mal-modal-content::before {
 	content: '';
 	position: absolute;
 	width: 100%;
@@ -917,16 +932,20 @@ body.ownlist {
 }
 
 .list-table .list-table-data .data a {
-	color: hsl(var(--text-dark));
+	color: hsl(var(--text-dark)) !important;
 	text-decoration: none !important;
 	transition: color var(--time-short);
 } .list-table .list-table-data .data a:not(.edit-disabled):hover {
-	color: hsla(var(--text-dark), .6);
+	color: hsla(var(--text-dark), .6) !important;
 }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ *\
   @Generic Items
 \* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.data {
+	order: 100;
+}
 
 .data.score,
 .data.progress,
@@ -972,6 +991,10 @@ body.ownlist {
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ *\
   @Image & @Status
 \* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.data.status {
+	display: none !important;
+}
 
 .list-table .list-table-data .data.image {
 	position: absolute;
@@ -1082,7 +1105,7 @@ body.ownlist {
 	color: hsl(var(--text-bright));
 }
 
-/* Add Edit More Buttons */
+/* Add Edit More Buttons + Streaming Button */
 
 .add-edit-more {
 	position: absolute;
@@ -1093,28 +1116,44 @@ body.ownlist {
 	line-height: 0;
 }
 
-.add-edit-more a {
+.add-edit-more a,
+#list-container .mal-icon {
 	display: inline-block;
 	width: 19px;
 	height: 19px;
 	border-radius: 50%;
-	margin-bottom: 4px;
 	font-size: 0;
 	text-align: center;
 }
 
 .add-edit-more a::after {
 	color: hsl(var(--text-bright));
-	font: 14px/19px var(--font);
+	font: 14px/19px var(--icon);
 	transition: color var(--time-short);
 } .add-edit-more a:hover::after {
 	color: hsla(var(--text-bright), 0.6);
 } .add-edit-more .add a::after {
-	content: '\f067';
+	content: '\2b';
 } .add-edit-more .edit a::after {
 	content: '\f040';
 } .add-edit-more .more a::after {
 	content: '\f142';
+}
+
+#list-container .mal-icon {
+	position: absolute;
+	top: -3px;
+	left: 267px;
+	opacity: 1;
+}
+
+#list-container .malicon {
+	color: hsl(var(--text-bright));
+	line-height: 19px;
+}
+
+#list-container .mal-icon:hover .malicon {
+	color: hsla(var(--text-bright), 0.6);
 }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ *\
@@ -1318,6 +1357,7 @@ body.ownlist {
 #footer-block {
 	position: relative;
 	z-index: 1;
+	width: 100% !important;
 	height: 50px;
 	background: none;
 	margin-top: -50px;
@@ -1332,6 +1372,10 @@ body.ownlist {
 	text-shadow: 0 0 2px var(--shadow-dark);
 } #copyright::after {
 	content: 'List design by Valerio Lyndon.';
+}
+
+#recaptcha-terms {
+	display: none;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~*\
@@ -1395,6 +1439,29 @@ body #fancybox-close::after {
 	width: 30px;
 	font: 24px/30px var(--font);
 	text-align: center;
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ *\
+  @Streaming
+\* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.mal-modal .mal-modal-dialog .mal-modal-content {
+	background: hsl(var(--accent-dark)) !important;
+	color: hsl(var(--text-dark));
+}
+
+.mal-modal .mal-modal-dialog .mal-modal-content .mal-modal-body .broadcasts .broadcast a:hover {
+	background: hsl(var(--midtone));
+	color: hsl(var(--accent-bright));
+}
+
+.mal-modal-content > div,
+.broadcasts {
+	border-color: hsl(var(--relief)) !important;
+}
+
+.mal-modal a {
+	color: hsl(var(--text-dark));
 }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ *\

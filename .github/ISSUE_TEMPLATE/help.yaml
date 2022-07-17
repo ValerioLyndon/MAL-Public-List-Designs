@@ -1,0 +1,66 @@
+name: Help Request
+description: Get help with your theme.
+title: "[Help]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: "Need help with customising a theme or have encountered an issue you can't overcome? Fill out this form to get some help."
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Which theme are you using?
+      description: If you select other, be sure to explain in the next field what theme you are using.
+      multiple: false
+      options:
+        - Clarity
+        - Brink
+        - Tilt
+        - 9anime
+        - Kure
+        - Puni
+        - Agile
+        - Clarified
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: describe-issue
+    attributes:
+      label: Describe your issue.
+      description: What is your problem or what do you wish to accomplish?
+      placeholder: Please be as detailed as possible.
+    validations:
+      required: true
+  - type: input
+    id: mal-name
+    attributes:
+      label: What is your MyAnimeList username?
+      description: This information can be helpful to debug an issue you have.
+      placeholder: Make sure it is exactly the same spelling and capitalisation.
+    validations:
+      required: false
+  - type: textarea
+    id: code
+    attributes:
+      label: Your Custom CSS code.
+      description: Please copy and paste as-is from the time at which your issue or help request occured. Without your CSS, it can be quite difficult to debug.
+      render: shell
+    validations:
+      required: false
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browser(s) are you encountering the problem on?
+      description: If you are having problems with a theme, this info can be **very useful!**
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Brave
+        - Opera
+        - Safari
+        - Microsoft Edge
+        - Other
+    validations:
+      required: false

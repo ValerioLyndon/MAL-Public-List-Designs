@@ -1,0 +1,40 @@
+{
+	"json_version": 0.2,
+	"themes": {
+		"clarity": {
+			"name": "Clarity",
+			"author": "Valerio Lyndon",
+			"image": "https://i.imgur.com/6nh4NhC.png",
+			"type": "modern",
+			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/clarity.json"
+		},
+		"brink": {
+			"name": "Brink",
+			"author": "Valerio Lyndon",
+			"image": "https://i.imgur.com/4gaM4fL.jpg",
+			"type": "modern",
+			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/brink.json"
+		},
+		"puni": {
+			"name": "Puni",
+			"author": "Valerio Lyndon",
+			"image": "https://i.imgur.com/XXfIzkA.jpg",
+			"type": "modern",
+			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Puni%20Theme/puni.json"
+		},
+		"tilt": {
+			"name": "Tilt",
+			"author": "Valerio Lyndon",
+			"image": "https://i.imgur.com/tQSXMHd.png",
+			"type": "modern",
+			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Tilt%20Theme/tilt.json"
+		},
+		"9anime": {
+			"name": "9anime",
+			"author": "Valerio Lyndon",
+			"image": "https://i.imgur.com/zQi54De.png",
+			"type": "modern",
+			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/9anime%20Theme/9anime.json"
+		}
+	}
+}

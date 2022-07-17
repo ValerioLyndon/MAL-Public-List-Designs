@@ -1,0 +1,57 @@
+{
+	"json_version": 0.2,
+	"data": {
+		"name": "9anime",
+		"author": "Valerio Lyndon",
+		"css": "https://valeriolyndon.github.io/MAL-Public-List-Designs/9anime%20Theme/Theme%20-%20Compressed%20FI.css",
+		"type": "modern",
+		"columns": {
+			"animelist": {
+				"Score": true,
+				"Type": true,
+				"Episodes": true,
+				"Rating": true,
+				"Tags": true,
+				"Image": true,
+				"Premiered": true,
+				"Studios": true
+			},
+			"mangalist": {
+				"Score": true,
+				"Chapters": true,
+				"Volumes": true,
+				"Total Days Read": true,
+				"Tags": true,
+				"Type": true,
+				"Image": true,
+				"Published Dates": true,
+				"Magazine": true
+			}
+		},
+		"help": "https://myanimelist.net/forum/?topicid=1723120",
+		"mods": {
+			"hd-images": {
+				"name": "High-resolution Cover Images",
+				"description": "If you want higher resolution images, this should do it. [b]Will increase page load times[/b].",
+				"css": {"import": "@\\import \"https://malscraper.azurewebsites.net/covers/all/anime/presets/dataimagelink\";\n@\\import \"https://malscraper.azurewebsites.net/covers/all/manga/presets/dataimagelink\";"},
+				"options": {
+					"username": {
+						"name": "Your MyAnimeList Username",
+						"description": "Must be entered exactly as it appears on MyAnimeList. This is not required, but will reduce the impact on page loads slightly.",
+						"type": "text",
+						"replacements": [
+							["all/anime/presets", "anime/{{{insert}}}/presets"],
+							["all/manga/presets", "manga/{{{insert}}}/presets"]
+						]
+					}
+				},
+				"tags": ["imagery"]
+			},
+			"row-gap": {
+				"name": "List Item Gap",
+				"description": "This will add a gap between list items, converting it from 6 a row to 5 a row.",
+				"css": {"bottom": ".list-item:not(:nth-of-type(5n+2)) { margin-left: 47.5px !important; }"}
+			}
+		}
+	}
+}

@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R27.2
+  R27.3
 
 | == = == THEME CONTENTS == = == |
 
@@ -55,6 +55,8 @@
 @ Base
 @ iframes
 @ Filter-Menu
+
+! FIXES
 
 \*==============================*/
 
@@ -2393,4 +2395,19 @@ div[style^="width: 300px;"] input {
 div[style^="width: 300px;"] input:hover {
 	background: var(--btn-bg-h);
 	color: var(--btn-text-h);
+}
+
+
+
+
+
+/*==============================*\
+  !FIXES
+\*==============================*/
+
+/* Fixes blurry images on Chrome, which affected some people in May 2022 */
+.status-menu::after,
+.data.image img,
+.data.image a::before {
+    image-rendering: -webkit-optimize-contrast;
 }
