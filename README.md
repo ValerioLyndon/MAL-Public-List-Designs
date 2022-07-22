@@ -1,8 +1,8 @@
 # Valerio Lyndon's Public List Designs for MyAnimeList
 
-## Theme Info
+## How to install
 
-Detailed information and install instructions can be found on [MyAnimeList](https://myanimelist.net/blog.php?eid=805506).
+The easiest way to install these themes is using my [Theme Customiser](https://valeriolyndon.github.io/Theme-Customiser/?c=https%3A%2F%2Fvaleriolyndon.github.io%2FMAL-Public-List-Designs%2Fcustomiser.json) tool. Alternatively, you can find install guides for some themes on the [wiki](https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki).
 
 ## Reporting Issues
 
@@ -13,7 +13,9 @@ You can report issues either of two ways:
 
 ## Providing Feedback
 
-If you have design or feature feedback about Clarity, 9anime, or Tilt, you should know these themes have been essentially feature-frozen. Due to how I had users install them (with auto-update functionality), I am hesitant to release anything beyond simple bug fixes. If you have feedback on any other theme, I will take it into consideration.
+If you have design feedback about Clarity, 9anime, or Tilt, you should know these themes have been essentially feature-frozen. Due to how I had users install them with auto-update functionality, I will not release anything beyond simple bug fixes or support for new features.
+
+If you have feedback on any other theme, feel free to contact me or open an issue and I will take it into consideration.
 
 ## Modifying Themes
 
