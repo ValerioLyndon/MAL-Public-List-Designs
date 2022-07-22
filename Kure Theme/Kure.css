@@ -1,24 +1,19 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\
-| Kure (name subject to change)  |
+| Kure                           |
 | by Valerio Lyndon              |
-| Version 0.4.2                  |
-|                                |
-|   This theme is incomplete.    |
-| Functionality is limited and   |
-| the design is not completed.   |
-| I would appreciate you fixing  |
-| issues yourself where possible.|
-| If I had the desire to edit    |
-| this theme, I would do it on   |
-| my own time. Thank you.        |       
+| Version 0.5.0                  |
 \*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /* IMPORTS */
 @\import "https://fonts.googleapis.com/css?family=Muli:400,700|Playball";
 
-/* ad area found on theme 10 */
+/* REMOVALS */
+
+/* Tutorial & MAL shutdown messages */
+.initialize-tutorial,
+/* Ad area found on theme 10 */
 div[style="padding-top: 8px"] {
-	display: none;
+	display: none !important;
 }
 
 /* VARIABLES */
@@ -49,8 +44,6 @@ div[style="padding-top: 8px"] {
 	/* Meta */
 	--transition-text: 0.08s ease-out;
 	--transition-button: 0.11s ease-out;
-	--fontset: "Lexend Deca", sans-serif;
-	--fontset: "Montserrat", sans-serif;
 	--fontset: 'Muli', 'FontAwesome', sans-serif;
 	--fontset-heading: 'Playball', 'FontAwesome', cursive;
 }
@@ -224,6 +217,7 @@ body::before {
 	opacity: 0.7;
 }
 
+#cover-image,
 #cover-image-container .btn-list-setting {
 	display: none;
 }
@@ -634,6 +628,10 @@ body::before {
 	padding: 5px 10px 10px;
 }
 
+.stats #advanced-options-button i {
+	display: none;
+}
+
 /* Search */
 
 #status-menu .search-container {
@@ -675,7 +673,7 @@ body::before {
 	pointer-events: none;
 }
 
-#status-menu #search-button .fa {
+#status-menu #search-button i {
 	line-height: 26px;
 }
 
@@ -828,7 +826,7 @@ body::before {
 } .list-table-data {
 	display: flex !important;
 	min-height: 40px;
-	padding: 0 80px 0 5px;
+	padding: 5px 80px 5px 5px;
 }
 
 .list-table .list-table-data .data {
@@ -902,9 +900,9 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 .list-table .list-table-data .data.image {
 	width: 40px;
 	height: 40px;
-	margin: 5px 0 5px 10px;
+	margin: 0 0 0 10px;
 	border-radius: 20px;
-	order: 5;
+	order: 7;
 	overflow: hidden;
 }
 
@@ -919,9 +917,11 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 /* Title */
 
 .list-table .list-table-data .data.title {
+	width: 100%;
+	min-width: 100px;
 	padding: 0;
-	flex: 1 1 auto;
-	order: 15;
+	flex: 0 1 auto;
+	order: 10;
 }
 
 .list-table .list-table-data .data.title .link {
@@ -950,7 +950,8 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 	font-size: 0;
 }
 
-.list-table .list-table-data .data.title .add-edit-more a {
+.list-table .list-table-data .data.title .add-edit-more a,
+.list-table .list-table-data .tags .edit {
 	display: block;
 	width: 26px;
 	height: 26px;
@@ -960,13 +961,24 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 	text-align: center;
 	opacity: 0.5;
 	transition: opacity var(--transition-button);
-} .list-table .list-table-data .data.title .add-edit-more a:hover {
+} .list-table .list-table-data .tags .edit {
+	position: absolute;
+	top: calc(50% - 13px);
+	right: -7px;
+	font-size: 0;
+	color: hsl(var(--link)) !important;
+} .list-table .list-table-data .data.title .add-edit-more a:hover,
+.list-table .list-table-data .tags .edit:hover {
 	opacity: 1;
+	/* for .edit */
+	color: hsl(var(--link-h)) !important;
 }
 
-.add-edit-more a::after {
+.add-edit-more a::after,
+.data.tags .edit::after {
 	font-size: 1.2rem;
 	line-height: 26px;
+	font-family: var(--fontset);
 	transition: color var(--transition-button);
 } .add-edit-more .add a::after {
 	content: '\f067';
@@ -975,6 +987,19 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 	line-height: 24px;
 } .add-edit-more .more a::after {
 	content: '\f141';
+} .data.tags .edit::after {
+	content: '\f02b';
+}
+
+/* Tags */
+
+.list-table .list-table-data .data.tags {
+	position: relative;
+	width: 100px;
+	order: 90;
+} [data-owner='1'] .list-table .list-table-data .data.tags {
+	width: 129px;
+	padding-right: 29px;
 }
 
 /* Number */
@@ -996,7 +1021,7 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 	width: 2ch;
 	/* Using a fixed height prevents jitter when bringing up selection box */
 	height: 3ch;
-	order: 10;
+	order: 3;
 }
 
 .list-table .list-table-data .data.score .link {
@@ -1031,7 +1056,9 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 .list-table .list-table-data .data.progress,
 .list-table .list-table-data .data.chapter,
 .list-table .list-table-data .data.volume {
-	order: 20;
+	width: 40px;
+	order: 15;
+	flex: 1 0 auto;
 	text-align: right;
 	font-size: 1.1rem;
 }
@@ -1051,38 +1078,58 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 }
 
 .list-table .list-table-data .data.type {
-	width: 70px;
-	order: 22;
+	width: 60px;
+	order: 20;
 }
+
+/* Dates */
 
 .list-table .list-table-data .data.started,
 .list-table .list-table-data .data.finished,
 .list-table .list-table-data .data.airing-started,
 .list-table .list-table-data .data.airing-finished {
 	width: 60px;
-	order: 17;
+	order: 45;
+} .list-table .list-table-data .data.started,
+.list-table .list-table-data .data.airing-started {
+	margin-bottom: 20px;
+} .list-table .list-table-data .data.finished,
+.list-table .list-table-data .data.airing-finished {
+	margin: 20px 0 0 -60px;
 }
+
+/* Days */
 
 .list-table .list-table-data .data.days {
 	width: 30px;
+	order: 47;
 }
+
+/* Season */
 
 .list-table .list-table-data .data.season {
 	width: 90px;
+	order: 50;
 }
 
 .list-table .list-table-data .data.studio,
 .list-table .list-table-data .data.licensor,
-.list-table .list-table-data .data.magazine {
+.list-table .list-table-data .data.magazine,
+.list-table .list-table-data .data.genre,
+.list-table .list-table-data .data.demographic {
 	width: 100px;
-}
-
-.list-table .list-table-data .data.tags {
-	width: 100px;
+	order: 60;
 }
 
 .list-table .list-table-data .data.storage {
 	width: 70px;
+	order: 70;
+}
+
+.list-table .list-table-data .data.priority,
+.list-table .list-table-data .data.rated {
+	width: 70px;
+	order: 70;
 }
 
 /* More Content */
@@ -1141,35 +1188,9 @@ footer {
 }
 
 #footer-block {
-	height: 43px;
-	padding: 10px 0 10px;
-	background: hsl(var(--content));
-	--gradient-size: 22px;
-	--gradient-fade1: 70%;
-	--gradient-fade2: 93%;
-	background-image:
-		linear-gradient(
-			to right,
-			hsla(var(--content), var(--gradient-fade2)),
-			hsla(var(--content), var(--gradient-fade1)) calc(50% - 300px),
-			hsla(var(--content), var(--gradient-fade1)) calc(50% + 300px),
-			hsla(var(--content), var(--gradient-fade2))
-		), repeating-linear-gradient(
-			45deg,
-			hsla(var(--accent), 50%),
-			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.1),
-			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.9),
-			hsla(var(--accent), 50%) var(--gradient-size)
-		), repeating-linear-gradient(
-			135deg,
-			hsla(var(--accent), 50%),
-			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.1),
-			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.9),
-			hsla(var(--accent), 50%) var(--gradient-size)
-		);
-	border-top: 3px solid hsl(var(--accent));
-	box-shadow: 0 -1px 3px hsla(var(--shadow), 50%);
-	color: hsl(var(--text));
+	padding: 10px 0;
+	background: none;
+	text-shadow: 0 1px 2px hsl(var(--content));
 }
 
 #copyright {
@@ -1182,10 +1203,18 @@ footer {
 	content: 'List design by Valerio Lyndon.';
 }
 
+#recaptcha-terms {
+	color: hsl(var(--text));
+	margin: 0;
+}
+
 /* OVERLAYS */
 
 #fancybox-overlay {
-	background: linear-gradient(15deg, hsl(var(--tint1)), hsla(var(--tint2), 66.7%));
+	background: rgba(0,0,0,0.5) !important;
+	opacity: 1 !important;
+	-webkit-backdrop-filter: blur(1px);
+	backdrop-filter: blur(1px);
 }
 
 #fancybox-wrap {
@@ -1209,10 +1238,6 @@ div.fancy-bg {
 }
 
 /* Filter Menu */
-
-#advanced-options[style*="block"] ~ #fancybox-overlay {
-	opacity: 0.2 !important;
-}
 
 #advanced-options {
 	position: fixed;
