@@ -217,11 +217,8 @@ body::before {
 	opacity: 0.7;
 }
 
+#cover-image,
 #cover-image-container .btn-list-setting {
-	display: none;
-}
-
-#cover-image {
 	display: none;
 }
 
@@ -631,6 +628,10 @@ body::before {
 	padding: 5px 10px 10px;
 }
 
+.stats #advanced-options-button i {
+	display: none;
+}
+
 /* Search */
 
 #status-menu .search-container {
@@ -672,7 +673,7 @@ body::before {
 	pointer-events: none;
 }
 
-#status-menu #search-button .fa {
+#status-menu #search-button i {
 	line-height: 26px;
 }
 
@@ -1187,35 +1188,9 @@ footer {
 }
 
 #footer-block {
-	height: 43px;
-	padding: 10px 0 10px;
-	background: hsl(var(--content));
-	--gradient-size: 22px;
-	--gradient-fade1: 70%;
-	--gradient-fade2: 93%;
-	background-image:
-		linear-gradient(
-			to right,
-			hsla(var(--content), var(--gradient-fade2)),
-			hsla(var(--content), var(--gradient-fade1)) calc(50% - 300px),
-			hsla(var(--content), var(--gradient-fade1)) calc(50% + 300px),
-			hsla(var(--content), var(--gradient-fade2))
-		), repeating-linear-gradient(
-			45deg,
-			hsla(var(--accent), 50%),
-			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.1),
-			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.9),
-			hsla(var(--accent), 50%) var(--gradient-size)
-		), repeating-linear-gradient(
-			135deg,
-			hsla(var(--accent), 50%),
-			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.1),
-			hsla(var(--content), 50%) calc(var(--gradient-size) * 0.9),
-			hsla(var(--accent), 50%) var(--gradient-size)
-		);
-	border-top: 3px solid hsl(var(--accent));
-	box-shadow: 0 -1px 3px hsla(var(--shadow), 50%);
-	color: hsl(var(--text));
+	padding: 10px 0;
+	background: none;
+	text-shadow: 0 1px 2px hsl(var(--content));
 }
 
 #copyright {
@@ -1226,6 +1201,11 @@ footer {
 
 #copyright::after {
 	content: 'List design by Valerio Lyndon.';
+}
+
+#recaptcha-terms {
+	color: hsl(var(--text));
+	margin: 0;
 }
 
 /* OVERLAYS */
