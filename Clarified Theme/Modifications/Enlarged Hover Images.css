@@ -1,0 +1,24 @@
+/**
+ * Enlarged Hover Images
+ * v1.0.0
+ */
+
+.list-table .list-table-data .data.image .image {
+	position: relative;
+	transition:
+		transform 200ms ease,
+		border-radius 270ms ease,
+		height 235ms ease;
+	transform-origin: center;
+	pointer-events: none;
+}
+.list-table .list-table-data .data.image a:hover .image {
+	z-index: 10;
+	height: 150%;
+	border: 2px solid var(--local-category) !important;
+	border-radius: 6px;
+	box-shadow: none;
+	transform: scale(1.82) translateY(-10%);
+}
+
+/* END of Enlarged Hover Images */

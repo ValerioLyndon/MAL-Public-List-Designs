@@ -1,0 +1,131 @@
+/**
+ * Tokyo Revengers Theme
+ * v1.0.0
+ */
+
+/* Footer Logo */
+
+#footer-block::before {
+	height: 30px;
+	background: url(https://i.imgur.com/cQMtze0.png) center / contain no-repeat;
+}
+
+/* Theme Colours & Images */
+
+:root {
+	--auxiliary-background: url(https://files.catbox.moe/4qakey.webp);
+	/* core colours */
+	--official-red: #ec1c24;
+	--official-grey: #161516;
+}
+@media (prefers-color-scheme: light) {
+	:root {
+		/* Colour scheme property ensures correct scrollbar colours on modern browsers. Older browsers will probably still have a light scrollbar */
+		color-scheme: light;
+		
+		--page-background: #fefdf4;
+		--page-background: #f2f1e6;
+		--content-background: #fff;
+		--content-highlight: #eeeaee;
+		--button: var(--content-highlight);
+		--border: #cec8ce;
+		--content-text: var(--official-grey);
+		--content-link: var(--official-red);
+		--inverse-background: var(--official-grey);
+		--inverse-text: #fff;
+		--scroll-thumb: var(--border);
+
+		--mild-shadow: rgba(255, 255, 255, 0.4) 0px 2px 6px, rgba(0, 0, 0, 0.2) 0px 3px 8px;
+		--medium-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
+		
+		--auxiliary-background-image-opacity: 0.5;
+	}
+	
+	/* Images */
+	
+	body[data-query*='"status":7'] {
+		--cover: url(https://i.imgur.com/kMocb1i.jpg);
+		--cover-position: center 40%;
+	}
+	body[data-query*='"status":1'] {
+		--cover: url(https://i.imgur.com/qFaw63c.jpg);
+		--cover-position: center 40%;
+	}
+	body[data-query*='"status":2'] {
+		--cover: url(https://i.imgur.com/CgMTcAO.jpg);
+		--cover-position: center;
+	}
+	body[data-query*='"status":3'] {
+		--cover: url(https://i.imgur.com/O1FUMwa.jpg);
+		--cover-position: center top;
+	}
+	body[data-query*='"status":4'] {
+		--cover: url(https://i.imgur.com/d0MU2XO.jpg);
+		--cover-position: center;
+	}
+	body[data-query*='"status":6'] {
+		--cover: url(https://i.imgur.com/IQjxPJA.jpg);
+		--cover-position: center top;
+	}
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* Colour scheme property ensures correct scrollbar colours on modern browsers. Older browsers will probably still have a light scrollbar */
+		color-scheme: dark;
+		
+		--page-background: var(--official-grey);
+		--content-background: #212121;
+		--content-highlight: #2b2b2b;
+		--button: var(--content-highlight);
+		--border: var(--official-grey);
+		--content-text: #ababab;
+		--content-link: var(--official-red);
+		--inverse-background: var(--official-red);
+		--inverse-text: var(--official-grey);
+		--scroll-thumb: var(--official-red);
+
+		--mild-shadow: rgba(21, 21, 21, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.14) 0px 3px 8px;
+		--medium-shadow: rgba(0, 0, 0, 0.55) 0px 3px 8px;
+		
+		--auxiliary-background-image-opacity: 0.15;
+	}
+	
+	/* Images */
+	
+	body[data-query*='"status":7'] {
+		--cover: url(https://i.imgur.com/NfWBnV5.jpg);
+		--cover-position: center 40%;
+	}
+	body[data-query*='"status":1'] {
+		--cover: url(https://i.imgur.com/mk8JV6t.jpg);
+		--cover-position: center 40%;
+	}
+	body[data-query*='"status":2'] {
+		--cover: url(https://i.imgur.com/fLhBigS.jpg);
+		--cover-position: center;
+	}
+	body[data-query*='"status":3'] {
+		--cover: url(https://i.imgur.com/xCjrh0Q.jpg);
+		--cover-position: center top;
+	}
+	body[data-query*='"status":4'] {
+		--cover: url(https://i.imgur.com/L5kuy7B.jpg);
+		--cover-position: center;
+	}
+	body[data-query*='"status":6'] {
+		--cover: url(https://i.imgur.com/XuZjtp8.jpg);
+		--cover-position: center top;
+	}
+	
+	/* Other tweaks */
+	
+	#footer-block::before {
+		filter: invert(1);
+	}
+	
+	#gdpr-modal-bottom {
+		filter: invert(0.9) hue-rotate(180deg);
+	}
+}
+
+/* END of Tokyo Revengers Theme */
