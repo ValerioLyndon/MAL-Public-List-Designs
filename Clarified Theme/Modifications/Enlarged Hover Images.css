@@ -1,4 +1,7 @@
-/* START of Enlarged Hover Images v0.1.0 */
+/**
+ * Enlarged Hover Images
+ * v1.0.0
+ */
 
 .list-table .list-table-data .data.image .image {
 	position: relative;
@@ -18,4 +21,4 @@
 	transform: scale(1.82) translateY(-10%);
 }
 
-/* END of Enlarged Hover Images Mod */
+/* END of Enlarged Hover Images */
