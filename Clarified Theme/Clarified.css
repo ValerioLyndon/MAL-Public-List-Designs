@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v1.3.2
+ * v2.0.0
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -13,7 +13,7 @@
  * 
  ! COVER
  @ Cover-Image
- @ Simple-Buttons
+ @ Buttons
  @ User-Menu
  * 
  ! CATEGORY-MENU
@@ -33,7 +33,7 @@
  @ Progress
  @ Priority
  @ Dates // Started / Finished / Days / Airing
- @ Generic // Rated / Magazione / Storage / Retail / Season
+ @ Generic // Rated / Magazine / Storage / Retail / Season
  @ Tags / Genres / Demographic / Studio / Licensor
  @ Empty-Table
  @ More-Info
@@ -48,6 +48,8 @@
  * 
  ! THEME
  ? Colours, images, and custom code for light and dark modes.
+ @ Internal
+ @ Primary
  * 
  ! MODS
  */
@@ -81,7 +83,7 @@ html {
 body.ownlist {
 	position: relative;
 	min-width: 1060px;
-	background-color: var(--page-background) !important;
+	background: var(--background) center / cover fixed var(--page-background) !important;
 	background-size: cover;
 	color: var(--content-text) !important;
 }
@@ -102,7 +104,7 @@ div[style^="width: 300px;"],
 input,
 textarea,
 select {
-	font-family: "Noto Sans", Arial, "Helvetica Neue", Helvetica, FontAwesome, sans-serif !important;
+	font-family: var(--font) !important;
 }
 
 /* Links */
@@ -143,7 +145,7 @@ select,
 
 .list-container {
 	width: 100%;
-	padding-top: 78px;
+	padding-top: 55px;
 	background: none !important;
 	border: none;
 }
@@ -186,7 +188,8 @@ div[style="padding-top: 8px"] {
   @Background
   ---------*/
 
-body::before {
+body::before,
+body::after {
 	content: "";
 	position: fixed;
 	bottom: 0;
@@ -196,7 +199,13 @@ body::before {
 	min-width: 1060px;
 	height: 1080px;
 	pointer-events: none;
-	background: url(https://files.catbox.moe/4qakey.webp) center bottom / contain no-repeat;
+}
+body::before {
+	background: var(--page-background);
+	opacity: calc(1 - var(--background-image-opacity));
+}
+body::after {
+	background: var(--auxiliary-background) center bottom / contain no-repeat;
 	opacity: var(--auxiliary-background-image-opacity);
 }
 
@@ -210,19 +219,16 @@ body::before {
   @Cover-Image
   ---------*/
 
-.header::before,
-.header::after {
+.header::before {
 	content: "";
 	position: absolute;
 	pointer-events: none;
-}
-.header::before {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 400px;
-	background: var(--cover) / cover var(--inverse-background);
-	box-shadow: inset 0 -2px 8px rgba(0,0,0,0.18);
+	height: 100%;
+	background: var(--cover) var(--cover-position) / cover;
+	box-shadow: inset var(--cover-shadow);
 }
 
 .cover-block {
@@ -249,6 +255,8 @@ body::before {
   @Buttons
   ---------*/
 
+/* Generic Setup */
+
 .header {
 	width: 100%;
 	height: 400px;
@@ -261,18 +269,44 @@ body::before {
 	color: var(--image-text) !important;
 }
 
-.header .header-title {
-	top: auto;
-	left: calc(50% + 456px);
-	bottom: 15px;
-	width: 74px;
+.header .header-menu {
+	top: 15px !important;
+	right: 15px;
+	display: flex;
+	padding: 6px;
+	opacity: 0.25;
+	transition: opacity .5s ease-out;
+}
+.header:hover .header-menu {
+	opacity: 1;
+	transition-duration: .08s;
+}
+
+/* Common Button Styling */
+
+.header .header-title,
+.header .header-menu .btn-menu,
+.header .header-info,
+#header-menu-dropdown .icon-menu {
 	height: 32px;
 	padding: 6px;
 	background: var(--image-background);
 	border-radius: 3px;
+	margin-right: 15px;
+	font-size: 14px;
+}
+
+/* Home Button */
+
+.header .header-title {
+	top: 15px;
+	left: 30px;
+	width: 74px;
 	font-size: 0;
 	text-indent: 0;
 	text-decoration: none !important;
+	opacity: 0.25;
+	transition: opacity .5s ease-out;
 }
 .header .header-title::before {
 	content: "\f015  Home";
@@ -281,23 +315,19 @@ body::before {
 .header .header-title:hover::before {
 	text-decoration: underline;
 }
-
-.header .header-menu {
-	top: auto !important;
-	bottom: 15px;
-	left: calc(50% - 530px);
-	right: auto;
-	padding: 6px;
-	background: var(--image-background);
-	border-radius: 3px;
-	text-align: left;
+.header:hover .header-title {
+	opacity: 1;
+	transition-duration: .08s;
 }
+
+/* Viewing "Name's" List */
 
 .header .header-menu .btn-menu {
 	font-size: 14px;
-	text-align: left;
 	cursor: text;
 }
+
+/* Remove dropdown icon */
 
 #header-menu-button {
 	font-weight: normal;
@@ -308,27 +338,25 @@ body::before {
 	display: none;
 }
 
+/* Shared Anime / Affinity / History */
+
 .header .header-info {
-	display: inline;
-	margin: 0;
-	font-size: 14px;
+	margin-top: 0;
+	order: 2;
 }
-#header-menu-dropdown::before {
-	content: " -";
-	white-space: pre;
-}
+
+/* Swap List */
 
 #header-menu-dropdown {
 	position: static;
-	display: inline !important;
+	display: block !important;
 	background: none;
 	border: none;
 	box-shadow: none;
 	vertical-align: baseline;
 }
 #header-menu-dropdown .icon-menu {
-	display: inline;
-	background: none;
+	width: auto;
 	color: var(--image-text);
 	transition: none;
 }
@@ -355,11 +383,11 @@ body::before {
 
 .list-menu-float {
 	position: absolute;
-	top: 391px;
-	left: calc(50% + 322px);
+	top: calc(15px + 38px);
+	left: calc(-49px + 30px + 15px + 84px);
 	z-index: 15;
 	display: block;
-	width: 170px;
+	width: 150px;
 	background: var(--content-background);
 	border: none;
 	box-shadow: var(--medium-shadow);
@@ -373,19 +401,26 @@ body::before {
 .list-menu-float::before {
 	content: "";
 	position: absolute;
-	left: 49px;
+	left: 39px;
 	top: -38px;
 	width: 72px;
 	height: 32px;
 	background: var(--image-background);
 	border-radius: 3px;
 	visibility: visible;
+	opacity: 0.25;
+	transition: opacity .5s ease-out;
+}
+.list-menu-float:hover::before,
+.header:hover ~ .list-menu-float::before {
+	opacity: 1;
+	transition-duration: .08s;
 }
 
 .list-menu-float .icon-menu.profile {
 	position: absolute;
 	top: -32px;
-	left: 55px;
+	left: 45px;
 	width: 60px;
 	height: 38px;
 	padding: 0;
@@ -397,23 +432,31 @@ body::before {
 	font-weight: bold;
 	white-space: nowrap;
 	text-shadow: var(--image-shadow);
-	opacity: 1;
+	opacity: .25;
 	visibility: visible;
-} .list-menu-float:hover .icon-menu.profile {
-	color: var(--content-link) !important;
+	transition: opacity .5s ease-out;
 }
-.list-menu-float .icon-menu.profile::before {
-	content: "";
+.list-menu-float:hover .icon-menu.profile {
+	color: var(--content-link) !important;
+	opacity: 1;
+	transition-duration: .08s;
+}
+.header:hover ~ .list-menu-float .icon-menu.profile {
+	opacity: 1;
+	transition-duration: .08s;
+}
+
+.list-menu-float .icon-menu.profile::after {
+	content: "User";
 	display: inline-block;
 	width: 20px;
 	height: 20px;
+	text-indent: 23px;
 	background: inherit;
 	background-size: cover;
 	border-radius: 50%;
+	white-space: nowrap;
 	vertical-align: top;
-}
-.list-menu-float .icon-menu.profile::after {
-	content: "User";
 }
 
 .list-menu-float .icon-menu {
@@ -508,42 +551,86 @@ body::before {
   !CATEGORY-MENU
   =========*/
 
+/* the reason for the position and 0 height is so that the "fixed" class will trigger at the correct scroll location */
 .status-menu-container {
 	position: absolute;
-	top: 0;
+	top: 40px;
 	width: 100%;
-	height: 60px;
-	background: var(--content-background);
+	height: 0;
 	border: none;
-	box-shadow: var(--medium-shadow);
+	
+}
+@media (max-width: 1250px) {
+	#status-menu.fixed {
+		display: none;
+	}
 }
 #status-menu.fixed {
+	top: 15px;
+	right: calc(50% - 60px - 530px - 15px);
 	z-index: 10;
+	width: 60px;
+	height: 275px;
+	border-radius: 6px;
+	background: var(--content-background);
+	box-shadow: var(--mild-shadow);
+	animation: 0.2s ease-out menu-reveal;
+}
+
+@keyframes menu-reveal {
+	from {
+		height: 0;
+		overflow: hidden;
+	}
+	to {
+		height: 275px;
+		overflow: hidden;
+	}
 }
 
 #status-menu .status-menu {
-	position: relative;
 	display: flex;
-	width: 1060px;
 	justify-content: left;
+	align-items: center;
+}
+#status-menu:not(.fixed) .status-menu {
+	position: relative;
+	top: -65px;
+	width: 1060px;
+	height: 50px;
+	background: var(--content-background);
+	border-radius: 6px;
+	box-shadow: var(--mild-shadow);
+}
+#status-menu.fixed .status-menu {
+	flex-direction: column;
+	padding: 10px 0;
 }
 
 #status-menu .status-button {
 	height: 30px;
 	padding: 0 12px;
-	margin-top: 15px;
 	font-size: 0;
 	text-decoration: none;
+}
+#status-menu.fixed .status-button {
+	width: 40px;
+	height: 30px;
+	padding: 5px 0;
+	box-sizing: content-box;
 }
 #status-menu .status-button.on:not(:hover) {
 	color: var(--page-category) !important;
 }
-#status-menu .status-button ~ .status-button {
-	border-left: 2px dotted var(--border);
+#status-menu:not(.fixed) .status-button ~ .status-button {
+	border-left: 3px dotted var(--border);
+}
+#status-menu.fixed .status-button ~ .status-button {
+	border-top: 3px dotted var(--border);
 }
 
 .status-button::before {
-	font: 700 17px/30px "Roboto Condensed", Oswald, var(--icon-font) !important;
+	font: 700 17px/30px var(--alternate-font) !important;
 }
 .status-button:nth-of-type(1)::before {
 	content: "\f621  EVERYTHING";
@@ -563,6 +650,24 @@ body::before {
 .status-button:nth-of-type(6)::before {
 	content: "\f141  PLANNED";
 }
+.fixed .status-button:nth-of-type(1)::before {
+	content: "\f621";
+}
+.fixed .status-button:nth-of-type(2)::before {
+	content: "\f06e";
+}
+.fixed .status-button:nth-of-type(3)::before {
+	content: "\f00c";
+}
+.fixed .status-button:nth-of-type(4)::before {
+	content: "\f04c";
+}
+.fixed .status-button:nth-of-type(5)::before {
+	content: "\f00d";
+}
+.fixed .status-button:nth-of-type(6)::before {
+	content: "\f141";
+}
 
 #status-menu .status-button::after {
 	left: 12px;
@@ -576,49 +681,97 @@ body::before {
 #status-menu .status-button:hover::after {
 	opacity: 1;
 }
+#status-menu.fixed .status-button::after {
+	left: 2px;
+	bottom: 2px;
+	height: calc(100% - 4px);
+	width: 2px;
+}
 
 /* @Search */
 
-.status-menu-container .search-container {
-	top: 16px;
-	right: 0;
+#status-menu .search-container {
 	display: flex;
+	background: var(--content-background);
+}
+#status-menu:not(.fixed) .search-container {
+	right: 11px;
+	top: 11px;
 	height: 28px;
 	background: var(--content-highlight);
 	border-radius: 3px;
 	align-items: center;
 }
+#status-menu.fixed .search-container {
+	right: 0;
+	top: 290px;
+	width: 60px;
+	height: 45px;
+	border-radius: 6px;
+	box-shadow: var(--mild-shadow);
+	justify-content: center;
+	animation: 0.09s ease-out 0.21s backwards search-reveal;
+}
 
-.status-menu-container .search-container #search-box {
+@keyframes search-reveal {
+	from {
+		height: 0;
+		overflow: hidden;
+	}
+	to {
+		height: 45px;
+		overflow: hidden;
+	}
+}
+
+#status-menu #search-box {
+	margin: 0;
+}
+#status-menu:not(.fixed) #search-box {
 	width: auto !important;
 	height: 100%;
 	overflow: visible;
-	margin: 0;
 }
-#search-box::before {
+#status-menu.fixed #search-box {
+	position: absolute;
+	right: calc(100% + 5px);
+	height: 45px;
+	box-shadow: var(--medium-shadow);
+	border-radius: 6px;
+}
+#status-menu.fixed #search-box.open {
+	width: 200px;
+}
+
+#status-menu:not(.fixed) #search-box::before {
 	content: "Search for a title...";
 	display: block;
 	height: 0px;
-	padding-left: 3px;
+	padding: 0 6px;
 	line-height: 28px;
 	pointer-events: none;
 	opacity: 0.5;
 }
-#search-box:focus-within::before {
+#status-menu:not(.fixed) #search-box:focus-within::before {
 	opacity: 0;
 }
 
-.status-menu-container .search-container #search-box input {
+#status-menu:not(.fixed) #search-box input {
 	width: 170px;
 	padding: 3px 24px 3px 3px;
 	background: none;
 	border: none;
 }
-#search-box input:not(:focus) {
+#status-menu:not(.fixed) #search-box input:not(:focus) {
 	opacity: 0;
 }
+#status-menu.fixed #search-box input {
+	padding: 3px 12px;
+	background: var(--content-background);
+	border: none;
+}
 
-.status-menu-container .search-container #search-button {
+#status-menu:not(.fixed) #search-button {
 	width: 24px;
 	margin: 0 0 0 -24px;
 	color: var(--content-text);
@@ -627,9 +780,17 @@ body::before {
 	opacity: 0.5;
 	pointer-events: none;
 }
+#status-menu.fixed #search-button {
+	margin: 0;
+	font-size: 17px;
+	height: 45px;
+}
 
-#search-button i {
+#status-menu:not(.fixed) #search-button i {
 	line-height: 24px;
+}
+#status-menu.fixed #search-button i {
+	line-height: 45px;
 }
 
 
@@ -654,29 +815,30 @@ body::before {
 
 .list-table > tbody:first-of-type {
 	position: sticky;
-	top: 65px;
+	top: 5px;
 	z-index: 10;
-	box-shadow: var(--medium-shadow);
+	height: 52px;
 	border-bottom: 2px solid var(--page-category);
 }
-
-.list-item tr {
-	padding: 3px;
+.fixed ~ .list-block .list-table > tbody:first-of-type {
+	box-shadow: var(--medium-shadow);
 }
 
 tr.list-table-data {
 	position: relative;
 	display: grid;
-	padding: 3px 23px 3px 10px;
+	padding: 3px 10px 3px 33px;
 	grid-template-columns: 0fr [number] 21px [status] 0fr [image] 1fr [title] repeat(47, 0fr);
-	grid-template-rows: auto 0fr [tags] 0fr [genre] 0fr [demographic];
+	grid-template-rows: auto 0fr [tags];
 	grid-gap: 0px;
 	align-items: center;
 }
 
 .list-table-header {
 	display: flex;
-	padding: 0 23px 0 10px;
+	padding: 0 10px 0 33px;
+	align-items: center;
+	height: 100%;
 }
 
 .list-table .list-table-data .data {
@@ -713,7 +875,7 @@ tr.list-table-data {
 .list-table .list-table-header .header-title {
 	position: relative;
 	height: auto;
-	padding: 15px 0;
+	padding: 0;
 	background: none;
 	border: none;
 	flex: 0 0 auto;
@@ -773,16 +935,18 @@ tr.list-table-data {
 
 .list-unit .list-stats {
 	position: sticky;
-	top: 65px;
+	top: 5px;
 	z-index: 11;
 	width: 1034px;
 	padding: 0 12px;
-	height: 45px !important;
+	height: 50px !important;
 	background: none;
-	margin: 0 auto -45px !important;
+	margin: 0 auto -50px !important;
 	color: var(--content-text);
 	font-size: 13px;
-	line-height: 45px;
+	line-height: 50px;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
 	transform: translateX(-13px);
 	pointer-events: none;
 }
@@ -800,14 +964,14 @@ tr.list-table-data {
 
 .list-unit .list-status-title {
 	position: sticky;
-	top: 65px;
+	top: 5px;
 	z-index: 11;
 }
 
 .list-table .list-table-data .data.title .add-edit-more,
 .list-unit .list-status-title .stats {
 	position: absolute;
-	right: 0;
+	left: 0;
 	top: -3px;
 	z-index: 4;
 	width: 26px;
@@ -821,13 +985,13 @@ tr.list-table-data {
 }
 .list-unit .list-status-title .stats {
 	top: 0;
-	height: 45px;
-	padding: 1px 3px 0;
+	height: 50px;
+	padding: 3px;
 	z-index: 13;
 }
 .list-table .list-table-data .tags .edit {
 	position: absolute;
-	right: 3px;
+	left: 3px;
 	top: 47px;
 	z-index: 4;
 }
@@ -840,21 +1004,28 @@ tr.list-table-data {
 	height: 20px;
 	border-radius: 3px;
 	margin: 0 0 4px;
-	float: right;
+	float: left;
 	clear: both;
 	color: var(--content-text) !important;
 	font-size: 0;
 	line-height: 20px;
 	text-align: center;
 	white-space: nowrap;
+	opacity: 0.25;
 }
 #list-container .add-edit-more a:hover,
 .list-unit .list-status-title .stats a:hover,
 #list-container .list-table .list-table-data .tags .edit:hover {
 	background: var(--inverse-background);
+	box-shadow: var(--mild-shadow);
 	color: var(--inverse-text) !important;
 	font-size: 12px;
-	padding: 0 0 0 6px;
+	padding-right: 6px;
+}
+.list-table-data:hover .add-edit-more a,
+.list-unit .list-status-title .stats a,
+.list-table .list-table-data:hover .tags .edit {
+	opacity: 1;
 }
 
 .add-edit-more a::before,
@@ -863,8 +1034,7 @@ tr.list-table-data {
 	width: 20px;
 	font-size: 12px;
 	line-height: 20px;
-	margin-left: 3px;
-	order: 1;
+	margin-right: 3px;
 }
 .add-edit-more .add a::before {
 	content: "\2b";
@@ -934,7 +1104,6 @@ tr.list-table-data {
 .header-title.number,
 .data.number {
 	width: 32px !important;
-	margin-left: -10px;
 	order: 1;
 }
 
@@ -956,6 +1125,7 @@ tr.list-table-data {
 	width: 54px !important;
 	text-indent: 6px;
 	order: 3;
+	text-align: left !important;
 }
 
 .data.image {
@@ -979,8 +1149,8 @@ tr.list-table-data {
 	border-radius: 30px;
 	object-fit: cover;
 }
-.data.image:hover .image {
-	opacity: 0.5;
+.list-table .list-table-data .data.image a:hover .image {
+	box-shadow: 0 0 0 2px var(--local-category);
 }
 
 
@@ -1015,20 +1185,36 @@ tr.list-table-data {
 	margin-left: 57px;
 }
 
+.data.title .link {
+	float: left;
+}
+
 /* Icon Watch */
 
 .icon-watch2 {
-	float: right;
-	line-height: 16px;
+	float: left;
+	clear: left;
 }
 
-.mal-icon {
-	margin-left: 3px;
+#list-container .mal-icon {
+	margin-right: 6px;
+	color: var(--content-link) !important;
+	font-size: 10px;
+	font-style: italic;
+	opacity: 1;
 }
 
-.malicon {
-	color: var(--inverse-background) !important;
+#list-container .mal-icon i {
+	color: inherit;
+	font-size: inherit;
 	line-height: inherit;
+}
+.mal-icon::after {
+	content: "Watch";
+	margin-left: 1px;
+}
+#list-container .mal-icon:hover::after {
+	text-decoration: underline;
 }
 
 /* Content Status */
@@ -1036,12 +1222,9 @@ tr.list-table-data {
 .list-table .list-table-data .data.title .rewatching,
 .list-table .list-table-data .data.title .rereading,
 .list-table .list-table-data .data.title .content-status {
-	padding: 0 4px;
-	border: 1px dashed var(--border);
-	border-radius: 3px;
-	float: right;
+	float: left;
 	color: var(--content-text);
-	line-height: 16px;
+	font-style: italic;
 }
 
 
@@ -1364,11 +1547,6 @@ Please MAL I am begging you, just add another selector to the date column header
 	overflow: hidden;
 	line-height: 1.5em;
 }
-.header-title.rated,
-.data.rated {
-	width: 40px !important;
-	order: 28;
-}
 .header-title.magazine,
 .data.magazine {
 	width: 90px !important;
@@ -1382,10 +1560,26 @@ Please MAL I am begging you, just add another selector to the date column header
 	order: 19;
 }
 
+/* Rated */
+
+.header-title.rated,
+.data.rated {
+	width: 40px !important;
+	order: 45;
+}
+.data.rated {
+	height: calc(1.5em + 6px);
+	padding: 3px !important;
+	border-radius: 3px;
+	background: var(--content-highlight);
+	font-weight: bold;
+	font-size: 12px;
+	font-family: var(--alternate-font);
+}
+
 /* Season */
 
 .data.season {
-	position: relative;
 	width: 43px;
 	order: 26;
 	height: auto;
@@ -1393,39 +1587,18 @@ Please MAL I am begging you, just add another selector to the date column header
 
 .data.season span {
 	display: flex;
-	height: 3em;
-	overflow: hidden;
-	flex-flow: column-reverse nowrap;
-	line-height: 3em;
-	font-weight: bold;
 }
 
 .data.season a {
 	width: 4ch;
-	margin: 0 0 0 auto;
+	margin-left: 3px;
+	text-align: left;
+	font-size: 12px;
+	font-weight: bold;
 }
 .data.season a::first-line {
 	font-size: 9px;
 	font-weight: 400;
-}
-
-.data.season a::after {
-	position: absolute;
-	left: 0;
-	font-size: 1.5em;
-	opacity: 0.35;
-}
-.data.season a[href$="winter"]::after {
-	content: "\f2dc";
-}
-.data.season a[href$="summer"]::after {
-	content: "\f763";
-}
-.data.season a[href$="fall"]::after {
-	content: "\f06c";
-}
-.data.season a[href$="spring"]::after {
-	content: "\f801";
 }
 
 /* Empty column text - thanks to its fixed width, any text in the column will push this to the next line, which hides it due to "overflow: hidden" on the parent. */
@@ -1440,7 +1613,7 @@ Please MAL I am begging you, just add another selector to the date column header
 }
 .data.rated::after {
 	content: "N/A";
-	width: 40px;
+	width: 34px;
 }
 .data.magazine::after {
 	width: 90px;
@@ -1525,7 +1698,7 @@ Please MAL I am begging you, just add another selector to the date column header
 .data.studio span + span,
 .data.licensor span + span {
 	min-width: 70px;
-	border-top: 2px dotted var(--border);
+	border-top: 3px dotted var(--border);
 	margin-top: 2px;
 }
 
@@ -1576,8 +1749,8 @@ Please MAL I am begging you, just add another selector to the date column header
 .data.tags span a,
 .data.genre a[href*="genre="] {
 	display: inline-block;
-	padding: 3px;
-	border: 1px solid var(--border);
+	padding: 4px;
+	background: var(--button);
 	border-radius: 3px;
 	margin-right: 3px;
 	font-size: 11px;
@@ -1658,8 +1831,16 @@ Please MAL I am begging you, just add another selector to the date column header
 .list-table .more-info[style$="table-row;"] {
 	display: block !important;
 	border: none;
-	border-top: 1px dashed var(--border);
+	border-top: 2px dashed var(--border);
 	margin-top: 10px;
+}
+
+/* force full-width more info */
+.more-info table,
+.more-info tbody,
+.more-info td,
+.more-info tr {
+	display: block;
 }
 
 .td1 div a::before {
@@ -1667,8 +1848,23 @@ Please MAL I am begging you, just add another selector to the date column header
 	font-weight: bold;
 }
 
+.td1 {
+	font-size: 12px;
+}
+
 .td1 a {
 	color: var(--content-link) !important;
+}
+
+.td1 > small::after {
+	content: "";
+	display: block;
+	width: calc(100% + 20px);
+	border-top: 2px dashed var(--border);
+	margin: 10px 0 10px -10px;
+}
+.td1 > small + br {
+	display: none;
 }
 
 
@@ -1751,7 +1947,7 @@ Please MAL I am begging you, just add another selector to the date column header
 }
 
 #copyright:after {
-	content: "\a List design by Valerio Lyndon.";
+	content: "\a \"Clarified\" list design by Valerio Lyndon.";
 	white-space: pre-wrap;
 }
 #recaptcha-terms {
@@ -1760,7 +1956,7 @@ Please MAL I am begging you, just add another selector to the date column header
 	line-height: 16px;
 }
 #recaptcha-terms::before {
-	content: "Background photo created by evening_tao - www.freepik.com\a ";
+	content: "";
 	white-space: pre-wrap;
 }
 
@@ -1771,7 +1967,8 @@ Please MAL I am begging you, just add another selector to the date column header
   =========*/
 
 #fancybox-overlay {
-	background: #010001 !important;
+	background: var(--page-background) !important;
+	opacity: 0.77 !important;
 }
 
 #fancybox-wrap {
@@ -1829,7 +2026,7 @@ body #fancybox-close:after {
 
 #advanced-options .advanced-options-header {
 	line-height: 30px;
-	border-bottom: 1px dashed var(--border);
+	border-bottom: 2px dashed var(--border);
 }
 
 #advanced-options .advanced-options-header .description {
@@ -1995,26 +2192,10 @@ div[style^="width: 300px;"] input:hover {
   !THEME
   =========*/
 
-:root {
-	/* core colours */
-	--myanimelist-blue: #2e51a2;
-	--neutral: #161516;
-	
-	/* status colours */
-	--all-items: var(--content-text);
-	--current: hsl(125, 70%, 29.7%);
-	--completed: hsl(223, 40%, 51.2%);
-	--onhold: hsl(46, 60%, 32.45%);
-	--dropped: hsl(359, 55%, 51.25%);
-	--planned: hsl(0, 0%, 43.72%);
-	
-	/* variables that are the same across themes */
-	--image-background: rgba(22,21,22,0.41);
-	--image-text: #fff;
-	--image-shadow: 0 1px 3px rgba(0,0,0,0.5);
-	
-	--icon-font: FontAwesome, "Noto Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
-}
+/*---------
+  @Internal
+  ---------*/
+
 body[data-query*='"status":7'] {
 	--page-category: var(--all-items);
 }
@@ -2034,13 +2215,49 @@ body[data-query*='"status":6'] {
 	--page-category: var(--planned);
 }
 
+:root {
+	--font: "Noto Sans", Arial, "Helvetica Neue", Helvetica, FontAwesome, sans-serif;
+	--icon-font: FontAwesome, var(--font);
+	--alternate-font: "Roboto Condensed", Oswald, var(--icon-font);
+}
+
+
+/*---------
+  @Primary
+  ---------*/
+
+:root {
+	/* core colours */
+	--myanimelist-blue: #2e51a2;
+	--neutral: #161516;
+	
+	/* status colours */
+	--all-items: hsl(311, 40%, 51%);
+	--current: hsl(125, 70%, 29.7%);
+	--completed: hsl(223, 40%, 51.2%);
+	--onhold: hsl(46, 60%, 32.45%);
+	--dropped: hsl(359, 55%, 51.25%);
+	--planned: hsl(0, 0%, 43.72%);
+	
+	/* variables that are the same across themes */
+	--background: none;
+	--background-image-opacity: 1;
+	--auxiliary-background: url(https://files.catbox.moe/m0v1f6.webp);
+	--auxiliary-background-image-opacity: 1;
+	--cover: url(https://i.imgur.com/RAelPvJ.jpg);
+	--cover-position: center bottom;
+	--cover-shadow: rgba(0,0,0,0.38) 0 -3px 9px;
+	--image-background: rgba(22,21,22,0.41);
+	--image-text: #fff;
+	--image-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
 @media (prefers-color-scheme: light) {
 	:root {
 		/* Colour scheme property ensures correct scrollbar colours on modern browsers. Older browsers will probably still have a light scrollbar */
 		color-scheme: light;
 		
-		--page-background: #fefdf4;
-		--page-background: #f2f1e6;
+		--page-background: #fbfbfb;
 		--content-background: #fff;
 		--content-highlight: #eeeaee;
 		--button: var(--content-highlight);
@@ -2054,9 +2271,7 @@ body[data-query*='"status":6'] {
 		--mild-shadow: rgba(255, 255, 255, 0.4) 0px 2px 6px, rgba(0, 0, 0, 0.2) 0px 3px 8px;
 		--medium-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
 		
-		--auxiliary-background-image-opacity: 0.5;
-		
-		--cover: url(https://files.catbox.moe/wo4fg1.jpg) center bottom;
+		--auxiliary-background-image-opacity: .4;
 	}
 	
 	/* Other tweaks */
@@ -2084,9 +2299,7 @@ body[data-query*='"status":6'] {
 		--mild-shadow: rgba(21, 21, 21, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.14) 0px 3px 8px;
 		--medium-shadow: rgba(0, 0, 0, 0.55) 0px 3px 8px;
 		
-		--auxiliary-background-image-opacity: 0.15;
-		
-		--cover: url(https://files.catbox.moe/wo4fg1.jpg) center bottom;
+		--auxiliary-background-image-opacity: .15;
 	}
 	
 	/* Other tweaks */
