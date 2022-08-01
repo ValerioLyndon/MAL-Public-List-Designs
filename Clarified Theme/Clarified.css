@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.0.0
+ * v2.0.1
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -2133,8 +2133,7 @@ body #fancybox-close:after {
 /* Buttons */
 
 #advanced-options .advanced-options-button {
-	border-color: var(--border);
-	border-top-style: dashed;
+	border-top: 2px dashed var(--border);
 }
 
 #advanced-options .btn-apply,
