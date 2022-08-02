@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.0.2
+ * v2.0.3
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -247,7 +247,7 @@ body::after {
 	width: 1060px;
 	max-width: initial;
 	border-radius: 6px;
-	margin: 0 auto 15px;
+	margin: 0 auto 30px;
 	box-shadow: var(--mild-shadow);
 }
 
