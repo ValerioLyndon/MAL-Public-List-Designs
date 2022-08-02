@@ -1,0 +1,64 @@
+{
+	"json_version": 0.2,
+	"data": {
+		"name": "Clarified",
+		"author": "Valerio Lyndon",
+		"css": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Clarified.min.css",
+		"type": "modern",
+		"help": "https://myanimelist.net/forum/?topicid=2034740",
+		"mods": {
+			"temp": {
+				"name": "Please note.",
+				"description": "The preview display has some broken icons. [b]These will display correctly[/b] on your list once you have copy-pasted the CSS. Thanks for your attention."
+			},
+			"avatar": {
+				"name": "Avatar",
+				"description": "Add your desired avatar below the banner.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Add%20Avatar.css"},
+				"options": {
+					"url": {
+						"name": "Avatar Image URL",
+						"description": "[url=https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Clarity#how-to-find-your-myanimelist-avatar-url]Want to use your MyAnimeList avatar?[/url]",
+						"type": "text/image_url",
+						"replacements": [["url(https://i.imgur.com/0IaceDs.gif)", "{{{insert}}}"]],
+						"default": "https://i.imgur.com/0IaceDs.gif"
+					},
+					"position": {
+						"name": "Avatar Position",
+						"type": "text/value/background-position",
+						"replacements": [["center top", "{{{insert}}}"]],
+						"default": "center top"
+					}
+				},
+				"tags": ["imagery"]
+			},
+			"character": {
+				"name": "Character on Banner",
+				"description": "Add some character renders over top of the banner image!",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Banner%20Character.css"},
+				"options": {
+					"url": {
+						"name": "Image URL",
+						"description": "For best effect, image should be a PNG file with a transparent background. These are usually called \"renders\".",
+						"type": "text/image_url",
+						"replacements": [["url(https://i.imgur.com/JmxfBcB.png)", "{{{insert}}}"]],
+						"default": "https://i.imgur.com/JmxfBcB.png"
+					},
+					"position": {
+						"name": "Position",
+						"type": "text/value/background-position",
+						"replacements": [["calc(50% + 530px) bottom", "{{{insert}}}"]],
+						"default": "calc(50% + 530px) bottom"
+					},
+					"size": {
+						"name": "Size",
+						"type": "text/value/background-size",
+						"replacements": [["auto 90%", "{{{insert}}}"]],
+						"default": "auto 90%"
+					}
+				},
+				"tags": ["imagery"]
+			}
+		}
+	}
+}

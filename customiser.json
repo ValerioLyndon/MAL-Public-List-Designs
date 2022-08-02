@@ -10,6 +10,15 @@
 			"tags": ["highly customisable", "table layout", "beginner-friendly"],
 			"date": "2017-07-12"
 		},
+		"clarified": {
+			"name": "Clarified",
+			"author": "Valerio Lyndon",
+			"image": "https://i.imgur.com/EIjLPB1.jpg",
+			"type": "modern",
+			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/clarified.json",
+			"tags": ["highly customisable", "table layout", "beginner-friendly"],
+			"date": "2022-04-18"
+		},
 		"brink": {
 			"name": "Brink",
 			"author": "Valerio Lyndon",
