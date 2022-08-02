@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.0.3
+ * v2.0.4
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -1485,32 +1485,32 @@ Please MAL I am begging you, just add another selector to the date column header
 }
 
 /* Icons */
-.data.started:before,
-.data.finished:before,
-.data.days:before,
-.data.airing-started:before,
-.data.airing-finished:before {
+.data.started::before,
+.data.finished::before,
+.data.days::before,
+.data.airing-started::before,
+.data.airing-finished::before {
 	display: inline-block;
 	width: 14px;
 	margin-right: 3px;
 	flex: 0 0 auto;
 	text-align: right;
 }
-.data.started:before,
-.data.airing-started:before {
+.data.started::before,
+.data.airing-started::before {
 	content: "\f251";
 }
-.data.finished:before,
-.data.airing-finished:before {
+.data.finished::before,
+.data.airing-finished::before {
 	content: "\f253";
 }
-.data.days:before {
+.data.days::before {
 	content: "\e29e";
 }
-.data.days:hover:before {
+.data.days:hover::before {
 	content: "\e29e  Days";
 	width: 70px;
-	margin-left: 4px;
+	text-indent: 4px;
 	text-align: left;
 	cursor: help;
 }
@@ -1940,7 +1940,7 @@ Please MAL I am begging you, just add another selector to the date column header
 	color: inherit !important;
 }
 
-#copyright:after {
+#copyright::after {
 	content: "\a \"Clarified\" list design by Valerio Lyndon.";
 	white-space: pre-wrap;
 }
@@ -1995,7 +1995,7 @@ body #fancybox-close:hover {
 	background: var(--inverse-background);
 	color: var(--inverse-text) !important;
 }
-body #fancybox-close:after {	
+body #fancybox-close::after {	
 	content: "\f00d";
 	font-size: 16px;
 	line-height: 24px;
@@ -2034,7 +2034,7 @@ body #fancybox-close:after {
 	pointer-events: auto;
 }
 
-#advanced-options .advanced-options-header .description:before {
+#advanced-options .advanced-options-header .description::before {
 	content: "\f05a";
 	width: 21px;
 	color: var(--content-text);
@@ -2042,7 +2042,7 @@ body #fancybox-close:after {
 	margin-right: 3px;
 	pointer-events: auto;
 }
-#advanced-options .advanced-options-header .description:hover:before {
+#advanced-options .advanced-options-header .description:hover::before {
 	color: var(--content-link);
 }
 
