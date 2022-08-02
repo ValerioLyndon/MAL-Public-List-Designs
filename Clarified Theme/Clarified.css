@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.0.1
+ * v2.0.2
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -1568,13 +1568,11 @@ Please MAL I am begging you, just add another selector to the date column header
 	order: 45;
 }
 .data.rated {
-	height: calc(1.5em + 6px);
-	padding: 3px !important;
+	height: 22px;
+	padding: 0px 3px !important;
 	border-radius: 3px;
 	background: var(--content-highlight);
-	font-weight: bold;
-	font-size: 12px;
-	font-family: var(--alternate-font);
+	font: bold 12px/24px var(--alternate-font);
 }
 
 /* Season */
@@ -1738,10 +1736,6 @@ Please MAL I am begging you, just add another selector to the date column header
 	font-size: 0;
 }
 
-.data.tags div:not(:empty),
-.data.genre:not(:empty) {
-	margin-top: 3px;
-}
 .data.genre + .genre {
 	margin-top: 0;
 }
@@ -1752,7 +1746,7 @@ Please MAL I am begging you, just add another selector to the date column header
 	padding: 4px;
 	background: var(--button);
 	border-radius: 3px;
-	margin-right: 3px;
+	margin: 3px 3px 0 0;
 	font-size: 11px;
 }
 .data.genre a[href*="demographic="] {
