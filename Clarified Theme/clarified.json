@@ -6,6 +6,49 @@
 		"css": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Clarified.min.css",
 		"type": "modern",
 		"help": "https://myanimelist.net/forum/?topicid=2034740",
+		"preview": {
+			"cover": false
+		},
+		"options": {
+			"theme": {
+				"name": "Theme",
+				"description": "Choose from some pre-selected sets of images, colours, and visual tweaks! But don't worry, you can still set your own options afterwards.",
+				"type": "select",
+				"selections": {
+					"dynamic": {
+						"label": "Dynamic Light/Dark",
+						"replacements": ["",""]
+					},
+					"light": {
+						"label": "Light",
+						"replacements": [
+							[
+								"RegExp/!THEME[\\s\\S]*/\\*===",
+								"!THEME\n  =========*/\n\nTHEME_REPLACE\n\n/*==="
+							],
+							[
+								"THEME_REPLACE",
+								"https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Themes/Light.css"
+							]
+						]
+					},
+					"dark": {
+						"label": "Dark",
+						"replacements": [
+							[
+								"RegExp/!THEME[\\s\\S]*/\\*===",
+								"!THEME\n  =========*/\n\nTHEME_REPLACE\n\n/*==="
+							],
+							[
+								"THEME_REPLACE",
+								"https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Themes/Dark.css"
+							]
+						]
+					}
+				},
+				"default": "dynamic"
+			}
+		},
 		"mods": {
 			"temp": {
 				"name": "Please note.",
