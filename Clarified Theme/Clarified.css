@@ -46,10 +46,11 @@
  @ Streaming-Info
  @ Rewatching-Box
  * 
+ ! VARIABLES
+ ? Fonts, colours, and other commonly re-used values that aren't usually themed.
+ * 
  ! THEME
  ? Colours, images, and custom code for light and dark modes.
- @ Internal
- @ Primary
  * 
  ! MODS
  */
@@ -2182,12 +2183,8 @@ div[style^="width: 300px;"] input:hover {
 
 
 /*=========
-  !THEME
+  !VARIABLES
   =========*/
-
-/*---------
-  @Internal
-  ---------*/
 
 body[data-query*='"status":7'] {
 	--page-category: var(--all-items);
@@ -2215,9 +2212,10 @@ body[data-query*='"status":6'] {
 }
 
 
-/*---------
-  @Primary
-  ---------*/
+
+/*=========
+  !THEME
+  =========*/
 
 :root {
 	/* core colours */
