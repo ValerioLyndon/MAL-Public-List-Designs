@@ -28,6 +28,9 @@
 				"Magazine": true
 			}
 		},
+		"preview": {
+			"cover": false
+		},
 		"help": "https://myanimelist.net/forum/?topicid=1723120",
 		"mods": {
 			"hd-images": {
