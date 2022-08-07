@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.0.4
+ * v2.0.5
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -324,6 +324,7 @@ body::after {
 /* Viewing "Name's" List */
 
 .header .header-menu .btn-menu {
+	color: var(--image-text);
 	font-size: 14px;
 	cursor: text;
 }
@@ -1083,6 +1084,20 @@ tr.list-table-data {
 	line-height: 18px;
 	pointer-events: none;
 }
+.data.status.watching,
+.data.status.reading {
+	background: var(--current) !important;
+} .data.status.completed {
+	background: var(--completed) !important;
+} .data.status.onhold {
+	background: var(--onhold) !important;
+} .data.status.dropped {
+	background: var(--dropped) !important;
+} .data.status.plantowatch,
+.data.status.plantoread {
+	background: var(--planned) !important;
+}
+
 .data.status.watching::after,
 .data.status.reading::after {
 	content: "\f06e ";
