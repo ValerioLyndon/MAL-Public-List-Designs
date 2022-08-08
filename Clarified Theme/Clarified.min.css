@@ -98,5 +98,11 @@ html{scrollbar-color:var(--scroll-thumb) var(--content-background);}*,*:before,*
 }
 
 /*=========
+  !USER
+  =========*/
+
+html:root {}
+
+/*=========
   !MODS
   =========*/
