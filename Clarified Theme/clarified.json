@@ -23,7 +23,7 @@
 						"label": "Light",
 						"replacements": [
 							[
-								"RegExp/!THEME[\\s\\S]*/\\*===",
+								"RegExp/!THEME[\\s\\S]*?/\\*===",
 								"!THEME\n  =========*/\n\nTHEME_REPLACE\n\n/*==="
 							],
 							[
@@ -36,7 +36,7 @@
 						"label": "Dark",
 						"replacements": [
 							[
-								"RegExp/!THEME[\\s\\S]*/\\*===",
+								"RegExp/!THEME[\\s\\S]*?/\\*===",
 								"!THEME\n  =========*/\n\nTHEME_REPLACE\n\n/*==="
 							],
 							[
@@ -47,13 +47,47 @@
 					}
 				},
 				"default": "dynamic"
+			},
+			"cover": {
+				"name": "Cover Image",
+				"type": "text/image_url",
+				"replacements": [["html:root {", "html:root {\n\t--cover: {{{insert}}};"]]
+			},
+			"cover-position": {
+				"name": "Cover Position",
+				"type": "text/value/background-position",
+				"replacements": [["html:root {", "html:root {\n\t--cover-position: {{{insert}}};"]]
+			},
+			"cover-shadow-intensity": {
+				"name": "Cover Vignette Intensity",
+				"description": "Accepts decimal values between 0 and 1.",
+				"type": "text/value",
+				"replacements": [["html:root {", "html:root {\n\t--cover-shadow: rgba(0,0,0,{{{insert}}}) 0 -3px 9px;"]]
+			},
+			"background": {
+				"name": "Background Image",
+				"type": "text/image_url",
+				"replacements": [["html:root {", "html:root {\n\t--background: {{{insert}}};"]]
+			},
+			"background-opacity": {
+				"name": "Background Image Opacity",
+				"description": "Accepts decimal values between 0 and 1.",
+				"type": "text/value/opacity",
+				"replacements": [["html:root {", "html:root {\n\t--background-image-opacity: {{{insert}}};"]]
+			},
+			"auxiliary-background": {
+				"name": "Auxiliary Background Image",
+				"type": "text/image_url",
+				"replacements": [["html:root {", "html:root {\n\t--auxiliary-background: {{{insert}}};"]]
+			},
+			"auxiliary-background-opacity": {
+				"name": "Auxiliary Background Image Opacity",
+				"description": "Accepts decimal values between 0 and 1.",
+				"type": "text/value/opacity",
+				"replacements": [["html:root {", "html:root {\n\t--auxiliary-background-image-opacity: {{{insert}}};"]]
 			}
 		},
 		"mods": {
-			"temp": {
-				"name": "Please note.",
-				"description": "The preview display has some broken icons. [b]These will display correctly[/b] on your list once you have copy-pasted the CSS. Thanks for your attention."
-			},
 			"avatar": {
 				"name": "Avatar",
 				"description": "Add your desired avatar below the banner.",
