@@ -1,0 +1,537 @@
+/***** BLACKOUT *****|
+ v0.1.0             *|
+ a list design      *|
+ by Valerio Lyndon  */
+
+@\import "https://fonts.googleapis.com/css2?family=Source%20Sans%20Pro&display=swap";
+
+/* setup */
+
+:root {
+	--b: #000;
+	--f: #131313aa;
+	--f2: #181818aa;
+	--t: #ababab;
+	--border: var(--t);
+	--t2: #fff;
+	--l: #f0f;
+}
+
+html {
+	font-size: 4px;
+	box-sizing: border-box;
+} *, *::before, *::after {
+	box-sizing: inherit;
+}
+
+@media (min-width: 1900px) {
+	html {
+		font-size: 5px;
+	}
+}
+@media (min-width: 2500px) {
+	html {
+		font-size: 6px;
+	}
+}
+@media (min-width: 3800px) {
+	html {
+		font-size: 8px;
+	}
+}
+
+* {
+	font-family: "Source Sans Pro", FontAwesome !important;
+}
+
+body.ownlist {
+	background: url(https://i.imgur.com/aiGn4Bn.png) repeat;
+	background-color: var(--b) !important;
+	color: var(--t) !important;
+	font-size: 3em;
+}
+body::before,
+body::after {
+	content: "";
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url(https://i.imgur.com/XrhwAmh.png) repeat center top / auto fixed;
+	opacity: 0.08;
+}
+body::before {
+	animation:
+		10s ease-in-out breath-in 1,
+		30s ease-in-out 10s breath infinite;
+	mask: repeating-linear-gradient(to bottom, black 0px, black 102px, transparent 102px, transparent 208px, black 208px) center top / 110px 208px;
+}
+body::after {
+	animation:
+		10s ease-in-out breath-in 1 reverse,
+		44s ease-in-out 10s breath-reverse infinite;
+	mask: repeating-linear-gradient(to bottom, transparent 0px, transparent 102px, black 102px, black 208px, transparent 208px) center top / 110px 208px;
+}
+@keyframes breath-in {
+	0%, 100%, 19%, 77% {
+		opacity: 0.08;
+	}
+	50%, 80% {
+		opacity: 0.07;
+	}
+	70% {
+		opacity: 0.091;
+	}
+	30%, 87% {
+		opacity: 0.067;
+	}
+	
+	0%, 20%, 56%, 97%, 33%, 45%, 100% {
+		background-position-x: 0%;	
+	}
+	30%, 40% {
+		background-position-x: 250px;
+	}
+	60%, 80% {
+		background-position-x: -400px;	
+	}
+}
+@keyframes breath {
+	0%, 100%, 19%, 77% {
+		opacity: 0.08;
+	}
+	50%, 80% {
+		opacity: 0.05;
+	}
+	70% {
+		opacity: 0.11;
+	}
+	30%, 87% {
+		opacity: 0.065;
+	}
+	
+	0% {
+		background-position-x: 0px;
+	}
+	50% {
+		background-position-x: calc(110px * 3);
+	}
+	55% {
+		background-position-x: calc(110px * 2.5);
+	}
+	100% {
+		background-position-x: calc(110px * 6);
+	}
+}
+@keyframes breath-reverse {
+	0%, 100%, 19%, 77% {
+		opacity: 0.08;
+	}
+	50%, 80% {
+		opacity: 0.11;
+	}
+	70% {
+		opacity: 0.05;
+	}
+	30%, 87% {
+		opacity: 0.065;
+	}
+	
+	0% {
+		background-position-x: 0px;
+	}
+	40% {
+		background-position-x: calc(110px * -4);
+	}
+	43% {
+		background-position-x: calc(110px * -5.5);
+	}
+	100% {
+		background-position-x: calc(110px * -7);
+	}
+}
+
+a,
+.header a,
+.list-table .list-table-data .data a:not(.edit-disabled) {
+	color: var(--t2) !important;
+}
+a:hover,
+.header a:hover,
+.list-table .list-table-data .data a:not(.edit-disabled):hover {
+	color: var(--l) !important;
+}
+
+/* conts */
+
+#list-container {
+	display: flex;
+	width: 100%;
+	min-width: 170rem;
+	max-width: calc(100vw - 17px);
+	flex-flow: row-reverse nowrap;
+	justify-content: center;
+	background: none !important;
+	border: none !important;
+}
+
+.list-block {
+	width: 170rem;
+}
+
+.list-unit {
+	width: initial;
+}
+
+.list-table {
+	display: block;
+	margin: 0 auto;
+}
+
+/* category menu */
+
+
+/* TEMP */
+#status-menu,
+.list-unit .list-status-title,
+.list-table > tbody:first-of-type
+{
+	display: none;
+}
+
+/* user menu */
+
+.list-menu-float {
+	opacity: 0.03;
+}
+
+/* header */
+
+.header {
+	width: 100%;
+}
+
+.header .header-title {
+	top: 4rem;
+	left: 4rem;
+	width: 12rem;
+	height: 10rem;
+	background: var(--f2);
+	border: .25rem solid var(--border);
+	clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.header .header-title::after {
+	content: "\f015 ";
+	display: block;
+	text-indent: 0;
+}
+
+/* cover image */
+
+.cover-block {
+	position: sticky;
+	top: 10rem;
+	width: auto;
+	height: 0;
+	flex-shrink: 1;
+	margin: 0;
+}
+
+#cover-image-container {
+	display: block;
+	width: calc(100vw - 186rem);
+	max-width: 50vh;
+	padding: .5rem;
+	margin-left: 4rem;
+	background: var(--border);
+	--clip-1: 12rem;
+	--clip-2: 12rem;
+	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+}
+
+#cover-image {
+	width: 100%;
+	object-fit: cover;
+	height: calc(100vh - 20rem);
+	clip-path: inherit;
+}
+
+/* list */
+
+@keyframes flicker-on {
+	0%, 15% {
+		opacity: 0.2;
+	}
+	19%, 36%, 63%, 75% {
+		opacity: 0.7;
+	}
+	40%, 55%, 80%, 97% {
+		opacity: 0.4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.list-item {
+	display: block;
+	width: 100%;
+	margin: 6rem 0 2rem;
+	--delay: 2.8s;
+	animation: .4s ease var(--delay) backwards 1 flicker-on;
+}
+
+.list-item:nth-child(2) {
+	--delay: 0s;
+}
+.list-item:nth-child(3) {
+	--delay: .3s;
+}
+.list-item:nth-child(4) {
+	--delay: .5s;
+}
+.list-item:nth-child(5) {
+	--delay: .9s;
+}
+.list-item:nth-child(7) {
+	--delay: 1.4s;
+}
+.list-item:nth-child(3n) {
+	--delay: 2.2s;
+}
+.list-item:nth-child(n+16) {
+	--delay: 5s;
+}
+.list-item:nth-child(4n+16) {
+	--delay: 4.5s;
+}
+.list-item:nth-child(3n+8) {
+	--delay: 3.5s;
+}
+
+.list-table-data {
+	position: relative;
+	display: flow-root;
+	padding: 0 7rem 8rem 1rem;
+}
+.list-table-data::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	background: linear-gradient(to top, var(--f2) 7rem, var(--f) 0);
+	--clip: 3.5rem;
+	clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--clip)), calc(100% - var(--clip)) 100%, 0 100%);
+}
+
+.data {
+	height: 7rem;
+	margin-right: 2rem;
+	margin-bottom: 2rem;
+	float: left;
+}
+.list-table .list-item .list-table-data .data {
+	padding: 0;
+	border: 0;
+	text-align: left;
+}
+
+.data.number {
+	position: absolute;
+}
+
+.data.image {
+	width: 16rem;
+	height: 24rem;
+	margin: -3rem 2rem 0 0;
+}
+
+.list-table .list-table-data .data.image .link {
+	width: 100%;
+	height: 100%;
+	background: var(--border);
+	padding: .25rem;
+	--clip-1: 2.5rem;
+	--clip-2: 4rem;
+	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+}
+
+.list-table .list-table-data .data.image .image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	--clip-1: 2.5rem;
+	--clip-2: 4rem;
+	border: none;
+	clip-path: inherit;
+}
+
+.data.title {
+	width: calc(100% - 2rem);
+}
+.image + .data.title {
+	width: calc(100% - 20rem);
+}
+
+.list-table .list-table-data .data.title .link {
+	display: block;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	margin-top: 2rem;
+	font-size: 1.4em;
+	color: var(--l);
+	font-weight: normal;
+	white-space: nowrap;
+}
+
+.data.status {
+	--c: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 21rem !important;
+	background: var(--t) !important;
+	color: var(--f);
+	clip-path: polygon(0 0, calc(100% - 4rem) 0, 100% 100%, 0 100%);
+	font-size: 1.5em;
+	line-height: 6rem;
+	text-indent: -3rem;
+	font-weight: bold;
+	display: none !important;
+}
+.data.status::before {
+	content: var(--c);
+}
+.data.status.watching,
+.data.status.reading {
+	--c: "NOW";
+}
+.data.status.completed {
+	--c: "DONE";
+}
+.data.status.onhold {
+	--c: "HOLD";
+}
+.data.status.droppped {
+	--c: "DROP";
+}
+.data.status.plantowatch,
+.data.status.plantoread {
+	--c: "PLAN";
+}
+
+.data.score {
+	position: absolute;
+	right: 4rem;
+	top: -3.5rem;
+	margin: 0;
+}
+
+.data .score-label {
+	display: block;
+	--sz: 5rem;
+	width: var(--sz);
+	height: var(--sz);
+	margin-top: calc(3.5rem - var(--sz) * 0.5);
+	text-align: center;
+	line-height: var(--sz);
+}
+.data .score-1,
+.data .score-2,
+.data .score-3,
+.data .score-4 {
+	--clip: 33%;
+	background: #e37b7baa;
+	clip-path: polygon(0 var(--clip), var(--clip) 0, calc(100% - var(--clip)) 0, 100% var(--clip), 100% calc(100% - var(--clip)), calc(100% - var(--clip)) 100%, var(--clip) 100%, 0 calc(100% - var(--clip)));
+}
+.data .score-5,
+.data .score-6 {
+	--sz: 6rem;
+	background: #e37bccaa;
+	clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.data .score-7,
+.data .score-8 {
+	background: #7b9ee3aa;
+	border-radius: 50%;
+}
+.data .score-9,
+.data .score-10 {
+	--sz: 5.5rem;
+	background: #cea139aa;
+	clip-path: polygon(0 40%, 50% 0, 100% 40%, 75% 100%, 25% 100%);
+}
+
+.data.progress {
+	position: absolute;
+	left: 40rem;
+	bottom: 0;
+	line-height: 7rem;
+}
+
+.data::before {
+	content: var(--lbl);
+	display: block;
+	line-height: 1;
+	opacity: 0.5;
+}
+.data.type {
+	--lbl: "Type";
+	min-width: 10rem;
+}
+.data.started,
+.data.airing-started {
+	margin-right: 0;
+} .data.started {
+	--lbl: "User Dates";
+} .data.airing-started {
+	--lbl: "Air Dates";
+}
+.data.started::after,
+.data.airing-started::after {
+	content: " \f061  ";
+	white-space: pre;
+}
+
+.data.finished,
+.data.airing-finished {
+	padding-top: 1em !important;;
+}
+
+.data.days {
+	--lbl: "Days";
+}
+.data.season {
+	--lbl: "Premiered";
+}
+.data.rated {
+	--lbl: "Rated";
+}
+.data.studio {
+	--lbl: "Studios";
+}
+.data.licensor {
+	--lbl: "Licensors";
+}
+.data.storage {
+	--lbl: "Storage";
+}
+.data.priority {
+	--lbl: "Priority";
+}
+.data.genre {
+	--lbl: "Genres";
+}
+.data.demographic {
+	--lbl: "Demographic";
+}
+
+.data.tags {
+	float: right;
+	max-width: 40rem;
+}
