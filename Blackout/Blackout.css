@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.1.0             *|
+ v0.2.0             *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -310,6 +310,9 @@ a:hover,
 .list-item:nth-child(3n+8) {
 	--delay: 3.5s;
 }
+.list-item:nth-child(n+300) {
+	--delay: 0s;
+}
 
 .list-table-data {
 	position: relative;
@@ -379,57 +382,83 @@ a:hover,
 }
 
 .list-table .list-table-data .data.title .link {
-	display: block;
+	display: inline-block;
+	max-width: 100%;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	margin-top: 2rem;
-	font-size: 1.4em;
+	font-size: 4.2rem;
 	color: var(--l);
 	font-weight: normal;
 	white-space: nowrap;
 }
 
-.data.status {
-	--c: "";
+.list-table .list-table-data .data.title .add-edit-more {
 	position: absolute;
 	bottom: 0;
+	left: 2rem;
+	font-size: 0;
+}
+
+.add-edit-more a {
+	text-transform: uppercase;
+	font-size: 3.3rem;
+}
+
+.data.status {
+	position: absolute;
 	left: 0;
-	width: 21rem !important;
-	background: var(--t) !important;
-	color: var(--f);
-	clip-path: polygon(0 0, calc(100% - 4rem) 0, 100% 100%, 0 100%);
-	font-size: 1.5em;
-	line-height: 6rem;
-	text-indent: -3rem;
-	font-weight: bold;
-	display: none !important;
+	top: 0;
+	width: calc(100% - 3rem) !important;
+	height: 1rem;
+	background: none !important;
+	background: var(--col) !important;
+	pointer-events: none;
+	--txt: "";
+	--clip: 1.5rem;
 }
-.data.status::before {
-	content: var(--c);
+
+.data.status::after {
+	position: absolute;
+	opacity: 1;
+	clip-path: polygon(0 var(--clip), var(--clip) 0, 100% 0, 100% calc(100% - var(--clip)), calc(100% - var(--clip)) 100%, 0 100%);
+	content: var(--txt);
+	right: -3rem;
+	bottom: 0;
+	display: block;
+	width: 15.5rem;
+	height: 4rem;
+	background: var(--col);
+	color: var(--b);
+	font-size: 1.2em;
+	line-height: 4rem;
+	text-align: center;
 }
+
 .data.status.watching,
 .data.status.reading {
-	--c: "NOW";
+	--txt: "NOW";
+	--col: #2db039;
 }
 .data.status.completed {
-	--c: "DONE";
+	--txt: "CMPL";
+	--col: #26448f;
 }
 .data.status.onhold {
-	--c: "HOLD";
+	--txt: "HOLD";
+	--col: #f1c83e;
 }
 .data.status.droppped {
-	--c: "DROP";
+	--txt: "DROP";
+	--col: #a12f31;
 }
 .data.status.plantowatch,
 .data.status.plantoread {
-	--c: "PLAN";
+	--txt: "PLAN";
+	--col: #c3c3c3;
 }
 
 .data.score {
-	position: absolute;
-	right: 4rem;
-	top: -3.5rem;
-	margin: 0;
 }
 
 .data .score-label {
@@ -467,11 +496,24 @@ a:hover,
 	clip-path: polygon(0 40%, 50% 0, 100% 40%, 75% 100%, 25% 100%);
 }
 
-.data.progress {
-	position: absolute;
-	left: 40rem;
-	bottom: 0;
-	line-height: 7rem;
+.data.progress,
+.data.chapter,
+.data.volume {
+	padding: 0 3rem !important;
+	background: var(--f2);
+	border: .25rem solid var(--border) !important;
+	border-radius: 100rem;
+	line-height: 6.5rem;
+}
+.data.progress span:only-of-type::before,
+.data.chapter span:only-of-type::before,
+.data.volume span:only-of-type::before {
+	content: "\f00c  ";
+}
+
+[class^="icon-add-"] {
+	position: relative;
+	left: .75rem;
 }
 
 .data::before {
@@ -481,8 +523,11 @@ a:hover,
 	opacity: 0.5;
 }
 .data.type {
-	--lbl: "Type";
-	min-width: 10rem;
+	float: right;
+	margin-top: -7rem;
+	font-size: 3.3rem;
+	text-transform: uppercase;
+	text-align: right;
 }
 .data.started,
 .data.airing-started {
