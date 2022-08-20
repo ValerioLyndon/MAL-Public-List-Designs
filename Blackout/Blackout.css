@@ -1,9 +1,11 @@
 /***** BLACKOUT *****|
- v0.2.0             *|
+ v0.3.0             *|
  a list design      *|
  by Valerio Lyndon  */
 
 @\import "https://fonts.googleapis.com/css2?family=Source%20Sans%20Pro&display=swap";
+
+/* to calculate triangle: flat side * 0.8666 */
 
 /* setup */
 
@@ -12,7 +14,8 @@
 	--f: #131313aa;
 	--f2: #181818aa;
 	--t: #ababab;
-	--border: var(--t);
+	--b1: #ababab;
+	--b2: #282828;
 	--t2: #fff;
 	--l: #f0f;
 }
@@ -41,7 +44,7 @@ html {
 }
 
 * {
-	font-family: "Source Sans Pro", FontAwesome !important;
+	font-family: "Source Sans Pro", "Roboto", "Arial", "FontAwesome", sans-serif !important;
 }
 
 body.ownlist {
@@ -167,6 +170,7 @@ a:hover,
 /* conts */
 
 #list-container {
+	position: static;
 	display: flex;
 	width: 100%;
 	min-width: 170rem;
@@ -179,6 +183,7 @@ a:hover,
 
 .list-block {
 	width: 170rem;
+	margin-top: 0 !important;
 }
 
 .list-unit {
@@ -192,11 +197,83 @@ a:hover,
 
 /* category menu */
 
+#status-menu {
+	position: absolute;
+	top: 4rem;
+	left: 50%;
+	width: auto;
+	height: auto;
+	background: none;
+	border: none;
+	transform: translateX(-50%);
+}
+
+#status-menu .status-menu {
+	display: flex;
+}
+
+#status-menu .status-button {
+	width: 14rem !important;
+	height: 12.13rem;
+	background: linear-gradient(135deg, var(--b1), var(--b2));
+	margin-right: -4rem;
+	clip-path: polygon(50% 100%, 100% 0, 0 0);
+	font-size: 0;
+}
+#status-menu .status-button:nth-of-type(even) {
+	clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+#status-menu .status-button::before {
+	content: var(--i);
+	position: absolute;
+	top: .3rem;
+	left: .5rem;
+	width: calc(100% - 1rem);
+	height: calc(100% - 1rem);
+	background: var(--f);
+	font: bold var(--s)/8rem FontAwesome;
+	clip-path: inherit;
+}
+#status-menu .status-button:nth-of-type(even)::before {
+	top: .7rem;
+	line-height: 14rem;
+}
+
+.status-button:nth-child(1) {
+	--i: "\2a";
+	--s: 5rem;
+}
+.status-button:nth-child(2) {
+	--i: "\f04b";
+	--s: 4.5rem;
+}
+.status-button:nth-child(3) {
+	--i: "\f00c";
+	--s: 5rem;
+}
+.status-button:nth-child(4) {
+	--i: "\f04c";
+	--s: 5rem;
+}
+.status-button:nth-child(5) {
+	--i: "\f00d";
+	--s: 5rem;
+}
+.status-button:nth-child(6) {
+	--i: "\f017";
+	--s: 4.5rem;
+}
+
+#status-menu .status-button::after {
+	content: none;
+}
+
 
 /* TEMP */
-#status-menu,
 .list-unit .list-status-title,
-.list-table > tbody:first-of-type
+.list-table > tbody:first-of-type,
+.search-container
 {
 	display: none;
 }
@@ -204,28 +281,108 @@ a:hover,
 /* user menu */
 
 .list-menu-float {
-	opacity: 0.03;
+	position: absolute;
+	top: 4rem;
+	left: 50%;
+	display: flex;
+	width: auto;
+	height: auto;
+	border: none;
+	transform: translateX(-50%);
+	display: none;
+}
+
+.list-menu-float .icon-menu {
+	width: 14rem !important;
+	height: 12.13rem;
+	background: linear-gradient(135deg, var(--b1), var(--b2));
+	margin-right: -4rem;
+	clip-path: polygon(50% 100%, 100% 0, 0 0);
+}
+.list-menu-float .icon-menu:nth-of-type(even) {
+	clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.list-menu-float .icon-menu:not(.profile)::before {
+	content: "";
+	position: absolute;
+	top: .3rem;
+	left: .5rem;
+	width: calc(100% - 1rem);
+	height: calc(100% - 1rem);
+	background: var(--f2);
+	clip-path: inherit;
+}
+.list-menu-float .icon-menu:nth-of-type(even)::before {
+	top: .7rem;
+}
+
+.list-menu-float .icon-menu svg.icon {
+	fill: var(--t);
+	transform: scale(0.8) translate(1.25rem, -2rem);
+}
+.list-menu-float .icon-menu:nth-of-type(even) svg.icon {
+	transform: scale(0.8) translate(1.25rem, 2rem);
+}
+
+/* @media (min-width: 1280px) {
+	.list-menu-float {
+		flex-flow: column;
+	}
+	.list-menu-float .icon-menu {
+		clip-path: polygon(0 0, 100% 50%, 0 100%);
+		margin-right: 0;
+		margin-bottom: -4rem;
+	}
+	.list-menu-float .icon-menu:nth-of-type(even) {
+		clip-path: polygon(0 50%, 100% 0, 100% 100%);
+	}
+	.list-menu-float .icon-menu svg.icon {
+		margin-top: 0 !important;
+		margin-left: -1rem;
+		fill: var(--t);
+		transform: scale(0.8);
+	}
+	.list-menu-float .icon-menu:nth-of-type(even) svg.icon {
+		margin-left: 2rem;
+	}
+} */
+
+/* temp */
+
+.icon-menu.setting {
+	display: none;
 }
 
 /* header */
 
 .header {
 	width: 100%;
+	height: 30rem;
 }
 
 .header .header-title {
 	top: 4rem;
 	left: 4rem;
-	width: 12rem;
-	height: 10rem;
-	background: var(--f2);
-	border: .25rem solid var(--border);
+	width: 14rem !important;
+	height: 12.13rem;
+	background: linear-gradient(135deg, var(--b1), var(--b2));
+	margin-right: -4rem;
 	clip-path: polygon(50% 0, 100% 100%, 0 100%);
+	font-size: 0;
 }
-.header .header-title::after {
+
+.header .header-title::before {
 	content: "\f015 ";
-	display: block;
+	position: absolute;
+	top: .7rem;
+	left: .5rem;
+	width: calc(100% - 1rem);
+	height: calc(100% - 1rem);
+	background: var(--f);
+	font: bold 4rem/14rem FontAwesome;
 	text-indent: 0;
+	clip-path: inherit;
 }
 
 /* cover image */
@@ -236,7 +393,7 @@ a:hover,
 	width: auto;
 	height: 0;
 	flex-shrink: 1;
-	margin: 0;
+	margin: 6rem 0 0;
 }
 
 #cover-image-container {
@@ -245,7 +402,7 @@ a:hover,
 	max-width: 50vh;
 	padding: .5rem;
 	margin-left: 4rem;
-	background: var(--border);
+	background: linear-gradient(135deg, var(--b1), var(--b2));
 	--clip-1: 12rem;
 	--clip-2: 12rem;
 	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
@@ -357,7 +514,7 @@ a:hover,
 .list-table .list-table-data .data.image .link {
 	width: 100%;
 	height: 100%;
-	background: var(--border);
+	background: var(--b1);
 	padding: .25rem;
 	--clip-1: 2.5rem;
 	--clip-2: 4rem;
@@ -391,6 +548,15 @@ a:hover,
 	color: var(--l);
 	font-weight: normal;
 	white-space: nowrap;
+}
+
+.title [class^="re"],
+.content-status {
+	color: var(--t);
+	vertical-align: top;
+	opacity: 0.8;
+	padding-top: 2.5rem;
+	display: inline-block;
 }
 
 .list-table .list-table-data .data.title .add-edit-more {
@@ -448,7 +614,7 @@ a:hover,
 	--txt: "HOLD";
 	--col: #f1c83e;
 }
-.data.status.droppped {
+.data.status.dropped {
 	--txt: "DROP";
 	--col: #a12f31;
 }
@@ -462,38 +628,40 @@ a:hover,
 }
 
 .data .score-label {
+	position: relative;
 	display: block;
-	--sz: 5rem;
-	width: var(--sz);
-	height: var(--sz);
-	margin-top: calc(3.5rem - var(--sz) * 0.5);
+	width: 7rem;
+	height: 7rem;
+	background: var(--f2);
+	border: .5rem solid var(--c);
+	line-height: 6rem;
 	text-align: center;
-	line-height: var(--sz);
+	border-radius: 50%;
+	--c: var(--b1);
+}
+.data .score-na {
+	border-width: .25rem;
+	line-height: 6.5rem;
 }
 .data .score-1,
 .data .score-2,
 .data .score-3,
 .data .score-4 {
-	--clip: 33%;
-	background: #e37b7baa;
-	clip-path: polygon(0 var(--clip), var(--clip) 0, calc(100% - var(--clip)) 0, 100% var(--clip), 100% calc(100% - var(--clip)), calc(100% - var(--clip)) 100%, var(--clip) 100%, 0 calc(100% - var(--clip)));
+	--c: #e37b7baa;
 }
 .data .score-5,
 .data .score-6 {
-	--sz: 6rem;
-	background: #e37bccaa;
-	clip-path: polygon(50% 0, 100% 100%, 0 100%);
+	--c: #e37bccaa;
 }
 .data .score-7,
 .data .score-8 {
-	background: #7b9ee3aa;
-	border-radius: 50%;
+	--c: #7b9ee3aa;
 }
 .data .score-9,
 .data .score-10 {
-	--sz: 5.5rem;
-	background: #cea139aa;
-	clip-path: polygon(0 40%, 50% 0, 100% 40%, 75% 100%, 25% 100%);
+	--c: #cea139aa;
+	border-width: .75rem;
+	line-height: 5.5rem;
 }
 
 .data.progress,
@@ -501,7 +669,7 @@ a:hover,
 .data.volume {
 	padding: 0 3rem !important;
 	background: var(--f2);
-	border: .25rem solid var(--border) !important;
+	border: .25rem solid var(--b1) !important;
 	border-radius: 100rem;
 	line-height: 6.5rem;
 }
@@ -560,6 +728,9 @@ a:hover,
 .data.studio {
 	--lbl: "Studios";
 }
+.data.magazine {
+	--lbl: "Magazine";
+}
 .data.licensor {
 	--lbl: "Licensors";
 }
@@ -579,4 +750,8 @@ a:hover,
 .data.tags {
 	float: right;
 	max-width: 40rem;
+}
+
+.more-info {
+	border: none !important;
 }
