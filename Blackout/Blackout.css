@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.3.0             *|
+ v0.4.0             *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -13,6 +13,7 @@
 	--b: #000;
 	--f: #131313aa;
 	--f2: #181818aa;
+	--f3: #131313;
 	--t: #ababab;
 	--b1: #ababab;
 	--b2: #282828;
@@ -175,6 +176,7 @@ a:hover,
 	width: 100%;
 	min-width: 170rem;
 	max-width: calc(100vw - 17px);
+	min-height: 100vh;
 	flex-flow: row-reverse nowrap;
 	justify-content: center;
 	background: none !important;
@@ -195,21 +197,35 @@ a:hover,
 	margin: 0 auto;
 }
 
+.list-table::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 16rem;
+	background: var(--f3);
+	margin-bottom: 12rem;
+	--clip-1: 6rem;
+	--clip-2: var(--clip-1);
+	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	clip-path: polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
+}
+
 /* category menu */
 
 #status-menu {
-	position: absolute;
-	top: 4rem;
-	left: 50%;
-	width: auto;
+	position: static;
+	width: 0;
 	height: auto;
 	background: none;
 	border: none;
-	transform: translateX(-50%);
 }
 
 #status-menu .status-menu {
+	position: relative;
+	left: -170rem;
 	display: flex;
+	width: 100rem;
+	padding: 2rem;
 }
 
 #status-menu .status-button {
@@ -363,26 +379,61 @@ a:hover,
 
 .header .header-title {
 	top: 4rem;
-	left: 4rem;
-	width: 14rem !important;
-	height: 12.13rem;
-	background: linear-gradient(135deg, var(--b1), var(--b2));
-	margin-right: -4rem;
-	clip-path: polygon(50% 0, 100% 100%, 0 100%);
+	left: auto;
+	right: 4rem;
+	width: auto;
+	background: none;
 	font-size: 0;
 }
 
-.header .header-title::before {
-	content: "\f015 ";
-	position: absolute;
-	top: .7rem;
-	left: .5rem;
-	width: calc(100% - 1rem);
-	height: calc(100% - 1rem);
-	background: var(--f);
-	font: bold 4rem/14rem FontAwesome;
+.header .header-title::after {
+	content: "\f00d";
+	display: block;
+	letter-spacing: .1em;
+	font-size: 6rem;
 	text-indent: 0;
-	clip-path: inherit;
+}
+
+.header .header-menu {
+	position: static;
+}
+.header .header-menu .btn-menu {
+	font-size: 0;
+}
+.header .header-menu .btn-menu .username {
+	position: absolute;
+	top: 20rem;
+	left: calc(50% - 83rem);
+	height: 6rem;
+	background: var(--f2);
+	border: .5rem solid var(--b2);
+	padding: 0 4px;
+	font-size: 0;
+	line-height: 5rem;
+	font-weight: normal;
+	text-transform: lowercase;
+}
+.username::before,
+.username::after {
+	content: "/home/";
+	font-size: 3.3rem;
+}
+.username[href*="/animelist/"]::after {
+	content: "/list";
+	font-size: 3.3rem;
+}
+.username[href*="/mangalist/"]::after {
+	content: "/list";
+	font-size: 3.3rem;
+}
+[data-owner="1"] .username {
+	font-size: 0;
+}
+.anime[data-owner="1"] .username::after {
+	content: "personal/animelist";
+}
+.manga[data-owner="1"] .username::after {
+	content: "personal/mangalist";
 }
 
 /* cover image */
@@ -393,7 +444,7 @@ a:hover,
 	width: auto;
 	height: 0;
 	flex-shrink: 1;
-	margin: 6rem 0 0;
+	margin: 0;
 }
 
 #cover-image-container {
@@ -406,6 +457,41 @@ a:hover,
 	--clip-1: 12rem;
 	--clip-2: 12rem;
 	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	animation: .8s ease 3s backwards 1 banner-flicker,
+	           1.1s ease-out 3s backwards 1 slide;
+}
+
+@keyframes slide {
+	from {
+		transform: translateY(30rem);
+	}
+	67%, 70% {
+		transform: translateY(-5rem);
+	}
+	83%, 87% {
+		transform: translateY(3rem);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes banner-flicker {
+	0%, 12%, 70% {
+		opacity: 0;
+	}
+	5%, 19%, 38%, 68%, 73%, 25% {
+		opacity: 0.7;
+	}
+	1%, 40%, 60%, 30% {
+		opacity: 0.4;
+	}
+	77%, 97% {
+		opacity: 0.2;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 #cover-image {
@@ -754,4 +840,72 @@ a:hover,
 
 .more-info {
 	border: none !important;
+}
+
+.list-unit .loading-space {
+	position: fixed;
+	z-index: 500;
+	bottom: 4rem;
+	left: 0;
+	width: 100%;
+	height: auto;
+	margin: 0;
+}
+
+#loading-spinner {
+	display: block;
+	width: 80%;
+	height: 5rem;
+	background: var(--b2);
+	padding: 1rem;
+	margin: 0 auto;
+}
+#loading-spinner::before {
+	font-size: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: var(--t);
+	animation: 1.3s ease-in-out infinite load;
+}
+@keyframes load {
+	0% {
+		transform: scaleX(0);
+		transform-origin: left center;
+	}
+	49.9999% {
+		transform: scaleX(1);
+		transform-origin: left center;
+	}
+	50% {
+		transform: scaleX(1);
+		transform-origin: right center;
+	}
+	100% {
+		transform: scaleX(0);
+		transform-origin: right center;
+	}
+}
+/* #loading-spinner::after {
+	content: "LOADING";
+	display: block;
+	margin-top: -3rem;
+	color: var(--b);
+	line-height: 3rem;
+} */
+
+/* Footer */
+
+#footer-block {
+	position: relative;
+	width: auto !important;
+	background: none;
+	color: var(--t);
+}
+#copyright::after {
+	content: " List design by Valerio Lyndon.";
+}
+#copyright, #recaptcha-terms {
+	display: inline;
+	font-size: 2.5rem;
 }
