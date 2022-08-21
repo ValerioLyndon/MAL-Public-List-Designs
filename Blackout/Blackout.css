@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.5.0             *|
+ v0.6.0             *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -11,7 +11,8 @@
 
 :root {
 	--b: #000;
-	--bimg: url(https://i.imgur.com/aiGn4Bn.png);
+	--bimg: url(https://i.imgur.com/t46uco0.png);
+	--grain: url(https://i.imgur.com/Y491kwo.png);
 	--f: #131313aa;
 	--f2: #181818aa;
 	--f3: #131313;
@@ -56,28 +57,41 @@ body.ownlist {
 	font-size: 3em;
 }
 body::before,
-body::after {
+body::after,
+#fancybox-overlay::before,
+#fancybox-overlay::after {
 	content: "";
 	position: fixed;
 	z-index: -1;
 	top: 0;
 	left: 0;
-	right: 0;
-	bottom: 0;
+	width: 100%;
+	height: 100%;
 	background: url(https://i.imgur.com/XrhwAmh.png) repeat center top / auto fixed;
 	opacity: 0.08;
 }
-body::before {
+body::before,
+#fancybox-overlay::before {
 	animation:
 		10s ease-in-out breath-in 1,
-		30s ease-in-out 10s breath infinite;
+		30s ease-in-out 10s breath infinite/*,
+		60s ease-in-out 0s rotate infinite*/;
 	mask: repeating-linear-gradient(to bottom, black 0px, black 102px, transparent 102px, transparent 208px, black 208px) center top / 110px 208px;
 }
-body::after {
+body::after,
+#fancybox-overlay::after {
 	animation:
 		10s ease-in-out breath-in 1 reverse,
-		44s ease-in-out 10s breath-reverse infinite;
+		44s ease-in-out 10s breath-reverse infinite/*,
+		60s ease-in-out 0s rotate infinite*/;
 	mask: repeating-linear-gradient(to bottom, transparent 0px, transparent 102px, black 102px, black 208px, transparent 208px) center top / 110px 208px;
+}
+#fancybox-overlay::before,
+#fancybox-overlay::after {
+	width: 150vmax;
+	height: 150vmax;
+	transform-origin: left top;
+	transform: rotate(90deg) translateY(-100%);
 }
 @keyframes breath-in {
 	0%, 100%, 19%, 77% {
@@ -103,6 +117,14 @@ body::after {
 		background-position-x: -400px;	
 	}
 }
+/* @keyframes rotate {
+	0%, 60%, 70%, 100% {
+		transform: rotate(5deg);
+	}
+	65% {
+		transform: rotate(-5deg);
+	}
+} */
 @keyframes breath {
 	0%, 100%, 19%, 77% {
 		opacity: 0.10;
@@ -640,7 +662,7 @@ a:hover,
 	position: absolute;
 	top: .25rem;
 	left: .25rem;
-	z-index: 1;
+	z-index: 10;
 	width: 15.5rem;
 	height: calc(100% - .5rem);
 	--clip-1: 2.5rem;
@@ -671,7 +693,7 @@ a:hover,
 	display: block;
 	width: 100%;
 	height: 100%;
-	background: var(--b) var(--bimg) repeat;
+	background: var(--b) var(--grain) center / auto repeat;
 	clip-path: inherit;
 }
 
@@ -679,7 +701,9 @@ a:hover,
 	position: static !important;
 }
 
-.add-edit-more a {
+.add-edit-more a,
+.icon-watch2 a.mal-icon,
+.icon-watch-pv2 a.mal-icon {
 	position: absolute;
 	left: .75rem;
 	width: calc(100% - 1.5rem);
@@ -699,6 +723,20 @@ a:hover,
 }
 .add-edit-more .more a {
 	top: 6.5rem;
+}
+.icon-watch2 a.mal-icon,
+.icon-watch-pv2 a.mal-icon {
+	top: 12.25rem;
+	z-index: 1;
+	width: 14.5rem;
+}
+.icon-watch2 a.mal-icon::before,
+.icon-watch-pv2 a.mal-icon::before {
+	content: "Watch";
+}
+
+a.mal-icon .malicon {
+	display: none;
 }
 
 .list-table .list-table-data .data.image .link,
@@ -1112,4 +1150,23 @@ a:hover,
 #copyright, #recaptcha-terms {
 	display: inline;
 	font-size: 2.5rem;
+}
+
+/* Overlays */
+
+#fancybox-overlay {
+	background: #000000ef !important;
+	opacity: 1 !important;
+}
+
+#fancybox-wrap {
+	box-sizing: content-box;
+}
+
+#fancybox-outer {
+	background: var(--b) var(--bimg) repeat;
+}
+
+#fancybox-inner iframe {
+	filter: invert(1) grayscale(1);
 }
