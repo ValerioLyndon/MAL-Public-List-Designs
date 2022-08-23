@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.7.0             *|
+ v0.8.0             *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -181,6 +181,71 @@ body::after,
 	}
 }
 
+[data-query*='"status":7'] {
+	--catico: "\2a";
+}
+[data-query*='"status":1'] {
+	--catico: "\f04b";
+}
+[data-query*='"status":2'] {
+	--catico: "\f00c";
+}
+[data-query*='"status":3'] {
+	--catico: "\f04c";
+}
+[data-query*='"status":4'] {
+	--catico: "\f00d";
+}
+[data-query*='"status":6'] {
+	--catico: "\f017";
+}
+
+.list-block::before,
+.list-block::after {
+	content: var(--catico);
+	display: block;
+	position: sticky;
+	z-index: -1;
+	top: calc(20rem - var(--sz) * 0.5);
+	width: var(--sz);
+	height: var(--sz);
+	order: -1;
+	background: url(https://files.catbox.moe/qs9f3v.svg) center / contain no-repeat;
+	margin: calc(var(--top) + var(--sz) * -.5) 0 calc(-1 * var(--top) + var(--sz) * -.5) calc(var(--left) - var(--sz) * 0.5);
+	animation: 15s cubic-bezier(.03,0,.03,1) 0s infinite both spinning;
+	opacity: var(--op);
+	transition: opacity 1.3s ease;
+	--top: 50rem;
+	--sz: 100rem;
+	--left: 30rem;
+}
+.list-block::after {
+	--sz: 60rem;
+	animation: 22s linear 0s infinite both reverse spinning;
+	font: bold 20rem/var(--sz) FontAwesome;
+	text-align: center;
+}
+.list-block {
+	--op: .2;
+}
+.fixed ~ .list-block {
+	--op: .08;
+}
+@media (min-width: 1000px) {
+	.list-block::before,
+	.list-block::after {
+		--left: 140rem;
+	}
+}
+
+@keyframes spinning {
+	from {
+		transform: rotate(45deg);
+	} to {
+		transform: rotate(405deg);
+	}
+}
+
 /* tv static: https://www.deviantart.com/tbh-1138/art/TV-Static-214352630 */
 /* footer::after {
 	content: "";
@@ -228,30 +293,19 @@ a:hover,
 }
 
 .list-block {
+	display: flex;
+	flex-flow: column nowrap;
 	width: 170rem;
 	margin-top: 0 !important;
 }
 
 .list-unit {
-	width: initial;
+	width: 100%;
 }
 
 .list-table {
 	display: block;
 	margin: 0 auto;
-}
-
-.list-table::before {
-	content: "";
-	display: block;
-	width: 100%;
-	height: 16rem;
-	background: var(--gt) repeat var(--f3);
-	margin-bottom: 6rem;
-	--clip-1: 6rem;
-	--clip-2: var(--clip-1);
-	clip-path: polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
-/* 	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%); */
 }
 
 /* category menu */
@@ -262,6 +316,7 @@ a:hover,
 	height: auto;
 	background: none;
 	border: none;
+	pointer-events: none;
 }
 
 #status-menu .status-menu {
@@ -280,6 +335,7 @@ a:hover,
 	clip-path: polygon(50% 100%, 100% 0, 0 0);
 	font-size: 0;
 	transition: transform 0.15s ease;
+	pointer-events: auto;
 }
 #status-menu .status-button:nth-of-type(even) {
 	clip-path: polygon(50% 0, 100% 100%, 0 100%);
@@ -338,12 +394,13 @@ a:hover,
 #list-container .search-container {
 	top: 2rem;
 	right: 2rem;
+	pointer-events: auto;
 }
 
 #list-container #search-box,
 #list-container #search-box input {
 	display: block;
-	width: 20rem;
+	width: 64rem;
 	height: 5.5rem;
 	flex: 0 0 auto;
 	order: -1;
@@ -355,9 +412,6 @@ a:hover,
 	padding: .25rem;
 	background: linear-gradient(135deg, var(--b1), var(--b2));
 	margin: 0;
-}
-#list-container #search-box:focus-within {
-	width: 50rem;
 }
 #list-container #search-box input {
 	width: 100%;
@@ -382,11 +436,103 @@ a:hover,
 }
 
 
-/* TEMP */
-.list-unit .list-status-title
-{
-	display: none;
+/* list header */
+
+.list-unit .list-status-title {
+	display: block;
+	width: 100%;
+	height: 16rem;
+	padding: 1rem;
+	background: var(--gt) repeat var(--f3);
+	margin-bottom: 6rem;
+	--clip-1: 6rem;
+	--clip-2: var(--clip-1);
+	clip-path: polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
+/* 	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%); */
 }
+
+.list-unit .list-status-title .stats {
+	position: absolute;
+	bottom: 2rem;
+	right: 22rem;
+	display: flex;
+	height: auto;
+}
+
+.list-unit .list-status-title .stats a {
+	position: relative;
+	width: 20rem;
+	height: 5.5rem;
+	margin-right: 2rem;
+	color: var(--t) !important;
+	font-size: 3.6rem;
+	line-height: 5.25rem;
+	font-weight: bold;
+	text-align: center;
+	transition: transform 0.15s ease;
+}
+.list-unit .list-status-title .stats a:hover {
+	color: var(--l) !important;
+	transform: scale(1.1);
+}
+
+.list-unit .list-status-title .stats a::before,
+.list-unit .list-status-title .stats a::after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	display: block;
+	width: 100%;
+	height: 100%;
+	--clip-1: 1rem;
+	--clip-2: 2rem;
+	clip-path: polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
+}
+.list-unit .list-status-title .stats a::before {
+	background: linear-gradient(135deg, var(--b1), var(--b2));
+}
+.list-unit .list-status-title .stats a::after {
+	top: .25rem;
+	left: .25rem;
+	height: calc(100% - 0.5rem);
+	width: calc(100% - 0.5rem);
+	background: var(--f);
+}
+
+.list-unit .list-status-title .stats a i,
+.list-unit .list-status-title .stats a i::before {
+	font-size: 3.3rem !important;
+}
+
+.list-unit .list-status-title .text {
+	display: none;
+/* 	display: block;
+	width: 100%;
+	color: var(--t);
+	line-height: 14rem;
+	font-size: 10rem;
+	text-indent: 60rem;
+	font-weight: normal;
+	text-align: left;
+	letter-spacing: 0.2em;
+	opacity: 0.3;
+	white-space: nowrap; */
+}
+
+/* stats bar */
+
+#list-container .list-stats {
+	width: 100%;
+	height: 7rem !important;
+	padding: 0 !important;
+	margin: 0 0 6rem 0 !important;
+	background: var(--f);
+	color: var(--t);
+	--clip-1: 1.5rem;
+	--clip-2: 2.5rem;
+	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+}
+
 
 /* user menu */
 
@@ -477,6 +623,11 @@ a:hover,
 	margin: calc(-6rem + -2rem + -5.5rem) 2rem 0 auto;
 }
 
+.list-stats[style*=": block;"] ~ .list-table > tbody:first-of-type {
+	margin-top: calc(-6rem + -2rem + -5.5rem + -13rem);
+	margin-bottom: 13rem;
+}
+
 .list-table > tbody:first-of-type::before,
 .list-table > tbody:first-of-type::after {
 	content: "";
@@ -488,6 +639,12 @@ a:hover,
 	--clip-1: 1rem;
 	--clip-2: 2rem;
 	clip-path: polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
+	transition: transform 0.15s ease;
+}
+
+.list-table > tbody:first-of-type:hover::before,
+.list-table > tbody:first-of-type:hover::after {
+	color: var(--l);
 }
 .list-table > tbody:first-of-type::before {
 	background: linear-gradient(135deg, var(--b1), var(--b2));
@@ -544,7 +701,7 @@ tbody:hover .list-table-header {
 
 .header {
 	width: 100%;
-	height: 30rem;
+	height: 16rem;
 }
 
 .header .header-title {
@@ -552,16 +709,30 @@ tbody:hover .list-table-header {
 	left: auto;
 	right: 4rem;
 	width: auto;
+	display: flex;
+	align-items: center;
 	background: none;
 	font-size: 0;
 }
 
+.header .header-title::before,
 .header .header-title::after {
 	content: "\f00d";
-	display: block;
-	letter-spacing: .1em;
 	font-size: 6rem;
+	letter-spacing: .1em;
 	text-indent: 0;
+}
+.header .header-title::before {
+	content: "EXIT ";
+	font-size: 4rem;
+	width: 0;
+	overflow: hidden;
+	transition: width 0.2s ease-out;
+	text-align: right;
+	margin-right: 1rem;
+}
+.header .header-title:hover::before {
+	width: 5ch;
 }
 
 .header .header-menu {
@@ -708,10 +879,11 @@ tbody:hover .list-table-header {
 }
 
 .list-table-data {
-	transition: transform 0.3s ease;
+	transition: transform 0.24s ease;
+	transform-origin: left center;
 }
 .list-item:hover .list-table-data {
-	transform: scale(1.1) translateX(10rem);
+	transform: scale(1.1);
 }
 
 .list-item:nth-child(2) {
@@ -749,6 +921,7 @@ tbody:hover .list-table-header {
 	position: relative;
 	display: flex;
 	flex-flow: row wrap;
+	min-height: 18rem;
 	padding: 0 1rem 8rem 18rem;
 }
 .list-table-data::before {
@@ -826,10 +999,11 @@ tbody:hover .list-table-header {
 
 .add-edit-more a,
 .icon-watch2 a.mal-icon,
-.icon-watch-pv2 a.mal-icon {
+.icon-watch-pv2 a.mal-icon,
+.list-table .list-table-data .tags .edit {
 	position: absolute;
 	left: .75rem;
-	width: calc(100% - 1.5rem);
+	width: 14.5rem;
 	background: var(--f2);
 	margin-bottom: 2rem;
 	line-height: 5rem;
@@ -844,6 +1018,18 @@ tbody:hover .list-table-header {
 	top: .75rem;
 	--clip-1: 2.25rem;
 }
+.list-table .list-table-data .tags .edit {
+	left: -17.25rem;
+	bottom: -1.25rem;
+	font-size: 0;
+	line-height: 0;
+	--clip-2: 3.75rem;
+}
+.list-table .list-table-data .tags .edit::before {
+	content: "TAGS";
+	font-size: 3.3rem;
+	line-height: 5rem;
+}
 .add-edit-more .more a {
 	top: 6.5rem;
 }
@@ -851,7 +1037,6 @@ tbody:hover .list-table-header {
 .icon-watch-pv2 a.mal-icon {
 	top: 12.25rem;
 	z-index: 1;
-	width: 14.5rem;
 }
 .icon-watch2 a.mal-icon::before,
 .icon-watch-pv2 a.mal-icon::before {
@@ -872,27 +1057,32 @@ a.mal-icon .malicon {
 
 .data.title {
 	width: calc(100% - 2rem);
+	white-space: nowrap;
 }
 
 .list-table .list-table-data .data.title .link {
 	display: inline-block;
-	max-width: 100%;
+	max-width: calc(100% - 16rem);
 	text-overflow: ellipsis;
 	overflow: hidden;
 	margin-top: 2rem;
 	font-size: 4.2rem;
 	color: var(--l);
 	font-weight: normal;
-	white-space: nowrap;
 }
 
 .title [class^="re"],
 .content-status {
 	color: var(--t);
 	vertical-align: top;
+	margin-top: 2.25rem;
+	margin-left: 1rem;
 	opacity: 0.8;
-	padding-top: 2.5rem;
+	padding: 0 1rem;
 	display: inline-block;
+	background: var(--f);
+	border: .25rem solid var(--b2);
+	text-transform: uppercase;
 }
 
 .data.status {
@@ -944,13 +1134,25 @@ a.mal-icon .malicon {
 	--catxt: "DROP";
 	--cat: #a12f31;
 }
-.data.status[class^="planto"],
-.data.status[class^="planto"] ~ .data {
+.data.status[class*="planto"],
+.data.status[class*="planto"] ~ .data {
 	--catxt: "PLAN";
 	--cat: #c3c3c3;
 }
 
-.data.score {
+.data input,
+.data textarea,
+.data select {
+	background: var(--f);
+	border: .25rem solid var(--b1);
+	border-radius: 1rem;
+	outline: none;
+	color: inherit;
+	font: inherit;
+	line-height: 1.1em;
+}
+.data select {
+	height: 7rem;
 }
 
 .data .score-label {
@@ -1103,7 +1305,8 @@ a.mal-icon .malicon {
 	order: 25;
 	--lbl: "Magazine";
 }
-.data.storage {
+.data.storage,
+.data.retail {
 	--lbl: "Storage";
 }
 .data.priority {
@@ -1120,15 +1323,18 @@ a.mal-icon .malicon {
 }
 
 .data.storage,
+.data.retail,
 .data.days {
 	overflow: hidden;
 	white-space: nowrap;
 }
 .data.studio:empty::after,
+.data.magazine:empty::after,
 .data.licensor:empty::after,
 .data.genre:empty::after,
 .data.demographic:empty::after,
-.data.storage::after {
+.data.storage::after,
+.data.retail::after {
 	content: "no data";
 	display: block;
 	opacity: .5;
@@ -1191,16 +1397,11 @@ a.mal-icon .malicon {
 	opacity: .5;
 }
 
-.list-table .list-table-data .tags .edit {
-	position: absolute;
-	right: 0;
-	top: 1rem;
-	width: auto;
-	opacity: 0;
-	transition: opacity .2s ease;
-}
-.list-table .list-table-data:hover .tags .edit {
-	opacity: 1;
+.data.tags textarea {
+	width: 100rem !important;
+	height: 7rem !important;
+	padding: 1rem;
+	resize: none;
 }
 
 .more-info {
