@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.9.0             *|
+ v0.10.0             *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -60,7 +60,9 @@ body.ownlist {
 body::before,
 body::after,
 #fancybox-overlay::before,
-#fancybox-overlay::after {
+#fancybox-overlay::after,
+.mal-modal-backdrop::before,
+.mal-modal-backdrop::after {
 	content: "";
 	position: fixed;
 	z-index: -1;
@@ -72,7 +74,8 @@ body::after,
 	opacity: 0.08;
 }
 body::before,
-#fancybox-overlay::before {
+#fancybox-overlay::before,
+.mal-modal-backdrop::before {
 	background-image: url(https://i.postimg.cc/BQnxxY6b/triangles-top.webp);
 	animation:
 		10s ease-in-out breath-in 1,
@@ -80,7 +83,8 @@ body::before,
 		60s ease-in-out 0s rotate infinite*/;
 }
 body::after,
-#fancybox-overlay::after {
+#fancybox-overlay::after,
+.mal-modal-backdrop::after {
 	background-image: url(https://i.postimg.cc/KcNP3SmC/triangles-bottom.webp);
 	animation:
 		10s ease-in-out breath-in 1 reverse,
@@ -88,7 +92,9 @@ body::after,
 		60s ease-in-out 0s rotate infinite*/;
 }
 #fancybox-overlay::before,
-#fancybox-overlay::after {
+#fancybox-overlay::after,
+.mal-modal-backdrop::before,
+.mal-modal-backdrop::after {
 	width: 150vmax;
 	height: 150vmax;
 	transform-origin: left top;
@@ -1508,4 +1514,39 @@ a.mal-icon .malicon {
 
 #fancybox-inner iframe {
 	filter: invert(1) grayscale(1);
+}
+
+.mal-modal-backdrop {
+	background: #000000ef !important;
+}
+.mal-modal-backdrop.show {
+	opacity: 1;
+}
+
+.mal-modal-dialog {
+	padding: .25rem;
+	background: linear-gradient(135deg, var(--b1), var(--b2));
+	--clip-1: 2.5rem;
+	--clip-2: 3rem;
+	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+}
+
+.mal-modal-content {
+	padding: 2rem;
+	background: var(--f3) var(--gt) repeat !important;
+	clip-path: inherit;
+}
+
+.mal-modal-content * {
+	border-color: var(--b2) !important;
+}
+
+.mal-modal .mal-modal-dialog .mal-modal-content .mal-modal-body .broadcasts .broadcast a:hover {
+	background: var(--f1);
+	outline: 1px solid var(--b1);
+}
+
+.mal-modal-content .btn-close {
+	width: 20px !important;
+	height: 20px !important;
 }
