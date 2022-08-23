@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.8.1             *|
+ v0.8.2             *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -222,6 +222,13 @@ body::after,
 	animation: 22s linear 0s infinite both reverse spinning;
 	font: bold 20rem/var(--sz) FontAwesome;
 	text-align: center;
+}
+
+@media (max-width: 1000px) {
+	.list-block::before,
+	.list-block::after {
+		--left: 100rem;
+	}
 }
 
 @keyframes spinning {
@@ -686,6 +693,7 @@ tbody:hover .list-table-header {
 
 .header {
 	width: 100%;
+	min-width: 170rem;
 	height: 50rem;
 }
 
@@ -1450,6 +1458,7 @@ a.mal-icon .malicon {
 #footer-block {
 	position: relative;
 	width: auto !important;
+	min-width: 170rem;
 	background: none;
 	color: var(--t);
 }
