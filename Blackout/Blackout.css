@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.8.0             *|
+ v0.8.1             *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -203,39 +203,25 @@ body::after,
 .list-block::before,
 .list-block::after {
 	content: var(--catico);
-	display: block;
-	position: sticky;
+	position: absolute;
 	z-index: -1;
-	top: calc(20rem - var(--sz) * 0.5);
 	width: var(--sz);
 	height: var(--sz);
-	order: -1;
 	background: url(https://files.catbox.moe/qs9f3v.svg) center / contain no-repeat;
-	margin: calc(var(--top) + var(--sz) * -.5) 0 calc(-1 * var(--top) + var(--sz) * -.5) calc(var(--left) - var(--sz) * 0.5);
+	top: calc(var(--top) + var(--sz) * -.5);
+	left: calc(50% - 170rem + var(--left) - var(--sz) * 0.5);
 	animation: 15s cubic-bezier(.03,0,.03,1) 0s infinite both spinning;
-	opacity: var(--op);
+	opacity: .18;
 	transition: opacity 1.3s ease;
-	--top: 50rem;
 	--sz: 100rem;
-	--left: 30rem;
+	--top: 30rem;
+	--left: 50rem;
 }
 .list-block::after {
 	--sz: 60rem;
 	animation: 22s linear 0s infinite both reverse spinning;
 	font: bold 20rem/var(--sz) FontAwesome;
 	text-align: center;
-}
-.list-block {
-	--op: .2;
-}
-.fixed ~ .list-block {
-	--op: .08;
-}
-@media (min-width: 1000px) {
-	.list-block::before,
-	.list-block::after {
-		--left: 140rem;
-	}
 }
 
 @keyframes spinning {
@@ -293,8 +279,7 @@ a:hover,
 }
 
 .list-block {
-	display: flex;
-	flex-flow: column nowrap;
+	display: block;
 	width: 170rem;
 	margin-top: 0 !important;
 }
@@ -701,7 +686,7 @@ tbody:hover .list-table-header {
 
 .header {
 	width: 100%;
-	height: 16rem;
+	height: 50rem;
 }
 
 .header .header-title {
@@ -743,7 +728,7 @@ tbody:hover .list-table-header {
 }
 .header .header-menu .btn-menu .username {
 	position: absolute;
-	top: 20rem;
+	top: 40rem;
 	left: calc(50% - 83rem);
 	height: 6rem;
 	background: var(--f2);
