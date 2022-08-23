@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.10.1             *|
+ v0.10.2             *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -760,7 +760,8 @@ tbody:hover .list-table-header {
 	font-size: 0;
 }
 .header .header-menu .btn-menu .username,
-.header .header-menu .header-info {
+.header .header-menu .header-info,
+#header-menu-dropdown {
 	display: block;
 	height: 6rem;
 	background: var(--f2);
@@ -771,6 +772,28 @@ tbody:hover .list-table-header {
 	font-weight: normal;
 	text-transform: lowercase;
 }
+
+/* swap list button */
+
+#header-menu-dropdown {
+	position: static;
+}
+
+#header-menu-dropdown .icon-menu {
+	display: inline;
+	background: none;
+	font-size: 3.3rem;
+}
+#header-menu-dropdown .icon-menu::before {
+	content: "\f021";
+}
+
+#header-menu-dropdown svg,
+#header-menu-dropdown .text {
+	display: none;
+}
+
+/* username text */
 .username::before,
 .username::after {
 	content: "/home/";
