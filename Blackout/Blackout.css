@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.8.2             *|
+ v0.9.0             *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -537,7 +537,6 @@ a:hover,
 	height: auto;
 	border: none;
 	transform: translateX(-50%);
-	display: none;
 }
 
 .list-menu-float .icon-menu {
@@ -546,9 +545,22 @@ a:hover,
 	background: linear-gradient(135deg, var(--b1), var(--b2));
 	margin-right: -4rem;
 	clip-path: polygon(50% 100%, 100% 0, 0 0);
+	transition-property: margin-right, opacity, transform;
+	transition-duration: 0.24s, 0.24s, 0.15s;
+	transition-timing-function: ease;
+	transition-delay: 0s;
 }
 .list-menu-float .icon-menu:nth-of-type(even) {
 	clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.list-menu-float .icon-menu:hover {
+	transform: scale(1.2);
+}
+
+.list-menu-float:not(:hover) .icon-menu:not(.profile) {
+	opacity: 0;
+	margin-right: -14rem;
+	transition-delay: .7s, .7s, 0s;
 }
 
 .list-menu-float .icon-menu:not(.profile)::before {
@@ -568,6 +580,9 @@ a:hover,
 .list-menu-float .icon-menu svg.icon {
 	fill: var(--t);
 	transform: scale(0.8) translate(1.25rem, -2rem);
+}
+.list-menu-float .icon-menu:hover svg.icon {
+	fill: var(--l);
 }
 .list-menu-float .icon-menu:nth-of-type(even) svg.icon {
 	transform: scale(0.8) translate(1.25rem, 2rem);
@@ -728,21 +743,24 @@ tbody:hover .list-table-header {
 	width: 5ch;
 }
 
-.header .header-menu {
-	position: static;
+.ownlist .header .header-menu {
+	position: absolute;
+	top: 40rem;
+	right: auto;
+	left: calc(50% - 83rem);
+	display: flex;
 }
 .header .header-menu .btn-menu {
 	font-size: 0;
 }
-.header .header-menu .btn-menu .username {
-	position: absolute;
-	top: 40rem;
-	left: calc(50% - 83rem);
+.header .header-menu .btn-menu .username,
+.header .header-menu .header-info {
+	display: block;
 	height: 6rem;
 	background: var(--f2);
 	border: .5rem solid var(--b2);
 	padding: 0 4px;
-	font-size: 0;
+	margin: 0 4rem 0 0;
 	line-height: 5rem;
 	font-weight: normal;
 	text-transform: lowercase;
@@ -760,8 +778,11 @@ tbody:hover .list-table-header {
 	content: "/list";
 	font-size: 3.3rem;
 }
-[data-owner="1"] .username {
-	font-size: 0;
+[data-owner=""] .username {
+	font-size: 3.3rem;
+}
+[data-owner=""] .username::after {
+	content: none;
 }
 .anime[data-owner="1"] .username::after {
 	content: "personal/animelist";
