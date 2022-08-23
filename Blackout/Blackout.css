@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.10.0             *|
+ v0.10.1             *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -1386,24 +1386,35 @@ a.mal-icon .malicon {
 
 .data.tags div {
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	padding: 1rem 0;
+	height: 7rem;
+	margin-left: -1.5rem;
 	align-items: center;
 	line-height: 5rem;
+	white-space: nowrap;
 }
 .data.tags div:empty::before {
 	content: "BLANK";
+	text-indent: 1.5rem;
 	opacity: .5;
 }
 
 .data.tags span {
 	font-size: 0;
 	height: 5rem;
+	flex: 0 1 auto;
+	transition: flex-shrink 0.3s ease;
+	overflow: hidden;
+}
+.data.tags span:hover {
+	flex-shrink: 0;
 }
 .data.tags span a {
 	display: inline-flex;
 	font-size: 3rem;
-	margin-right: 1.5rem;
+	padding-left: 1.5rem;
+	text-overflow: ellipsis;
 }
 .data.tags span a::before {
 	content: "";
