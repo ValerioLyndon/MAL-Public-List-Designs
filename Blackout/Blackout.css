@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.10.2             *|
+ v0.10.3             *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -556,7 +556,8 @@ a:hover,
 	transition-timing-function: ease;
 	transition-delay: 0s;
 }
-.list-menu-float .icon-menu:nth-of-type(even) {
+.list-menu-float .icon-menu:nth-of-type(even),
+.list-menu-float :nth-of-type(odd) + form .icon-menu {
 	clip-path: polygon(50% 0, 100% 100%, 0 100%);
 }
 .list-menu-float .icon-menu:hover {
@@ -579,7 +580,8 @@ a:hover,
 	background: var(--f2);
 	clip-path: inherit;
 }
-.list-menu-float .icon-menu:nth-of-type(even)::before {
+.list-menu-float .icon-menu:nth-of-type(even)::before,
+.list-menu-float :nth-of-type(odd) + form .icon-menu::before {
 	top: .7rem;
 }
 
@@ -590,7 +592,8 @@ a:hover,
 .list-menu-float .icon-menu:hover svg.icon {
 	fill: var(--l);
 }
-.list-menu-float .icon-menu:nth-of-type(even) svg.icon {
+.list-menu-float .icon-menu:nth-of-type(even) svg.icon,
+.list-menu-float :nth-of-type(odd) + form .icon-menu svg.icon {
 	transform: scale(0.8) translate(1.25rem, 2rem);
 }
 
