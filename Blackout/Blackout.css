@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.10.6            *|
+ v0.10.7            *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -27,6 +27,7 @@
 html {
 	font-size: 4px;
 	box-sizing: border-box;
+	color-scheme: dark;
 } *, *::before, *::after {
 	box-sizing: inherit;
 }
