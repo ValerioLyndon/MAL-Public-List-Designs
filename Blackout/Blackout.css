@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.10.5            *|
+ v0.10.6            *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -876,7 +876,7 @@ tbody:hover .list-table-header {
 	margin: 0;
 }
 
-#cover-image-container {
+#cover-image-container:not(.hide) {
 	display: block;
 	width: calc(100vw - 186rem);
 	max-width: 50vh;
