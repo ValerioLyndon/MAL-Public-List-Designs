@@ -11,7 +11,7 @@
 
 :root {
 	--b: #000;
-	--g: url(https://i.postimg.cc/28dSSrmB/grain.png);
+	--g: url(https://i.postimg.cc/jjYhwCqK/grain-black.png);
 	--gt: url(https://i.postimg.cc/nLWHPLKN/grain-transparent.png);
 	--gl: url(https://i.postimg.cc/ydJN1RYV/grain-large.png);
 	--f: #131313aa;
@@ -72,7 +72,8 @@ body::after,
 body::before,
 #fancybox-overlay::before,
 .mal-modal-backdrop::before {
-	background-image: url(https://i.postimg.cc/BQnxxY6b/triangles-top.webp);
+	/*background-image: url(https://i.postimg.cc/BQnxxY6b/triangles-top.webp);*/
+	background-image: url(https://i.postimg.cc/brVTsTrF/triangles-top.png);
 	animation:
 		10s ease-in-out breath-in 1,
 		30s ease-in-out 10s breath infinite/*,
@@ -81,7 +82,8 @@ body::before,
 body::after,
 #fancybox-overlay::after,
 .mal-modal-backdrop::after {
-	background-image: url(https://i.postimg.cc/KcNP3SmC/triangles-bottom.webp);
+	/*background-image: url(https://i.postimg.cc/KcNP3SmC/triangles-bottom.webp);*/
+	background-image: url(https://i.postimg.cc/zvG7zMzg/triangles-bottom.png);
 	animation:
 		10s ease-in-out breath-in 1 reverse,
 		44s ease-in-out 10s breath-reverse infinite/*,
@@ -209,7 +211,8 @@ body::after,
 	z-index: -1;
 	width: var(--sz);
 	height: var(--sz);
-	background: url(https://files.catbox.moe/qs9f3v.svg) center / contain no-repeat;
+	/*background: url(https://files.catbox.moe/qs9f3v.svg) center / contain no-repeat;*/
+	background: url(https://i.postimg.cc/VLTgwD3J/spinner.png) center / contain no-repeat;
 	top: calc(var(--top) + var(--sz) * -.5);
 	left: calc(50% - 170rem + var(--left) - var(--sz) * 0.5);
 	animation: 15s cubic-bezier(.03,0,.03,1) 0s infinite both spinning;
