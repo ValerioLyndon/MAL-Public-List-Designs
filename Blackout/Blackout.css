@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.10.7            *|
+ v0.11.0            *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -1602,6 +1602,53 @@ body #fancybox-outer {
 #fancybox-inner iframe {
 	filter: invert(1) grayscale(1);
 }
+
+/* Filter */
+
+#advanced-options input,
+#advanced-options textarea,
+#advanced-options select {
+	background-color: var(--f2) !important;
+	border: .25rem solid var(--b2) !important;
+}
+#advanced-options {
+	background-color: var(--f);
+	border: .25rem solid var(--b2);
+}
+#advanced-options .sort-widget input[type=radio] + label,
+#advanced-options .sort-widget input[type=radio]:disabled + label, 
+#advanced-options .sort-widget input[type=radio]:checked:disabled + label {
+    background-color: var(--f2) !important;
+    border: .25rem solid var(--b2);
+    border-radius: 4px;
+    color: var(--t);
+}
+#advanced-options .sort-widget input[type=radio]:checked + label {
+    border: .25rem solid var(--b1);
+    color: var(--l);
+}
+#advanced-options .sort-widget input[type=radio]:disabled + label,
+#advanced-options .sort-widget input[type=radio]:checked:disabled + label,
+#advanced-options select:disabled {
+    opacity: .5;
+}
+
+#advanced-options .advanced-options-header,
+#advanced-options .advanced-options-button {
+	border-color: var(--b2);
+}
+
+#advanced-options .advanced-options-button a {
+	background: var(--f2);
+	border: .25rem solid var(--b2);
+	transition: all .18s ease;
+}
+#advanced-options .advanced-options-button a:hover {
+	background: var(--f2);
+	border-color: var(--b1);
+}
+
+/* Where to watch */
 
 .mal-modal-backdrop {
 	background: #000000ef !important;
