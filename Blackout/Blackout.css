@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.10.3             *|
+ v0.10.4            *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -31,17 +31,12 @@ html {
 	box-sizing: inherit;
 }
 
-@media (min-width: 1900px) {
-	html {
-		font-size: 5px;
-	}
-}
-@media (min-width: 2500px) {
+@media (min-width: 2300px) {
 	html {
 		font-size: 6px;
 	}
 }
-@media (min-width: 3800px) {
+@media (min-width: 3500px) {
 	html {
 		font-size: 8px;
 	}
@@ -586,6 +581,10 @@ a:hover,
 }
 
 .list-menu-float .icon-menu svg.icon {
+	left: var(--lf) !important;
+	top: var(--tp) !important;
+	width: var(--sz);
+	height: auto;
 	fill: var(--t);
 	transform: scale(0.8) translate(1.25rem, -2rem);
 }
@@ -595,6 +594,46 @@ a:hover,
 .list-menu-float .icon-menu:nth-of-type(even) svg.icon,
 .list-menu-float :nth-of-type(odd) + form .icon-menu svg.icon {
 	transform: scale(0.8) translate(1.25rem, 2rem);
+}
+
+svg.icon-quick-add {
+	--lf: 3.25rem;
+	--tp: 3rem;
+	--sz: 5.5rem;
+}
+svg.icon-anime-list {
+	--lf: 3.25rem;
+	--tp: 3rem;
+	--sz: 5.5rem;
+}
+svg.icon-manga-list {
+	--lf: 3.25rem;
+	--tp: 3rem;
+	--sz: 5.5rem;
+}
+svg.icon-history {
+	--lf: 3.25rem;
+	--tp: 3rem;
+	--sz: 5.25rem;
+}
+svg.icon-export {
+	--lf: 3.75rem;
+	--tp: 3rem;
+	--sz: 5rem;
+}
+svg.icon-logout {
+	--lf: 3.25rem;
+	--tp: 3.5rem;
+	--sz: 5rem;
+}
+svg.icon-setting {
+	--lf: 3.25rem;
+	--tp: 3.25rem;
+	--sz: 5.25rem;
+}
+
+.list-menu-float .text {
+	display: none !important;
 }
 
 /* @media (min-width: 1280px) {
@@ -711,6 +750,9 @@ tbody:hover .list-table-header {
 }
 #list-container .header-title .link:not(.sort) {
 	display: none;
+}
+#list-container .header-title .sort-icon {
+	color: var(--l);
 }
 
 /* header */
@@ -924,13 +966,13 @@ tbody:hover .list-table-header {
 	animation: .4s ease var(--delay) backwards 1 flicker-on;
 }
 
-.list-table-data {
+/*.list-table-data {
 	transition: transform 0.24s ease;
 	transform-origin: left center;
 }
 .list-item:hover .list-table-data {
 	transform: scale(1.1);
-}
+}*/
 
 .list-item:nth-child(2) {
 	--delay: 0s;
@@ -1044,8 +1086,7 @@ tbody:hover .list-table-header {
 }
 
 .add-edit-more a,
-.icon-watch2 a.mal-icon,
-.icon-watch-pv2 a.mal-icon,
+#list-container .mal-icon,
 .list-table .list-table-data .tags .edit {
 	position: absolute;
 	left: .75rem;
@@ -1056,6 +1097,7 @@ tbody:hover .list-table-header {
 	font-size: 3.3rem;
 	text-align: center;
 	text-transform: uppercase;
+	opacity: 1;
 	--clip-1: 1rem;
 	--clip-2: 1rem;
 	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
@@ -1079,17 +1121,15 @@ tbody:hover .list-table-header {
 .add-edit-more .more a {
 	top: 6.5rem;
 }
-.icon-watch2 a.mal-icon,
-.icon-watch-pv2 a.mal-icon {
+#list-container .mal-icon {
 	top: 12.25rem;
 	z-index: 1;
 }
-.icon-watch2 a.mal-icon::before,
-.icon-watch-pv2 a.mal-icon::before {
+#list-container .mal-icon::before {
 	content: "Watch";
 }
 
-a.mal-icon .malicon {
+#list-container .mal-icon i {
 	display: none;
 }
 
@@ -1545,7 +1585,7 @@ a.mal-icon .malicon {
 	box-sizing: content-box;
 }
 
-#fancybox-outer {
+body #fancybox-outer {
 	background: var(--b) var(--g) repeat;
 }
 
@@ -1578,9 +1618,9 @@ a.mal-icon .malicon {
 	border-color: var(--b2) !important;
 }
 
-.mal-modal .mal-modal-dialog .mal-modal-content .mal-modal-body .broadcasts .broadcast a:hover {
-	background: var(--f1);
-	outline: 1px solid var(--b1);
+.broadcast a:hover {
+	background: var(--f1) !important;
+	outline: 1px solid var(--b1) !important;
 }
 
 .mal-modal-content .btn-close {
