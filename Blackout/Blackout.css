@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.10.4            *|
+ v0.10.5            *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -1448,6 +1448,12 @@ tbody:hover .list-table-header {
 }
 .number ~ .type ~ .tags {
 	--m: 30rem;
+}
+
+/* fix for button placement when there are very few columns active on the animelist where the watch button may conflict */
+.anime .title + .data.tags .edit {
+	right: 2rem;
+	left: auto;
 }
 
 .data.tags div {
