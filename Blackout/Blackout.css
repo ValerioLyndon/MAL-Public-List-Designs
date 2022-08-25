@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.13.2            *|
+ v0.13.3            *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -1156,7 +1156,7 @@ tbody:hover .list-table-header {
 	max-width: calc(100% - 16rem);
 	text-overflow: ellipsis;
 	overflow: hidden;
-	margin-top: 2rem;
+	padding: 2rem 0;
 	font-size: 4.2rem;
 	color: var(--l);
 	font-weight: normal;
