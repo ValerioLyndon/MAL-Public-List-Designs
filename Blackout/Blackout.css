@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.12.0            *|
+ v0.13.0            *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -48,6 +48,12 @@ html {
 }
 
 body.ownlist {
+	position: relative;
+	display: flex;
+	min-width: 186rem;
+	flex-flow: row nowrap;
+	justify-content: center;
+	padding-top: 50rem;
 	background: var(--g) repeat;
 	background-color: var(--b) !important;
 	color: var(--t) !important;
@@ -213,27 +219,20 @@ body::after,
 	height: var(--sz);
 	/*background: url(https://files.catbox.moe/qs9f3v.svg) center / contain no-repeat;*/
 	background: url(https://i.postimg.cc/VLTgwD3J/spinner.png) center / contain no-repeat;
-	top: calc(var(--top) + var(--sz) * -.5);
-	left: calc(50% - 170rem + var(--left) - var(--sz) * 0.5);
+	top: calc(-50rem + var(--top) + var(--sz) * -.5);
+	left: calc(var(--left) - var(--sz) * 0.5);
 	animation: 15s cubic-bezier(.03,0,.03,1) 0s infinite both spinning;
 	opacity: .18;
 	transition: opacity 1.3s ease;
 	--sz: 100rem;
 	--top: 30rem;
-	--left: 50rem;
+	--left: 20rem;
 }
 .list-block::after {
 	--sz: 60rem;
 	animation: 22s linear 0s infinite both reverse spinning;
 	font: bold 20rem/var(--sz) FontAwesome;
 	text-align: center;
-}
-
-@media (max-width: 1000px) {
-	.list-block::before,
-	.list-block::after {
-		--left: 100rem;
-	}
 }
 
 @keyframes spinning {
@@ -278,21 +277,25 @@ a:hover,
 /* conts */
 
 #list-container {
-	position: static;
+	position: relative;
 	display: flex;
-	width: 100%;
+	width: auto;
 	min-width: 170rem;
 	max-width: calc(100vw - 17px);
 	min-height: 100vh;
+	order: 3;
 	flex-flow: row-reverse nowrap;
+	flex-shrink: 1;
 	justify-content: center;
 	background: none !important;
 	border: none !important;
+	margin: 0;
 }
 
 .list-block {
 	display: block;
 	width: 170rem;
+	padding-bottom: 29.5rem;
 	margin-top: 0 !important;
 }
 
@@ -534,15 +537,21 @@ a:hover,
 /* user menu */
 
 .list-menu-float {
-	position: absolute;
-	top: 4rem;
-	left: 50%;
+	position: sticky;
+	top: 10rem;
+	z-index: 15;
+	align-self: flex-start;
 	display: flex;
+	flex-flow: column nowrap;
 	width: auto;
+	margin: 8rem 4rem 0 -9rem;
 	height: auto;
 	align-items: center;
 	border: none;
-	transform: translateX(-50%);
+	pointer-events: none;
+}
+.list-menu-float:hover {
+	pointer-events: auto;
 }
 
 .list-menu-float::before {
@@ -557,6 +566,7 @@ a:hover,
 	transition:
 		background-color 0.2s ease-out,
 		opacity 0.2s ease-out;
+	pointer-events: auto;
 }
 .list-menu-float:hover::before {
 	opacity: .5;
@@ -567,18 +577,32 @@ a:hover,
 	display: flex;
 	width: 5rem !important;
 	height: 8rem;
-	margin-left: -5rem;
 	background: none !important;
 	align-items: center;
+	justify-content: center;
 	line-height: 1;
 	transition:
-		margin-left 0.2s ease-out,
+		transform 0.2s ease,
 		opacity 0.2s ease-out;
 	opacity: 0;
+	transform: translateY(5rem);
 }
 .list-menu-float:hover .icon-menu {
-	margin-left: 2rem;
 	opacity: 1;
+	transform: none;
+}
+
+.header .header-title {
+	position: sticky;
+	top: 2rem;
+	width: auto;
+	height: 8rem;
+	display: flex;
+	align-items: center;
+	background: none;
+	overflow: visible;
+	font-size: 0;
+	line-height: 1;
 }
 
 .list-menu-float .icon-menu svg.icon,
@@ -595,29 +619,55 @@ a:hover,
 	fill: var(--l);
 }
 
+.header .header-title::before {
+	content: "\f00d";
+	display: block;
+	width: 5rem;
+	font-size: 6rem;
+	text-indent: 0.1em;
+	text-align: center;
+}
+
+.header .header-title::after,
 .list-menu-float .icon-menu .text,
-.list-menu-float .icon-menu.profile::after {
+.list-menu-float .icon-menu.profile::after,
+.header .header-title::after {
 	position: absolute;
-	left: 50%;
-	top: 100%;
+	left: 6rem;
+	top: 0;
 	color: var(--t2);
 	text-transform: uppercase;
-	width: 0rem !important;
-	overflow: hidden;
+	width: auto !important;
+	background: var(--f);
+	padding: 0 1rem;
 	font-size: 4rem;
 	letter-spacing: .1em;
-	transition: width 0.2s ease-out;
-	opacity: 1;
-	transform: translateX(-50%);
+	transition:
+		transform 0.2s ease-out,
+		opacity 0.2s ease-out;
 	pointer-events: none;
+	line-height: 8rem;
+	--clip-1: 1.5rem;
+	--clip-2: 2.5rem;
+	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	transform: translateY(2rem);
+	opacity: 0;
 }
 .list-menu-float .icon-menu:hover .text,
-.list-menu-float .icon-menu.profile:hover::after {
-	width: 30rem !important;
+.list-menu-float .icon-menu.profile:hover::after,
+.header .header-title:hover::after {
+	transform: none;
+	opacity: 1;
 }
 
 .list-menu-float .icon-menu.profile::after {
 	content: "Profile";
+}
+
+.header .header-title::after {
+	content: "Exit";
+	font-size: 4rem;
+	text-indent: 0;
 }
 
 /* @media (min-width: 1280px) {
@@ -742,50 +792,19 @@ tbody:hover .list-table-header {
 /* header */
 
 .header {
-	width: 100%;
-	min-width: 170rem;
-	height: 50rem;
-}
-
-.header .header-title {
-	top: 4rem;
-	left: auto;
-	right: 4rem;
-	width: auto;
-	height: 8rem;
-	display: flex;
-	align-items: center;
-	background: none;
-	font-size: 0;
-	line-height: 1;
-}
-
-.header .header-title::before,
-.header .header-title::after {
-	content: "\f00d";
-	font-size: 6rem;
-	letter-spacing: .1em;
-	text-indent: 0;
-}
-.header .header-title::before {
-	content: "EXIT ";
-	font-size: 4rem;
-	width: 0;
-	overflow: hidden;
-	transition: width 0.2s ease-out;
-	text-align: right;
-	margin-right: 1rem;
-}
-.header .header-title:hover::before {
-	width: 5ch;
+	z-index: 14;
+	width: 5rem;
+	height: auto;
+	margin: 0 4rem 0 0;
 }
 
 .ownlist .header .header-menu {
 	position: absolute;
-	top: 40rem;
+	top: -10rem;
 	right: auto;
-	left: calc(50% - 83rem);
+	left: 11rem;
 	display: flex;
+	width: 170rem;
 }
 .header .header-menu .btn-menu {
 	font-size: 0;
@@ -864,7 +883,7 @@ tbody:hover .list-table-header {
 
 #cover-image-container:not(.hide) {
 	display: block;
-	width: calc(100vw - 186rem);
+	width: calc(100vw - 195rem);
 	max-width: 50vh;
 	padding: .5rem;
 	margin-left: 4rem;
@@ -1551,19 +1570,36 @@ tbody:hover .list-table-header {
 
 /* Footer */
 
+footer {
+	width: 0;
+	order: 2;
+	align-self: flex-end;
+}
+
 #footer-block {
 	position: relative;
-	width: auto !important;
-	min-width: 170rem;
-	background: none;
+	top: -6rem;
+	width: 170rem !important;
+	padding: 3.5rem;
+	background: var(--f);
+	--clip-1: 2.5rem;
+	--clip-2: 3rem;
+	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	line-height: 3.5rem;
 	color: var(--t);
 }
-#copyright::after {
-	content: " List design by Valerio Lyndon.";
+#copyright::before {
+	content: "List design by Valerio Lyndon.\a ";
+	white-space: pre-wrap;
 }
 #copyright, #recaptcha-terms {
-	display: inline;
+	display: block;
+	margin: 0;
 	font-size: 2.5rem;
+}
+
+footer ~ * {
+	display: none;
 }
 
 /* Overlays */
