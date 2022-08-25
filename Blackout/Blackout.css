@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.13.0            *|
+ v0.13.1            *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -624,7 +624,7 @@ a:hover,
 	display: block;
 	width: 5rem;
 	font-size: 6rem;
-	text-indent: 0.1em;
+	text-indent: 0;
 	text-align: center;
 }
 
