@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v0.13.1            *|
+ v0.13.2            *|
  a list design      *|
  by Valerio Lyndon  */
 
@@ -1596,10 +1596,6 @@ footer {
 	display: block;
 	margin: 0;
 	font-size: 2.5rem;
-}
-
-footer ~ * {
-	display: none;
 }
 
 /* Overlays */
