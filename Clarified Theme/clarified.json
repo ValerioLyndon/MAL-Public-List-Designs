@@ -137,20 +137,6 @@
 				},
 				"tags": ["imagery"]
 			},
-			"header-size": {
-				"name": "Header Height",
-				"css": {"bottom": "/**\n * Header Size\n * v1.0.0\n */\n\n.header { height: 400px; }\n\n/* END of Header Size */"},
-				"options": {
-					"height": {
-						"name": "Height",
-						"description": "I don't recommend going lower than ~100px.",
-						"type": "text/size",
-						"replacements": [["400px", "{{{insert}}}"]],
-						"default": "400px"
-					}
-				},
-				"tags": ["proportions"]
-			},
 			"side-renders": {
 				"name": "Character Renders",
 				"description": "Adds two optional character renders on the left and right of the list. Do note that the renders will not be properly visible at low resolutions. I recommend having at least a 1600x900 monitor to add renders, as they purposefully do not intersect the center list area.",
@@ -200,6 +186,26 @@
 				"description": "Converts the tag section into a single block, allowing your mini-reviews to shine. Please remember that tag length is limited to 255 by MyAnimeList.",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Review%20Tags.css"},
 				"tags": ["tags"]
+			},
+			"category-header-colours": {
+				"name": "Category Header Colours",
+				"description": "Colours the buttons in the header based on their respective category.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Category%20Header%20Colours.css"},
+				"tags": ["visual flare"]
+			},
+			"header-size": {
+				"name": "Header Height",
+				"css": {"bottom": "/**\n * Header Size\n * v1.0.0\n */\n\n.header { height: 400px; }\n\n/* END of Header Size */"},
+				"options": {
+					"height": {
+						"name": "Height",
+						"description": "I don't recommend going lower than ~100px.",
+						"type": "text/size",
+						"replacements": [["400px", "{{{insert}}}"]],
+						"default": "400px"
+					}
+				},
+				"tags": ["proportions"]
 			},
 			"list-width": {
 				"name": "List Width",
