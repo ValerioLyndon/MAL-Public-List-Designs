@@ -179,7 +179,7 @@
 						"default": "contain"
 					}
 				},
-				"tags": ["visual flare", "additional imagery", "in-depth customisation"]
+				"tags": ["visual flare", "imagery"]
 			},
 			"review-tags": {
 				"name": "Review Tags",
@@ -212,7 +212,7 @@
 						"default": "♥"
 					}
 				},
-				"tags": ["tags", "visual flare", "extra functionality", "in-depth customisation"]
+				"tags": ["tags", "visual flare", "functionality"]
 			},
 			"category-header-colours": {
 				"name": "Category Header Colours",
@@ -266,7 +266,7 @@
 				"name": "DIY Coloured Tags",
 				"description": "Want to add some visual flare to your tag system? Check the linked guide for information on how to.",
 				"url": "https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.",
-				"tags": ["tags", "visual flare", "in-depth customisation"]
+				"tags": ["tags", "visual flare"]
 			}
 		}
 	}
