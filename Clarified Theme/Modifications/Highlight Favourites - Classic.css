@@ -1,0 +1,29 @@
+/**
+ * Highlight Favourites - Classic
+ * v1.0.0
+ */
+
+.data.tags span a[href$="=Favourite"] {
+	position: absolute;
+	left: -34px;
+	top: calc(50% - 13px);
+	width: 26px;
+	height: 26px;
+	padding: 0;
+	background: var(--content-background);
+	border-radius: 50%;
+	box-shadow: var(--mild-shadow);
+	margin: 0;
+	font-size: 0 !important;
+	text-decoration: none !important;
+	text-align: center;
+}
+.data.tags span a[href$="=Favourite"]::before {
+	content: "♥";
+	margin: 0;
+	color: #ff65ad;
+	font-size: 16px;
+	line-height: 26px;
+}
+
+/* END of Highlight Favourites */
