@@ -1,0 +1,16 @@
+/**
+ * Category Accents
+ * v1.0.0
+ */
+
+body {
+  --content-link: var(--page-category);
+  --inverse-background: var(--page-category);
+}
+
+.data {
+  --content-link: var(--local-category);
+  --inverse-background: var(--local-category);
+}
+
+/* END of Category Accents */

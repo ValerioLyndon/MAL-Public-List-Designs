@@ -191,7 +191,21 @@
 				"name": "Category Header Colours",
 				"description": "Colours the buttons in the header based on their respective category.",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Category%20Header%20Colours.css"},
-				"tags": ["visual flare"]
+				"tags": ["visual flare", "category options"]
+			},
+			"category-accents": {
+				"name": "Category Accents",
+				"description": "Changes various colours to match the current category, or the list item's category.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Category%20Accents.css"},
+				"options": {
+					"disable-item": {
+						"name": "Disable Per-Item Colours",
+						"type": "toggle",
+						"replacements": [["RegExp/(\\.data {[^}]*})", "$1", ""]],
+						"default": false
+					}
+				},
+				"tags": ["visual flare", "category options"]
 			},
 			"header-size": {
 				"name": "Header Height",
