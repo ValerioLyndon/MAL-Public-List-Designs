@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.0.6
+ * v2.0.7
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -1424,12 +1424,13 @@ Please MAL I am begging you, just add another selector to the date column header
 .header-title a[href*="order=-3"]:hover::after {
 	content: "User Started";
 }
-.header-title a[href*="order=14"]:hover::after,
-.header-title a[href*="order=-14"]:hover::after {
+/* These selectors must be this verbose as to prevent issues between the anime and manga lists */
+.anime .header-title a[href*="order=14"]:hover::after,
+.anime .header-title a[href*="order=-14"]:hover::after {
 	content: "Airing Started";
 }
-.header-title a[href*="order=12"]:hover::after,
-.header-title a[href*="order=-12"]:hover::after {
+.manga .header-title a[href*="order=12"]:hover::after,
+.manga .header-title a[href*="order=-12"]:hover::after {
 	content: "Publishing Started";
 }
 
@@ -1440,12 +1441,12 @@ Please MAL I am begging you, just add another selector to the date column header
 .header-title a[href*="order=-2"]:hover::after {
 	content: "User Finished";
 }
-.header-title a[href*="order=15"]:hover::after,
-.header-title a[href*="order=-15"]:hover::after {
+.anime .header-title a[href*="order=15"]:hover::after,
+.anime .header-title a[href*="order=-15"]:hover::after {
 	content: "Airing Finished";
 }
-.header-title a[href*="order=13"]:hover::after,
-.header-title a[href*="order=-13"]:hover::after {
+.manga .header-title a[href*="order=13"]:hover::after,
+.manga .header-title a[href*="order=-13"]:hover::after {
 	content: "Publishing Finished";
 }
 
