@@ -201,6 +201,20 @@
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Review%20Tags.css"},
 				"tags": ["tags"]
 			},
+			"list-width": {
+				"name": "List Width",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/List%20Width.css"},
+				"options": {
+					"width": {
+						"name": "Width",
+						"description": "I don't recommend going lower than ~600px.",
+						"type": "text/size",
+						"replacements": [["--list-width: 1060px", "--list-width: {{{insert}}}"]],
+						"default": "1060px"
+					}
+				},
+				"tags": ["proportions"]
+			},
 			"info-coloured-tags": {
 				"name": "DIY Coloured Tags",
 				"description": "Want to add some visual flare to your tag system? Check the linked guide for information on how to.",

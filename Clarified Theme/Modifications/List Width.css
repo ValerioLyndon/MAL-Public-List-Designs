@@ -1,0 +1,26 @@
+/**
+ * List Width
+ * v1.0.0
+ */
+
+:root { --list-width: 1060px; }
+
+#status-menu:not(.fixed) .status-menu,
+.list-unit .list-status-title,
+.list-table,
+.list-table > tbody {
+	width: var(--list-width);
+}
+
+#status-menu:not(.fixed) .status-menu {
+	min-width: 900px;
+}
+#status-menu.fixed {
+	right: calc(50% - 60px - var(--list-width) * 0.5 - 15px);
+}
+
+#footer-block {
+	max-width: var(--list-width);
+}
+
+/* END of List Width */
