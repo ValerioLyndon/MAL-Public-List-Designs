@@ -1,6 +1,6 @@
 /**
  * Review Tags
- * v1.0.0
+ * v1.0.1
  */
 
 .data.tags div:not(:empty) {
@@ -13,7 +13,6 @@
 
 .data.tags span {
 	display: inline;
-	font-size: 11px;
 	cursor: text;
 }
 
@@ -27,6 +26,12 @@
 
 .data.tags span a::before {
 	content: none;
+}
+
+/* Replace the default comas for better compatibility with Highlight Favourites mod */
+.data.tags span + span a::before {
+	content: ", ";
+	font-family: var(--font);
 }
 
 /* END of Review Tags */
