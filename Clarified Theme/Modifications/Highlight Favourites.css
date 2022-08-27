@@ -1,0 +1,36 @@
+/**
+ * Highlight Favourites
+ * v1.0.0
+ */
+
+.data.tags span a[href$="=Favourite"] {
+	position: absolute;
+	left: -2px;
+	top: -5px;
+	bottom: -5px;
+	right: -2px;
+	border: 2px solid #ff65ad;
+	border-radius: 6px;
+	background: none !important;
+	margin: 0;
+	font-size: 0 !important;
+	pointer-events: none;
+}
+.data.tags span a[href$="=Favourite"]::before {
+	content: "♥";
+	position: absolute;
+	right: -14px;
+	top: calc(50% - 13px);
+	width: 26px;
+	height: 26px;
+	background: var(--content-background);
+	border: 2px solid #ff65ad;
+	border-radius: 50%;
+	text-align: center;
+	margin: 0;
+	color: #ff65ad;
+	font: 700 14px/22px var(--icon-font);
+	pointer-events: auto;
+}
+
+/* END of Highlight Favourites */

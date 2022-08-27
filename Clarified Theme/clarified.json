@@ -187,6 +187,33 @@
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Review%20Tags.css"},
 				"tags": ["tags"]
 			},
+			"highlight-favourites": {
+				"name": "Highlight Favourites",
+				"description": "Please note:[list][*]This mod will not display correctly in the MyAnimeList preview window. View on your own list.[*]If using the Review Tags mod, be sure to place all \"Favourite\" tags at the end of each tag section or else there will be trailing commas in some areas.[/list]",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Highlight%20Favourites.css"},
+				"options": {
+					"tag": {
+						"name": "Choose Tag",
+						"description": "You can optionally change which tag is chosen as your favourite tag. The default is \"Favourite\", but maybe you use \"*\" or \"♥\"? You can choose that! Be sure to input the [url=https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.#getting-the-tag-in-url-format]URL-formatted version of the tag[/url].",
+						"type": "text",
+						"replacements": [["Favourite", "{{{insert}}}"]],
+						"default": "Favourite"
+					},
+					"colour": {
+						"name": "Border/Icon Colour",
+						"type": "color",
+						"replacements": [["#ff65ad", "{{{insert}}}"]],
+						"default": "#ff65ad"
+					},
+					"icon": {
+						"name": "Choose Icon",
+						"type": "text/content",
+						"replacements": [["\"♥\"", "{{{insert}}}"]],
+						"default": "♥"
+					}
+				},
+				"tags": ["tags", "visual flare", "extra functionality", "in-depth customisation"]
+			},
 			"category-header-colours": {
 				"name": "Category Header Colours",
 				"description": "Colours the buttons in the header based on their respective category.",
