@@ -1,0 +1,32 @@
+/**
+ * Review Tags
+ * v1.0.0
+ */
+
+.data.tags div:not(:empty) {
+	display: inline-block;
+	padding: 3px 6px;
+	background: var(--content-highlight);
+	border-radius: 3px;
+	line-height: 1.35;
+}
+
+.data.tags span {
+	display: inline;
+	font-size: 11px;
+	cursor: text;
+}
+
+.data.tags span a {
+	display: inline;
+	padding: 0;
+	background: none;
+	margin: 0;
+	pointer-events: none;
+}
+
+.data.tags span a::before {
+	content: none;
+}
+
+/* END of Review Tags */

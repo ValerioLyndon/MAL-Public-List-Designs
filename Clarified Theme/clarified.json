@@ -195,6 +195,12 @@
 				},
 				"tags": ["visual flare", "additional imagery", "in-depth customisation"]
 			},
+			"review-tags": {
+				"name": "Review Tags",
+				"description": "Converts the tag section into a single block, allowing your mini-reviews to shine. Please remember that tag length is limited to 255 by MyAnimeList.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Review%20Tags.css"},
+				"tags": ["tags"]
+			},
 			"info-coloured-tags": {
 				"name": "DIY Coloured Tags",
 				"description": "Want to add some visual flare to your tag system? Check the linked guide for information on how to.",
