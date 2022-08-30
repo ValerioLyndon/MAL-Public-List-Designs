@@ -7,6 +7,15 @@
 		"type": "modern",
 		"help": "https://myanimelist.net/forum/?topicid=1723114",
 		"sponsor": "https://ko-fi.com/valeriolyndon",
+		"columns": {
+			"mode": "greylist",
+			"animelist": {
+				"notes": false
+			},
+			"mangalist": {
+				"notes": false
+			}
+		},
 		"options": {
 			"text": {
 				"name": "Name/Banner Text",

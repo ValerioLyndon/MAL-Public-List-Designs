@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R27.3
+  R27.4
 
 | == = == THEME CONTENTS == = == |
 
@@ -1423,6 +1423,9 @@ i.fa-chart-column::before {
 .icon-watch, /* legacy selector, just in case it's still needed */
 .icon-watch2 {
 	 display: none !important;
+}
+.notes {
+	display: none;
 }
 
 
