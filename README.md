@@ -2,7 +2,9 @@
 
 ## How to install
 
-The easiest way to install these themes is using my [Theme Customiser](https://valeriolyndon.github.io/Theme-Customiser/?c=https%3A%2F%2Fvaleriolyndon.github.io%2FMAL-Public-List-Designs%2Fcustomiser.json) tool. Alternatively, you can find install guides for some themes on the [wiki](https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki).
+The easiest way to install these themes is using my [Theme Customiser](https://valeriolyndon.github.io/Theme-Customiser/?c=https%3A%2F%2Fvaleriolyndon.github.io%2FMAL-Public-List-Designs%2Fcustomiser.json) tool. Alternatively, you can find install guides for some themes on the [wiki](https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki). 
+
+For further help, I have various forum threads on the MyAnimeList forums where you can find a history of previous user questions and solutions: [threads](https://myanimelist.net/blog.php?eid=805506).
 
 ## Reporting Issues
 
