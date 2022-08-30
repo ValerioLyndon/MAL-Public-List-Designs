@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.0.7
+ * v2.0.8
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -849,6 +849,16 @@ tr.list-table-data {
 	margin-right: 3px;
 }
 
+/* Textarea */
+
+.data textarea {
+	width: calc(100% - 6px) !important;
+	margin-top: 3px;
+	float: left;
+	font-size: 12px;
+	resize: vertical;
+}
+
 /* Category colour variables */
 
 .status.watching ~ td,
@@ -1241,6 +1251,17 @@ tr.list-table-data {
 	float: left;
 	color: var(--content-text);
 	font-style: italic;
+}
+
+/* Notes */
+
+.notes {
+	width: 100% !important;
+	clear: left;
+}
+
+.notes .text:not(:empty) {
+	padding: 3px 0;
 }
 
 
@@ -1785,14 +1806,6 @@ Please MAL I am begging you, just add another selector to the date column header
 }
 .data.genre span a[href*="genre="]::before {
 	content: "\f02b";
-}
-
-.data.tags textarea {
-	width: calc(100% - 6px) !important;
-	margin-top: 3px;
-	float: left;
-	font-size: 12px;
-	resize: vertical;
 }
 
 
