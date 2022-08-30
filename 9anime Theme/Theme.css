@@ -1,7 +1,6 @@
-/* "9anime Adaption" by Valerio Lyndon / Revision 0.6 */
+/* "9anime Adaption" by Valerio Lyndon / Revision 0.7 */
 
 @\import "https://fonts.googleapis.com/css?family=Roboto:400,500,700";
-@\import "https://malscraper.azurewebsites.net/covers/auto/presets/dataimagelink";
 
 /* BASE */
 
@@ -72,6 +71,8 @@ a {
 .list-table-header .header-title.image,
 .data.status,
 .icon-watch,
+[class^="icon-watch"],
+.notes,
 #fancybox-outer > .fancy-bg,
 #advanced-options .advanced-options-header .description
 { display: none !important; }
