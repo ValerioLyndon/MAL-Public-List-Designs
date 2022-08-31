@@ -10,10 +10,10 @@
 		"columns": {
 			"mode": "greylist",
 			"animelist": {
-				"notes": false
+				"Notes": false
 			},
 			"mangalist": {
-				"notes": false
+				"Notes": false
 			}
 		},
 		"options": {
