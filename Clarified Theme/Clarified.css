@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.0.8
+ * v2.0.9
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -287,7 +287,7 @@ body::after {
 
 .header .header-title,
 .header .header-menu .btn-menu,
-.header .header-info,
+.header .header-menu .header-info,
 #header-menu-dropdown .icon-menu {
 	height: 32px;
 	padding: 6px;
@@ -342,7 +342,7 @@ body::after {
 
 /* Shared Anime / Affinity / History */
 
-.header .header-info {
+.header .header-menu .header-info {
 	margin-top: 0;
 	order: 2;
 }
@@ -355,7 +355,6 @@ body::after {
 	background: none;
 	border: none;
 	box-shadow: none;
-	vertical-align: baseline;
 }
 #header-menu-dropdown .icon-menu {
 	width: auto;
