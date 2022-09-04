@@ -8,7 +8,38 @@
 		"help": "https://myanimelist.net/forum/?topicid=2034740",
 		"sponsor": "https://ko-fi.com/valeriolyndon",
 		"preview": {
-			"cover": false
+			"cover": false,
+			"columns": {
+				"mode": "blacklist",
+				"animelist": {
+					"Image": true,
+					"Notes": true,
+					"Tags": true,
+					"Genre": true,
+					"Score": true,
+					"Episodes": true,
+					"Start/End Dates": true,
+					"Total Days Watched": true,
+					"Rated": null,
+					"Studios": true,
+					"Premiered": true,
+					"Priority": true
+				},
+				"mangalist": {
+					"Image": true,
+					"Notes": true,
+					"Tags": true,
+					"Genres": true,
+					"Score": true,
+					"Chapters": true,
+					"Volumes": true,
+					"Start/End Dates": true,
+					"Total Days Read": true,
+					"Magazine": true,
+					"Premiered": true,
+					"Priority": true
+				}
+			}
 		},
 		"options": {
 			"theme": {
@@ -72,8 +103,10 @@
 			},
 			"background-opacity": {
 				"name": "Background Image Opacity",
-				"description": "Accepts decimal values between 0 and 1.",
-				"type": "text/value/opacity",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
 				"replacements": [["html:root {", "html:root {\n\t--background-image-opacity: {{{insert}}};"]]
 			},
 			"auxiliary-background": {
@@ -83,8 +116,10 @@
 			},
 			"auxiliary-background-opacity": {
 				"name": "Auxiliary Background Image Opacity",
-				"description": "Accepts decimal values between 0 and 1.",
-				"type": "text/value/opacity",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
 				"replacements": [["html:root {", "html:root {\n\t--auxiliary-background-image-opacity: {{{insert}}};"]]
 			}
 		},

@@ -16,6 +16,27 @@
 				"Notes": false
 			}
 		},
+		"preview": {
+			"columns": {
+				"mode": "blacklist",
+				"animelist": {
+					"Studios": null,
+					"Aired Dates": null,
+					"Rating": null,
+					"Licensors": false,
+					"Storage": false,
+					"Genre": false,
+					"Demographics": false
+				},
+				"mangalist": {
+					"Magazine": null,
+					"Published Dates": null,
+					"Retail Manga": false,
+					"Genres": false,
+					"Demographics": false
+				}
+			}
+		},
 		"options": {
 			"text": {
 				"name": "Name/Banner Text",

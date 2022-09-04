@@ -20,31 +20,26 @@
 				"Chapters": true
 			}
 		},
+		"preview": {
+			"columns": {
+			"mode": "greylist",
+				"animelist": {
+					"Image": true,
+					"Score": true,
+					"Episodes": true,
+					"Tags": true,
+					"Numbers": true
+				},
+				"mangalist": {
+					"Image": true,
+					"Score": true,
+					"Chapters": true,
+					"Tags": true,
+					"Numbers": true
+				}
+			}
+		},
 		"options": {
-			"--imageBrightness": {
-				"name": "Cover Image Brightness",
-				"type": "text/value/opacity",
-				"replacements": [["--imageBrightness: 66%;", "--imageBrightness: {{{insert}}};"]],
-				"default": "66%"
-			},
-			"--imagebrightnessHov": {
-				"name": "Cover Image Brightness (hover state)",
-				"type": "text/value/opacity",
-				"replacements": [["--imageBrightnessHov: 35%;", "--imageBrightnessHov: {{{insert}}};"]],
-				"default": "35%"
-			},
-			"--imageBlurHov": {
-				"name": "Image blur amount (while hovered).",
-				"type": "text/size",
-				"replacements": [["--imageBlurHov: 2px;", "--imageBlurHov: {{{insert}}};"]],
-				"default": "2px"
-			},
-			"--infoBGOpacity": {
-				"name": "Opacity of title/information background.",
-				"type": "text/value/opacity",
-				"replacements": [["--infoBGOpacity: 85%;", "--infoBGOpacity: {{{insert}}};"]],
-				"default": "85%"
-			},
 			"--toggleStats": {
 				"name": "List Statistics",
 				"description": "Enables list statistics being shown in the footer.",
@@ -57,6 +52,54 @@
 				"type": "toggle",
 				"replacements": [["--toggleStreaming: visible;", "--toggleStreaming: hidden;", "--toggleStreaming: visible;"]],
 				"default": true
+			},
+			"--imageBrightness": {
+				"name": "Cover Image Brightness",
+				"type": "range",
+				"min": 0,
+				"max": 100,
+				"replacements": [["--imageBrightness: 66%;", "--imageBrightness: {{{insert}}}%;"]],
+				"default": 66
+			},
+			"--imagebrightnessHov": {
+				"name": "Cover Image Brightness (hover state)",
+				"type": "range",
+				"min": 0,
+				"max": 100,
+				"replacements": [["--imageBrightnessHov: 35%;", "--imageBrightnessHov: {{{insert}}}%;"]]
+			},
+			"--imageBlurHov": {
+				"name": "Image blur amount (while hovered).",
+				"type": "range",
+				"min": 0,
+				"max": 20,
+				"step": 0.01,
+				"replacements": [["--imageBlurHov: 2px;", "--imageBlurHov: {{{insert}}}px;"]],
+				"default": 2
+			},
+			"--infoBGOpacity": {
+				"name": "Opacity of title/information background.",
+				"type": "range",
+				"min": 0,
+				"max": 100,
+				"replacements": [["--infoBGOpacity: 85%;", "--infoBGOpacity: {{{insert}}}%;"]],
+				"default": 85
+			},
+			"--bgDimness": {
+				"name": "Background Dimming",
+				"type": "range",
+				"min": 0,
+				"max": 100,
+				"replacements": [["--bgDimness: 50%;", "--bgDimness: {{{insert}}}%;"]],
+				"default": 50
+			},
+			"--bannerVignetteOpacity": {
+				"name": "Banner Vignette Opacity",
+				"type": "range",
+				"min": 0,
+				"max": 100,
+				"replacements": [["--bannerVignetteOpacity: 90%;", "--bannerVignetteOpacity: {{{insert}}}%;"]],
+				"default": 90
 			},
 			"--toggleTopRatedGold": {
 				"name": "Top Rated - Gold for 10★",
@@ -74,18 +117,6 @@
 				"name": "Top Rated - Bronze for 8★",
 				"type": "toggle",
 				"replacements": [["--toggleTopRatingBronze: hidden;", "--toggleTopRatingBronze: hidden;", "--toggleTopRatingBronze: visible;"]]
-			},
-			"--bgDimness": {
-				"name": "Background Dimming",
-				"type": "text/value/opacity",
-				"replacements": [["--bgDimness: 50%;", "--bgDimness: {{{insert}}};;"]],
-				"default": "50%"
-			},
-			"--bannerVignetteOpacity": {
-				"name": "Banner Vignette Opacity",
-				"type": "text/value/opacity",
-				"replacements": [["--bannerVignetteOpacity: 90%;", "--bannerVignetteOpacity: {{{insert}}};"]],
-				"default": "90%"
 			}
 		},
 		"mods": {

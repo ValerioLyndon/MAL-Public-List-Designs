@@ -194,16 +194,22 @@
 			},
 			"image-dim": {
 				"name": "Anime Image Dimming",
-				"description": "Controls the dimming overlay on anime cover images. Minimum 0, Maximum 1. Higher = Dimmer.",
-				"type": "text/value/opacity",
+				"description": "Controls the dimming overlay on anime cover images.",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
 				"replacements": [["--image-dim: 0.5;", "--image-dim: {{{insert}}};"]],
-				"default": "0.5"
+				"default": 0.5
 			},
 			"image-dim-h": {
 				"name": "Anime Image Dimming (hover state)",
-				"type": "text/value/opacity",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
 				"replacements": [["--image-dim-h: 0.9;", "--image-dim-h: {{{insert}}};"]],
-				"default": "0.9"
+				"default": 0.9
 			}
 		}
 	}
