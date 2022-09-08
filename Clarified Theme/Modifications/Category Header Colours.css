@@ -1,0 +1,38 @@
+/**
+ * Category Header Colours
+ * v1.0.0
+ */
+
+#status-menu .status-button:hover,
+#status-menu .status-button::before {
+	color: var(--category);
+}
+
+#status-menu .status-button::after {
+	background: var(--category);
+}
+
+#status-menu .status-button.on::after {
+	opacity: 1;
+}
+
+.status-button:nth-of-type(1) {
+	--category: var(--all-items);
+}
+.status-button:nth-of-type(2) {
+	--category: var(--current);
+}
+.status-button:nth-of-type(3) {
+	--category: var(--completed);
+}
+.status-button:nth-of-type(4) {
+	--category: var(--onhold);
+}
+.status-button:nth-of-type(5) {
+	--category: var(--dropped);
+}
+.status-button:nth-of-type(6) {
+	--category: var(--planned);
+}
+
+/* END of Category Header Colours */

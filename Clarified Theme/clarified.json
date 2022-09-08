@@ -1,0 +1,308 @@
+{
+	"json_version": 0.2,
+	"data": {
+		"name": "Clarified",
+		"author": "Valerio Lyndon",
+		"css": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Clarified.min.css",
+		"type": "modern",
+		"help": "https://myanimelist.net/forum/?topicid=2034740",
+		"sponsor": "https://ko-fi.com/valeriolyndon",
+		"preview": {
+			"cover": false,
+			"columns": {
+				"mode": "blacklist",
+				"animelist": {
+					"Image": true,
+					"Notes": true,
+					"Tags": true,
+					"Genre": true,
+					"Score": true,
+					"Episodes": true,
+					"Start/End Dates": true,
+					"Total Days Watched": true,
+					"Rated": null,
+					"Studios": true,
+					"Premiered": true,
+					"Priority": true
+				},
+				"mangalist": {
+					"Image": true,
+					"Notes": true,
+					"Tags": true,
+					"Genres": true,
+					"Score": true,
+					"Chapters": true,
+					"Volumes": true,
+					"Start/End Dates": true,
+					"Total Days Read": true,
+					"Magazine": true,
+					"Premiered": true,
+					"Priority": true
+				}
+			}
+		},
+		"options": {
+			"theme": {
+				"name": "Theme",
+				"description": "Choose from some pre-selected sets of images, colours, and visual tweaks! But don't worry, you can still set your own options afterwards.",
+				"type": "select",
+				"selections": {
+					"dynamic": {
+						"label": "Dynamic Light/Dark",
+						"replacements": ["",""]
+					},
+					"light": {
+						"label": "Light",
+						"replacements": [
+							[
+								"RegExp/!THEME[\\s\\S]*?/\\*===",
+								"!THEME\n  =========*/\n\nTHEME_REPLACE\n\n/*==="
+							],
+							[
+								"THEME_REPLACE",
+								"https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Themes/Light.css"
+							]
+						]
+					},
+					"dark": {
+						"label": "Dark",
+						"replacements": [
+							[
+								"RegExp/!THEME[\\s\\S]*?/\\*===",
+								"!THEME\n  =========*/\n\nTHEME_REPLACE\n\n/*==="
+							],
+							[
+								"THEME_REPLACE",
+								"https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Themes/Dark.css"
+							]
+						]
+					}
+				},
+				"default": "dynamic"
+			},
+			"cover": {
+				"name": "Cover Image",
+				"type": "text/image_url",
+				"replacements": [["html:root {", "html:root {\n\t--cover: {{{insert}}};"]]
+			},
+			"cover-position": {
+				"name": "Cover Position",
+				"type": "text/value/background-position",
+				"replacements": [["html:root {", "html:root {\n\t--cover-position: {{{insert}}};"]]
+			},
+			"cover-shadow-intensity": {
+				"name": "Cover Vignette Intensity",
+				"description": "Accepts decimal values between 0 and 1.",
+				"type": "text/value",
+				"replacements": [["html:root {", "html:root {\n\t--cover-shadow: rgba(0,0,0,{{{insert}}}) 0 -3px 9px;"]]
+			},
+			"background": {
+				"name": "Background Image",
+				"type": "text/image_url",
+				"replacements": [["html:root {", "html:root {\n\t--background: {{{insert}}};"]]
+			},
+			"background-opacity": {
+				"name": "Background Image Opacity",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
+				"replacements": [["html:root {", "html:root {\n\t--background-image-opacity: {{{insert}}};"]]
+			},
+			"auxiliary-background": {
+				"name": "Auxiliary Background Image",
+				"type": "text/image_url",
+				"replacements": [["html:root {", "html:root {\n\t--auxiliary-background: {{{insert}}};"]]
+			},
+			"auxiliary-background-opacity": {
+				"name": "Auxiliary Background Image Opacity",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
+				"replacements": [["html:root {", "html:root {\n\t--auxiliary-background-image-opacity: {{{insert}}};"]]
+			}
+		},
+		"mods": {
+			"avatar": {
+				"name": "Avatar",
+				"description": "Add your desired avatar below the banner.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Add%20Avatar.css"},
+				"options": {
+					"url": {
+						"name": "Avatar Image URL",
+						"description": "[url=https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Clarity#how-to-find-your-myanimelist-avatar-url]Want to use your MyAnimeList avatar?[/url]",
+						"type": "text/image_url",
+						"replacements": [["url(https://i.imgur.com/0IaceDs.gif)", "{{{insert}}}"]],
+						"default": "https://i.imgur.com/0IaceDs.gif"
+					},
+					"position": {
+						"name": "Avatar Position",
+						"type": "text/value/background-position",
+						"replacements": [["center top", "{{{insert}}}"]],
+						"default": "center top"
+					}
+				},
+				"tags": ["imagery"]
+			},
+			"character": {
+				"name": "Character on Banner",
+				"description": "Add some character renders over top of the banner image!",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Banner%20Character.css"},
+				"options": {
+					"url": {
+						"name": "Image URL",
+						"description": "For best effect, image should be a PNG file with a transparent background. These are usually called \"renders\".",
+						"type": "text/image_url",
+						"replacements": [["url(https://i.imgur.com/JmxfBcB.png)", "{{{insert}}}"]],
+						"default": "https://i.imgur.com/JmxfBcB.png"
+					},
+					"position": {
+						"name": "Position",
+						"type": "text/value/background-position",
+						"replacements": [["calc(50% + 530px) bottom", "{{{insert}}}"]],
+						"default": "calc(50% + 530px) bottom"
+					},
+					"size": {
+						"name": "Size",
+						"type": "text/value/background-size",
+						"replacements": [["auto 90%", "{{{insert}}}"]],
+						"default": "auto 90%"
+					}
+				},
+				"tags": ["imagery"]
+			},
+			"side-renders": {
+				"name": "Character Renders",
+				"description": "Adds two optional character renders on the left and right of the list. Do note that the renders will not be properly visible at low resolutions. I recommend having at least a 1600x900 monitor to add renders, as they purposefully do not intersect the center list area.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Renders.css"},
+				"options": {
+					"left-img": {
+						"name": "Left Image",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(Left Render[\\s\\S\\n]*?-image: )url\\(URLHERE\\)", "$1{{{insert}}}"]],
+						"default": ""
+					},
+					"left-pos": {
+						"name": "Left Position",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(Left Render[\\s\\S\\n]*?-position: )left bottom", "$1{{{insert}}}"]],
+						"default": "left bottom"
+					},
+					"left-size": {
+						"name": "Left Size",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(Left Render[\\s\\S\\n]*?-size: )contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					},
+					"right-img": {
+						"name": "Right Image",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(Right Render[\\s\\S\\n]*?-image: )url\\(URLHERE\\)", "$1{{{insert}}}"]],
+						"default": ""
+					},
+					"right-pos": {
+						"name": "Right Position",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(Right Render[\\s\\S\\n]*?-position: )right bottom", "$1{{{insert}}}"]],
+						"default": "right bottom"
+					},
+					"right-size": {
+						"name": "Right Size",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(Right Render[\\s\\S\\n]*?-size: )contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					}
+				},
+				"tags": ["visual flare", "imagery"]
+			},
+			"review-tags": {
+				"name": "Review Tags",
+				"description": "Converts the tag section into a single block, allowing your mini-reviews to shine. Please remember that tag length is limited to 255 by MyAnimeList.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Review%20Tags.css"},
+				"tags": ["tags"]
+			},
+			"highlight-favourites": {
+				"name": "Highlight Favourites",
+				"description": "Please note:[list][*]This mod will not display correctly in the MyAnimeList preview window. View on your own list.[*]If using the Review Tags mod, be sure to place all \"Favourite\" tags at the end of each tag section or else there will be trailing commas in some areas.[/list]",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Highlight%20Favourites.css"},
+				"options": {
+					"tag": {
+						"name": "Choose Tag",
+						"description": "You can optionally change which tag is chosen as your favourite tag. The default is \"Favourite\", but maybe you use \"*\" or \"♥\"? You can choose that! Be sure to input the [url=https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.#getting-the-tag-in-url-format]URL-formatted version of the tag[/url].",
+						"type": "text",
+						"replacements": [["Favourite", "{{{insert}}}"]],
+						"default": "Favourite"
+					},
+					"colour": {
+						"name": "Border/Icon Colour",
+						"type": "color",
+						"replacements": [["#ff65ad", "{{{insert}}}"]],
+						"default": "#ff65ad"
+					},
+					"icon": {
+						"name": "Choose Icon",
+						"type": "text/content",
+						"replacements": [["\"♥\"", "{{{insert}}}"]],
+						"default": "♥"
+					}
+				},
+				"tags": ["tags", "visual flare", "functionality"]
+			},
+			"category-header-colours": {
+				"name": "Category Header Colours",
+				"description": "Colours the buttons in the header based on their respective category.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Category%20Header%20Colours.css"},
+				"tags": ["visual flare", "category options"]
+			},
+			"category-accents": {
+				"name": "Category Accents",
+				"description": "Changes various colours to match the current category, or the list item's category.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Category%20Accents.css"},
+				"options": {
+					"disable-item": {
+						"name": "Disable Per-Item Colours",
+						"type": "toggle",
+						"replacements": [["RegExp/(\\.data {[^}]*})", "$1", ""]],
+						"default": false
+					}
+				},
+				"tags": ["visual flare", "category options"]
+			},
+			"header-size": {
+				"name": "Header Height",
+				"css": {"bottom": "/**\n * Header Size\n * v1.0.0\n */\n\n.header { height: 400px; }\n\n/* END of Header Size */"},
+				"options": {
+					"height": {
+						"name": "Height",
+						"description": "I don't recommend going lower than ~100px.",
+						"type": "text/size",
+						"replacements": [["400px", "{{{insert}}}"]],
+						"default": "400px"
+					}
+				},
+				"tags": ["proportions"]
+			},
+			"list-width": {
+				"name": "List Width",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/List%20Width.css"},
+				"options": {
+					"width": {
+						"name": "Width",
+						"description": "I don't recommend going lower than ~600px.",
+						"type": "text/size",
+						"replacements": [["--list-width: 1060px", "--list-width: {{{insert}}}"]],
+						"default": "1060px"
+					}
+				},
+				"tags": ["proportions"]
+			},
+			"info-coloured-tags": {
+				"name": "DIY Coloured Tags",
+				"description": "Want to add some visual flare to your tag system? Check the linked guide for information on how to.",
+				"url": "https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.",
+				"tags": ["tags", "visual flare"]
+			}
+		}
+	}
+}

@@ -1,0 +1,216 @@
+{
+	"json_version": 0.2,
+	"data": {
+		"name": "Tilt",
+		"author": "Valerio Lyndon",
+		"css": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Tilt%20Theme/Theme%20-%20Compressed.css",
+		"type": "modern",
+		"columns": {
+			"animelist": {
+				"Score": true,
+				"Episodes": true,
+				"Tags": true,
+				"Image": true,
+				"Premiered": true,
+				"Studios": true
+			},
+			"mangalist": {
+				"Score": true,
+				"Chapters": true,
+				"Volumes": true,
+				"Tags": true,
+				"Image": true
+			}
+		},
+		"help": "https://myanimelist.net/forum/?topicid=1723118",
+		"sponsor": "https://ko-fi.com/valeriolyndon",
+		"options": {
+			"bg-img": {
+				"name": "Background Image",
+				"type": "text/image_url",
+				"replacements": [["--background-img: url(http://i.imgur.com/oQ5LYfB.jpg);", "--background-img: {{{insert}}};"]],
+				"default": "http://i.imgur.com/oQ5LYfB.jpg"
+			},
+			"bg-img-hd": {
+				"name": "HD Background Image",
+				"description": "This will replace the default background image at higher resolutions for optimisation reasons. Feel free to set these both the same.",
+				"type": "text/image_url",
+				"replacements": [["--background-img-hd: url(http://i.imgur.com/IJrzYGP.jpg);", "--background-img-hd: {{{insert}}};"]],
+				"default": "http://i.imgur.com/IJrzYGP.jpg"
+			},
+			"logo": {
+				"name": "Logo Image",
+				"description": "Recommended image size is 310x120 or close to, but it will accept any.",
+				"type": "text/image_url",
+				"replacements": [["--logo-img: url(https://i.imgur.com/XOLKsEF.png);", "--logo-img: {{{insert}}};"]],
+				"default": "https://i.imgur.com/XOLKsEF.png"
+			},
+			"char-img-all": {
+				"name": "Character (All Anime/Manga)",
+				"type": "text/image_url",
+				"replacements": [["--banner-img-all: url(http://i.imgur.com/2dNxOcM.png);", "--banner-img-all: {{{insert}}};"]],
+				"default": "http://i.imgur.com/2dNxOcM.png"
+			},
+			"char-pos-all": {
+				"name": "Character Position (All Anime/Manga)",
+				"type": "text/value/background-position",
+				"replacements": [["--banner-pos-all: 20px center;", "--banner-pos-all: {{{insert}}};"]],
+				"default": "20px center"
+			},
+			"char-img-current": {
+				"name": "Character (Watching/Reading)",
+				"type": "text/image_url",
+				"replacements": [["--banner-img-current: url(http://i.imgur.com/aPHWdRV.png);", "--banner-img-current: {{{insert}}};"]],
+				"default": "http://i.imgur.com/aPHWdRV.png"
+			},
+			"char-pos-current": {
+				"name": "Character Position (Watching/Reading)",
+				"type": "text/value/background-position",
+				"replacements": [["--banner-pos-current: 115px center;", "--banner-pos-current: {{{insert}}};"]],
+				"default": "115px center"
+			},
+			"char-img-completed": {
+				"name": "Character (Completed)",
+				"type": "text/image_url",
+				"replacements": [["--banner-img-completed: url(http://i.imgur.com/Dv7xyGN.png);", "--banner-img-completed: {{{insert}}};"]],
+				"default": "http://i.imgur.com/Dv7xyGN.png"
+			},
+			"char-pos-completed": {
+				"name": "Character Position (Completed)",
+				"type": "text/value/background-position",
+				"replacements": [["--banner-pos-completed: 115px center;", "--banner-pos-completed: {{{insert}}};"]],
+				"default": "115px center"
+			},
+			"char-img-onhold": {
+				"name": "Character (On Hold)",
+				"type": "text/image_url",
+				"replacements": [["--banner-img-onhold: url(http://i.imgur.com/0HM7Vho.png);", "--banner-img-onhold: {{{insert}}};"]],
+				"default": "http://i.imgur.com/0HM7Vho.png"
+			},
+			"char-pos-onhold": {
+				"name": "Character Position (On Hold)",
+				"type": "text/value/background-position",
+				"replacements": [["--banner-pos-onhold: 85px center;", "--banner-pos-onhold: {{{insert}}};"]],
+				"default": "85px center"
+			},
+			"char-img-dropped": {
+				"name": "Character (Dropped)",
+				"type": "text/image_url",
+				"replacements": [["--banner-img-dropped: url(http://i.imgur.com/dh42mXP.png);", "--banner-img-dropped: {{{insert}}};"]],
+				"default": "http://i.imgur.com/dh42mXP.png"
+			},
+			"char-pos-dropped": {
+				"name": "Character Position (Dropped)",
+				"type": "text/value/background-position",
+				"replacements": [["--banner-pos-dropped: 570px center;", "--banner-pos-dropped: {{{insert}}};"]],
+				"default": "570px center"
+			},
+			"char-img-planned": {
+				"name": "Character (Planned)",
+				"type": "text/image_url",
+				"replacements": [["--banner-img-planned: url(http://i.imgur.com/JQlB1VA.png);", "--banner-img-planned: {{{insert}}};"]],
+				"default": "http://i.imgur.com/JQlB1VA.png"
+			},
+			"char-pos-planned": {
+				"name": "Character Position (Planned)",
+				"type": "text/value/background-position",
+				"replacements": [["--banner-pos-planned: 670px center;", "--banner-pos-planned: {{{insert}}};"]],
+				"default": "670px center"
+			},
+			"bg-dark": {
+				"name": "Background (Dark)",
+				"description": "Used on the header, status bar, and for image dimming.",
+				"type": "color",
+				"replacements": [["--bg-dark: #000d07;", "--bg-dark: {{{insert}}};"]],
+				"default": "#000d07"
+			},
+			"bg-common": {
+				"name": "Background (Common)",
+				"description": "Used on list items and sub-header items.",
+				"type": "color",
+				"replacements": [["--bg-common: #001a0e;", "--bg-common: {{{insert}}};"]],
+				"default": "#001a0e"
+			},
+			"bg-tint": {
+				"name": "Background (Tint)",
+				"description": "Used as the secondary colour on list items.",
+				"type": "color",
+				"replacements": [["--bg-tint: #00150b;", "--bg-tint: {{{insert}}};"]],
+				"default": "#00150b"
+			},
+			"bg-input": {
+				"name": "Background (Input Fields)",
+				"description": "Used on inputs such as the search and tag textarea.",
+				"type": "color",
+				"replacements": [["--bg-input: #012f1a;", "--bg-input: {{{insert}}};"]],
+				"default": "#012f1a"
+			},
+			"border-accent": {
+				"name": "Header Border",
+				"type": "color",
+				"replacements": [["--border-accent: #d60025;", "--border-accent: {{{insert}}};"]],
+				"default": "#d60025"
+			},
+			"list-bg": {
+				"name": "List Background",
+				"description": "The background behind the list items. Default is a slight dimming.",
+				"type": "color",
+				"replacements": [["--list-bg: rgba(0,0,0,0.5);", "--list-bg: {{{insert}}};"]],
+				"default": "rgba(0,0,0,0.5)"
+			},
+			"text-highlight": {
+				"name": "Text (Highlight)",
+				"description": "Used on the header for hover states.",
+				"type": "color",
+				"replacements": [["--text-highlight: #fff;", "--text-highlight: {{{insert}}};"]],
+				"default": "#fff"
+			},
+			"text-bright": {
+				"name": "Text (Bright)",
+				"description": "Used on the header, status bar, and hover states.",
+				"type": "color",
+				"replacements": [["--text-bright: #fff600;", "--text-bright: {{{insert}}};"]],
+				"default": "#fff600"
+			},
+			"text-common": {
+				"name": "Text (Common)",
+				"description": "Used on list items and sub-header items.",
+				"type": "color",
+				"replacements": [["--text-common: #0cd693;", "--text-common: {{{insert}}};"]],
+				"default": "#0cd693"
+			},
+			"text-dark": {
+				"name": "Text (Icons)",
+				"type": "color",
+				"replacements": [["--text-dark: #06754e;", "--text-dark: {{{insert}}};"]],
+				"default": "#06754e"
+			},
+			"text-paragraph": {
+				"name": "Text (Paragraph)",
+				"description": "Used in the \"More Content\" section.",
+				"type": "color",
+				"replacements": [["--text-paragraph: #ccc;", "--text-paragraph: {{{insert}}};"]],
+				"default": "#ccc"
+			},
+			"image-dim": {
+				"name": "Anime Image Dimming",
+				"description": "Controls the dimming overlay on anime cover images.",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
+				"replacements": [["--image-dim: 0.5;", "--image-dim: {{{insert}}};"]],
+				"default": 0.5
+			},
+			"image-dim-h": {
+				"name": "Anime Image Dimming (hover state)",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
+				"replacements": [["--image-dim-h: 0.9;", "--image-dim-h: {{{insert}}};"]],
+				"default": 0.9
+			}
+		}
+	}
+}

@@ -1,0 +1,20 @@
+/**
+ * Add Avatar
+ * v1.0.0
+ */
+
+#status-menu:not(.fixed) .status-menu:not(.fixed) {
+	padding-left: 160px;
+}
+
+#status-menu:not(.fixed) .status-menu:not(.fixed)::before {
+	content: "";
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	margin: -45px 0 0 -150px;
+	background: url(https://i.imgur.com/0IaceDs.gif) no-repeat center top / cover var(--content-highlight);
+	border: 6px solid var(--content-background);
+}
+
+/* END of Add Avatar Mod */

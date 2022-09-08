@@ -1,0 +1,62 @@
+/**
+ * Dark Theme
+ * v1.0.0
+ */
+
+:root {
+	/* Colour scheme property ensures correct scrollbar colours on modern browsers. Older browsers will probably still have a light scrollbar */
+	color-scheme: dark;
+	
+	/* core colours */
+	--myanimelist-blue: #2e51a2;
+	--neutral: #161516;
+	
+	/* status colours */
+	--all-items: hsl(311, 40%, 51%);
+	--current: hsl(125, 70%, 29.7%);
+	--completed: hsl(223, 40%, 51.2%);
+	--onhold: hsl(46, 60%, 32.45%);
+	--dropped: hsl(359, 55%, 51.25%);
+	--planned: hsl(0, 0%, 43.72%);
+	
+	/* variables that are the same across themes */
+	--background: none;
+	--background-image-opacity: 1;
+	--auxiliary-background: url(https://files.catbox.moe/m0v1f6.webp);
+	--auxiliary-background-image-opacity: 1;
+	--cover: url(https://i.imgur.com/RAelPvJ.jpg);
+	--cover-position: center bottom;
+	--cover-shadow: rgba(0,0,0,0.38) 0 -3px 9px;
+	--image-background: rgba(22,21,22,0.41);
+	--image-text: #fff;
+	--image-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	
+	/*light-specific variables*/
+	--page-background: var(--neutral);
+	--content-background: #212121;
+	--content-highlight: #2b2b2b;
+	--button: var(--content-highlight);
+	--border: var(--neutral);
+	--content-text: #ababab;
+	--content-link: var(--myanimelist-blue);
+	--inverse-background: var(--myanimelist-blue);
+	--inverse-text: var(--neutral);
+	--scroll-thumb: var(--myanimelist-blue);
+
+	--mild-shadow: rgba(21, 21, 21, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.14) 0px 3px 8px;
+	--medium-shadow: rgba(0, 0, 0, 0.55) 0px 3px 8px;
+	
+	--auxiliary-background-image-opacity: .15;
+}
+
+/* Other tweaks */
+	
+#footer-block::before {
+	filter: brightness(100) invert(1);
+}
+
+#gdpr-modal-bottom {
+	filter: invert(0.9) hue-rotate(180deg);
+}
+
+/* END of Dark Theme */
