@@ -1,18 +1,57 @@
 /* 
 "Agile" by Valerio Lyndon
 name subject to change.
-v0.10.1
+v0.11.0
+
+* CONTENTS *
+use ctrl+f to find sections
+
+! BASICS !
+
+! HEADER !
+↳ @ cover @
+↳ @ background @
+↳ @ layout @
+↳ @ dividers @
+↳ @ avatar-&-name @
+↳ @ login-btns @
+↳ @ swap-list-btn-owner @
+↳ @ swap-list-btn-visitor @
+↳ @ history/export @
+↳ @ home-btn @
+↳ @ search @
+
+! CATEGORY-BAR !
+
+! CATEGORY-HEADERS !
+↳ @ table-header @
+
+! ITEMS !
+↳ @ headers @
+↳ @ forms @
+↳ @ number @
+↳ @ title @
+↳ @ content-status @
+↳ @ add/edit/more @
+↳ @ score @
+↳ @ progress @
+↳ @ genre @
+↳ @ dates @
+↳ @ days @
+↳ @ priority @
+↳ @ more @
+
+! FOOTER !
+
+! OVERLAYS !
 */
 
-#grand_totals,
-.grecaptcha-badge
-{
-	display: none !important;
-}
+/* === ! BASICS ! === */
 
-/* BASIC LAYOUT */
+/* Variables */
 
 html {
+	/* Colours */
 	--c-primary: #211d23;
 	--c-shadow: #0b0208;
 	--c-button: var(--c-subtle);
@@ -21,23 +60,44 @@ html {
 	--c-text: #f7f7f7;
 	--c-text-hover: #a980af;
 	--c-subtext: #a39fab;
+	--g-background: linear-gradient(160deg, #302b3a, #211d23, #1f141e);
 	
-	--gr-background: linear-gradient(160deg, #302b3a, #211d23, #1f141e);
+	/* Images */
+	--i-background: url(https://files.catbox.moe/o1gsha.jpg);
+	--i-cover: url(https://files.catbox.moe/01j1v8.jpg);
+	--i-avatar: url(https://files.catbox.moe/66eklm.png);
 	
+	/* Sizes */
 	--s-width: 1030rem;
 	--s-banner-height: calc(200rem + 15vw);
-	
-	--background: url(https://files.catbox.moe/o1gsha.jpg);
-	--cover: url(https://files.catbox.moe/01j1v8.jpg);
-	--avatar: url(https://files.catbox.moe/66eklm.png);
-	
+
+	/* Regular Styling */
 	font: 1px Tahoma, FontAwesome, Arial, Helvetica, sans-serif;
-	
 	box-sizing: border-box;
 }
 *, *::before, *::after {
 	box-sizing: inherit;
 }
+
+/* Remove unwanted features */
+
+/* list stats */ #grand_totals, .category_totals,
+/* recaptcha popup */ .grecaptcha-badge,
+/* table spacing */ #list_surround > br,
+/* unneeded home link */ #mal_cs_pic a,
+/* unneeded home link & "Add to List" btn */ #mal_cs_links div:first-of-type,
+/* why the fuck is there a forum link on the list */ a[href="/forum/"],
+/* search icon */ #searchListButton,
+/* logout & duplicate profile button */ [data-owner=""] #mal_cs_listinfo a,
+/* pointless list links */ [data-work="anime"] #mal_cs_links a[href^="/animelist/"], [data-work="manga"] #mal_cs_links a[href^="/mangalist/"],
+/* logged-out "Learn more" link */ a[href="/forum/?board=515949"],
+/* MAL image */ a[href="/"] img,
+/* confirm button for forms */ td input[value="Go"]
+{
+	display: none !important;
+}
+
+/* Adjust list size depending on screen resolution */
 
 @media (max-width: 780px) {
 	html {
@@ -66,13 +126,9 @@ html {
 }
 
 body {
-	background: var(--background) no-repeat center / cover fixed #651517;
+	background: var(--i-background) no-repeat center / cover fixed #651517;
 	color: var(--c-text);
 	font-size: 13rem;
-}
-
-#list_surround > br {
-	display: none;
 }
 
 a {
@@ -83,17 +139,7 @@ a {
 	text-decoration: underline;
 }
 
-/* COVER */
-
-body::before {
-	content: "";
-	display: block;
-	width: 100%;
-	height: var(--s-banner-height);
-	background: var(--cover) center / cover no-repeat #020202;
-}
-
-/* HEADER */
+/* === ! HEADER ! === */
 
 table#mal_control_strip {
 	display: block;
@@ -119,7 +165,17 @@ table#mal_control_strip {
 	display: flex;
 }
 
-/* background */
+/* --- @ cover @ --- */
+
+body::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: var(--s-banner-height);
+	background: var(--i-cover) center / cover no-repeat #020202;
+}
+
+/* --- @ background @ --- */
 
 html {
 	--s-header-l-width: 330rem;
@@ -172,7 +228,7 @@ html {
 	--s-header-r-width: 76rem;
 }
 
-/* layout */
+/* --- @ layout @ --- */
 
 table#mal_control_strip td {
 	display: block;
@@ -198,15 +254,51 @@ table#mal_control_strip a {
 	text-decoration: underline;
 }
 
-#mal_cs_pic a,
-#mal_cs_links div:first-of-type,
-a[href="/forum/"],
-#searchListButton,
-a[href="/forum/?board=515949"] {
-	display: none;
+/* links */
+
+#mal_cs_otherlinks {
+	margin-left: 88rem;
+} #mal_cs_pic ~ #mal_cs_otherlinks {
+	margin: 0;
 }
 
-/* User */
+#mal_cs_otherlinks div:first-of-type {
+	font-size: 0;
+}
+
+/* --- @ dividers @ --- */
+
+#mal_cs_otherlinks::before,
+[data-owner=""] #mal_cs_links a::after,
+a[href="/register.php"]::before,
+a[href="/panel.php?go=export"]::after {
+	content: "";
+	width: 1rem;
+	height: 20rem;
+	background: var(--c-subtext);
+	box-shadow: 0 1rem 3rem var(--c-shadow);
+	margin-top: -1rem;
+}
+#mal_cs_otherlinks::before {
+	float: left;
+	margin-right: 10rem;
+}
+[data-owner=""] #mal_cs_links a::after {
+	position: absolute;
+	right: -11rem;
+}
+a[href="/register.php"]::before,
+a[href="/panel.php?go=export"]::after {
+	position: absolute;
+	left: -11rem;
+}
+
+/* hide divider for logged out users */
+#mal_cs_pic ~ #mal_cs_otherlinks::before {
+	content: none;
+}
+
+/* --- @ avatar-&-name @ --- */
 
 #mal_control_strip a[href^="/profile/"] {
 	position: absolute;
@@ -215,7 +307,7 @@ a[href="/forum/?board=515949"] {
 	width: 90rem;
 	height: 100rem;
 	padding: 45rem 0 0 90rem;
-	background: var(--avatar) no-repeat 0 5rem / 100% auto;
+	background: var(--i-avatar) no-repeat 0 5rem / 100% auto;
 	border-radius: 0 0 50% 50%;
 	font-size: 20rem;
 	line-height: 20rem;
@@ -244,90 +336,41 @@ a[href="/forum/?board=515949"] {
 	border-top-color: transparent;
 }
 
-[data-owner=""] #mal_cs_listinfo a {
-	display: none;
-}
-
-/* Logged out links */
+/* --- @ login-btns @ --- */
 
 a[href="/register.php"] {
 	position: relative;
 	margin-left: 20rem;
 }
 
-a[href="/register.php"]::before {
-	content: "";
-	position: absolute;
-	left: -11rem;
-	width: 1rem;
-	height: 20rem;
-	background: var(--c-subtext);
-	box-shadow: 0 1rem 3rem var(--c-shadow);
-	margin-top: -1rem;
-}
+/* --- @ swap-list-btn-owner @ --- */
 
-/* Links & Other Links */
-
-#mal_cs_otherlinks {
-	margin-left: 88rem;
-} #mal_cs_pic ~ #mal_cs_otherlinks {
-	margin: 0;
-}
-
-#mal_cs_otherlinks::before {
-	content: "";
-	float: left;
-	width: 1rem;
-	height: 20rem;
-	background: var(--c-subtext);
-	box-shadow: 0 1rem 3rem var(--c-shadow);
-	margin-right: 10rem;
-	margin-top: -1rem;
-} #mal_cs_pic ~ #mal_cs_otherlinks::before {
-	content: none;
-}
-
-#mal_cs_otherlinks div:first-of-type {
-	font-size: 0;
-}
-
-#mal_cs_links a[href^="/mangalist/"],
-#mal_cs_otherlinks a[href^="/mangalist/"] {
+[data-owner="1"] #mal_cs_links a,
+#mal_cs_otherlinks a[href*="list/"] {
 	position: absolute;
 	top: 0;
 	left: 100rem;
 }
-#mal_cs_links a[href^="/mangalist/"]::before,
-#mal_cs_otherlinks a[href^="/mangalist/"]::before {
+[data-owner="1"] #mal_cs_links a::before,
+#mal_cs_otherlinks a[href*="list/"]::before {
 	content: "\e0c0  ";
 	font-weight: 600;
 }
 
-[data-owner="1"] #mal_cs_links a[href^="/animelist/"],
-[data-owner=""] #mal_cs_links a[href^="/mangalist/"] {
-	display: none;
-}
+/* --- @ swap-list-btn-visitor @ --- */
 
-#mal_cs_links a[href^="/animelist/"] {
+[data-owner=""] #mal_cs_links a {
 	position: absolute;
 	right: 80rem;
 	top: 0;
 	font-size: 0;
 }
-#mal_cs_links a[href^="/animelist/"]::before {
+[data-owner=""] #mal_cs_links a::before {
 	content: "\f02e  My List";
 	font-size: 13rem;
 }
-#mal_cs_links a[href^="/animelist/"]::after {
-	content: "";
-	position: absolute;
-	right: -11rem;
-	width: 1rem;
-	height: 20rem;
-	background: var(--c-subtext);
-	box-shadow: 0 1rem 3rem var(--c-shadow);
-	margin-top: -1rem;
-}
+
+/* --- @ history/export @ --- */
 
 a[href^="/history/"]::before {
 	content: "\f1da  ";
@@ -344,18 +387,7 @@ a[href="/panel.php?go=export"]::before {
 	font-weight: 600;
 }
 
-a[href="/panel.php?go=export"]::after {
-	content: "";
-	position: absolute;
-	left: -11rem;
-	width: 1rem;
-	height: 20rem;
-	background: var(--c-text);
-	box-shadow: 0 1rem 3rem var(--c-shadow);
-	margin-top: -1rem;
-}
-
-/* MAL Powered */
+/* --- @ home-btn @ --- */
 
 #mal_cs_powered {
 	margin: 0 12px 0 auto;
@@ -372,11 +404,7 @@ a[href="/"]::after {
 	content: "Home";
 }
 
-a[href="/"] img {
-	display: none;
-}
-
-/* SEARCH */
+/* --- @ search @ --- */
 
 td#mal_cs_powered {
 	position: static;
@@ -403,12 +431,12 @@ td#mal_cs_powered {
 	text-align: center;
 }
 
-/* STATUS BAR */
+/* === ! CATEGORY-BAR ! === */
 
 #list_surround > table:first-of-type {
 	position: relative;
 	height: 62rem;
-	background: var(--gr-background);
+	background: var(--g-background);
 	border: none;
 	box-shadow: 0 1rem 5rem var(--c-shadow);
 }
@@ -460,7 +488,7 @@ td#mal_cs_powered {
 	transition: inherit;
 }
 
-/* CATEGORY HEADERS */
+/* === ! CATEGORY-HEADERS ! === */
 
 table[class^="header_"] {
 	width: 100%;
@@ -527,11 +555,7 @@ table[class^="header_"] {
 	content: "\f141";
 }
 
-.category_totals {
-	display: none;
-}
-
-/* TABLE HEADERS */
+/* --- @ table-header @ --- */
 
 table[class^="header_"] + table {
 	border: none !important;
@@ -550,7 +574,7 @@ table[class^="header_"] + table tr {
 	overflow: hidden;
 }
 
-/* LIST */
+/* === ! ITEMS ! === */
 
 table ~ table:not([class]) {
 	width: var(--s-width);
@@ -581,12 +605,12 @@ table ~ table:not([class]) tr {
 	justify-content: center;
 }
 
-/* Forms */
+/* --- @ forms @ --- */
 
 td input[type="text"] {
 	width: 100%;
 	height: 26rem;
-	background: var(--gr-background);
+	background: var(--g-background);
 	border: 2rem solid var(--c-subtle);
 	border-radius: 3rem;
 	margin-top: 3rem;
@@ -594,11 +618,7 @@ td input[type="text"] {
 	font: inherit;
 }
 
-td input[value="Go"] {
-	display: none;
-}
-
-/* Number */
+/* --- @ number @ --- */
 
 .table_header[width="30"] {
 	display: none;
@@ -612,7 +632,7 @@ td input[value="Go"] {
 	pointer-events: none;
 }
 
-/* Title */
+/* --- @ title @ --- */
 
 .table_header:not([width]) {
 	flex: 1 1 auto;
@@ -630,7 +650,8 @@ td input[value="Go"] {
 	font-size: 15rem;
 }
 
-/* content status */
+/* --- @ content-status @ --- */
+
 [class^="td"]:not([width]) > small {
 	display: inline-block;
 	padding: 1rem 3rem;
@@ -639,7 +660,7 @@ td input[value="Go"] {
 	margin-left: 4rem;
 }
 
-/* Add Edit More */
+/* --- @ add/edit/more @ --- */
 
 div[style="float: right;"] {
 	position: absolute;
@@ -661,7 +682,7 @@ div[style="float: right;"] a {
 	width: 22rem;
 	height: 22rem;
 	border-radius: 3rem;
-	background: var(--gr-background);
+	background: var(--g-background);
 	line-height: 22rem;
 	text-align: center;
 }
@@ -671,6 +692,7 @@ div[style="float: right;"] a::after {
 }
 
 /* Add/Edit */
+
 div[style="float: right;"] .List_LightBox {
 	left: 0;
 }
@@ -683,15 +705,16 @@ div[style="float: right;"] .List_LightBox::after {
 }
 
 /* More */
-div[style="float: right;"] [id^="xmenu"] {
+
+div[style="float: right;"] [onclick^="getExpand"] {
 	right: 0;
 }
-div[style="float: right;"] [id^="xmenu"]::after {
+div[style="float: right;"] [onclick^="getExpand"]::after {
 	content: "\f142 ";
 	font-size: 18px;
 }
 
-/* Score */
+/* --- @ score @ --- */
 
 .table_header[width="45"]:not([nowrap]) {
 	width: 70rem;
@@ -772,7 +795,7 @@ div[style="float: right;"] [id^="xmenu"]::after {
 	width: 100%;
 }
 
-/* Progress */
+/* --- @ progress @ --- */
 
 .table_header[width="70"] {
 	order: 5;
@@ -816,7 +839,7 @@ form {
 	width: 100%;
 }
 
-/* Genres */
+/* --- @ genre @ --- */
 
 .header_cw ~ table .table_header[width="125"],
 .header_cw ~ table [class^="td"][width="125"] {
@@ -943,7 +966,7 @@ a[href$="&genre=48"]::before {
 	content: "💼"
 }
 
-/* Started, Finished */
+/* --- @ dates @ --- */
 
 .table_header[width="90"] {
 	width: 54rem;
@@ -972,7 +995,7 @@ a[href$="&genre=48"]::before {
 	color: var(--c-subtext);
 }
 
-/* Days */
+/* --- @ days @ --- */
 
 /* hide days column on PTW items */
 .header_ptw ~ table .table_header[width="45"][nowrap],
@@ -1000,7 +1023,7 @@ a[href$="&genre=48"]::before {
 	color: var(--c-subtext);
 }
 
-/* Priority */
+/* --- @ priority @---  */
 
 .table_header[width="80"],
 [class^="td"][width="80"] {
@@ -1008,7 +1031,7 @@ a[href$="&genre=48"]::before {
 	order: 7;
 }
 
-/* MORE INFO */
+/* --- @ more @---  */
 
 [id^="more"] {
 	width: var(--s-width);
@@ -1019,9 +1042,10 @@ a[href$="&genre=48"]::before {
 	margin: 0 auto;
 }
 
-/* COPYRIGHT */
+/* === ! FOOTER ! === */
 
-table[class^="header_"] ~ table[class^="header_"]::before, #copyright::before {
+table[class^="header_"] ~ table[class^="header_"]::before,
+#copyright::before {
 	content: "";
 	display: block;
 	width: var(--s-width);
@@ -1046,10 +1070,13 @@ table[class^="header_"] ~ table[class^="header_"]::before, #copyright::before {
 	margin-bottom: 50rem;
 }
 
-#copyright, #recaptcha-terms {
+#copyright,
+#recaptcha-terms {
 	text-align: center;
 	cursor: default;
 }
+
+/* === ! OVERLAYS ! === */
 
 #fancybox-wrap {
 	box-sizing: content-box;
