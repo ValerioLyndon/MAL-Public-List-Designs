@@ -54,6 +54,15 @@
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/9anime%20Theme/9anime.json",
 			"tags": ["cover layout"],
 			"date": "2017-11-23"
+		},
+		"agile": {
+			"name": "Agile",
+			"author": "Valerio Lyndon",
+			"image": "https://i.imgur.com/S6VDrxt.jpg",
+			"type": "classic",
+			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Agile%20Theme/agile.json",
+			"tags": ["table layout", "lightweight"],
+			"date": "2021-12-21"
 		}
 	}
 }

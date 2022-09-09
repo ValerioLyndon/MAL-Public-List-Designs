@@ -1,0 +1,189 @@
+{
+	"json_version": 0.2,
+	"data": {
+		"name": "Agile",
+		"author": "Valerio Lyndon",
+		"help": "https://myanimelist.net/forum/?topicid=2043583",
+		"sponsor": "https://ko-fi.com/valeriolyndon",
+		"css": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Agile%20Theme/Agile.min.css",
+		"type": "classic",
+		"columns": {
+			"animelist": {
+				"Numbers": null,
+				"Score": null,
+				"Type": null,
+				"Episodes": null,
+				"Rating": null,
+				"Start/End Dates": null,
+				"Total Days Watched": null,
+				"Storage": null,
+				"Tags": false,
+				"Priority": null,
+				"Genre": null,
+				"Demographics": null,
+				"Notes": null
+			},
+			"mangalist": {
+				"Numbers": null,
+				"Score": null,
+				"Type": false,
+				"Chapters": null,
+				"Volumes": null,
+				"Rating": null,
+				"Start/End Dates": null,
+				"Total Days Read": null,
+				"Retail Manga": null,
+				"Tags": false,
+				"Priority": null,
+				"Genres": null,
+				"Demographics": null,
+				"Notes": null
+			}
+		},
+		"preview": {
+			"columns": {
+				"animelist": {
+					"Numbers": true,
+					"Score": true,
+					"Episodes": true,
+					"Start/End Dates": true,
+					"Total Days Watched": true,
+					"Genre": true
+				},
+				"mangalist": {
+					"Numbers": true,
+					"Score": true,
+					"Chapters": true,
+					"Volumes": true,
+					"Start/End Dates": true,
+					"Total Days Read": true,
+					"Genres": true
+				}
+			}
+		},
+		"options": {
+			"background": {
+				"name": "Background Image",
+				"type": "text/image_url",
+				"replacements": [["--i-background: url(https://files.catbox.moe/o1gsha.jpg)","--i-background: {{{insert}}}"]],
+				"default": "https://files.catbox.moe/o1gsha.jpg"
+			},
+			"cover": {
+				"name": "Cover Image",
+				"type": "text/image_url",
+				"replacements": [["--i-cover: url(https://files.catbox.moe/01j1v8.jpg)","--i-cover: {{{insert}}}"]],
+				"default": "https://files.catbox.moe/01j1v8.jpg"
+			},
+			"avatar": {
+				"name": "Avatar Image",
+				"description": "It is recommended to use a PNG, GIF, or WebP image with a transparent background as the image will \"pop up\" out of the avatar circle. JPG or any other image with an opaque background will look out-of-place.",
+				"type": "text/image_url",
+				"replacements": [["--i-avatar: url(https://files.catbox.moe/66eklm.png)","--i-avatar: {{{insert}}}"]],
+				"default": "https://files.catbox.moe/66eklm.png"
+			}
+		},
+		"mods": {
+			"theme": {
+				"name": "Custom Colours",
+				"description": "Set your own theme colours with this modification.",
+				"css": {"bottom": ""},
+				"options": {
+					"c-background": {
+						"name": "Page Background",
+						"description": "Will only be visible if you disable the background image or use a transparent image.",
+						"type": "color",
+						"replacements": [["--c-background: #651517","--c-background: {{{insert}}}"]],
+						"default": "#651517",
+						"flags": ["global"]
+					},
+					"c-header-background": {
+						"name": "Header Info Backgrounds",
+						"type": "color",
+						"replacements": [["--c-header-background: #0b0208aa","--c-header-background: {{{insert}}}"]],
+						"default": "#0b0208aa",
+						"flags": ["global"]
+					},
+					"g-opaque": {
+						"name": "Category Strip Background",
+						"description": "Value can be a colour or a gradient.",
+						"type": "text/value",
+						"replacements": [["--g-opaque: linear-gradient(160deg, #302b3a, #211d23, #1f141e)","--g-opaque: {{{insert}}}"]],
+						"default": "linear-gradient(160deg, #302b3a, #211d23, #1f141e)",
+						"flags": ["global"]
+					},
+					"g-transparent": {
+						"name": "List Background",
+						"description": "Value can be a colour or a gradient.",
+						"type": "text/value",
+						"replacements": [["--g-transparent: linear-gradient(160deg, #302b3abc, #211d23bc, #1f141ebc)","--g-transparent: {{{insert}}}"]],
+						"default": "linear-gradient(160deg, #302b3abc, #211d23bc, #1f141ebc)",
+						"flags": ["global"]
+					},
+					"c-text": {
+						"name": "Text",
+						"type": "color",
+						"replacements": [["--c-text: #f7f7f7","--c-text: {{{insert}}}"]],
+						"default": "#f7f7f7",
+						"flags": ["global"]
+					},
+					"c-text-hover": {
+						"name": "Text (Hover state)",
+						"type": "color",
+						"replacements": [["--c-text-hover: #a980af","--c-text-hover: {{{insert}}}"]],
+						"default": "#a980af",
+						"flags": ["global"]
+					},
+					"c-subtext": {
+						"name": "Sub-text",
+						"type": "color",
+						"replacements": [["--c-subtext: #a39fab","--c-subtext: {{{insert}}}"]],
+						"default": "#a39fab",
+						"flags": ["global"]
+					},
+					"c-search-background": {
+						"name": "Search Bar Border",
+						"type": "color",
+						"replacements": [["--c-search-background: #1f161f","--c-search-background: {{{insert}}}"]],
+						"default": "#1f161f",
+						"flags": ["global"]
+					},
+					"c-search-border": {
+						"name": "Search Bar Border",
+						"type": "color",
+						"replacements": [
+							["--c-search-border: var(--c-content-border)","--c-search-border: {{{insert}}}"],
+							["--c-search-border: #503b4a","--c-search-border: {{{insert}}}"]
+						],
+						"default": "#503b4a",
+						"flags": ["global"]
+					},
+					"c-content-border": {
+						"name": "List Content Borders",
+						"description": "Border color of genres, content status, and other minor elements.",
+						"type": "color",
+						"replacements": [
+							["--c-search-border: var(--c-content-border)", "--c-search-border: #503b4a"],
+							["--c-content-border: #503b4a","--c-content-border: {{{insert}}}"]
+						],
+						"default": "#503b4a",
+						"flags": ["global"]
+					},
+					"c-row-border": {
+						"name": "List Row Borders",
+						"type": "color",
+						"replacements": [["--c-row-border: #603b3a","--c-row-border: {{{insert}}}"]],
+						"default": "#603b3a",
+						"flags": ["global"]
+					},
+					"c-shadow": {
+						"name": "Shadows",
+						"type": "color",
+						"replacements": [["--c-shadow: #0b0208","--c-shadow: {{{insert}}}"]],
+						"default": "#0b0208",
+						"flags": ["global"]
+					}
+				}
+			}
+		}
+	}
+}
