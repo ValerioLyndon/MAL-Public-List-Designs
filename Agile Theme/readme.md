@@ -6,3 +6,7 @@ Primary goals:
 - Adaptable & usable on many different monitor sizes.
 - Lightweight. Does not load an excessive amount of external resources and image assets are only enough to add interest.
 
+Columns:
+
+- Does not support Type on mangalist due to HTML differences.
+- Does not support Tags.

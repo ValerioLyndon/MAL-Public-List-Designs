@@ -1,7 +1,6 @@
 /* 
 "Agile" by Valerio Lyndon
-name subject to change.
-v0.11.0
+v1.0.0
 
 * CONTENTS *
 use ctrl+f to find sections
@@ -32,6 +31,7 @@ use ctrl+f to find sections
 ↳ @ number @
 ↳ @ title @
 ↳ @ content-status @
+↳ @ notes @
 ↳ @ add/edit/more @
 ↳ @ score @
 ↳ @ progress @
@@ -39,6 +39,9 @@ use ctrl+f to find sections
 ↳ @ dates @
 ↳ @ days @
 ↳ @ priority @
+↳ @ demographic @
+↳ @ type/rated @
+↳ @ storage/retail @
 ↳ @ more @
 
 ! FOOTER !
@@ -53,10 +56,12 @@ use ctrl+f to find sections
 html {
 	/* Colours */
 	--c-primary: #211d23;
+	--c-header: #0b0208aa;
 	--c-shadow: #0b0208;
 	--c-button: var(--c-subtle);
 	--c-subtle: #503b4a;
 	--c-subtle-red: #603b3a;
+	--c-list-border: #6d5032;
 	--c-text: #f7f7f7;
 	--c-text-hover: #a980af;
 	--c-subtext: #a39fab;
@@ -204,7 +209,7 @@ html {
 #mal_cs_pic::after {
 	content: "";
 	position: absolute;
-	background: #0b0208aa;
+	background: var(--c-header);
 	border-radius: 6rem;
 	box-shadow: inset 0 0 2px var(--c-subtext);
 } #mal_cs_listinfo div:last-of-type::before,
@@ -221,7 +226,7 @@ html {
 	right: 0;
 	width: var(--s-header-r-width);
 	height: 34rem;
-	background: #0b0208aa;
+	background: var(--c-header);
 	border-radius: 6rem;
 	box-shadow: inset 0 0 2px var(--c-subtext);
 } #mal_cs_pic::after {
@@ -572,6 +577,7 @@ table[class^="header_"] + table tr {
 	font-size: 11rem;
 	line-height: 20rem;
 	overflow: hidden;
+	flex: 0 0 auto;
 }
 
 /* === ! ITEMS ! === */
@@ -590,7 +596,7 @@ table ~ table:not([class]) tbody {
 }
 
 .list-table .list-table-data .data {
-	border-color: #6d5032;
+	border-color: var(--c-list-border);
 }
 
 table ~ table:not([class]) tr {
@@ -607,7 +613,8 @@ table ~ table:not([class]) tr {
 
 /* --- @ forms @ --- */
 
-td input[type="text"] {
+td input[type="text"],
+textarea {
 	width: 100%;
 	height: 26rem;
 	background: var(--g-background);
@@ -658,6 +665,12 @@ td input[type="text"] {
 	border: 2rem solid var(--c-subtle);
 	border-radius: 3rem;
 	margin-left: 4rem;
+}
+
+/* --- @ notes @ --- */
+
+[id^="noteLinks"] {
+	color: var(--c-subtext);
 }
 
 /* --- @ add/edit/more @ --- */
@@ -844,13 +857,14 @@ form {
 .header_cw ~ table .table_header[width="125"],
 .header_cw ~ table [class^="td"][width="125"] {
 	display: none;
-} [class^="header_"]:not(.header_cw) ~ table .table_header[width="125"],
+}
+[class^="header_"]:not(.header_cw) ~ table .table_header[width="125"],
 [class^="header_"]:not(.header_cw) ~ table [class^="td"][width="125"] {
 	display: flex;
 }
 
 .table_header[width="125"] {
-	width: 200rem;
+	width: 50rem;
 	padding-right: 6rem;
 	justify-content: right;
 }
@@ -871,6 +885,7 @@ form {
 	border-radius: 3rem;
 	margin: 2rem;
 	font-size: 11rem;
+	white-space: nowrap;
 }
 
 [class^="td"][width="125"] a::before {
@@ -1027,8 +1042,45 @@ a[href$="&genre=48"]::before {
 
 .table_header[width="80"],
 [class^="td"][width="80"] {
+	display: none;
 	width: 70px;
 	order: 7;
+}
+
+/* shows priority on planning tables. This patch is necessary due to mangalist displaying it on all tables */
+
+.header_ptw ~ table .table_header[width="80"],
+.header_ptw ~ table [class^="td"][width="80"] {
+	display: block;
+}
+
+/* --- @ demographic @---  */
+
+.table_header[width="90"][nowrap],
+[class^="td"][width="90"][align="left"] {
+	width: 50rem;
+	order: 8;
+	justify-content: center;
+	flex-flow: row wrap;
+}
+
+/* --- @ type/rated @---  */
+
+/* type is 50 width on animelist, 90 width on mangalist. animelist type is supported, mangalist type fucks shit up */
+
+.table_header[width="50"],
+[class^="td"][width="50"] {
+	width: 50rem;
+	order: 9;
+}
+
+/* --- @ storage/retail @---  */
+
+.table_header[width="75"],
+[class^="td"][width="75"],
+.table_header[width="60"],
+[class^="td"][width="60"] {
+	order: 15;
 }
 
 /* --- @ more @---  */
