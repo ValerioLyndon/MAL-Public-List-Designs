@@ -1,6 +1,6 @@
 /* 
 "Agile" by Valerio Lyndon
-v1.0.0
+v1.0.1
 
 * CONTENTS *
 use ctrl+f to find sections
@@ -55,17 +55,18 @@ use ctrl+f to find sections
 
 html {
 	/* Colours */
-	--c-primary: #211d23;
-	--c-header: #0b0208aa;
-	--c-shadow: #0b0208;
-	--c-button: var(--c-subtle);
-	--c-subtle: #503b4a;
-	--c-subtle-red: #603b3a;
-	--c-list-border: #6d5032;
+	--c-background: #651517;
+	--c-header-background: #0b0208aa;
 	--c-text: #f7f7f7;
 	--c-text-hover: #a980af;
 	--c-subtext: #a39fab;
-	--g-background: linear-gradient(160deg, #302b3a, #211d23, #1f141e);
+	--c-search-background: #1f161f;
+	--c-search-border: var(--c-content-border);
+	--c-content-border: #503b4a;
+	--c-row-border: #603b3a;
+	--c-shadow: #0b0208;
+	--g-opaque: linear-gradient(160deg, #302b3a, #211d23, #1f141e);
+	--g-transparent: linear-gradient(160deg, #302b3abc, #211d23bc, #1f141ebc);
 	
 	/* Images */
 	--i-background: url(https://files.catbox.moe/o1gsha.jpg);
@@ -94,7 +95,13 @@ html {
 /* why the fuck is there a forum link on the list */ a[href="/forum/"],
 /* search icon */ #searchListButton,
 /* logout & duplicate profile button */ [data-owner=""] #mal_cs_listinfo a,
-/* pointless list links */ [data-work="anime"] #mal_cs_links a[href^="/animelist/"], [data-work="manga"] #mal_cs_links a[href^="/mangalist/"],
+/* pointless list links */
+[data-work="anime"][data-owner="1"] #mal_cs_links a[href^="/animelist/"],
+[data-work="manga"][data-owner="1"] #mal_cs_links a[href^="/mangalist/"],
+[data-work="manga"][data-owner=""] #mal_cs_links a[href^="/animelist/"],
+[data-work="anime"][data-owner=""] #mal_cs_links a[href^="/mangalist/"],
+[data-work="anime"] #mal_cs_otherlinks a[href^="/animelist/"],
+[data-work="manga"] #mal_cs_otherlinks a[href^="/mangalist/"],
 /* logged-out "Learn more" link */ a[href="/forum/?board=515949"],
 /* MAL image */ a[href="/"] img,
 /* confirm button for forms */ td input[value="Go"]
@@ -131,7 +138,7 @@ html {
 }
 
 body {
-	background: var(--i-background) no-repeat center / cover fixed #651517;
+	background: var(--i-background) no-repeat center / cover fixed var(--c-background);
 	color: var(--c-text);
 	font-size: 13rem;
 }
@@ -209,7 +216,7 @@ html {
 #mal_cs_pic::after {
 	content: "";
 	position: absolute;
-	background: var(--c-header);
+	background: var(--c-header-background);
 	border-radius: 6rem;
 	box-shadow: inset 0 0 2px var(--c-subtext);
 } #mal_cs_listinfo div:last-of-type::before,
@@ -226,7 +233,7 @@ html {
 	right: 0;
 	width: var(--s-header-r-width);
 	height: 34rem;
-	background: var(--c-header);
+	background: var(--c-header-background);
 	border-radius: 6rem;
 	box-shadow: inset 0 0 2px var(--c-subtext);
 } #mal_cs_pic::after {
@@ -356,9 +363,15 @@ a[href="/register.php"] {
 	top: 0;
 	left: 100rem;
 }
-[data-owner="1"] #mal_cs_links a::before,
-#mal_cs_otherlinks a[href*="list/"]::before {
+[data-owner="1"] #mal_cs_links a[href^="/mangalist/"]::before,
+#mal_cs_otherlinks a[href^="/mangalist/"]::before {
 	content: "\e0c0  ";
+	font-weight: 600;
+}
+[data-owner="1"] #mal_cs_links a[href^="/animelist/"]::before,
+#mal_cs_otherlinks a[href^="/animelist/"]::before {
+	content: "\f04b  ";
+	margin-left: 4rem;
 	font-weight: 600;
 }
 
@@ -427,9 +440,8 @@ td#mal_cs_powered {
 #searchBox {
 	width: 150rem !important;
 	height: 30rem;
-	background: none;
-	background: #1f161f;
-	border: 2rem solid var(--c-button);
+	background: var(--c-search-background);
+	border: 2rem solid var(--c-search-border);
 	border-radius: 3rem;
 	color: var(--c-text);
 	font: inherit !important;
@@ -441,7 +453,7 @@ td#mal_cs_powered {
 #list_surround > table:first-of-type {
 	position: relative;
 	height: 62rem;
-	background: var(--g-background);
+	background: var(--g-opaque);
 	border: none;
 	box-shadow: 0 1rem 5rem var(--c-shadow);
 }
@@ -532,7 +544,7 @@ table[class^="header_"] {
 	line-height: 300px;
 	font-size: 250px;
 	border-radius: 50%;
-	border: 5px solid var(--c-subtle);
+	border: 5px solid var(--c-content-border);
 	color: var(--c-subtext);
 	text-align: center;
 	-webkit-mask-image: linear-gradient(200deg, black 35%, transparent 94%);
@@ -585,18 +597,14 @@ table[class^="header_"] + table tr {
 table ~ table:not([class]) {
 	width: var(--s-width);
 	padding: 0 4rem;
-	background: linear-gradient(160deg, #302b3abc, #211d23bc, #1f141ebc) fixed;
-	border-top: 2rem dotted var(--c-subtle-red);
+	background: var(--g-transparent) fixed;
+	border-top: 2rem dotted var(--c-row-border);
 	box-shadow: 0 1rem 3rem -1rem var(--c-shadow);
 	margin: 0 auto;
 }
 table ~ table:not([class]) tbody {
 	position: relative;
 	z-index: 0;
-}
-
-.list-table .list-table-data .data {
-	border-color: var(--c-list-border);
 }
 
 table ~ table:not([class]) tr {
@@ -611,14 +619,30 @@ table ~ table:not([class]) tr {
 	justify-content: center;
 }
 
+/* bottom caps for tables */
+
+table[class^="header_"] ~ table[class^="header_"]::before,
+#copyright::before {
+	content: "";
+	display: block;
+	width: var(--s-width);
+	height: 32px;
+	background: var(--g-transparent) fixed;
+	border-radius: 0 0 6rem 6rem;
+	box-shadow: 0 1rem 3rem -1rem var(--c-shadow);
+	margin: 0 auto 20rem;
+} #copyright::before {
+	margin-bottom: 36rem;
+}
+
 /* --- @ forms @ --- */
 
 td input[type="text"],
 textarea {
 	width: 100%;
 	height: 26rem;
-	background: var(--g-background);
-	border: 2rem solid var(--c-subtle);
+	background: var(--g-opaque);
+	border: 2rem solid var(--c-content-border);
 	border-radius: 3rem;
 	margin-top: 3rem;
 	color: var(--c-text);
@@ -662,7 +686,7 @@ textarea {
 [class^="td"]:not([width]) > small {
 	display: inline-block;
 	padding: 1rem 3rem;
-	border: 2rem solid var(--c-subtle);
+	border: 2rem solid var(--c-content-border);
 	border-radius: 3rem;
 	margin-left: 4rem;
 }
@@ -695,7 +719,7 @@ div[style="float: right;"] a {
 	width: 22rem;
 	height: 22rem;
 	border-radius: 3rem;
-	background: var(--g-background);
+	background: var(--g-opaque);
 	line-height: 22rem;
 	text-align: center;
 }
@@ -881,7 +905,7 @@ form {
 
 [class^="td"][width="125"] a {
 	padding: 1rem 2rem;
-	border: 2rem solid var(--c-subtle);
+	border: 2rem solid var(--c-content-border);
 	border-radius: 3rem;
 	margin: 2rem;
 	font-size: 11rem;
@@ -1089,26 +1113,12 @@ a[href$="&genre=48"]::before {
 	width: var(--s-width);
 	padding: 0 72rem;
 	background: linear-gradient(160deg, #302b3abc, #211d23bc, #1f141ebc) fixed;
-	border-top: 2rem dotted var(--c-subtle-red);
+	border-top: 2rem dotted var(--c-row-border);
 	box-shadow: 0 1rem 3rem -1rem var(--c-shadow);
 	margin: 0 auto;
 }
 
 /* === ! FOOTER ! === */
-
-table[class^="header_"] ~ table[class^="header_"]::before,
-#copyright::before {
-	content: "";
-	display: block;
-	width: var(--s-width);
-	height: 32px;
-	background: linear-gradient(160deg, #302b3abc, #211d23bc, #1f141ebc) fixed;
-	border-radius: 0 0 6rem 6rem;
-	box-shadow: 0 1rem 3rem -1rem var(--c-shadow);
-	margin: 0 auto 20rem;
-} #copyright::before {
-	margin-bottom: 36rem;
-}
 
 #copyright {
 	margin-top: 0 !important;
