@@ -231,8 +231,8 @@
 				"options": {
 					"tag": {
 						"name": "Choose Tag",
-						"description": "You can optionally change which tag is chosen as your favourite tag. The default is \"Favourite\", but maybe you use \"*\" or \"♥\"? You can choose that! Be sure to input the [url=https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.#getting-the-tag-in-url-format]URL-formatted version of the tag[/url].",
-						"type": "text",
+						"description": "You can optionally change which tag is chosen as your favourite tag. The default is \"Favourite\", but maybe you use \"*\" or \"♥\"? You can choose that! Be sure to write the tag [b]exactly[/b] as you wrote it on your list.",
+						"type": "text/url_fragment",
 						"replacements": [["Favourite", "{{{insert}}}"]],
 						"default": "Favourite"
 					},
