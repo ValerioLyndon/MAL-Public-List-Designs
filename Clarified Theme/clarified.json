@@ -92,8 +92,10 @@
 			},
 			"cover-shadow-intensity": {
 				"name": "Cover Vignette Intensity",
-				"description": "Accepts decimal values between 0 and 1.",
-				"type": "text/value",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
 				"replacements": [["html:root {", "html:root {\n\t--cover-shadow: rgba(0,0,0,{{{insert}}}) 0 -3px 9px;"]]
 			},
 			"background": {
