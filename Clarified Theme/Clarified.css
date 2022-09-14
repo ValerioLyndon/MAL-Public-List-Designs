@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.0.9
+ * v2.0.10
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -274,7 +274,6 @@ body::after {
 	top: 15px !important;
 	right: 15px;
 	display: flex;
-	padding: 6px;
 	opacity: 0.25;
 	transition: opacity .5s ease-out;
 }
