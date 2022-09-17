@@ -1,0 +1,130 @@
+/*------------------------------*\
+| Tag Scores - Dedicated v1.0.0  |
+\* - - - - - - - - - - - - - - -*/
+
+/* Remove Score */
+
+.data.score {
+	display: none !important;
+}
+
+/* Restyle Tag Elements */
+
+.data.tags {
+	bottom: 12px;
+	top: auto;
+	left: 12px;
+	right: auto;
+	z-index: 10;
+	max-width: calc(66% - 12px);
+	height: 15px;
+	text-align: left !important;
+	white-space: nowrap;
+	cursor: default;
+	opacity: 1;
+	overflow: visible;
+}
+
+.data.tags::before {
+	white-space: pre;
+	vertical-align: top;
+} [data-query*='"status":7'] .watching ~ .data.tags::before,
+[data-query*='"status":7'] .reading ~ .data.tags::before {
+	content: "Current | ";
+} [data-query*='"status":7'] .completed ~ .data.tags::before {
+	content: "Completed | ";
+} [data-query*='"status":7'] .onhold ~ .data.tags::before {
+	content: "Paused | ";
+} [data-query*='"status":7'] .dropped ~ .data.tags::before {
+	content: "Dropped | ";
+} [data-query*='"status":7'] .plantowatch ~ .data.tags::before,
+[data-query*='"status":7'] .plantoread ~ .data.tags::before {
+	content: "Planned | ";
+}
+
+.data.tags div {
+	display: inline-block;
+}
+
+.data.tags span {
+	display: inline;
+	text-align: left;
+}
+
+.data.tags a {
+	padding-right: 0;
+	font-weight: bold !important;
+	font-size: 14px !important;
+}
+
+.data.tags span a::before {
+	content: "Scored ";
+	font-size: 12px;
+	font-weight: normal;
+	vertical-align: top;
+	white-space: pre;
+}
+
+/* Remove subsequent tags to prevent layout breakage */
+
+.tags span ~ span {
+	display: none !important;
+}
+
+/* Remove Icons */
+
+.data.tags span a::after,
+.data.tags .edit::after {
+	content: none;
+}
+
+/* Edit Button */
+
+.list-table .list-table-data .tags .edit {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	font-size: 0 !important;
+	text-align: left;
+	opacity: 0;
+	transition:
+		color var(--timeText) var(--bezierFast),
+		opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
+} .list-table .list-table-data .tags:hover .edit {
+	opacity: 1;
+}
+
+.data.tags .edit::before {
+	content: "Edit Score";
+	font: 12px/15px var(--font) !important
+}
+
+/* Make tags unselectable */
+
+.data.tags *:not(.edit) {
+	pointer-events: none;
+}
+
+/* Add opacity transition */
+
+[data-owner="1"] .data.tags::before,
+[data-owner="1"] .data.tags a {
+	opacity: 1;
+	transition: opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
+} [data-owner="1"] .data.tags:hover::before,
+[data-owner="1"] .data.tags:hover a {
+	opacity: 0;
+}
+
+/* Not Rated Text */
+
+.data.tags div:empty::before {
+	content: "Not Scored";
+	opacity: 1;
+	transition: opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
+} .data.tags:hover div:empty::before {
+	opacity: 0;
+} [class*="planto"] ~ .data.tags div:empty::before {
+	content: none;
+}
