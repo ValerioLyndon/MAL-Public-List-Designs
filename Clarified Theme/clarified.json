@@ -273,7 +273,7 @@
 			},
 			"header-size": {
 				"name": "Header Height",
-				"css": {"bottom": "/**\n * Header Size\n * v1.0.0\n */\n\n.header { height: 400px; }\n\n/* END of Header Size */"},
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Header%20Size.css"},
 				"options": {
 					"height": {
 						"name": "Height",
