@@ -290,6 +290,12 @@
 				},
 				"tags": ["functionality"]
 			},
+			"tag-scores-dedicated": {
+				"name": "Tag Scores",
+				"description": "This is a [b]compelete override[/b] of the score and tag columns and will completely replace the score on your list with a tag. Your tag score must be the first tag, and any other tags on your list will be invisible.",
+				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modTagScoresDedicated.css"},
+				"tags": ["functionality"]
+			},
 			"theme": {
 				"name": "Custom Theme Colours",
 				"description": "Create your own theme by replacing all the theme colours as you desire. Colours are HSL values with their surrounding parentheses removed.",
