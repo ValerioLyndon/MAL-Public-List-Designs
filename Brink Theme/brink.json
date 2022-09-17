@@ -248,6 +248,7 @@
 			"hide-tag": {
 				"name": "Hide Hentai Covers",
 				"description": "This mod will darken and blur [i](if supported by your browser)[/i] any covers with the tag \"Hentai\".",
+				"requires": ["tag-overflow"],
 				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modHideHentaiCovers.min.css"},
 				"options": {
 					"tag": {
@@ -389,6 +390,10 @@
 				"description": "Adds styling to the overlay popup that shows when you edit a list entry. See the linked guide to install.",
 				"url": "https://myanimelist.net/forum/?topicid=1772180",
 				"tags": ["visual style"]
+			},
+			"tag-overflow": {
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modAllowTagOverflow.css"},
+				"flags": ["hidden"]
 			}
 		}
 	}

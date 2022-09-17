@@ -1,0 +1,25 @@
+/*------------------------------*\
+|*  Allow Tag Overflow  v1.0.2  *|
+\* - - - - - - - - - - - - - - -*/
+
+.data.tags {
+	overflow: initial;
+	opacity: 1;
+}
+
+.data.tags span {
+	min-height: initial;
+	margin-bottom: 0;
+}
+
+.data.tags a {
+	min-height: 15px;
+	margin-bottom: 4px;
+	opacity: 0;
+	transition:
+		color var(--timeText) var(--bezierFast),
+		opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
+} .list-item:hover .data.tags a,
+.list-item:focus-within .data.tags a {
+	opacity: 1;
+}
