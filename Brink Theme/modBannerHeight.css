@@ -1,0 +1,34 @@
+/*------------------------------*\
+|* Change Banner Height  v1.0.0 *|
+\* - - - - - - - - - - - - - - -*/
+
+:root {
+	/* Height is based on the screen's width.
+	 * This maintains a set width:height ratio across screen sizes. 
+	 * Set --banner-height as a multiplier of screen width.
+	 * Default is 0.3, AKA 30% of the page width.
+	 */
+	--banner-height: 0.3;
+}
+
+.list-block {
+	min-height: calc(100vh - (184px + (100vw * var(--banner-height))));
+}
+
+#cover-image {
+	height: calc(100vw * var(--banner-height));
+	min-height: calc(700px * var(--banner-height));
+	max-height: calc(1920px * var(--banner-height));
+}
+
+@media (max-width: 700px) {
+	.list-block {
+		min-height: calc(100vh - (184px + (700px * var(--banner-height))));
+	}
+}
+
+@media (min-width: 1920px) {
+	.list-block {
+		min-height: calc(100vh - (184px + (1920px * var(--banner-height))));
+	}
+}

@@ -228,6 +228,23 @@
 				},
 				"tags": ["per-category options", "imagery"]
 			},
+			"banner-height": {
+				"name": "Change Banner Height",
+				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modBannerHeight.css"},
+				"options": {
+					"height": {
+						"name": "Height",
+						"description": "Height is based on the screen's width. Value is a decimal representation of a percentage, i.e 0.3 is 30% of the page width. Give it a slide to see how it looks!",
+						"type": "range",
+						"min": 0,
+						"max": 1,
+						"step": 0.001,
+						"replacements": [["--banner-height: 0.3","--banner-height: {{{insert}}}"]],
+						"default": 0.3
+					}
+				},
+				"tags": ["proportions"]
+			},
 			"hide-tag": {
 				"name": "Hide Hentai Covers",
 				"description": "This mod will darken and blur [i](if supported by your browser)[/i] any covers with the tag \"Hentai\".",
