@@ -1,0 +1,35 @@
+/*------------------------------*\
+|*    Favourite Tags  v1.0.0    *|
+\* - - - - - - - - - - - - - - -*/
+
+/* requires "Allow Tag Overflow" mod */
+
+.data.tags span a[href*="=Favourite"] {
+	position: absolute;
+	z-index: 10; /* to layer it above hentai covers */
+	right: calc(198px - 20px);
+	top: calc(-51px - 10px);
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	background: hsl(var(--btn));
+	border-radius: 50%;
+	box-shadow: -0.5px 0.7px 2.1px hsla(0, 0%, 0%, 35%);
+	font-size: 0 !important;
+	text-align: center;
+	text-shadow: none;
+	opacity: 1;
+	transition: background-color var(--timeButton) var(--bezierFast);
+} .data.tags span a[href*="=Favourite"]:hover {
+	background: hsl(var(--btnAlt));
+}
+
+.data.tags span a[href*="=Favourite"]::before {
+	content: "\f004";
+	padding: 0;
+	font: 16px/30px "FontAwesome";
+}
+
+.data.tags a[href$="=Favourite"]::after {
+	content: none;
+}

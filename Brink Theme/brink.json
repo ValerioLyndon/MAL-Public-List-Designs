@@ -245,6 +245,28 @@
 				},
 				"tags": ["proportions"]
 			},
+			"favourite-tag": {
+				"name": "Favourite Tags",
+				"description": "This mod will add a Heart icon on entries with a the tag \"Favourite\".",
+				"requires": ["tag-overflow"],
+				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modFavouriteTags.css"},
+				"options": {
+					"tag": {
+						"name": "Tag to Target",
+						"description": "Want to apply this mod to a tag other than \"Favourite\"? Input your tag here. Tag must be in [URL format](https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.#getting-the-tag-in-url-format).",
+						"type": "text",
+						"replacements": [["Favourite","{{{insert}}}"]],
+						"default": "Favourite"
+					},
+					"icon": {
+						"name": "Icon to Display",
+						"description": "You can also change the heart icon here.",
+						"type": "text/content",
+						"replacements": [["\\f004","{{{insert}}}"]]
+					}
+				},
+				"tags": ["functionality"]
+			},
 			"hide-tag": {
 				"name": "Hide Hentai Covers",
 				"description": "This mod will darken and blur [i](if supported by your browser)[/i] any covers with the tag \"Hentai\".",
@@ -253,7 +275,7 @@
 				"options": {
 					"tag": {
 						"name": "Tag to Target",
-						"description": "Want to apply this mod to a tag other than \"Hentai\"? Input your tag here. Tag must be in URL format.",
+						"description": "Want to apply this mod to a tag other than \"Hentai\"? Input your tag here. Tag must be in [URL format](https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.#getting-the-tag-in-url-format).",
 						"type": "text",
 						"replacements": [["Hentai","{{{insert}}}"]],
 						"default": "Hentai"
