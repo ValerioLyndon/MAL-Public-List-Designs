@@ -1,9 +1,12 @@
 /**
  * List Width
- * v1.0.0
+ * v1.0.1
  */
 
-:root { --list-width: 1060px; }
+:root {
+	--list-width: 660px;
+	--render-offset: calc(var(--list-width) * 0.5 + 8px) !important;
+}
 
 #status-menu:not(.fixed) .status-menu,
 .list-unit .list-status-title,
