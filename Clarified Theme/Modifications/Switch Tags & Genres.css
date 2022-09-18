@@ -1,0 +1,16 @@
+/**
+ * Switch Tags & Genres
+ * v1.0.0
+ */
+
+.data.tags {
+	margin-left: 0;
+	text-align: left !important;
+}
+
+.data.tags ~ .data.genre {
+	margin-left: auto;
+	text-align: right !important;
+}
+
+/* END of Switch Tags & Genres */
