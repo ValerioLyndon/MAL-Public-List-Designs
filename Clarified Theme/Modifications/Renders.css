@@ -1,29 +1,29 @@
 /**
  * Side Renders
- * v1.0.1
+ * v1.0.2
  */
 
 /* Left Render */
 
-footer:before {
+footer::before {
 	right: calc(100% - (50% - var(--render-offset)));
-	background-image: url(https://i.imgur.com/CqLKXd5.png);
+	background-image: url(URLHERE);
 	background-position: right bottom;
 	background-size: contain;
 }
 
 /* Right Render */
 
-footer:after {
+footer::after {
 	left: calc(100% - (50% - var(--render-offset)));
-	background-image: url(https://i.imgur.com/CqLKXd5.png);
+	background-image: url(URLHERE);
 	background-position: left bottom;
 	background-size: contain;
 }
 
 /* Styling for both renders */
 
-footer:before, footer:after {
+footer::before, footer::after {
 	content: "";
 	position: fixed;
 	top: 0;
@@ -36,6 +36,11 @@ footer:before, footer:after {
 :root { --render-offset: 538px; }
 
 /* Fix layering */
+
+footer {
+	position: relative;
+	z-index: 0;
+}
 
 .header {
 	z-index: 1;

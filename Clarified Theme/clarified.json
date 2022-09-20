@@ -188,8 +188,8 @@
 					"left-pos": {
 						"name": "Left Position",
 						"type": "text/value/background-position",
-						"replacements": [["RegExp/(Left Render[\\s\\S\\n]*?-position: )left bottom", "$1{{{insert}}}"]],
-						"default": "left bottom"
+						"replacements": [["RegExp/(Left Render[\\s\\S\\n]*?-position: )right bottom", "$1{{{insert}}}"]],
+						"default": "right bottom"
 					},
 					"left-size": {
 						"name": "Left Size",
@@ -206,8 +206,8 @@
 					"right-pos": {
 						"name": "Right Position",
 						"type": "text/value/background-position",
-						"replacements": [["RegExp/(Right Render[\\s\\S\\n]*?-position: )right bottom", "$1{{{insert}}}"]],
-						"default": "right bottom"
+						"replacements": [["RegExp/(Right Render[\\s\\S\\n]*?-position: )left bottom", "$1{{{insert}}}"]],
+						"default": "left bottom"
 					},
 					"right-size": {
 						"name": "Right Size",
