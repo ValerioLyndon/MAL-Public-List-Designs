@@ -277,6 +277,12 @@
 				},
 				"tags": ["visual flare", "category options"]
 			},
+			"emoji-genres": {
+				"name": "Emoji Genres",
+				"description": "Adds emojis to the genre column. Does not affect tags.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Emoji%20Genres.css"},
+				"tags": ["visual flare"]
+			},
 			"header-size": {
 				"name": "Header Height",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Header%20Size.css"},
