@@ -312,8 +312,8 @@
 				"tags": ["proportions"]
 			},
 			"info-coloured-tags": {
-				"name": "DIY Coloured Tags",
-				"description": "Want to add some visual flare to your tag system? Check the linked guide for information on how to.",
+				"name": "DIY Coloured Tags & Genres",
+				"description": "Want to add some visual flare to your genres or tag system? Check the linked guide for information on how to.",
 				"url": "https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.",
 				"tags": ["tags", "visual flare"]
 			}
