@@ -1,0 +1,31 @@
+/*-S-T-A-R-T--------------------*\
+| Notes Column Support R0.0      |
+\*------------------------------*/
+
+.notes {
+	display: block;
+	padding-bottom: 4px;
+}
+
+.notes .text {
+	opacity: .7;
+}
+
+.notes textarea {
+	background: var(--btn-bg);
+	border: 1px solid var(--bg-dark);
+	outline-color: var(--accent);
+	color: var(--text);
+}
+
+.data.title {
+	height: auto;
+}
+
+.data.type,
+.data.title {
+	top: 0;
+	align-self: flex-start;
+}
+
+/*------------------------E-N-D-*/

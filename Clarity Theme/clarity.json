@@ -118,7 +118,7 @@
 				"name": "Review-style/note-style Tags",
 				"description": "Widens the tag box and condenses it all into one cohesive paragraph, disabling tag functionality. Great for mini-reviews or quick notes.",
 				"conflicts": ["horizontal"],
-				"css": {"bottom": "https://raw.githubusercontent.com/ValerioLyndon/MAL-Public-List-Designs/master/Clarity%20Theme/Mod%20-%20Review%20Tags%20Compressed.css"},
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Review%20Tags%20Compressed.css"},
 				"options": {
 					"width": {
 						"name": "Section Width",
@@ -129,6 +129,12 @@
 					}
 				},
 				"tags": ["tags"]
+			},
+			"notes": {
+				"name": "Support Notes Column",
+				"description": "This mod adds support for the new \"Notes\" column (and requires it to be enabled). Please note that due to CSS limitations this will top-align all anime/manga titles.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Note%20Support.css"},
+				"tags": ["functionality"]
 			},
 			"horizontal": {
 				"name": "Horizontal Tags",
@@ -158,7 +164,7 @@
 						}
 					}
 				},
-				"tags": ["tags"]
+				"tags": ["tags", "functionality"]
 			},
 			"render": {
 				"name": "Character Renders",
@@ -372,7 +378,7 @@
 						"default": "2px"
 					}
 				},
-				"tags": ["proportions"]
+				"tags": ["proportions", "functionality"]
 			},
 			"header-line": {
 				"name": "Coloured Line on Header",
