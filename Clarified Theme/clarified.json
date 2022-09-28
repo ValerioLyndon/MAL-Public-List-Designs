@@ -279,7 +279,7 @@
 			},
 			"emoji-genres": {
 				"name": "Emoji Genres",
-				"description": "Adds emojis to the genre column. Does not affect tags.",
+				"description": "Adds emojis to the genre column. Does not affect tags. Please note that these will only display on your actual list and not in the MyAnimeList preview window.",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Emoji%20Genres.css"},
 				"tags": ["visual flare"]
 			},

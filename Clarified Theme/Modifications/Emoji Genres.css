@@ -1,6 +1,6 @@
 /**
  * Emoji Genres
- * v1.0.0
+ * v1.0.1
  */
 
 :root {
@@ -13,84 +13,85 @@
 }
 
 /* Action */
-a[href*="&genre=1"]::before {
+a[href$="&genre=1"]::before {
 	--gicon: "⚔️"
 }
 /* Adventure */
-a[href*="&genre=2"]::before {
+a[href$="&genre=2"]::before {
 	--gicon: "📌"
 }
 /* Avant Garde */
-a[href*="&genre=5"]::before {
+a[href$="&genre=5"]::before {
 	--gicon: "🎨"
 }
 /* Award Winning */
-a[href*="&genre=46"]::before {
+a[href$="&genre=46"]::before {
 	--gicon: "🏆"
 }
 /* Boys Love */
-a[href*="&genre=28"]::before {
+a[href$="&genre=28"]::before {
 	--gicon: "🍆"
 }
 /* Comedy */
-a[href*="&genre=4"]::before {
+a[href$="&genre=4"]::before {
 	--gicon: "😆"
 }
 /* Drama */
-a[href*="&genre=8"]::before {
+a[href$="&genre=8"]::before {
 	--gicon: "💢"
 }
 /* Ecchi & Erotica */
-a[href*="&genre=9"]::before,
-a[href*="&genre=49"]::before {
+a[href$="&genre=9"]::before,
+a[href$="&genre=49"]::before {
 	--gicon: "💦"
 }
 /* Fantasy */
-a[href*="&genre=10"]::before {
+a[href$="&genre=10"]::before {
 	--gicon: "🌈"
 }
 /* Girls Love */
-a[href*="&genre=26"]::before {
+a[href$="&genre=26"]::before {
 	--gicon: "🍑"
 }
 /* Gourmet */
-a[href*="&genre=47"]::before {
+a[href$="&genre=47"]::before {
 	--gicon: "🍉"
 }
 /* Hentai */
-a[href*="&genre=12"]::before {
+a[href$="&genre=12"]::before {
 	--gicon: "💋"
 }
 /* Horror */
-a[href*="&genre=14"]::before {
+a[href$="&genre=14"]::before {
 	--gicon: "😱"
 }
 /* Mystery */
-a[href*="&genre=7"]::before {
+a[href$="&genre=7"]::before {
 	--gicon: "❔"
 }
 /* Romance */
-a[href*="&genre=22"]::before {
+a[href$="&genre=22"]::before {
 	--gicon: "💙"
 }
 /* Sci-Fi */
-a[href*="&genre=24"]::before {
+a[href$="&genre=24"]::before {
 	--gicon: "🛰️"
 }
 /* Slice of Life */
-a[href*="&genre=36"]::before {
+a[href$="&genre=36"]::before {
 	--gicon: "🍕"
 }
 /* Sports */
-a[href*="&genre=30"]::before {
+a[href$="&genre=30"]::before {
 	--gicon: "⚽"
 }
 /* Supernatural */
-a[href*="&genre=37"]::before {
+a[href$="&genre=37"]::before {
 	--gicon: "👻";
 }
 /* Suspense */
-a[href*="&genre=41"]::before {
+a[href$="&genre=41"]::before,
+a[href$="&genre=45"]::before {
 	--gicon: "⏳"
 }
 
