@@ -1657,10 +1657,6 @@ Please MAL I am begging you, just add another selector to the date column header
 	width: 72px;
 }
 
-.data.storage:empty::after {
-	content: "fuck";
-}
-
 
 /*---------
   @Tags
