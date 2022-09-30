@@ -1920,18 +1920,26 @@ span:nth-of-type(2)::after {
 
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
-  @Number
+  @Number / @Type
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
+/* These two columns share much code as Type takes the place of Number when one is not enabled. */
+
+:nth-child(2):not(.number) ~ .data.type,
 .data.number {
-	height: 15px;
-	margin: -1px 0 24px;
+	position: absolute;
+	top: 13px;
+	left: 12px;
 	
+	padding-left: 0 !important;
 	font-size: 14px;
 	font-weight: bold;
-	
+	text-transform: uppercase;
+}
+
+.list-item:not(:hover) :nth-child(2):not(.number) ~ .data.type,
+.data.number {
 	opacity: 0.53;
-	cursor: default;
 }
 
 .data.number::before {
@@ -1939,12 +1947,9 @@ span:nth-of-type(2)::after {
 	font-size: 12px;
 }
 
+/* Type */
 
-/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
-  @Type
-\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
-
-.data.type::after {
+.number ~ .data.type::after {
 	content: "\f069";
 }
 
