@@ -1403,7 +1403,7 @@ body::before {
 
 .data.title {
 	position: absolute;
-	bottom: 0;
+	bottom: -.5px;
 	left: 0;
 	z-index: 9;
 	
