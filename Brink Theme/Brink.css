@@ -282,9 +282,7 @@ a,
 .header a {
 	color: hsl(var(--text));
 } a:hover,
-a:focus,
-.header a:hover,
-.header a:focus {
+.header a:hover {
 	color: hsl(var(--textLinkHov));
 }
 
@@ -313,18 +311,12 @@ div[style^="width: 300px;"] input {
 	
 	transition: all var(--timeButton) var(--bezierFast);
 } #header-menu-dropdown .icon-menu:hover,
-#header-menu-dropdown .icon-menu:focus,
 .list-unit .list-status-title .stats a:hover,
-.list-unit .list-status-title .stats a:focus,
 .list-table > tbody:first-of-type:hover::after,
-.list-table > tbody:first-of-type:focus::after,
 #status-menu .search-container #search-box:focus-within,
 body #fancybox-close:hover,
-body #fancybox-close:focus,
 #advanced-options .advanced-options-button a:hover,
-#advanced-options .advanced-options-button a:focus,
-div[style^="width: 300px;"] input:hover,
-div[style^="width: 300px;"] input:focus {
+div[style^="width: 300px;"] input:hover {
 	border-color: hsl(var(--btnAccent));
 	color: hsl(var(--accent));
 	outline: none;
@@ -451,8 +443,7 @@ body::before {
 	
 	opacity: 0.94;
 	transition: all var(--timeButton) var(--bezierFast);
-} .header .header-title:hover,
-.header .header-title:focus {
+} .header .header-title:hover {
 	opacity: 0.6;
 }
 
@@ -507,8 +498,7 @@ body::before {
 .header .header-menu .header-info a {
 	color: hsla(var(--text), 75%);
 	font-weight: normal;
-} .header .header-menu .header-info a:hover,
-.header .header-menu .header-info a:focus {
+} .header .header-menu .header-info a:hover {
 	color: hsl(var(--textLinkHov));
 }
 
@@ -589,8 +579,7 @@ body::before {
 	line-height: 0;
 	
 	transition: all var(--timeMenu) var(--bezierSmooth) var(--delayMenu);
-} .list-menu-float:hover,
-.list-menu-float:focus-within {
+} .list-menu-float:hover {
 	left: 0;
 	transition-delay: 0s;
 }
@@ -641,8 +630,7 @@ body::before {
 	
 	transition: color calc(var(--timeMenu) * 0.3) ease-in-out var(--delayMenu);
 	pointer-events: none;
-} .list-menu-float:hover::before,
-.list-menu-float:focus-within::before {
+} .list-menu-float:hover::before {
 	color: hsl(var(--text));
 	transition: color calc(var(--timeMenu) * 0.7) ease-in-out calc(var(--timeMenu) * 0.3);
 }
@@ -660,8 +648,7 @@ body::before {
 	
 	transition: all var(--timeMenu) var(--bezierSmooth) var(--delayMenu);
 	pointer-events: none;
-} .list-menu-float:hover ~ #list-container::after,
-.list-menu-float:focus-within ~ #list-container::after {
+} .list-menu-float:hover ~ #list-container::after {
 	background: hsla(0, 0%, 0%, 78%);
 	transition-delay: 0s;
 }
@@ -700,13 +687,9 @@ body::before {
 	opacity: 1;
 	transition: inherit;
 } .ownlist .list-menu-float .icon-menu:hover::after,
-.ownlist .list-menu-float .icon-menu:focus::after,
 .ownlist .list-menu-float .icon-menu:not(.setting):hover .text,
-.ownlist .list-menu-float .icon-menu:not(.setting):focus .text,
 .ownlist .list-menu-float .icon-menu.setting .text .link-list-setting:hover,
-.ownlist .list-menu-float .icon-menu.setting .text .link-list-setting:focus,
-.ownlist .list-menu-float .icon-menu.setting .text .link-style-setting:hover,
-.ownlist .list-menu-float .icon-menu.setting .text .link-style-setting:focus {
+.ownlist .list-menu-float .icon-menu.setting .text .link-style-setting:hover {
 	background: hsl(var(--bgAlt));
 	border-color: hsl(var(--accent));
 	line-height: 16px;
@@ -916,8 +899,7 @@ body::before {
 } #status-menu .status-button.on::before {
 	color: hsl(var(--text));
 	font-weight: bold;
-} #status-menu .status-button:hover::before,
-#status-menu .status-button:focus::before {
+} #status-menu .status-button:hover::before {
 	color: hsl(var(--text));
 	transform: translateY(-2px);
 }
@@ -1074,8 +1056,7 @@ body::before {
 	opacity: 0;
 	transform: translateX(-50%);
 	transition: all var(--timeButtonLarge) var(--bezierFast);
-} .list-table tbody:first-of-type:hover .list-table-header,
-.list-table tbody:first-of-type:focus-within .list-table-header {
+} .list-table tbody:first-of-type:hover .list-table-header {
 	opacity: 1;
 }
 
@@ -1106,8 +1087,7 @@ body::before {
 	text-indent: -1px;
 	
 	transition: all var(--timeButton) var(--bezierFast) !important;
-} .list-table .list-table-header .header-title a:hover,
-.list-table .list-table-header .header-title a:focus {
+} .list-table .list-table-header .header-title a:hover {
 	background: hsla(var(--btnLight));
 	border-left-color: hsl(var(--btnAccent));
 	line-height: 28px;
@@ -1218,8 +1198,7 @@ body::before {
 	
 	transform: scale(0.95);
 	transition: all var(--timeItem) var(--bezierItemBounce);
-} .list-item:hover,
-.list-item:focus-within {
+} .list-item:hover {
 	transform: scale(1);
 }
 
@@ -1262,8 +1241,7 @@ body::before {
 .list-table .list-table-data .data a {
 	color: hsl(var(--text)) !important;
 	transition-property: all;
-} .list-table .list-table-data .data a:not(.edit-disabled):hover,
-.list-table .list-table-data .data a:not(.edit-disabled):focus {
+} .list-table .list-table-data .data a:not(.edit-disabled):hover {
 	color: hsl(var(--textLinkHov)) !important;
 } .list-table .list-table-data a.edit-disabled {
 	pointer-events: none;
@@ -1381,8 +1359,7 @@ body::before {
 		brightness(var(--imageBrightness))
 		opacity(var(--imageBrightness));
 	transition: filter var(--timeItem) var(--bezierFast) !important;
-} .list-item:hover .data.image .link,
-.list-item:focus-within .data.image .link {
+} .list-item:hover .data.image .link {
 	filter:
 		brightness(var(--imageBrightnessHov))
 		opacity(var(--imageBrightnessHov))
@@ -1498,9 +1475,8 @@ div[class^="icon-watch"] {
 	letter-spacing: 1.5px;
 	white-space: nowrap;
 	
-	transition: color var(--timeText) var(--bezierFast);
-} .malicon:hover::after,
-.malicon:focus::after {
+	transition: color var(--timeText) var(--bezierFasft);
+} .malicon:hover::after {
 	color: hsl(var(--textLinkHov));
 }
 
@@ -1539,8 +1515,7 @@ div[class^="icon-watch"] {
 	
 	opacity: 0;
 	transition: inherit;
-} .list-item:hover .add-edit-more,
-.list-item:focus-within .add-edit-more {
+} .list-item:hover .add-edit-more {
 	opacity: 1;
 }
 
@@ -1762,11 +1737,8 @@ div[class^="icon-watch"] {
 }
 
 .list-item:hover .plantowatch ~ .data.progress span:first-of-type,
-.list-item:focus-within .plantowatch ~ .data.progress span:first-of-type,
 .list-item:hover .plantoread ~ .data.chapter span:first-of-type,
-.list-item:focus-within .plantoread ~ .data.chapter span:first-of-type,
-.list-item:hover .plantoread ~ .data.volume span:first-of-type,
-.list-item:focus-within .plantoread ~ .data.volume span:first-of-type {
+.list-item:hover .plantoread ~ .data.volume span:first-of-type {
 	opacity: 1;
 }
 
@@ -1799,8 +1771,7 @@ span:nth-of-type(2)::after {
 	color: hsl(var(--text));
 	text-shadow: inherit;
 	transition: all var(--timeItem) var(--bezierFast);
-} [data-owner="1"] .list-item:hover span:nth-of-type(2)::after
-,[data-owner="1"] .list-item:focus-within span:nth-of-type(2)::after {
+} [data-owner="1"] .list-item:hover span:nth-of-type(2)::after {
 	color: transparent;
 	text-shadow: none;
 }
@@ -1819,8 +1790,7 @@ span:nth-of-type(2)::after {
 	text-shadow: none;
 	
 	transition: all var(--timeItem) var(--bezierFast);
-} .list-table .list-item:hover .data [class^="icon-add-"],
-.list-table .list-item:focus-within .data [class^="icon-add-"] {
+} .list-table .list-item:hover .data [class^="icon-add-"] {
 	color: hsla(var(--text), 83%) !important;
 	text-shadow: inherit;
 }
@@ -2134,8 +2104,7 @@ span:nth-of-type(2)::after {
 	transition: all calc(var(--timeItem) * 1.5) var(--bezierFast);
 	animation: var(--timeItem) var(--bezierFast) backwards fade-in;
 	pointer-events: none;
-} .list-item:hover .more-info,
-.list-item:focus-within .more-info {
+} .list-item:hover .more-info {
 	opacity: 1;
 }
 
@@ -2168,8 +2137,7 @@ span:nth-of-type(2)::after {
 .list-table .more-info .more-content a {
 	color: hsl(var(--text));
 	text-decoration: underline hsla(var(--text), 50%) !important;
-} .list-table .more-info .more-content a:hover,
-.list-table .more-info .more-content a:focus {
+} .list-table .more-info .more-content a:hover {
 	color: hsl(var(--textLinkHov));
 }
 
@@ -2567,7 +2535,6 @@ div[style^="width: 300px;"] input {
 	border-radius: 0 3px 3px 0;
 	border-left-width: 0 !important;
 } #advanced-options .sort-widget :not(:disabled) + label:hover,
-#advanced-options .sort-widget :not(:disabled) + label:focus,
 #advanced-options .sort-widget :not(:disabled):checked + label {
 	border-color: hsl(var(--btnAccent)) !important;
 	color: hsl(var(--accent)) !important;
