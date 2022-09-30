@@ -194,7 +194,7 @@
 }
 
 .list-item * {
-	scrollbar-color: hsl(var(--accent)) hsl(var(--bg));
+	scrollbar-color: hsl(var(--accent)) transparent;
 }
 
 .data.tags, textarea {
@@ -241,7 +241,7 @@
 }
 
 .list-item *::-webkit-scrollbar {
-	background: hsl(var(--bg));
+	background: transparent;
 }
 
 .data.tags::-webkit-scrollbar,
@@ -1225,10 +1225,17 @@ body::before {
 
 .list-table-data {
 	display: flex;
-	width: 50%;
-	padding: 13px 0 0 12px;
+	width: calc(50% - 6px);
+	height: 148px;
+	padding: 0 0 0 6px;
+	margin: 51px 0 0 6px;
+	overflow: hidden;
+	overflow-y: auto;
 	flex-flow: column nowrap;
-	align-items: flex-start;
+	align-items: flex-end;
+	direction: rtl;
+	scrollbar-width: thin;
+	transition: scrollbar-color calc(var(--timeItem) * 1.5) var(--bezierFast);
 }
 
 .list-table .list-table-data .data {
@@ -1238,15 +1245,17 @@ body::before {
 }
 
 .data:not(.image) {
+	direction: ltr;
 	z-index: 5;
+	flex: 0 0 auto;
 	text-shadow: -0.6px 0.84px 1.68px #000;
 	line-height: 15px;
 	opacity: 0;
 	transition:
 		all var(--timeButton) var(--bezierFast),
 		opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
-} .list-item:hover .data:not(.image),
-.list-item:focus-within .data:not(.image){
+	cursor: default;
+} .list-item:hover .data:not(.image) {
 	opacity: 1;
 }
 
@@ -1258,6 +1267,30 @@ body::before {
 	color: hsl(var(--textLinkHov)) !important;
 } .list-table .list-table-data a.edit-disabled {
 	pointer-events: none;
+}
+
+/* data scroll */
+
+.list-item:not(:hover) .list-table-data {
+	scrollbar-color: transparent transparent;
+}
+
+.list-item:not(:hover) .list-table-data::-webkit-scrollbar-thumb {
+	background: transparent;
+}
+
+.list-table-data::-webkit-scrollbar {
+	width: 8px;
+}
+
+.list-table-data::-webkit-scrollbar-button {
+	display: none;
+}
+
+.list-table-data::-webkit-scrollbar-thumb:vertical {
+	border-width: 0 1px;
+} .list-table-data::-webkit-scrollbar-thumb:horizontal {
+	border-width: 1px 0;
 }
 
 /* Dynamic Columns */
@@ -1287,8 +1320,6 @@ body::before {
 	
 	text-align: left !important;
 	overflow-wrap: break-word;
-	
-	cursor: default;
 }
 
 /* Icons */
