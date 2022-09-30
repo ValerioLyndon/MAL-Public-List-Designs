@@ -2248,6 +2248,10 @@ body #fancybox-close {
 	opacity: 0.78 !important;
 }
 
+.mal-modal-content button.btn-close {
+	color: var(--text) !important;
+}
+
 .mal-modal-content {
 	background: hsl(var(--bg)) !important;
 	border: none !important;
@@ -2262,10 +2266,6 @@ body #fancybox-close {
 
 .broadcast a:hover {
 	background: hsl(var(--bgAlt)) !important;
-}
-
-.btn-close {
-	filter: invert(1);
 }
 
 
