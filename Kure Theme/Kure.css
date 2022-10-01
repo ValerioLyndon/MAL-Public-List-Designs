@@ -275,7 +275,7 @@ body::before {
 	font: normal 7rem/16px var(--fontset-heading);
 } .list-unit.all_anime .list-status-title .text::before {
 	content: 'all anime';
-} .list-unit.all_manga .list-status-title .text::before {
+} .manga .list-unit.all_anime .list-status-title .text::before {
 	content: 'all manga';
 } .list-unit.watching .list-status-title .text::before,
 .list-unit.reading .list-status-title .text::before {
