@@ -797,7 +797,7 @@ tbody:nth-of-type(2) .data:not(.status)::before {
 	position: absolute;
 	top: var(--header-offset);
 	display: block;
-	font: 1.2em/30px var(--fontset-heading);
+	font: 1.2rem/30px var(--fontset-heading);
 	pointer-events: none;
 }
 tbody:nth-of-type(2) .data.number ~ .title::after {
@@ -840,11 +840,11 @@ tbody:nth-of-type(2) .data.type::before {
 }
 tbody:nth-of-type(2) .data.started::before {
 	content: "Dates";
-	width: 60px;
+	width: 50px;
 }
 tbody:nth-of-type(2) .data.airing-started::before {
 	content: "Aired";
-	width: 60px;
+	width: 50px;
 }
 tbody:nth-of-type(2) .data.days::before {
 	content: "Days";
@@ -1199,6 +1199,9 @@ tbody:nth-of-type(n+101) .data.number::first-letter {
 } .list-table .list-table-data .data.chapter span:last-of-type::after {
 	content: 'ch';
 	color: hsla(var(--text), 65%);
+} .list-table .list-table-data .data.volume span:last-of-type::after {
+	content: 'vl';
+	color: hsla(var(--text), 65%);
 }
 
 .list-table .list-table-data .data a[class^="icon-add"] {
@@ -1218,14 +1221,15 @@ tbody:nth-of-type(n+101) .data.number::first-letter {
 .list-table .list-table-data .data.finished,
 .list-table .list-table-data .data.airing-started,
 .list-table .list-table-data .data.airing-finished {
-	width: 60px;
+	width: 50px;
 	order: 45;
+	font-size: .8em;
 } .list-table .list-table-data .data.started,
 .list-table .list-table-data .data.airing-started {
 	margin-bottom: 20px;
 } .list-table .list-table-data .data.finished,
 .list-table .list-table-data .data.airing-finished {
-	margin: 20px 0 0 -60px;
+	margin: 20px 0 0 -50px;
 }
 
 /* Days */
