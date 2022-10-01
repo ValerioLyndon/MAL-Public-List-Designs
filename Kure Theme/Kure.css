@@ -797,7 +797,7 @@ tbody:nth-of-type(2) .data:not(.status)::before {
 	position: absolute;
 	top: var(--header-offset);
 	display: block;
-	line-height: 30px;
+	font: 1.2em/30px var(--fontset-heading);
 	pointer-events: none;
 }
 tbody:nth-of-type(2) .data.progress::before {
@@ -979,18 +979,20 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 	display: none;
 }
 
-.list-table .list-table-data .data.status {
+.data.status {
 	position: absolute;
 	top: -8px;
 	left: 0;
-	width: auto;
 	background: none !important;
-	color: hsla(var(--text), 50%);
-	font: bold 1.1rem/16px var(--fontset);
-	font-family: var(--fontset-heading);
+	color: hsla(var(--text), 75%);
+	font: bold 1.1rem/16px var(--fontset-heading);
 	text-shadow: 0 1px 3px hsla(var(--content), 100%);
-	order: 80;
-} .data.status[class$="ing"]::before {
+	transition: color var(--transition-text);
+} .list-item:hover .data.status {
+	color: hsl(var(--text));
+}
+
+.data.status[class$="ing"]::before {
 	content: 'Current';
 } .data.status.completed::before {
 	content: 'Completed';
@@ -1001,6 +1003,8 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 } .data.status[class*="planto"]::before {
 	content: 'Planned';
 }
+
+
 
 /* Image */
 
@@ -1038,8 +1042,9 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 .content-status,
 .rewatching,
 .rereading {
-	color: hsla(var(--text), 50%) !important;
-	vertical-align: middle;
+	display: block;
+	color: hsla(var(--text), 75%) !important;
+	font: 1em var(--fontset-heading) !important;
 }
 
 [class^="icon-watch"] {
