@@ -705,8 +705,9 @@ body::before {
 }
 
 .list-table .list-table-header .header-title {
+	position: relative;
 	display: block;
-	width: auto !important;
+	width: 100%;
 	height: auto;
 	padding: 0 !important;
 	background: none;
@@ -717,8 +718,9 @@ body::before {
 
 #status-menu .status-button,
 .list-table .list-table-header .header-title .link.sort {
+	position: static;
 	height: 26px;
-	padding: 0 10px;
+	padding: 0;
 	color: hsl(var(--link));
 	font: normal 1.2rem/26px var(--fontset);
 	text-align: left;
@@ -734,23 +736,33 @@ body::before {
 	color: hsl(var(--link-h));
 }
 
+.list-table-header .header-title .link.sort::before {
+	content: "• ";
+}
+.list-table .list-table-header .header-title .sort-icon {
+	color: hsl(var(--link));
+	position: absolute;
+	right: 10px;
+	top: calc(50% - .5em);
+}
+
 #status-menu .status-button::before {
 	font-size: 1.2rem;
 	line-height: 26px;
 	color: hsl(var(--link));
 	transition: inherit;
 } #status-menu .status-button:nth-child(1)::before {
-	content: 'All';
+	content: '• All';
 } #status-menu .status-button:nth-child(2)::before {
-	content: 'Current';
+	content: '• Current';
 } #status-menu .status-button:nth-child(3)::before {
-	content: 'Completed';
+	content: '• Completed';
 } #status-menu .status-button:nth-child(4)::before {
-	content: 'Paused';
+	content: '• Paused';
 } #status-menu .status-button:nth-child(5)::before {
-	content: 'Dropped';
+	content: '• Dropped';
 } #status-menu .status-button:nth-child(6)::before {
-	content: 'Planned';
+	content: '• Planned';
 } #status-menu .status-button:hover::before {
 	color: hsl(var(--link-h));
 } #status-menu .status-button.on::before {
