@@ -800,6 +800,17 @@ tbody:nth-of-type(2) .data:not(.status)::before {
 	font: 1.2em/30px var(--fontset-heading);
 	pointer-events: none;
 }
+tbody:nth-of-type(2) .data.number ~ .title::after {
+	content: "#";
+	position: absolute;
+	top: var(--header-offset);
+	right: calc(100% + 10px);
+	display: block;
+	width: 1ch;
+	font: 1.2em/30px var(--fontset-heading);
+	text-shadow: 1px 1px 2px hsl(var(--content));
+	pointer-events: none;
+}
 tbody:nth-of-type(2) .data.progress::before {
 	content: "Episodes";
 	width: 80px;
