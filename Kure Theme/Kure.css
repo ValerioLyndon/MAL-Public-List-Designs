@@ -1,7 +1,7 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\
 | Kure                           |
 | by Valerio Lyndon              |
-| Version 0.5.0                  |
+| Version 0.6.0-pre              |
 \*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /* IMPORTS */
@@ -158,8 +158,11 @@ body::before {
 }
 
 .list-table {
+	display: block;
 	width: 100%;
+	padding-top: 40px;
 	border: none;
+	--header-offset: -40px;
 }
 
 /* COVER */
@@ -311,7 +314,7 @@ body::before {
 	display: flex;
 	width: 100%;
 	height: 0;
-	padding-right: calc(50% - 394px);
+	padding-right: calc(50% - 454px);
 	flex-flow: row nowrap;
 	justify-content: flex-end;
 	align-items: flex-start;
@@ -685,11 +688,11 @@ body::before {
 	line-height: 26px;
 	font-weight: bold;
 } .status-menu::before {
-	content: 'Filter List';
+	content: 'Filter by...';
 	height: 36px;
 	padding: 5px 10px;
 } .list-table-header::before {
-	content: 'Sort List';
+	content: 'Sort by...';
 	height: 26px;
 	margin-bottom: 5px;
 }
@@ -707,7 +710,6 @@ body::before {
 	padding: 0 !important;
 	background: none;
 	border: none;
-	padding: 0;
 	font-size: 0;
 	text-align: left;
 }
@@ -762,31 +764,145 @@ body::before {
 	display: none !important;
 }
 
-/* STATS */
+/* List Header & Stats */
+
+.list-table::before {
+	content: "";
+	position: absolute;
+	top: 376px;
+	width: 800px;
+	height: 30px;
+	background: hsl(var(--content), 80%);
+	border-radius: 4px;
+}
+
+.list-stats[style*="block;"] ~ .list-table {
+	--header-offset: -80px;
+}
+
+tbody:nth-of-type(2) .data:not(.status)::before {
+	position: absolute;
+	top: var(--header-offset);
+	display: block;
+	line-height: 30px;
+	pointer-events: none;
+}
+tbody:nth-of-type(2) .data.progress::before {
+	content: "Episodes";
+	width: 80px;
+}
+tbody:nth-of-type(2) .data.chapter::before {
+	content: "Chapters";
+	width: 80px;
+}
+tbody:nth-of-type(2) .data.volume::before {
+	content: "Volumes";
+	width: 80px;
+}
+tbody:nth-of-type(2) .data.image::before {
+	content: "Image";
+	width: 40px;
+}
+tbody:nth-of-type(2) .data.title::before {
+	content: "Title";
+}
+tbody:nth-of-type(2) .data.score::before {
+	content: "Scr.";
+	width: 2ch;
+}
+tbody:nth-of-type(2) .data.type::before {
+	content: "Type";
+	width: 60px;
+}
+tbody:nth-of-type(2) .data.started::before {
+	content: "Dates";
+	width: 60px;
+}
+tbody:nth-of-type(2) .data.airing-started::before {
+	content: "Aired";
+	width: 60px;
+}
+tbody:nth-of-type(2) .data.days::before {
+	content: "Days";
+	width: 30px;
+}
+tbody:nth-of-type(2) .data.season::before {
+	content: "Season";
+	width: 90px;
+}
+tbody:nth-of-type(2) .data.studio::before {
+	content: "Studios";
+	width: 100px;
+}
+tbody:nth-of-type(2) .data.licensor::before {
+	content: "Licensors";
+	width: 100px;
+}
+tbody:nth-of-type(2) .data.magazine::before {
+	content: "Magazines";
+	width: 100px;
+}
+tbody:nth-of-type(2) .data.genre::before {
+	content: "Genres";
+	width: 100px;
+}
+tbody:nth-of-type(2) .data.demographic::before,
+tbody:nth-of-type(2) .data.genre ~ .genre::before {
+	content: "Demographic";
+	width: 100px;
+}
+tbody:nth-of-type(2) .data.storage::before,
+tbody:nth-of-type(2) .data.retail::before {
+	content: "Storage";
+	width: 70px;
+}
+tbody:nth-of-type(2) .data.rated::before {
+	content: "Rated";
+	width: 70px;
+}
+tbody:nth-of-type(2) .data.priority::before {
+	content: "Priority";
+	width: 70px;
+}
+tbody:nth-of-type(2) .data.tags::before {
+	content: "Tags";
+	width: 129px;
+}
+
+/* Stats */
 
 .stats #show-stats-button {
 	position: absolute;
-	top: calc(-252px + -91px);
-	right: calc(96px);
+	top: calc(-252px + 2px);
+	right: 265px;
 	z-index: 10;
-	width: 60px;
-	height: 30px;
-	background: hsla(var(--button), 80%);
-	border-radius: 4px;
+	width: 26px;
+	height: 26px;
+	background: hsl(var(--button));
+	border-radius: 50%;
 	margin: 0;
 	color: hsl(var(--link));
-	font: bold 1.2rem/30px var(--fontset);
+	font-size: 0;
 	text-align: center;
-	transition: color var(--transition-text);
+	opacity: 0.5;
+	transition: color var(--transition-text), opacity var(--transition-button);
 } .stats #show-stats-button:hover {
 	color: hsl(var(--link-h));
+	opacity: 1;
+}
+
+#show-stats-button i {
+	font: bold 1.2rem/26px var(--fontset);
 }
 
 .list-unit .list-stats {
+	position: relative;
+	top: 40px;
 	width: 100%;
+	height: 30px !important;
 	background: hsla(var(--content), 80%);
 	border-radius: 4px;
-	margin-bottom: 10px;
+	margin-bottom: 10px !important;
 	color: hsl(var(--text));
 	transition: background-color var(--transition-button);
 } .list-unit .list-stats:hover {
@@ -871,29 +987,6 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 } .data.status[class*="planto"]::before {
 	content: 'Planned';
 }
-
-/* unused alternate style
-
-body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
-	display: none;
-}
-
-.list-table .list-table-data .data.status {
-	width: auto;
-	background: none !important;
-	color: hsla(var(--text), 50%);
-	order: 80;
-} .data.status[class$="ing"]::before {
-	content: 'Current';
-} .data.status.completed::before {
-	content: 'Completed';
-} .data.status.onhold::before {
-	content: 'Paused';
-} .data.status.dropped::before {
-	content: 'Dropped';
-} .data.status[class*="planto"]::before {
-	content: 'Planned';
-} */
 
 /* Image */
 
@@ -1056,11 +1149,12 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 .list-table .list-table-data .data.progress,
 .list-table .list-table-data .data.chapter,
 .list-table .list-table-data .data.volume {
-	width: 40px;
+	width: 90px;
 	order: 15;
 	flex: 1 0 auto;
 	text-align: right;
 	font-size: 1.1rem;
+	white-space: nowrap;
 }
 
 .list-table .list-table-data .data.progress span:last-of-type::after {
@@ -1121,7 +1215,8 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 	order: 60;
 }
 
-.list-table .list-table-data .data.storage {
+.list-table .list-table-data .data.storage,
+.list-table .list-table-data .data.retail {
 	width: 70px;
 	order: 70;
 }
