@@ -262,7 +262,7 @@
 						"name": "Icon to Display",
 						"description": "You can also change the heart icon here.",
 						"type": "text/content",
-						"replacements": [["\\f004","{{{insert}}}"]]
+						"replacements": [["\"\\f004\"","{{{insert}}}"]]
 					}
 				},
 				"conflicts": ["tag-scores-dedicated"],
