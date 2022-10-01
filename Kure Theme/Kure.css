@@ -788,9 +788,12 @@ body::before {
 	background: hsl(var(--content), 80%);
 	border-radius: 4px;
 }
+.list-stats[style*="block;"] ~ .list-table::before {
+	border-radius: 4px 4px 0 0;
+}
 
 .list-stats[style*="block;"] ~ .list-table {
-	--header-offset: -80px;
+	--header-offset: -70px;
 }
 
 tbody:nth-of-type(2) .data:not(.status)::before {
@@ -921,16 +924,16 @@ tbody:nth-of-type(2) .data.tags::before {
 
 .list-unit .list-stats {
 	position: relative;
-	top: 40px;
+	top: 30px;
 	width: 100%;
 	height: 30px !important;
 	background: hsla(var(--content), 80%);
-	border-radius: 4px;
-	margin-bottom: 10px !important;
+	border-radius: 0 0 4px 4px;
+	margin: 0 !important;
 	color: hsl(var(--text));
+	font-size: 11px;
 	transition: background-color var(--transition-button);
-} .list-unit .list-stats:hover {
-	background: hsl(var(--content));
+	cursor: default;
 }
 
 /* LIST */
