@@ -265,6 +265,7 @@
 						"replacements": [["\\f004","{{{insert}}}"]]
 					}
 				},
+				"conflicts": ["tag-scores-dedicated"],
 				"tags": ["functionality"]
 			},
 			"hide-tag": {
@@ -288,12 +289,14 @@
 						"default": "EXPLICIT CONTENT"
 					}
 				},
+				"conflicts": ["tag-scores-dedicated"],
 				"tags": ["functionality"]
 			},
 			"tag-scores-dedicated": {
 				"name": "Tag Scores",
 				"description": "This is a [b]compelete override[/b] of the score and tag columns and will completely replace the score on your list with a tag. Your tag score must be the first tag, and any other tags on your list will be invisible.",
 				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modTagScoresDedicated.css"},
+				"conflicts": ["hide-tag", "favourite-tag"],
 				"tags": ["functionality"]
 			},
 			"theme": {
