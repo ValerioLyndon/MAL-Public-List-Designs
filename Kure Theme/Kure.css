@@ -369,16 +369,17 @@ body::before {
 	font-size: 1rem;
 	text-align: left;
 	white-space: nowrap;
-}
-
-.header .header-menu .btn-menu .fa {
-	display: none;
+	cursor: text;
 }
 
 #header-menu-button {
 	color: hsl(var(--text));
 	font-weight: normal;
-	cursor: text;
+	pointer-events: none;
+}
+
+#header-menu-button i {
+	display: none;
 }
 
 /* Shared Anime/Affinity/History */
