@@ -1,0 +1,52 @@
+{
+	"json_version": 0.3,
+	"data": {
+		"name": "Blackout",
+		"author": "Valerio Lyndon",
+		"css": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Blackout%20Theme/Blackout.min.css",
+		"type": "modern",
+		"sponsor": "https://ko-fi.com/valeriolyndon",
+		"columns": {
+			"mode": "greylist",
+			"animelist": {
+				"Notes": false
+			},
+			"mangalist": {
+				"Notes": false
+			}
+		},
+		"preview": {
+			"columns": {
+				"mode": "blacklist",
+				"animelist": {
+					"Numbers": true,
+					"Score": true,
+					"Type": true,
+					"Episodes": true,
+					"Start/End Dates": true,
+					"Total Days Watched": true,
+					"Storage": true,
+					"Tags": true,
+					"Genre": true,
+					"Image": true,
+					"Premiered": true,
+					"Studios": true
+				},
+				"mangalist": {
+					"Numbers": true,
+					"Score": true,
+					"Chapters": true,
+					"Volumes": true,
+					"Start/End Dates": true,
+					"Total Days Read": true,
+					"Storage": true,
+					"Tags": true,
+					"Type": true,
+					"Genres": true,
+					"Demographics": true,
+					"Image": true
+				}
+			}
+		}
+	}
+}
