@@ -1041,7 +1041,7 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 	vertical-align: middle;
 }
 
-.icon-watch {
+[class^="icon-watch"] {
 	display: none !important;
 }
 
