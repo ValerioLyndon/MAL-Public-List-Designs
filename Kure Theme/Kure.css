@@ -987,6 +987,7 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 	background: none !important;
 	color: hsla(var(--text), 50%);
 	font: bold 1.1rem/16px var(--fontset);
+	font-family: var(--fontset-heading);
 	text-shadow: 0 1px 3px hsla(var(--content), 100%);
 	order: 80;
 } .data.status[class$="ing"]::before {
@@ -1120,6 +1121,7 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 	word-break: break-all;
 	word-wrap: anywhere;
 	transform: translateY(-50%);
+	font-family: var(--fontset-heading);
 }
 
 tbody:nth-of-type(n+101) .data.number::first-letter {
