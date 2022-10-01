@@ -1,28 +1,84 @@
 /***** BLACKOUT *****|
- v0.13.3            *|
+ v1.0.0             *|
  a list design      *|
  by Valerio Lyndon  */
+/*
+> Begin reading database...
+> 100% complete.
+> Returned database Object
+┏━━━━━━━━━━━━━━━━━━━┓
+┃ Blackout        ▾ ┃
+┃ ├┐Base          ▾ ┃
+┃ │├╴Variables      ┃
+┃ │├╴Common         ┃
+┃ │├╴Background     ┃
+┃ │├╴Spinner        ┃
+┃ │├╴Containers     ┃
+┃ │└╴Structure      ┃
+┃ ├┐Header        ▾ ┃
+┃ │├╴Base           ┃
+┃ │├╴Categories     ┃
+┃ │├╴Search         ┃
+┃ │├╴Filter-Btns    ┃
+┃ │├╴Sort-By        ┃
+┃ │└╴Stats          ┃
+┃ ├┐Surround      ▾ ┃
+┃ │├╴Base           ┃
+┃ │├╴Swap           ┃
+┃ │├╴Directory      ┃
+┃ │├╴User-Menu      ┃
+┃ │├╴Cover          ┃
+┃ │└╴Loader         ┃
+┃ ├┐Items         ▾ ┃
+┃ │├╴Base           ┃
+┃ │├╴Controls       ┃
+┃ │├╴Category       ┃
+┃ │├╴Title          ┃
+┃ │├╴Score          ┃
+┃ │├╴Progress       ┃
+┃ │├╴Common         ┃
+┃ │├┐Bottom       ▾ ┃
+┃ ││├╴Tags          ┃
+┃ ││├╴Number        ┃
+┃ ││├╴Type          ┃
+┃ ││└╴Rated         ┃
+┃ │├╴More           ┃
+┃ │└╴Footer         ┃
+┃ └┐Overlays      ▾ ┃
+┃  ├╴Base           ┃
+┃  ├╴Filters        ┃
+┃  └╴Streaming      ┃
+┗━━━━━━━━━━━━━━━━━━━┛
+𝙾𝚋𝚓𝚎𝚌𝚝 𝚒𝚗𝚏𝚘
+𝙲𝚑𝚊𝚗𝚐𝚎𝚍-- 𝟶𝟶𝟾𝟼-𝙵𝙴𝙱-𝟷𝟼 𝙵𝚃
+𝚂𝚒𝚣𝚎--    𝟺𝟻.𝟼𝚔𝚟
+𝙵𝚘𝚛𝚖𝚊𝚝--  𝙰𝚔𝚒𝚛
+> Enter instruction: ▍
+*/
 
 @\import "https://fonts.googleapis.com/css2?family=Source%20Sans%20Pro:wght@400;700&display=swap";
 
-/* to calculate triangle: flat side * 0.8666 */
-
-/* setup */
+/*/Blackout/Base/Variables$: /*/
 
 :root {
-	--b: #000;
-	--g: url(https://i.postimg.cc/jjYhwCqK/grain-black.png);
-	--gt: url(https://i.postimg.cc/nLWHPLKN/grain-transparent.png);
-	--gl: url(https://i.postimg.cc/ydJN1RYV/grain-large.png);
-	--f: #131313aa;
-	--f2: #181818aa;
-	--f3: #131313;
-	--t: #ababab;
-	--b1: #ababab;
-	--b2: #282828;
-	--t2: #fff;
-	--l: #f0f;
+	--c-background: #000;
+	--i-grain: url(https://i.postimg.cc/jjYhwCqK/grain-black.png);
+	--i-grain-transparent: url(https://i.postimg.cc/nLWHPLKN/grain-transparent.png);
+	--i-grain-detailed: url(https://i.postimg.cc/ydJN1RYV/grain-large.png);
+	--i-triangles-top: url(https://i.postimg.cc/BQnxxY6b/triangles-top.webp);
+	--i-triangles-bottom: url(https://i.postimg.cc/KcNP3SmC/triangles-bottom.webp);
+	--i-spinner: url(https://files.catbox.moe/qs9f3v.svg);
+	--c-foreground: #131313aa;
+	--c-foreground-secondary: #181818aa;
+	--c-foreground-menu: #131313;
+	--c-border-light: #ababab;
+	--c-border-dark: #282828;
+	--c-text: #ababab;
+	--c-text-highlight: #fff;
+	--c-text-link: #f0f;
 }
+
+/*/Blackout/Base/Common$: /*/
 
 html {
 	font-size: 4px;
@@ -47,6 +103,19 @@ html {
 	font-family: "Source Sans Pro", "Roboto", "Arial", "FontAwesome", sans-serif !important;
 }
 
+a,
+.header a,
+.list-table .list-table-data .data a:not(.edit-disabled) {
+	color: var(--c-text-highlight) !important;
+}
+a:hover,
+.header a:hover,
+.list-table .list-table-data .data a:not(.edit-disabled):hover {
+	color: var(--c-text-link) !important;
+}
+
+/*/Blackout/Base/Background$: /*/
+
 body.ownlist {
 	position: relative;
 	display: flex;
@@ -54,11 +123,12 @@ body.ownlist {
 	flex-flow: row nowrap;
 	justify-content: center;
 	padding-top: 50rem;
-	background: var(--g) repeat;
-	background-color: var(--b) !important;
-	color: var(--t) !important;
+	background: var(--i-grain) repeat;
+	background-color: var(--c-background) !important;
+	color: var(--c-text) !important;
 	font-size: 3em;
 }
+
 body::before,
 body::after,
 #fancybox-overlay::before,
@@ -78,22 +148,18 @@ body::after,
 body::before,
 #fancybox-overlay::before,
 .mal-modal-backdrop::before {
-	/*background-image: url(https://i.postimg.cc/BQnxxY6b/triangles-top.webp);*/
-	background-image: url(https://i.postimg.cc/brVTsTrF/triangles-top.png);
+	background-image: var(--i-triangles-top);
 	animation:
 		10s ease-in-out breath-in 1,
-		30s ease-in-out 10s breath infinite/*,
-		60s ease-in-out 0s rotate infinite*/;
+		30s ease-in-out 10s breath infinite;
 }
 body::after,
 #fancybox-overlay::after,
 .mal-modal-backdrop::after {
-	/*background-image: url(https://i.postimg.cc/KcNP3SmC/triangles-bottom.webp);*/
-	background-image: url(https://i.postimg.cc/zvG7zMzg/triangles-bottom.png);
+	background-image: var(--i-triangles-bottom);
 	animation:
 		10s ease-in-out breath-in 1 reverse,
-		44s ease-in-out 10s breath-reverse infinite/*,
-		60s ease-in-out 0s rotate infinite*/;
+		44s ease-in-out 10s breath-reverse infinite;
 }
 #fancybox-overlay::before,
 #fancybox-overlay::after,
@@ -128,14 +194,6 @@ body::after,
 		background-position-x: -400px;	
 	}
 }
-/* @keyframes rotate {
-	0%, 60%, 70%, 100% {
-		transform: rotate(5deg);
-	}
-	65% {
-		transform: rotate(-5deg);
-	}
-} */
 @keyframes breath {
 	0%, 100%, 19%, 77% {
 		opacity: 0.10;
@@ -191,48 +249,49 @@ body::after,
 	}
 }
 
+/*/Blackout/Base/Spinner$: /*/
+
 [data-query*='"status":7'] {
-	--catico: "\2a";
+	--category-icon: "\2a";
 }
 [data-query*='"status":1'] {
-	--catico: "\f04b";
+	--category-icon: "\f04b";
 }
 [data-query*='"status":2'] {
-	--catico: "\f00c";
+	--category-icon: "\f00c";
 }
 [data-query*='"status":3'] {
-	--catico: "\f04c";
+	--category-icon: "\f04c";
 }
 [data-query*='"status":4'] {
-	--catico: "\f00d";
+	--category-icon: "\f00d";
 }
 [data-query*='"status":6'] {
-	--catico: "\f017";
+	--category-icon: "\f017";
 }
 
 .list-block::before,
 .list-block::after {
-	content: var(--catico);
+	content: var(--category-icon);
 	position: absolute;
 	z-index: -1;
-	width: var(--sz);
-	height: var(--sz);
-	/*background: url(https://files.catbox.moe/qs9f3v.svg) center / contain no-repeat;*/
-	background: url(https://i.postimg.cc/VLTgwD3J/spinner.png) center / contain no-repeat;
-	top: calc(-50rem + var(--top) + var(--sz) * -.5);
-	left: calc(var(--left) - var(--sz) * 0.5);
+	width: var(--size);
+	height: var(--size);
+	background: var(--i-spinner) center / contain no-repeat;
+	top: calc(-50rem + var(--top) + var(--size) * -.5);
+	left: calc(var(--left) - var(--size) * 0.5);
 	animation: 15s cubic-bezier(.03,0,.03,1) 0s infinite both spinning;
 	opacity: .18;
 	transition: opacity 1.3s ease;
-	--sz: 100rem;
+	--size: 80rem;
 	--top: 30rem;
 	--left: 20rem;
 }
 .list-block::after {
-	--sz: 60rem;
 	animation: 22s linear 0s infinite both reverse spinning;
-	font: bold 20rem/var(--sz) FontAwesome;
+	font: bold 20rem/var(--size) FontAwesome;
 	text-align: center;
+	--size: 48rem;
 }
 
 @keyframes spinning {
@@ -243,38 +302,7 @@ body::after,
 	}
 }
 
-/* tv static: https://www.deviantart.com/tbh-1138/art/TV-Static-214352630 */
-/* footer::after {
-	content: "";
-	position: fixed;
-	z-index: 500;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/fb5482a9-1ec4-4f6a-a28a-84d267f89594/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ZiNTQ4MmE5LTFlYzQtNGY2YS1hMjhhLTg0ZDI2N2Y4OTU5NFwvZDNqbWJqcS05ZDUyZTg5Yy1lNmViLTQwYWItOTUxNy04NzU0YmE5YTNiY2MuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.mg-Gz7pjrmku41ylRehaOJTtegctwYnAARUBMXfjm4k) repeat;
-	clip-path: inherit;
-	opacity: 0.09;
-	transition: opacity 25s ease-in-out 10s;
-}
-html:hover footer::after {
-	transition-duration: .4s;
-	transition-delay: 0s;
-	opacity: 0;
-} */
-
-a,
-.header a,
-.list-table .list-table-data .data a:not(.edit-disabled) {
-	color: var(--t2) !important;
-}
-a:hover,
-.header a:hover,
-.list-table .list-table-data .data a:not(.edit-disabled):hover {
-	color: var(--l) !important;
-}
-
-/* conts */
+/*/Blackout/Base/Containers$: /*/
 
 #list-container {
 	position: relative;
@@ -308,7 +336,21 @@ a:hover,
 	margin: 0 auto;
 }
 
-/* category menu */
+/*/Blackout/Header/Base$: /*/
+
+.list-unit .list-status-title {
+	display: block;
+	width: 100%;
+	height: 16rem;
+	padding: 1rem;
+	background: var(--i-grain-transparent) repeat var(--c-foreground-menu);
+	margin-bottom: 6rem;
+	--clip-1: 6rem;
+	--clip-2: var(--clip-1);
+	clip-path: /* angledge-left */ polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
+}
+
+/*/Blackout/Header/Categories$: /*/
 
 #status-menu {
 	position: static;
@@ -330,29 +372,29 @@ a:hover,
 #status-menu .status-button {
 	width: 14rem !important;
 	height: 12.13rem;
-	background: linear-gradient(135deg, var(--b1), var(--b2));
+	background: linear-gradient(135deg, var(--c-border-light), var(--c-border-dark));
 	margin-right: -4rem;
-	clip-path: polygon(50% 100%, 100% 0, 0 0);
+	clip-path: /* triangle-down */ polygon(50% 100%, 100% 0, 0 0);
 	font-size: 0;
 	transition: transform 0.15s ease;
 	pointer-events: auto;
 }
 #status-menu .status-button:nth-of-type(even) {
-	clip-path: polygon(50% 0, 100% 100%, 0 100%);
+	clip-path: /* triangle-up */ polygon(50% 0, 100% 100%, 0 100%);
 }
 #status-menu .status-button:hover {
 	transform: scale(1.2);
 }
 
 #status-menu .status-button::before {
-	content: var(--i);
+	content: var(--icon);
 	position: absolute;
 	top: .3rem;
 	left: .5rem;
 	width: calc(100% - 1rem);
 	height: calc(100% - 1rem);
-	background: var(--f);
-	font: bold var(--s)/8rem FontAwesome;
+	background: var(--c-foreground);
+	font: bold var(--size)/8rem FontAwesome;
 	clip-path: inherit;
 }
 #status-menu .status-button:nth-of-type(even)::before {
@@ -361,35 +403,35 @@ a:hover,
 }
 
 .status-button:nth-child(1) {
-	--i: "\2a";
-	--s: 5rem;
+	--icon: "\2a";
+	--size: 5rem;
 }
 .status-button:nth-child(2) {
-	--i: "\f04b";
-	--s: 4.5rem;
+	--icon: "\f04b";
+	--size: 4.5rem;
 }
 .status-button:nth-child(3) {
-	--i: "\f00c";
-	--s: 5rem;
+	--icon: "\f00c";
+	--size: 5rem;
 }
 .status-button:nth-child(4) {
-	--i: "\f04c";
-	--s: 5rem;
+	--icon: "\f04c";
+	--size: 5rem;
 }
 .status-button:nth-child(5) {
-	--i: "\f00d";
-	--s: 5rem;
+	--icon: "\f00d";
+	--size: 5rem;
 }
 .status-button:nth-child(6) {
-	--i: "\f017";
-	--s: 4.5rem;
+	--icon: "\f017";
+	--size: 4.5rem;
 }
 
 #status-menu .status-button::after {
 	content: none;
 }
 
-/* search */
+/*/Blackout/Header/Search$: /*/
 
 #list-container .search-container {
 	top: 2rem;
@@ -404,20 +446,20 @@ a:hover,
 	height: 5.5rem;
 	flex: 0 0 auto;
 	order: -1;
+	clip-path: /* angledge-left */ polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
 	--clip-1: 5rem;
 	--clip-2: 1rem;
-	clip-path: polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
 }
 #list-container #search-box {
 	padding: .25rem;
-	background: linear-gradient(135deg, var(--b1), var(--b2));
+	background: linear-gradient(135deg, var(--c-border-light), var(--c-border-dark));
 	margin: 0;
 }
 #list-container #search-box input {
 	width: 100%;
 	height: 100%;
 	padding-right: 5rem;
-	background: var(--f);
+	background: var(--c-foreground);
 	border: none;
 	color: inherit;
 	font-size: 3.6rem;
@@ -435,21 +477,7 @@ a:hover,
 	opacity: 0.5;
 }
 
-
-/* list header */
-
-.list-unit .list-status-title {
-	display: block;
-	width: 100%;
-	height: 16rem;
-	padding: 1rem;
-	background: var(--gt) repeat var(--f3);
-	margin-bottom: 6rem;
-	--clip-1: 6rem;
-	--clip-2: var(--clip-1);
-	clip-path: polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
-/* 	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%); */
-}
+/*/Blackout/Header/Filter-Btns$: /*/
 
 .list-unit .list-status-title .stats {
 	position: absolute;
@@ -464,7 +492,7 @@ a:hover,
 	width: 20rem;
 	height: 5.5rem;
 	margin-right: 2rem;
-	color: var(--t) !important;
+	color: var(--c-text) !important;
 	font-size: 3.6rem;
 	line-height: 5.25rem;
 	font-weight: bold;
@@ -472,7 +500,7 @@ a:hover,
 	transition: transform 0.15s ease;
 }
 .list-unit .list-status-title .stats a:hover {
-	color: var(--l) !important;
+	color: var(--c-text-link) !important;
 	transform: scale(1.1);
 }
 
@@ -486,17 +514,17 @@ a:hover,
 	height: 100%;
 	--clip-1: 1rem;
 	--clip-2: 2rem;
-	clip-path: polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
+	clip-path: /* angledge-left */ polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
 }
 .list-unit .list-status-title .stats a::before {
-	background: linear-gradient(135deg, var(--b1), var(--b2));
+	background: linear-gradient(135deg, var(--c-border-light), var(--c-border-dark));
 }
 .list-unit .list-status-title .stats a::after {
 	top: .25rem;
 	left: .25rem;
 	height: calc(100% - 0.5rem);
 	width: calc(100% - 0.5rem);
-	background: var(--f);
+	background: var(--c-foreground);
 }
 
 .list-unit .list-status-title .stats a i,
@@ -506,35 +534,195 @@ a:hover,
 
 .list-unit .list-status-title .text {
 	display: none;
-/* 	display: block;
-	width: 100%;
-	color: var(--t);
-	line-height: 14rem;
-	font-size: 10rem;
-	text-indent: 60rem;
-	font-weight: normal;
-	text-align: left;
-	letter-spacing: 0.2em;
-	opacity: 0.3;
-	white-space: nowrap; */
 }
 
-/* stats bar */
+/*/Blackout/Header/Sort-By$: /*/
+
+.list-table > tbody:first-of-type {
+	position: relative;
+	z-index: 5;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: flex-end;
+	width: 20rem;
+	height: 8rem;
+	margin: calc(-6rem + -2rem + -5.5rem) 2rem 0 auto;
+}
+
+.list-stats[style*=": block;"] ~ .list-table > tbody:first-of-type {
+	margin-top: calc(-6rem + -2rem + -5.5rem + -13rem);
+	margin-bottom: 13rem;
+}
+
+.list-table > tbody:first-of-type::before,
+.list-table > tbody:first-of-type::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 5.5rem;
+	flex: 0 0 auto;
+	order: -1;
+	--clip-1: 1rem;
+	--clip-2: 2rem;
+	clip-path: /* angledge-left */ polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
+	transition: transform 0.15s ease;
+}
+
+.list-table > tbody:first-of-type:hover::before,
+.list-table > tbody:first-of-type:hover::after {
+	color: var(--c-text-link);
+}
+.list-table > tbody:first-of-type::before {
+	background: linear-gradient(135deg, var(--c-border-light), var(--c-border-dark));
+}
+.list-table > tbody:first-of-type::after {
+	content: "\f0dc  Sort";
+	height: 5rem;
+	width: calc(100% - 0.5rem);
+	background: var(--c-foreground);
+	margin-top: -5.25rem;
+	margin-right: .25rem;
+	line-height: 5.25rem;
+	font-size: 3.6rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+.list-table-header {
+	display: block;
+	width: 30rem;
+	padding: 2rem;
+	background: var(--c-foreground);
+	border: 1px solid var(--c-border-light);
+	opacity: 0;
+	transition: opacity 0.2s ease-out;
+	pointer-events: none;
+	margin-top: 2rem;
+}
+tbody:hover .list-table-header {
+	opacity: 1;
+	pointer-events: auto;
+}
+#list-container .header-title {
+	display: block;
+	width: auto;
+	height: auto;
+	padding: 0;
+	background: none;
+	border: none;
+	font-size: 0;
+	text-align: right;
+}
+#list-container .header-title .link.sort {
+	display: block;
+	padding: .5rem 1rem;
+	font-size: 3.3rem;
+	transition-duration: 0s;
+}
+#list-container .header-title .link:not(.sort) {
+	display: none;
+}
+#list-container .header-title .sort-icon {
+	color: var(--c-text-link);
+}
+
+/*/Blackout/Header/Stats$: /*/
 
 #list-container .list-stats {
 	width: 100%;
 	height: 7rem !important;
 	padding: 0 !important;
 	margin: 0 0 6rem 0 !important;
-	background: var(--f);
-	color: var(--t);
+	background: var(--c-foreground);
+	color: var(--c-text);
 	--clip-1: 1.5rem;
 	--clip-2: 2.5rem;
-	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	clip-path: /* angledge-right */ polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
 }
 
+/*/Blackout/Surround/Base$: /*/
 
-/* user menu */
+.header {
+	z-index: 14;
+	width: 5rem;
+	height: auto;
+	margin: 0 4rem 0 0;
+}
+
+.ownlist .header .header-menu {
+	position: absolute;
+	top: -10rem;
+	right: auto;
+	left: 11rem;
+	display: flex;
+	width: 170rem;
+}
+.header .header-menu .btn-menu {
+	font-size: 0;
+}
+.header .header-menu .btn-menu .username,
+.header .header-menu .header-info,
+#header-menu-dropdown {
+	display: block;
+	height: 6rem;
+	background: var(--c-foreground-secondary);
+	border: .5rem solid var(--c-border-dark);
+	padding: 0 4px;
+	margin: 0 4rem 0 0;
+	line-height: 5rem;
+	font-weight: normal;
+	text-transform: lowercase;
+}
+
+/*/Blackout/Surround/Swap$: /*/
+
+#header-menu-dropdown {
+	position: static;
+}
+
+#header-menu-dropdown .icon-menu {
+	display: inline;
+	background: none;
+	font-size: 3.3rem;
+}
+#header-menu-dropdown .icon-menu::before {
+	content: "\f021";
+}
+
+#header-menu-dropdown svg,
+#header-menu-dropdown .text {
+	display: none;
+}
+
+/*/Blackout/Surround/Directory$: /*/
+
+.username::before,
+.username::after {
+	content: "/home/";
+	font-size: 3.3rem;
+}
+.username[href*="/animelist/"]::after {
+	content: "/list";
+	font-size: 3.3rem;
+}
+.username[href*="/mangalist/"]::after {
+	content: "/list";
+	font-size: 3.3rem;
+}
+[data-owner=""] .username {
+	font-size: 3.3rem;
+}
+[data-owner=""] .username::after {
+	content: none;
+}
+.anime[data-owner="1"] .username::after {
+	content: "personal/animelist";
+}
+.manga[data-owner="1"] .username::after {
+	content: "personal/mangalist";
+}
+
+/*/Blackout/Surround/User-Menu$: /*/
 
 .list-menu-float {
 	position: sticky;
@@ -560,9 +748,8 @@ a:hover,
 	width: 5rem;
 	height: 4.3334rem;
 	margin-top: 1rem;
-	background: var(--t2);
-/* 	clip-path: polygon(50% 0, 100% 100%, 0 100%); */
-	clip-path: polygon(50% 100%, 100% 0, 0 0);
+	background: var(--c-text-highlight);
+	clip-path: /* triangle-down */ polygon(50% 100%, 100% 0, 0 0);
 	transition:
 		background-color 0.2s ease-out,
 		opacity 0.2s ease-out;
@@ -570,7 +757,7 @@ a:hover,
 }
 .list-menu-float:hover::before {
 	opacity: .5;
-	background: var(--l);
+	background: var(--c-text-link);
 }
 
 .list-menu-float .icon-menu {
@@ -608,7 +795,7 @@ a:hover,
 .list-menu-float .icon-menu svg.icon,
 .list-menu-float .icon-menu.profile::before {
 	position: static !important;
-	fill: var(--t2);
+	fill: var(--c-text-highlight);
 	flex: 0 0 auto;
 	font-weight: bold;
 	font-size: 5rem;
@@ -616,7 +803,7 @@ a:hover,
 }
 .list-menu-float .icon-menu:hover svg.icon,
 .list-menu-float .icon-menu.profile:hover::before {
-	fill: var(--l);
+	fill: var(--c-text-link);
 }
 
 .header .header-title::before {
@@ -635,10 +822,10 @@ a:hover,
 	position: absolute;
 	left: 6rem;
 	top: 0;
-	color: var(--t2);
+	color: var(--c-text-highlight);
 	text-transform: uppercase;
 	width: auto !important;
-	background: var(--f);
+	background: var(--c-foreground);
 	padding: 0 1rem;
 	font-size: 4rem;
 	letter-spacing: .1em;
@@ -649,7 +836,7 @@ a:hover,
 	line-height: 8rem;
 	--clip-1: 1.5rem;
 	--clip-2: 2.5rem;
-	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	clip-path: /* angledge-right */ polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
 	transform: translateY(2rem);
 	opacity: 0;
 }
@@ -670,207 +857,11 @@ a:hover,
 	text-indent: 0;
 }
 
-/* @media (min-width: 1280px) {
-	.list-menu-float {
-		flex-flow: column;
-	}
-	.list-menu-float .icon-menu {
-		clip-path: polygon(0 0, 100% 50%, 0 100%);
-		margin-right: 0;
-		margin-bottom: -4rem;
-	}
-	.list-menu-float .icon-menu:nth-of-type(even) {
-		clip-path: polygon(0 50%, 100% 0, 100% 100%);
-	}
-	.list-menu-float .icon-menu svg.icon {
-		margin-top: 0 !important;
-		margin-left: -1rem;
-		fill: var(--t);
-		transform: scale(0.8);
-	}
-	.list-menu-float .icon-menu:nth-of-type(even) svg.icon {
-		margin-left: 2rem;
-	}
-} */
-
-/* temp */
-
 .icon-menu.setting {
 	display: none;
 }
 
-/* sort menu */
-
-.list-table > tbody:first-of-type {
-	position: relative;
-	z-index: 5;
-	display: flex;
-	flex-flow: column nowrap;
-	align-items: flex-end;
-	width: 20rem;
-	height: 8rem;
-	margin: calc(-6rem + -2rem + -5.5rem) 2rem 0 auto;
-}
-
-.list-stats[style*=": block;"] ~ .list-table > tbody:first-of-type {
-	margin-top: calc(-6rem + -2rem + -5.5rem + -13rem);
-	margin-bottom: 13rem;
-}
-
-.list-table > tbody:first-of-type::before,
-.list-table > tbody:first-of-type::after {
-	content: "";
-	display: block;
-	width: 100%;
-	height: 5.5rem;
-	flex: 0 0 auto;
-	order: -1;
-	--clip-1: 1rem;
-	--clip-2: 2rem;
-	clip-path: polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
-	transition: transform 0.15s ease;
-}
-
-.list-table > tbody:first-of-type:hover::before,
-.list-table > tbody:first-of-type:hover::after {
-	color: var(--l);
-}
-.list-table > tbody:first-of-type::before {
-	background: linear-gradient(135deg, var(--b1), var(--b2));
-}
-.list-table > tbody:first-of-type::after {
-	content: "\f0dc  Sort";
-	height: 5rem;
-	width: calc(100% - 0.5rem);
-	background: var(--f);
-	margin-top: -5.25rem;
-	margin-right: .25rem;
-	line-height: 5.25rem;
-	font-size: 3.6rem;
-	font-weight: bold;
-	text-align: center;
-}
-
-.list-table-header {
-	display: block;
-	width: 30rem;
-	padding: 2rem;
-	background: var(--f);
-	border: 1px solid var(--b1);
-	opacity: 0;
-	transition: opacity 0.2s ease-out;
-	pointer-events: none;
-	margin-top: 2rem;
-}
-tbody:hover .list-table-header {
-	opacity: 1;
-	pointer-events: auto;
-}
-#list-container .header-title {
-	display: block;
-	width: auto;
-	height: auto;
-	padding: 0;
-	background: none;
-	border: none;
-	font-size: 0;
-	text-align: right;
-}
-#list-container .header-title .link.sort {
-	display: block;
-	padding: .5rem 1rem;
-	font-size: 3.3rem;
-	transition-duration: 0s;
-}
-#list-container .header-title .link:not(.sort) {
-	display: none;
-}
-#list-container .header-title .sort-icon {
-	color: var(--l);
-}
-
-/* header */
-
-.header {
-	z-index: 14;
-	width: 5rem;
-	height: auto;
-	margin: 0 4rem 0 0;
-}
-
-.ownlist .header .header-menu {
-	position: absolute;
-	top: -10rem;
-	right: auto;
-	left: 11rem;
-	display: flex;
-	width: 170rem;
-}
-.header .header-menu .btn-menu {
-	font-size: 0;
-}
-.header .header-menu .btn-menu .username,
-.header .header-menu .header-info,
-#header-menu-dropdown {
-	display: block;
-	height: 6rem;
-	background: var(--f2);
-	border: .5rem solid var(--b2);
-	padding: 0 4px;
-	margin: 0 4rem 0 0;
-	line-height: 5rem;
-	font-weight: normal;
-	text-transform: lowercase;
-}
-
-/* swap list button */
-
-#header-menu-dropdown {
-	position: static;
-}
-
-#header-menu-dropdown .icon-menu {
-	display: inline;
-	background: none;
-	font-size: 3.3rem;
-}
-#header-menu-dropdown .icon-menu::before {
-	content: "\f021";
-}
-
-#header-menu-dropdown svg,
-#header-menu-dropdown .text {
-	display: none;
-}
-
-/* username text */
-.username::before,
-.username::after {
-	content: "/home/";
-	font-size: 3.3rem;
-}
-.username[href*="/animelist/"]::after {
-	content: "/list";
-	font-size: 3.3rem;
-}
-.username[href*="/mangalist/"]::after {
-	content: "/list";
-	font-size: 3.3rem;
-}
-[data-owner=""] .username {
-	font-size: 3.3rem;
-}
-[data-owner=""] .username::after {
-	content: none;
-}
-.anime[data-owner="1"] .username::after {
-	content: "personal/animelist";
-}
-.manga[data-owner="1"] .username::after {
-	content: "personal/mangalist";
-}
-
-/* cover image */
+/*/Blackout/Surround/Cover$: /*/
 
 .cover-block {
 	position: sticky;
@@ -887,24 +878,13 @@ tbody:hover .list-table-header {
 	max-width: 50vh;
 	padding: .5rem;
 	margin-left: 4rem;
-	background: linear-gradient(135deg, var(--b1), var(--b2));
+	background: linear-gradient(135deg, var(--c-border-light), var(--c-border-dark));
 	--clip-1: 12rem;
 	--clip-2: 12rem;
-	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	clip-path: /* angledge-right */ polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
 	animation: .8s ease 3s backwards 1 banner-flicker,
 	           1.1s ease-out 3s backwards 1 slide;
 }
-
-/* #cover-image-container::before {
-	content: "";
-	position: absolute;
-	z-index: 1;
-	width: calc(100% - 5rem);
-	height: calc(100vh - 20rem);
-	background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/fb5482a9-1ec4-4f6a-a28a-84d267f89594/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ZiNTQ4MmE5LTFlYzQtNGY2YS1hMjhhLTg0ZDI2N2Y4OTU5NFwvZDNqbWJqcS05ZDUyZTg5Yy1lNmViLTQwYWItOTUxNy04NzU0YmE5YTNiY2MuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.mg-Gz7pjrmku41ylRehaOJTtegctwYnAARUBMXfjm4k) repeat;
-	clip-path: inherit;
-	opacity: 0.09;
-} */
 
 @keyframes slide {
 	from {
@@ -946,7 +926,54 @@ tbody:hover .list-table-header {
 	clip-path: inherit;
 }
 
-/* list */
+/*/Blackout/Surround/Loader$: /*/
+
+.list-unit .loading-space {
+	position: fixed;
+	z-index: 500;
+	bottom: 4rem;
+	left: 0;
+	width: 100%;
+	height: auto;
+	margin: 0;
+}
+
+#loading-spinner {
+	display: block;
+	width: 80%;
+	height: 5rem;
+	background: var(--c-border-dark);
+	padding: 1rem;
+	margin: 0 auto;
+}
+#loading-spinner::before {
+	font-size: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: var(--c-text);
+	animation: 1.3s ease-in-out infinite load;
+}
+@keyframes load {
+	0% {
+		transform: scaleX(0);
+		transform-origin: left center;
+	}
+	49.9999% {
+		transform: scaleX(1);
+		transform-origin: left center;
+	}
+	50% {
+		transform: scaleX(1);
+		transform-origin: right center;
+	}
+	100% {
+		transform: scaleX(0);
+		transform-origin: right center;
+	}
+}
+
+/*/Blackout/Items/Base$: /*/
 
 @keyframes flicker-on {
 	0%, 15% {
@@ -970,14 +997,6 @@ tbody:hover .list-table-header {
 	--delay: 2.8s;
 	animation: .4s ease var(--delay) backwards 1 flicker-on;
 }
-
-/*.list-table-data {
-	transition: transform 0.24s ease;
-	transform-origin: left center;
-}
-.list-item:hover .list-table-data {
-	transform: scale(1.1);
-}*/
 
 .list-item:nth-child(2) {
 	--delay: 0s;
@@ -1025,10 +1044,10 @@ tbody:hover .list-table-header {
 	right: 0;
 	bottom: 0;
 	z-index: -1;
-	background: linear-gradient(to top, var(--f2) 7rem, var(--f) 0);
+	background: linear-gradient(to top, var(--c-foreground-secondary) 7rem, var(--c-foreground) 0);
 	--clip-1: 2.5rem;
 	--clip-2: 3rem;
-	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	clip-path: /* angledge-right */ polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
 }
 
 .data {
@@ -1043,9 +1062,34 @@ tbody:hover .list-table-header {
 	text-align: left;
 }
 
-.data.number {
-	position: absolute;
+/* label template */
+
+.data::before {
+	content: var(--label);
+	display: block;
+	line-height: 1;
+	opacity: 0.5;
+	text-transform: uppercase;
 }
+
+/* forms */
+
+.data input,
+.data textarea,
+.data select {
+	background: var(--c-foreground);
+	border: .25rem solid var(--c-border-light);
+	border-radius: 1rem;
+	outline: none;
+	color: inherit;
+	font: inherit;
+	line-height: 1.1em;
+}
+.data select {
+	height: 7rem;
+}
+
+/*/Blackout/Items/Controls$: /*/
 
 .data.image {
 	position: absolute;
@@ -1056,7 +1100,7 @@ tbody:hover .list-table-header {
 	height: calc(100% - .5rem);
 	--clip-1: 2.5rem;
 	--clip-2: 4rem;
-	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	clip-path: /* angledge-right */ polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
 	pointer-events: none;
 	transition: opacity 0.12s ease-out;
 }
@@ -1071,10 +1115,10 @@ tbody:hover .list-table-header {
 	width: 16rem;
 	height: 100%;
 	padding: .25rem;
-	background: linear-gradient(170deg, var(--cat) 3rem, var(--b1) 3rem);
+	background: linear-gradient(170deg, var(--category-colour) 3rem, var(--c-border-light) 3rem);
 	--clip-1: 2.5rem;
 	--clip-2: 4rem;
-	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	clip-path: /* angledge-right */ polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
 	font-size: 0;
 }
 .add-edit-more::before {
@@ -1082,7 +1126,7 @@ tbody:hover .list-table-header {
 	display: block;
 	width: 100%;
 	height: 100%;
-	background: var(--b) var(--gl) center / auto repeat;
+	background: var(--c-background) var(--i-grain-detailed) center / auto repeat;
 	clip-path: inherit;
 }
 
@@ -1096,7 +1140,7 @@ tbody:hover .list-table-header {
 	position: absolute;
 	left: .75rem;
 	width: 14.5rem;
-	background: var(--f2);
+	background: var(--c-foreground-secondary);
 	margin-bottom: 2rem;
 	line-height: 5rem;
 	font-size: 3.3rem;
@@ -1105,7 +1149,7 @@ tbody:hover .list-table-header {
 	opacity: 1;
 	--clip-1: 1rem;
 	--clip-2: 1rem;
-	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	clip-path: /* angledge-right */ polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
 }
 .add-edit-more span:first-of-type a {
 	top: .75rem;
@@ -1146,6 +1190,66 @@ tbody:hover .list-table-header {
 	border: none;
 }
 
+/*/Blackout/Items/Category$: /*/
+
+.data.status {
+	position: absolute;
+	left: 10rem;
+	top: 0;
+	width: calc(100% - 13rem) !important;
+	height: .25rem;
+	background: var(--category-colour) !important;
+	pointer-events: none;
+	--category-text: "";
+}
+
+.data.status::after {
+	content: var(--category-text);
+	position: absolute;
+	top: 0;
+	right: -3rem;
+	display: block;
+	width: 15.5rem;
+	height: 4rem;
+	background: var(--category-colour);
+	color: var(--c-background);
+	font-size: 1.2em;
+	line-height: 4rem;
+	text-align: center;
+	opacity: 1;
+	clip-path: /* angledge-left */ polygon(0 0, calc(100% - var(--clip-1)) 0, 100% var(--clip-1), 100% 100%, var(--clip-2) 100%, 0 calc(100% - var(--clip-2)));
+	--clip-1: 0%;
+	--clip-2: 1.5rem;
+}
+
+.data.status[class$="ing"],
+.data.status[class$="ing"] ~ .data {
+	--category-text: "LIVE";
+	--category-colour: #2db039;
+}
+.data.status.completed,
+.data.status.completed ~ .data {
+	--category-text: "CMPL";
+	--category-colour: #26448f;
+}
+.data.status.onhold,
+.data.status.onhold ~ .data {
+	--category-text: "HOLD";
+	--category-colour: #f1c83e;
+}
+.data.status.dropped,
+.data.status.dropped ~ .data {
+	--category-text: "DROP";
+	--category-colour: #a12f31;
+}
+.data.status[class*="planto"],
+.data.status[class*="planto"] ~ .data {
+	--category-text: "PLAN";
+	--category-colour: #c3c3c3;
+}
+
+/*/Blackout/Items/Title$: /*/
+
 .data.title {
 	width: calc(100% - 2rem);
 	white-space: nowrap;
@@ -1158,105 +1262,37 @@ tbody:hover .list-table-header {
 	overflow: hidden;
 	padding: 2rem 0;
 	font-size: 4.2rem;
-	color: var(--l);
+	color: var(--c-text-link);
 	font-weight: normal;
 }
 
 .title [class^="re"],
 .content-status {
-	color: var(--t);
+	color: var(--c-text);
 	vertical-align: top;
 	margin-top: 2.25rem;
 	margin-left: 1rem;
 	opacity: 0.8;
 	padding: 0 1rem;
 	display: inline-block;
-	background: var(--f);
-	border: .25rem solid var(--b2);
+	background: var(--c-foreground);
+	border: .25rem solid var(--c-border-dark);
 	text-transform: uppercase;
 }
 
-.data.status {
-	position: absolute;
-	left: 10rem;
-	top: 0;
-	width: calc(100% - 13rem) !important;
-	height: .25rem;
-	background: var(--cat) !important;
-	pointer-events: none;
-	--catxt: "";
-	--clip: 1.5rem;
-}
-
-.data.status::after {
-	content: var(--catxt);
-	position: absolute;
-	top: 0;
-	right: -3rem;
-	display: block;
-	width: 15.5rem;
-	height: 4rem;
-	background: var(--cat);
-	color: var(--b);
-	font-size: 1.2em;
-	line-height: 4rem;
-	text-align: center;
-	opacity: 1;
-	clip-path: polygon(0 0, 100% 0, 100% 100%, var(--clip) 100%, 0 calc(100% - var(--clip)));
-}
-
-.data.status[class$="ing"],
-.data.status[class$="ing"] ~ .data {
-	--catxt: "LIVE";
-	--cat: #2db039;
-}
-.data.status.completed,
-.data.status.completed ~ .data {
-	--catxt: "CMPL";
-	--cat: #26448f;
-}
-.data.status.onhold,
-.data.status.onhold ~ .data {
-	--catxt: "HOLD";
-	--cat: #f1c83e;
-}
-.data.status.dropped,
-.data.status.dropped ~ .data {
-	--catxt: "DROP";
-	--cat: #a12f31;
-}
-.data.status[class*="planto"],
-.data.status[class*="planto"] ~ .data {
-	--catxt: "PLAN";
-	--cat: #c3c3c3;
-}
-
-.data input,
-.data textarea,
-.data select {
-	background: var(--f);
-	border: .25rem solid var(--b1);
-	border-radius: 1rem;
-	outline: none;
-	color: inherit;
-	font: inherit;
-	line-height: 1.1em;
-}
-.data select {
-	height: 7rem;
-}
+/*/Blackout/Items/Score$: /*/
 
 .data .score-label {
 	position: relative;
 	display: block;
 	width: 7rem;
 	height: 7rem;
-	background: var(--f2);
-	border: .5rem solid var(--c);
+	background: var(--c-foreground-secondary);
+	border: .5rem solid var(--score-colour);
 	line-height: 6rem;
 	text-align: center;
 	border-radius: 50%;
-	--c: var(--b1);
+	--score-colour: var(--c-border-light);
 }
 .data .score-na {
 	border-width: .25rem;
@@ -1266,29 +1302,31 @@ tbody:hover .list-table-header {
 .data .score-2,
 .data .score-3,
 .data .score-4 {
-	--c: #e37b7baa;
+	--score-colour: #e37b7baa;
 }
 .data .score-5,
 .data .score-6 {
-	--c: #e37bccaa;
+	--score-colour: #e37bccaa;
 }
 .data .score-7,
 .data .score-8 {
-	--c: #7b9ee3aa;
+	--score-colour: #7b9ee3aa;
 }
 .data .score-9,
 .data .score-10 {
-	--c: #cea139aa;
+	--score-colour: #cea139aa;
 	border-width: .75rem;
 	line-height: 5.5rem;
 }
+
+/*/Blackout/Items/Progress$: /*/
 
 .data.progress,
 .data.chapter,
 .data.volume {
 	padding: 0 3rem !important;
-	background: var(--f2);
-	border: .25rem solid var(--b1) !important;
+	background: var(--c-foreground-secondary);
+	border: .25rem solid var(--c-border-light) !important;
 	border-radius: 100rem;
 	line-height: 6.5rem;
 }
@@ -1303,52 +1341,20 @@ tbody:hover .list-table-header {
 	left: .75rem;
 }
 
-/* Number & Type */
+/*/Blackout/Items/Common$: /*/
 
-.data.number {
-	position: absolute;
-	right: 4rem;
-	bottom: 0rem;
-	margin: 0;
-	line-height: 7rem;
-}
-.data.number::before {
-	content: "#";
-	display: inline;
+.data:not(.score):not(.progress):not(.rated):not(.tags):not(.title):not(.type):not(.image):not(.started):not(.airing-started):not(.number) {
+	padding-right: 1.75rem;
+	border-right: .25rem solid var(--c-border-dark);
 }
 
-.data.type {
-	position: absolute;
-	right: 4rem;
-	bottom: 0rem;
-	margin: 0;
-	line-height: 7rem;
-	text-transform: uppercase;
-}
-.data.number ~ .type {
-	right: 12rem;
-}
-.data.type::before {
-	content: "entry//";
-	display: inline;
-}
-
-/* Labels */
-
-.data::before {
-	content: var(--lbl);
-	display: block;
-	line-height: 1;
-	opacity: 0.5;
-	text-transform: uppercase;
-}
 .data.started,
 .data.airing-started {
 	margin-right: 0;
 } .data.started {
-	--lbl: "User Dates";
+	--label: "User Dates";
 } .data.airing-started {
-	--lbl: "Air Dates";
+	--label: "Air Dates";
 }
 .data.started::after,
 .data.airing-started::after {
@@ -1361,57 +1367,42 @@ tbody:hover .list-table-header {
 	padding-top: 1em !important;;
 }
 
-.data:not(.score):not(.progress):not(.rated):not(.tags):not(.title):not(.type):not(.image):not(.started):not(.airing-started):not(.number) {
-	padding-right: 1.75rem;
-	border-right: .25rem solid var(--b2);
-}
-
 .data.days {
-	--lbl: "Days";
+	--label: "Days";
 }
 .data.season {
-	--lbl: "Premiered";
-}
-.data.rated {
-	position: absolute;
-	bottom: 8rem;
-	right: 2rem;
-	height: 5rem;
-	padding: 0 1rem !important;
-	border: .5rem solid var(--b1) !important;
-	font-size: 3rem;
-	font-weight: bold;
-	line-height: 3.3rem;
-	margin: 0;
+	--label: "Premiered";
 }
 .data.studio {
 	order: 25;
-	--lbl: "Studios";
+	--label: "Studios";
 }
 .data.licensor {
 	order: 25;
-	--lbl: "Licensors";
+	--label: "Licensors";
 }
 .data.magazine {
 	order: 25;
-	--lbl: "Magazine";
+	--label: "Magazine";
 }
 .data.storage,
 .data.retail {
-	--lbl: "Storage";
+	--label: "Storage";
 }
 .data.priority {
-	--lbl: "Priority";
+	--label: "Priority";
 }
 .data.genre {
 	order: 25;
-	--lbl: "Genres";
+	--label: "Genres";
 }
 .data.demographic,
 .data.genre ~ .genre {
 	order: 25;
-	--lbl: "Demographic";
+	--label: "Demographic";
 }
+
+/* empty columns */
 
 .data.storage,
 .data.retail,
@@ -1436,23 +1427,25 @@ tbody:hover .list-table-header {
 	opacity: .5;
 }
 
+/*/Blackout/Items/Bottom/Tags$: /*/
+
 .data.tags {
 	position: absolute;
 	bottom: 0;
 	left: 18rem;
-	width: calc(100% - 18rem - var(--m));
+	width: calc(100% - 18rem - var(--margin));
 	height: 7rem;
 	margin: 0;
-	--m: 0rem;
+	--margin: 0rem;
 }
 .number ~ .tags {
-	--m: 10rem;
+	--margin: 10rem;
 }
 .type ~ .tags {
-	--m: 20rem;
+	--margin: 20rem;
 }
 .number ~ .type ~ .tags {
-	--m: 30rem;
+	--margin: 30rem;
 }
 
 /* fix for button placement when there are very few columns active on the animelist where the watch button may conflict */
@@ -1498,8 +1491,7 @@ tbody:hover .list-table-header {
 	display: block;
 	width: .25rem;
 	height: 5rem;
-	background: var(--t);
-/* 	transform: skew(-15deg, -45deg); */
+	background: var(--c-text);
 	transform: rotate(15deg);
 	margin-right: 1.25rem;
 	opacity: .5;
@@ -1512,63 +1504,60 @@ tbody:hover .list-table-header {
 	resize: none;
 }
 
+/*/Blackout/Items/Bottom/Number$: /*/
+
+.data.number {
+	position: absolute;
+	right: 4rem;
+	bottom: 0rem;
+	margin: 0;
+	line-height: 7rem;
+}
+.data.number::before {
+	content: "#";
+	display: inline;
+}
+
+/*/Blackout/Items/Bottom/Type$: /*/
+
+.data.type {
+	position: absolute;
+	right: 4rem;
+	bottom: 0rem;
+	margin: 0;
+	line-height: 7rem;
+	text-transform: uppercase;
+}
+.data.number ~ .type {
+	right: 12rem;
+}
+.data.type::before {
+	content: "entry//";
+	display: inline;
+}
+
+/*/Blackout/Items/Bottom/Rated$: /*/
+
+.data.rated {
+	position: absolute;
+	bottom: 8rem;
+	right: 2rem;
+	height: 5rem;
+	padding: 0 1rem !important;
+	border: .5rem solid var(--c-border-light) !important;
+	font-size: 3rem;
+	font-weight: bold;
+	line-height: 3.3rem;
+	margin: 0;
+}
+
+/*/Blackout/Items/More$: /*/
+
 .more-info {
 	border: none !important;
 }
 
-.list-unit .loading-space {
-	position: fixed;
-	z-index: 500;
-	bottom: 4rem;
-	left: 0;
-	width: 100%;
-	height: auto;
-	margin: 0;
-}
-
-#loading-spinner {
-	display: block;
-	width: 80%;
-	height: 5rem;
-	background: var(--b2);
-	padding: 1rem;
-	margin: 0 auto;
-}
-#loading-spinner::before {
-	font-size: 0;
-	display: block;
-	width: 100%;
-	height: 100%;
-	background: var(--t);
-	animation: 1.3s ease-in-out infinite load;
-}
-@keyframes load {
-	0% {
-		transform: scaleX(0);
-		transform-origin: left center;
-	}
-	49.9999% {
-		transform: scaleX(1);
-		transform-origin: left center;
-	}
-	50% {
-		transform: scaleX(1);
-		transform-origin: right center;
-	}
-	100% {
-		transform: scaleX(0);
-		transform-origin: right center;
-	}
-}
-/* #loading-spinner::after {
-	content: "LOADING";
-	display: block;
-	margin-top: -3rem;
-	color: var(--b);
-	line-height: 3rem;
-} */
-
-/* Footer */
+/*/Blackout/Items/Footer$: /*/
 
 footer {
 	width: 0;
@@ -1581,12 +1570,12 @@ footer {
 	top: -6rem;
 	width: 170rem !important;
 	padding: 3.5rem;
-	background: var(--f);
+	background: var(--c-foreground);
 	--clip-1: 2.5rem;
 	--clip-2: 3rem;
-	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	clip-path: /* angledge-right */ polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
 	line-height: 3.5rem;
-	color: var(--t);
+	color: var(--c-text);
 }
 #copyright::before {
 	content: "List design by Valerio Lyndon.\a ";
@@ -1598,7 +1587,7 @@ footer {
 	font-size: 2.5rem;
 }
 
-/* Overlays */
+/*/Blackout/Overlays/Base$: /*/
 
 #fancybox-overlay {
 	background: #000000ef !important;
@@ -1610,36 +1599,36 @@ footer {
 }
 
 body #fancybox-outer {
-	background: var(--b) var(--g) repeat;
+	background: var(--c-background) var(--i-grain) repeat;
 }
 
 #fancybox-inner iframe {
 	filter: invert(1) grayscale(1);
 }
 
-/* Filter */
+/*/Blackout/Overlays/Filters$: /*/
 
 #advanced-options input,
 #advanced-options textarea,
 #advanced-options select {
-	background-color: var(--f2) !important;
-	border: .25rem solid var(--b2) !important;
+	background-color: var(--c-foreground-secondary) !important;
+	border: .25rem solid var(--c-border-dark) !important;
 }
 #advanced-options {
-	background-color: var(--f);
-	border: .25rem solid var(--b2);
+	background-color: var(--c-foreground);
+	border: .25rem solid var(--c-border-dark);
 }
 #advanced-options .sort-widget input[type=radio] + label,
 #advanced-options .sort-widget input[type=radio]:disabled + label, 
 #advanced-options .sort-widget input[type=radio]:checked:disabled + label {
-    background-color: var(--f2) !important;
-    border: .25rem solid var(--b2);
+    background-color: var(--c-foreground-secondary) !important;
+    border: .25rem solid var(--c-border-dark);
     border-radius: 4px;
-    color: var(--t);
+    color: var(--c-text);
 }
 #advanced-options .sort-widget input[type=radio]:checked + label {
-    border: .25rem solid var(--b1);
-    color: var(--l);
+    border: .25rem solid var(--c-border-light);
+    color: var(--c-text-link);
 }
 #advanced-options .sort-widget input[type=radio]:disabled + label,
 #advanced-options .sort-widget input[type=radio]:checked:disabled + label,
@@ -1649,20 +1638,20 @@ body #fancybox-outer {
 
 #advanced-options .advanced-options-header,
 #advanced-options .advanced-options-button {
-	border-color: var(--b2);
+	border-color: var(--c-border-dark);
 }
 
 #advanced-options .advanced-options-button a {
-	background: var(--f2);
-	border: .25rem solid var(--b2);
+	background: var(--c-foreground-secondary);
+	border: .25rem solid var(--c-border-dark);
 	transition: all .18s ease;
 }
 #advanced-options .advanced-options-button a:hover {
-	background: var(--f2);
-	border-color: var(--b1);
+	background: var(--c-foreground-secondary);
+	border-color: var(--c-border-light);
 }
 
-/* Where to watch */
+/*/Blackout/Overlays/Streaming$: /*/
 
 .mal-modal-backdrop {
 	background: #000000ef !important;
@@ -1673,25 +1662,25 @@ body #fancybox-outer {
 
 .mal-modal-dialog {
 	padding: .25rem;
-	background: linear-gradient(135deg, var(--b1), var(--b2));
+	background: linear-gradient(135deg, var(--c-border-light), var(--c-border-dark));
 	--clip-1: 2.5rem;
 	--clip-2: 3rem;
-	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+	clip-path: /* angledge-right */ polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
 }
 
 .mal-modal-content {
 	padding: 2rem;
-	background: var(--f3) var(--gt) repeat !important;
+	background: var(--c-foreground-menu) var(--i-grain-transparent) repeat !important;
 	clip-path: inherit;
 }
 
 .mal-modal-content * {
-	border-color: var(--b2) !important;
+	border-color: var(--c-border-dark) !important;
 }
 
 .broadcast a:hover {
-	background: var(--f1) !important;
-	outline: 1px solid var(--b1) !important;
+	background: var(--c-foreground) !important;
+	outline: 1px solid var(--c-border-light) !important;
 }
 
 .mal-modal-content .btn-close {
