@@ -1018,6 +1018,26 @@ tbody:nth-of-type(2) .data.tags::before {
 	color: hsl(var(--link-h)) !important;
 }
 
+/* Forms */
+
+.data textarea,
+.data select {
+	background: hsl(var(--button));
+	border: 1px solid hsl(var(--accent));
+	border-radius: 3px;
+	color: hsl(var(--text));
+	outline: 0;
+	resize: vertical;
+}
+
+.data.score select {
+	position: relative;
+	z-index: 1;
+	width: calc(2ch + 30px);
+	height: 3ch;
+	margin-left: -15px;
+}
+
 /* List Items */
 
 body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
@@ -1094,6 +1114,14 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 
 [class^="icon-watch"] {
 	display: none !important;
+}
+
+/* Notes */
+
+.notes {
+	width: 100% !important;
+	font-size: 11px;
+	
 }
 
 /* Add-edit-more */
@@ -1195,18 +1223,6 @@ tbody:nth-of-type(n+101) .data.number::first-letter {
 	margin-left: 50%;
 	line-height: 3ch;
 	transform: translateX(-50%);
-}
-
-.data.score select {
-	position: relative;
-	z-index: 1;
-	width: calc(2ch + 30px);
-	height: 3ch;
-	background: hsl(var(--button));
-	border: 1px solid hsl(var(--accent));
-	border-radius: 3px;
-	margin-left: -15px;
-	color: hsl(var(--text));
 }
 
 .data.score .link:not([style*="none"]) ~ select {
