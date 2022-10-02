@@ -27,6 +27,7 @@ div[style="padding-top: 8px"] {
 	--page: 0, 80%, 6%;
 	--content: 0, 10%, 12%;
 	--button: 0, 50%, 7%;
+	--border: 0, 40%, 30%;
 	--accent: 0, 60%, 50%;
 	
 	--text: 0, 40%, 80%;
@@ -577,6 +578,15 @@ body::before {
 
 /* RIGHT SIDEBAR */
 
+:root {
+	--search-h: 30px;
+	--search-h-pad: calc(var(--search-h) + 10px);
+	--filter-h: calc(43px + 26px*6 + 10px);
+	--filter-h-pad: calc(var(--filter-h) + 10px);
+	--advanced-h: 30px;
+	--advanced-h-pad: calc(var(--advanced-h) + 10px);
+}
+
 #status-menu,
 .list-unit .list-status-title .stats,
 .list-table > tbody:first-of-type {
@@ -590,11 +600,11 @@ body::before {
 } #status-menu.fixed {
 	position: absolute;
 } .list-unit .list-status-title .stats {
-	top: calc(376px + 252px);
-	height: calc(100% - 376px - 252px);
+	top: calc(376px + var(--search-h-pad) + var(--filter-h-pad));
+	height: calc(100% - 376px - var(--search-h-pad) - var(--filter-h-pad));
 } .list-table > tbody:first-of-type {
-	top: calc(376px + 292px);
-	height: calc(100% - 376px - 292px);
+	top: calc(376px + var(--search-h-pad) + var(--filter-h-pad) + var(--advanced-h-pad));
+	height: calc(100% - 376px - var(--search-h-pad) - var(--filter-h-pad) - var(--advanced-h-pad));
 }
 
 #status-menu .status-menu,
@@ -608,13 +618,13 @@ body::before {
 	background: hsla(var(--content), 80%);
 	flex-flow: column nowrap;
 } #status-menu .status-menu {
-	top: 50px;
-	height: 202px;
-	margin-top: 40px;
+	top: calc(10px + var(--search-h-pad));
+	height: var(--filter-h);
+	margin-top: var(--search-h-pad);
 } .stats #advanced-options-button {
 	z-index: 3;
-	top: 262px;
-	height: 30px;
+	top: calc(10px + var(--search-h-pad) + var(--filter-h-pad));
+	height: var(--advanced-h);
 	padding: 0 10px;
 	margin: 0;
 	flex-flow: row nowrap;
@@ -627,7 +637,7 @@ body::before {
 } .stats #advanced-options-button:hover {
 	color: hsl(var(--link-h));
 } .list-table-header {
-	top: 302px;
+	top: calc(10px + var(--search-h-pad) + var(--filter-h-pad) + var(--advanced-h-pad));
 	z-index: 4;
 	padding: 5px 10px 10px;
 }
@@ -641,61 +651,82 @@ body::before {
 #status-menu .search-container {
 	top: -40px;
 	right: 0;
-	display: flex;
+	z-index: 0;
 	width: 100%;
 	height: 30px;
-	background: hsla(var(--content), 80%);
-	border-radius: 4px;
-	flex-flow: row-reverse nowrap;
-	transition: background-color var(--transition-button)
-} #status-menu .search-container:focus-within {
+}
+
+#status-menu #search-box,
+#status-menu #search-button {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
 	background: hsl(var(--content));
+	border-radius: 4px;
+	margin: 0;
+}
+#status-menu #search-box:not(.open):not(:focus-within):not(:active) {
+	transform: scaleX(0);
+}
+#status-menu #search-button {
+	z-index: -1;
+	padding: 0 10px;
+	background: hsla(var(--content), 80%);
+	color: hsl(var(--text));
+	font: bold 1.2rem/30px var(--fontset);
+	transition: color var(--transition-text);
+}
+#status-menu #search-button:hover {
+	color: hsl(var(--link));
 }
 
 #status-menu #search-box {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	margin-left: -30px;
+	display: flex;
+}
+#status-menu #search-box::before {
+	content: "\f002";
+	width: 20px;
+	padding-left: 10px;
+	font: bold 1.2rem/30px var(--fontset);
+}
+
+#status-menu #search-button::after {
+	content: "\f002  Search Titles";
+	font: inherit;
+}
+
+#status-menu #search-button i {
+	display: none;
 }
 
 #status-menu #search-box input {
 	height: 100%;
-	padding: 0 10px 0 35px;
+	padding: 0 10px;
 	color: hsl(var(--text));
 	background: none;
 	border: none;
-}
-
-#status-menu #search-button {
-	display: block;
-	width: 20px;
-	height: 100%;
-	margin: 0;
-	color: hsl(var(--icon));
-	pointer-events: none;
-}
-
-#status-menu #search-button i {
-	line-height: 26px;
+	outline: 0;
 }
 
 /* Headings */
 
 .status-menu::before,
 .list-table-header::before {
+	width: 100%;
+	height: 38px;
+	padding: 5px 10px;
 	font-size: 1.2rem;
+	margin-bottom: 5px;
 	line-height: 26px;
 	font-weight: bold;
+	border-bottom: 2px solid hsl(var(--border));
 } .status-menu::before {
 	content: 'Filter by...';
-	height: 36px;
-	padding: 5px 10px;
 } .list-table-header::before {
 	content: 'Sort by...';
-	height: 26px;
-	margin-bottom: 5px;
+	width: calc(100% + 20px);
+	margin: -5px -10px 5px;
 }
 
 /* Buttons */
@@ -737,7 +768,7 @@ body::before {
 }
 
 .list-table-header .header-title .link.sort::before {
-	content: "• ";
+	content: "🢒 ";
 }
 .list-table .list-table-header .header-title .sort-icon {
 	color: hsl(var(--link));
@@ -752,17 +783,17 @@ body::before {
 	color: hsl(var(--link));
 	transition: inherit;
 } #status-menu .status-button:nth-child(1)::before {
-	content: '• All';
+	content: '🢒 All';
 } #status-menu .status-button:nth-child(2)::before {
-	content: '• Current';
+	content: '🢒 Current';
 } #status-menu .status-button:nth-child(3)::before {
-	content: '• Completed';
+	content: '🢒 Completed';
 } #status-menu .status-button:nth-child(4)::before {
-	content: '• Paused';
+	content: '🢒 Paused';
 } #status-menu .status-button:nth-child(5)::before {
-	content: '• Dropped';
+	content: '🢒 Dropped';
 } #status-menu .status-button:nth-child(6)::before {
-	content: '• Planned';
+	content: '🢒 Planned';
 } #status-menu .status-button:hover::before {
 	color: hsl(var(--link-h));
 } #status-menu .status-button.on::before {
@@ -900,7 +931,7 @@ tbody:nth-of-type(2) .data.tags::before {
 
 .stats #show-stats-button {
 	position: absolute;
-	top: calc(-252px + 2px);
+	top: calc(2px - var(--search-h-pad) - var(--filter-h-pad));
 	right: 265px;
 	z-index: 10;
 	width: 26px;
