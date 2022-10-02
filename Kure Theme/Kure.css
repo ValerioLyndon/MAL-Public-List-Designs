@@ -1362,7 +1362,8 @@ footer {
 	text-shadow: 0 1px 2px hsl(var(--content));
 }
 
-#copyright {
+#copyright,
+#recaptcha-terms {
 	padding: 0;
 	color: hsl(var(--text));
 	font: 1rem/20px var(--fontset);
