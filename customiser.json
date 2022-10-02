@@ -63,6 +63,15 @@
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Agile%20Theme/agile.json",
 			"tags": {"layout": ["table"], "source": ["Youjo Senki", "Saga of Tanya the Evil"], "other": ["lightweight", "based on anime"]},
 			"date": "2021-12-21"
+		},
+		"kure": {
+			"name": "Kure",
+			"author": "Valerio Lyndon",
+			"image": "https://i.imgur.com/i6i5LeM.jpg",
+			"type": "modern",
+			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Kure%20Theme/kure.json",
+			"tags": {"layout": ["table"], "source": ["Beyond the Boundary", "Kyoukai no Kanata"], "other": ["based on anime"]},
+			"date": "2019-10-05"
 		}
 	}
 }

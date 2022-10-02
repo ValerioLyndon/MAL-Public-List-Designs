@@ -1,0 +1,74 @@
+{
+	"json_version": 0.3,
+	"data": {
+		"name": "Kure",
+		"author": "Valerio Lyndon",
+		"help": "https://myanimelist.net/forum/?topicid=393503&show=300#msg58782469",
+		"sponsor": "https://ko-fi.com/valeriolyndon",
+		"css": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Kure%20Theme/Kure.css",
+		"type": "modern",
+		"columns": {
+			"mode": "greylist",
+			"animelist": {
+				"Score": true,
+				"Episodes": true,
+				"Image": true
+			},
+			"mangalist": {
+				"Score": true,
+				"Chapters": true,
+				"Image": true
+			}
+		},
+		"preview": {
+			"columns": {
+				"animelist": {
+					"Score": true,
+					"Episodes": true,
+					"Image": true
+				},
+				"mangalist": {
+					"Score": true,
+					"Chapters": true,
+					"Image": true
+				}
+			},
+			"cover": false
+		},
+		"options": {
+			"banner": {
+				"name": "Banner Image",
+				"type": "text/image_url",
+				"replacements": [["--banner: url(https://i.imgur.com/lnTv8jR.jpg);", "--banner: {{{insert}}};"]],
+				"default": "https://i.imgur.com/lnTv8jR.jpg"
+			},
+			"background": {
+				"name": "Background Image",
+				"type": "text/image_url",
+				"replacements": [["--background: url(https://i.imgur.com/K9x805M.jpg);", "--background: {{{insert}}};"]],
+				"default": "https://i.imgur.com/K9x805M.jpg"
+			},
+			"tint-base": {
+				"name": "Tint Base",
+				"description": "This will tint all your images a certain colour. Accepts HSLA values without their surrounding parentheses. To remove entirely, set the fourth value to \"0\".",
+				"type": "value",
+				"replacements": [["--tint: 21, 100%, 50%;", "--tint: {{{insert}}};"]],
+				"default": "21, 100%, 50%"
+			},
+			"tint-gradient-1": {
+				"name": "Tint Gradient 1",
+				"description": "A secondary part of the tint, this applies more character. Accepts HSLA values without their surrounding parentheses. To remove entirely, set the fourth value to \"0\".",
+				"type": "value",
+				"replacements": [["--tint-gradient-1: 0, 0%, 0%;", "--tint-gradient-1: {{{insert}}};"]],
+				"default": "0, 0%, 0%"
+			},
+			"tint-gradient-2": {
+				"name": "Tint Gradient 2",
+				"description": "A secondary part of the tint, this applies more character. Accepts HSLA values without their surrounding parentheses. To remove entirely, set the fourth value to \"0\".",
+				"type": "value",
+				"replacements": [["--tint-gradient-2: 0, 0%, 100%;", "--tint-gradient-2: {{{insert}}};"]],
+				"default": "0, 0%, 100%"
+			}
+		}
+	}
+}
