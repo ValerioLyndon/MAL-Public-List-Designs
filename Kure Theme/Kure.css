@@ -1,20 +1,11 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\
 | Kure                           |
 | by Valerio Lyndon              |
-| Version 0.6.0-pre              |
+| Version 1.0.0                  |
 \*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /* IMPORTS */
 @\import "https://fonts.googleapis.com/css?family=Muli:400,700|Playball";
-
-/* REMOVALS */
-
-/* Tutorial & MAL shutdown messages */
-.initialize-tutorial,
-/* Ad area found on theme 10 */
-div[style="padding-top: 8px"] {
-	display: none !important;
-}
 
 /* VARIABLES */
 
@@ -47,6 +38,15 @@ div[style="padding-top: 8px"] {
 	--transition-button: 0.11s ease-out;
 	--fontset: 'Muli', 'FontAwesome', sans-serif;
 	--fontset-heading: 'Playball', 'FontAwesome', cursive;
+}
+
+/* REMOVALS */
+
+/* Tutorial & MAL shutdown messages */
+.initialize-tutorial,
+/* Ad area found on theme 10 */
+div[style="padding-top: 8px"] {
+	display: none !important;
 }
 
 /* SCROLLBARS */
