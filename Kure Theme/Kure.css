@@ -1,7 +1,7 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\
 | Kure                           |
 | by Valerio Lyndon              |
-| Version 1.0.0                  |
+| Version 1.0.1                  |
 \*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /* IMPORTS */
@@ -1235,7 +1235,7 @@ tbody:nth-of-type(n+101) .data.number::first-letter {
 .list-table .list-table-data .data.progress,
 .list-table .list-table-data .data.chapter,
 .list-table .list-table-data .data.volume {
-	width: 90px;
+	min-width: 90px;
 	order: 15;
 	flex: 1 0 auto;
 	text-align: right;
