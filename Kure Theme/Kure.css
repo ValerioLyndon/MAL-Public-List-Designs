@@ -924,7 +924,7 @@ tbody:nth-of-type(2) .data.priority::before {
 }
 tbody:nth-of-type(2) .data.tags::before {
 	content: "Tags";
-	width: 129px;
+	width: 100px;
 }
 
 /* Stats */
@@ -1121,7 +1121,7 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 } .list-table .list-table-data .tags .edit {
 	position: absolute;
 	top: calc(50% - 13px);
-	right: -7px;
+	right: 73px;
 	font-size: 0;
 	color: hsl(var(--link)) !important;
 } .list-table .list-table-data .data.title .add-edit-more a:hover,
@@ -1151,9 +1151,9 @@ body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
 /* Tags */
 
 .list-table .list-table-data .data.tags {
-	position: relative;
 	width: 100px;
 	order: 90;
+	font-size: 11px;
 } [data-owner='1'] .list-table .list-table-data .data.tags {
 	width: 129px;
 	padding-right: 29px;
