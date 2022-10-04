@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.8.1-next
+ * Version 1.8.2-next
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -2257,6 +2257,7 @@ body #fancybox-close {
 }
 
 .mal-modal-content {
+	color: hsl(var(--text)) !important;
 	background: hsl(var(--bg)) !important;
 	border: none !important;
 	border-radius: 0 !important;
