@@ -150,9 +150,9 @@
 	--dropped: 6, 44%, 46%;
 	--planned: 56, 18%, 56%;
 	
-	--goldRating: 31, 100%, 70%;
+	--goldRating: 32.5, 100%, 71%;
 	--silverRating: 0, 0%, 80%;
-	--bronzeRating: 23, 40%, 48%;
+	--bronzeRating: 25, 55%, 59%;
 }
 
 
@@ -357,7 +357,7 @@ body {
 	
 	min-width: 700px;
 	min-height: 100%;
-	padding: 42px 0 60px !important;
+	padding: 42px 0 0 !important;
 	
 	background-color: hsl(var(--bg)) !important;
 	background-size: cover;
@@ -366,39 +366,31 @@ body {
 	
 	color: hsla(var(--text), 88%) !important;
 	font: 12px var(--font);
-}
-
-body::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	
-	width: 100%;
-	height: 100%;
-	background: hsla(var(--bg), var(--bgDimness));
+	/*! background-image: url(https://i.imgur.com/NYSw623.jpg); */
 }
 
 #list-container {
 	width: 100%;
-	background: none !important;
+	background: inherit !important;
 	border: none;
 }
 
 .list-block {
 	position: relative;
+	z-index: 2;
 	width: 100%;
-	/* 42px + 30vw + 62px + 60px */
-	min-height: calc(100vh - (164px + 30vw));
-	padding-top: 0;
-	margin: 0 auto;
+	background: inherit;
+	min-height: calc(100vh - (42px + 30vw));
+	padding-top: 62px;
+	padding-bottom: 60px;
+	margin: 0 auto !important;
 }
 
 /* Adjusts list to size correctly with banner. See BANNER for its sizing rules. */
 
 @media (min-width: 1920px) {
 	.list-block {
-		min-height: calc(100vh - (164px + (1920px * 0.3)));
+		min-height: calc(100vh - (42px + (1920px * 0.3)));
 	}
 }
 
@@ -412,6 +404,18 @@ body::before {
 	border: none;
 	flex-flow: row wrap;
 	justify-content: center;
+}
+
+/* Image dimming */
+.list-block::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	width: 100%;
+	height: 100%;
+	background: hsla(var(--bg), var(--bgDimness));
 }
 
 /* Remove Tutorial/Notices */
@@ -429,7 +433,7 @@ body::before {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 100;
+	z-index: 1;
 	
 	width: 100%;
 	height: 42px;
@@ -759,7 +763,9 @@ body::before {
 #cover-image-container {
 	display: block;
 	width: 100%;
-	height: 100%;
+	height: 30vw;
+	min-height: calc(700px * 0.3);
+	max-height: calc(1920px * 0.3);
 	padding: 0;
 }
 
@@ -768,11 +774,11 @@ body::before {
 }
 
 #cover-image {
-	width: 100%;
+	position: fixed;
+	left: 0;
+	width: inherit;
 	max-width: initial;
-	height: 30vw;
-	min-height: calc(700px * 0.3);
-	max-height: calc(1920px * 0.3);
+	height: inherit;
 	object-fit: cover;
 }
 
@@ -798,36 +804,24 @@ body::before {
 
 /* Top Bar */
 
-.list-block::before, #status-menu::before {
+#status-menu::before {
 	content: "";
 	position: absolute;
-	top: -62px;
+	top: 0;
 	left: 0;
 	
 	width: 100%;
 	height: 2px;
 	background: linear-gradient(to right, hsla(var(--accent), 1), hsla(var(--accent), 0.55)) hsl(var(--bg));
-} #status-menu::before {
-	position: fixed;
-	top: 42px;
-	height: 0;
-	transition: inherit;
-} #status-menu.fixed::before {
-	height: 2px;
-} [data-query*='status":1'] .list-block::before,
-[data-query*='status":1'] #status-menu::before {
+} [data-query*='status":1'] #status-menu::before {
 	--accent: var(--current);
-} [data-query*='status":2'] .list-block::before,
-[data-query*='status":2'] #status-menu::before {
+} [data-query*='status":2'] #status-menu::before {
 	--accent: var(--completed);
-} [data-query*='status":3'] .list-block::before,
-[data-query*='status":3'] #status-menu::before {
+} [data-query*='status":3'] #status-menu::before {
 	--accent: var(--paused);
-} [data-query*='status":4'] .list-block::before,
-[data-query*='status":4'] #status-menu::before {
+} [data-query*='status":4'] #status-menu::before {
 	--accent: var(--dropped);
-} [data-query*='status":6'] .list-block::before,
-[data-query*='status":6'] #status-menu::before {
+} [data-query*='status":6'] #status-menu::before {
 	--accent: var(--planned);
 }
 
@@ -835,26 +829,22 @@ body::before {
 /* Base */
 
 #status-menu {
-	position: relative;
+	position: sticky;
+	z-index: 150;
+	top: 0;
 	
 	width: 100%;
-	height: 42px;
+	height: 62px;
+	padding-top: 17px;
 	background: none;
 	border: none;
-	margin: 17px 0 3px;
+	margin: 0px 0 -62px;
 	
 	pointer-events: none;
+	transition: padding var(--timeMenu) var(--bezierFast);
 } #status-menu.fixed {
-	position: fixed;
-	
-	z-index: 150;
-	width: calc(100% - 86px);
-	padding-right: calc(189px + 0.07 * (var(--listW) - 980px));
-	background: hsl(var(--bgAlt));
-	margin: 0 0 0 86px;
-	
-	animation: var(--timeMenu) var(--bezierFast) fade-in;
-	pointer-events: auto;
+	padding: 5px 0;
+	background: linear-gradient(to bottom, hsl(var(--bg)), transparent);
 }
 
 #status-menu .status-menu {
@@ -916,6 +906,16 @@ body::before {
 	content: none;
 }
 
+.search-container,
+.list-status-title,
+tbody:first-of-type {
+	transition: opacity var(--timeMenu) var(--bezierFast);
+}
+#status-menu.fixed .search-container,
+.fixed ~ .list-block .list-status-title,
+.fixed ~ .list-block tbody:first-of-type {
+	opacity: 0;
+}
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Search
@@ -923,11 +923,11 @@ body::before {
 
 #status-menu .search-container {
 	position: absolute;
-	top: 5px;
+	top: 22px;
 	right: calc(20px + (50% - var(--listW) * 0.5));
 	width: calc(169px + 0.07 * (var(--listW) - 980px));
 } #status-menu.fixed .search-container {
-	right: 12px;
+	top: -32px;
 	width: calc(177px + 0.07 * (var(--listW) - 980px));
 }
 
@@ -977,7 +977,7 @@ body::before {
 
 .list-unit .list-status-title {
 	position: absolute;
-	top: -40px;
+	top: 22px;
 	left: calc(20px + (50% - var(--listW) * 0.5));
 	z-index: 30;
 	
@@ -1012,7 +1012,7 @@ body::before {
 
 .list-table > tbody:first-of-type {
 	position: absolute;
-	top: -40px;
+	top: 22px;
 	left: calc(109px + (0.035 * (var(--listW) - 980px)) + (50% - var(--listW) * 0.5));
 	z-index: 35;
 	
@@ -1392,30 +1392,7 @@ body::before {
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
 .data.status {
-	position: absolute;
-	left: 0;
-	top: 0;
-	z-index: 15 !important;
-	
-	width: 100% !important;
-	height: 100%;
-	background: none !important;
-	border-bottom-width: 4px !important;
-	border-radius: 6px;
-	
-	pointer-events: none;
-} .data.status.watching,
-.data.status.reading {
-	border-color: hsl(var(--current));
-} .data.status.completed {
-	border-color: hsl(var(--completed));
-} .data.status.onhold {
-	border-color: hsl(var(--paused));
-} .data.status.dropped {
-	border-color: hsl(var(--dropped));
-} .data.status.plantowatch,
-.data.status.plantoread {
-	border-color: hsl(var(--planned));
+	display: none;
 }
 
 
@@ -1640,6 +1617,17 @@ div[class^="icon-watch"] {
 
 /* Top Rated Banners for highly rated items. */
 
+.data .score-8 {
+	--rated: var(--bronzeRating);
+	--toggle: var(--toggleTopRatingBronze);
+} .data .score-9 {
+	--rated: var(--silverRating);
+	--toggle: var(--toggleTopRatingSilver);
+} .data .score-10 {
+	--rated: var(--goldRating);
+	--toggle: var(--toggleTopRatingGold);
+}
+
 .data .score-8::before,
 .data .score-9::before,
 .data .score-10::before {
@@ -1651,19 +1639,14 @@ div[class^="icon-watch"] {
 	
 	width: 210px;
 	height: 6px;
-	border-top: 2px solid hsl(var(--text));
+	border-top: 2px solid hsla(var(--rated), 0.8);
 	border-radius: 6px 6px 0 0;
 	
 	pointer-events: none;
-} .data .score-10::before {
-	border-color: hsl(var(--goldRating));
-	visibility: var(--toggleTopRatingGold);
-} .data .score-9::before {
-	border-color: hsl(var(--silverRating));
-	visibility: var(--toggleTopRatingSilver);
-} .data .score-8::before {
-	border-color: hsl(var(--bronzeRating));
-	visibility: var(--toggleTopRatingBronze);
+	box-shadow:
+		0 -4px 3px -3px hsl(var(--rated)),
+		inset 0 6px 3px -6px hsl(var(--rated));
+	visibility: var(--toggle);
 }
 
 .data .score-8::after,
@@ -1679,7 +1662,12 @@ div[class^="icon-watch"] {
 	height: 16px;
 	padding: 0 10px;
 	border-radius: 3px;
-	background: hsl(var(--text));
+	background: hsla(var(--rated), 0.9);
+	box-shadow:
+		-4px 1px 5px -4px hsla(var(--rated), 0.9),
+		4px 1px 5px -4px hsla(var(--rated), 0.9),
+		0 3px 5px -3px hsla(var(--rated), 0.3),
+		0 5px 15px -6px hsl(var(--rated));
 	
 	color: hsl(var(--bg));
 	font: bold 13px/13px var(--font);
@@ -1689,15 +1677,7 @@ div[class^="icon-watch"] {
 	
 	transform: translateX(-50%);
 	pointer-events: none;
-} .data .score-10::after {
-	background: hsl(var(--goldRating));
-	visibility: var(--toggleTopRatingGold);
-} .data .score-9::after {
-	background: hsl(var(--silverRating));
-	visibility: var(--toggleTopRatingSilver);
-} .data .score-8::after {
-	background: hsl(var(--bronzeRating));
-	visibility: var(--toggleTopRatingBronze);
+	visibility: var(--toggle);
 }
 
 /* Prevent "change score box" layout flicker (a bug that is present on default list CSS) */
@@ -2580,6 +2560,7 @@ div[style^="width: 300px;"] input {
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	z-index: 3;
 	
 	width: 100% !important;
 	height: 60px;
@@ -2607,7 +2588,7 @@ div[style^="width: 300px;"] input {
 
 .list-unit .list-stats {
 	position: absolute;
-	bottom: -14px;
+	bottom: 40px;
 	left: 0;
 	
 	display: block !important;
@@ -2633,61 +2614,30 @@ div[style^="width: 300px;"] input {
  */
 @media (max-width: 926px) {
 	.list-block {
-		min-height: calc(100vh - (164px + (700px * 0.3)));
-		padding-top: 44px;
-	}
-	
-	#status-menu {
-		height: 0;
-		margin-top: 50px;
-	} #status-menu:not(.fixed) {
-		padding: 0;
+		min-height: calc(100vh - (42px + (700px * 0.3)));
+		padding-top: 106px;
 	}
 	
 	#status-menu:not(.fixed) .status-menu {
-		position: relative;
-		top: -42px;
 		width: 560px;
 	}
 	
 	#status-menu:not(.fixed) .search-container {
-		top: 49px;
+		top: 62px;
 		left: calc(50% - 32px);
 		width: 250px;
 	}
 	
-	#status-menu .status-button {
-		padding: 0 6px;
-	}
-	
-	#status-menu.fixed .status-button {
-		pointer-events: none;
-		opacity: 0;
-	}
-	
-	#status-menu.fixed .search-container {
-		width: calc(100% - 29px);
-	}
-	
-	.status-menu-container.fixed + div.list-block {
-		margin-top: 53px;
-	}
-	
-	.list-block::before {
-		top: -53px;
-	}
-	
 	.list-unit .list-status-title {
-		top: 4px;
+		top: 62px;
 		left: calc(50% - 218px);
 	}
-	
 	.list-unit .list-status-title .stats a {
 		width: 84px;
 	}
 	
 	.list-table > tbody:first-of-type {
-		top: 4px;
+		top: 62px;
 		left: calc(50% - 125px);
 		width: 84px;
 	}
