@@ -1655,7 +1655,7 @@ div[class^="icon-watch"] {
 	content: "TOP RATED";
 	position: absolute;
 	left: 93px;
-	bottom: 277px;
+	bottom: 278px;
 	z-index: -1;
 	
 	min-width: 100px;
@@ -1675,6 +1675,7 @@ div[class^="icon-watch"] {
 	letter-spacing: 1px;
 	text-shadow: none;
 	
+	backdrop-filter: blur(3px);
 	transform: translateX(-50%);
 	pointer-events: none;
 	visibility: var(--toggle);
