@@ -98,7 +98,13 @@
 	 * imageBlurHov / Changes blurring of cover images / Higher = More
 	 * valid values: any positive number value, ending in "px"
 	 * 
+	 * imageFade / Changes fading effect on bottom of cover images / Higher = More
+	 * min value: 0 / max value: 1
+	 * 
 	 * infoBGOpacity / Changes opacity of background on list items for improved readability / Set to 0% to hide
+	 * min value: 0% / max value: 100%
+	 * 
+	 * numberOpacity / Changes opacity of number text (or whichever column is in its place) / Higher = More opaque
 	 * min value: 0% / max value: 100%
 	 */
 	
@@ -109,10 +115,12 @@
 	--toggleTopRatingBronze: hidden;
 	--bgDimness: 50%;
 	--bannerVignetteOpacity: 90%;
-	--imageBrightness: 66%;
-	--imageBrightnessHov: 35%;
+	--imageBrightness: 85%;
+	--imageBrightnessHov: 50%;
 	--imageBlurHov: 2px;
-	--infoBGOpacity: 85%;
+	--imageFade: .95;
+	--infoBGOpacity: 0%;
+	--numberOpacity: 80%;
 	
 	/* THEME COLOURS
 	 * 
@@ -1334,11 +1342,11 @@ body::before {
 .data.image,
 .data.image .link,
 .data.image .image,
+.data.image .link::before,
 .data.image .link::after {
 	position: absolute;
 	left: 0;
 	top: 0;
-	
 	width: 100% !important;
 	height: 100% !important;
 	border: none !important;
@@ -1364,6 +1372,12 @@ body::before {
 		brightness(var(--imageBrightnessHov))
 		opacity(var(--imageBrightnessHov))
 		blur(var(--imageBlurHov));
+}
+
+.data.image .link::before {
+	content: "";
+	background: linear-gradient(to top, hsl(var(--bg), var(--imageFade)) 5px, transparent 50%);
+	z-index: 1;
 }
 
 .data.image .link::after {
@@ -1909,7 +1923,7 @@ span:nth-of-type(2)::after {
 
 .list-item:not(:hover) :nth-child(2):not(.number) ~ .data.type,
 .data.number {
-	opacity: 0.53;
+	opacity: var(--numberOpacity);
 }
 
 .data.number::before {
