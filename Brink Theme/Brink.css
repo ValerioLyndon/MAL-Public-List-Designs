@@ -213,6 +213,7 @@
 /* Chrome */
 
 *::-webkit-scrollbar {
+	width: 15px;
 	background: hsl(var(--bgAlt));
 }
 
@@ -237,16 +238,13 @@
 *::-webkit-scrollbar-thumb {
 	background: hsl(var(--accent)) content-box;
 	border: 0 solid transparent;
+	border-radius: 2px;
 } *::-webkit-scrollbar-thumb:vertical {
 	border-width: 0 2px;
 } *::-webkit-scrollbar-thumb:horizontal {
 	border-width: 2px 0;
 } *::-webkit-scrollbar-thumb:hover {
 	background-color: hsla(var(--accent), 70%);
-} 
-
-*::-webkit-scrollbar-track {
-	width: 5px;
 }
 
 .list-item *::-webkit-scrollbar {
