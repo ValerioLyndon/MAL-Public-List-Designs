@@ -1,5 +1,5 @@
 /*------------------------------*\
-|* - -  Light Theme V1.8.0  - - *|
+|* - -  Light Theme V1.9.0  - - *|
 \* - - - - - - - - - - - - - - -*/
 
 /* User */
@@ -102,6 +102,11 @@ body #fancybox-close,
 	background: hsl(240, 1.5%, 4.5%);
 }
 
+
+.data.image .link::before {
+	background: linear-gradient(to top, hsl(0, 0%, 10%, var(--imageFade)) 5px, transparent calc(55% * var(--imageFade)));
+}
+
 .content-status,
 .rewatching,
 .malicon {
@@ -114,7 +119,9 @@ body #fancybox-close,
 .score-10::after,
 .score-9::after,
 .score-8::after,
-.more-content {
+.more-content,
+.notes .text,
+.notes textarea {
 	--text: 0, 0%, 10%;
 	color: hsl(var(--text)) !important;
 }
