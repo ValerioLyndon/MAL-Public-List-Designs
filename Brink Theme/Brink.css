@@ -1376,7 +1376,7 @@ tbody:first-of-type {
 
 .data.image .link::before {
 	content: "";
-	background: linear-gradient(to top, hsl(var(--bg), var(--imageFade)) 5px, transparent 50%);
+	background: linear-gradient(to top, hsl(var(--bg), var(--imageFade)) 5px, transparent calc(55% * var(--imageFade)));
 	z-index: 1;
 }
 
