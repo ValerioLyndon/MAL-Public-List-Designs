@@ -32,6 +32,7 @@
  @ Image
  @ Status
  @ Title
+ @ Notes
  @ Progress/Score
  @ Tags
  @ Number
@@ -350,7 +351,6 @@ html {
 }
 
 body {
-	background-position: center;
 	background-image: none;
 } body.ownlist {
 	position: relative;
@@ -358,11 +358,7 @@ body {
 	min-width: 700px;
 	min-height: 100%;
 	padding: 42px 0 0 !important;
-	
 	background-color: hsl(var(--bg)) !important;
-	background-size: cover;
-	background-attachment: fixed;
-	background-repeat: no-repeat;
 	
 	color: hsla(var(--text), 88%) !important;
 	font: 12px var(--font);
@@ -380,6 +376,10 @@ body {
 	z-index: 2;
 	width: 100%;
 	background: inherit;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center;
 	min-height: calc(100vh - (42px + 30vw));
 	padding-top: 62px;
 	padding-bottom: 60px;
@@ -1404,7 +1404,7 @@ tbody:first-of-type {
 	position: absolute;
 	bottom: -.5px;
 	left: 0;
-	z-index: 9;
+	z-index: 10;
 	
 	width: 100%;
 	padding: 5px 0 27px !important;
@@ -1498,8 +1498,10 @@ div[class^="icon-watch"] {
 	position: absolute;
 	bottom: 267px;
 	right: 6px;
+	z-index: 2;
 	
 	width: auto;
+	padding: 1.5px;
 	margin: 0 !important;
 	
 	font-size: 0 !important;
@@ -1516,22 +1518,109 @@ div[class^="icon-watch"] {
 
 .add-edit-more a {
 	display: block;
-	padding: 6px;
+	padding: 4.5px;
 	
 	font-size: 12px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 } .add-edit-more span:nth-of-type(1) a {
-	padding-right: 4.5px;
 } .add-edit-more .more a {
-	padding-left: 4.5px;
 	font-size: 0;
 }
 
 .add-edit-more .more a::before {
-	content: "NOTES";
+	content: "MORE";
 	font-size: 12px;
 	vertical-align: top;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+  @Notes
+\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.notes {
+	position: absolute;
+	left: 66.5px;
+	bottom: 240px;
+	z-index: 1;
+	width: 50px !important;
+	height: 52.5px;
+	padding: .5px;
+	text-align: right;
+	opacity: 0;
+	transition: opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
+	pointer-events: none;
+} .list-item:hover .notes {
+	opacity: 1;
+} .notes:hover {
+	z-index: 3;
+	pointer-events: auto;
+}
+
+/* Add hitbox for "click" effect */
+.add-edit-more:not(:active)::after {
+	content: "";
+	position: absolute;
+	top: 1.5px;
+	right: 86.5px;
+	width: 50px;
+	height: 24px;
+	cursor: pointer;
+}
+
+.notes .text,
+.notes textarea {
+	position: absolute;
+	left: -66.5px;
+	top: 37px;
+	width: 210px !important;
+	height: auto;
+	min-height: 39px;
+	max-height: 162px;
+	padding: 9px 15px 12px;
+	background: hsla(var(--bgAlt), 0.96);
+	border-radius: 6px;
+	box-shadow: 0 0 3.36px 1.68px hsla(0, 0%, 0%, 50%);
+	overflow: hidden;
+	overflow-y: auto;
+	color: hsl(var(--text)) !important;
+	font-size: 12px;
+	text-align: left;
+	opacity: 0;
+	cursor: text;
+	transition: inherit;
+} .notes:hover .text {
+	opacity: 1;
+}
+
+.notes textarea {
+	height: 162px;
+	border: none;
+	outline: none;
+	opacity: 1;
+	resize: none;
+}
+
+.notes .edit {
+	display: none;
+}
+
+.notes .text:empty::before {
+	content: "Add notes.";
+	color: hsla(var(--text), 60%);
+}
+
+/* "Button" */
+.notes::before {
+	content: "NOTES";
+	display: inline-block;
+	padding: 4px;
+	font-size: 12px;
+	cursor: pointer;
+	pointer-events: auto;
+} .notes:hover::before {
+	color: hsl(var(--textLinkHov));
 }
 
 
@@ -2126,7 +2215,7 @@ span:nth-of-type(2)::after {
 }
 
 .more-content table {
-	padding: 9px 15px 12px !important
+	padding: 9px 15px 12px !important;
 }
 
 .list-table .more-info .more-content a {
@@ -2134,23 +2223,6 @@ span:nth-of-type(2)::after {
 	text-decoration: underline hsla(var(--text), 50%) !important;
 } .list-table .more-info .more-content a:hover {
 	color: hsl(var(--textLinkHov));
-}
-
-/* Remove unwanted info */
-
-.td1::first-line {
-	font-size: 0;
-	line-height: 0;
-}
-
-.more-info br,
-.more-info div:first-of-type {
-	display: none;
-}
-
-.anime .more-info small ~ br,
-.manga .more-info br:nth-of-type(n+9) {
-	display: initial;
 }
 
 
