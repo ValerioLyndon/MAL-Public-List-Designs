@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 1.8.2
+ * Version 2.0.0
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -32,6 +32,7 @@
  @ Image
  @ Status
  @ Title
+ @ Notes
  @ Progress/Score
  @ Tags
  @ Number
@@ -98,7 +99,13 @@
 	 * imageBlurHov / Changes blurring of cover images / Higher = More
 	 * valid values: any positive number value, ending in "px"
 	 * 
+	 * imageFade / Changes fading effect on bottom of cover images / Higher = More
+	 * min value: 0 / max value: 1
+	 * 
 	 * infoBGOpacity / Changes opacity of background on list items for improved readability / Set to 0% to hide
+	 * min value: 0% / max value: 100%
+	 * 
+	 * numberOpacity / Changes opacity of number text (or whichever column is in its place) / Higher = More opaque
 	 * min value: 0% / max value: 100%
 	 */
 	
@@ -109,10 +116,12 @@
 	--toggleTopRatingBronze: hidden;
 	--bgDimness: 50%;
 	--bannerVignetteOpacity: 90%;
-	--imageBrightness: 66%;
-	--imageBrightnessHov: 35%;
+	--imageBrightness: 85%;
+	--imageBrightnessHov: 50%;
 	--imageBlurHov: 2px;
-	--infoBGOpacity: 85%;
+	--imageFade: .95;
+	--infoBGOpacity: 0%;
+	--numberOpacity: 80%;
 	
 	/* THEME COLOURS
 	 * 
@@ -142,9 +151,9 @@
 	--dropped: 6, 44%, 46%;
 	--planned: 56, 18%, 56%;
 	
-	--goldRating: 31, 100%, 70%;
+	--goldRating: 32.5, 100%, 71%;
 	--silverRating: 0, 0%, 80%;
-	--bronzeRating: 23, 40%, 48%;
+	--bronzeRating: 25, 55%, 59%;
 }
 
 
@@ -194,7 +203,7 @@
 }
 
 .list-item * {
-	scrollbar-color: hsl(var(--accent)) hsl(var(--bg));
+	scrollbar-color: hsl(var(--accent)) transparent;
 }
 
 .data.tags, textarea {
@@ -204,6 +213,7 @@
 /* Chrome */
 
 *::-webkit-scrollbar {
+	width: 15px;
 	background: hsl(var(--bgAlt));
 }
 
@@ -228,20 +238,17 @@
 *::-webkit-scrollbar-thumb {
 	background: hsl(var(--accent)) content-box;
 	border: 0 solid transparent;
+	border-radius: 2px;
 } *::-webkit-scrollbar-thumb:vertical {
 	border-width: 0 2px;
 } *::-webkit-scrollbar-thumb:horizontal {
 	border-width: 2px 0;
 } *::-webkit-scrollbar-thumb:hover {
 	background-color: hsla(var(--accent), 70%);
-} 
-
-*::-webkit-scrollbar-track {
-	width: 5px;
 }
 
 .list-item *::-webkit-scrollbar {
-	background: hsl(var(--bg));
+	background: transparent;
 }
 
 .data.tags::-webkit-scrollbar,
@@ -282,9 +289,7 @@ a,
 .header a {
 	color: hsl(var(--text));
 } a:hover,
-a:focus,
-.header a:hover,
-.header a:focus {
+.header a:hover {
 	color: hsl(var(--textLinkHov));
 }
 
@@ -313,18 +318,12 @@ div[style^="width: 300px;"] input {
 	
 	transition: all var(--timeButton) var(--bezierFast);
 } #header-menu-dropdown .icon-menu:hover,
-#header-menu-dropdown .icon-menu:focus,
 .list-unit .list-status-title .stats a:hover,
-.list-unit .list-status-title .stats a:focus,
 .list-table > tbody:first-of-type:hover::after,
-.list-table > tbody:first-of-type:focus::after,
 #status-menu .search-container #search-box:focus-within,
 body #fancybox-close:hover,
-body #fancybox-close:focus,
 #advanced-options .advanced-options-button a:hover,
-#advanced-options .advanced-options-button a:focus,
-div[style^="width: 300px;"] input:hover,
-div[style^="width: 300px;"] input:focus {
+div[style^="width: 300px;"] input:hover {
 	border-color: hsl(var(--btnAccent));
 	color: hsl(var(--accent));
 	outline: none;
@@ -350,55 +349,46 @@ html {
 }
 
 body {
-	background-position: center;
 	background-image: none;
 } body.ownlist {
 	position: relative;
 	
 	min-width: 700px;
 	min-height: 100%;
-	padding: 42px 0 60px !important;
-	
+	padding: 42px 0 0 !important;
 	background-color: hsl(var(--bg)) !important;
-	background-size: cover;
-	background-attachment: fixed;
-	background-repeat: no-repeat;
 	
 	color: hsla(var(--text), 88%) !important;
 	font: 12px var(--font);
-}
-
-body::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	
-	width: 100%;
-	height: 100%;
-	background: hsla(var(--bg), var(--bgDimness));
+	/*! background-image: url(https://i.imgur.com/NYSw623.jpg); */
 }
 
 #list-container {
 	width: 100%;
-	background: none !important;
+	background: inherit !important;
 	border: none;
 }
 
 .list-block {
 	position: relative;
+	z-index: 2;
 	width: 100%;
-	/* 42px + 30vw + 62px + 60px */
-	min-height: calc(100vh - (164px + 30vw));
-	padding-top: 0;
-	margin: 0 auto;
+	background: inherit;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center;
+	min-height: calc(100vh - (42px + 30vw));
+	padding-top: 62px;
+	padding-bottom: 60px;
+	margin: 0 auto !important;
 }
 
 /* Adjusts list to size correctly with banner. See BANNER for its sizing rules. */
 
 @media (min-width: 1920px) {
 	.list-block {
-		min-height: calc(100vh - (164px + (1920px * 0.3)));
+		min-height: calc(100vh - (42px + (1920px * 0.3)));
 	}
 }
 
@@ -412,6 +402,18 @@ body::before {
 	border: none;
 	flex-flow: row wrap;
 	justify-content: center;
+}
+
+/* Image dimming */
+.list-block::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	width: 100%;
+	height: 100%;
+	background: hsla(var(--bg), var(--bgDimness));
 }
 
 /* Remove Tutorial/Notices */
@@ -429,7 +431,7 @@ body::before {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 100;
+	z-index: 1;
 	
 	width: 100%;
 	height: 42px;
@@ -451,8 +453,7 @@ body::before {
 	
 	opacity: 0.94;
 	transition: all var(--timeButton) var(--bezierFast);
-} .header .header-title:hover,
-.header .header-title:focus {
+} .header .header-title:hover {
 	opacity: 0.6;
 }
 
@@ -507,8 +508,7 @@ body::before {
 .header .header-menu .header-info a {
 	color: hsla(var(--text), 75%);
 	font-weight: normal;
-} .header .header-menu .header-info a:hover,
-.header .header-menu .header-info a:focus {
+} .header .header-menu .header-info a:hover {
 	color: hsl(var(--textLinkHov));
 }
 
@@ -589,8 +589,7 @@ body::before {
 	line-height: 0;
 	
 	transition: all var(--timeMenu) var(--bezierSmooth) var(--delayMenu);
-} .list-menu-float:hover,
-.list-menu-float:focus-within {
+} .list-menu-float:hover {
 	left: 0;
 	transition-delay: 0s;
 }
@@ -641,8 +640,7 @@ body::before {
 	
 	transition: color calc(var(--timeMenu) * 0.3) ease-in-out var(--delayMenu);
 	pointer-events: none;
-} .list-menu-float:hover::before,
-.list-menu-float:focus-within::before {
+} .list-menu-float:hover::before {
 	color: hsl(var(--text));
 	transition: color calc(var(--timeMenu) * 0.7) ease-in-out calc(var(--timeMenu) * 0.3);
 }
@@ -660,8 +658,7 @@ body::before {
 	
 	transition: all var(--timeMenu) var(--bezierSmooth) var(--delayMenu);
 	pointer-events: none;
-} .list-menu-float:hover ~ #list-container::after,
-.list-menu-float:focus-within ~ #list-container::after {
+} .list-menu-float:hover ~ #list-container::after {
 	background: hsla(0, 0%, 0%, 78%);
 	transition-delay: 0s;
 }
@@ -700,13 +697,9 @@ body::before {
 	opacity: 1;
 	transition: inherit;
 } .ownlist .list-menu-float .icon-menu:hover::after,
-.ownlist .list-menu-float .icon-menu:focus::after,
 .ownlist .list-menu-float .icon-menu:not(.setting):hover .text,
-.ownlist .list-menu-float .icon-menu:not(.setting):focus .text,
 .ownlist .list-menu-float .icon-menu.setting .text .link-list-setting:hover,
-.ownlist .list-menu-float .icon-menu.setting .text .link-list-setting:focus,
-.ownlist .list-menu-float .icon-menu.setting .text .link-style-setting:hover,
-.ownlist .list-menu-float .icon-menu.setting .text .link-style-setting:focus {
+.ownlist .list-menu-float .icon-menu.setting .text .link-style-setting:hover {
 	background: hsl(var(--bgAlt));
 	border-color: hsl(var(--accent));
 	line-height: 16px;
@@ -768,7 +761,9 @@ body::before {
 #cover-image-container {
 	display: block;
 	width: 100%;
-	height: 100%;
+	height: 30vw;
+	min-height: calc(700px * 0.3);
+	max-height: calc(1920px * 0.3);
 	padding: 0;
 }
 
@@ -777,11 +772,11 @@ body::before {
 }
 
 #cover-image {
-	width: 100%;
+	position: fixed;
+	left: 0;
+	width: inherit;
 	max-width: initial;
-	height: 30vw;
-	min-height: calc(700px * 0.3);
-	max-height: calc(1920px * 0.3);
+	height: inherit;
 	object-fit: cover;
 }
 
@@ -807,36 +802,24 @@ body::before {
 
 /* Top Bar */
 
-.list-block::before, #status-menu::before {
+#status-menu::before {
 	content: "";
 	position: absolute;
-	top: -62px;
+	top: 0;
 	left: 0;
 	
 	width: 100%;
 	height: 2px;
 	background: linear-gradient(to right, hsla(var(--accent), 1), hsla(var(--accent), 0.55)) hsl(var(--bg));
-} #status-menu::before {
-	position: fixed;
-	top: 42px;
-	height: 0;
-	transition: inherit;
-} #status-menu.fixed::before {
-	height: 2px;
-} [data-query*='status":1'] .list-block::before,
-[data-query*='status":1'] #status-menu::before {
+} [data-query*='status":1'] #status-menu::before {
 	--accent: var(--current);
-} [data-query*='status":2'] .list-block::before,
-[data-query*='status":2'] #status-menu::before {
+} [data-query*='status":2'] #status-menu::before {
 	--accent: var(--completed);
-} [data-query*='status":3'] .list-block::before,
-[data-query*='status":3'] #status-menu::before {
+} [data-query*='status":3'] #status-menu::before {
 	--accent: var(--paused);
-} [data-query*='status":4'] .list-block::before,
-[data-query*='status":4'] #status-menu::before {
+} [data-query*='status":4'] #status-menu::before {
 	--accent: var(--dropped);
-} [data-query*='status":6'] .list-block::before,
-[data-query*='status":6'] #status-menu::before {
+} [data-query*='status":6'] #status-menu::before {
 	--accent: var(--planned);
 }
 
@@ -844,26 +827,22 @@ body::before {
 /* Base */
 
 #status-menu {
-	position: relative;
+	position: sticky;
+	z-index: 150;
+	top: 0;
 	
 	width: 100%;
-	height: 42px;
+	height: 62px;
+	padding-top: 17px;
 	background: none;
 	border: none;
-	margin: 17px 0 3px;
+	margin: 0px 0 -62px;
 	
 	pointer-events: none;
+	transition: padding var(--timeMenu) var(--bezierFast);
 } #status-menu.fixed {
-	position: fixed;
-	
-	z-index: 150;
-	width: calc(100% - 86px);
-	padding-right: calc(189px + 0.07 * (var(--listW) - 980px));
-	background: hsl(var(--bgAlt));
-	margin: 0 0 0 86px;
-	
-	animation: var(--timeMenu) var(--bezierFast) fade-in;
-	pointer-events: auto;
+	padding: 5px 0;
+	background: linear-gradient(to bottom, hsl(var(--bg)), transparent);
 }
 
 #status-menu .status-menu {
@@ -916,8 +895,7 @@ body::before {
 } #status-menu .status-button.on::before {
 	color: hsl(var(--text));
 	font-weight: bold;
-} #status-menu .status-button:hover::before,
-#status-menu .status-button:focus::before {
+} #status-menu .status-button:hover::before {
 	color: hsl(var(--text));
 	transform: translateY(-2px);
 }
@@ -926,6 +904,16 @@ body::before {
 	content: none;
 }
 
+.search-container,
+.list-status-title,
+tbody:first-of-type {
+	transition: opacity var(--timeMenu) var(--bezierFast);
+}
+#status-menu.fixed .search-container,
+.fixed ~ .list-block .list-status-title,
+.fixed ~ .list-block tbody:first-of-type {
+	opacity: 0;
+}
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Search
@@ -933,11 +921,11 @@ body::before {
 
 #status-menu .search-container {
 	position: absolute;
-	top: 5px;
+	top: 22px;
 	right: calc(20px + (50% - var(--listW) * 0.5));
 	width: calc(169px + 0.07 * (var(--listW) - 980px));
 } #status-menu.fixed .search-container {
-	right: 12px;
+	top: -32px;
 	width: calc(177px + 0.07 * (var(--listW) - 980px));
 }
 
@@ -987,7 +975,7 @@ body::before {
 
 .list-unit .list-status-title {
 	position: absolute;
-	top: -40px;
+	top: 22px;
 	left: calc(20px + (50% - var(--listW) * 0.5));
 	z-index: 30;
 	
@@ -1022,7 +1010,7 @@ body::before {
 
 .list-table > tbody:first-of-type {
 	position: absolute;
-	top: -40px;
+	top: 22px;
 	left: calc(109px + (0.035 * (var(--listW) - 980px)) + (50% - var(--listW) * 0.5));
 	z-index: 35;
 	
@@ -1074,8 +1062,7 @@ body::before {
 	opacity: 0;
 	transform: translateX(-50%);
 	transition: all var(--timeButtonLarge) var(--bezierFast);
-} .list-table tbody:first-of-type:hover .list-table-header,
-.list-table tbody:first-of-type:focus-within .list-table-header {
+} .list-table tbody:first-of-type:hover .list-table-header {
 	opacity: 1;
 }
 
@@ -1106,8 +1093,7 @@ body::before {
 	text-indent: -1px;
 	
 	transition: all var(--timeButton) var(--bezierFast) !important;
-} .list-table .list-table-header .header-title a:hover,
-.list-table .list-table-header .header-title a:focus {
+} .list-table .list-table-header .header-title a:hover {
 	background: hsla(var(--btnLight));
 	border-left-color: hsl(var(--btnAccent));
 	line-height: 28px;
@@ -1218,17 +1204,23 @@ body::before {
 	
 	transform: scale(0.95);
 	transition: all var(--timeItem) var(--bezierItemBounce);
-} .list-item:hover,
-.list-item:focus-within {
+} .list-item:hover {
 	transform: scale(1);
 }
 
 .list-table-data {
 	display: flex;
-	width: 50%;
-	padding: 13px 0 0 12px;
+	width: calc(50% - 6px);
+	height: 148px;
+	padding: 0 0 0 6px;
+	margin: 51px 0 0 6px;
+	overflow: hidden;
+	overflow-y: auto;
 	flex-flow: column nowrap;
-	align-items: flex-start;
+	align-items: flex-end;
+	direction: rtl;
+	scrollbar-width: thin;
+	transition: scrollbar-color calc(var(--timeItem) * 1.5) var(--bezierFast);
 }
 
 .list-table .list-table-data .data {
@@ -1238,26 +1230,51 @@ body::before {
 }
 
 .data:not(.image) {
+	direction: ltr;
 	z-index: 5;
+	flex: 0 0 auto;
 	text-shadow: -0.6px 0.84px 1.68px #000;
 	line-height: 15px;
 	opacity: 0;
 	transition:
 		all var(--timeButton) var(--bezierFast),
 		opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
-} .list-item:hover .data:not(.image),
-.list-item:focus-within .data:not(.image){
+	cursor: default;
+} .list-item:hover .data:not(.image) {
 	opacity: 1;
 }
 
 .list-table .list-table-data .data a {
 	color: hsl(var(--text)) !important;
 	transition-property: all;
-} .list-table .list-table-data .data a:not(.edit-disabled):hover,
-.list-table .list-table-data .data a:not(.edit-disabled):focus {
+} .list-table .list-table-data .data a:not(.edit-disabled):hover {
 	color: hsl(var(--textLinkHov)) !important;
 } .list-table .list-table-data a.edit-disabled {
 	pointer-events: none;
+}
+
+/* data scroll */
+
+.list-item:not(:hover) .list-table-data {
+	scrollbar-color: transparent transparent;
+}
+
+.list-item:not(:hover) .list-table-data::-webkit-scrollbar-thumb {
+	background: transparent;
+}
+
+.list-table-data::-webkit-scrollbar {
+	width: 8px;
+}
+
+.list-table-data::-webkit-scrollbar-button {
+	display: none;
+}
+
+.list-table-data::-webkit-scrollbar-thumb:vertical {
+	border-width: 0 1px;
+} .list-table-data::-webkit-scrollbar-thumb:horizontal {
+	border-width: 1px 0;
 }
 
 /* Dynamic Columns */
@@ -1287,8 +1304,6 @@ body::before {
 	
 	text-align: left !important;
 	overflow-wrap: break-word;
-	
-	cursor: default;
 }
 
 /* Icons */
@@ -1325,11 +1340,11 @@ body::before {
 .data.image,
 .data.image .link,
 .data.image .image,
+.data.image .link::before,
 .data.image .link::after {
 	position: absolute;
 	left: 0;
 	top: 0;
-	
 	width: 100% !important;
 	height: 100% !important;
 	border: none !important;
@@ -1350,12 +1365,17 @@ body::before {
 		brightness(var(--imageBrightness))
 		opacity(var(--imageBrightness));
 	transition: filter var(--timeItem) var(--bezierFast) !important;
-} .list-item:hover .data.image .link,
-.list-item:focus-within .data.image .link {
+} .list-item:hover .data.image .link {
 	filter:
 		brightness(var(--imageBrightnessHov))
 		opacity(var(--imageBrightnessHov))
 		blur(var(--imageBlurHov));
+}
+
+.data.image .link::before {
+	content: "";
+	background: linear-gradient(to top, hsl(var(--bg), var(--imageFade)) 5px, transparent calc(55% * var(--imageFade)));
+	z-index: 1;
 }
 
 .data.image .link::after {
@@ -1370,30 +1390,7 @@ body::before {
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
 .data.status {
-	position: absolute;
-	left: 0;
-	top: 0;
-	z-index: 15 !important;
-	
-	width: 100% !important;
-	height: 100%;
-	background: none !important;
-	border-bottom-width: 4px !important;
-	border-radius: 6px;
-	
-	pointer-events: none;
-} .data.status.watching,
-.data.status.reading {
-	border-color: hsl(var(--current));
-} .data.status.completed {
-	border-color: hsl(var(--completed));
-} .data.status.onhold {
-	border-color: hsl(var(--paused));
-} .data.status.dropped {
-	border-color: hsl(var(--dropped));
-} .data.status.plantowatch,
-.data.status.plantoread {
-	border-color: hsl(var(--planned));
+	display: none;
 }
 
 
@@ -1403,9 +1400,9 @@ body::before {
 
 .data.title {
 	position: absolute;
-	bottom: 0;
+	bottom: -.5px;
 	left: 0;
-	z-index: 9;
+	z-index: 10;
 	
 	width: 100%;
 	padding: 5px 0 27px !important;
@@ -1467,9 +1464,8 @@ div[class^="icon-watch"] {
 	letter-spacing: 1.5px;
 	white-space: nowrap;
 	
-	transition: color var(--timeText) var(--bezierFast);
-} .malicon:hover::after,
-.malicon:focus::after {
+	transition: color var(--timeText) var(--bezierFasft);
+} .malicon:hover::after {
 	color: hsl(var(--textLinkHov));
 }
 
@@ -1500,16 +1496,17 @@ div[class^="icon-watch"] {
 	position: absolute;
 	bottom: 267px;
 	right: 6px;
+	z-index: 2;
 	
 	width: auto;
+	padding: 1.5px;
 	margin: 0 !important;
 	
 	font-size: 0 !important;
 	
 	opacity: 0;
 	transition: inherit;
-} .list-item:hover .add-edit-more,
-.list-item:focus-within .add-edit-more {
+} .list-item:hover .add-edit-more {
 	opacity: 1;
 }
 
@@ -1519,22 +1516,109 @@ div[class^="icon-watch"] {
 
 .add-edit-more a {
 	display: block;
-	padding: 6px;
+	padding: 4.5px;
 	
 	font-size: 12px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 } .add-edit-more span:nth-of-type(1) a {
-	padding-right: 4.5px;
 } .add-edit-more .more a {
-	padding-left: 4.5px;
 	font-size: 0;
 }
 
 .add-edit-more .more a::before {
-	content: "NOTES";
+	content: "MORE";
 	font-size: 12px;
 	vertical-align: top;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+  @Notes
+\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.notes {
+	position: absolute;
+	left: 66.5px;
+	bottom: 240px;
+	z-index: 1;
+	width: 50px !important;
+	height: 52.5px;
+	padding: .5px;
+	text-align: right;
+	opacity: 0;
+	transition: opacity calc(var(--timeItem) * 1.5) var(--bezierFast);
+	pointer-events: none;
+} .list-item:hover .notes {
+	opacity: 1;
+} .notes:hover {
+	z-index: 3;
+	pointer-events: auto;
+}
+
+/* Add hitbox for "click" effect */
+.add-edit-more:not(:active)::after {
+	content: "";
+	position: absolute;
+	top: 1.5px;
+	right: 86.5px;
+	width: 50px;
+	height: 24px;
+	cursor: pointer;
+}
+
+.notes .text,
+.notes textarea {
+	position: absolute;
+	left: -66.5px;
+	top: 37px;
+	width: 210px !important;
+	height: auto;
+	min-height: 39px;
+	max-height: 162px;
+	padding: 9px 15px 12px;
+	background: hsla(var(--bgAlt), 0.96);
+	border-radius: 6px;
+	box-shadow: 0 0 3.36px 1.68px hsla(0, 0%, 0%, 50%);
+	overflow: hidden;
+	overflow-y: auto;
+	color: hsl(var(--text)) !important;
+	font-size: 12px;
+	text-align: left;
+	opacity: 0;
+	cursor: text;
+	transition: inherit;
+} .notes:hover .text {
+	opacity: 1;
+}
+
+.notes textarea {
+	height: 162px;
+	border: none;
+	outline: none;
+	opacity: 1;
+	resize: none;
+}
+
+.notes .edit {
+	display: none;
+}
+
+.notes .text:empty::before {
+	content: "Add notes.";
+	color: hsla(var(--text), 60%);
+}
+
+/* "Button" */
+.notes::before {
+	content: "NOTES";
+	display: inline-block;
+	padding: 4px;
+	font-size: 12px;
+	cursor: pointer;
+	pointer-events: auto;
+} .notes:hover::before {
+	color: hsl(var(--textLinkHov));
 }
 
 
@@ -1620,6 +1704,17 @@ div[class^="icon-watch"] {
 
 /* Top Rated Banners for highly rated items. */
 
+.data .score-8 {
+	--rated: var(--bronzeRating);
+	--toggle: var(--toggleTopRatingBronze);
+} .data .score-9 {
+	--rated: var(--silverRating);
+	--toggle: var(--toggleTopRatingSilver);
+} .data .score-10 {
+	--rated: var(--goldRating);
+	--toggle: var(--toggleTopRatingGold);
+}
+
 .data .score-8::before,
 .data .score-9::before,
 .data .score-10::before {
@@ -1631,19 +1726,14 @@ div[class^="icon-watch"] {
 	
 	width: 210px;
 	height: 6px;
-	border-top: 2px solid hsl(var(--text));
+	border-top: 2px solid hsla(var(--rated), 0.8);
 	border-radius: 6px 6px 0 0;
 	
 	pointer-events: none;
-} .data .score-10::before {
-	border-color: hsl(var(--goldRating));
-	visibility: var(--toggleTopRatingGold);
-} .data .score-9::before {
-	border-color: hsl(var(--silverRating));
-	visibility: var(--toggleTopRatingSilver);
-} .data .score-8::before {
-	border-color: hsl(var(--bronzeRating));
-	visibility: var(--toggleTopRatingBronze);
+	box-shadow:
+		0 -4px 3px -3px hsl(var(--rated)),
+		inset 0 6px 3px -6px hsl(var(--rated));
+	visibility: var(--toggle);
 }
 
 .data .score-8::after,
@@ -1652,14 +1742,19 @@ div[class^="icon-watch"] {
 	content: "TOP RATED";
 	position: absolute;
 	left: 93px;
-	bottom: 277px;
+	bottom: 278px;
 	z-index: -1;
 	
 	min-width: 100px;
 	height: 16px;
 	padding: 0 10px;
 	border-radius: 3px;
-	background: hsl(var(--text));
+	background: hsla(var(--rated), 0.9);
+	box-shadow:
+		-4px 1px 5px -4px hsla(var(--rated), 0.9),
+		4px 1px 5px -4px hsla(var(--rated), 0.9),
+		0 3px 5px -3px hsla(var(--rated), 0.3),
+		0 5px 15px -6px hsl(var(--rated));
 	
 	color: hsl(var(--bg));
 	font: bold 13px/13px var(--font);
@@ -1667,17 +1762,10 @@ div[class^="icon-watch"] {
 	letter-spacing: 1px;
 	text-shadow: none;
 	
+	backdrop-filter: blur(3px);
 	transform: translateX(-50%);
 	pointer-events: none;
-} .data .score-10::after {
-	background: hsl(var(--goldRating));
-	visibility: var(--toggleTopRatingGold);
-} .data .score-9::after {
-	background: hsl(var(--silverRating));
-	visibility: var(--toggleTopRatingSilver);
-} .data .score-8::after {
-	background: hsl(var(--bronzeRating));
-	visibility: var(--toggleTopRatingBronze);
+	visibility: var(--toggle);
 }
 
 /* Prevent "change score box" layout flicker (a bug that is present on default list CSS) */
@@ -1731,11 +1819,8 @@ div[class^="icon-watch"] {
 }
 
 .list-item:hover .plantowatch ~ .data.progress span:first-of-type,
-.list-item:focus-within .plantowatch ~ .data.progress span:first-of-type,
 .list-item:hover .plantoread ~ .data.chapter span:first-of-type,
-.list-item:focus-within .plantoread ~ .data.chapter span:first-of-type,
-.list-item:hover .plantoread ~ .data.volume span:first-of-type,
-.list-item:focus-within .plantoread ~ .data.volume span:first-of-type {
+.list-item:hover .plantoread ~ .data.volume span:first-of-type {
 	opacity: 1;
 }
 
@@ -1768,8 +1853,7 @@ span:nth-of-type(2)::after {
 	color: hsl(var(--text));
 	text-shadow: inherit;
 	transition: all var(--timeItem) var(--bezierFast);
-} [data-owner="1"] .list-item:hover span:nth-of-type(2)::after
-,[data-owner="1"] .list-item:focus-within span:nth-of-type(2)::after {
+} [data-owner="1"] .list-item:hover span:nth-of-type(2)::after {
 	color: transparent;
 	text-shadow: none;
 }
@@ -1788,8 +1872,7 @@ span:nth-of-type(2)::after {
 	text-shadow: none;
 	
 	transition: all var(--timeItem) var(--bezierFast);
-} .list-table .list-item:hover .data [class^="icon-add-"],
-.list-table .list-item:focus-within .data [class^="icon-add-"] {
+} .list-table .list-item:hover .data [class^="icon-add-"] {
 	color: hsla(var(--text), 83%) !important;
 	text-shadow: inherit;
 }
@@ -1889,18 +1972,26 @@ span:nth-of-type(2)::after {
 
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
-  @Number
+  @Number / @Type
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
+/* These two columns share much code as Type takes the place of Number when one is not enabled. */
+
+:nth-child(2):not(.number) ~ .data.type,
 .data.number {
-	height: 15px;
-	margin: -1px 0 24px;
+	position: absolute;
+	top: 13px;
+	left: 12px;
 	
+	padding-left: 0 !important;
 	font-size: 14px;
 	font-weight: bold;
-	
-	opacity: 0.53;
-	cursor: default;
+	text-transform: uppercase;
+}
+
+.list-item:not(:hover) :nth-child(2):not(.number) ~ .data.type,
+.data.number {
+	opacity: var(--numberOpacity);
 }
 
 .data.number::before {
@@ -1908,12 +1999,9 @@ span:nth-of-type(2)::after {
 	font-size: 12px;
 }
 
+/* Type */
 
-/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
-  @Type
-\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
-
-.data.type::after {
+.number ~ .data.type::after {
 	content: "\f069";
 }
 
@@ -2098,8 +2186,7 @@ span:nth-of-type(2)::after {
 	transition: all calc(var(--timeItem) * 1.5) var(--bezierFast);
 	animation: var(--timeItem) var(--bezierFast) backwards fade-in;
 	pointer-events: none;
-} .list-item:hover .more-info,
-.list-item:focus-within .more-info {
+} .list-item:hover .more-info {
 	opacity: 1;
 }
 
@@ -2126,32 +2213,14 @@ span:nth-of-type(2)::after {
 }
 
 .more-content table {
-	padding: 9px 15px 12px !important
+	padding: 9px 15px 12px !important;
 }
 
 .list-table .more-info .more-content a {
 	color: hsl(var(--text));
 	text-decoration: underline hsla(var(--text), 50%) !important;
-} .list-table .more-info .more-content a:hover,
-.list-table .more-info .more-content a:focus {
+} .list-table .more-info .more-content a:hover {
 	color: hsl(var(--textLinkHov));
-}
-
-/* Remove unwanted info */
-
-.td1::first-line {
-	font-size: 0;
-	line-height: 0;
-}
-
-.more-info br,
-.more-info div:first-of-type {
-	display: none;
-}
-
-.anime .more-info small ~ br,
-.manga .more-info br:nth-of-type(n+9) {
-	display: initial;
 }
 
 
@@ -2248,6 +2317,10 @@ body #fancybox-close {
 	opacity: 0.78 !important;
 }
 
+.mal-modal-content button.btn-close {
+	color: var(--text) !important;
+}
+
 .mal-modal-content {
 	color: hsl(var(--text)) !important;
 	background: hsl(var(--bg)) !important;
@@ -2263,10 +2336,6 @@ body #fancybox-close {
 
 .broadcast a:hover {
 	background: hsl(var(--bgAlt)) !important;
-}
-
-.btn-close {
-	filter: invert(1);
 }
 
 
@@ -2532,7 +2601,6 @@ div[style^="width: 300px;"] input {
 	border-radius: 0 3px 3px 0;
 	border-left-width: 0 !important;
 } #advanced-options .sort-widget :not(:disabled) + label:hover,
-#advanced-options .sort-widget :not(:disabled) + label:focus,
 #advanced-options .sort-widget :not(:disabled):checked + label {
 	border-color: hsl(var(--btnAccent)) !important;
 	color: hsl(var(--accent)) !important;
@@ -2563,6 +2631,7 @@ div[style^="width: 300px;"] input {
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	z-index: 3;
 	
 	width: 100% !important;
 	height: 60px;
@@ -2590,7 +2659,7 @@ div[style^="width: 300px;"] input {
 
 .list-unit .list-stats {
 	position: absolute;
-	bottom: -14px;
+	bottom: 40px;
 	left: 0;
 	
 	display: block !important;
@@ -2616,61 +2685,30 @@ div[style^="width: 300px;"] input {
  */
 @media (max-width: 926px) {
 	.list-block {
-		min-height: calc(100vh - (164px + (700px * 0.3)));
-		padding-top: 44px;
-	}
-	
-	#status-menu {
-		height: 0;
-		margin-top: 50px;
-	} #status-menu:not(.fixed) {
-		padding: 0;
+		min-height: calc(100vh - (42px + (700px * 0.3)));
+		padding-top: 106px;
 	}
 	
 	#status-menu:not(.fixed) .status-menu {
-		position: relative;
-		top: -42px;
 		width: 560px;
 	}
 	
 	#status-menu:not(.fixed) .search-container {
-		top: 49px;
+		top: 62px;
 		left: calc(50% - 32px);
 		width: 250px;
 	}
 	
-	#status-menu .status-button {
-		padding: 0 6px;
-	}
-	
-	#status-menu.fixed .status-button {
-		pointer-events: none;
-		opacity: 0;
-	}
-	
-	#status-menu.fixed .search-container {
-		width: calc(100% - 29px);
-	}
-	
-	.status-menu-container.fixed + div.list-block {
-		margin-top: 53px;
-	}
-	
-	.list-block::before {
-		top: -53px;
-	}
-	
 	.list-unit .list-status-title {
-		top: 4px;
+		top: 62px;
 		left: calc(50% - 218px);
 	}
-	
 	.list-unit .list-status-title .stats a {
 		width: 84px;
 	}
 	
 	.list-table > tbody:first-of-type {
-		top: 4px;
+		top: 62px;
 		left: calc(50% - 125px);
 		width: 84px;
 	}
