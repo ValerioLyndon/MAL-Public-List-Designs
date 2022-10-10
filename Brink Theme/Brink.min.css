@@ -34,7 +34,13 @@
 	 * imageBlurHov / Changes blurring of cover images / Higher = More
 	 * valid values: any positive number value, ending in "px"
 	 * 
+	 * imageFade / Changes fading effect on bottom of cover images / Higher = More
+	 * min value: 0 / max value: 1
+	 * 
 	 * infoBGOpacity / Changes opacity of background on list items for improved readability / Set to 0% to hide
+	 * min value: 0% / max value: 100%
+	 * 
+	 * numberOpacity / Changes opacity of number text (or whichever column is in its place) / Higher = More opaque
 	 * min value: 0% / max value: 100%
 	 */
 	
@@ -45,10 +51,12 @@
 	--toggleTopRatingBronze: hidden;
 	--bgDimness: 50%;
 	--bannerVignetteOpacity: 90%;
-	--imageBrightness: 66%;
-	--imageBrightnessHov: 35%;
+	--imageBrightness: 85%;
+	--imageBrightnessHov: 50%;
 	--imageBlurHov: 2px;
-	--infoBGOpacity: 85%;
+	--imageFade: .95;
+	--infoBGOpacity: 0%;
+	--numberOpacity: 80%;
 	
 	/* THEME COLOURS
 	 * 
@@ -78,9 +86,9 @@
 	--dropped: 6, 44%, 46%;
 	--planned: 56, 18%, 56%;
 	
-	--goldRating: 31, 100%, 70%;
+	--goldRating: 32.5, 100%, 71%;
 	--silverRating: 0, 0%, 80%;
-	--bronzeRating: 23, 40%, 48%;
+	--bronzeRating: 25, 55%, 59%;
 }
 
 /*==============================*\
