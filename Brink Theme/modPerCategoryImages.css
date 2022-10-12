@@ -1,5 +1,5 @@
 /*------------------------------*\
-|*  Per-Category Images v1.0.1  *|
+|*  Per-Category Images v1.0.2  *|
 \* - - - - - - - - - - - - - - -*/
 
 .ownlist[data-query*='status":7'] {
@@ -43,9 +43,7 @@ body.ownlist {
 	display: block;
 	width: 100%;
 	max-width: initial;
-	height: 30vw;
-	min-height: calc(700px * 0.3);
-	max-height: calc(1920px * 0.3);
+	height: inherit;
 	background: var(--banner-image) center / cover;
 }
 
