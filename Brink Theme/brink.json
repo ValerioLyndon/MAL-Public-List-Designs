@@ -271,8 +271,8 @@
 				"options": {
 					"tag": {
 						"name": "Tag to Target",
-						"description": "Want to apply this mod to a tag other than \"Favourite\"? Input your tag here. Tag must be in [url=https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.#getting-the-tag-in-url-format]URL format[/url].",
-						"type": "text",
+						"description": "Want to apply this mod to a tag other than \"Favourite\"? Input your tag here. Be sure to enter the tag [b]exactly[/b] as you have it on your list.",
+						"type": "text/url_fragment",
 						"replacements": [["Favourite","{{{insert}}}"]],
 						"default": "Favourite"
 					},
@@ -324,112 +324,112 @@
 				"options": {
 					"--bg": {
 						"name": "Background",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--bg: 240, 3%, 9%;", "--bg: {{{insert}}};"]],
-						"default": "240, 3%, 9%"
+						"default": "hsl(240, 3%, 9%)"
 					},
 					"--bgAlt": {
 						"name": "Alternate Background",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--bgAlt: 240, 3%, 14%;", "--bgAlt: {{{insert}}};"]],
-						"default": "240, 3%, 14%"
+						"default": "hsl(240, 3%, 14%)"
 					},
 					"--btn": {
 						"name": "Button Backing",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--btn: 240, 3%, 16%;", "--btn: {{{insert}}};"]],
-						"default": "240, 3%, 16%"
+						"default": "hsl(240, 3%, 16%)"
 					},
 					"--btnAlt": {
 						"name": "\"Swap To\" Button Backing",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--btnAlt: 240, 3.5%, 21%;", "--btnAlt: {{{insert}}};"]],
-						"default": "240, 3.5%, 21%"
+						"default": "hsl(240, 3.5%, 21%)"
 					},
 					"--btnLight": {
 						"name": "Button Accent",
-						"type": "text/value",
+						"type": "color/insert/hsl",
 						"replacements": [["--btnLight: 240, 100%, 94%, 4%;", "--btnLight: {{{insert}}};"]],
-						"default": "240, 100%, 94%, 4%"
+						"default": "hsla(240, 100%, 94%, 4%)"
 					},
 					"--btnAccent": {
 						"name": "Button Border",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--btnAccent: 240, 17%, 34%;", "--btnAccent: {{{insert}}};"]],
-						"default": "240, 17%, 34%"
+						"default": "hsl(240, 17%, 34%)"
 					},
 					"--accent": {
 						"name": "Accent Colour",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--accent: 240, 75%, 77%;", "--accent: {{{insert}}};"]],
-						"default": "240, 75%, 77%"
+						"default": "hsl(240, 75%, 77%)"
 					},
 					"--text": {
 						"name": "Text",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--text: 0, 0%, 100%;", "--text: {{{insert}}};"]],
-						"default": "0, 0%, 100%"
+						"default": "hsl(0, 0%, 100%)"
 					},
 					"--textProminent": {
 						"name": "Content Status Text",
 						"description": "Re-watching/airing/etc texts.",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--textProminent: 27, 87%, 67%;", "--textProminent: {{{insert}}};"]],
-						"default": "27, 87%, 67%"
+						"default": "hsl(27, 87%, 67%)"
 					},
 					"--textLinkHov": {
 						"name": "Link Text",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--textLinkHov: 240, 50%, 80%;", "--textLinkHov: {{{insert}}};"]],
-						"default": "240, 50%, 80%"
+						"default": "hsl(240, 50%, 80%)"
 					},
 					"--current": {
 						"name": "Category - Current",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--current: 35, 49%, 46%;", "--current: {{{insert}}};"]],
-						"default": "35, 49%, 46%"
+						"default": "hsl(35, 49%, 46%)"
 					},
 					"--completed": {
 						"name": "Category - Completed",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--completed: 324, 49%, 46%;", "--completed: {{{insert}}};"]],
-						"default": "324, 49%, 46%"
+						"default": "hsl(324, 49%, 46%)"
 					},
 					"--paused": {
 						"name": "Category - Paused",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--paused: 80, 91%, 23%;", "--paused: {{{insert}}};"]],
-						"default": "80, 91%, 23%"
+						"default": "hsl(80, 91%, 23%)"
 					},
 					"--dropped": {
 						"name": "Category - Dropped",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--dropped: 6, 44%, 46%;", "--dropped: {{{insert}}};"]],
-						"default": "6, 44%, 46%"
+						"default": "hsl(6, 44%, 46%)"
 					},
 					"--planned": {
 						"name": "Category - Planned",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--planned: 56, 18%, 56%;", "--planned: {{{insert}}};"]],
-						"default": "56, 18%, 56%"
+						"default": "hsl(56, 18%, 56%)"
 					},
 					"--goldRating": {
 						"name": "Top Rated 10★",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--goldRating: 32.5, 100%, 71%;", "--goldRating: {{{insert}}};"]],
-						"default": "32.5, 100%, 71%"
+						"default": "hsl(32.5, 100%, 71%)"
 					},
 					"--silverRating": {
 						"name": "Top Rated 9★",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--silverRating: 0, 0%, 80%;", "--silverRating: {{{insert}}};"]],
-						"default": "0, 0%, 80%"
+						"default": "hsl(0, 0%, 80%)"
 					},
 					"--bronzeRating": {
 						"name": "Top Rated 8★",
-						"type": "text/value",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["--bronzeRating: 25, 55%, 59%;", "--bronzeRating: {{{insert}}};"]],
-						"default": "25, 55%, 59%"
+						"default": "hsl(25, 55%, 59%)"
 					}
 				},
 				"tags": ["visual style"]
