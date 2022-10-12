@@ -44,13 +44,13 @@
 				"name": "List Statistics",
 				"description": "Enables list statistics being shown in the footer.",
 				"type": "toggle",
-				"replacements": [["--toggleStats: hidden;", "--toggleStats: hidden;", "--toggleStats: visible;"]]
+				"replacements": [["RegExp/--toggleStats:[^;]+;", "--toggleStats: hidden;", "--toggleStats: visible;"]]
 			},
 			"--toggleStreaming": {
 				"name": "Watch Button",
 				"description": "Enables the \"Watch\" button with streaming services watch options.",
 				"type": "toggle",
-				"replacements": [["--toggleStreaming: visible;", "--toggleStreaming: hidden;", "--toggleStreaming: visible;"]],
+				"replacements": [["RegExp/--toggleStreaming:[^;]+;", "--toggleStreaming: hidden;", "--toggleStreaming: visible;"]],
 				"default": true
 			},
 			"--imageBrightness": {
@@ -58,15 +58,16 @@
 				"type": "range",
 				"min": 0,
 				"max": 100,
-				"replacements": [["--imageBrightness: 66%;", "--imageBrightness: {{{insert}}}%;"]],
-				"default": 66
+				"replacements": [["RegExp/--imageBrightness:[^;]+;", "--imageBrightness: {{{insert}}}%;"]],
+				"default": 85
 			},
 			"--imagebrightnessHov": {
 				"name": "Cover Image Brightness (hover state)",
 				"type": "range",
 				"min": 0,
 				"max": 100,
-				"replacements": [["--imageBrightnessHov: 35%;", "--imageBrightnessHov: {{{insert}}}%;"]]
+				"default": 50,
+				"replacements": [["RegExp/--imageBrightnessHov:[^;]+;", "--imageBrightnessHov: {{{insert}}}%;"]]
 			},
 			"--imageBlurHov": {
 				"name": "Image blur amount (while hovered).",
@@ -74,23 +75,40 @@
 				"min": 0,
 				"max": 20,
 				"step": 0.01,
-				"replacements": [["--imageBlurHov: 2px;", "--imageBlurHov: {{{insert}}}px;"]],
+				"replacements": [["RegExp/--imageBlurHov:[^;]+;", "--imageBlurHov: {{{insert}}}px;"]],
 				"default": 2
+			},
+			"--imageFade": {
+				"name": "Image fade amount.",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
+				"replacements": [["RegExp/--imageFade:[^;]+;", "--imageFade: {{{insert}}};"]],
+				"default": 0.95
 			},
 			"--infoBGOpacity": {
 				"name": "Opacity of title/information background.",
 				"type": "range",
 				"min": 0,
 				"max": 100,
-				"replacements": [["--infoBGOpacity: 85%;", "--infoBGOpacity: {{{insert}}}%;"]],
-				"default": 85
+				"replacements": [["RegExp/--infoBGOpacity:[^;]+;", "--infoBGOpacity: {{{insert}}}%;"]],
+				"default": 0
+			},
+			"--numberOpacity": {
+				"name": "Opacity of number/type information.",
+				"type": "range",
+				"min": 0,
+				"max": 100,
+				"replacements": [["RegExp/--numberOpacity:[^;]+;", "--numberOpacity: {{{insert}}}%;"]],
+				"default": 80
 			},
 			"--bgDimness": {
 				"name": "Background Dimming",
 				"type": "range",
 				"min": 0,
 				"max": 100,
-				"replacements": [["--bgDimness: 50%;", "--bgDimness: {{{insert}}}%;"]],
+				"replacements": [["RegExp/--bgDimness:[^;]+;", "--bgDimness: {{{insert}}}%;"]],
 				"default": 50
 			},
 			"--bannerVignetteOpacity": {
@@ -98,25 +116,25 @@
 				"type": "range",
 				"min": 0,
 				"max": 100,
-				"replacements": [["--bannerVignetteOpacity: 90%;", "--bannerVignetteOpacity: {{{insert}}}%;"]],
+				"replacements": [["RegExp/--bannerVignetteOpacity:[^;]+;", "--bannerVignetteOpacity: {{{insert}}}%;"]],
 				"default": 90
 			},
 			"--toggleTopRatedGold": {
 				"name": "Top Rated - Gold for 10★",
 				"type": "toggle",
-				"replacements": [["--toggleTopRatingGold: visible;", "--toggleTopRatingGold: hidden;", "--toggleTopRatingGold: visible;"]],
+				"replacements": [["RegExp/--toggleTopRatingGold:[^;]+;", "--toggleTopRatingGold: hidden;", "--toggleTopRatingGold: visible;"]],
 				"default": true
 			},
 			"--toggleTopRatedSilver": {
 				"name": "Top Rated - Silver for 9★",
 				"type": "toggle",
-				"replacements": [["--toggleTopRatingSilver: visible;", "--toggleTopRatingSilver: hidden;", "--toggleTopRatingSilver: visible;"]],
+				"replacements": [["RegExp/--toggleTopRatingSilver:[^;]+;", "--toggleTopRatingSilver: hidden;", "--toggleTopRatingSilver: visible;"]],
 				"default": true
 			},
 			"--toggleTopRatedBronze": {
 				"name": "Top Rated - Bronze for 8★",
 				"type": "toggle",
-				"replacements": [["--toggleTopRatingBronze: hidden;", "--toggleTopRatingBronze: hidden;", "--toggleTopRatingBronze: visible;"]]
+				"replacements": [["RegExp/--toggleTopRatingBronze:[^;]+;", "--toggleTopRatingBronze: hidden;", "--toggleTopRatingBronze: visible;"]]
 			}
 		},
 		"mods": {
@@ -302,7 +320,7 @@
 			"theme": {
 				"name": "Custom Theme Colours",
 				"description": "Create your own theme by replacing all the theme colours as you desire. Colours are HSL values with their surrounding parentheses removed.",
-				"css": {"bottom": "/*------------------------------*\\\n|*     Custom Theme Colours     *|\n\\* - - - - - - - - - - - - - - -*/\n\n:root {\n\t--bg: 240, 3%, 9%;\n\t--bgAlt: 240, 3%, 14%;\n\t--btn: 240, 3%, 16%;\n\t--btnAlt: 240, 3.5%, 21%;\n\t--btnLight: 240, 100%, 94%, 4%;\n\t--btnAccent: 240, 17%, 34%;\n\t--accent: 240, 75%, 77%;\n\t\n\t--text: 0, 0%, 100%;\n\t--textProminent: 27, 87%, 67%;\n\t--textLinkHov: 240, 50%, 80%;\n\t\n\t--current: 35, 49%, 46%;\n\t--completed: 324, 49%, 46%;\n\t--paused: 80, 91%, 23%;\n\t--dropped: 6, 44%, 46%;\n\t--planned: 56, 18%, 56%;\n\t\n\t--goldRating: 31, 100%, 70%;\n\t--silverRating: 0, 0%, 80%;\n\t--bronzeRating: 23, 40%, 48%;\n}"},
+				"css": {"bottom": "/*------------------------------*\\\n|*     Custom Theme Colours     *|\n\\* - - - - - - - - - - - - - - -*/\n\n:root {\n\t--bg: 240, 3%, 9%;\n\t--bgAlt: 240, 3%, 14%;\n\t--btn: 240, 3%, 16%;\n\t--btnAlt: 240, 3.5%, 21%;\n\t--btnLight: 240, 100%, 94%, 4%;\n\t--btnAccent: 240, 17%, 34%;\n\t--accent: 240, 75%, 77%;\n\t\n\t--text: 0, 0%, 100%;\n\t--textProminent: 27, 87%, 67%;\n\t--textLinkHov: 240, 50%, 80%;\n\t\n\t--current: 35, 49%, 46%;\n\t--completed: 324, 49%, 46%;\n\t--paused: 80, 91%, 23%;\n\t--dropped: 6, 44%, 46%;\n\t--planned: 56, 18%, 56%;\n\t\n\t--goldRating: 32.5, 100%, 71%;\n\t--silverRating: 0, 0%, 80%;\n\t--bronzeRating: 25, 55%, 59%;\n}"},
 				"options": {
 					"--bg": {
 						"name": "Background",
@@ -398,8 +416,8 @@
 					"--goldRating": {
 						"name": "Top Rated 10★",
 						"type": "text/value",
-						"replacements": [["--goldRating: 31, 100%, 70%;", "--goldRating: {{{insert}}};"]],
-						"default": "31, 100%, 70%"
+						"replacements": [["--goldRating: 32.5, 100%, 71%;", "--goldRating: {{{insert}}};"]],
+						"default": "32.5, 100%, 71%"
 					},
 					"--silverRating": {
 						"name": "Top Rated 9★",
@@ -410,8 +428,8 @@
 					"--bronzeRating": {
 						"name": "Top Rated 8★",
 						"type": "text/value",
-						"replacements": [["--bronzeRating: 23, 40%, 48%;", "--bronzeRating: {{{insert}}};"]],
-						"default": "23, 40%, 48%"
+						"replacements": [["--bronzeRating: 25, 55%, 59%;", "--bronzeRating: {{{insert}}};"]],
+						"default": "25, 55%, 59%"
 					}
 				},
 				"tags": ["visual style"]
