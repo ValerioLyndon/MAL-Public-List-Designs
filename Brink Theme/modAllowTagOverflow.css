@@ -1,8 +1,9 @@
 /*------------------------------*\
-|*  Allow Tag Overflow  v1.0.3  *|
+|*  Allow Tag Overflow  v1.1.0  *|
 \* - - - - - - - - - - - - - - -*/
 
 .data.tags {
+	z-index: 10;
 	overflow: initial;
 	opacity: 1;
 }
