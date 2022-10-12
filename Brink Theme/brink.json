@@ -7,6 +7,7 @@
 		"type": "modern",
 		"help": "https://myanimelist.net/forum/?topicid=1772180",
 		"sponsor": "https://ko-fi.com/valeriolyndon",
+		"background": false,
 		"columns": {
 			"mode": "greylist",
 			"animelist": {
@@ -319,7 +320,7 @@
 			},
 			"theme": {
 				"name": "Custom Theme Colours",
-				"description": "Create your own theme by replacing all the theme colours as you desire. Colours are HSL values with their surrounding parentheses removed.",
+				"description": "Create your own theme by replacing all the theme colours as you desire.",
 				"css": {"bottom": "/*------------------------------*\\\n|*     Custom Theme Colours     *|\n\\* - - - - - - - - - - - - - - -*/\n\n:root {\n\t--bg: 240, 3%, 9%;\n\t--bgAlt: 240, 3%, 14%;\n\t--btn: 240, 3%, 16%;\n\t--btnAlt: 240, 3.5%, 21%;\n\t--btnLight: 240, 100%, 94%, 4%;\n\t--btnAccent: 240, 17%, 34%;\n\t--accent: 240, 75%, 77%;\n\t\n\t--text: 0, 0%, 100%;\n\t--textProminent: 27, 87%, 67%;\n\t--textLinkHov: 240, 50%, 80%;\n\t\n\t--current: 35, 49%, 46%;\n\t--completed: 324, 49%, 46%;\n\t--paused: 80, 91%, 23%;\n\t--dropped: 6, 44%, 46%;\n\t--planned: 56, 18%, 56%;\n\t\n\t--goldRating: 32.5, 100%, 71%;\n\t--silverRating: 0, 0%, 80%;\n\t--bronzeRating: 25, 55%, 59%;\n}"},
 				"options": {
 					"--bg": {
