@@ -1,5 +1,5 @@
 /*------------------------------*\
-|* Change Banner Height  v1.0.0 *|
+|* Change Banner Height  v1.0.1 *|
 \* - - - - - - - - - - - - - - -*/
 
 :root {
@@ -12,10 +12,10 @@
 }
 
 .list-block {
-	min-height: calc(100vh - (184px + (100vw * var(--banner-height))));
+	min-height: calc(100vh - (42px + (100vw * var(--banner-height))));
 }
 
-#cover-image {
+#cover-image-container {
 	height: calc(100vw * var(--banner-height));
 	min-height: calc(700px * var(--banner-height));
 	max-height: calc(1920px * var(--banner-height));
@@ -23,12 +23,12 @@
 
 @media (max-width: 700px) {
 	.list-block {
-		min-height: calc(100vh - (184px + (700px * var(--banner-height))));
+		min-height: calc(100vh - (42px + (700px * var(--banner-height))));
 	}
 }
 
 @media (min-width: 1920px) {
 	.list-block {
-		min-height: calc(100vh - (184px + (1920px * var(--banner-height))));
+		min-height: calc(100vh - (42px + (1920px * var(--banner-height))));
 	}
 }
