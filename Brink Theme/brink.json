@@ -253,7 +253,7 @@
 				"options": {
 					"tag": {
 						"name": "Tag to Target",
-						"description": "Want to apply this mod to a tag other than \"Favourite\"? Input your tag here. Tag must be in [URL format](https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.#getting-the-tag-in-url-format).",
+						"description": "Want to apply this mod to a tag other than \"Favourite\"? Input your tag here. Tag must be in [url=https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.#getting-the-tag-in-url-format]URL format[/url].",
 						"type": "text",
 						"replacements": [["Favourite","{{{insert}}}"]],
 						"default": "Favourite"
@@ -294,7 +294,7 @@
 			},
 			"tag-scores-dedicated": {
 				"name": "Tag Scores",
-				"description": "This is a [b]compelete override[/b] of the score and tag columns and will completely replace the score on your list with a tag. Your tag score must be the first tag, and any other tags on your list will be invisible.",
+				"description": "This is a [b]complete override[/b] of the score and tag columns and will completely replace the score on your list with a tag. Your tag score must be the first tag, and any other tags on your list will be invisible.",
 				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modTagScoresDedicated.css"},
 				"conflicts": ["hide-tag", "favourite-tag"],
 				"tags": ["functionality"]
