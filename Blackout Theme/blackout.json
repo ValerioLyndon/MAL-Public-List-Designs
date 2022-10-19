@@ -6,18 +6,8 @@
 		"css": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Blackout%20Theme/Blackout.min.css",
 		"type": "modern",
 		"sponsor": "https://ko-fi.com/valeriolyndon",
-		"columns": {
-			"mode": "greylist",
-			"animelist": {
-				"Notes": false
-			},
-			"mangalist": {
-				"Notes": false
-			}
-		},
 		"preview": {
 			"columns": {
-				"mode": "blacklist",
 				"animelist": {
 					"Numbers": true,
 					"Score": true,

@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v1.0.1             *|
+ v1.1.0             *|
  a list design      *|
  by Valerio Lyndon  */
 /*
@@ -34,6 +34,7 @@
 ┃ │├╴Controls       ┃
 ┃ │├╴Category       ┃
 ┃ │├╴Title          ┃
+┃ │├╴Notes          ┃
 ┃ │├╴Score          ┃
 ┃ │├╴Progress       ┃
 ┃ │├╴Common         ┃
@@ -1253,7 +1254,8 @@ tbody:hover .list-table-header {
 
 .data.title {
 	width: calc(100% - 2rem);
-	white-space: nowrap;
+	height: auto;
+	margin-bottom: 0;
 }
 
 .list-table .list-table-data .data.title .link {
@@ -1261,24 +1263,62 @@ tbody:hover .list-table-header {
 	max-width: calc(100% - 16rem);
 	text-overflow: ellipsis;
 	overflow: hidden;
-	padding: 2rem 0;
+	margin: 2.5rem 0;
 	font-size: 4.2rem;
 	color: var(--c-text-link);
 	font-weight: normal;
+	vertical-align: top;
+	white-space: nowrap;
 }
 
 .title [class^="re"],
 .content-status {
-	color: var(--c-text);
-	vertical-align: top;
-	margin-top: 2.25rem;
-	margin-left: 1rem;
-	opacity: 0.8;
-	padding: 0 1rem;
 	display: inline-block;
+	padding: 0 1rem;
 	background: var(--c-foreground);
 	border: .25rem solid var(--c-border-dark);
+	margin-top: 2.25rem;
+	margin-left: 1rem;
+	color: var(--c-text);
+	vertical-align: top;
 	text-transform: uppercase;
+	opacity: 0.8;
+}
+
+/*/Blackout/Items/Notes$: /*/
+
+.notes {
+	width: 100% !important;
+	padding: 0 1rem;
+	cursor: text;
+}
+
+.notes .text:not(:empty) {
+	margin-bottom: 3rem;
+	pointer-events: none;
+}
+
+.notes .edit,
+[data-owner="1"] .notes .text:not(:empty)::after {
+	content: "\a Edit notes";
+	white-space: pre-wrap;
+	font-size: 2.5rem;
+	color: var(--c-text-highlight);
+	cursor: pointer;
+	pointer-events: auto;
+}
+.notes .edit:hover,
+.notes .text:hover::after {
+	color: var(--c-text-link);
+}
+
+.notes .edit {
+	display: inline-block;
+	margin-bottom: 3rem;
+}
+
+.notes textarea {
+	resize: vertical;
 }
 
 /*/Blackout/Items/Score$: /*/
@@ -1555,7 +1595,17 @@ tbody:hover .list-table-header {
 /*/Blackout/Items/More$: /*/
 
 .more-info {
+	padding-top: 3rem;
+	background: var(--c-foreground);
 	border: none !important;
+	margin-top: -2rem;
+	--clip-1: 2.5rem;
+	--clip-2: 3rem;
+	clip-path: /* custom angledge */ polygon(0 3rem, calc(100% - 2.75rem) 2.75rem, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+}
+
+.more-content {
+	padding: 3rem !important;
 }
 
 /*/Blackout/Items/Footer$: /*/
