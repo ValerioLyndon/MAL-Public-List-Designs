@@ -4,7 +4,7 @@
  */
 
 :root {
-	--list-width: 660px;
+	--list-width: 1060px;
 	--render-offset: calc(var(--list-width) * 0.5 + 8px) !important;
 }
 
