@@ -13,14 +13,15 @@ body:
       description: If you select other, be sure to explain in the next field what theme you are using.
       multiple: false
       options:
-        - Clarity
-        - Brink
-        - Tilt
         - 9anime
+        - Agile
+        - Blackout
+        - Brink
+        - Clarified
+        - Clarity
         - Kure
         - Puni
-        - Agile
-        - Clarified
+        - Tilt
         - Other
     validations:
       required: true
@@ -56,11 +57,11 @@ body:
       multiple: true
       options:
         - Firefox
-        - Chrome
-        - Brave
-        - Opera
-        - Safari
+        - Chrome / Chromium
         - Microsoft Edge
+        - Brave
+        - Opera / Opera GX
+        - Safari
         - Other
     validations:
       required: false
