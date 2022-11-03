@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.0.11
+ * v2.0.12
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -478,36 +478,31 @@ body::after {
 	opacity: 1;
 }
 
-.list-menu-float .icon-menu svg.icon,
-.list-menu-float .icon-menu:hover svg.icon {
+.list-menu-float .icon-menu.setting {
+	padding: 0;
+}
+
+.list-menu-float .icon-menu svg.icon {
 	left: 0 !important;
 	top: 50% !important;
 	height: 16px;
 	color: inherit;
-	fill: currentcolor;
+	fill: currentcolor !important;
 	vertical-align: top;
 	transform: translateY(-50%);
 }
 
 .list-menu-float .icon-menu .text,
-.list-menu-float .icon-menu:hover .text,
-.list-menu-float .icon-menu.setting .text,
-.list-menu-float .icon-menu.setting:hover .text,
-.list-menu-float .icon-menu.setting .text .link-list-setting,
-.list-menu-float .icon-menu.setting .text .link-style-setting,
-.list-menu-float .icon-menu.setting:hover .text .link-list-setting,
-.list-menu-float .icon-menu.setting:hover .text .link-style-setting,
-.list-menu-float .icon-menu.setting .text .link-list-setting:hover,
-.list-menu-float .icon-menu.setting .text .link-style-setting:hover {
+.list-menu-float .icon-menu .text :is(.link-list-setting, .link-style-setting) {
 	position: static !important;
 	width: auto;
-	height: auto;
+	height: auto !important;
 	background: none !important;
-	border: none;
+	border: none !important;
 	overflow: visible;
 	color: inherit;
 	font-size: 14px;
-	line-height: 19px;
+	line-height: 19px !important;
 	text-align: left;
 	opacity: 1 !important;
 	transition: none;
@@ -516,19 +511,14 @@ body::after {
 	text-decoration: underline !important;
 }
 
-.list-menu-float .icon-menu.setting {
-	padding: 0;
-}
-
 .list-menu-float .icon-menu.setting svg.icon {
 	display: none;
 }
 
-.list-menu-float .icon-menu.setting .text .link-list-setting, .list-menu-float .icon-menu.setting .text .link-style-setting {
+.list-menu-float .icon-menu.setting .text :is(.link-list-setting, .link-style-setting) {
 	padding: 3px 0;
 	color: var(--content-text) !important;
-} .list-menu-float .icon-menu.setting .text .link-list-setting:hover,
-.list-menu-float .icon-menu.setting .text .link-style-setting:hover {
+} .list-menu-float .icon-menu.setting .text :is(.link-list-setting, .link-style-setting):hover {
 	color: var(--content-link) !important;
 }
 
@@ -859,8 +849,7 @@ tr.list-table-data {
 
 /* Category colour variables */
 
-.status.watching ~ td,
-.status.reading ~ td {
+.status:is(.watching, .reading) ~ td {
 	--local-category: var(--current);
 }
 .status.completed ~ td {
@@ -872,8 +861,7 @@ tr.list-table-data {
 .status.dropped ~ td {
 	--local-category: var(--dropped);
 }
-.status.plantowatch ~ td,
-.status.plantoread ~ td {
+.status:is(.plantowatch, .plantoread) ~ td {
 	--local-category: var(--planned);
 }
 
@@ -891,15 +879,15 @@ tr.list-table-data {
 	flex: 0 0 auto;
 	margin-right: 3px;
 	line-height: 15px;
-}.list-table .list-table-header .header-title .link,
-.list-table .list-table-header .header-title .link.sort {
+} .list-table .list-table-header .header-title :is(.link,.link.sort) {
 	transition: none;
-	color: var(--content-text);
 }
 
 .list-table .list-table-header .header-title .sort-icon {
 	font-size: 11px;
+	vertical-align: middle;
 	color: var(--content-link);
+	text-indent: 3px;
 }
 
 /* column icon styles */
@@ -913,7 +901,8 @@ tr.list-table-data {
 }
 
 /* description on hover for icons, activated by adding "content" property later on specific column headers */
-.header-title a::after {
+.header-title a:hover::after {
+	content: var(--label, none);
 	position: absolute;
 	top: -17px;
 	left: 50%;
@@ -927,14 +916,10 @@ tr.list-table-data {
 	transform: translateX(-50%);
 	pointer-events: none;
 }
-.header-title a[href*="order2=0"]:not([href*="order="]):hover::after {
-	content: "Reset sort";
-}
 
 /* hidden column headers */
 .header-title.finished + .days,
-.header-title.tags,
-.header-title.genre {
+.header-title:is(.tags, .genre) {
 	display: none !important;
 }
 
@@ -1058,7 +1043,6 @@ tr.list-table-data {
 }
 .data.tags .edit::before {
 	content: "\e211";
-	
 }
 .data.tags .edit::after {
 	content: " Tags";
@@ -1092,8 +1076,7 @@ tr.list-table-data {
 	line-height: 18px;
 	pointer-events: none;
 }
-.data.status.watching,
-.data.status.reading {
+.data.status:is(.watching, .reading) {
 	background: var(--current) !important;
 } .data.status.completed {
 	background: var(--completed) !important;
@@ -1101,13 +1084,11 @@ tr.list-table-data {
 	background: var(--onhold) !important;
 } .data.status.dropped {
 	background: var(--dropped) !important;
-} .data.status.plantowatch,
-.data.status.plantoread {
+} .data.status:is(.plantowatch, .plantoread) {
 	background: var(--planned) !important;
 }
 
-.data.status.watching::after,
-.data.status.reading::after {
+.data.status:is(.watching, .reading)::after {
 	content: "\f06e ";
 } .data.status.completed::after {
 	content: "\f00c ";
@@ -1115,8 +1096,7 @@ tr.list-table-data {
 	content: "\f04c ";
 } .data.status.dropped::after {
 	content: "\f00d ";
-} .data.status.plantowatch::after,
-.data.status.plantoread::after {
+} .data.status:is(.plantowatch, .plantoread)::after {
 	content: "\f141 ";
 }
 
@@ -1243,9 +1223,7 @@ tr.list-table-data {
 
 /* Content Status */
 
-.list-table .list-table-data .data.title .rewatching,
-.list-table .list-table-data .data.title .rereading,
-.list-table .list-table-data .data.title .content-status {
+.list-table .list-table-data .data.title :is(.rewatching, .rereading,.content-status) {
 	float: left;
 	color: var(--content-text);
 	font-style: italic;
@@ -1311,18 +1289,12 @@ tr.list-table-data {
   @Priority
   ---------*/
 
-.header-title.progress,
-.header-title.chapters,
-.header-title.volumes,
-.header-title.priority {
+.header-title:is(.progress, .chapters, .volumes, .priority) {
 	width: 90px !important;
 	order: 10;
 }
 
-.data.progress,
-.data.chapter,
-.data.volume,
-.data.priority {
+.data:is(.progress, .chapter, .volume, .priority) {
 	display: flex !important;
 	width: 90px;
 	height: 100%;
@@ -1339,39 +1311,27 @@ tr.list-table-data {
 
 /* Priority */
 
-.header-title.progress ~ .priority,
-.header-title.chapters ~ .priority,
-.header-title.volumes ~ .priority {
+.header-title:is(.progress, .chapters, .volumes) ~ .priority {
 	width: 20px !important;
 	margin-left: -23px;
 }
-.header-title.progress ~ .priority a,
-.header-title.chapters ~ .priority a,
-.header-title.volumes ~ .priority a {
+.header-title:is(.progress,.chapters,.volumes) ~ .priority a {
 	font-size: 0 !important;
 }
-.header-title.progress ~ .priority a::before,
-.header-title.chapters ~ .priority a::before,
-.header-title.volumes ~ .priority a::before {
+.header-title:is(.progress, .chapters, .volumes) ~ .priority a::before {
 	content: "\f0f3";
 	font-size: 11px;
 }
-.header-title.progress ~ .priority a:hover::after,
-.header-title.chapters ~ .priority a:hover::after,
-.header-title.volumes ~ .priority a:hover::after {
-	content: "Priority";
+.header-title:is(.progress, .chapters, .volumes) ~ .priority {
+	--label: "Priority";
 }
 
-.data.progress ~ .priority,
-.data.chapter ~ .priority,
-.data.volume ~ .priority {
+.data:is(.progress, .chapters, .volumes) ~ .priority {
 	background: var(--content-background);
 	margin-left: -93px;
 	pointer-events: none;
 }
-.data.progress:hover ~ .priority,
-.data.chapter:hover ~ .priority,
-.data.volume:hover ~ .priority {
+.data:is(.progress, .chapters, .volumes):hover ~ .priority {
 	opacity: 0;
 }
 
@@ -1405,8 +1365,7 @@ Please MAL I am begging you, just add another selector to the date column header
 	order: 25;
 }
 
-.header-title.started,
-.header-title.finished {
+.header-title:is(.started, .finished) {
 	width: auto !important;
 	background: var(--content-background) !important;
 	order: 25;
@@ -1426,8 +1385,7 @@ Please MAL I am begging you, just add another selector to the date column header
 	margin-right: 49px !important;
 }
 
-.header-title.started a,
-.header-title.finished a {
+.header-title:is(.started, .finished) a {
 	width: 33px;
 	font-size: 0 !important;
 	text-indent: 6px;
@@ -1439,34 +1397,53 @@ Please MAL I am begging you, just add another selector to the date column header
 .header-title.started a::before {
 	content: "\f251";
 }
-.header-title a[href*="order=3"]:hover::after,
-.header-title a[href*="order=-3"]:hover::after {
-	content: "User Started";
-}
-/* These selectors must be this verbose as to prevent issues between the anime and manga lists */
-.anime .header-title a[href*="order=14"]:hover::after,
-.anime .header-title a[href*="order=-14"]:hover::after {
-	content: "Airing Started";
-}
-.manga .header-title a[href*="order=12"]:hover::after,
-.manga .header-title a[href*="order=-12"]:hover::after {
-	content: "Publishing Started";
-}
-
 .header-title.finished a::before {
 	content: "\f253";
 }
-.header-title a[href*="order=2"]:hover::after,
-.header-title a[href*="order=-2"]:hover::after {
-	content: "User Finished";
+
+@layer {
+	.header-title:is(.started, .finished) a:is([href*="order=3"], [href*="order=-3"]) {
+		--label: "User Started";
+	}
+	/* These selectors must be this verbose as to prevent issues between the anime and manga lists */
+	.anime .header-title:is(.started, .finished) a:is([href*="order=14"], [href*="order=-14"]) {
+		--label: "Airing Started";
+	}
+	.manga .header-title:is(.started, .finished) a:is([href*="order=12"], [href*="order=-12"]) {
+		--label: "Publishing Started";
+	}
+	.header-title:is(.started, .finished) a:is([href*="order=2"], [href*="order=-2"]) {
+		--label: "User Finished";
+	}
+	.anime .header-title:is(.started, .finished) a:is([href*="order=15"], [href*="order=-15"]) {
+		--label: "Airing Finished";
+	}
+	.manga .header-title:is(.started, .finished) a:is([href*="order=13"], [href*="order=-13"]) {
+		--label: "Publishing Finished";
+	}
 }
-.anime .header-title a[href*="order=15"]:hover::after,
-.anime .header-title a[href*="order=-15"]:hover::after {
-	content: "Airing Finished";
-}
-.manga .header-title a[href*="order=13"]:hover::after,
-.manga .header-title a[href*="order=-13"]:hover::after {
-	content: "Publishing Finished";
+
+/* Add less specific header when using advanced sorting to prevent labelling errors.
+This is due to the "order" href syntax being absolutely fuckass-backwards sometimes */
+@layer {
+	body[data-query*='"order"'] .header-title.started a {
+		--label: "Started";
+	}
+	body[data-query*='"order"'] .header-title.finished a {
+		--label: "Finished";
+	}
+	.anime[data-query*='"order"'] .header-title.started ~ .started a {
+		--label: "Airing Started";
+	}
+	.anime[data-query*='"order"'] .header-title.finished ~ .finished a {
+		--label: "Airing Finished";
+	}
+	.manga[data-query*='"order"'] .header-title.started ~ .started a {
+		--label: "Publishing Started";
+	}
+	.manga[data-query*='"order"'] .header-title.finished ~ .finished a {
+		--label: "Publishing Finished";
+	}
 }
 
 .header-title.started::before {
@@ -1485,11 +1462,7 @@ Please MAL I am begging you, just add another selector to the date column header
 
 /* Column */
 
-.data.started,
-.data.finished,
-.data.days,
-.data.airing-started,
-.data.airing-finished {
+.data:is(.started, .finished, .days, .airing-started, .airing-finished) {
 	position: relative;
 	display: flex !important;
 	width: 70px;
@@ -1521,23 +1494,17 @@ Please MAL I am begging you, just add another selector to the date column header
 }
 
 /* Icons */
-.data.started::before,
-.data.finished::before,
-.data.days::before,
-.data.airing-started::before,
-.data.airing-finished::before {
+.data:is(.started, .finished, .days, .airing-started, .airing-finished)::before {
 	display: inline-block;
 	width: 14px;
 	margin-right: 3px;
 	flex: 0 0 auto;
 	text-align: right;
 }
-.data.started::before,
-.data.airing-started::before {
+.data:is(.started, .airing-started)::before {
 	content: "\f251";
 }
-.data.finished::before,
-.data.airing-finished::before {
+.data:is(.finished, .airing-finished)::before {
 	content: "\f253";
 }
 .data.days::before {
@@ -1552,11 +1519,7 @@ Please MAL I am begging you, just add another selector to the date column header
 }
 
 /* Empty column text - thanks to its fixed width, any text in the column will push this to the next line, which hides it due to "overflow: hidden" on the parent. */
-.data.airing-started::after,
-.data.airing-finished::after,
-.data.started::after,
-.data.finished::after,
-.data.days::after {
+.data:is(.started, .finished, .days, .airing-started, .airing-finished)::after {
 	content: "None";
 	display: block;
 	width: calc(70px - 21px);
@@ -1573,11 +1536,7 @@ Please MAL I am begging you, just add another selector to the date column header
   @Season
   ---------*/
 
-.data.rated,
-.data.magazine,
-.data.storage,
-.data.retail,
-.data.season {
+.data:is(.rated, .magazine, .storage, .retail, .season) {
 	height: 1.5em;
 	margin-right: 4px;
 	overflow: hidden;
@@ -1588,10 +1547,8 @@ Please MAL I am begging you, just add another selector to the date column header
 	width: 90px !important;
 	order: 26;
 }
-.header-title.storage,
-.header-title.retail,
-.data.storage,
-.data.retail {
+.header-title:is(.storage, .retail),
+.data:is(.storage, .retail) {
 	width: 72px !important;
 	order: 19;
 }
@@ -1636,11 +1593,7 @@ Please MAL I am begging you, just add another selector to the date column header
 }
 
 /* Empty column text - thanks to its fixed width, any text in the column will push this to the next line, which hides it due to "overflow: hidden" on the parent. */
-.data.rated::after,
-.data.magazine::after,
-.data.storage::after,
-.data.retail::after,
-.data.season:empty::after {
+.data:is(.rated, .magazine, .storage, .retail, .season:empty)::after {
 	content: "None";
 	display: block;
 	opacity: 0.35;
@@ -1656,6 +1609,9 @@ Please MAL I am begging you, just add another selector to the date column header
 .data.retail::after {
 	width: 72px;
 }
+.data.season:empty::after {
+	text-align: left;
+}
 
 
 /*---------
@@ -1666,11 +1622,7 @@ Please MAL I am begging you, just add another selector to the date column header
   @Licensor
   ---------*/
 
-.data.tags,
-.data.genre,
-.data.demographic,
-.data.studio,
-.data.licensor {
+.data:is(.tags, .genre, .demographic, .studio, .licensor) {
 	order: 35;
 	line-height: 1;
 }
@@ -1686,10 +1638,7 @@ Please MAL I am begging you, just add another selector to the date column header
 
 /* Empty Columns */
 
-.data.demographic:empty::after,
-.data.licensor:empty::after,
-.data.studio:empty::after,
-.data.genre:empty::after {
+.data:is(.demographic, .licensor, .studio, .genre):empty::after {
 	content: "None";
 	font-size: 11px;
 	display: block;
@@ -1698,14 +1647,12 @@ Please MAL I am begging you, just add another selector to the date column header
 
 /* Studio & Licensor */
 
-.header-title.studio,
-.header-title.licensor {
+.header-title:is(.studio, .licensor) {
 	width: 100px !important;
 	order: 35;
 }
 
-.data.studio,
-.data.licensor {
+.data:is(.studio, .licensor) {
 	display: flex !important;
 	flex-flow: column nowrap;
 	align-items: center;
@@ -1713,8 +1660,7 @@ Please MAL I am begging you, just add another selector to the date column header
 	font-size: 0;
 }
 
-.data.studio a,
-.data.licensor a {
+.data:is(.studio, .licensor) a {
 	display: inline-block;
 	max-width: 100px;
 	overflow: hidden;
@@ -1725,8 +1671,7 @@ Please MAL I am begging you, just add another selector to the date column header
 	text-overflow: ".."; /*firefox*/
 }
 
-.data.studio span + span,
-.data.licensor span + span {
+.data:is(.studio, .licensor) span + span {
 	min-width: 70px;
 	border-top: 3px dotted var(--border);
 	margin-top: 2px;
@@ -1734,13 +1679,11 @@ Please MAL I am begging you, just add another selector to the date column header
 
 /* Tags & Genre & Manga Demographic */
 
-.data.tags,
-.data.genre {
+.data:is(.tags, .genre) {
 	grid-column-start: 1;
 	grid-column-end: 51;
 }
-.data.tags,
-.data.genre {
+.data:is(.tags, .genre) {
 	width: 100%;
 	grid-row-start: tags;
 	text-align: left !important;
@@ -1790,8 +1733,7 @@ Please MAL I am begging you, just add another selector to the date column header
 	color: var(--inverse-text) !important;
 }
 
-.data.tags span a::before,
-.data.genre span a::before {
+.data:is(.tags, .genre) span a::before {
 	margin-right: 3px;
 }
 .data.tags span a::before {
@@ -1807,10 +1749,6 @@ Please MAL I am begging you, just add another selector to the date column header
   @Empty-Table
   ---------*/
 
-.list-table[data-items="[]"] > tbody {
-	display: none;
-}
-
 .list-table[data-items="[]"]::after {
 	display: block;
 	width: 600px;
@@ -1825,20 +1763,22 @@ Please MAL I am begging you, just add another selector to the date column header
 	text-align: center;
 	
 	/* No Entries (Generic/Non-Owner) */
-	content: "No entries found.";
+	content: var(--empty, "No entries found.");
 }
-[data-owner="1"] .list-table[data-items="[]"]::after {
+[data-owner="1"] {
 	/* No Entries (Owner) */
-	content: "No entries found. Why not add some?";
+	--empty: "No entries found. Why not add some?";
 }
-[data-query*='"s":'] .list-table[data-items="[]"]::after,
-[data-query*='"airing_status":'] .list-table[data-items="[]"]::after,
-[data-query*='"producer":'] .list-table[data-items="[]"]::after,
-[data-query*='"aired_from_year":'] .list-table[data-items="[]"]::after,
-[data-query*='"aired_to_year":'] .list-table[data-items="[]"]::after,
-[data-query*='"season":'] .list-table[data-items="[]"]::after {
+:is(
+[data-query*='"s":'],
+[data-query*='"airing_status":'],
+[data-query*='"producer":'],
+[data-query*='"aired_from_year":'],
+[data-query*='"aired_to_year":'],
+[data-query*='"season":']
+) {
 	/* No Entries (Bad Search) */
-	content: "No entries found. Perhaps your search terms are too restrictive?";
+	--empty: "No entries found. Perhaps your search terms are too restrictive?";
 }
 
 
@@ -1854,10 +1794,7 @@ Please MAL I am begging you, just add another selector to the date column header
 }
 
 /* force full-width more info */
-.more-info table,
-.more-info tbody,
-.more-info td,
-.more-info tr {
+.more-info :is(table, tbody, td, tr) {
 	display: block;
 }
 
@@ -1914,7 +1851,7 @@ Please MAL I am begging you, just add another selector to the date column header
 	font-size: 40px;
 	line-height: 40px;
 	text-align: center;
-	animation: 800ms ease-in-out 0s infinite custom-spin; 
+	animation: 800ms cubic-bezier(.49,.21,.49,.82) 0s infinite custom-spin; 
 }
 #loading-spinner::after {
 	animation-delay: -0.15s;
@@ -2081,9 +2018,7 @@ body #fancybox-close::after {
 	line-height: 26px;
 }
 
-#advanced-options input[type="text"],
-#advanced-options select,
-#advanced-options label {
+#advanced-options :is(input[type="text"], select, label) {
 	height: 26px;
 	border-radius: 4px;
 	background-color: var(--content-highlight) !important;
@@ -2119,16 +2054,13 @@ body #fancybox-close::after {
 	margin-left: 6px;
 }
 
-#advanced-options .filter-widget[class*="-date"] .year,
-#advanced-options .filter-widget[class*="-date"] .month,
-#advanced-options .filter-widget[class*="-date"] .day {
+#advanced-options .filter-widget[class*="-date"] :is(.year, .month, .day) {
 	border-radius: 0;
 	padding-left: 6px;
 	border-left-width: 0;
 	margin: 0;
 }
-#advanced-options .filter-widget[class*="-date"] .year,
-#advanced-options .filter-widget[class*="-date"] .month {
+#advanced-options .filter-widget[class*="-date"] :is(.year, .month) {
 	border-right: none;
 }
 #advanced-options .filter-widget[class*="-date"] .day {
@@ -2137,8 +2069,7 @@ body #fancybox-close::after {
 #advanced-options .filter-widget[class*="-date"] .year {
 	width: 60px !important;
 }
-#advanced-options .filter-widget[class*="-date"] .month,
-#advanced-options .filter-widget[class*="-date"] .day {
+#advanced-options .filter-widget[class*="-date"] :is(.month, .day) {
 	width: 45px !important;
 }
 
@@ -2154,14 +2085,12 @@ body #fancybox-close::after {
 	border-top: 2px dashed var(--border);
 }
 
-#advanced-options .btn-apply,
-#advanced-options .btn-clear {
+#advanced-options :is(.btn-apply, .btn-clear) {
 	width: 90px;
 	background: var(--button);
 	transition: none;
 }
-#advanced-options .btn-apply:hover,
-#advanced-options .btn-clear:hover {
+#advanced-options :is(.btn-apply, .btn-clear):hover {
 	background: var(--inverse-background);
 	color: var(--inverse-text) !important;
 }
