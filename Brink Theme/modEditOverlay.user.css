@@ -2,7 +2,7 @@
 @name           Brink Modification - Edit Overlay
 @namespace      V.L
 @description    An addition for MyAnimeList lists using the "Brink" theme that changes the look of the edit overlay.
-@version        1.0.1
+@version        1.1.0
 @author         Valerio Lyndon
 @homepageURL    https://github.com/ValerioLyndon/MAL-Public-List-Designs
 @supportURL     https://github.com/ValerioLyndon/MAL-Public-List-Designs/issues
@@ -101,7 +101,7 @@
 }
 ==/UserStyle== */
 
-@-moz-document regexp("https://myanimelist\\.net/ownlist/.+/edit\\?hideLayout") {
+@-moz-document regexp("https:\\/\\/myanimelist\\.net\\/ownlist\\/(anime|manga)\\/([0-9]+\\/edit|add).*") {
 	/*==============================*\
 	  !FONTS
 	\*------------------------------*/
@@ -167,10 +167,22 @@
 		--paused: 80, 91%, 23%;
 		--dropped: 6, 44%, 46%;
 		--planned: 56, 18%, 56%;
-		
 	}
 	
 	/*[[theme]]*/
+	
+	
+	/*==============================*\
+	  !EXTERNAL
+	  when hideLayout is not enabled
+	\*------------------------------*/
+	
+	.page-common #content {
+		background: hsl(var(--bg));
+		padding: 40px 40px;
+		border-radius: 6px;
+		margin: 30px 0 0;
+	}
 	
 	
 	/*==============================*\
@@ -230,34 +242,18 @@
 	  @Generic
 	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 	
-	html {
+	#dialog {
 		box-sizing: border-box;
-	} *, *::before, *::after {
+	} #dialog *, #dialog *::before, #dialog *::after {
 		box-sizing: inherit;
 	}
 	
-	.page-common a, .page-common a:visited {
+	#dialog a, #dialog a:visited {
 		color: hsl(var(--textDim));
 		text-decoration: none !important;
 		transition: color var(--timeText) var(--bezierFast);
-	} .page-common a:hover {
+	} #dialog a:hover {
 		color: hsl(var(--textLinkHov)) !important;
-	}
-	
-	
-	/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
-	  @Containers
-	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
-	
-	body.page-common {
-		padding: 2px 12px 68px;
-		background: hsl(var(--bg));
-		color: hsl(var(--textMid));
-		font: 13px var(--font);
-	}
-	
-	tbody, tr, td {
-		display: block;
 	}
 	
 	/*==============================*\
@@ -269,9 +265,16 @@
 		width: 100% !important;
 		min-width: 560px;
 		max-width: 700px;
+		background: hsl(var(--bg));
 		padding: 0 20px;
 		border: none;
 		margin: 0 auto;
+		color: hsl(var(--textMid));
+		font: 13px var(--font);
+	}
+	
+	#dialog :is(tbody,tr,td) {
+		display: block;
 	}
 	
 	#dialog td {
@@ -280,7 +283,7 @@
 		font-size: 13px;
 	}
 	
-	.normal_header {
+	#dialog .normal_header {
 		display: none;
 	}
 	
@@ -313,7 +316,7 @@
 	#main-form td:last-child {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: top;
+		align-items: flex-start;
 		height: auto;
 	}
 	
@@ -356,8 +359,8 @@
 	  @Fields
 	\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 	
-	.page-common .textarea,
-	.page-common .inputtext {
+	#dialog .textarea,
+	#dialog .inputtext {
 		height: 24px;
 		padding: 4px;
 		background: hsl(var(--btn)) calc(100% - 5px) center / auto no-repeat;
@@ -372,29 +375,29 @@
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
-	} .page-common select.inputtext {
+	} #dialog select.inputtext {
 		padding: 4px 20px 4px 4px;
 		background-image: var(--arrowDn);
-	} .page-common select.inputtext:disabled {
+	} #dialog select.inputtext:disabled {
 		background-blend-mode: soft-light;
 		opacity: .57;
 	}
 	
 	/* Checkboxes */
 	
-	.page-common label {
+	#dialog label {
 		display: inline-block;
 		margin-top: 6px;
 		font-size: 12px !important;
 		line-height: 18px;
 	}
 	
-	.page-common label * {
+	#dialog label * {
 		font-size: 12px;
 		vertical-align: top;
 	}
 	
-	.page-common input[type="checkbox"] {
+	#dialog input[type="checkbox"] {
 		width: 18px;
 		height: 18px;
 		border-radius: 3px;
@@ -406,14 +409,14 @@
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
-	} .page-common input[type="checkbox"]:checked {
+	} #dialog input[type="checkbox"]:checked {
 		border-color: hsl(var(--btnAccent));
 		background-blend-mode: initial;
 	}
 	
 	/* Information Tips */
 	
-	.fa-question-circle {
+	#dialog .fa-question-circle {
 		margin-top: 5px;
 	}
 	
@@ -444,7 +447,7 @@
 	}
 	
 	#main-form table:first-child tr:nth-child(1) td:last-child:before {
-		content: "EDITING ";
+		content: var(--title);
 		font-size: 18px;
 		line-height: 28px;
 		white-space: pre;
@@ -669,18 +672,15 @@
 	\*------------------------------*/
 	
 	#top-submit-buttons {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		display: flex !important;
-		width: 100%;
-		height: 56px;
-		padding: 12px 20px;
-		background: hsl(var(--bg));
-		margin: 0 !important;
+		display: none;
 	}
 	
-	#top-submit-buttons .inputButton {
+	.mt8.mb8[style="text-align: center;"] {
+		display: flex;
+		padding: 12px 0;
+	}
+	
+	.mt8.mb8[style="text-align: center;"] .inputButton {
 		width: 96px;
 		height: 32px;
 		padding: 0;
@@ -695,15 +695,10 @@
 		text-align: center;
 		
 		transition: all var(--timeButton) var(--bezierFast);
-	} #top-submit-buttons .inputButton:hover {
+	} .mt8.mb8[style="text-align: center;"] .inputButton:hover {
 		border-color: hsl(var(--btnAccent));
 		color: hsl(var(--accent));
 	}
-	
-	div[style="text-align: left;"] + .mt8 {
-		display: none;
-	}
-	
 	
 	/*==============================*\
 	  !EXTRA
@@ -715,6 +710,41 @@
 	/*[[hideRewatchValue]]*/
 	/*[[hideExtras]]*/
 	/*[[hideHelp]]*/
+}
+
+@-moz-document regexp("https:\\/\\/myanimelist\\.net\\/ownlist\\/(anime|manga)\\/([0-9]+\\/edit|add).*?[?&]hideLayout") {
+	body.page-common {
+		padding: 2px 12px 68px;
+		background: hsl(var(--bg));
+	}
+	
+	#top-submit-buttons {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		width: 100%;
+		height: 56px;
+		padding: 12px 20px;
+		background: hsl(var(--bg));
+		margin: 0 !important;
+	}
+	
+	.mt8.mb8[style="text-align: center;"]:not(#top-submit-buttons) {
+		display: none;
+	}
+}
+
+@-moz-document regexp("https:\\/\\/myanimelist\\.net\\/ownlist\\/(anime|manga)\\/add.*") {
+	:root {
+		--title: "ADDING ";
+	}
+}
+
+@-moz-document regexp("https:\\/\\/myanimelist\\.net\\/ownlist\\/(anime|manga)\\/[0-9]+\\/edit.*") {
+	:root {
+		--title: "EDITING ";
+	}
 }
 
 @-moz-document regexp("https\://myanimelist.net/animelist/.*") {
