@@ -438,7 +438,7 @@
 			"edit-overlay": {
 				"name": "Edit Overlay Redesign",
 				"description": "Adds styling to the overlay popup that shows when you edit a list entry. See the linked guide to install.",
-				"url": "https://myanimelist.net/forum/?topicid=1772180",
+				"url": "https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Brink#edit-overlay-redesign",
 				"tags": ["visual style"]
 			},
 			"tag-overflow": {
