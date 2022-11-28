@@ -2,7 +2,7 @@
 @name           Brink Modification - Edit Overlay
 @namespace      V.L
 @description    An addition for MyAnimeList lists using the "Brink" theme that changes the look of the edit overlay.
-@version        1.1.0
+@version        1.1.1
 @author         Valerio Lyndon
 @homepageURL    https://github.com/ValerioLyndon/MAL-Public-List-Designs
 @supportURL     https://github.com/ValerioLyndon/MAL-Public-List-Designs/issues
@@ -672,15 +672,15 @@
 	\*------------------------------*/
 	
 	#top-submit-buttons {
-		display: none;
+		display: none !important;
 	}
 	
-	.mt8.mb8[style="text-align: center;"] {
-		display: flex;
+	.mt8.mb8[style*="text-align: center;"] {
+		display: flex !important;
 		padding: 12px 0;
 	}
 	
-	.mt8.mb8[style="text-align: center;"] .inputButton {
+	.mt8.mb8[style*="text-align: center;"] .inputButton {
 		width: 96px;
 		height: 32px;
 		padding: 0;
@@ -695,7 +695,7 @@
 		text-align: center;
 		
 		transition: all var(--timeButton) var(--bezierFast);
-	} .mt8.mb8[style="text-align: center;"] .inputButton:hover {
+	} .mt8.mb8[style*="text-align: center;"] .inputButton:hover {
 		border-color: hsl(var(--btnAccent));
 		color: hsl(var(--accent));
 	}
@@ -712,7 +712,12 @@
 	/*[[hideHelp]]*/
 }
 
-@-moz-document regexp("https:\\/\\/myanimelist\\.net\\/ownlist\\/(anime|manga)\\/([0-9]+\\/edit|add).*?[?&]hideLayout") {
+@-moz-document regexp("https:\\/\\/myanimelist\\.net\\/ownlist\\/(anime|manga)\\/([0-9]+\\/edit|add).*?[?&]hideLayout(=[0-9])?") {
+    html {
+		background: hsl(var(--bg)) !important;
+        min-height: 100%;
+    }
+    
 	body.page-common {
 		padding: 2px 12px 68px;
 		background: hsl(var(--bg));
@@ -722,7 +727,7 @@
 		position: fixed;
 		bottom: 0;
 		left: 0;
-		display: flex;
+		display: flex !important;
 		width: 100%;
 		height: 56px;
 		padding: 12px 20px;
@@ -730,8 +735,8 @@
 		margin: 0 !important;
 	}
 	
-	.mt8.mb8[style="text-align: center;"]:not(#top-submit-buttons) {
-		display: none;
+	.mt8.mb8[style*="text-align: center;"]:not(#top-submit-buttons) {
+		display: none !important;
 	}
 }
 
@@ -747,7 +752,7 @@
 	}
 }
 
-@-moz-document regexp("https\://myanimelist.net/animelist/.*") {
+@-moz-document regexp("https\\://myanimelist.net/(anime|manga)list/.*") {
 	@media (min-width: 1050px) {
 		body[data-owner='1'] #fancybox-wrap {
 			left: calc(50% - (190px + (1050px * 0.2))) !important;
