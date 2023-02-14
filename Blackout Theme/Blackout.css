@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v1.1.0             *|
+ v1.1.1             *|
  a list design      *|
  by Valerio Lyndon  */
 /*
@@ -334,6 +334,7 @@ body::after,
 
 .list-table {
 	display: block;
+	border: none;
 	margin: 0 auto;
 }
 
@@ -395,6 +396,7 @@ body::after,
 	width: calc(100% - 1rem);
 	height: calc(100% - 1rem);
 	background: var(--c-foreground);
+	overflow: hidden;
 	font: bold var(--size)/8rem FontAwesome;
 	clip-path: inherit;
 }
@@ -547,6 +549,7 @@ body::after,
 	align-items: flex-end;
 	width: 20rem;
 	height: 8rem;
+	background: none;
 	margin: calc(-6rem + -2rem + -5.5rem) 2rem 0 auto;
 }
 
@@ -748,7 +751,7 @@ tbody:hover .list-table-header {
 	display: block;
 	width: 5rem;
 	height: 4.3334rem;
-	margin-top: 1rem;
+	margin: 1rem 0;
 	background: var(--c-text-highlight);
 	clip-path: /* triangle-down */ polygon(50% 100%, 100% 0, 0 0);
 	transition:
@@ -996,6 +999,7 @@ tbody:hover .list-table-header {
 	display: block;
 	width: 100%;
 	padding: 6rem 0 2rem;
+	background: none !important;
 	--delay: 2.8s;
 	animation: .4s ease var(--delay) backwards 1 flicker-on;
 }
@@ -1611,6 +1615,8 @@ tbody:hover .list-table-header {
 /*/Blackout/Items/Footer$: /*/
 
 footer {
+	position: relative;
+	z-index: 1;
 	width: 0;
 	order: 2;
 	align-self: flex-end;
@@ -1636,6 +1642,7 @@ footer {
 	display: block;
 	margin: 0;
 	font-size: 2.5rem;
+	color: var(--c-text);
 }
 
 /*/Blackout/Overlays/Base$: /*/
