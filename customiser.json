@@ -72,6 +72,15 @@
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Kure%20Theme/kure.json",
 			"tags": {"layout": ["table"], "source": ["Beyond the Boundary", "Kyoukai no Kanata"], "other": ["based on anime"]},
 			"date": "2019-10-05"
+		},
+		"blackout": {
+			"name": "BLACKOUT",
+			"author": "Valerio Lyndon",
+			"image": "https://i.imgur.com/NOtLGy9.jpeg",
+			"type": "modern",
+			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Blackout%20Theme/blackout.json",
+			"tags": {"layout": ["table"], "other": ["heavyweight", "animated"]},
+			"date": "2022-10-01"
 		}
 	}
 }
