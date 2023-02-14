@@ -34,6 +34,11 @@
 			}
 		},
 		"mods": {
+			"unbrand": {
+				"name": "Genericise Pokemon References",
+				"description": "Replace the pokeball-shaped logo and backgrounds with the MyAnimeList brand or generic shapes.",
+				"css": {"import": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Puni%20Theme/Modifications/Unbrand.css"}
+			},
 			"theme-global": {
 				"name": "Custom Global Theme",
 				"description": "Change colours and images for all categories. This will get overwritten by per-category themes. Colours are HSL values with their surrounding parentheses removed.",

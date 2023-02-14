@@ -1,0 +1,21 @@
+/* Start of mod: Unbrand */
+
+.header .header-title::before {
+	top: -5px;
+	left: -5px;
+	width: 46px;
+	height: 46px;
+	/* width/height and position are to hide some oddities with the mask property on Firefox */
+	-webkit-mask: url(https://i.imgur.com/m2TjeMb.png) center / contain no-repeat;
+	mask: url(https://i.imgur.com/m2TjeMb.png) center / 60% auto no-repeat;
+	background: var(--pokeball-bottom);
+}
+
+:root {
+	--pattern-pokeballs: url(https://i.imgur.com/0zFExMy.png);
+}
+#status-menu {
+	--pattern-pokeballs: url(https://i.imgur.com/gMVlf84.png);
+}
+
+/* End of mod: Unbrand */
