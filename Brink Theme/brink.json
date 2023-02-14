@@ -7,7 +7,6 @@
 		"type": "modern",
 		"help": "https://myanimelist.net/forum/?topicid=1772180",
 		"sponsor": "https://ko-fi.com/valeriolyndon",
-		"background": false,
 		"columns": {
 			"mode": "greylist",
 			"animelist": {
@@ -23,6 +22,7 @@
 		},
 		"preview": {
 			"columns": {
+			"background": false,
 			"mode": "greylist",
 				"animelist": {
 					"Image": true,
