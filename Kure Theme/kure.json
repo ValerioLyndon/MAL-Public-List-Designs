@@ -50,22 +50,22 @@
 			},
 			"tint-base": {
 				"name": "Tint Base",
-				"description": "This will tint all your images a certain colour. Accepts HSLA values without their surrounding parentheses. To remove entirely, set the fourth value to \"0\".",
-				"type": "value",
+				"description": "This will tint all your images a certain colour.",
+				"type": "color/insert/hsl",
 				"replacements": [["--tint: 21, 100%, 50%;", "--tint: {{{insert}}};"]],
 				"default": "21, 100%, 50%"
 			},
 			"tint-gradient-1": {
 				"name": "Tint Gradient 1",
-				"description": "A secondary part of the tint, this applies more character. Accepts HSLA values without their surrounding parentheses. To remove entirely, set the fourth value to \"0\".",
-				"type": "value",
+				"description": "A secondary part of the tint, this applies more character.",
+				"type": "color/insert/hsl",
 				"replacements": [["--tint-gradient-1: 0, 0%, 0%;", "--tint-gradient-1: {{{insert}}};"]],
 				"default": "0, 0%, 0%"
 			},
 			"tint-gradient-2": {
 				"name": "Tint Gradient 2",
-				"description": "A secondary part of the tint, this applies more character. Accepts HSLA values without their surrounding parentheses. To remove entirely, set the fourth value to \"0\".",
-				"type": "value",
+				"description": "A secondary part of the tint, this applies more character.",
+				"type": "color/insert/hsl",
 				"replacements": [["--tint-gradient-2: 0, 0%, 100%;", "--tint-gradient-2: {{{insert}}};"]],
 				"default": "0, 0%, 100%"
 			}
