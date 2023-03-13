@@ -69,6 +69,13 @@
 				"replacements": [["--tint-gradient-2: 0, 0%, 100%;", "--tint-gradient-2: {{{insert}}};"]],
 				"default": "0, 0%, 100%"
 			}
+		},
+		"mods": {
+			"shishio": {
+				"name": "Deep Blue Theme",
+				"description": "[i]Based on the mod by [url=https://myanimelist.net/profile/Shishio-kun]Shishio-kun[/url][/i].",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Kure%20Theme/Modifications/Shishio's.css"}
+			}
 		}
 	}
 }

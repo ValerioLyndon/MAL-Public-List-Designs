@@ -1,0 +1,37 @@
+/* Custom Theme
+Images & colours by Shishio-kun,
+code modified by Valerio Lyndon */
+
+/* variables */
+:root {
+	--banner: url(https://i.imgur.com/Ny1h69s.jpg);
+	--background: url(https://i.imgur.com/rGR5SAy.jpg);
+	--text: 0, 0%, 100%;
+	--link: 180, 100%, 50%;
+	--link-h: 0, 0%, 100%;
+	--tint: 0, 0%, 0%, 0%;
+	--tint-gradient-1: 0, 0%, 0%, 0%;
+	--tint-gradient-2: 0, 0%, 0%, 0%;
+}
+
+/* tweaks */
+.list-menu-float {
+	--text: 0, 0%, 100%;
+}
+.data:is(.progress,.chapter,.volume) span:last-of-type::after {
+	--text: 0, 40%, 80%;
+}
+.list-unit .list-status-title .text,
+.list-table-header,
+.stats #advanced-options-button,
+.status-menu-container .status-menu,
+.list-table-data,
+.list-table::before,
+.list-unit .list-stats {
+	background: hsla(234, 99%, 51%, 40%) !important;
+	border-bottom: 0;
+}
+#cover-image-container,
+#cover-image-container::before {
+	background-position: center 20% !important;
+}
