@@ -1,14 +1,35 @@
 /*-S-T-A-R-T--------------------*\
-| Notes Column Support R0.0      |
+| Notes Column Support R1.0      |
 \*------------------------------*/
 
 .notes {
 	display: block;
 	padding-bottom: 4px;
+	cursor: text;
 }
 
 .notes .text {
-	opacity: .7;
+	pointer-events: none;
+}
+
+[data-owner="1"] .notes .text:not(:empty)::after {
+	content: "\a Edit notes";
+	white-space: pre;
+	color: var(--text-dim);
+	font-size: 10px;
+	pointer-events: auto;
+	cursor: pointer;
+}
+.notes .text:hover::after {
+	color: var(--text-dim-h);
+}
+
+.notes .edit {
+	color: var(--text-dim) !important;
+	cursor: pointer;
+}
+.notes .edit:hover {
+	color: var(--text-dim-h) !important;
 }
 
 .notes textarea {
