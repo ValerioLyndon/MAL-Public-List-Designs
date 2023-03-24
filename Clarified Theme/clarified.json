@@ -151,6 +151,7 @@
 				"name": "Character on Banner",
 				"description": "Add some character renders over top of the banner image!",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Banner%20Character.css"},
+				"conflicts": ["character-cat"],
 				"options": {
 					"url": {
 						"name": "Image URL",
@@ -173,6 +174,124 @@
 					}
 				},
 				"tags": ["imagery"]
+			},
+			"character-cat": {
+				"name": "Character on Banner (Per-Category)",
+				"description": "A character render for every category.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Banner%20Character%20%28Per-Category%29.css"},
+				"conflicts": ["character"],
+				"options": {
+					"7-url": {
+						"name": "Image URL (All Anime)",
+						"description": "For best effect, image should be a PNG file with a transparent background. These are usually called \"renders\".",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\\\":7[^}]+)url[^)]+\\)", "$1{{{insert}}}"]],
+						"default": "https://i.imgur.com/Z4bKk1O.png"
+					},
+					"7-position": {
+						"name": "Position (All Anime)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\\\":7[^}]+)calc\\(50% - 510px\\) 10%", "$1{{{insert}}}"]],
+						"default": "calc(50% - 510px) 10%"
+					},
+					"7-size": {
+						"name": "Size (All Anime)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\\\":7[^}]+)auto 140%", "$1{{{insert}}}"]],
+						"default": "auto 140%"
+					},
+					"1-url": {
+						"name": "Image URL (Current)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\\\":1[^}]+)url[^)]+\\)", "$1{{{insert}}}"]],
+						"default": "https://i.imgur.com/yJOKGzy.png"
+					},
+					"1-position": {
+						"name": "Position (Current)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\\\":1[^}]+)calc\\(50% + 480px\\) bottom", "$1{{{insert}}}"]],
+						"default": "calc(50% + 480px) bottom"
+					},
+					"1-size": {
+						"name": "Size (Current)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\\\":1[^}]+)auto 90%", "$1{{{insert}}}"]],
+						"default": "auto 90%"
+					},
+					"2-url": {
+						"name": "Image URL (Completed)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\\\":2[^}]+)url[^)]+\\)", "$1{{{insert}}}"]],
+						"default": "https://i.imgur.com/TXX29uw.png"
+					},
+					"2-position": {
+						"name": "Position (Completed)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\\\":2[^}]+)calc\\(50% + 500px\\) 30%", "$1{{{insert}}}"]],
+						"default": "calc(50% + 500px) 30%"
+					},
+					"2-size": {
+						"name": "Size (Completed)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\\\":2[^}]+)auto 170%", "$1{{{insert}}}"]],
+						"default": "auto 170%"
+					},
+					"3-url": {
+						"name": "Image URL (Paused)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\\\":3[^}]+)url[^)]+\\)", "$1{{{insert}}}"]],
+						"default": "https://i.imgur.com/Ui8Q7K2.png"
+					},
+					"3-position": {
+						"name": "Position (Paused)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\\\":3[^}]+)calc\\(50% - 500px\\) 0px", "$1{{{insert}}}"]],
+						"default": "calc(50% - 500px) 0px"
+					},
+					"3-size": {
+						"name": "Size (Paused)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\\\":3[^}]+)auto 150%", "$1{{{insert}}}"]],
+						"default": "auto 150%"
+					},
+					"4-url": {
+						"name": "Image URL (Dropped)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\\\":4[^}]+)url[^)]+\\)", "$1{{{insert}}}"]],
+						"default": "https://i.imgur.com/TNTMVcA.png"
+					},
+					"4-position": {
+						"name": "Position (Dropped)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\\\":4[^}]+)calc\\(50% + 340px\\) bottom", "$1{{{insert}}}"]],
+						"default": "calc(50% + 340px) bottom"
+					},
+					"4-size": {
+						"name": "Size (Dropped)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\\\":4[^}]+)auto 94%", "$1{{{insert}}}"]],
+						"default": "auto 94%"
+					},
+					"6-url": {
+						"name": "Image URL (Planned)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\\\":6[^}]+)url[^)]+\\)", "$1{{{insert}}}"]],
+						"default": "https://i.imgur.com/rKEbO0U.png"
+					},
+					"6-position": {
+						"name": "Position (Planned)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\\\":6[^}]+)calc\\(50% + 460px\\) top", "$1{{{insert}}}"]],
+						"default": "calc(50% + 460px) top"
+					},
+					"6-size": {
+						"name": "Size (Planned)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\\\":6[^}]+)auto 130%", "$1{{{insert}}}"]],
+						"default": "auto 130%"
+					}
+				},
+				"tags": ["imagery", "category options"]
 			},
 			"side-renders": {
 				"name": "Character Renders",

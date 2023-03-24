@@ -1,0 +1,49 @@
+/**
+ * Banner Character (Per-Category)
+ * v1.0.0
+ */
+
+[data-query*='"status":7'] {
+	/* everything */
+	--mod-character: url(https://i.imgur.com/Z4bKk1O.png) calc(50% - 510px) 10% / auto 140% no-repeat;
+}
+[data-query*='"status":1'] {
+	/* current */
+	--mod-character: url(https://i.imgur.com/yJOKGzy.png) calc(50% + 480px) bottom / auto 90% no-repeat;
+}
+[data-query*='"status":2'] {
+	/* completed */
+	--mod-character: url(https://i.imgur.com/TXX29uw.png) calc(50% + 500px) 30% / auto 170% no-repeat;
+}
+[data-query*='"status":3'] {
+	/* paused */
+	--mod-character: url(https://i.imgur.com/Ui8Q7K2.png) calc(50% - 500px) 0px / auto 150% no-repeat;
+}
+[data-query*='"status":4'] {
+	/* dropped */
+	--mod-character: url(https://i.imgur.com/TNTMVcA.png) calc(50% + 340px) bottom / auto 94% no-repeat;
+}
+[data-query*='"status":6'] {
+	/* planned */
+	--mod-character: url(https://i.imgur.com/rKEbO0U.png) calc(50% + 460px) top / auto 130% no-repeat;
+}
+
+/* styling for all characters */
+.header::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--mod-character);
+	pointer-events: none;
+}
+
+/* fix for button layering */
+.header-menu,
+.header-title {
+	z-index: 1;
+}
+
+/* END of Banner Character (Per-Category) */
