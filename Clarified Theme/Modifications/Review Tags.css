@@ -1,6 +1,6 @@
 /**
  * Review Tags
- * v1.0.1
+ * v1.1.0
  */
 
 .data.tags div:not(:empty) {
@@ -8,7 +8,9 @@
 	padding: 3px 6px;
 	background: var(--content-highlight);
 	border-radius: 3px;
+	margin-top: 3px;
 	line-height: 1.35;
+	cursor: text;
 }
 
 .data.tags span {
@@ -28,7 +30,7 @@
 	content: none;
 }
 
-/* Replace the default comas for better compatibility with Highlight Favourites mod */
+/* Replace the default commas for better compatibility with Highlight Favourites mod */
 .data.tags span + span a::before {
 	content: ", ";
 	font-family: var(--font);
