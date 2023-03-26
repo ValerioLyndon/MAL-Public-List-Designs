@@ -334,6 +334,20 @@
 						"type": "text/value/background-size",
 						"replacements": [["RegExp/(Right Render[\\s\\S\\n]*?-size: )contain", "$1{{{insert}}}"]],
 						"default": "contain"
+					},
+					"layer-over-banner": {
+						"name": "Layer Above Banner",
+						"description": "Enable this to move the images above the main banner instead of hiding them behind it.",
+						"type": "toggle",
+						"replacements": [["RegExp/(footer[^}]+)z-index: ?0;", "$1z-index: 0;", "$1z-index: 1;"]],
+						"default": false
+					},
+					"layer-over-list": {
+						"name": "Layer Above List",
+						"description": "Enable this to move the images above everything else, potentially making normal use much harder.",
+						"type": "toggle",
+						"replacements": [["RegExp/$", "", "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Renders%20-%20Layer%20Above%20List.css"]],
+						"default": false
 					}
 				},
 				"tags": ["visual flare", "imagery"]
@@ -559,6 +573,20 @@
 						"type": "text/value/background-size",
 						"replacements": [["RegExp/(\":6[^}]+right:[^;]+)contain", "$1{{{insert}}}"]],
 						"default": "contain"
+					},
+					"layer-over-banner": {
+						"name": "Layer Above Banner",
+						"description": "Enable this to move the images above the main banner instead of hiding them behind it.",
+						"type": "toggle",
+						"replacements": [["RegExp/(footer[^}]+)z-index: ?0;", "$1z-index: 0;", "$1z-index: 1;"]],
+						"default": false
+					},
+					"layer-over-list": {
+						"name": "Layer Above List",
+						"description": "Enable this to move the images above everything else, potentially making normal use much harder.",
+						"type": "toggle",
+						"replacements": [["RegExp/$", "", "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Renders%20-%20Layer%20Above%20List.css"]],
+						"default": false
 					}
 				},
 				"tags": ["category options", "visual flare", "imagery"]

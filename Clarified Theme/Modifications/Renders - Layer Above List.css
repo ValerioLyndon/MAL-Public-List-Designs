@@ -1,0 +1,19 @@
+/* Layer Side Renders Above List */
+
+footer {
+	z-index: 11;
+}
+footer::before {
+	right: auto;
+	left: 0;
+}
+footer::after {
+	left: auto;
+	right: 0;
+}
+footer::before, footer::after {
+	width: 25%;
+	z-index: 1;
+}
+
+/* END of Layer Side Renders Above List */
