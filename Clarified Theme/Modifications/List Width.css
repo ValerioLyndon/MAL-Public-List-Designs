@@ -1,15 +1,17 @@
 /**
  * List Width
- * v1.0.1
+ * v1.1.0
  */
 
 :root {
 	--list-width: 1060px;
-	--render-offset: calc(var(--list-width) * 0.5 + 8px) !important;
+	--render-offset: calc(var(--list-width) * 0.5 + 8px) !important; /* for compat w/ Side Renders mod */
 }
 
 #status-menu:not(.fixed) .status-menu,
 .list-unit .list-status-title,
+.cover-block,
+#cover-image,
 .list-table,
 .list-table > tbody {
 	width: var(--list-width);
