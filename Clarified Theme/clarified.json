@@ -182,20 +182,20 @@
 				"conflicts": ["character"],
 				"options": {
 					"7-url": {
-						"name": "Image URL (All Anime)",
+						"name": "Image URL (Everything)",
 						"description": "For best effect, image should be a PNG file with a transparent background. These are usually called \"renders\".",
 						"type": "text/image_url",
 						"replacements": [["RegExp/(\\\":7[^}]+)url[^)]+\\)", "$1{{{insert}}}"]],
 						"default": "https://i.imgur.com/Z4bKk1O.png"
 					},
 					"7-position": {
-						"name": "Position (All Anime)",
+						"name": "Position (Everything)",
 						"type": "text/value/background-position",
 						"replacements": [["RegExp/(\\\":7[^}]+)calc\\(50% - 510px\\) 10%", "$1{{{insert}}}"]],
 						"default": "calc(50% - 510px) 10%"
 					},
 					"7-size": {
-						"name": "Size (All Anime)",
+						"name": "Size (Everything)",
 						"type": "text/value/background-size",
 						"replacements": [["RegExp/(\\\":7[^}]+)auto 140%", "$1{{{insert}}}"]],
 						"default": "auto 140%"
