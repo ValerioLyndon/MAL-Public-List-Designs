@@ -1,0 +1,60 @@
+/*-S-T-A-R-T--------------------*\
+| Character Renders (Cat) R0.0   |
+\*------------------------------*/
+
+[data-query*='"status":7'] {
+	/* all anime */
+	--render-left: none right bottom / contain;
+	--render-right: none left bottom / contain;
+}
+[data-query*='"status":1'] {
+	/* watching */
+	--render-left: none right bottom / contain;
+	--render-right: none left bottom / contain;
+}
+[data-query*='"status":2'] {
+	/* completed */
+	--render-left: none right bottom / contain;
+	--render-right: none left bottom / contain;
+}
+[data-query*='"status":3'] {
+	/* on hold */
+	--render-left: none right bottom / contain;
+	--render-right: none left bottom / contain;
+}
+[data-query*='"status":4'] {
+	/* dropped */
+	--render-left: none right bottom / contain;
+	--render-right: none left bottom / contain;
+}
+[data-query*='"status":6'] {
+	/* planned */
+	--render-left: none right bottom / contain;
+	--render-right: none left bottom / contain;
+}
+
+/* Left Render */
+footer:before {
+	right: calc(100% - (50% - 538px));
+	background: var(--render-left);
+}
+
+/* Right Render */
+footer:after {
+	left: calc(100% - (50% - 538px));
+	background: var(--render-right);
+}
+
+/* Styling for both renders */
+footer:before, footer:after {
+	content: "";
+	position: fixed;
+	top: 0;
+	z-index: -1;
+	width: calc(50% - 538px);
+	min-width: 262px;
+	height: 100%;
+	background-repeat: no-repeat;
+}
+
+/*------------------------E-N-D-*/

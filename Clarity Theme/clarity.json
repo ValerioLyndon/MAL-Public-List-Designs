@@ -210,6 +210,230 @@
 				},
 				"tags": ["visual flare", "additional imagery", "in-depth customisation"]
 			},
+			"cat-render": {
+				"name": "Per-Category Character Renders",
+				"description": "Adds two optional character renders on the left and right of the list for each category.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Character%20Renders%20Per-Category.css"},
+				"options": {
+					"7-left-img": {
+						"name": "Left Image (All Anime)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\":7[^}]+left:[^;]+)none", "$1{{{insert}}}"]],
+						"default": "none"
+					},
+					"7-left-pos": {
+						"name": "Left Position (All Anime)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\":7[^}]+left:[^;]+)right bottom", "$1{{{insert}}}"]],
+						"default": "right bottom"
+					},
+					"7-left-size": {
+						"name": "Left Size (All Anime)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\":7[^}]+left:[^;]+)contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					},
+					"7-right-img": {
+						"name": "Right Image (All Anime)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\":7[^}]+right:[^;]+)none", "$1{{{insert}}}"]],
+						"default": "none"
+					},
+					"7-right-pos": {
+						"name": "Right Position (All Anime)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\":7[^}]+right:[^;]+)left bottom", "$1{{{insert}}}"]],
+						"default": "left bottom"
+					},
+					"7-right-size": {
+						"name": "Right Size (All Anime)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\":7[^}]+right:[^;]+)contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					},
+					"1-left-img": {
+						"name": "Left Image (Watching)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\":1[^}]+left:[^;]+)none", "$1{{{insert}}}"]],
+						"default": "none"
+					},
+					"1-left-pos": {
+						"name": "Left Position (Watching)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\":1[^}]+left:[^;]+)right bottom", "$1{{{insert}}}"]],
+						"default": "right bottom"
+					},
+					"1-left-size": {
+						"name": "Left Size (Watching)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\":1[^}]+left:[^;]+)contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					},
+					"1-right-img": {
+						"name": "Right Image (Watching)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\":1[^}]+right:[^;]+)none", "$1{{{insert}}}"]],
+						"default": "none"
+					},
+					"1-right-pos": {
+						"name": "Right Position (Watching)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\":1[^}]+right:[^;]+)left bottom", "$1{{{insert}}}"]],
+						"default": "left bottom"
+					},
+					"1-right-size": {
+						"name": "Right Size (Watching)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\":1[^}]+right:[^;]+)contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					},
+					"2-left-img": {
+						"name": "Left Image (Completed)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\":2[^}]+left:[^;]+)none", "$1{{{insert}}}"]],
+						"default": "none"
+					},
+					"2-left-pos": {
+						"name": "Left Position (Completed)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\":2[^}]+left:[^;]+)right bottom", "$1{{{insert}}}"]],
+						"default": "right bottom"
+					},
+					"2-left-size": {
+						"name": "Left Size (Completed)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\":2[^}]+left:[^;]+)contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					},
+					"2-right-img": {
+						"name": "Right Image (Completed)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\":2[^}]+right:[^;]+)none", "$1{{{insert}}}"]],
+						"default": "none"
+					},
+					"2-right-pos": {
+						"name": "Right Position (Completed)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\":2[^}]+right:[^;]+)left bottom", "$1{{{insert}}}"]],
+						"default": "left bottom"
+					},
+					"2-right-size": {
+						"name": "Right Size (Completed)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\":2[^}]+right:[^;]+)contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					},
+					"3-left-img": {
+						"name": "Left Image (On Hold)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\":3[^}]+left:[^;]+)none", "$1{{{insert}}}"]],
+						"default": "none"
+					},
+					"3-left-pos": {
+						"name": "Left Position (On Hold)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\":3[^}]+left:[^;]+)right bottom", "$1{{{insert}}}"]],
+						"default": "right bottom"
+					},
+					"3-left-size": {
+						"name": "Left Size (On Hold)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\":3[^}]+left:[^;]+)contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					},
+					"3-right-img": {
+						"name": "Right Image (On Hold)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\":3[^}]+right:[^;]+)none", "$1{{{insert}}}"]],
+						"default": "none"
+					},
+					"3-right-pos": {
+						"name": "Right Position (On Hold)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\":3[^}]+right:[^;]+)left bottom", "$1{{{insert}}}"]],
+						"default": "left bottom"
+					},
+					"3-right-size": {
+						"name": "Right Size (On Hold)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\":3[^}]+right:[^;]+)contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					},
+					"4-left-img": {
+						"name": "Left Image (Dropped)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\":4[^}]+left:[^;]+)none", "$1{{{insert}}}"]],
+						"default": "none"
+					},
+					"4-left-pos": {
+						"name": "Left Position (Dropped)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\":4[^}]+left:[^;]+)right bottom", "$1{{{insert}}}"]],
+						"default": "right bottom"
+					},
+					"4-left-size": {
+						"name": "Left Size (Dropped)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\":4[^}]+left:[^;]+)contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					},
+					"4-right-img": {
+						"name": "Right Image (Dropped)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\":4[^}]+right:[^;]+)none", "$1{{{insert}}}"]],
+						"default": "none"
+					},
+					"4-right-pos": {
+						"name": "Right Position (Dropped)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\":4[^}]+right:[^;]+)left bottom", "$1{{{insert}}}"]],
+						"default": "left bottom"
+					},
+					"4-right-size": {
+						"name": "Right Size (Dropped)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\":4[^}]+right:[^;]+)contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					},
+					"6-left-img": {
+						"name": "Left Image (Planned)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\":6[^}]+left:[^;]+)none", "$1{{{insert}}}"]],
+						"default": "none"
+					},
+					"6-left-pos": {
+						"name": "Left Position (Planned)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\":6[^}]+left:[^;]+)right bottom", "$1{{{insert}}}"]],
+						"default": "right bottom"
+					},
+					"6-left-size": {
+						"name": "Left Size (Planned)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\":6[^}]+left:[^;]+)contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					},
+					"6-right-img": {
+						"name": "Right Image (Planned)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(\":6[^}]+right:[^;]+)none", "$1{{{insert}}}"]],
+						"default": "none"
+					},
+					"6-right-pos": {
+						"name": "Right Position (Planned)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(\":6[^}]+right:[^;]+)left bottom", "$1{{{insert}}}"]],
+						"default": "left bottom"
+					},
+					"6-right-size": {
+						"name": "Right Size (Planned)",
+						"type": "text/value/background-size",
+						"replacements": [["RegExp/(\":6[^}]+right:[^;]+)contain", "$1{{{insert}}}"]],
+						"default": "contain"
+					}
+				},
+				"tags": ["visual flare", "additional imagery", "in-depth customisation", "per-category options"]
+			},
 			"cat-banner": {
 				"name": "Per-category Banner Images",
 				"description": "[i]This will override your earlier choice of image.[/i]",
