@@ -1,6 +1,6 @@
 /**
  * Side Renders
- * v1.0.2
+ * v1.0.3
  */
 
 /* Left Render */
@@ -32,8 +32,9 @@ footer::before, footer::after {
 	min-width: 262px;
 	height: 100%;
 	background-repeat: no-repeat;
+	pointer-events: none;
 }
-:root { --render-offset: 538px; }
+:root { --render-offset: 538px; } /* for compat w/ List Width */
 
 /* Fix layering */
 
