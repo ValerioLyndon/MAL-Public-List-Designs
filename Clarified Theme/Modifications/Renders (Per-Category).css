@@ -1,0 +1,73 @@
+/**
+ * Side Renders (Per-Category)
+ * v1.0.0
+ */
+
+[data-query*='"status":7'] {
+	/* everything */
+	--mod-render-left: url(https://i.imgur.com/Z4bKk1O.png) right bottom / contain;
+	--mod-render-right: none left bottom / contain;
+}
+[data-query*='"status":1'] {
+	/* current */
+	--mod-render-left: url(https://i.imgur.com/yJOKGzy.png) right bottom / contain;
+	--mod-render-right: none left bottom / contain;
+}
+[data-query*='"status":2'] {
+	/* completed */
+	--mod-render-left: none right bottom / contain;
+	--mod-render-right: url(https://i.imgur.com/TXX29uw.png) center 40% / auto 150%;
+}
+[data-query*='"status":3'] {
+	/* paused */
+	--mod-render-left: none right bottom / contain;
+	--mod-render-right: url(https://i.imgur.com/Ui8Q7K2.png) left bottom / contain;
+}
+[data-query*='"status":4'] {
+	/* dropped */
+	--mod-render-left: none right bottom / contain;
+	--mod-render-right: url(https://i.imgur.com/TNTMVcA.png) left bottom / contain;
+}
+[data-query*='"status":6'] {
+	/* planned */
+	--mod-render-left: url(https://i.imgur.com/rKEbO0U.png) right bottom / contain;
+	--mod-render-right: none left bottom / contain;
+}
+
+/* Styling for both renders */
+
+footer::before {
+	right: calc(100% - (50% - var(--render-offset)));
+	background: var(--mod-render-left);
+}
+
+footer::after {
+	left: calc(100% - (50% - var(--render-offset)));
+	background: var(--mod-render-right);
+}
+
+footer::before, footer::after {
+	content: "";
+	position: fixed;
+	top: 0;
+	z-index: -1;
+	width: calc(50% - var(--render-offset));
+	min-width: 262px;
+	height: 100%;
+	background-repeat: no-repeat;
+	pointer-events: none;
+}
+:root { --render-offset: 538px; } /* for compat w/ List Width */
+
+/* Fix layering */
+
+footer {
+	position: relative;
+	z-index: 0;
+}
+
+.header {
+	z-index: 1;
+}
+
+/* END of Side Renders (Per-Category) */
