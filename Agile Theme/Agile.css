@@ -1,6 +1,6 @@
 /* 
 "Agile" by Valerio Lyndon
-v1.0.1
+v1.0.2
 
 * CONTENTS *
 use ctrl+f to find sections
@@ -138,7 +138,7 @@ html {
 }
 
 body {
-	background: var(--i-background) no-repeat center / cover fixed var(--c-background);
+	background: var(--i-background) no-repeat center / cover fixed var(--c-background) !important;
 	color: var(--c-text);
 	font-size: 13rem;
 }
