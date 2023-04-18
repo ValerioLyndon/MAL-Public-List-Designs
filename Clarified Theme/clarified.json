@@ -630,6 +630,27 @@
 				},
 				"tags": ["tags", "visual flare", "functionality"]
 			},
+			"blur-hentai": {
+				"name": "Blur Hentai",
+				"description": "Please note:[list][*]This mod will not display correctly in the MyAnimeList preview window. View on your own list.[*]If using the Review Tags mod, be sure to place all \"Hentai\" tags at the end of each tag section or else there will be trailing commas in some areas.[/list]",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Blur%20Hentai.css"},
+				"options": {
+					"tag": {
+						"name": "Choose Tag",
+						"description": "You can optionally change which tag is chosen to be blurred. The default is \"Hentai\", but maybe you use \"Rx\" or \"Adult\"? You can choose that! Be sure to write the tag [b]exactly[/b] as you wrote it on your list.",
+						"type": "text/url_fragment",
+						"replacements": [["Hentai", "{{{insert}}}"]],
+						"default": "Hentai"
+					},
+					"text": {
+						"name": "Choose Text",
+						"type": "text/content",
+						"replacements": [["\"Sensitive Content\"", "{{{insert}}}"]],
+						"default": "Sensitive Content"
+					}
+				},
+				"tags": ["tags", "functionality"]
+			},
 			"category-header-colours": {
 				"name": "Category Header Colours",
 				"description": "Colours the buttons in the header based on their respective category.",

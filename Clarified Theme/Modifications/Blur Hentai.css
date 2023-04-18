@@ -1,0 +1,34 @@
+/**
+ * Blur Hentai
+ * v1.0.0
+ */
+
+.data.tags span a[href$="=Hentai"] {
+	position: absolute;
+	z-index: 6;
+	inset: -3px 0;
+	border: 2px solid var(--content-highlight);
+	border-radius: 6px;
+	background: #0004 !important;
+	margin: 0;
+	font-size: 0 !important;
+	-webkit-backdrop-filter: blur(5px); /* safari */
+	backdrop-filter: blur(5px);
+	pointer-events: none;
+}
+.list-table-data:hover .data.tags span a[href$="=Hentai"] {
+	opacity: 0;
+}
+.data.tags span a[href$="=Hentai"]::before {
+	content: "Sensitive Content";
+	position: absolute;
+	inset: 50% auto auto 50%;
+	padding: 3px 6px;
+	background: var(--content-background);
+	border: 2px solid var(--content-highlight);
+	border-radius: 6px;
+	font: 700 13px/22px var(--font);
+	transform: translate(-50%,-50%);
+}
+
+/* END of Blur Hentai */
