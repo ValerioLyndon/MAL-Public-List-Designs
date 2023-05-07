@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.1.0
+ * v2.1.1
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -1841,17 +1841,6 @@ This is due to the "order" href syntax being absolutely fuckass-backwards someti
 
 .td1 a {
 	color: var(--content-link) !important;
-}
-
-.td1 > small::after {
-	content: "";
-	display: block;
-	width: calc(100% + 20px);
-	border-top: 2px dashed var(--border);
-	margin: 10px 0 10px -10px;
-}
-.td1 > small + br {
-	display: none;
 }
 
 
