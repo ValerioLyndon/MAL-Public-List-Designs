@@ -1,0 +1,16 @@
+/*** REDUCE_ANIMS ***|
+> acquiring v1.0.0
+> starting stream ...
+*/
+
+.list-item {
+	animation: none;
+}
+#cover-image-container:not(.hide) {
+	animation: none;
+}
+
+/*
+> finished stream for REDUCE_ANIMS
+> moving to next object...
+*** */
