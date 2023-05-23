@@ -1,0 +1,38 @@
+/*** REVIEW_TAGS ***|
+> acquiring v0.1.0
+> starting stream ...
+*/
+
+.data.tags div {
+	display: block;
+	padding: 1rem 1.5rem;
+	overflow: hidden;
+	white-space: normal;
+	cursor: text;
+	--clip-1: 2rem;
+	--clip-2: 2rem;
+	clip-path: polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
+}
+.data.tags:hover div {
+	height: auto;
+	background: var(--c-foreground-secondary);
+	transform: translateY(calc(-100% + 7rem));
+}
+
+.data.tags span {
+	font-size: 3rem;
+	flex-shrink: 0;
+	pointer-events: none;
+}
+.data.tags span a {
+	display: inline;
+	padding: 0;
+}
+.data.tags span a::before {
+	content: none;
+}
+
+/*
+> finished stream for REVIEW_TAGS
+> moving to next object...
+*** */
