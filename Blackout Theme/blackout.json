@@ -37,6 +37,13 @@
 					"Image": true
 				}
 			}
+		},
+		"mods": {
+			"reduce-anims": {
+				"name": "Reduce Animations",
+				"description": "Lessens or removes various animations such as list item flicker.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Blackout%20Theme/mods/ReduceAnimations.css"}
+			}
 		}
 	}
 }
