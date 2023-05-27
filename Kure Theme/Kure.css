@@ -1,7 +1,7 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\
 | Kure                           |
 | by Valerio Lyndon              |
-| Version 1.0.1                  |
+| Version 1.0.2                  |
 \*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /* IMPORTS */
@@ -1040,7 +1040,7 @@ tbody:nth-of-type(2) .data.tags::before {
 
 /* List Items */
 
-body:not([data-query*='status":7']) .list-table .list-table-data .data.status {
+body:not([data-query*='"status":7']) .list-table .list-table-data .data.status {
 	display: none;
 }
 
