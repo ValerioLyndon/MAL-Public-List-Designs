@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 2.0.1
+ * Version 2.0.2
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -811,15 +811,15 @@ body {
 	width: 100%;
 	height: 2px;
 	background: linear-gradient(to right, hsla(var(--accent), 1), hsla(var(--accent), 0.55)) hsl(var(--bg));
-} [data-query*='status":1'] #status-menu::before {
+} [data-query*='"status":1'] #status-menu::before {
 	--accent: var(--current);
-} [data-query*='status":2'] #status-menu::before {
+} [data-query*='"status":2'] #status-menu::before {
 	--accent: var(--completed);
-} [data-query*='status":3'] #status-menu::before {
+} [data-query*='"status":3'] #status-menu::before {
 	--accent: var(--paused);
-} [data-query*='status":4'] #status-menu::before {
+} [data-query*='"status":4'] #status-menu::before {
 	--accent: var(--dropped);
-} [data-query*='status":6'] #status-menu::before {
+} [data-query*='"status":6'] #status-menu::before {
 	--accent: var(--planned);
 }
 
@@ -1521,15 +1521,6 @@ div[class^="icon-watch"] {
 	font-size: 12px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-} .add-edit-more span:nth-of-type(1) a {
-} .add-edit-more .more a {
-	font-size: 0;
-}
-
-.add-edit-more .more a::before {
-	content: "MORE";
-	font-size: 12px;
-	vertical-align: top;
 }
 
 
