@@ -1,7 +1,7 @@
 /* * * * * * * * * * * * * *\
 |* Puni Theme              *|
 |* by Valerio Lyndon       *|
-|* v1.2.0                  *|
+|* v1.2.1                  *|
 \* * * * * * * * * * * * * */
 
 @\import "https://fonts.googleapis.com/css2?family=Varela+Round&display=swap";
@@ -70,7 +70,7 @@
 \* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
 /* All - Scorbunny, Togepi, Shinx */
-body[data-query*='status":7'] {
+body[data-query*='"status":7'] {
 	--background-image: url(https://i.imgur.com/g3pHKle.jpg);
 	--banner-image: url(https://i.imgur.com/68OWcab.jpg);
 	--banner-character:
@@ -83,7 +83,7 @@ body[data-query*='status":7'] {
 }
 
 /* Current - Pikachu & Psyduck */
-body[data-query*='status":1'] {
+body[data-query*='"status":1'] {
 	--background-image: url(https://i.imgur.com/e07NexS.jpg);
 	--banner-image: url(https://i.imgur.com/L9ywp7A.jpg);
 	--banner-character:
@@ -96,7 +96,7 @@ body[data-query*='status":1'] {
 }
 
 /* Completed - Marill & Oshawott */
-body[data-query*='status":2'] {
+body[data-query*='"status":2'] {
 	--background-image: url(https://i.imgur.com/T3cijHr.jpg);
 	--banner-image: url(https://i.imgur.com/yYoiYrp.jpg);
 	--banner-character:
@@ -108,7 +108,7 @@ body[data-query*='status":2'] {
 }
 
 /* Paused - Jiggly & Minccino */
-body[data-query*='status":3'] {
+body[data-query*='"status":3'] {
 	--background-image: url(https://i.imgur.com/6LMccTP.jpg);
 	--banner-image: url(https://i.imgur.com/MPJqqhJ.jpg);
 	--banner-character:
@@ -120,7 +120,7 @@ body[data-query*='status":3'] {
 }
 
 /* Dropped - Rolycoly/Carkol */
-body[data-query*='status":4'] {
+body[data-query*='"status":4'] {
 	--background-image: url(https://i.imgur.com/PXNXNYU.jpg);
 	--banner-image: url(https://i.imgur.com/0hGlTuH.jpg);
 	--banner-character:
@@ -133,7 +133,7 @@ body[data-query*='status":4'] {
 }
 
 /* Planned - Butterfree & Togedemaru */
-body[data-query*='status":6'] {
+body[data-query*='"status":6'] {
 	--background-image: url(https://i.imgur.com/bf3pFX7.jpg);
 	--banner-image: url(https://i.imgur.com/Xh9tnsU.jpg);
 	--banner-character:
@@ -1047,7 +1047,7 @@ div[style="padding-top: 8px"] {
 .data.plantoread ~ .image a::before {
 	content: '\f254';
 	font-size: 12px;
-} body:not([data-query*='status":7']) .data.image a::before {
+} body:not([data-query*='"status":7']) .data.image a::before {
 	content: none;
 }
 
