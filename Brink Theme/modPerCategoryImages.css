@@ -1,28 +1,28 @@
 /*------------------------------*\
-|*  Per-Category Images v1.0.2  *|
+|*  Per-Category Images v1.0.3  *|
 \* - - - - - - - - - - - - - - -*/
 
-.ownlist[data-query*='status":7'] {
+.ownlist[data-query*='"status":7'] {
 	/* All Anime */
 	--background-image: url(URLHERE);
 	--banner-image: url(URLHERE);
-} .ownlist[data-query*='status":1'] {
+} .ownlist[data-query*='"status":1'] {
 	/* Current */
 	--background-image: url(URLHERE);
 	--banner-image: url(URLHERE);
-} .ownlist[data-query*='status":2'] {
+} .ownlist[data-query*='"status":2'] {
 	/* Completed */
 	--background-image: url(URLHERE);
 	--banner-image: url(URLHERE);
-} .ownlist[data-query*='status":3'] {
+} .ownlist[data-query*='"status":3'] {
 	/* Paused */
 	--background-image: url(URLHERE);
 	--banner-image: url(URLHERE);
-} .ownlist[data-query*='status":4'] {
+} .ownlist[data-query*='"status":4'] {
 	/* Dropped */
 	--background-image: url(URLHERE);
 	--banner-image: url(URLHERE);
-} .ownlist[data-query*='status":6'] {
+} .ownlist[data-query*='"status":6'] {
 	/* Planned */
 	--background-image: url(URLHERE);
 	--banner-image: url(URLHERE);
