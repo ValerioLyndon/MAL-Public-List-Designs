@@ -1,18 +1,18 @@
 /*-S-T-A-R-T--------------------*\
-| Header Outline (CatCol) R0.0   |
+| Header Outline (CatCol) R0.1   |
 \*------------------------------*/
 
-[data-query*='status":7'] {
+[data-query*='"status":7'] {
   --header-border: var(--accent);
-} [data-query*='status":1'] {
+} [data-query*='"status":1'] {
   --header-border: var(--watching);
-} [data-query*='status":2'] {
+} [data-query*='"status":2'] {
   --header-border: var(--completed);
-} [data-query*='status":3'] {
+} [data-query*='"status":3'] {
   --header-border: var(--onhold);
-} [data-query*='status":4'] {
+} [data-query*='"status":4'] {
   --header-border: var(--dropped);
-} [data-query*='status":6'] {
+} [data-query*='"status":6'] {
   --header-border: var(--plantowatch);
 }
 
