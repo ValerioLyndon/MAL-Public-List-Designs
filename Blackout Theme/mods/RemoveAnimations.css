@@ -1,0 +1,14 @@
+/*** REMOVE_ANIMATIONS ***|
+> acquiring v1.0.0
+> starting stream ...
+*/
+
+*, *::before, *::after {
+	transition-duration: 0s !important;
+	animation: none !important;
+}
+
+/*
+> finished stream for REVIEW_TAGS
+> moving to next object...
+*** */
