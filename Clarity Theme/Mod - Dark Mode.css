@@ -1,5 +1,5 @@
 /*-S-T-A-R-T--------------------*\
-| Dark Mode R3.4                 |
+| Dark Mode R3.5                 |
 \*------------------------------*/
 
 /* - - - - - - - - - - - - - - -*\
@@ -70,7 +70,7 @@
 
 #fancybox-outer, #advanced-options { box-shadow: 0 0 32px rgba(0,0,0,0.75); }
 
-#fancybox-frame {
+html:not(.dark-mode) #fancybox-frame {
 	-webkit-filter: invert(87.8%) hue-rotate(197deg);
 	filter: invert(87.8%) hue-rotate(197deg);
 }
