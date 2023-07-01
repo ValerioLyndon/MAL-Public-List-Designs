@@ -1,6 +1,6 @@
 /**
  * Tokyo Revengers Theme
- * v1.0.0
+ * v1.0.1
  */
 
 /* Footer Logo */
@@ -123,7 +123,7 @@
 		filter: invert(1);
 	}
 	
-	#gdpr-modal-bottom {
+	html:not(.dark-mode) #gdpr-modal-bottom {
 		filter: invert(0.9) hue-rotate(180deg);
 	}
 }
