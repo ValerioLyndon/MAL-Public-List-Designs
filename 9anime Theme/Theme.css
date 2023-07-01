@@ -1,4 +1,4 @@
-/* "9anime Adaption" by Valerio Lyndon / Revision 0.7 */
+/* "9anime Adaption" by Valerio Lyndon / Revision 0.8 */
 
 @\import "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap";
 
@@ -1292,7 +1292,7 @@ footer {
 
 /* OVERLAYS - Base */
 
-#fancybox-overlay {
+body.ownlist #fancybox-overlay {
 	min-width: 1160px;
 	background: #16151c !important;
 	
