@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v1.1.1             *|
+ v1.1.2             *|
  a list design      *|
  by Valerio Lyndon  */
 /*
@@ -1183,6 +1183,9 @@ tbody:hover .list-table-header {
 #list-container .mal-icon::before {
 	content: "Watch";
 }
+#list-container .mal-icon:hover::before {
+	text-decoration: underline;
+}
 
 #list-container .mal-icon i {
 	display: none;
@@ -1647,7 +1650,7 @@ footer {
 
 /*/Blackout/Overlays/Base$: /*/
 
-#fancybox-overlay {
+body.ownlist #fancybox-overlay {
 	background: #000000ef !important;
 	opacity: 1 !important;
 }
@@ -1660,7 +1663,7 @@ body #fancybox-outer {
 	background: var(--c-background) var(--i-grain) repeat;
 }
 
-#fancybox-inner iframe {
+html:not(.dark-mode) #fancybox-inner iframe {
 	filter: invert(1) grayscale(1);
 }
 
@@ -1711,6 +1714,8 @@ body #fancybox-outer {
 
 /*/Blackout/Overlays/Streaming$: /*/
 
+/* #list-container~div selector is simply for priority */
+
 .mal-modal-backdrop {
 	background: #000000ef !important;
 }
@@ -1726,22 +1731,29 @@ body #fancybox-outer {
 	clip-path: /* angledge-right */ polygon(0 var(--clip-1), var(--clip-1) 0, 100% 0, 100% calc(100% - var(--clip-2)), calc(100% - var(--clip-2)) 100%, 0 100%);
 }
 
-.mal-modal-content {
+#list-container~div .mal-modal-content {
 	padding: 2rem;
 	background: var(--c-foreground-menu) var(--i-grain-transparent) repeat !important;
+	border: none;
+	color: var(--c-text);
 	clip-path: inherit;
+}
+
+#list-container~div .mal-modal-body {
+	background: none !important;
 }
 
 .mal-modal-content * {
 	border-color: var(--c-border-dark) !important;
 }
 
-.broadcast a:hover {
+#list-container~div .broadcast a:hover {
 	background: var(--c-foreground) !important;
 	outline: 1px solid var(--c-border-light) !important;
 }
 
-.mal-modal-content .btn-close {
+#list-container~div .mal-modal-content .btn-close {
 	width: 20px !important;
 	height: 20px !important;
+	color: var(--c-text-highlight);
 }
