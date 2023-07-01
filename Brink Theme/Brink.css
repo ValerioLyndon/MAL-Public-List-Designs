@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 2.0.3
+ * Version 2.0.4
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -2317,11 +2317,15 @@ body #fancybox-close {
 	opacity: 0.78 !important;
 }
 
-.mal-modal-content button.btn-close {
+#list-container~div .mal-modal-content button.btn-close {
 	color: var(--text) !important;
 }
 
-.mal-modal-content {
+#list-container~div .mal-modal-body {
+	background: none !important;
+}
+
+#list-container~div .mal-modal-content {
 	color: hsl(var(--text)) !important;
 	background: hsl(var(--bg)) !important;
 	border: none !important;
@@ -2329,12 +2333,12 @@ body #fancybox-close {
 	box-shadow: -1.6px 2.24px 4.48px hsla(0, 0%, 0%, 70%);
 }
 
-.mal-modal-header,
-.mal-modal-body .broadcasts {
+#list-container~div .mal-modal-header,
+#list-container~div .mal-modal-body .broadcasts {
 	border-color: hsla(var(--text), 12%) !important;
 }
 
-.broadcast a:hover {
+#list-container~div .broadcast a:hover {
 	background: hsl(var(--bgAlt)) !important;
 }
 
@@ -2354,9 +2358,9 @@ body #fancybox-wrap {
 	display: none;
 }
 
-body #fancybox-outer {
+body.ownlist #fancybox-outer {
 	padding: 14px 12px 56px;
-	background: hsl(var(--bg));
+	background: hsl(var(--bg)) !important;
 	border-radius: 8px;
 	box-shadow: -1.6px 2.24px 4.48px hsla(0, 0%, 0%, 70%);
 }
@@ -2809,6 +2813,11 @@ div[style^="width: 300px;"] input {
 	}
 }
 
+/* Ad area on certain styles */
+
+div[style="padding-top: 8px"] {
+	display: none;
+}
 
 /*==============================*\
   !MODS
