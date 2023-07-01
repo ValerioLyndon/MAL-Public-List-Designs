@@ -2249,7 +2249,7 @@ span:nth-of-type(2)::after {
   !OVERLAYS
 \*------------------------------*/
 
-#fancybox-overlay {
+body.ownlist #fancybox-overlay {
 	background: #000 !important;
 	opacity: 0.78 !important;
 }
@@ -2367,7 +2367,7 @@ body #fancybox-inner {
 	border-radius: 4px;
 }
 
-body #fancybox-frame {
+html:not(.dark-mode) body #fancybox-frame {
 	filter:
 		sepia(20%)
 		invert(91.5%);
