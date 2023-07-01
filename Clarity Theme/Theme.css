@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R27.4
+  R27.5
 
 | == = == THEME CONTENTS == = == |
 
@@ -1975,7 +1975,7 @@ footer {
   !OVERLAYS @Base
 \*==============================*/
 
-#fancybox-overlay {
+body.ownlist #fancybox-overlay {
 	background: #000 !important;
 	opacity: 0.2 !important;
 }
@@ -2413,4 +2413,9 @@ div[style^="width: 300px;"] input:hover {
 .data.image img,
 .data.image a::before {
     image-rendering: -webkit-optimize-contrast;
+}
+
+/* Ad area on certain preview styles, yet to appear on the list */
+div[style="padding-top: 8px"] {
+	display: none;
 }
