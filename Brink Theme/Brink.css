@@ -2287,12 +2287,20 @@ body #fancybox-close {
 	margin: 0;
 }
 
+.dark-mode #gdpr-modal-bottom .modal-wrapper {
+	filter: none;
+}
+
 #gdpr-modal-bottom .text {
 	width: 100%;
 }
 
 #gdpr-modal-bottom a {
 	color: #1d439b;
+}
+
+.dark-mode #gdpr-modal-bottom a {
+	color: #abc4ed;
 }
 
 
