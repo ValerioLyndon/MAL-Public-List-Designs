@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.1.1
+ * v2.1.2
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -800,7 +800,6 @@ body::after {
 }
 
 .list-item {
-	min-height: 64px;
 	padding: 3px 0;
 }
 
@@ -818,6 +817,7 @@ body::after {
 tr.list-table-data {
 	position: relative;
 	display: grid;
+	min-height: 67px;
 	padding: 3px 10px 3px 33px;
 	grid-template-columns: 0fr [number] 21px [status] 0fr [image] 1fr [title] repeat(47, 0fr);
 	grid-template-rows: auto 0fr [tags];
@@ -1942,7 +1942,7 @@ This is due to the "order" href syntax being absolutely fuckass-backwards someti
   !OVERLAYS
   =========*/
 
-#fancybox-overlay {
+body.ownlist #fancybox-overlay {
 	background: var(--page-background) !important;
 	opacity: 0.77 !important;
 }
@@ -2121,19 +2121,25 @@ body #fancybox-close::after {
   @Streaming-Info
   ---------*/
 
-.mal-modal-content {
-	background: var(--content-background) !important;
-}
-
 .mal-modal * {
 	border-color: var(--border) !important;
+}
+
+#list-container~div .mal-modal-dialog {
+	box-shadow: none !important;
+}
+
+#list-container~div .mal-modal-content {
+	background: var(--content-background) !important;
+	border: none;
+	color: var(--content-text);
 }
 
 .broadcast a:hover {
 	background: var(--content-highlight) !important;
 }
 
-button.btn-close {
+#list-container~div button.btn-close {
 	color: var(--content-text) !important;
 }
 
@@ -2274,7 +2280,7 @@ body[data-query*='"status":6'] {
 		filter: brightness(100) invert(1);
 	}
 	
-	#gdpr-modal-bottom {
+	html:not(.dark-mode) #gdpr-modal-bottom {
 		filter: invert(0.9) hue-rotate(180deg);
 	}
 }
