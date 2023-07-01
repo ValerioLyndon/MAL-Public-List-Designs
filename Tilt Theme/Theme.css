@@ -1,6 +1,6 @@
 /**
  * "Tilt" by Valerio Lyndon
- * Revision 10.0
+ * Revision 10.1
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1654,12 +1654,12 @@ body[data-owner="1"] .btn-menu .username {
   !OVERLAYS
 \*==============================*/
 
-#fancybox-overlay {
+body.ownlist #fancybox-overlay {
 	background: #000 !important;
 	opacity: 0.6 !important;
 }
 
-#fancybox-outer {
+body.ownlist #fancybox-outer {
 	background: var(--bg-common) !important;
 }
 
@@ -1859,6 +1859,10 @@ a#fancybox-close:before {
 #copyright:hover { opacity: 1; }
 
 #copyright:after { content: "List design by Valerio Lyndon."; }
+
+#recaptcha-terms {
+	display: none;
+}
 
 
 
