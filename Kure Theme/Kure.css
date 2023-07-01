@@ -1,7 +1,7 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\
 | Kure                           |
 | by Valerio Lyndon              |
-| Version 1.0.2                  |
+| Version 1.0.3                  |
 \*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /* IMPORTS */
@@ -1396,7 +1396,7 @@ footer {
 
 /* OVERLAYS */
 
-#fancybox-overlay {
+body.ownlist #fancybox-overlay {
 	background: rgba(0,0,0,0.5) !important;
 	opacity: 1 !important;
 	-webkit-backdrop-filter: blur(1px);
@@ -1404,10 +1404,11 @@ footer {
 }
 
 #fancybox-wrap {
+	--width: min(800px, calc(100vw - 30px));
 	position: fixed;
 	top: 10px !important;
-	left: calc(50% - 490px) !important;
-	width: 800px !important;
+	left: calc(50% - var(--width)*0.5) !important;
+	width: var(--width) !important;
 	max-height: calc(100% - 20px);
 	padding: 0;
 }
