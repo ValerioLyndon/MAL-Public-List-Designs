@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.1.4
+ * v2.2.0
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -38,6 +38,7 @@
  @ Tags / Genres / Demographic / Studio / Licensor
  @ Empty-Table
  @ More-Info
+ @ BBCode
  @ Loading
  * 
  ! FOOTER
@@ -1231,6 +1232,7 @@ tr.list-table-data {
 	font-style: italic;
 }
 
+
 /*---------
   @Notes
   ---------*/
@@ -1826,7 +1828,10 @@ This is due to the "order" href syntax being absolutely fuckass-backwards someti
 }
 
 /* force full-width more info */
-.more-info :is(table, tbody, td, tr) {
+.more-info>table,
+.more-info>table>tbody,
+.more-info>table>tbody>tr,
+.more-info>table>tbody>tr>td {
 	display: block;
 }
 
@@ -1839,8 +1844,74 @@ This is due to the "order" href syntax being absolutely fuckass-backwards someti
 	font-size: 12px;
 }
 
-.td1 a {
+
+/*---------
+  @BBCode
+  ---------*/
+
+:is(.notes,.more-info) :is(a,input,iframe) {
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+#list-container :is(.notes,.more-info) a {
 	color: var(--content-link) !important;
+}
+#list-container :is(.notes,.more-info) a:hover {
+	text-decoration: underline;
+}
+
+#list-container :is(.notes,.more-info) input {
+	padding: 1px 4px;
+	background: var(--button);
+	border: 1px none;
+	border-radius: 3px;
+	color: var(--content-text) !important;
+	font-size: 11px !important;
+	cursor: pointer;
+}
+#list-container :is(.notes,.more-info) input:hover {
+	color: var(--content-link) !important;
+	text-decoration: underline;
+}
+
+:is(.notes,.more-info) iframe {
+	border-radius: 6px;
+}
+
+:is(.notes,.more-info) pre {
+	margin: 0;
+}
+
+:is(.notes,.more-info) hr {
+	color: currentColor;
+}
+
+:is(.codetext,.quotetext) {
+	border-radius: 4px;
+	padding: 6px;
+	margin: 6px 0 6px 3px;
+}
+.codetext {
+	border: 1px solid var(--border);
+}
+.quotetext {
+	background: var(--content-highlight);
+	border: none;
+}
+
+.bbcode-table {
+	width: fit-content;
+	max-width: 100%;
+	border: 1px solid var(--border);
+	border-collapse: collapse;
+}
+.bbcode-table th {
+	background: var(--content-highlight);
+}
+.bbcode-table :is(th,td) {
+	padding: 3px;
+	border: 1px solid var(--border);
 }
 
 
