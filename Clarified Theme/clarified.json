@@ -76,6 +76,19 @@
 								"https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Themes/Dark.css"
 							]
 						]
+					},
+					"revengers": {
+						"label": "Tokyo Revengers",
+						"replacements": [
+							[
+								"RegExp/!THEME[\\s\\S]*?/\\*===",
+								"!THEME\n  =========*/\n\nTHEME_REPLACE\n\n/*==="
+							],
+							[
+								"THEME_REPLACE",
+								"https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Themes/Tokyo%20Revengers.css"
+							]
+						]
 					}
 				},
 				"default": "dynamic"
