@@ -1,6 +1,6 @@
 /**
  * Banner Character (Per-Category)
- * v1.0.0
+ * v1.0.1
  */
 
 [data-query*='"status":7'] {
@@ -42,7 +42,7 @@
 
 /* fix for button layering */
 .header-menu,
-.header-title {
+.header .header-title {
 	z-index: 1;
 }
 
