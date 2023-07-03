@@ -1,6 +1,6 @@
 /**
  * Tokyo Revengers Theme
- * v1.0.1
+ * v1.0.2
  */
 
 /* Footer Logo */
@@ -13,17 +13,31 @@
 /* Theme Colours & Images */
 
 :root {
-	--auxiliary-background: url(https://files.catbox.moe/4qakey.webp);
 	/* core colours */
 	--official-red: #ec1c24;
 	--official-grey: #161516;
+	
+	/* variables that are the same across themes */
+	--all-items: hsl(311, 40%, 51%);
+	--current: hsl(125, 70%, 29.7%);
+	--completed: hsl(223, 40%, 51.2%);
+	--onhold: hsl(46, 60%, 32.45%);
+	--dropped: hsl(359, 55%, 51.25%);
+	--planned: hsl(0, 0%, 43.72%);
+	--background: none;
+	--background-image-opacity: 1;
+	--auxiliary-background: url(https://files.catbox.moe/4qakey.webp);
+	--auxiliary-background-image-opacity: 1;
+	--cover-shadow: rgba(0,0,0,0.38) 0 -3px 9px;
+	--image-background: rgba(22,21,22,0.41);
+	--image-text: #fff;
+	--image-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 @media (prefers-color-scheme: light) {
 	:root {
 		/* Colour scheme property ensures correct scrollbar colours on modern browsers. Older browsers will probably still have a light scrollbar */
 		color-scheme: light;
 		
-		--page-background: #fefdf4;
 		--page-background: #f2f1e6;
 		--content-background: #fff;
 		--content-highlight: #eeeaee;
@@ -31,6 +45,7 @@
 		--border: #cec8ce;
 		--content-text: var(--official-grey);
 		--content-link: var(--official-red);
+		--subdued-text: #767676;
 		--inverse-background: var(--official-grey);
 		--inverse-text: #fff;
 		--scroll-thumb: var(--border);
@@ -80,6 +95,7 @@
 		--border: var(--official-grey);
 		--content-text: #ababab;
 		--content-link: var(--official-red);
+		--subdued-text: #888;
 		--inverse-background: var(--official-red);
 		--inverse-text: var(--official-grey);
 		--scroll-thumb: var(--official-red);
