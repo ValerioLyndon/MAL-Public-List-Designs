@@ -1,6 +1,6 @@
 /**
  * Banner Character
- * v1.0.1
+ * v1.0.2
  */
 
 .header::after {
@@ -16,7 +16,7 @@
 
 /* fix for button layering */
 .header-menu,
-.header-title {
+.header .header-title {
 	z-index: 1;
 }
 
