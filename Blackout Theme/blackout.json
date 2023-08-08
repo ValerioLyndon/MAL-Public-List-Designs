@@ -43,13 +43,13 @@
 				"name": "Reduce Animations",
 				"description": "Lessens or removes various animations such as list item flicker.",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Blackout%20Theme/mods/ReduceAnimations.css"},
-				"conflicts" ["remove-anims"]
+				"conflicts": ["remove-anims"]
 			},
 			"remove-anims": {
 				"name": "Remove Animations",
 				"description": "Removes all animations and transitions for a completely movement-free experience.",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Blackout%20Theme/mods/RemoveAnimations.css"},
-				"conflicts" ["reduce-anims"]
+				"conflicts": ["reduce-anims"]
 			}
 		}
 	}
