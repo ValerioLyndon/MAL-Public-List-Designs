@@ -1,0 +1,753 @@
+@\import "https://dl.dropboxusercontent.com/s/smydsd5wwtt5ofi/Mermaid.css";
+@\import "https://dl.dropboxusercontent.com/scl/fi/s9je4oepavvijvlwmqial/Genshin.css?rlkey=dmrpu1hld3wv30i8iqnsg4ci7";
+
+/*
+
+Oscillate v0.1.0
+by Valerio Lyndon
+a Genshin Impact design
+
+Watching - Mondstadt
+Completed - Inazuma
+Paused - Sumeru
+Dropped - Liyue
+PTW - Fontaine
+
+*/
+
+/* Page Body */
+
+html {
+	--s-fade-bg: 250px;
+	--s-fade-line: 30px;
+	--s-row-w: clamp(600px, 70vw, 900px);
+	
+	--t-pause: .6s ease;
+	--t-row: .24s ease;
+	
+	--i-bg-generic: url(https://genshin.mihoyo.com/_nuxt/img/5c125a1.png);
+	
+	box-sizing: border-box;
+	height: 100%;
+} *, *::before, *::after {
+	box-sizing: inherit;
+}
+
+body {
+	position: relative;
+	min-height: 100%;
+	background: var(--i-bg-generic) center / cover no-repeat fixed #312127;
+	font-size: 11px;
+	font-family: Genshin, Tahoma, Helvetica, Arial, FontAwesome, sans-serif;
+	transform-origin: center top;
+}
+
+#list_surround {}
+
+a,
+table#mal_control_strip a {
+	text-decoration: none;
+}
+
+/* Cover Banner */
+
+#recaptcha-terms {
+	position: absolute; 
+}
+
+body::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: calc(100vh - 250px);
+	background: url(https://genshin.mihoyo.com/_nuxt/img/5c125a1.png) center / cover no-repeat fixed#312127;
+}
+body::after {
+	content: "";
+	position: absolute;
+	top: 480px;
+	width: 100%;
+	height: 200px;
+	background: url(https://upload.wikimedia.org/wikipedia/en/5/5d/Genshin_Impact_logo.svg) center / contain no-repeat;
+	filter: invert(1);
+	transform-origin: center top;
+}
+
+/* Side Bar */
+
+body #mal_control_strip {
+	position: fixed;
+	top: 0;
+	left: -100vw;
+	z-index: 99;
+	display: flex;
+	height: 100%;
+	background: url(https://genshin.mihoyo.com/_nuxt/img/5c125a1.png) center / cover;
+	transition: left var(--t-pause);
+} body #mal_control_strip:hover {
+	left: 0;
+}
+
+body #mal_control_strip:active,
+body #mal_control_strip:not(:hover) {
+	pointer-events: none;
+}
+
+#inlineContent {
+	position: fixed;
+	left: 25px;
+	top: 25px;
+	z-index: 101;
+	display: block !important;
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+}
+#inlineContent:active,
+#mal_control_strip:hover ~ #list_surround #inlineContent {
+	pointer-events: none;
+}
+
+#mal_control_strip::before {
+	content: "";
+	position: absolute;
+	left: calc(100vw - 17px);
+	top: 0;
+	width: calc(85px + 17px);
+	height: 85px;
+}
+#mal_control_strip::after {
+	content: "";
+	position: absolute;
+	left: calc(100vw + 25px);
+	top: 25px;
+	width: 60px;
+	height: 60px;
+	background: url(https://b.l3n.co/i/9MKpLe.webp) center / contain no-repeat;
+	pointer-events: auto;
+	transition: left var(--t-pause), top .2s ease;
+}
+#mal_control_strip:hover::after {
+	left: 25px;
+	top: -60px;
+}
+
+#mal_control_strip tbody {
+	display: flex;
+	width: 100%;
+}
+
+/* side strip */
+#mal_control_strip tbody::before {
+	content: "";
+	display: block;
+	width: 80px;
+	height: 100%;
+	background: linear-gradient(to bottom, #4b5465, #4b5465dd);
+	border: 4px solid #938e8b;
+	box-shadow: 0 0 2px #0008;
+	border-width: 0 4px;
+	pointer-events: auto;
+}
+
+/* main bg */
+#mal_control_strip tr {
+	display: block;
+	width: 560px;
+	padding: 15px;
+	height: 100%;
+	background: linear-gradient(to bottom, #eae5df, #eae5df88);
+	flex: 0 0 auto;
+	box-shadow: inset 4px 0 6px -4px #0008;
+	pointer-events: auto;
+}
+
+#mal_control_strip tbody::after {
+	content: "";
+	display: block;
+	height: 100%;
+	/*background: url(https://i.imgur.com/JaoBu2P.gif) 80% center / auto no-repeat black;*/
+	background: url(https://c.l3n.co/i/9Lk8R9.webp) 80% center / auto no-repeat;
+	flex: 1 1 auto;
+}
+
+#mal_control_strip td {
+	display: block;
+}
+
+
+/* Namecard */
+
+#mal_control_strip #mal_cs_listinfo {
+	width: calc(100% + 30px);
+	height: 264px;
+	padding: 20px 32px;
+	display: grid;
+	align-content: start;
+	gap: 20px;
+	grid-template-columns: auto 1fr;
+	margin: 40px -15px 15px;
+	background: url(https://a.l3n.co/i/9nMcTa.webp) center / cover;
+	color: #e8e4db;
+}
+
+#mal_cs_listinfo::before {
+	content: "";
+	display: block;
+	width: 112px;
+	height: 112px;
+	background: url(https://c.l3n.co/i/9MBbRA.webp) center -13px / auto 125% #dd8f61;
+	border: 4px solid #ece7e1;
+	border-radius: 50%;
+	box-shadow: 0 0 0 8px #4a9ca744;
+	margin: 8px;
+}
+
+#mal_cs_listinfo strong {
+	display: block;
+	width: 100%;
+	height: 38px;
+	text-indent: 5px;
+	font: 24px/38px Genshin;
+	background: linear-gradient(to right, transparent, #2c7f8d44 10px, transparent);
+}
+
+#mal_cs_listinfo::after {
+	content: "UID 5889451";
+	grid-area: 2 / 1 / 3 / 2;
+	width: 150px;
+	height: 24px;
+	background: #42586e;
+	border: 2px solid #70859b;
+	border-radius: 12px;
+	margin: 0 -9px;
+	text-align: center;
+	font: 16px Genshin;
+}
+
+/* Left Links */
+
+td#mal_cs_powered a {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 50px;
+	height: 50px;
+	background: url(https://b.l3n.co/i/9MKdXD.webp) center / 50px #eae1d2;
+	border: 4px solid #919596;
+	border-radius: 50%;
+	margin: 15px;
+}
+td#mal_cs_powered a img {
+	display: none;
+}
+
+#mal_control_strip .logout {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: url(https://c.l3n.co/i/9MKVk3.webp) 100% center / auto;
+	font-size: 0;
+	width: 50px;
+	height: 50px;
+	margin: 20px;
+}
+
+/* Main Links */
+
+td#mal_cs_links,
+td#mal_cs_links td,
+td#mal_cs_otherlinks,
+td#mal_cs_otherlinks td {
+	display: contents !important;
+}
+
+td:is(#mal_cs_links,#mal_cs_otherlinks) a {
+	display: block;
+	width: 120px;
+	height: 120px;
+	margin: 5px;
+	line-height: 30px;
+	box-shadow:
+		inset 0 0 0 2px #596066,
+		inset 0 0 0 5px #6f727f;
+	background: #50586d;
+	border-radius: 2px;
+	float: left;
+	color: #ece5d8;
+	font: 16px/40px Genshin;
+	text-align: center;
+	text-decoration: none;
+}
+
+td:is(#mal_cs_links,#mal_cs_otherlinks) a::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 80px;
+	background: var(--i, none) center bottom / auto no-repeat;
+}
+
+#mal_cs_links [href="/"] {
+	display: none !important;
+}
+#mal_cs_links [href*="/animelist/"] {
+	--i: url(https://a.l3n.co/i/9cGlSe.webp);
+}
+#mal_cs_links [href*="/mangalist/"] {
+	--i: url(https://a.l3n.co/i/9cGe1x.webp);
+}
+[href*="addtolist.php"] {
+	--i: url(https://b.l3n.co/i/9cGvF1.webp);
+}
+[href="/forum/"] {
+	--i: url(https://b.l3n.co/i/9cGzxk.webp);
+}
+[href^="/history"] {
+	--i: url(https://c.l3n.co/i/9cGnpH.webp);
+}
+[href$="export"] {
+	--i: url(https://b.l3n.co/i/9cGHCa.webp);
+}
+
+td#mal_cs_otherlinks strong {
+	display: none;
+}
+
+/* Search */
+
+td#mal_cs_powered {
+	position: static;
+}
+
+/* Sidebar Footer */
+
+#copyright {
+	position: fixed;
+	bottom: 0;
+	left: -100vw;
+	margin-left: 80px;
+	z-index: 99;
+	width: 560px;
+	text-align: left !important;
+	padding: 20px;
+	font-size: 10px;
+	transition: left var(--t-pause);
+	pointer-events: none;
+}
+#mal_control_strip:hover ~ #list_surround #copyright {
+	left: 0;
+}
+
+#copyright::after {
+	content: "\a List design by Valerio Lyndon.\a Paimon greenscreen by King of Games.\a Other assets by miHoYo.";
+	white-space: pre-wrap;
+}
+
+/* Category Menu */
+
+div table:not([class]):first-of-type {
+	margin: 0 auto;
+}
+
+div table:not([class]):first-of-type tr {
+	display: flex;
+	justify-content: center;
+}
+
+[class^="status_"] {
+	position: relative;
+	width: auto;
+}
+
+[class^="status_"] a {
+	display: block;
+	height: 40px;
+	padding: 0 18px;
+	font-size: 0;
+} [class^="status_"]:hover a {
+/* 	color: black !important; */
+}
+
+[class^="status_"]:nth-child(1) {
+/* 	order: 2; */
+	--area: "Mondstadt";
+}
+[class^="status_"]:nth-child(2) {
+/* 	order: 4; */
+	--area: "Inazuma";
+}
+[class^="status_"]:nth-child(3) {
+/* 	order: 5; */
+	--area: "Sumeru";
+}
+[class^="status_"]:nth-child(4) {
+/* 	order: 3; */
+	--area: "Liyue";
+}
+[class^="status_"]:nth-child(5) {
+/* 	order: 6; */
+	--area: "Fontaine";
+}
+[class^="status_"]:nth-child(6) {
+/* 	order: 1; */
+	--area: "All of Teyvat";
+}
+
+[class^="status_"] a::after {
+	content: var(--area);
+	font-size: 16px;
+	line-height: 40px;
+}
+
+[class^="status_"]::after {
+	content: "";
+	position: absolute;
+	left: 150%;
+	bottom: -2px;
+	z-index: -1;
+	width: 50px;
+	padding: 0 6px;
+	height: 4px;
+	background: white content-box;
+	transition: all 0.2s ease-in-out;
+	opacity: 0;
+	transform: translateX(-50%);
+	pointer-events: none;
+} [class^="status_"]:hover::after {
+	left: 50%;
+	width: 100%;
+	opacity: 1;
+} [class^="status_"]:hover ~ [class^="status_"]::after {
+	left: -50%;
+}
+
+/* Category Headers */
+
+table[class^="header_"],
+#recaptcha-terms {
+	position: sticky;
+	top: calc(var(--s-fade-bg) * -1);
+	left: 0;
+	width: 100%;
+	height: calc(100vh + var(--s-fade-bg));
+	margin-bottom: -100vh;
+	overflow: hidden;
+	mask: linear-gradient(to bottom, transparent 0, white 150px);
+	background: var(--i, var(--i-bg-generic)) center / cover no-repeat fixed #312127;
+}
+table.header_cw {
+	--i: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200320/2020032014410864090.jpg);
+}
+table.header_completed {
+	background-image: url(https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210719/2021071920203256336.jpg);
+}
+table.header_onhold {
+	background-image: url(https://webstatic.hoyoverse.com/upload/contentweb/2022/08/16/8969f683b92839ac427c875d0d742be2_4596868760376591695.jpg);
+}
+table.header_dropped {
+	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200320/2020032014541768485.jpg);
+}
+table.header_ptw {
+	background-image: url(https://webstatic.hoyoverse.com/upload/op-public/2023/08/10/721a74c43614d7aeb25b046cabfb57be_2232465004168336408.jpg);
+}
+
+table[class^="header_"] span {
+	display: none;
+}
+
+table[class^="header_"] + table,
+#recaptcha-terms {
+	margin-top: calc(var(--s-fade-bg) * .5) !important;
+}
+
+table[class^="header_"] + table::before {
+	position: absolute;
+	top: 0;
+	font: 48px/50px "Mermaid";
+	margin-top: -200px !important;
+	text-transform: uppercase;
+	width: 100%;
+	padding-top: 150px;
+	text-align: center;
+	background:
+		var(--i, none) center top / auto 150px no-repeat,
+		url(https://c.l3n.co/i/9LC301.png) calc(50% - 200px) 126px / auto no-repeat,
+		url(https://c.l3n.co/i/9L9LOb.png) calc(50% + 200px) 126px / auto no-repeat;
+}
+
+table.header_cw + table::before {
+	content: "Current";
+	--i: url(https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200319/2020031918573764353.png);
+}
+table.header_completed + table::before {
+	content: "Completed";
+	--i: url(https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210716/2021071618595355993.png);
+}
+table.header_onhold + table::before {
+	content: "Paused";
+	--i: url(https://webstatic.hoyoverse.com/upload/contentweb/2022/08/16/f77d0c308b54728b6a1f3bc525e42955_1063974383729558189.png);
+}
+table.header_dropped + table::before {
+	content: "Dropped";
+	--i: url(https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200319/2020031921033557909.png);
+}
+table.header_ptw + table::before {
+	content: "Planned";
+	--i: url(https://webstatic.hoyoverse.com/upload/op-public/2023/08/10/4f32dd59ce1ed2f07d20f79fc64a358c_6481188169214364264.png);
+}
+
+/* Space out headers if you have fewer than 5 list rows in a category */
+
+table[class^="header_"] ~ table[class^="header_"] {
+	margin-top: var(--s-fade-bg) !important;
+}
+
+/* Footer */
+
+#recaptcha-terms {
+	height: calc(100vh - var(--s-fade-bg));
+	font-size: 0;
+}
+
+
+/* Characters */
+
+table[class^="header_"]::before {
+	content: "";
+	display: block;
+	width: 800px;
+	height: 600px;
+	background: center bottom / contain no-repeat transparent;
+/* 	background-color: black; */
+	margin: var(--s-fade-bg) -130px 0 auto;
+	mask: linear-gradient(to top, transparent, white 50px);
+} table.header_cw::before {
+	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200609/2020060915105884221.png);
+} table.header_completed::before {
+	margin-left: -130px;
+	margin-right: auto;
+	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200828/2020082817270842074.png);
+} table.header_onhold::before {
+	background: #888;
+	background-image: url()
+} table.header_ptw::before {
+	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200315/2020031517331523512.png);
+}
+
+table[class^="header_"] tbody {
+	display: block;
+	height: 0;
+}
+
+table[class^="header_"]::after {
+	content: "";
+	position: relative;
+	display: block;
+	width: 400px;
+	height: 100px;
+	background: left bottom / auto 100px no-repeat transparent;
+	margin: -80px -80px 0 auto;
+	text-align: left;
+}
+table.header_cw::after {
+	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20191009/2019100915054350804.png);
+}
+table.header_completed::after {
+	margin-left: -80px;
+	text-align: right;
+	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200828/2020082817271449432.png);
+}
+table.header_ptw::after {
+	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200315/2020031517332265399.png);
+}
+
+/* Table */
+
+div table:not([class]) {
+	position: relative;
+	z-index: 1;
+	width: var(--s-row-w);
+	padding: 10px;
+	background: rgba(1,1,1,0.6);
+	margin: 10px;
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+table.header_completed ~ table:not([class]),
+div table.header_dropped ~ table:not([class]) {
+	--pos: -1;
+	margin-left: auto;
+	margin-right: max(10px, calc(50vw - 600px));
+}
+.header_cw ~ table:not([class]),
+table.header_onhold ~ table:not([class]),
+div table.header_ptw ~ table:not([class]) {
+	--pos: 1;
+	margin-left: max(10px, calc(50vw - 600px));
+	margin-right: auto;
+}
+
+table, table a {
+	color: white;
+}
+
+[class^="header_"] ~ table:not([class]) tr {
+	display: grid;
+	grid-template-columns: minmax(45%, 1fr) repeat(auto-fit, 90px);
+	grid-template-rows: 1fr 18px;
+	grid-auto-flow: row;
+	align-items: start;
+	gap: 5px;
+}
+
+/* Lines */
+
+[class^="header_"] ~ table:not([class]) tbody::before {
+	content: "";
+	position: absolute;
+	top: -10px;
+	left: calc(50% + (var(--s-row-w) * .5 + 20px) * var(--pos));
+	width: 2px;
+	height: calc(100% + var(--s-fade-line) * 2);
+	background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.14) var(--s-fade-line), rgba(255,255,255,0.14) calc(100% - var(--s-fade-line)), transparent 100%);
+	transform: translateX(-50%);
+}
+
+[class^="header_"] ~ table:not([class]) tbody::after {
+	content: url(https://b.l3n.co/i/9L48L9.png);
+	position: absolute;
+	left: calc(50% + (var(--s-row-w) * .5 + 20px) * var(--pos));
+	transform: translate(-50%,-50%);
+	top: 50%;
+	opacity: 0.3;
+	transition: opacity var(--t-row);
+}
+[class^="header_"] ~ table:not([class]):hover tbody::after {
+	opacity: 1;
+}
+
+/* Table Header */
+
+table[class^="header_"] + table {
+	background: #cca574;
+	padding-bottom: 10px !important;
+}
+table[class^="header_"] + table :is(td,a) {
+	color: black;
+	text-transform: uppercase;
+}
+table[class^="header_"] + table::after {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	border-color: #957c5e transparent transparent #957c5e;
+	border-width: 4px;
+	border-style: solid;
+}
+
+.table_headerLink {
+	display: inline-block;
+	overflow: hidden;
+	height: 1.4em;
+}
+
+/* Table Items */
+
+:is(.table_header,[class^="td"]) {
+	width: auto;
+}
+
+/* Score */
+
+:is(.table_header,[class^="td"])[width="45"]:not([nowrap]) {
+/* 	width: auto; */
+}
+
+/* Progress */
+
+:is(.table_header,[class^="td"])[width="70"] {
+/* 	width: 90px; */
+}
+
+/* Type */
+
+:is(.table_header,[class^="td"])[width="50"] {
+	order: 5;
+}
+
+/* [class^="td"][width="45"]:not([nowrap]),
+[class^="td"][width="70"],
+[class^="td"][width="50"] {
+	padding: 3px 6px;
+	justify-self: center;
+	background: #48515c;
+	border-radius: 999px;
+	font-size: 12px;
+	white-space: nowrap;
+} */
+
+/* Dates */
+
+:is(.table_header,[class^="td"]):is([width="90"],[width="45"][nowrap]) {
+	grid-row: 2 / 3;
+	font-size: 12px;
+}
+[class^="td"][width="90"] + [width="90"]::before {
+	content: "->";
+	display: inline-block;
+	width: 30px;
+	margin-left: -30px;
+	text-align: center;
+}
+[class^="td"][width="45"][nowrap]::before {
+	content: "= ";
+}
+[class^="td"][width="45"][nowrap]::after {
+	content: " day(s)";
+}
+
+/* Genres */
+
+:is(.table_header,[class^="td"])[width="125"] {
+	grid-area: 2 / 1 / 3 / 2;
+	text-align: left;
+}
+[class^="td"][width="125"] {
+	font-size: 0;
+	white-space: nowrap;
+	opacity: .5;
+	transition: opacity var(--t-row);
+}
+table:hover [class^="td"][width="125"] {
+	opacity: 1;
+}
+
+[class^="td"][width="125"] a {
+	background: #2b3342;
+	padding: 3px 6px;
+	font-size: 12px;
+	border-radius: 999px;
+	margin-right: 5px;
+}
+
+/* Totals */
+
+.category_totals {
+	position: relative;
+	top: 9px;
+	text-align: center;
+	white-space: nowrap;
+	font-size: 12px;
+	line-height: 18px;
+	margin-bottom: -3px;
+}
+
+/* Misc */
+
+#grand_totals,
+.grecaptcha-badge {
+	display: none !important;
+}
