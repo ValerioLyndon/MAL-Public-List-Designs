@@ -3,7 +3,7 @@
 
 /*
 
-Oscillate v0.1.0
+Oscillate v0.2.0
 by Valerio Lyndon
 a Genshin Impact design
 
@@ -182,16 +182,16 @@ body #mal_control_strip:not(:hover) {
 	width: calc(100% + 30px);
 	height: 264px;
 	padding: 20px 32px;
-	display: grid;
-	align-content: start;
-	gap: 20px;
-	grid-template-columns: auto 1fr;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: start;
 	margin: 40px -15px 15px;
 	background: url(https://a.l3n.co/i/9nMcTa.webp) center / cover;
 	color: #e8e4db;
 }
 
 #mal_cs_listinfo::before {
+	order: 1;
 	content: "";
 	display: block;
 	width: 112px;
@@ -203,29 +203,111 @@ body #mal_control_strip:not(:hover) {
 	margin: 8px;
 }
 
-#mal_cs_listinfo strong {
-	display: block;
-	width: 100%;
-	height: 38px;
-	text-indent: 5px;
-	font: 24px/38px Genshin;
-	background: linear-gradient(to right, transparent, #2c7f8d44 10px, transparent);
-}
-
 #mal_cs_listinfo::after {
+	order: 2;
 	content: "UID 5889451";
-	grid-area: 2 / 1 / 3 / 2;
 	width: 150px;
 	height: 24px;
 	background: #42586e;
 	border: 2px solid #70859b;
 	border-radius: 12px;
-	margin: 0 -9px;
+	margin: 20px 11px 0 -9px;
 	text-align: center;
 	font: 16px Genshin;
 }
 
+#mal_cs_listinfo div:first-of-type {
+	order: 3;
+	width: calc(100% - 150px);
+}
+#mal_cs_listinfo div:last-of-type {
+	order: 4;
+	width: calc(100% - 150px);
+}
+
+td#mal_cs_listinfo a {
+	display: block;
+	width: 100%;
+	height: 38px;
+	text-indent: 10px;
+	background: linear-gradient(to right, transparent, #07101222 10px, transparent);
+}
+
+td#mal_cs_listinfo a strong {
+	font: 24px/38px Genshin;
+}
+
+#mal_cs_listinfo div > strong {
+	display: grid;
+	grid-auto-flow: row;
+}
+
+#mal_cs_listinfo div > strong::before {
+	order: 1;
+	content: "Professional Hirasawa Yui simp.";
+	height: 60px;
+	padding: 5px 10px;
+	font: 16px/30px Genshin;
+}
+
+#mal_cs_listinfo div > strong::after {
+	order: 1;
+	content: "Adventure Rank: 60";
+	display: block;
+	height: 30px;
+	text-indent: 10px;
+	font: 20px/30px Genshin;
+	background: linear-gradient(to right, transparent, #07101222 10px, transparent);
+}
+
+#mal_cs_listinfo div:first-of-type::after {
+	content: "";
+	display: block;
+	background: url(https://i.imgur.com/2Tcj77c.png) center / 325px auto no-repeat;
+	height: 36px;
+	text-indent: 10px;
+	font: 20px/30px Genshin;
+}
+
+#mal_cs_listinfo div:last-of-type::before {
+	order: 1;
+	content: "World Level: 8";
+	display: block;
+	height: 30px;
+	text-indent: 10px;
+	font: 20px/30px Genshin;
+	background: linear-gradient(to right, transparent, #07101222 10px, transparent);
+}
+
 /* Left Links */
+
+td#mal_cs_powered {
+	display: block;
+	clear: both;
+}
+
+td#mal_cs_powered #search {
+	text-align: center;
+	position: absolute;
+	bottom: 80px;
+	left: 100px;
+}
+
+td#mal_cs_powered #search #searchBox {
+	width: 340px;
+	height: 38px;
+	padding: 8px 16px;
+	background: #50586d;
+	border: none;
+	border-radius: 100px;
+	box-shadow: inset 0 0 0 2px #596066, inset 0 0 0 5px #6f727f;
+	color: #ece5d8;
+	font-size: 16px;
+}
+
+#searchListButton {
+	display: none;
+}
 
 td#mal_cs_powered a {
 	position: absolute;
@@ -261,7 +343,6 @@ td#mal_cs_otherlinks,
 td#mal_cs_otherlinks td {
 	display: contents !important;
 }
-
 td:is(#mal_cs_links,#mal_cs_otherlinks) a {
 	display: block;
 	width: 120px;
@@ -715,6 +796,7 @@ table[class^="header_"] + table::after {
 	grid-area: 2 / 1 / 3 / 2;
 	text-align: left;
 }
+
 [class^="td"][width="125"] {
 	font-size: 0;
 	white-space: nowrap;
