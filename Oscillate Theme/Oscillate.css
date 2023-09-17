@@ -3,7 +3,7 @@
 
 /*
 
-Oscillate v0.3.0
+Oscillate v0.3.1
 by Valerio Lyndon
 a Genshin Impact design
 
@@ -25,7 +25,7 @@ html {
 	--t-pause: .6s ease;
 	--t-row: .24s ease;
 	
-	--i-bg-generic: url(https://genshin.mihoyo.com/_nuxt/img/5c125a1.png);
+	--i-bg-generic: url(https://i.imgur.com/2lJ1X6E.png);
 	
 	box-sizing: border-box;
 	height: 100%;
@@ -60,7 +60,7 @@ body::before {
 	display: block;
 	width: 100%;
 	height: calc(100vh - 250px);
-	background: url(https://genshin.mihoyo.com/_nuxt/img/5c125a1.png) center / cover no-repeat fixed#312127;
+	background: url(https://i.imgur.com/2lJ1X6E.png) center / cover no-repeat fixed#312127;
 }
 body::after {
 	content: "";
@@ -68,7 +68,7 @@ body::after {
 	top: 480px;
 	width: 100%;
 	height: 200px;
-	background: url(https://upload.wikimedia.org/wikipedia/en/5/5d/Genshin_Impact_logo.svg) center / contain no-repeat;
+	background: url(https://files.catbox.moe/q87a0y.svg) center / contain no-repeat;
 	filter: invert(1);
 	transform-origin: center top;
 }
@@ -82,7 +82,7 @@ body #mal_control_strip {
 	z-index: 99;
 	display: flex;
 	height: 100%;
-	background: url(https://genshin.mihoyo.com/_nuxt/img/5c125a1.png) center / cover;
+	background: url(https://i.imgur.com/2lJ1X6E.png) center / cover;
 	transition: left var(--t-pause);
 } body #mal_control_strip:hover {
 	left: 0;
@@ -446,7 +446,7 @@ td#mal_cs_powered {
 }
 
 #copyright::after {
-	content: "\a List design by Valerio Lyndon.\a Paimon greenscreen by King of Games.\a Other assets by miHoYo.";
+	content: "\a List design by Valerio Lyndon.\a Paimon greenscreen by King of Games.\a Other assets by HoYoverse.";
 	white-space: pre-wrap;
 }
 
@@ -543,19 +543,19 @@ table[class^="header_"],
 	background: var(--i, var(--i-bg-generic)) center / cover no-repeat fixed #312127;
 }
 table.header_cw {
-	--i: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200320/2020032014410864090.jpg);
+	--i: url(https://i.imgur.com/rvwwexZ.jpg);
 }
 table.header_completed {
-	background-image: url(https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210719/2021071920203256336.jpg);
+	background-image: url(https://i.imgur.com/QNBCmB7.jpg);
 }
 table.header_onhold {
-	background-image: url(https://webstatic.hoyoverse.com/upload/contentweb/2022/08/16/8969f683b92839ac427c875d0d742be2_4596868760376591695.jpg);
+	background-image: url(https://i.imgur.com/MgKTjus.jpg);
 }
 table.header_dropped {
-	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200320/2020032014541768485.jpg);
+	background-image: url(https://i.imgur.com/7PC8ovi.jpg);
 }
 table.header_ptw {
-	background-image: url(https://webstatic.hoyoverse.com/upload/op-public/2023/08/10/721a74c43614d7aeb25b046cabfb57be_2232465004168336408.jpg);
+	background-image: url(https://i.imgur.com/tyBoCB2.jpg);
 }
 
 table[class^="header_"] span {
@@ -629,16 +629,16 @@ table[class^="header_"]::before {
 	margin: var(--s-fade-bg) -130px 0 auto;
 	mask: linear-gradient(to top, transparent, white 50px);
 } table.header_cw::before {
-	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200609/2020060915105884221.png);
+	background-image: url(https://i.imgur.com/pidx8gD.png);
 } table.header_completed::before {
 	margin-left: -130px;
 	margin-right: auto;
-	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200828/2020082817270842074.png);
+	background-image: url(https://i.imgur.com/7z7ULZ3.png);
 } table.header_onhold::before {
 	background: #888;
-	background-image: url()
+	background-image: url();
 } table.header_ptw::before {
-	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200315/2020031517331523512.png);
+	background-image: url(https://i.imgur.com/XQZPyjp.png);
 }
 
 table[class^="header_"] tbody {
@@ -657,15 +657,15 @@ table[class^="header_"]::after {
 	text-align: left;
 }
 table.header_cw::after {
-	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20191009/2019100915054350804.png);
+	background-image: url(https://i.imgur.com/wVQhZog.png);
 }
 table.header_completed::after {
 	margin-left: -80px;
 	text-align: right;
-	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200828/2020082817271449432.png);
+	background-image: url(https://i.imgur.com/J6dS0Un.png);
 }
 table.header_ptw::after {
-	background-image: url(https://uploadstatic-sea.mihoyo.com/contentweb/20200315/2020031517332265399.png);
+	background-image: url(https://i.imgur.com/ZtAvels.png);
 }
 
 /* Table */
