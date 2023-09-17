@@ -3,7 +3,7 @@
 
 /*
 
-Oscillate v0.2.0
+Oscillate v0.3.0
 by Valerio Lyndon
 a Genshin Impact design
 
@@ -372,10 +372,10 @@ td:is(#mal_cs_links,#mal_cs_otherlinks) a::before {
 #mal_cs_links [href="/"] {
 	display: none !important;
 }
-#mal_cs_links [href*="/animelist/"] {
+[href*="/animelist/"] {
 	--i: url(https://a.l3n.co/i/9cGlSe.webp);
 }
-#mal_cs_links [href*="/mangalist/"] {
+[href*="/mangalist/"] {
 	--i: url(https://a.l3n.co/i/9cGe1x.webp);
 }
 [href*="addtolist.php"] {
@@ -389,6 +389,31 @@ td:is(#mal_cs_links,#mal_cs_otherlinks) a::before {
 }
 [href$="export"] {
 	--i: url(https://b.l3n.co/i/9cGHCa.webp);
+}
+[href^="/sharedanime"] {
+	--i: url(https://c.l3n.co/i/dWrKzq.webp);
+	--t: "Shared";
+}
+/* MAL Tools */
+[href="javascript:void(0);"] {
+	--i: url(https://a.l3n.co/i/dWrSje.webp);
+}
+
+:is(#mal_cs_links,#mal_cs_otherlinks) :is([href*="/mangalist/"],[href*="/animelist/"],[href^="/sharedanime"]) {
+	font-size: 0;
+}
+:is(#mal_cs_links,#mal_cs_otherlinks) :is([href*="/mangalist/"],[href*="/animelist/"],[href^="/sharedanime"])::after {
+	content: var(--t,none);
+	font-size: 16px;
+}
+#mal_cs_links [href*="/animelist/"] {
+	--t: "Your Anime";
+}
+#mal_cs_links [href*="/mangalist/"] {
+	--t: "Your Manga";
+}
+#mal_cs_otherlinks [href*="/mangalist/"] {
+	--t: "Their Manga";
 }
 
 td#mal_cs_otherlinks strong {
@@ -829,6 +854,7 @@ table:hover [class^="td"][width="125"] {
 
 /* Misc */
 
+[title="Affinity"],
 #grand_totals,
 .grecaptcha-badge {
 	display: none !important;
