@@ -1,19 +1,11 @@
-@\import "https://dl.dropboxusercontent.com/s/smydsd5wwtt5ofi/Mermaid.css";
-@\import "https://dl.dropboxusercontent.com/scl/fi/s9je4oepavvijvlwmqial/Genshin.css?rlkey=dmrpu1hld3wv30i8iqnsg4ci7";
-
 /*
-
-Oscillate v0.3.1
+Oscillate v0.4.0
 by Valerio Lyndon
 a Genshin Impact design
-
-Watching - Mondstadt
-Completed - Inazuma
-Paused - Sumeru
-Dropped - Liyue
-PTW - Fontaine
-
 */
+
+@\import "https://dl.dropboxusercontent.com/s/smydsd5wwtt5ofi/Mermaid.css";
+@\import "https://dl.dropboxusercontent.com/scl/fi/s9je4oepavvijvlwmqial/Genshin.css?rlkey=dmrpu1hld3wv30i8iqnsg4ci7";
 
 /* Page Body */
 
@@ -41,8 +33,6 @@ body {
 	font-family: Genshin, Tahoma, Helvetica, Arial, FontAwesome, sans-serif;
 	transform-origin: center top;
 }
-
-#list_surround {}
 
 a,
 table#mal_control_strip a {
@@ -540,22 +530,57 @@ table[class^="header_"],
 	margin-bottom: -100vh;
 	overflow: hidden;
 	mask: linear-gradient(to bottom, transparent 0, white 150px);
-	background: var(--i, var(--i-bg-generic)) center / cover no-repeat fixed #312127;
+	background: var(--i-bg, var(--i-bg-generic)) center / cover no-repeat fixed #312127;
 }
 table.header_cw {
-	--i: url(https://i.imgur.com/rvwwexZ.jpg);
+	/* Mondstadt */
+	--i-bg: url(https://i.imgur.com/rvwwexZ.jpg);
+	/* Jean */
+	--i-ch: url(https://i.imgur.com/91qbMNN.png);
+	--i-nm: url(https://i.imgur.com/XPF1c8X.png);
+	--i-qt: url(https://i.imgur.com/phblNMe.png);
+	--s-nm-diff: 120px;
+	--s-qt-diff: 80px;
 }
 table.header_completed {
-	background-image: url(https://i.imgur.com/QNBCmB7.jpg);
+	/* Inazuma */
+	--i-bg: url(https://i.imgur.com/QNBCmB7.jpg);
+	/* Kuki Shinobu */
+	--i-ch: url(https://i.imgur.com/mB7aZ7y.png);
+	--i-nm: url(https://i.imgur.com/AgCplhf.png);
+	--i-qt: url(https://i.imgur.com/RpkfpDP.png);
+	--s-ch-diff: -40px;
+	--s-nm-diff: 90px;
+	--s-qt-diff: 60px;
 }
 table.header_onhold {
-	background-image: url(https://i.imgur.com/MgKTjus.jpg);
+	/* Sumeru */
+	--i-bg: url(https://i.imgur.com/MgKTjus.jpg);
+	/* Layla */
+	--i-ch: url(https://i.imgur.com/dV8gBhj.png);
+	--i-nm: url(https://i.imgur.com/yHz81t8.png);
+	--i-qt: url(https://i.imgur.com/4b7huGS.png);
+	--s-nm-diff: 80px;
+	--s-qt-diff: 40px;
 }
 table.header_dropped {
-	background-image: url(https://i.imgur.com/7PC8ovi.jpg);
+	/* Liyue */
+	--i-bg: url(https://i.imgur.com/7PC8ovi.jpg);
+	/* Ganyu */
+	--i-ch: url(https://i.imgur.com/aJeEAxB.png);
+	--i-nm: url(https://i.imgur.com/jX9FH3s.png);
+	--i-qt: url(https://i.imgur.com/IvJNhgl.png);
+	--s-ch-diff: -80px;
+	--s-nm-diff: 70px;
 }
 table.header_ptw {
-	background-image: url(https://i.imgur.com/tyBoCB2.jpg);
+	/* Fontaine */
+	--i-bg: url(https://i.imgur.com/tyBoCB2.jpg);
+	/* Lynette */
+	--i-ch: url(https://i.imgur.com/OXwowTf.png);
+	--i-nm: url(https://i.imgur.com/8RRxeAh.png);
+	--i-qt: url(https://i.imgur.com/mozZ3xN.png);
+	--s-nm-diff: 40px;
 }
 
 table[class^="header_"] span {
@@ -624,21 +649,14 @@ table[class^="header_"]::before {
 	display: block;
 	width: 800px;
 	height: 600px;
-	background: center bottom / contain no-repeat transparent;
-/* 	background-color: black; */
-	margin: var(--s-fade-bg) -130px 0 auto;
+	background: var(--i-ch) center bottom / contain no-repeat transparent;
+	margin: var(--s-fade-bg) calc(-130px + var(--s-ch-diff, 0px)) 0 auto;
 	mask: linear-gradient(to top, transparent, white 50px);
-} table.header_cw::before {
-	background-image: url(https://i.imgur.com/pidx8gD.png);
-} table.header_completed::before {
-	margin-left: -130px;
+}
+table.header_completed::before,
+table.header_dropped::before {
+	margin-left: calc(-130px + var(--s-ch-diff, 0px));
 	margin-right: auto;
-	background-image: url(https://i.imgur.com/7z7ULZ3.png);
-} table.header_onhold::before {
-	background: #888;
-	background-image: url();
-} table.header_ptw::before {
-	background-image: url(https://i.imgur.com/XQZPyjp.png);
 }
 
 table[class^="header_"] tbody {
@@ -650,22 +668,18 @@ table[class^="header_"]::after {
 	content: "";
 	position: relative;
 	display: block;
-	width: 400px;
-	height: 100px;
-	background: left bottom / auto 100px no-repeat transparent;
-	margin: -80px -80px 0 auto;
+	width: 450px;
+	height: 270px;
+	background:
+		var(--i-nm) var(--s-nm-diff, 0px) top / auto 100px no-repeat,
+		var(--i-qt) var(--s-qt-diff, 0px) bottom / auto 190px no-repeat,
+		transparent;
+	margin: -80px 0 0 auto;
 	text-align: left;
 }
-table.header_cw::after {
-	background-image: url(https://i.imgur.com/wVQhZog.png);
-}
-table.header_completed::after {
-	margin-left: -80px;
-	text-align: right;
-	background-image: url(https://i.imgur.com/J6dS0Un.png);
-}
-table.header_ptw::after {
-	background-image: url(https://i.imgur.com/ZtAvels.png);
+table.header_completed::after,
+table.header_dropped::after{
+	margin-left: 0;
 }
 
 /* Table */
