@@ -1,5 +1,5 @@
 /*
-Oscillate v0.6.1
+Oscillate v0.6.2
 by Valerio Lyndon
 a Genshin Impact design
 */
@@ -62,7 +62,7 @@ body::before {
 body::after {
 	content: "";
 	position: absolute;
-	top: 480px;
+	top: calc(90vh - 450px);
 	width: 100%;
 	height: 200px;
 	background: url(https://i.imgur.com/XRcj5JM.png) center / contain no-repeat;
