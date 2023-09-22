@@ -1,5 +1,5 @@
 /*
-Oscillate v0.5.0
+Oscillate v0.6.0
 by Valerio Lyndon
 a Genshin Impact design
 */
@@ -23,6 +23,13 @@ html {
 	height: 100%;
 } *, *::before, *::after {
 	box-sizing: inherit;
+}
+
+* {
+	cursor: url(https://i.imgur.com/CjahEnY.png) 2 2, default;
+}
+:link, :link * {
+	cursor: url(https://i.imgur.com/nOrtOLo.png) 2 2, pointer;
 }
 
 body {
@@ -58,9 +65,21 @@ body::after {
 	top: 480px;
 	width: 100%;
 	height: 200px;
-	background: url(https://files.catbox.moe/q87a0y.svg) center / contain no-repeat;
+	background: url(https://i.imgur.com/XRcj5JM.png) center / contain no-repeat;
 	filter: invert(1);
 	transform-origin: center top;
+	animation: intro-slide 1.8s ease backwards .2s;
+}
+
+@keyframes intro-slide {
+	0% {
+		opacity: 0;
+		transform: translateY(-200px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
+	}
 }
 
 /* Side Bar */
@@ -91,7 +110,7 @@ body #mal_control_strip:not(:hover) {
 	display: block !important;
 	width: 60px;
 	height: 60px;
-	cursor: pointer;
+	cursor: url(https://i.imgur.com/nOrtOLo.png) 2 2, pointer;
 }
 #inlineContent:active,
 #mal_control_strip:hover ~ #list_surround #inlineContent {
@@ -156,9 +175,9 @@ body #mal_control_strip:not(:hover) {
 	content: "";
 	display: block;
 	height: 100%;
-	/*background: url(https://i.imgur.com/JaoBu2P.gif) 80% center / auto no-repeat black;*/
 	background: url(https://c.l3n.co/i/9Lk8R9.webp) 80% center / auto no-repeat;
 	flex: 1 1 auto;
+	cursor: url(https://i.imgur.com/nOrtOLo.png) 2 2, pointer;
 }
 
 #mal_control_strip td {
@@ -300,7 +319,7 @@ td#mal_cs_powered {
 td#mal_cs_powered #search {
 	text-align: center;
 	position: absolute;
-	bottom: 80px;
+	bottom: 20px;
 	left: 100px;
 }
 
@@ -424,7 +443,7 @@ td:is(#mal_cs_links,#mal_cs_otherlinks) a:not([href^="/profile/"])::before {
 }
 
 :is(#mal_cs_links,#mal_cs_otherlinks) :is([href*="/mangalist/"],[href*="/animelist/"],[href^="/sharedanime"],[href^="/register.php"]) {
-	font-size: 0 !important;
+	font-size: 0;
 }
 :is(#mal_cs_links,#mal_cs_otherlinks) :is([href*="/mangalist/"],[href*="/animelist/"],[href^="/sharedanime"],[href^="/register.php"])::after {
 	content: var(--t,none);
@@ -446,34 +465,25 @@ td#mal_cs_powered {
 	position: static;
 }
 
-/* Sidebar Footer */
-
-#copyright {
-	position: fixed;
-	bottom: 0;
-	left: -100vw;
-	margin-left: 80px;
-	z-index: 99;
-	width: 560px;
-	text-align: left !important;
-	padding: 20px;
-	font-size: 10px;
-	transition: left var(--t-pause);
-	pointer-events: none;
-}
-#mal_control_strip:hover ~ #list_surround #copyright {
-	left: 0;
-}
-
-#copyright::after {
-	content: "\a List design by Valerio Lyndon.\a Paimon greenscreen by King of Games.\a Other assets by HoYoverse.";
-	white-space: pre-wrap;
-}
-
 /* Category Menu */
 
 div table:not([class]):first-of-type {
 	margin: 0 auto;
+	display: block;
+	animation: intro-fade 1.5s ease backwards 1.5s;
+}
+
+@keyframes intro-fade {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+div table:not([class]):first-of-type tbody {
+	display: block;
 }
 
 div table:not([class]):first-of-type tr {
@@ -540,18 +550,22 @@ div table:not([class]):first-of-type tr {
 	opacity: 0;
 	transform: translateX(-50%);
 	pointer-events: none;
-} [class^="status_"]:hover::after {
+}
+[class^="status_"]:hover::after {
 	left: 50%;
 	width: 100%;
 	opacity: 1;
-} [class^="status_"]:hover ~ [class^="status_"]::after {
+}
+table:not(:hover) [class^="status_"]:nth-of-type(n+4):not(:hover)::after,
+[class^="status_"]:last-of-type:not(:hover)::after,
+[class^="status_"]:hover ~ [class^="status_"]::after {
 	left: -50%;
 }
 
 /* Category Headers */
 
 table[class^="header_"],
-#recaptcha-terms {
+#copyright {
 	position: sticky;
 	top: calc(var(--s-fade-bg) * -1);
 	left: 0;
@@ -619,7 +633,7 @@ table[class^="header_"] span {
 }
 
 table[class^="header_"] + table,
-#recaptcha-terms {
+#copyright {
 	margin-top: calc(var(--s-fade-bg) * .5) !important;
 }
 
@@ -667,10 +681,40 @@ table[class^="header_"] ~ table[class^="header_"] {
 
 /* Footer */
 
-#recaptcha-terms {
+#copyright {
 	height: calc(100vh - var(--s-fade-bg));
 	font-size: 0;
 }
+
+#copyright::after {
+	content: "\a List design by Valerio Lyndon.\a Most assets by HoYoverse.\a Paimon greenscreen by King of Games on YouTube.\a Cursor by Maya on AminoApps.";
+	font-size: 10px;
+	white-space: pre-wrap;
+	pointer-events: none;
+}
+
+
+/* Intro brightness - uses backdrop-filter because filter on <body> tends to break other visuals don't ask me why */
+
+#recaptcha-terms {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	pointer-events: none;
+	font-size: 0;
+	animation: intro-flashbang 4.3s ease-in-out;
+}
+
+@keyframes intro-flashbang {
+	0% {
+		backdrop-filter: brightness(1.23);
+	}
+	100% {
+		backdrop-filter: brightness(1);
+	}
+}
+
+
 
 
 /* Characters */
