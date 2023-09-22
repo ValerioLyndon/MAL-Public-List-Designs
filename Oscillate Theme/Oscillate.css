@@ -1,5 +1,5 @@
 /*
-Oscillate v0.6.3
+Oscillate v0.6.4
 by Valerio Lyndon
 a Genshin Impact design
 */
@@ -482,7 +482,7 @@ div:not(.hide) > table:not([class]):first-of-type {
 	}
 }
 
-div:not(.hide) > > table:not([class]):first-of-type tbody {
+div:not(.hide) > table:not([class]):first-of-type tbody {
 	display: block;
 }
 
@@ -682,15 +682,19 @@ table[class^="header_"] ~ table[class^="header_"] {
 /* Footer */
 
 #copyright {
+	display: grid;
+	place-content: center;
 	height: calc(100vh - var(--s-fade-bg));
-	font-size: 0;
+	min-height: calc(200px + var(--s-fade-bg)*1.25);
+	padding: var(--s-fade-bg) 0 calc(var(--s-fade-bg)*.25);
+	font-size: 0px;
 }
 
 #copyright::after {
-	content: "\a List design by Valerio Lyndon.\a Most assets by HoYoverse.\a Paimon greenscreen by King of Games on YouTube.\a Cursor by Maya on AminoApps.";
-	font-size: 10px;
+	content: "List design by Valerio Lyndon.\a Most assets by HoYoverse.\a Paimon greenscreen by King of Games on YouTube.\a Cursor by Maya on AminoApps.";
+	font-size: 12px;
+	line-height: 1.6;
 	white-space: pre-wrap;
-	pointer-events: none;
 }
 
 
