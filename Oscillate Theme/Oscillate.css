@@ -1,5 +1,5 @@
 /*
-Oscillate v0.4.0
+Oscillate v0.4.1
 by Valerio Lyndon
 a Genshin Impact design
 */
@@ -529,6 +529,7 @@ table[class^="header_"],
 	height: calc(100vh + var(--s-fade-bg));
 	margin-bottom: -100vh;
 	overflow: hidden;
+	-webkit-mask: linear-gradient(to bottom, transparent 0, white 150px);
 	mask: linear-gradient(to bottom, transparent 0, white 150px);
 	background: var(--i-bg, var(--i-bg-generic)) center / cover no-repeat fixed #312127;
 }
@@ -651,6 +652,7 @@ table[class^="header_"]::before {
 	height: 600px;
 	background: var(--i-ch) center bottom / contain no-repeat transparent;
 	margin: var(--s-fade-bg) calc(-130px + var(--s-ch-diff, 0px)) 0 auto;
+	-webkit-mask: linear-gradient(to top, transparent, white 50px);
 	mask: linear-gradient(to top, transparent, white 50px);
 }
 table.header_completed::before,
