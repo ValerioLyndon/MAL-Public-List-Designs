@@ -1,5 +1,5 @@
 /*
-Oscillate v0.6.2
+Oscillate v0.6.3
 by Valerio Lyndon
 a Genshin Impact design
 */
@@ -467,7 +467,7 @@ td#mal_cs_powered {
 
 /* Category Menu */
 
-div table:not([class]):first-of-type {
+div:not(.hide) > table:not([class]):first-of-type {
 	margin: 0 auto;
 	display: block;
 	animation: intro-fade 1.5s ease backwards 1.5s;
@@ -482,11 +482,11 @@ div table:not([class]):first-of-type {
 	}
 }
 
-div table:not([class]):first-of-type tbody {
+div:not(.hide) > > table:not([class]):first-of-type tbody {
 	display: block;
 }
 
-div table:not([class]):first-of-type tr {
+div:not(.hide) > table:not([class]):first-of-type tr {
 	display: flex;
 	justify-content: center;
 }
@@ -770,16 +770,24 @@ div table:not([class]) {
 	font-size: 14px;
 	line-height: 1.4;
 }
+.hide {
+	margin-top: -8px;
+}
 
 table.header_completed ~ table:not([class]),
-div table.header_dropped ~ table:not([class]) {
+table.header_completed ~ .hide table,
+div table.header_dropped ~ table:not([class]),
+div table.header_dropped ~ .hide table {
 	--pos: -1;
 	margin-left: auto;
 	margin-right: max(10px, calc(50vw - 600px));
 }
 .header_cw ~ table:not([class]),
+.header_cw ~ .hide table,
 table.header_onhold ~ table:not([class]),
-div table.header_ptw ~ table:not([class]) {
+table.header_onhold ~ .hide table,
+div table.header_ptw ~ table:not([class]),
+div table.header_ptw ~ .hide table {
 	--pos: 1;
 	margin-left: max(10px, calc(50vw - 600px));
 	margin-right: auto;
@@ -789,7 +797,8 @@ table, table a {
 	color: white;
 }
 
-[class^="header_"] ~ table:not([class]) tr {
+[class^="header_"] ~ table:not([class]) tr,
+[class^="header_"] ~ .hide table tr {
 	display: grid;
 	grid-template-columns: minmax(45%, 1fr) repeat(auto-fit, 90px);
 	grid-template-rows: 1fr 18px;
@@ -800,7 +809,8 @@ table, table a {
 
 /* Lines */
 
-[class^="header_"] ~ table:not([class]) tbody::before {
+[class^="header_"] ~ table:not([class]) tbody::before,
+[class^="header_"] ~ .hide table tbody::before {
 	content: "";
 	position: absolute;
 	top: -10px;
@@ -811,7 +821,8 @@ table, table a {
 	transform: translateX(-50%);
 }
 
-[class^="header_"] ~ table:not([class]) tbody::after {
+[class^="header_"] ~ table:not([class]) tbody::after,
+[class^="header_"] ~ .hide table tbody::after {
 	content: url(https://b.l3n.co/i/9L48L9.png);
 	position: absolute;
 	left: calc(50% + (var(--s-row-w) * .5 + 20px) * var(--pos));
@@ -820,7 +831,8 @@ table, table a {
 	opacity: 0.3;
 	transition: opacity var(--t-row);
 }
-[class^="header_"] ~ table:not([class]):hover tbody::after {
+[class^="header_"] ~ table:not([class]):hover tbody::after,
+[class^="header_"] ~ .hide table:hover tbody::after {
 	opacity: 1;
 }
 
@@ -940,6 +952,12 @@ table:hover [class^="td"][width="125"] {
 	font-size: 12px;
 	line-height: 18px;
 	margin-bottom: -3px;
+}
+
+/* Overlays */
+
+#fancybox-wrap {
+	box-sizing: initial;
 }
 
 /* Misc */
