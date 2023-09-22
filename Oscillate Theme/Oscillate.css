@@ -1,5 +1,5 @@
 /*
-Oscillate v0.4.1
+Oscillate v0.5.0
 by Valerio Lyndon
 a Genshin Impact design
 */
@@ -165,6 +165,10 @@ body #mal_control_strip:not(:hover) {
 	display: block;
 }
 
+table#mal_control_strip td div {
+	margin: 0;
+}
+
 
 /* Namecard */
 
@@ -223,8 +227,23 @@ td#mal_cs_listinfo a {
 	background: linear-gradient(to right, transparent, #07101222 10px, transparent);
 }
 
-td#mal_cs_listinfo a strong {
+td#mal_cs_listinfo a strong,
+td#mal_cs_otherlinks a[href^="/profile/"] {
 	font: 24px/38px Genshin;
+}
+
+td#mal_cs_otherlinks strong {
+	display: contents;
+	font-size: 0;
+}
+td#mal_cs_otherlinks a[href^="/profile/"] {
+	position: absolute;
+	left: 275px;
+	top: 75px;
+}
+
+[data-owner=""] td#mal_cs_listinfo a strong {
+	display: none;
 }
 
 #mal_cs_listinfo div > strong {
@@ -245,6 +264,7 @@ td#mal_cs_listinfo a strong {
 	content: "Adventure Rank: 60";
 	display: block;
 	height: 30px;
+	margin-bottom: 5px;
 	text-indent: 10px;
 	font: 20px/30px Genshin;
 	background: linear-gradient(to right, transparent, #07101222 10px, transparent);
@@ -255,6 +275,7 @@ td#mal_cs_listinfo a strong {
 	display: block;
 	background: url(https://i.imgur.com/2Tcj77c.png) center / 325px auto no-repeat;
 	height: 36px;
+	margin-bottom: 5px;
 	text-indent: 10px;
 	font: 20px/30px Genshin;
 }
@@ -333,7 +354,7 @@ td#mal_cs_otherlinks,
 td#mal_cs_otherlinks td {
 	display: contents !important;
 }
-td:is(#mal_cs_links,#mal_cs_otherlinks) a {
+td:is(#mal_cs_links,#mal_cs_otherlinks) a:not([href^="/profile/"]) {
 	display: block;
 	width: 120px;
 	height: 120px;
@@ -351,7 +372,7 @@ td:is(#mal_cs_links,#mal_cs_otherlinks) a {
 	text-decoration: none;
 }
 
-td:is(#mal_cs_links,#mal_cs_otherlinks) a::before {
+td:is(#mal_cs_links,#mal_cs_otherlinks) a:not([href^="/profile/"])::before {
 	content: "";
 	display: block;
 	width: 100%;
@@ -371,6 +392,9 @@ td:is(#mal_cs_links,#mal_cs_otherlinks) a::before {
 [href*="addtolist.php"] {
 	--i: url(https://b.l3n.co/i/9cGvF1.webp);
 }
+[href$="/statistics"] {
+	--i: url(https://c.l3n.co/i/d6CO0q.webp);
+}
 [href="/forum/"] {
 	--i: url(https://b.l3n.co/i/9cGzxk.webp);
 }
@@ -384,15 +408,25 @@ td:is(#mal_cs_links,#mal_cs_otherlinks) a::before {
 	--i: url(https://c.l3n.co/i/dWrKzq.webp);
 	--t: "Shared";
 }
+[href^="/login.php"] {
+	--i: url(https://b.l3n.co/i/9cGHCa.webp);
+}
+[href^="/register.php"] {
+	--i: url(https://b.l3n.co/i/d6VBCP.webp);
+	--t: "Register";
+}
+[href="/forum/?board=515949"] {
+	--i: url(https://a.l3n.co/i/d6VmSm.webp);
+}
 /* MAL Tools */
 [href="javascript:void(0);"] {
 	--i: url(https://a.l3n.co/i/dWrSje.webp);
 }
 
-:is(#mal_cs_links,#mal_cs_otherlinks) :is([href*="/mangalist/"],[href*="/animelist/"],[href^="/sharedanime"]) {
-	font-size: 0;
+:is(#mal_cs_links,#mal_cs_otherlinks) :is([href*="/mangalist/"],[href*="/animelist/"],[href^="/sharedanime"],[href^="/register.php"]) {
+	font-size: 0 !important;
 }
-:is(#mal_cs_links,#mal_cs_otherlinks) :is([href*="/mangalist/"],[href*="/animelist/"],[href^="/sharedanime"])::after {
+:is(#mal_cs_links,#mal_cs_otherlinks) :is([href*="/mangalist/"],[href*="/animelist/"],[href^="/sharedanime"],[href^="/register.php"])::after {
 	content: var(--t,none);
 	font-size: 16px;
 }
@@ -404,10 +438,6 @@ td:is(#mal_cs_links,#mal_cs_otherlinks) a::before {
 }
 #mal_cs_otherlinks [href*="/mangalist/"] {
 	--t: "Their Manga";
-}
-
-td#mal_cs_otherlinks strong {
-	display: none;
 }
 
 /* Search */
@@ -870,6 +900,7 @@ table:hover [class^="td"][width="125"] {
 
 /* Misc */
 
+#mal_cs_pic,
 [title="Affinity"],
 #grand_totals,
 .grecaptcha-badge {
