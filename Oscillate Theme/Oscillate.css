@@ -1,5 +1,5 @@
 /*
-Oscillate v0.6.0
+Oscillate v0.6.1
 by Valerio Lyndon
 a Genshin Impact design
 */
@@ -702,7 +702,7 @@ table[class^="header_"] ~ table[class^="header_"] {
 	z-index: 100;
 	pointer-events: none;
 	font-size: 0;
-	animation: intro-flashbang 4.3s ease-in-out;
+	animation: intro-flashbang 5s ease-out;
 }
 
 @keyframes intro-flashbang {
