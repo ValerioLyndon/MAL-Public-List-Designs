@@ -1,5 +1,5 @@
 /*
-Oscillate v0.8.2
+Oscillate v0.8.3
 by Valerio Lyndon
 a Genshin Impact design
 */
@@ -450,7 +450,12 @@ td:is(#mal_cs_links,#mal_cs_otherlinks) a:not([href^="/profile/"])::before {
 }
 [href$="/statistics"] {
 	--i: url(https://c.l3n.co/i/d6CO0q.webp);
-	--t: "Statistics";
+}
+#mal_cs_links [href$="/statistics"] {
+	--t: "Your Stats";
+}
+#mal_cs_otherlinks [href$="/statistics"] {
+	--t: "Their Stats";
 }
 [href="/forum/"] {
 	--i: url(https://b.l3n.co/i/9cGzxk.webp);
