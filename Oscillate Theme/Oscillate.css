@@ -1,5 +1,5 @@
 /*
-Oscillate v0.6.4
+Oscillate v0.7.0
 by Valerio Lyndon
 a Genshin Impact design
 */
@@ -468,8 +468,17 @@ td#mal_cs_powered {
 /* Category Menu */
 
 div:not(.hide) > table:not([class]):first-of-type {
+	width: max-content;
+	padding: 10px 25px;
 	margin: 0 auto;
 	display: block;
+	--s: 15px;
+	clip-path: polygon(0% var(--s), var(--s) 0, calc(100% - var(--s)) 0px, 100% var(--s), 100% calc(100% - var(--s)), calc(100% - var(--s)) 100%, var(--s) 100%, 0% calc(100% - var(--s)));
+/* 	mask:
+		linear-gradient(45deg, transparent 10px, black 0px),
+		linear-gradient(135deg, transparent 10px, black 0px),
+		linear-gradient(225deg, transparent 10px, black 0px),
+		linear-gradient(315deg, transparent 10px, black 0px); */
 	animation: intro-fade 1.5s ease backwards 1.5s;
 }
 
@@ -483,6 +492,7 @@ div:not(.hide) > table:not([class]):first-of-type {
 }
 
 div:not(.hide) > table:not([class]):first-of-type tbody {
+	position: relative;
 	display: block;
 }
 
@@ -543,23 +553,60 @@ div:not(.hide) > table:not([class]):first-of-type tr {
 	bottom: -2px;
 	z-index: -1;
 	width: 50px;
-	padding: 0 6px;
 	height: 4px;
-	background: white content-box;
-	transition: all 0.2s ease-in-out;
+	background: white;
+	border-radius: 2px;
+	transition: all 0.16s ease-in-out;
 	opacity: 0;
 	transform: translateX(-50%);
 	pointer-events: none;
 }
 [class^="status_"]:hover::after {
 	left: 50%;
-	width: 100%;
+	width: calc(100% - 12px);
 	opacity: 1;
 }
 table:not(:hover) [class^="status_"]:nth-of-type(n+4):not(:hover)::after,
 [class^="status_"]:last-of-type:not(:hover)::after,
 [class^="status_"]:hover ~ [class^="status_"]::after {
 	left: -50%;
+}
+
+/* Scroll Indicator for visitors */
+
+[data-owner=""] div:not(.hide) > table:not([class]):first-of-type tbody::after {
+	content: "";
+	position: absolute;
+	left: calc(50% - 15px);
+	top: 200%;
+	width: 30px;
+	height: 30px;
+	border: 4px solid white;
+	border-left-color: transparent;
+	border-top-color: transparent;
+	rotate: 45deg;
+	animation:
+		bounce 1s ease infinite alternate both,
+		hide 5s ease reverse backwards 0s,
+		hide 3s ease forwards 18s;
+}
+
+@keyframes bounce {
+	0% {
+		transform: translate(0px,0px);
+	}
+	100% {
+		transform: translate(30px,30px);
+	}
+}
+
+@keyframes hide {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
 }
 
 /* Category Headers */
@@ -844,7 +891,6 @@ table, table a {
 
 table[class^="header_"] + table {
 	background: #cca574;
-	padding-bottom: 10px !important;
 }
 table[class^="header_"] + table :is(td,a) {
 	color: black;
@@ -860,10 +906,12 @@ table[class^="header_"] + table::after {
 	border-style: solid;
 }
 
-.table_headerLink {
+.table_headerLink,
+.table_header strong {
 	display: inline-block;
 	overflow: hidden;
 	height: 1.4em;
+	font-size: 14px;
 }
 
 /* Table Items */
