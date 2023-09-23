@@ -1,5 +1,5 @@
 /*
-Oscillate v0.8.1
+Oscillate v0.8.2
 by Valerio Lyndon
 a Genshin Impact design
 */
@@ -914,8 +914,7 @@ table, table a {
 	transform: translateX(-50%);
 }
 
-[class^="header_"] ~ table:not([class]) tbody::after,
-[class^="header_"] ~ .hide table tbody::after {
+[class^="header_"] ~ table:not([class]) tbody::after {
 	content: url(https://b.l3n.co/i/9L48L9.png);
 	position: absolute;
 	left: calc(50% + (var(--s-row-w) * .5 + 20px) * var(--pos));
@@ -924,8 +923,7 @@ table, table a {
 	opacity: 0.3;
 	transition: opacity var(--t-row);
 }
-[class^="header_"] ~ table:not([class]):hover tbody::after,
-[class^="header_"] ~ .hide table:hover tbody::after {
+[class^="header_"] ~ table:not([class]):hover tbody::after {
 	opacity: 1;
 }
 
