@@ -1,5 +1,5 @@
 /*
-Oscillate v0.7.0
+Oscillate v0.7.1
 by Valerio Lyndon
 a Genshin Impact design
 */
@@ -920,34 +920,11 @@ table[class^="header_"] + table::after {
 	width: auto;
 }
 
-/* Score */
-
-:is(.table_header,[class^="td"])[width="45"]:not([nowrap]) {
-/* 	width: auto; */
-}
-
-/* Progress */
-
-:is(.table_header,[class^="td"])[width="70"] {
-/* 	width: 90px; */
-}
-
 /* Type */
 
 :is(.table_header,[class^="td"])[width="50"] {
 	order: 5;
 }
-
-/* [class^="td"][width="45"]:not([nowrap]),
-[class^="td"][width="70"],
-[class^="td"][width="50"] {
-	padding: 3px 6px;
-	justify-self: center;
-	background: #48515c;
-	border-radius: 999px;
-	font-size: 12px;
-	white-space: nowrap;
-} */
 
 /* Dates */
 
@@ -957,9 +934,9 @@ table[class^="header_"] + table::after {
 }
 [class^="td"][width="90"] + [width="90"]::before {
 	content: "->";
-	display: inline-block;
-	width: 30px;
-	margin-left: -30px;
+	float: left;
+	width: 10px;
+	margin-left: -10px;
 	text-align: center;
 }
 [class^="td"][width="45"][nowrap]::before {
@@ -967,6 +944,10 @@ table[class^="header_"] + table::after {
 }
 [class^="td"][width="45"][nowrap]::after {
 	content: " day(s)";
+}
+
+.header_ptw ~ table :is(.table_header,[class^="td"]):is([width="90"],[width="45"][nowrap]) {
+	display: none;
 }
 
 /* Genres */
