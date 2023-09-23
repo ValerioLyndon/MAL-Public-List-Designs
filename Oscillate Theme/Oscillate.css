@@ -1,5 +1,5 @@
 /*
-Oscillate v0.7.1
+Oscillate v0.8.0
 by Valerio Lyndon
 a Genshin Impact design
 */
@@ -19,8 +19,13 @@ html {
 	
 	--i-bg-generic: url(https://i.imgur.com/2lJ1X6E.png);
 	
+	--f-sans-serif: Tahoma, Helvetica, Arial, FontAwesome, sans-serif;
+	--f-brand: Genshin, var(--f-sans-serif);
+	--f-title: Mermaid, var(--f-sans-serif);
+	
 	box-sizing: border-box;
 	height: 100%;
+	animation: intro-flashbang 5s ease-out backwards;
 } *, *::before, *::after {
 	box-sizing: inherit;
 }
@@ -35,9 +40,10 @@ html {
 body {
 	position: relative;
 	min-height: 100%;
+	padding-top: calc(100vh - 250px);
 	background: var(--i-bg-generic) center / cover no-repeat fixed #312127;
 	font-size: 11px;
-	font-family: Genshin, Tahoma, Helvetica, Arial, FontAwesome, sans-serif;
+	font-family: var(--f-brand);
 	transform-origin: center top;
 }
 
@@ -52,13 +58,6 @@ table#mal_control_strip a {
 	position: absolute; 
 }
 
-body::before {
-	content: "";
-	display: block;
-	width: 100%;
-	height: calc(100vh - 250px);
-	background: url(https://i.imgur.com/2lJ1X6E.png) center / cover no-repeat fixed#312127;
-}
 body::after {
 	content: "";
 	position: absolute;
@@ -79,6 +78,15 @@ body::after {
 	100% {
 		opacity: 1;
 		transform: translateY(0px);
+	}
+}
+
+@keyframes intro-flashbang {
+	0% {
+		filter: brightness(1.23);
+	}
+	100% {
+		filter: brightness(1);
 	}
 }
 
@@ -226,7 +234,7 @@ table#mal_control_strip td div {
 	border-radius: 12px;
 	margin: 20px 11px 0 -9px;
 	text-align: center;
-	font: 16px Genshin;
+	font: 16px var(--f-brand);
 }
 
 #mal_cs_listinfo div:first-of-type {
@@ -248,13 +256,18 @@ td#mal_cs_listinfo a {
 
 td#mal_cs_listinfo a strong,
 td#mal_cs_otherlinks a[href^="/profile/"] {
-	font: 24px/38px Genshin;
+	font: 24px/38px var(--f-brand);
 }
 
 td#mal_cs_otherlinks strong {
 	display: contents;
 	font-size: 0;
 }
+/* hide username if logged out */
+#mal_cs_pic ~ #mal_cs_otherlinks strong {
+	display: none;
+}
+
 td#mal_cs_otherlinks a[href^="/profile/"] {
 	position: absolute;
 	left: 275px;
@@ -275,7 +288,7 @@ td#mal_cs_otherlinks a[href^="/profile/"] {
 	content: "Professional Hirasawa Yui simp.";
 	height: 60px;
 	padding: 5px 10px;
-	font: 16px/30px Genshin;
+	font: 16px/30px var(--f-brand);
 }
 
 #mal_cs_listinfo div > strong::after {
@@ -285,7 +298,7 @@ td#mal_cs_otherlinks a[href^="/profile/"] {
 	height: 30px;
 	margin-bottom: 5px;
 	text-indent: 10px;
-	font: 20px/30px Genshin;
+	font: 20px/30px var(--f-brand);
 	background: linear-gradient(to right, transparent, #07101222 10px, transparent);
 }
 
@@ -296,7 +309,7 @@ td#mal_cs_otherlinks a[href^="/profile/"] {
 	height: 36px;
 	margin-bottom: 5px;
 	text-indent: 10px;
-	font: 20px/30px Genshin;
+	font: 20px/30px var(--f-brand);
 }
 
 #mal_cs_listinfo div:last-of-type::before {
@@ -305,7 +318,7 @@ td#mal_cs_otherlinks a[href^="/profile/"] {
 	display: block;
 	height: 30px;
 	text-indent: 10px;
-	font: 20px/30px Genshin;
+	font: 20px/30px var(--f-brand);
 	background: linear-gradient(to right, transparent, #07101222 10px, transparent);
 }
 
@@ -383,20 +396,39 @@ td:is(#mal_cs_links,#mal_cs_otherlinks) a:not([href^="/profile/"]) {
 		inset 0 0 0 2px #596066,
 		inset 0 0 0 5px #6f727f;
 	background: #50586d;
-	border-radius: 2px;
 	float: left;
 	color: #ece5d8;
-	font: 16px/40px Genshin;
+	font-size: 0;
 	text-align: center;
 	text-decoration: none;
+	transition: all .2s ease;
+	--opacity: 0;
+}
+
+td:is(#mal_cs_links,#mal_cs_otherlinks) a:not([href^="/profile/"]):hover {
+	outline: 3px solid #f4ecd6;
+	transform: scale(1.15);
+	animation: pulse .5s ease infinite alternate both;
+	--opacity: 1;
+}
+
+@keyframes pulse {
+	0% {
+		outline-color: #f4ecd6;
+	}
+	100% {
+		outline-color: #f4ecd6aa;
+	}
 }
 
 td:is(#mal_cs_links,#mal_cs_otherlinks) a:not([href^="/profile/"])::before {
-	content: "";
+	content: var(--t,none);
 	display: block;
 	width: 100%;
 	height: 80px;
+	padding-top: 80px;
 	background: var(--i, none) center bottom / auto no-repeat;
+	font: 16px/40px var(--f-brand);
 }
 
 #mal_cs_links [href="/"] {
@@ -410,18 +442,23 @@ td:is(#mal_cs_links,#mal_cs_otherlinks) a:not([href^="/profile/"])::before {
 }
 [href*="addtolist.php"] {
 	--i: url(https://b.l3n.co/i/9cGvF1.webp);
+	--t: "Add to List";
 }
 [href$="/statistics"] {
 	--i: url(https://c.l3n.co/i/d6CO0q.webp);
+	--t: "Statistics";
 }
 [href="/forum/"] {
 	--i: url(https://b.l3n.co/i/9cGzxk.webp);
+	--t: "Forum";
 }
 [href^="/history"] {
 	--i: url(https://c.l3n.co/i/9cGnpH.webp);
+	--t: "History";
 }
 [href$="export"] {
 	--i: url(https://b.l3n.co/i/9cGHCa.webp);
+	--t: "Export";
 }
 [href^="/sharedanime"] {
 	--i: url(https://c.l3n.co/i/dWrKzq.webp);
@@ -429,6 +466,7 @@ td:is(#mal_cs_links,#mal_cs_otherlinks) a:not([href^="/profile/"])::before {
 }
 [href^="/login.php"] {
 	--i: url(https://b.l3n.co/i/9cGHCa.webp);
+	--t: "Login";
 }
 [href^="/register.php"] {
 	--i: url(https://b.l3n.co/i/d6VBCP.webp);
@@ -436,27 +474,51 @@ td:is(#mal_cs_links,#mal_cs_otherlinks) a:not([href^="/profile/"])::before {
 }
 [href="/forum/?board=515949"] {
 	--i: url(https://a.l3n.co/i/d6VmSm.webp);
+	--t: "Learn More";
 }
 /* MAL Tools */
 [href="javascript:void(0);"] {
 	--i: url(https://a.l3n.co/i/dWrSje.webp);
+	--t: "Tools";
 }
 
-:is(#mal_cs_links,#mal_cs_otherlinks) :is([href*="/mangalist/"],[href*="/animelist/"],[href^="/sharedanime"],[href^="/register.php"]) {
-	font-size: 0;
-}
-:is(#mal_cs_links,#mal_cs_otherlinks) :is([href*="/mangalist/"],[href*="/animelist/"],[href^="/sharedanime"],[href^="/register.php"])::after {
-	content: var(--t,none);
-	font-size: 16px;
-}
 #mal_cs_links [href*="/animelist/"] {
 	--t: "Your Anime";
 }
 #mal_cs_links [href*="/mangalist/"] {
 	--t: "Your Manga";
 }
+#mal_cs_otherlinks [href*="/animelist/"] {
+	--t: "Their Anime";
+}
 #mal_cs_otherlinks [href*="/mangalist/"] {
 	--t: "Their Manga";
+}
+
+/* Arrow */
+
+td:is(#mal_cs_links,#mal_cs_otherlinks) a:not([href^="/profile/"])::after {
+	content: "";
+	position: absolute;
+	left: calc(50% - 5px);
+	top: -5px;
+	border: 5px solid white;
+	filter: drop-shadow(0 0 2px #fff8);
+	border-left-color: transparent;
+	border-top-color: transparent;
+	rotate: 45deg;
+	animation: arrow 1.2s ease-in-out infinite both;
+	transition: opacity .2s ease;
+	opacity: var(--opacity);
+}
+
+@keyframes arrow {
+	0%, 100% {
+		transform: translate(0px,0px);
+	}
+	50% {
+		transform: translate(6px,6px);
+	}
 }
 
 /* Search */
@@ -474,11 +536,6 @@ div:not(.hide) > table:not([class]):first-of-type {
 	display: block;
 	--s: 15px;
 	clip-path: polygon(0% var(--s), var(--s) 0, calc(100% - var(--s)) 0px, 100% var(--s), 100% calc(100% - var(--s)), calc(100% - var(--s)) 100%, var(--s) 100%, 0% calc(100% - var(--s)));
-/* 	mask:
-		linear-gradient(45deg, transparent 10px, black 0px),
-		linear-gradient(135deg, transparent 10px, black 0px),
-		linear-gradient(225deg, transparent 10px, black 0px),
-		linear-gradient(315deg, transparent 10px, black 0px); */
 	animation: intro-fade 1.5s ease backwards 1.5s;
 }
 
@@ -687,7 +744,7 @@ table[class^="header_"] + table,
 table[class^="header_"] + table::before {
 	position: absolute;
 	top: 0;
-	font: 48px/50px "Mermaid";
+	font: 48px/50px var(--f-title);
 	margin-top: -200px !important;
 	text-transform: uppercase;
 	width: 100%;
@@ -742,27 +799,6 @@ table[class^="header_"] ~ table[class^="header_"] {
 	font-size: 12px;
 	line-height: 1.6;
 	white-space: pre-wrap;
-}
-
-
-/* Intro brightness - uses backdrop-filter because filter on <body> tends to break other visuals don't ask me why */
-
-#recaptcha-terms {
-	position: fixed;
-	inset: 0;
-	z-index: 100;
-	pointer-events: none;
-	font-size: 0;
-	animation: intro-flashbang 5s ease-out;
-}
-
-@keyframes intro-flashbang {
-	0% {
-		backdrop-filter: brightness(1.23);
-	}
-	100% {
-		backdrop-filter: brightness(1);
-	}
 }
 
 
@@ -823,6 +859,7 @@ div table:not([class]) {
 }
 .hide {
 	margin-top: -8px;
+	font-family: var(--f-sans-serif);
 }
 
 table.header_completed ~ table:not([class]),
@@ -920,6 +957,16 @@ table[class^="header_"] + table::after {
 	width: auto;
 }
 
+/* Edit/More */
+
+[style="float: right;"] {
+	opacity: 0;
+	transition: opacity var(--t-row);
+}
+table:hover [style="float: right;"] {
+	opacity: 1;
+}
+
 /* Type */
 
 :is(.table_header,[class^="td"])[width="50"] {
@@ -997,7 +1044,7 @@ table:hover [class^="td"][width="125"] {
 
 #mal_cs_pic,
 [title="Affinity"],
-#grand_totals,
+#recaptcha-terms,
 .grecaptcha-badge {
 	display: none !important;
 }
