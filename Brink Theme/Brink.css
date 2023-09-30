@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 2.0.4
+ * Version 2.1.0
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -38,6 +38,8 @@
  @ Number
  @ Type
  @ Rated
+ @ MAL Scores
+ @ Popularity
  @ Season
  @ Genre/Demographic/Studio/Licensor/Magazine
  @ Dates
@@ -1279,22 +1281,18 @@ tbody:first-of-type {
 
 /* Dynamic Columns */
 
-.data.type,
-.data.rated,
-.data.season,
-.data.started,
-.data.finished,
-.data.days,
-.data.airing-started,
-.data.airing-finished,
-.data.genre,
-.data.demographic,
-.data.studio,
-.data.licensor,
-.data.magazine,
-.data.priority,
-.data.storage,
-.data.retail {
+.data:not(
+	.status,
+	.image,
+	.type,
+	.number,
+	.title,
+	.score,
+	.tags,
+	.progress,
+	.chapter,
+	.volume
+) {
 	position: relative;
 	
 	max-width: 100%;
@@ -1308,20 +1306,20 @@ tbody:first-of-type {
 
 /* Icons */
 
-.data.type::after,
-.data.rated::after,
-.data.season::after,
-.data.started::after,
-.data.days::before,
-.data.airing-started::after,
-.data.genre::after,
-.data.demographic::after,
-.data.studio::after,
-.data.licensor::after,
-.data.magazine::after,
-.data.priority::after,
-.data.storage::after,
-.data.retail::after {
+.data:not(
+	.status,
+	.image,
+	.type,
+	.number,
+	.title,
+	.score,
+	.tags,
+	.progress,
+	.chapter,
+	.volume,
+	.days
+)::after,
+.data.days::before {
 	position: absolute;
 	top: 0;
 	left: -3px;
@@ -2003,6 +2001,43 @@ span:nth-of-type(2)::after {
 
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+  @MAL Scores
+\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.data:is(.mal_score,.score_diff)::after {
+	content: "\f005 ";
+}
+.data.mal_score ~ .score_diff::after {
+	content: none;
+}
+
+.data.mal_score,
+.data.score_diff {
+	order: 20;
+}
+
+.data.mal_score::before {
+	content: "MAL: ";
+}
+.data.score_diff::before {
+	content: "Diff:";
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
+  @Popularity
+\*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.data.popularity::after {
+	content: "\f0c0 ";
+}
+
+.data.popularity {
+	order: 20;
+}
+
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
   @Rated
 \*~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
 
@@ -2677,6 +2712,10 @@ div[style^="width: 300px;"] input {
 	
 	/*Toggle*/
 	visibility: var(--toggleStats);
+}
+
+.list-unit .list-stats a.floatRightHeader {
+	display: none;
 }
 
 
