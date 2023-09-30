@@ -1,7 +1,7 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*\
 | Kure                           |
 | by Valerio Lyndon              |
-| Version 1.0.3                  |
+| Version 1.1.0                  |
 \*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /* IMPORTS */
@@ -500,6 +500,12 @@ body::before {
 	width: 18px;
 }
 
+.list-menu-float .icon-menu.statistics svg.icon-statistics {
+	top: 10px;
+	left: 12px;
+	width: 16px;
+}
+
 .list-menu-float .icon-menu .text {
 	left: 40px;
 	top: 0;
@@ -828,9 +834,11 @@ body::before {
 }
 
 tbody:nth-of-type(2) .data:not(.status)::before {
+	content: var(--column, none);
 	position: absolute;
 	top: var(--header-offset);
 	display: block;
+	width: inherit;
 	font: 1.2rem/30px var(--fontset-heading);
 	pointer-events: none;
 }
@@ -844,87 +852,6 @@ tbody:nth-of-type(2) .data.number ~ .title::after {
 	font: 1.2em/30px var(--fontset-heading);
 	text-shadow: 1px 1px 2px hsl(var(--content));
 	pointer-events: none;
-}
-tbody:nth-of-type(2) .data.progress::before {
-	content: "Episodes";
-	width: 80px;
-}
-tbody:nth-of-type(2) .data.chapter::before {
-	content: "Chapters";
-	width: 80px;
-}
-tbody:nth-of-type(2) .data.volume::before {
-	content: "Volumes";
-	width: 80px;
-}
-tbody:nth-of-type(2) .data.image::before {
-	content: "Image";
-	width: 40px;
-}
-tbody:nth-of-type(2) .data.title::before {
-	content: "Title";
-}
-tbody:nth-of-type(2) .data.score::before {
-	content: "Scr.";
-	width: 2ch;
-}
-tbody:nth-of-type(2) .data.type::before {
-	content: "Type";
-	width: 60px;
-}
-tbody:nth-of-type(2) .data.started::before {
-	content: "Dates";
-	width: 50px;
-}
-tbody:nth-of-type(2) .data.airing-started::before {
-	content: "Aired";
-	width: 50px;
-}
-tbody:nth-of-type(2) .data.days::before {
-	content: "Days";
-	width: 30px;
-}
-tbody:nth-of-type(2) .data.season::before {
-	content: "Season";
-	width: 90px;
-}
-tbody:nth-of-type(2) .data.studio::before {
-	content: "Studios";
-	width: 100px;
-}
-tbody:nth-of-type(2) .data.licensor::before {
-	content: "Licensors";
-	width: 100px;
-}
-tbody:nth-of-type(2) .data.magazine::before {
-	content: "Magazines";
-	width: 100px;
-}
-tbody:nth-of-type(2) .data.genre::before {
-	content: "Genres";
-	width: 100px;
-}
-tbody:nth-of-type(2) .data.demographic::before,
-tbody:nth-of-type(2) .data.genre ~ .genre::before {
-	content: "Demographic";
-	width: 100px;
-}
-tbody:nth-of-type(2) .data.storage::before,
-tbody:nth-of-type(2) .data.retail::before {
-	content: "Storage";
-	width: 70px;
-}
-tbody:nth-of-type(2) .data.rated::before {
-	content: "Rated";
-	width: 70px;
-}
-tbody:nth-of-type(2) .data.priority::before {
-	content: "Priority";
-	width: 70px;
-}
-tbody:nth-of-type(2) .data.tags::before {
-	content: "Tags";
-	width: 100px;
 }
 
 /* Stats */
@@ -965,6 +892,12 @@ tbody:nth-of-type(2) .data.tags::before {
 	font-size: 11px;
 	transition: background-color var(--transition-button);
 	cursor: default;
+}
+
+.list-unit .list-stats a {
+	transition: color var(--transition-text) !important;
+} .list-unit .list-stats a:hover {
+	color: hsl(var(--link-h));
 }
 
 /* LIST */
@@ -1074,6 +1007,7 @@ body:not([data-query*='"status":7']) .list-table .list-table-data .data.status {
 /* Image */
 
 .list-table .list-table-data .data.image {
+	--column: "Image";
 	width: 40px;
 	height: 40px;
 	margin: 0 0 0 10px;
@@ -1093,6 +1027,7 @@ body:not([data-query*='"status":7']) .list-table .list-table-data .data.status {
 /* Title */
 
 .list-table .list-table-data .data.title {
+	--column: "Title";
 	width: 100%;
 	min-width: 100px;
 	padding: 0;
@@ -1179,6 +1114,7 @@ body:not([data-query*='"status":7']) .list-table .list-table-data .data.status {
 /* Tags */
 
 .list-table .list-table-data .data.tags {
+	--column: "Tags";
 	width: 100px;
 	order: 90;
 	font-size: 11px;
@@ -1209,6 +1145,7 @@ tbody:nth-of-type(n+101) .data.number::first-letter {
 /* Score */
 
 .list-table .list-table-data .data.score {
+	--column: "Scr.";
 	width: 2ch;
 	/* Using a fixed height prevents jitter when bringing up selection box */
 	height: 3ch;
@@ -1230,7 +1167,44 @@ tbody:nth-of-type(n+101) .data.number::first-letter {
 	display: none;
 }
 
+/* MAL Score */
+
+.list-table .list-table-data .data.mal_score {
+	--column: "Pub.";
+	width: 4ch;
+	order: 3;
+}
+
+/* Score Diff */
+
+.list-table .list-table-data .data.score_diff {
+	--column: "Diff.";
+	width: 4ch;
+	order: 5;
+}
+
+/* Popularity */
+
+.list-table .list-table-data .data.popularity {
+	--column: "Popularity";
+	width: 8ch;
+	order: 80;
+}
+
 /* Progress */
+
+tbody:nth-of-type(2) .data.progress::before {
+	--column: "Episodes";
+	width: 80px;
+}
+tbody:nth-of-type(2) .data.chapter::before {
+	--column: "Chapters";
+	width: 80px;
+}
+tbody:nth-of-type(2) .data.volume::before {
+	--column: "Volumes";
+	width: 80px;
+}
 
 .list-table .list-table-data .data.progress,
 .list-table .list-table-data .data.chapter,
@@ -1261,6 +1235,7 @@ tbody:nth-of-type(n+101) .data.number::first-letter {
 }
 
 .list-table .list-table-data .data.type {
+	--column: "Type";
 	width: 60px;
 	order: 20;
 }
@@ -1272,8 +1247,10 @@ tbody:nth-of-type(n+101) .data.number::first-letter {
 .list-table .list-table-data .data.airing-started,
 .list-table .list-table-data .data.airing-finished {
 	width: 50px;
+	height: 1.5em;
 	order: 45;
 	font-size: .8em;
+	overflow: hidden;
 } .list-table .list-table-data .data.started,
 .list-table .list-table-data .data.airing-started {
 	margin-bottom: 20px;
@@ -1282,9 +1259,23 @@ tbody:nth-of-type(n+101) .data.number::first-letter {
 	margin: 20px 0 0 -50px;
 }
 
+.data:is([class*="started"],[class*="finished"])::after {
+	content: "##-##-##";
+	display: block;
+	opacity: .5;
+}
+
+.data.started {
+	--column: "Dates";
+}
+.data.airing-started {
+	--column: "Aired";
+}
+
 /* Days */
 
 .list-table .list-table-data .data.days {
+	--column: "Days";
 	width: 30px;
 	order: 47;
 }
@@ -1292,8 +1283,28 @@ tbody:nth-of-type(n+101) .data.number::first-letter {
 /* Season */
 
 .list-table .list-table-data .data.season {
+	--column: "Season";
 	width: 90px;
 	order: 50;
+}
+
+/* Others */
+
+.data.studio {
+	--column: "Studios";
+}
+.data.licensor {
+	--column: "Licensors";
+}
+.data.magazine{
+	--column: "Magazines";
+}
+.data.genre {
+	--column: "Genres";
+}
+.data.demographic,
+.data.genre ~ .genre {
+	--column: "Demographic";
 }
 
 .list-table .list-table-data .data.studio,
@@ -1307,14 +1318,20 @@ tbody:nth-of-type(n+101) .data.number::first-letter {
 
 .list-table .list-table-data .data.storage,
 .list-table .list-table-data .data.retail {
+	--column: "Storage";
 	width: 70px;
 	order: 70;
 }
 
 .list-table .list-table-data .data.priority,
 .list-table .list-table-data .data.rated {
+	--column: "Priority";
 	width: 70px;
 	order: 70;
+}
+
+.data.rated {
+	--column: "Rated";
 }
 
 /* More Content */
