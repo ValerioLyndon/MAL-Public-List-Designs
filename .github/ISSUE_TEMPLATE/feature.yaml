@@ -22,7 +22,6 @@ body:
         - Puni
         - Tilt
         - Other
-        - null
     validations:
       required: true
   - type: textarea
@@ -43,8 +42,3 @@ body:
       description: >-
         Add any other context or screenshots about the feature request here. If
         you have suggestions on implementation, please place them here.
-  - type: markdown
-    attributes:
-      value: >-
-        This template was generated with [Issue Forms
-        Creator](https://issue-forms-creator.netlify.app)
