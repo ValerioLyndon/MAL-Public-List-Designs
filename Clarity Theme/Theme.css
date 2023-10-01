@@ -1,6 +1,6 @@
 /*==============================*\
   "Clarity" by Valerio Lyndon
-  R27.5
+  R28.0
 
 | == = == THEME CONTENTS == = == |
 
@@ -38,6 +38,7 @@
 @ Title
 ? title/type
 @ Score
+@ MAL
 @ Progress
 @ Priority
 @ Generic-Columns
@@ -1456,6 +1457,52 @@ i.fa-chart-column::before {
 .data.number + td:not(.image) ~ .type {
 	margin-left: 28px;
 	margin-right: -128px;
+}
+
+
+/*------------------------------*\
+  LIST @MAL
+\*------------------------------*/
+
+.data.mal_score,
+.data.score_diff,
+.data.popularity {
+	width: 65px;
+	order: 12;
+}
+.data.score_diff {
+	width: 40px;
+}
+.data.popularity {
+	width: 80px;
+}
+
+.data.mal_score::before {
+	content: "MAL Score:";
+	display: block;
+	color: var(--text-dim);
+	white-space: nowrap;
+}
+.data.score_diff::before {
+	content: "Diff:";
+	display: block;
+	color: var(--text-dim);
+}
+.data.popularity::before {
+	content: "Popularity:";
+	display: block;
+	color: var(--text-dim);
+}
+
+.score ~ .data.score_diff {
+	order: 13;
+	padding-top: 3em !important;
+	margin-left: -34px;
+	margin-right: -6px;
+	font-style: italic;
+}
+.score ~ .data.score_diff::before {
+	color: transparent;
 }
 
 
