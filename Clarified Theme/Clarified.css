@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.2.0
+ * v2.3.0
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -133,6 +133,7 @@ select {
 	border: 1px solid var(--border);
 	border-radius: 4px;
 	color: var(--content-text);
+	outline: 0;
 }
 
 select,
@@ -944,8 +945,7 @@ tr.list-table-data {
 	line-height: 50px;
 	letter-spacing: 0.5px;
 	text-transform: uppercase;
-	transform: translateX(-13px);
-	pointer-events: none;
+	transform: translateX(13px);
 }
 /* Hides the text on the column headers. I could instead simply add a background to .list-stats, but that causes the Stats button to layer incorrectly and is more likely to cause glitchy visuals */
 .list-unit .list-stats[style*="block;"] + .list-table > tbody:first-of-type .header-title {
@@ -1172,6 +1172,20 @@ tr.list-table-data {
 
 
 /*---------
+  @Popularity
+  ---------*/
+
+:is(.header-title,.data).popularity {
+	width: 60px;
+	order: 43;
+}
+.data.popularity {
+	font-weight: bold;
+	letter-spacing: 0.05em;
+}
+
+
+/*---------
   @Title
   ---------*/
 
@@ -1279,36 +1293,129 @@ tr.list-table-data {
   @Score
   ---------*/
 
-.header-title.score,
-.data.score {
+:is(.header-title,.data)[class*="score"] {
 	width: 23px !important;
 	order: 7;
 }
+:is(.header-title,.data).mal_score {
+	order: 6;
+}
+.header-title.score_diff {
+	width: 40px !important;
+}
+.header-title.score ~ .score_diff {
+	width: 23px !important;
+}
 
-.header-title.score a {
+.header-title:is(.score,.mal_score,.score_diff) a {
 	font-size: 0 !important;
 }
 .header-title.score a::before {
 	content: "Scr.";
 }
+.header-title.mal_score a::before {
+	content: "\f500 ";
+}
+.header-title.mal_score {
+	--label: "MAL User Score";
+}
+.header-title.score_diff a::before {
+	content: "Diff.";
+}
 
-.data.score a {
+.data.score {
+	position: relative;
+}
+
+.data.score a, .data.mal_score, .data.score_diff {
 	display: block;
 	width: 23px;
 	height: 23px;
 	background: var(--button);
-	border-radius: 50%;
+	border-radius: 11.5px;
 	line-height: 23px;
 }
+.data.score a {
+	font-size: 12px;
+}
+.data.mal_score {
+	width: 50px !important;
+	text-align: left !important;
+}
+.data.score_diff {
+	width: 40px !important;
+}
+
+.data.mal_score::before {
+	content: "\f500 ";
+	color: #2e51a2; /* mal blue */
+	font-size: .9em;
+	font-weight: bold;
+	float: left;
+	margin: 0 3px 0 6px;
+}
+
+/* Hide diff until score hovered */
+
+.data.score ~ .score_diff {
+	position: relative;
+	top: -26px;
+	left: calc(65px - 13px);
+	width: 130px !important;
+	height: auto;
+	margin-left: -133px;
+	background: var(--inverse-background);
+	color: var(--inverse-text);
+	box-shadow: var(--mild-shadow);
+	border-radius: 3px;
+	line-height: 20px;
+	font-weight: bold;
+	opacity: 0;
+	pointer-events: none;
+}
+.data.score:hover ~ .score_diff {
+	opacity: 1;
+}
+
+.data.score ~ .score_diff::after {
+	content: "compared to avg.";
+	font-weight: normal;
+}
+
+/* Change style of MAL score if score enabled */
+
+.status:not([class*="planto"]) ~ .data.score ~ .mal_score {
+	position: static;
+	width: 61.5px !important;
+	margin-right: -11.5px;
+	-webkit-mask: radial-gradient(circle at 100% 50%, transparent 14px, black 14.5px);
+	mask: radial-gradient(circle at 100% 50%, transparent 14px, black 14.5px);
+	border-radius: 11.5px 0 0 11.5px;
+}
+.status[class*="planto"] ~ .data.score ~ .mal_score {
+	position: relative;
+	z-index: 1;
+}
+
+/* Hide regular score on PTW items */
+
+.data[class*="planto"] ~ .score ~ .mal_score {
+	margin-right: -26px;
+}
+
+.data[class*="planto"] ~ .score_diff {
+	display: none;
+}
+
+/* Select Dropdown */
 
 .data.score select {
 	position: relative;
 	background: var(--button);
 	height: 23px;
 	width: 43px;
-	border: 1px solid var(--border);
-	border-radius: 4px;
-	margin-left: -10px;
+	border-radius: 11.5px;
+	text-indent: 3px;
 	color: var(--content-text);
 }
 
