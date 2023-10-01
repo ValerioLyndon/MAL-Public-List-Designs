@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.3.0
+ * v2.3.1
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -1300,10 +1300,13 @@ tr.list-table-data {
 :is(.header-title,.data).mal_score {
 	order: 6;
 }
+.header-title.mal_score {
+	width: 50px !important;
+}
 .header-title.score_diff {
 	width: 40px !important;
 }
-.header-title.score ~ .score_diff {
+.header-title.score ~ :is(.mal_score,.score_diff) {
 	width: 23px !important;
 }
 
@@ -1314,9 +1317,12 @@ tr.list-table-data {
 	content: "Scr.";
 }
 .header-title.mal_score a::before {
+	content: "MAL Scr.";
+}
+.header-title.score ~ .mal_score a::before {
 	content: "\f500 ";
 }
-.header-title.mal_score {
+.header-title.score ~ .mal_score {
 	--label: "MAL User Score";
 }
 .header-title.score_diff a::before {
