@@ -15,15 +15,13 @@ html{scrollbar-color:var(--scroll-thumb) var(--content-background);}*,*:before,*
 	--myanimelist-blue: #2e51a2;
 	--neutral: #161516;
 	
-	/* status colours */
+	/* variables that are the same across themes */
 	--all-items: hsl(311, 40%, 51%);
 	--current: hsl(125, 70%, 29.7%);
 	--completed: hsl(223, 40%, 51.2%);
 	--onhold: hsl(46, 60%, 32.45%);
 	--dropped: hsl(359, 55%, 51.25%);
 	--planned: hsl(0, 0%, 43.72%);
-	
-	/* variables that are the same across themes */
 	--background: none;
 	--background-image-opacity: 1;
 	--auxiliary-background: url(https://files.catbox.moe/m0v1f6.webp);
@@ -94,7 +92,7 @@ html{scrollbar-color:var(--scroll-thumb) var(--content-background);}*,*:before,*
 		filter: brightness(100) invert(1);
 	}
 	
-	#gdpr-modal-bottom {
+	html:not(.dark-mode) #gdpr-modal-bottom {
 		filter: invert(0.9) hue-rotate(180deg);
 	}
 }
