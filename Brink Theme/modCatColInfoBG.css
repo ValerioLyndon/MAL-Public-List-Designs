@@ -1,10 +1,22 @@
 /*------------------------------*\
 |*  Category-Coloured  Info BG  *|
-|* - - - - -  V1.2.0  - - - - - *|
+|* - - - - -  V2.0.0  - - - - - *|
 \* - - - - - - - - - - - - - - -*/
 
-.data.status {
-	display: none !important;
+.data.image .link::before {
+	background: linear-gradient(to top, hsl(var(--fade, var(--bg)), var(--imageFade)) 5px, transparent calc(55% * var(--imageFade)));
+}
+
+.data:is(.watching,.reading) ~ .image .link::before {
+    --fade: var(--current);
+} .data.completed ~ .image .link::before {
+    --fade: var(--completed);
+} .data.onhold ~ .image .link::before {
+    --fade: var(--paused);
+} .data.dropped ~ .image .link::before {
+    --fade: var(--dropped);
+} .data:is(.plantowatch,.plantoread) ~ .image .link::before {
+    --fade: var(--planned);
 }
 
 .data.watching ~ .title,
