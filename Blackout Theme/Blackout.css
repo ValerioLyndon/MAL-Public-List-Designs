@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v1.1.2             *|
+ v1.2.0             *|
  a list design      *|
  by Valerio Lyndon  */
 /*
@@ -1070,7 +1070,7 @@ tbody:hover .list-table-header {
 
 /* label template */
 
-.data::before {
+.data:not([class*="score"],.progress)::before {
 	content: var(--label);
 	display: block;
 	line-height: 1;
@@ -1330,17 +1330,20 @@ tbody:hover .list-table-header {
 
 /*/Blackout/Items/Score$: /*/
 
+.data.score {
+	order: 3;
+}
+
 .data .score-label {
 	position: relative;
 	display: block;
 	width: 7rem;
 	height: 7rem;
 	background: var(--c-foreground-secondary);
-	border: .5rem solid var(--score-colour);
+	border: .5rem solid var(--score-colour, var(--c-border-light));
 	line-height: 6rem;
 	text-align: center;
 	border-radius: 50%;
-	--score-colour: var(--c-border-light);
 }
 .data .score-na {
 	border-width: .25rem;
@@ -1367,11 +1370,42 @@ tbody:hover .list-table-header {
 	line-height: 5.5rem;
 }
 
+.data.mal_score,
+.data.score_diff {
+	order: 3;
+	height: 7rem;
+	padding: 0 2rem !important;
+	background: var(--c-foreground-secondary);
+	border: .25rem solid #2e51a2aa !important;
+	line-height: 6rem;
+	text-align: center !important;
+	border-radius: 7rem;
+}
+.data.score_diff {
+	border-color: var(--c-border-light) !important;
+}
+.data.score ~ .mal_score,
+.data[class*="score"] ~ .score_diff {
+	padding-left: 8rem !important;
+	margin-left: -9rem;
+	border-color: var(--c-border-light) !important;
+	-webkit-mask-image: radial-gradient(circle at 3.5rem 50%, transparent 3.5rem, black 0rem);
+	mask-image: radial-gradient(circle at 3.5rem 50%, transparent 3.5rem, black 0rem);
+	
+}
+.data[class*="score"] ~ .mal_score::before {
+	content: "vs";
+}
+.data[class*="score"] ~ .score_diff::before {
+	content: "==";
+}
+
 /*/Blackout/Items/Progress$: /*/
 
 .data.progress,
 .data.chapter,
 .data.volume {
+	order: 5;
 	padding: 0 3rem !important;
 	background: var(--c-foreground-secondary);
 	border: .25rem solid var(--c-border-light) !important;
@@ -1391,13 +1425,14 @@ tbody:hover .list-table-header {
 
 /*/Blackout/Items/Common$: /*/
 
-.data:not(.score):not(.progress):not(.rated):not(.tags):not(.title):not(.type):not(.image):not(.started):not(.airing-started):not(.number) {
+.list-table .list-table-data .data:not([class*="score"],.progress,.rated,.tags,.title,.type,.image,.started,.airing-started,.number) {
 	padding-right: 1.75rem;
 	border-right: .25rem solid var(--c-border-dark);
 }
 
 .data.started,
 .data.airing-started {
+	order: 20;
 	margin-right: 0;
 } .data.started {
 	--label: "User Dates";
@@ -1412,13 +1447,16 @@ tbody:hover .list-table-header {
 
 .data.finished,
 .data.airing-finished {
+	order: 20;
 	padding-top: 1em !important;;
 }
 
 .data.days {
+	order: 20;
 	--label: "Days";
 }
 .data.season {
+	order: 25;
 	--label: "Premiered";
 }
 .data.studio {
@@ -1435,9 +1473,11 @@ tbody:hover .list-table-header {
 }
 .data.storage,
 .data.retail {
+	order: 24;
 	--label: "Storage";
 }
 .data.priority {
+	order: 24;
 	--label: "Priority";
 }
 .data.genre {
@@ -1448,6 +1488,10 @@ tbody:hover .list-table-header {
 .data.genre ~ .genre {
 	order: 25;
 	--label: "Demographic";
+}
+.data.popularity {
+	order: 25;
+	--label: "Popularity";
 }
 
 /* empty columns */
