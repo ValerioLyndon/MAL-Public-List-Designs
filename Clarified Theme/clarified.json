@@ -10,7 +10,7 @@
 		"preview": {
 			"cover": false,
 			"columns": {
-				"mode": "blacklist",
+				"mode": "greylist",
 				"animelist": {
 					"Image": true,
 					"Notes": true,
@@ -20,7 +20,8 @@
 					"Episodes": true,
 					"Start/End Dates": true,
 					"Total Days Watched": true,
-					"Rated": null,
+					"Rated": true,
+					"Storage": false,
 					"Studios": true,
 					"Premiered": true,
 					"Priority": true
@@ -35,7 +36,7 @@
 					"Volumes": true,
 					"Start/End Dates": true,
 					"Total Days Read": true,
-					"Magazine": true,
+					"Magazine": false,
 					"Premiered": true,
 					"Priority": true
 				}
