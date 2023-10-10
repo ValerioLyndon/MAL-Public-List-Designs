@@ -1,4 +1,4 @@
-/* "9anime Adaption" by Valerio Lyndon / Revision 0.8 */
+/* "9anime Adaption" by Valerio Lyndon / Revision 0.9 */
 
 @\import "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap";
 
@@ -740,6 +740,8 @@ a {
 	margin: 0 0 20px 0 !important;
 	overflow: hidden;
 }
+/* 2023/Oct/10 fix template list item showing when it didn't before */
+.list-item[v-for] { display: none !important; }
 
 .list-item .more-info::-webkit-scrollbar, .list-item .tags div::-webkit-scrollbar {
 	width: 15px;
