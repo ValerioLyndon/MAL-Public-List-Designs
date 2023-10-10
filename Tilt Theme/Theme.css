@@ -1,6 +1,6 @@
 /**
  * "Tilt" by Valerio Lyndon
- * Revision 10.1
+ * Revision 10.2
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1008,6 +1008,8 @@ body[data-owner="1"] .btn-menu .username {
 	
 	vertical-align: top;
 }
+/* 2023/Oct/10 fix template list item showing when it didn't before */
+.list-item[v-for] { display: none !important; }
 
 .list-table-data {
 	position: relative;
