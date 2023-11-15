@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.3.2
+ * v2.3.3
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -201,7 +201,7 @@ body::after {
 	z-index: -1;
 	width: 100%;
 	min-width: 1060px;
-	height: 1080px;
+	height: 100%;
 	pointer-events: none;
 }
 body::before {
