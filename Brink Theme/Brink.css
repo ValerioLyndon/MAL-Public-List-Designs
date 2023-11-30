@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 2.1.0
+ * Version 2.1.1
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -913,7 +913,7 @@ tbody:first-of-type {
 }
 #status-menu.fixed .search-container,
 .fixed ~ .list-block .list-status-title,
-.fixed ~ .list-block tbody:first-of-type {
+.fixed ~ .list-block > tbody:first-of-type {
 	opacity: 0;
 }
 
