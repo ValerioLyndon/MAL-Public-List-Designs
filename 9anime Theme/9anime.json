@@ -54,7 +54,15 @@
 			"row-gap": {
 				"name": "List Item Gap",
 				"description": "This will add a gap between list items, converting it from 6 a row to 5 a row.",
-				"css": {"bottom": ".list-item:not(:nth-of-type(5n+2)) { margin-left: 47.5px !important; }"}
+				"css": {"bottom": ".list-item:not(:nth-of-type(5n+2)) { margin-left: 47.5px !important; }"},
+				"options": {
+					"gap": {
+						"name": "Gap Size",
+						"type": "text/size",
+						"replacements": [["47.5px", "{{{insert}}}"]],
+						"default": "47.5px"
+					}
+				}
 			}
 		}
 	}
