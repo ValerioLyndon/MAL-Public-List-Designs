@@ -78,7 +78,7 @@
 			},
 			"image-hover": {
 				"name": "Image Hover Mod",
-				"description": "Adds larger images on mouse hover. Will slow down page loads.",
+				"description": "Adds larger images on mouse hover. [b]Will increase page load times.[/b]",
 				"css": {
 					"import": "@\\import \"https://malscraper.azurewebsites.net/covers/all/anime/presets/dataimagelinkbefore\";\n@\\import \"https://malscraper.azurewebsites.net/covers/all/manga/presets/dataimagelinkbefore\";",
 					"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/Mod%20-%20Hover%20Image%20Compressed.css"
@@ -86,7 +86,7 @@
 				"options": {
 					"username": {
 						"name": "Your MyAnimeList Username",
-						"description": "Must be entered exactly as it appears on MyAnimeList. This is not required, but will reduce the impact on page loads slightly.",
+						"description": "Must be entered exactly as it appears on MyAnimeList. While not required, this will reduce the page load impact by more than 95% for most users.",
 						"type": "text",
 						"replacements": [
 							["all/anime/presets", "anime/{{{insert}}}/presets"],

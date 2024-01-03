@@ -146,7 +146,7 @@
 				"options": {
 					"username": {
 						"name": "Your MyAnimeList Username",
-						"description": "Must be entered exactly as it appears on MyAnimeList. This is not required, but will reduce the impact on page loads slightly.",
+						"description": "Must be entered exactly as it appears on MyAnimeList. While not required, this will reduce the page load impact by more than 95% for most users.",
 						"type": "text",
 						"replacements": [
 							["all/anime/presets", "anime/{{{insert}}}/presets"],
