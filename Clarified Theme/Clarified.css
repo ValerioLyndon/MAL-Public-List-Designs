@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.3.3
+ * v2.3.4
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -1593,8 +1593,13 @@ This is due to the "order" href syntax being absolutely fuckass-backwards someti
 	}
 }
 
+/* if user dates, season, and airing dates all enabled */
+.list-table-header:has(.started ~ .started ~ .started) .started ~ .started ~ .started,
+.list-table-header:has(.started ~ .started ~ .started) .finished ~ .finished {
+	left: -40px;
+}
+
 .header-title.started::before {
-	content: "Season";
 	position: absolute;
 	left: 0;
 	z-index: -1;
@@ -1603,7 +1608,11 @@ This is due to the "order" href syntax being absolutely fuckass-backwards someti
 	font-size: 11px;
 	line-height: 15px;
 }
-.header-title.started + .started::before {
+.list-table-header:not(:has(.finished ~ .started ~ .started)) .started::before {
+	content: "Season";
+}
+.list-table-header:has(.started ~ .started ~ .started) .started ~ .started ~ .started::before {
+	content: "Season";
 	left: calc(100% + 40px);
 }
 
