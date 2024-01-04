@@ -45,7 +45,7 @@
 		"options": {
 			"theme": {
 				"name": "Theme",
-				"description": "Choose from some pre-selected sets of images, colours, and visual tweaks! But don't worry, you can still set your own options afterwards.",
+				"description": "Choose from some pre-selected sets of images, colours, and visual tweaks! Don't worry, you can still set your own options afterwards.",
 				"type": "select",
 				"selections": {
 					"dynamic": {
@@ -75,6 +75,19 @@
 							[
 								"THEME_REPLACE",
 								"https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Themes/Dark.css"
+							]
+						]
+					},
+					"breezy": {
+						"label": "Breezy",
+						"replacements": [
+							[
+								"RegExp/!THEME[\\s\\S]*?/\\*===",
+								"!THEME\n  =========*/\n\nTHEME_REPLACE\n\n/*==="
+							],
+							[
+								"THEME_REPLACE",
+								"https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Themes/Breezy.css"
 							]
 						]
 					},

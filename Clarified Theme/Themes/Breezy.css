@@ -1,0 +1,146 @@
+/**
+ * Breezy Theme
+ * v1.0.0
+ */
+
+:root {
+	/* Colour scheme property ensures correct scrollbar colours on modern browsers. Older browsers will probably still have a light scrollbar */
+	color-scheme: light;
+	
+	/* status colours */
+	--all-items: hsl(297, 62%, 83%);
+	--current: hsl(39, 62%, 83%);
+	--completed: hsl(223, 62%, 83%);
+	--onhold: hsl(139, 62%, 83%);
+	--dropped: hsl(360, 62%, 83%);
+	--planned: hsl(223, 0%, 71%);
+	
+	/* Images */
+	--background: url(https://i.imgur.com/D425mHM.jpg);
+	--background-image-opacity: 1;
+	--auxiliary-background: none;
+	--auxiliary-background-image-opacity: 1;
+	--cover: none;
+	--cover-position: center bottom;
+	--cover-shadow: none;
+	
+	/* Regular Colours */
+	--image-background: rgba(33,35,22,0.41);
+	--image-text: #fefaf9;
+	--image-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	
+	--page-background: #eeede4;
+	--content-background: #fff;
+	--content-highlight: hsl(127, 45%, 90.5%);
+	--button: var(--content-highlight);
+	--border: hsl(127, 35%, 55%);
+	--content-text: hsl(127, 2%, 8%);
+	--content-link: hsl(197, 36%, 64%);
+	--content-link: #cfa3dc;
+	--inverse-background: hsla(127, 15%, 70%, 70%);
+	--inverse-text: var(--content-text);
+	--scroll-thumb: var(--border);
+
+	--mild-shadow: rgba(255, 255, 255, 0.4) 0px 2px 6px, rgba(0, 0, 0, 0.2) 0px 3px 8px;
+	--medium-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
+}
+	
+/* Other tweaks */
+
+#footer-block::before {
+	filter: brightness(100) invert(.89);
+}
+
+.header {
+	min-height: 400px;
+	height: 50vh;
+}
+
+.status-button,
+.search-container {
+	position: relative;
+	z-index: 999;
+}
+
+/* Add character */
+
+#status-menu::after {
+	--h: 450px;
+	content: "";
+	position: absolute;
+	z-index: 2;
+	pointer-events: none;
+	bottom: 2px;
+	left: 0;
+	width: 100%;
+	height: var(--h);
+	background: url(https://files.catbox.moe/4w99u3.webp) calc(50% + 370px) 0vh / auto calc(var(--h) * 20) no-repeat;
+	animation: step-20 3s steps(1, jump-start) infinite;
+	/* original speed is 2560ms */
+	clip-path: inset(0 0 13px 0);
+}
+
+@keyframes step-20 {
+	0%, 100% {
+		background-position-y: 0px;
+	}
+	5% {
+		background-position-y: calc(var(--h) * -1);
+	}
+	10% {
+		background-position-y: calc(var(--h) * -2);
+	}
+	15% {
+		background-position-y: calc(var(--h) * -3);
+	}
+	20% {
+		background-position-y: calc(var(--h) * -4);
+	}
+	25% {
+		background-position-y: calc(var(--h) * -5);
+	}
+	30% {
+		background-position-y: calc(var(--h) * -6);
+	}
+	35% {
+		background-position-y: calc(var(--h) * -7);
+	}
+	40% {
+		background-position-y: calc(var(--h) * -8);
+	}
+	45% {
+		background-position-y: calc(var(--h) * -9);
+	}
+	50% {
+		background-position-y: calc(var(--h) * -10);
+	}
+	55% {
+		background-position-y: calc(var(--h) * -11);
+	}
+	60% {
+		background-position-y: calc(var(--h) * -12);
+	}
+	65% {
+		background-position-y: calc(var(--h) * -13);
+	}
+	70% {
+		background-position-y: calc(var(--h) * -14);
+	}
+	75% {
+		background-position-y: calc(var(--h) * -15);
+	}
+	80% {
+		background-position-y: calc(var(--h) * -16);
+	}
+	85% {
+		background-position-y: calc(var(--h) * -17);
+	}
+	90% {
+		background-position-y: calc(var(--h) * -18);
+	}
+	95% {
+		background-position-y: calc(var(--h) * -19);
+	}
+}
+
+/* END of Breezy Theme */
