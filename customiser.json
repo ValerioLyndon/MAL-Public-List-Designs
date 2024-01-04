@@ -8,7 +8,8 @@
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/clarity.json",
 			"tags": {"layout": ["table"], "other": ["highly customisable", "beginner-friendly"]},
-			"date": "2017-07-12"
+			"date": "2017-07-12",
+			"date_added": "2022-06-19"
 		},
 		"clarified": {
 			"name": "Clarified",
@@ -17,7 +18,8 @@
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/clarified.json",
 			"tags": {"layout": ["table"], "other": ["highly customisable", "beginner-friendly"]},
-			"date": "2022-04-18"
+			"date": "2022-04-18",
+			"date_added": "2022-08-01"
 		},
 		"brink": {
 			"name": "Brink",
@@ -26,7 +28,8 @@
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/brink.json",
 			"tags": {"layout": ["cover"], "source": [], "other": ["highly customisable", "heavyweight", "beginner-friendly"]},
-			"date": "2019-03-16"
+			"date": "2019-03-16",
+			"date_added": "2022-06-19"
 		},
 		"puni": {
 			"name": "Puni",
@@ -35,7 +38,8 @@
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Puni%20Theme/puni.json",
 			"tags": {"layout": ["card"], "source": ["Pokemon"], "other": ["based on anime", "based on game"]},
-			"date": "2020-01-25"
+			"date": "2020-01-25",
+			"date_added": "2022-06-19"
 		},
 		"tilt": {
 			"name": "Tilt",
@@ -44,7 +48,8 @@
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Tilt%20Theme/tilt.json",
 			"tags": {"layout": ["card"], "source": ["My Hero Academia", "Boku no Hero Academia"], "other": ["based on anime"]},
-			"date": "2017-07-29"
+			"date": "2017-07-29",
+			"date_added": "2022-06-19"
 		},
 		"9anime": {
 			"name": "9anime",
@@ -53,7 +58,8 @@
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/9anime%20Theme/9anime.json",
 			"tags": {"layout": ["cover"], "other": ["based on anime"]},
-			"date": "2017-11-23"
+			"date": "2017-11-23",
+			"date_added": "2022-06-19"
 		},
 		"agile": {
 			"name": "Agile",
@@ -62,7 +68,8 @@
 			"type": "classic",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Agile%20Theme/agile.json",
 			"tags": {"layout": ["table"], "source": ["Youjo Senki", "Saga of Tanya the Evil"], "other": ["lightweight", "based on anime"]},
-			"date": "2021-12-21"
+			"date": "2021-12-21",
+			"date_added": "2022-09-09"
 		},
 		"kure": {
 			"name": "Kure",
@@ -71,7 +78,8 @@
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Kure%20Theme/kure.json",
 			"tags": {"layout": ["table"], "source": ["Beyond the Boundary", "Kyoukai no Kanata"], "other": ["based on anime"]},
-			"date": "2019-10-05"
+			"date": "2019-10-05",
+			"date_added": "2022-10-01"
 		},
 		"blackout": {
 			"name": "BLACKOUT",
@@ -80,7 +88,8 @@
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Blackout%20Theme/blackout.json",
 			"tags": {"layout": ["table"], "other": ["heavyweight", "animated"]},
-			"date": "2022-10-01"
+			"date": "2022-10-01",
+			"date_added": "2023-02-13"
 		}
 	}
 }
