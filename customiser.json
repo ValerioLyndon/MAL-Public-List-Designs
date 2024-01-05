@@ -7,7 +7,7 @@
 			"image": "https://i.imgur.com/6nh4NhC.png",
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarity%20Theme/clarity.json",
-			"tags": {"layout": ["table"], "other": ["highly customisable", "beginner-friendly"]},
+			"tags": {"layout": ["table"], "other": ["highly customisable", "beginner-friendly", "supports all columns"]},
 			"date": "2017-07-12",
 			"date_added": "2022-06-19"
 		},
@@ -17,7 +17,7 @@
 			"image": "https://i.imgur.com/EIjLPB1.jpg",
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/clarified.json",
-			"tags": {"layout": ["table"], "other": ["highly customisable", "beginner-friendly"]},
+			"tags": {"layout": ["table"], "other": ["highly customisable", "beginner-friendly", "supports all columns"]},
 			"date": "2022-04-18",
 			"date_added": "2022-08-01"
 		},
@@ -27,7 +27,7 @@
 			"image": "https://i.imgur.com/4gaM4fL.jpg",
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/brink.json",
-			"tags": {"layout": ["cover"], "source": [], "other": ["highly customisable", "heavyweight", "beginner-friendly"]},
+			"tags": {"layout": ["cover"], "source": [], "other": ["highly customisable", "heavyweight", "beginner-friendly", "supports all columns"]},
 			"date": "2019-03-16",
 			"date_added": "2022-06-19"
 		},
@@ -77,7 +77,7 @@
 			"image": "https://i.imgur.com/i6i5LeM.jpg",
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Kure%20Theme/kure.json",
-			"tags": {"layout": ["table"], "source": ["Beyond the Boundary", "Kyoukai no Kanata"], "other": ["based on anime"]},
+			"tags": {"layout": ["table"], "source": ["Beyond the Boundary", "Kyoukai no Kanata"], "other": ["based on anime", "supports all columns"]},
 			"date": "2019-10-05",
 			"date_added": "2022-10-01"
 		},
@@ -87,7 +87,7 @@
 			"image": "https://i.imgur.com/NOtLGy9.jpeg",
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Blackout%20Theme/blackout.json",
-			"tags": {"layout": ["table"], "other": ["heavyweight", "animated"]},
+			"tags": {"layout": ["table"], "other": ["heavyweight", "animated", "supports all columns"]},
 			"date": "2022-10-01",
 			"date_added": "2023-02-13"
 		}
