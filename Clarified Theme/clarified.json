@@ -618,6 +618,12 @@
 				},
 				"tags": ["category options", "visual flare", "imagery"]
 			},
+			"hover-images": {
+				"name": "Expandable Cover Images",
+				"description": "Enabled peeking at higher resolution images upon mouse hover.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Enlarged%20Hover%20Images.css"},
+				"tags": ["imagery", "functionality"]
+			},
 			"switch-tags": {
 				"name": "Switch Tag & Genre Locations",
 				"description": "Moves tags to the left, and genres (if enabled) to the right.",
