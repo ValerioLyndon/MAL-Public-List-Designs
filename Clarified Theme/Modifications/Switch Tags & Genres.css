@@ -1,16 +1,21 @@
 /**
  * Switch Tags & Genres
- * v1.0.0
+ * v1.1.0
  */
 
-.data.tags {
+.data.tags.tags.tags.tags {
 	margin-left: 0;
 	text-align: left !important;
 }
 
-.data.tags ~ .data.genre {
+.data.tags ~ .genre {
 	margin-left: auto;
 	text-align: right !important;
+}
+
+.manga .data.genre:not(:has([href*="genre="])) {
+	margin-left: 0;
+	text-align: center !important;
 }
 
 /* END of Switch Tags & Genres */
