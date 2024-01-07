@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.3.5
+ * v2.3.6
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -1809,7 +1809,7 @@ tr.list-table-data {
 	width: 40%;
 }
 /* I'm begging you to add a .demographic class to the mangalist, same as the animelist has */
-.data.genre:not(:has([href*="genre="])) {
+.manga .data.genre:not(:has([href*="genre="])) {
 	width: 80px;
 	grid-column-start: initial;
 	grid-row-start: initial;
