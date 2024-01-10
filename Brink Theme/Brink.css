@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 2.1.1
+ * Version 2.1.2
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -1284,7 +1284,7 @@ tbody:first-of-type {
 .data:not(
 	.status,
 	.image,
-	.type,
+	.type:not(.number~.type),
 	.number,
 	.title,
 	.score,
@@ -1309,7 +1309,7 @@ tbody:first-of-type {
 .data:not(
 	.status,
 	.image,
-	.type,
+	.type:not(.number~.type)
 	.number,
 	.title,
 	.score,
