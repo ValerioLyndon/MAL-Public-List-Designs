@@ -1,6 +1,6 @@
 /**
  * Breezy Theme
- * v1.0.0
+ * v1.0.1
  */
 
 :root {
@@ -74,7 +74,7 @@
 	left: 0;
 	width: 100%;
 	height: var(--h);
-	background: url(https://files.catbox.moe/4w99u3.webp) calc(50% + 370px) 0vh / auto calc(var(--h) * 20) no-repeat;
+	background: url(https://i.ibb.co/P5g2gn2/combined-images.webp) calc(50% + 370px) 0vh / auto calc(var(--h) * 20) no-repeat;
 	animation: step-20 3s steps(1, jump-start) infinite;
 	/* original speed is 2560ms */
 	clip-path: inset(0 0 13px 0);
