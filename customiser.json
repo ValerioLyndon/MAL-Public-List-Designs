@@ -87,7 +87,7 @@
 			"image": "https://i.imgur.com/NOtLGy9.jpeg",
 			"type": "modern",
 			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Blackout%20Theme/blackout.json",
-			"tags": {"layout": ["table"], "other": ["heavyweight", "animated", "supports all columns"]},
+			"tags": {"layout": ["card"], "other": ["heavyweight", "animated", "supports all columns"]},
 			"date": "2022-10-01",
 			"date_added": "2023-02-13"
 		}
