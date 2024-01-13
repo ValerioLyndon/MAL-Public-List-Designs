@@ -1,5 +1,5 @@
 {
-	"json_version": 0.3,
+	"json_version": 0.4,
 	"data": {
 		"name": "Clarified",
 		"author": "Valerio Lyndon",
@@ -50,7 +50,7 @@
 				"selections": {
 					"dynamic": {
 						"label": "Dynamic Light/Dark",
-						"replacements": ["",""]
+						"replacements": []
 					},
 					"light": {
 						"label": "Light",
