@@ -1,0 +1,68 @@
+/**
+ * Auto-hiding Tags & Genres
+ * v0.1.0
+ */
+
+.data:is(.tags,.genre) {
+	display: grid !important;
+	grid-auto-columns: max-content;
+	grid-auto-flow: column;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows .18s ease 0s;
+}
+.data.tags {
+	grid-auto-columns: 1fr;
+}
+#list-container .list-table-data:hover .data:is(.tags,.genre) {
+	grid-template-rows: 1fr;
+	transition-delay: .4s;
+}
+.data.tags div, .data.genre span {
+	overflow: hidden;
+}
+.data.tags a {
+	white-space: nowrap;
+}
+
+/* try to unfuck demographic */
+
+.data.genre ~ .genre {
+	display: block !important;
+}
+.data.genre ~ .genre span {
+	overflow: visible;
+}
+
+/* loading bar */
+.data.tags div:not(:empty)::before {
+	content: "";
+	position: absolute;
+	inset: auto 14px -3px 36px;
+	width: 0;
+	height: 2px;
+	border-radius: 100px;
+	background: var(--page-category);
+}
+.list-table-data:hover .data.tags div::before {
+	animation:
+		.4s ease-in-out 0s barfill both,
+		.13s ease-in-out .37s barfade both;
+}
+
+@keyframes barfill {
+	from {
+		width: 0;
+	} to {
+		width: calc(100% - 50px);
+	}
+}
+
+@keyframes barfade {
+	from {
+		opacity: 1;
+	} to {
+		opacity: 0;
+	}
+}
+
+/* END of Auto-hiding Tags & Genres */
