@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.3.6
+ * v2.3.7
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -819,12 +819,15 @@ body::after {
 tr.list-table-data {
 	position: relative;
 	display: grid;
-	min-height: 67px;
+	min-height: 45px;
 	padding: 3px 10px 3px 33px;
 	grid-template-columns: 0fr [number] 21px [status] 0fr [image] 1fr [title] repeat(47, 0fr);
 	grid-template-rows: auto 0fr [tags];
 	grid-gap: 0px;
 	align-items: center;
+}
+tr.list-table-data:has(.tags) {
+	min-height: 67px;
 }
 
 .list-table-header {
@@ -1330,10 +1333,6 @@ tr.list-table-data {
 	content: "Diff.";
 }
 
-.data.score {
-	position: relative;
-}
-
 .data.score a, .data.mal_score, .data.score_diff {
 	display: block;
 	width: 23px;
@@ -1578,9 +1577,17 @@ tr.list-table-data {
 	text-align: left !important;
 }
 .data.started {
-	top: -20px;
+	top: -10px;
 }
 .data.finished {
+	top: 0;
+	margin: 20px 0 0 -73px;
+}
+
+.list-table:has(.days) .data.started {
+	top: -20px;
+}
+.list-table:has(.days) .data.finished {
 	top: 0;
 	margin: 20px 0 20px -73px;
 }
@@ -1588,6 +1595,7 @@ tr.list-table-data {
 	top: 20px;
 	margin-left: -73px;
 }
+
 .data.airing-started {
 	top: -10px;
 }
