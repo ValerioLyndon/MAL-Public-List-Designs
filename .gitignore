@@ -4,3 +4,5 @@
 *.wip*
 */Resources.txt
 */Mockup.psd
+scm.json
+*.scm.json
