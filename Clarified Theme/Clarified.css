@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.3.7
+ * v2.3.8
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -269,7 +269,8 @@ body::after {
 	text-shadow: var(--image-shadow);
 }
 
-.header a {
+.header a,
+.header .header-info {
 	color: var(--image-text) !important;
 }
 
@@ -391,14 +392,13 @@ body::after {
 	z-index: 15;
 	display: block;
 	width: 150px;
-	background: var(--content-background);
+	background: none;
 	border: none;
-	box-shadow: var(--medium-shadow);
 	padding: 12px;
-	border-radius: 6px;
-	visibility: hidden;
-} .list-menu-float:hover {
-	visibility: visible;
+	pointer-events: none;
+}
+.list-menu-float:hover {
+	pointer-events: auto;
 }
 
 .list-menu-float::before {
@@ -410,14 +410,24 @@ body::after {
 	height: 32px;
 	background: var(--image-background);
 	border-radius: 3px;
-	visibility: visible;
 	opacity: 0.25;
+	pointer-events: auto;
 	transition: opacity .5s ease-out;
 }
 .list-menu-float:hover::before,
 .header:hover ~ .list-menu-float::before {
 	opacity: 1;
 	transition-duration: .08s;
+}
+
+.list-menu-float:hover::after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	inset: 0;
+	background: var(--content-background);
+	border-radius: 6px;
+	box-shadow: var(--medium-shadow);
 }
 
 .list-menu-float .icon-menu.profile {
@@ -436,7 +446,6 @@ body::after {
 	white-space: nowrap;
 	text-shadow: var(--image-shadow);
 	opacity: .25;
-	visibility: visible;
 	transition: opacity .5s ease-out;
 }
 .list-menu-float:hover .icon-menu.profile {
@@ -471,7 +480,6 @@ body::after {
 	background-color: transparent !important;
 	color: var(--content-text);
 	text-align: left;
-	/* opacity is only to fix flicker in firefox while using visibility on its own */
 	opacity: 0;
 	transition: none;
 } .list-menu-float .icon-menu:hover {
