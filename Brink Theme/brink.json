@@ -176,7 +176,7 @@
 			"cat-info": {
 				"name": "Category-Coloured Title Backgrounds",
 				"description": "Adds some extra per-category flavouring to list items.",
-				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modCatColInfoBG.css"},
+				"css": {"bottom":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modCatColInfoBG.css"},
 				"tags": ["per-category options", "visual style"]
 			},
 			"cat-images": {
@@ -249,7 +249,7 @@
 			},
 			"banner-height": {
 				"name": "Change Banner Height",
-				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modBannerHeight.css"},
+				"css": {"bottom":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modBannerHeight.css"},
 				"options": {
 					"height": {
 						"name": "Height",
@@ -268,7 +268,7 @@
 				"name": "Favourite Tags",
 				"description": "This mod will add a Heart icon on entries with a the tag \"Favourite\".",
 				"requires": ["tag-overflow"],
-				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modFavouriteTags.css"},
+				"css": {"bottom":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modFavouriteTags.css"},
 				"options": {
 					"tag": {
 						"name": "Tag to Target",
@@ -291,7 +291,7 @@
 				"name": "Hide Hentai Covers",
 				"description": "This mod will darken and blur [i](if supported by your browser)[/i] any covers with the tag \"Hentai\".",
 				"requires": ["tag-overflow"],
-				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modHideHentaiCovers.min.css"},
+				"css": {"bottom":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modHideHentaiCovers.min.css"},
 				"options": {
 					"tag": {
 						"name": "Tag to Target",
@@ -314,7 +314,7 @@
 			"tag-scores-dedicated": {
 				"name": "Tag Scores",
 				"description": "This is a [b]complete override[/b] of the score and tag columns and will completely replace the score on your list with a tag. Your tag score must be the first tag, and any other tags on your list will be invisible.",
-				"css": {"botton":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modTagScoresDedicated.css"},
+				"css": {"bottom":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modTagScoresDedicated.css"},
 				"conflicts": ["hide-tag", "favourite-tag"],
 				"tags": ["functionality"]
 			},
