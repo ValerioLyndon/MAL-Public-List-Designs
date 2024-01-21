@@ -166,44 +166,44 @@
 					},
 					"banner-character": {
 						"name": "Banner Character Images",
-						"description": "This fiels support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
+						"description": "This field support multiple values.[list][*]URLs should be encased in a [b]url()[/b] text.[*]Other properties such as size and position can also be specified in the same manner as the CSS \"background\" property.[*]To add a second image with its own size/pos set, add a comma between values.[/list]An example value has been provided in the field.",
 						"type": "text/value/background",
 						"replacements": [["}","\t--banner-character: {{{insert}}};\n}"]],
 						"default": "url(IMAGEURL) posX posY / sizeX sizeY"
 					},
 					"--text-bright": {
 						"name": "Text Colour - Bright",
-						"type": "text",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["}","\t--text-bright: {{{insert}}};\n}"]]
 					},
 					"--text-dark": {
 						"name": "Text Colour - Dark",
-						"type": "text",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["}","\t--text-dark: {{{insert}}};\n}"]]
 					},
 					"--relief": {
 						"name": "Relief Colour",
-						"type": "text",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["}","\t--relief: {{{insert}}};\n}"]]
 					},
 					"--midtone": {
 						"name": "Midtone Colour",
-						"type": "text",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["}","\t--midtone: {{{insert}}};\n}"]]
 					},
 					"--accent-bright": {
 						"name": "Accent Colour - Bright",
-						"type": "text",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["}","\t--accent-bright: {{{insert}}};\n}"]]
 					},
 					"--accent-dark": {
 						"name": "Accent Colour - Dark",
-						"type": "text",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["}","\t--accent-dark: {{{insert}}};\n}"]]
 					},
 					"--complementary": {
 						"name": "Complementary Colour",
-						"type": "text",
+						"type": "color/insert/hsl&strip_alpha",
 						"replacements": [["}","\t--complementary: {{{insert}}};\n}"]]
 					},
 					"--shadow-light": {
@@ -251,7 +251,10 @@
 					},
 					"pattern-opacity": {
 						"name": "Pattern Opacity on Backgrounds",
-						"type": "text/value/opacity",
+						"type": "range",
+						"min": 0,
+						"max": 1,
+						"step": 0.01,
 						"replacements": [["}","\t--accent-image-opacity: {{{insert}}};\n}"]]
 					}
 				}
