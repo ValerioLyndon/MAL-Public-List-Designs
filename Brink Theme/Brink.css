@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 2.1.2
+ * Version 2.1.3
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -299,7 +299,7 @@ a,
 
 #header-menu-dropdown .icon-menu,
 .list-unit .list-status-title .stats a,
-.list-table > tbody:first-of-type::after,
+.list-table > tbody:first-of-type::before,
 #status-menu .search-container #search-box,
 body #fancybox-close,
 #advanced-options .advanced-options-button a,
@@ -321,7 +321,7 @@ div[style^="width: 300px;"] input {
 	transition: all var(--timeButton) var(--bezierFast);
 } #header-menu-dropdown .icon-menu:hover,
 .list-unit .list-status-title .stats a:hover,
-.list-table > tbody:first-of-type:hover::after,
+.list-table > tbody:first-of-type:hover::before,
 #status-menu .search-container #search-box:focus-within,
 body #fancybox-close:hover,
 #advanced-options .advanced-options-button a:hover,
@@ -844,7 +844,18 @@ body {
 	transition: padding var(--timeMenu) var(--bezierFast);
 } #status-menu.fixed {
 	padding: 5px 0;
+}
+
+#status-menu::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
 	background: linear-gradient(to bottom, hsl(var(--bg)), transparent);
+	opacity: 0;
+}
+#status-menu.fixed::after {
+	opacity: 1;
 }
 
 #status-menu .status-menu {
@@ -908,13 +919,15 @@ body {
 
 .search-container,
 .list-status-title,
-tbody:first-of-type {
-	transition: opacity var(--timeMenu) var(--bezierFast);
+tbody:first-of-type,
+#status-menu::after {
+	transition: opacity var(--timeMenu) var(--bezierFast), translate var(--timeMenu) var(--bezierFast);
 }
 #status-menu.fixed .search-container,
 .fixed ~ .list-block .list-status-title,
-.fixed ~ .list-block > tbody:first-of-type {
+.fixed ~ .list-block .list-table > tbody:first-of-type {
 	opacity: 0;
+	translate: 0 -32px;
 }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~*\
@@ -926,9 +939,6 @@ tbody:first-of-type {
 	top: 22px;
 	right: calc(20px + (50% - var(--listW) * 0.5));
 	width: calc(169px + 0.07 * (var(--listW) - 980px));
-} #status-menu.fixed .search-container {
-	top: -32px;
-	width: calc(177px + 0.07 * (var(--listW) - 980px));
 }
 
 #status-menu .search-container #search-box {
@@ -936,9 +946,6 @@ tbody:first-of-type {
 	transition:
 		box-shadow var(--timeMenu) var(--bezierFast),
 		border-color var(--timeButton) var(--bezierFast);
-} #status-menu.fixed .search-container #search-box {
-	--btn: var(--btnAlt);
-	box-shadow: none;
 }
 
 #status-menu .search-container #search-box input {
@@ -982,7 +989,7 @@ tbody:first-of-type {
 	z-index: 30;
 	
 	width: 80px;
-	height: 32px;
+	height: calc(100% - 22px);
 	background: none;
 }
 
@@ -991,7 +998,8 @@ tbody:first-of-type {
 }
 
 .list-unit .list-status-title .stats {
-	position: static;
+	position: sticky;
+	top: 43px;
 	font-size: 0;
 	white-space: nowrap;
 }
@@ -1017,35 +1025,35 @@ tbody:first-of-type {
 	z-index: 35;
 	
 	width: calc(80px + 0.035 * (var(--listW) - 980px));
-	height: 32px;
+	height: calc(100% - 22px);
 	background: none !important;
 	
 	pointer-events: none;
-} .list-table > tbody:first-of-type:hover {
-	pointer-events: auto;
 }
 
-.list-table > tbody:first-of-type::after {
+.list-table > tbody:first-of-type::before {
 	content: "\f0dc  Order";
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
+	position: sticky;
+	top: 22px;
 	
 	display: block;
+	margin: 0 auto 10px auto;
 	width: 100%;
 	
 	pointer-events: auto;
 }
 
-.list-table > tbody:first-of-type::before {
+/* "Hitbox" */
+.list-table > tbody:first-of-type:hover::after {
 	content: "";
-	
-	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	z-index: -1;
 	width: calc(100% + 24px);
 	height: 44px;
 	border-radius: 12px 12px 0 0 / 100% 100% 0 0;
-	margin: 0 0 -3px -12px;
+	pointer-events: auto;
 }
 
 .list-table .list-table-header {
@@ -1066,6 +1074,7 @@ tbody:first-of-type {
 	transition: all var(--timeButtonLarge) var(--bezierFast);
 } .list-table tbody:first-of-type:hover .list-table-header {
 	opacity: 1;
+	pointer-events: auto;
 }
 
 .list-table .list-table-header .header-title {
@@ -2732,11 +2741,14 @@ div[style^="width: 300px;"] input {
 		padding-top: 106px;
 	}
 	
+	.status-menu {
+		transition: width var(--timeMenu) var(--bezierFast)
+	}
 	#status-menu:not(.fixed) .status-menu {
 		width: 560px;
 	}
 	
-	#status-menu:not(.fixed) .search-container {
+	#status-menu .search-container {
 		top: 62px;
 		left: calc(50% - 32px);
 		width: 250px;
@@ -2746,6 +2758,9 @@ div[style^="width: 300px;"] input {
 		top: 62px;
 		left: calc(50% - 218px);
 	}
+	.list-unit .list-status-title .stats {
+		top: 83px;
+	}
 	.list-unit .list-status-title .stats a {
 		width: 84px;
 	}
@@ -2754,6 +2769,9 @@ div[style^="width: 300px;"] input {
 		top: 62px;
 		left: calc(50% - 125px);
 		width: 84px;
+	}
+	.list-table > tbody:first-of-type::before {
+		top: 62px;
 	}
 	
 	body #fancybox-wrap {
@@ -2849,6 +2867,11 @@ div[style^="width: 300px;"] input {
 	/* Visual Tweaks */
 	.data.title {
 		padding-top: 2px !important;
+	}
+	
+	/* fix for search transition being out of sync on Firefox */
+	.search-container {
+		will-change: top;
 	}
 }
 
