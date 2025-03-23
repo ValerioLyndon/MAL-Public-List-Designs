@@ -266,7 +266,7 @@
 			},
 			"favourite-tag": {
 				"name": "Favourite Tags",
-				"description": "This mod will add a Heart icon on entries with a the tag \"Favourite\".",
+				"description": "This mod will add a Heart icon on entries with the tag \"Favourite\".",
 				"requires": ["tag-overflow"],
 				"css": {"bottom":"https://valeriolyndon.github.io/MAL-Public-List-Designs/Brink%20Theme/modFavouriteTags.css"},
 				"options": {
