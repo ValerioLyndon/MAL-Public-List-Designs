@@ -1,6 +1,6 @@
 /**
  * "Clarified" by Valerio Lyndon
- * v2.3.8
+ * v2.3.9
  * 
 ***TABLE*OF*CONTENTS***
  * 
@@ -1760,13 +1760,9 @@ tr.list-table-data:has(.tags) {
 	order: 35;
 }
 
-.manga .header-title:not(.genre) + .demographic {
-	display: none;
-}
-
 /* Empty Columns */
 
-.data:is(.demographic, .licensor, .studio, .genre):empty::after {
+.data:is(.demographic, .licensor, .studio, .genre:not(:has([href*="genre="]))):empty::after {
 	content: "None";
 	font-size: 11px;
 	display: block;
@@ -1833,6 +1829,15 @@ tr.list-table-data:has(.tags) {
 	order: 35;
 	text-align: center !important;
 	margin-top: 0;
+}
+/* attempt to remove empty genre column without affecting demographic - probably has uncovered edge cases */
+/* this selector works when demographic is enabled */
+.manga .data.genre:has(~.genre):empty {
+	display: none;
+}
+/* this selector works when demographic is disabled */
+.manga:not(:has(.header-title.demographic)) .data.genre:empty {
+	display: none;
 }
 
 .data.tags div,
