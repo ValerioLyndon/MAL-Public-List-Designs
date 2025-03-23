@@ -1,5 +1,5 @@
 /***** BLACKOUT *****|
- v1.2.0             *|
+ v1.2.1             *|
  a list design      *|
  by Valerio Lyndon  */
 /*
@@ -1332,6 +1332,7 @@ tbody:hover .list-table-header {
 
 .data.score {
 	order: 3;
+	z-index: 2; /* layer above MAL score */
 }
 
 .data .score-label {
@@ -1381,6 +1382,9 @@ tbody:hover .list-table-header {
 	text-align: center !important;
 	border-radius: 7rem;
 }
+.data.mal_score {
+	z-index: 1; /* layer above score diff */
+}
 .data.score_diff {
 	border-color: var(--c-border-light) !important;
 }
@@ -1391,13 +1395,17 @@ tbody:hover .list-table-header {
 	border-color: var(--c-border-light) !important;
 	-webkit-mask-image: radial-gradient(circle at 3.5rem 50%, transparent 3.5rem, black 0rem);
 	mask-image: radial-gradient(circle at 3.5rem 50%, transparent 3.5rem, black 0rem);
-	
 }
 .data[class*="score"] ~ .mal_score::before {
 	content: "vs";
 }
 .data[class*="score"] ~ .score_diff::before {
 	content: "==";
+}
+
+/* Prevent layout flicker while opening or closing score input field. This issue is present on the default list CSS */
+.data.score a:not([style="display: none;"]) + select {
+	display: none;
 }
 
 /*/Blackout/Items/Progress$: /*/
