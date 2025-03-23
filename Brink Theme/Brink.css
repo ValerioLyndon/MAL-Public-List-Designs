@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 2.1.3
+ * Version 2.1.4
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -991,6 +991,7 @@ tbody:first-of-type,
 	width: 80px;
 	height: calc(100% - 22px);
 	background: none;
+	pointer-events: none;
 }
 
 .list-unit .list-status-title .text {
@@ -1002,6 +1003,7 @@ tbody:first-of-type,
 	top: 43px;
 	font-size: 0;
 	white-space: nowrap;
+	pointer-events: auto;
 }
 
 .list-unit .list-status-title .stats a {
