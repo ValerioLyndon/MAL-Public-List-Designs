@@ -1,0 +1,29 @@
+{
+	"json_version": 0.4,
+	"data": {
+		"name": "Oscillate",
+		"author": "Valerio Lyndon",
+		"author_url": "https://myanimelist.net/profile/Valerio_Lyndon",
+		"type": "classic",
+		"css": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Oscillate%20Theme/Oscillate.css",
+		"columns": {
+			"animelist": {
+				"Score": true,
+				"Type": true,
+				"Episodes": true,
+				"Start/End Dates": true,
+				"Total Days Watched": true,
+				"Genre": true
+			},
+			"mangalist": {
+				"Score": true,
+				"Type": true,
+				"Chapters": true,
+				"Start/End Dates": true,
+				"Total Days Read": true,
+				"Genres": true
+			}
+		},
+		"flags": ["beta"]
+	}
+}

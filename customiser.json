@@ -1,5 +1,5 @@
 {
-	"json_version": 0.3,
+	"json_version": 0.4,
 	"themes": {
 		"clarity": {
 			"name": "Clarity",
@@ -90,6 +90,16 @@
 			"tags": {"layout": ["card"], "other": ["heavyweight", "animated", "supports all columns"]},
 			"date": "2022-10-01",
 			"date_added": "2023-02-13"
+		},
+		"oscillate": {
+			"name": "Oscillate",
+			"author": "Valerio Lyndon",
+			"type": "classic",
+			"url": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Oscillate%20Theme/oscillate.json",
+			"tags": {"layout": ["table"], "source": ["Genshin Impact"], "other": ["based on game", "animated"]},
+			"date": "2023-09-23",
+			"date_added": "2024-02-08",
+			"flags": ["beta"]
 		}
 	}
 }
