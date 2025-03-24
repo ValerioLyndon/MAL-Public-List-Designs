@@ -295,7 +295,7 @@
 				"options": {
 					"tag": {
 						"name": "Tag to Target",
-						"description": "Want to apply this mod to a tag other than \"Hentai\"? Input your tag here. Tag must be in [URL format](https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.#getting-the-tag-in-url-format).",
+						"description": "Want to apply this mod to a tag other than \"Hentai\"? Input your tag here. Tag must be in [url=https://github.com/ValerioLyndon/MAL-Public-List-Designs/wiki/Add-your-own-coloured-tags.#getting-the-tag-in-url-format]URL format[/url].",
 						"type": "text",
 						"replacements": [["Hentai","{{{insert}}}"]],
 						"default": "Hentai"
