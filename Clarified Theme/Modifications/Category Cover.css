@@ -1,0 +1,31 @@
+/**
+ * Category Cover
+ * v1.0.0
+ */
+
+/* Everything */
+[data-query*='"status":7'] {
+	--cover: none;
+}
+/* Current */
+[data-query*='"status":1'] {
+	--cover: none;
+}
+/* Completed */
+[data-query*='"status":2'] {
+	--cover: none;
+}
+/* Paused */
+[data-query*='"status":3'] {
+	--cover: none;
+}
+/* Dropped */
+[data-query*='"status":4'] {
+	--cover: none;
+}
+/* Planned */
+[data-query*='"status":6'] {
+	--cover: none;
+}
+
+/* END of Category Cover */

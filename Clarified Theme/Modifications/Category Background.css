@@ -1,0 +1,31 @@
+/**
+ * Category Background
+ * v1.0.0
+ */
+
+/* Everything */
+[data-query*='"status":7'] {
+	--background: none;
+}
+/* Current */
+[data-query*='"status":1'] {
+	--background: none;
+}
+/* Completed */
+[data-query*='"status":2'] {
+	--background: none;
+}
+/* Paused */
+[data-query*='"status":3'] {
+	--background: none;
+}
+/* Dropped */
+[data-query*='"status":4'] {
+	--background: none;
+}
+/* Planned */
+[data-query*='"status":6'] {
+	--background: none;
+}
+
+/* END of Category Background */

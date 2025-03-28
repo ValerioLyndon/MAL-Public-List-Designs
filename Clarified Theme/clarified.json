@@ -173,6 +173,128 @@
 				},
 				"tags": ["imagery"]
 			},
+			"cover-cat": {
+				"name": "Per-Category Cover Image",
+				"description": "Choose a different backgroundimage for every category.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Category%20Cover.css"},
+				"options": {
+					"7-img": {
+						"name": "Image (Everything)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:7[^}]+--cover:) none","$1 {{{insert}}}"]],
+						"default": "none"
+					},
+					"7-pos": {
+						"name": "Position (Everything)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(:7[^}]+)}","$1\t--cover-position: {{{insert}}};\n}"]],
+						"default": ""
+					},
+					"1-img": {
+						"name": "Image (Current)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:1[^}]+--cover:) none","$1 {{{insert}}}"]],
+						"default": "none"
+					},
+					"1-pos": {
+						"name": "Position (Everything)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(:1[^}]+)}","$1\t--cover-position: {{{insert}}};\n}"]],
+						"default": ""
+					},
+					"2-img": {
+						"name": "Image (Completed)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:2[^}]+--cover:) none","$1 {{{insert}}}"]],
+						"default": "none"
+					},
+					"2-pos": {
+						"name": "Position (Everything)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(:2[^}]+)}","$1\t--cover-position: {{{insert}}};\n}"]],
+						"default": ""
+					},
+					"3-img": {
+						"name": "Image (Paused)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:3[^}]+--cover:) none","$1 {{{insert}}}"]],
+						"default": "none"
+					},
+					"3-pos": {
+						"name": "Position (Everything)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(:3[^}]+)}","$1\t--cover-position: {{{insert}}};\n}"]],
+						"default": ""
+					},
+					"4-img": {
+						"name": "Image (Dropped)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:4[^}]+--cover:) none","$1 {{{insert}}}"]],
+						"default": "none"
+					},
+					"4-pos": {
+						"name": "Position (Everything)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(:4[^}]+)}","$1\t--cover-position: {{{insert}}};\n}"]],
+						"default": ""
+					},
+					"6-img": {
+						"name": "Image (Planned)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:6[^}]+--cover:) none","$1 {{{insert}}}"]],
+						"default": "none"
+					},
+					"6-pos": {
+						"name": "Position (Everything)",
+						"type": "text/value/background-position",
+						"replacements": [["RegExp/(:6[^}]+)}","$1\t--cover-position: {{{insert}}};\n}"]],
+						"default": ""
+					}
+				}
+			},
+			"background-cat": {
+				"name": "Per-Category Background Image",
+				"description": "Choose a different cover image for every category.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Category%20Background.css"},
+				"options": {
+					"7": {
+						"name": "Image (Everything)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:7[^}]+--background:) none","$1 {{{insert}}}"]],
+						"default": "none"
+					},
+					"1": {
+						"name": "Image (Current)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:1[^}]+--background:) none","$1 {{{insert}}}"]],
+						"default": "none"
+					},
+					"2": {
+						"name": "Image (Completed)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:2[^}]+--background:) none","$1 {{{insert}}}"]],
+						"default": "none"
+					},
+					"3": {
+						"name": "Image (Paused)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:3[^}]+--background:) none","$1 {{{insert}}}"]],
+						"default": "none"
+					},
+					"4": {
+						"name": "Image (Dropped)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:4[^}]+--background:) none","$1 {{{insert}}}"]],
+						"default": "none"
+					},
+					"6": {
+						"name": "Image (Planned)",
+						"type": "text/image_url",
+						"replacements": [["RegExp/(:6[^}]+--background:) none","$1 {{{insert}}}"]],
+						"default": "none"
+					}
+				}
+			},
 			"character": {
 				"name": "Character on Banner",
 				"description": "Add some character renders over top of the banner image!",
