@@ -823,6 +823,13 @@
 						"type": "text/value/animation-duration",
 						"replacements": [["--sensitive-timer: 700ms;", "--sensitive-timer: {{{insert}}};"]],
 						"default": "700ms"
+					},
+					"linger": {
+						"name": "Adjust Re-Hide Duration",
+						"description": "The time before the blur becomes visible again.",
+						"type": "text/value/animation-duration",
+						"replacements": [["--sensitive-linger: 700ms;", "--sensitive-linger: {{{insert}}};"]],
+						"default": "4000ms"
 					}
 				},
 				"tags": ["functionality"]

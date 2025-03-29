@@ -1,11 +1,12 @@
 /**
  * Blur Hentai Automatically
- * v1.0.0
+ * v1.1.0
  * requires "Genre" column enabled
  */
 
 :root {
 	--sensitive-timer: 700ms;
+	--sensitive-linger: 4000ms;
 }
 
 .list-table-data:has([href*="genre=12"])::before {
@@ -20,7 +21,7 @@
 	font-size: 0 !important;
 	-webkit-backdrop-filter: blur(5px); /* safari */
 	backdrop-filter: blur(5px);
-	transition: opacity calc(var(--sensitive-timer) * 0.15) ease;
+	transition: opacity calc(var(--sensitive-timer) * 0.15) ease var(--sensitive-linger);
 	pointer-events: none;
 }
 .list-table-data:has([href*="genre=12"])::after {
@@ -34,7 +35,7 @@
 	border-radius: 6px;
 	font: 700 13px/22px var(--font);
 	transform: translate(-50%,-50%);
-	transition: opacity calc(var(--sensitive-timer) * 0.15) ease;
+	transition: opacity calc(var(--sensitive-timer) * 0.15) ease var(--sensitive-linger);
 }
 
 .list-table-data:hover::after {
