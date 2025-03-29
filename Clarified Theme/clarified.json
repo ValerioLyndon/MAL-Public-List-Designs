@@ -785,8 +785,8 @@
 				"tags": ["tags", "visual flare", "functionality"]
 			},
 			"blur-hentai": {
-				"name": "Blur Hentai",
-				"description": "Please note:[list][*]This mod will not display correctly in the MyAnimeList preview window. View on your own list.[*]If using the Review Tags mod, be sure to place all \"Hentai\" tags at the end of each tag section or else there will be trailing commas in some areas.[/list]",
+				"name": "Blur Hentai by Tag",
+				"description": "Blur rows where you manually add a tag.\n\nPlease note:[list][*]This mod will not display correctly in the MyAnimeList preview window. View on your own list.[*]If using the Review Tags mod, be sure to place all \"Hentai\" tags at the end of each tag section or else there will be trailing commas in some areas.[/list]",
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Blur%20Hentai.css"},
 				"options": {
 					"tag": {
@@ -804,6 +804,28 @@
 					}
 				},
 				"tags": ["tags", "functionality"]
+			},
+			"blur-hentai-auto": {
+				"name": "Blur Hentai Automatically",
+				"description": "Blur entries automatically by use of MAL's genres. You must enable the \"Genre\" column in your list settings for this mod to work.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Blur%20Hentai%20Auto.css"},
+				"options": {
+					"owner": {
+						"name": "Hide For Yourself",
+						"description": "Disabling this will allow you to browse freely, but keep the warning for other users.",
+						"type": "toggle",
+						"replacements": [[".list-table-data", "[data-owner=\"\"] .list-table-data", ".list-table-data"]],
+						"default": true
+					},
+					"timer": {
+						"name": "Adjust Display Timer",
+						"description": "The time before the blur is removed.",
+						"type": "text/value/animation-duration",
+						"replacements": [["--sensitive-timer: 700ms;", "--sensitive-timer: {{{insert}}};"]],
+						"default": "700ms"
+					}
+				},
+				"tags": ["functionality"]
 			},
 			"category-header-colours": {
 				"name": "Category Header Colours",

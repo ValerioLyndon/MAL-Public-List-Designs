@@ -1,0 +1,64 @@
+/**
+ * Blur Hentai Automatically
+ * v1.0.0
+ * requires "Genre" column enabled
+ */
+
+:root {
+	--sensitive-timer: 700ms;
+}
+
+.list-table-data:has([href*="genre=12"])::before {
+	content: "";
+	position: absolute;
+	z-index: 6;
+	inset: -3px 0;
+	border: 2px solid var(--content-highlight);
+	border-radius: 6px;
+	background: #0004 !important;
+	margin: 0;
+	font-size: 0 !important;
+	-webkit-backdrop-filter: blur(5px); /* safari */
+	backdrop-filter: blur(5px);
+	transition: opacity calc(var(--sensitive-timer) * 0.15) ease;
+	pointer-events: none;
+}
+.list-table-data:has([href*="genre=12"])::after {
+	content: "Sensitive Content";
+	position: absolute;
+	z-index: 6;
+	inset: 50% auto auto 50%;
+	padding: 3px 6px;
+	background: var(--content-background);
+	border: 2px solid var(--content-highlight);
+	border-radius: 6px;
+	font: 700 13px/22px var(--font);
+	transform: translate(-50%,-50%);
+	transition: opacity calc(var(--sensitive-timer) * 0.15) ease;
+}
+
+.list-table-data:hover::after {
+	animation: sensitive-timer calc(var(--sensitive-timer) * 0.85) ease 1 backwards;
+}
+
+@keyframes sensitive-timer {
+	0% {
+		box-shadow: inset 0 0px 0 var(--content-link);
+		transform: translate(-50%,-50%) scale(1);
+	}
+	80% {
+		transform: translate(-50%,-50%) scale(1.08);
+	}
+	100% {
+		box-shadow: inset 0 -28px 0 var(--content-link);
+		transform: translate(-50%,-50%) scale(1);
+	}
+}
+
+.list-table-data:hover::before,
+.list-table-data:hover::after {
+	opacity: 0;
+	transition-delay: calc(var(--sensitive-timer) * 0.85);
+}
+
+/* END of Blur Hentai Automatically */
