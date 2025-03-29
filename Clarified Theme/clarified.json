@@ -827,6 +827,65 @@
 				},
 				"tags": ["functionality"]
 			},
+			"hide-rows": {
+				"name": "Remove Entries",
+				"description": "Hide entries (rows) based on your choice of factors: tags, genres, and more. Please remember that your list is still public and your CSS can be overridden by others. Stay safe!",
+				"css": {"bottom": "/**\n * Hide Entries\n */\n\n[data-owner=\"\"] .list-item:is(dummy) {\n\tdisplay: none !important;\n}\n\n/* END of Hide Entries */"},
+				"options": {
+					"owner": {
+						"name": "Hide For Yourself",
+						"description": "Turn this on to make these entries vanish from your list at all times.",
+						"type": "toggle",
+						"replacements": [["[data-owner=\"\"] ", "[data-owner=\"\"] ", ""]],
+						"default": false
+					},
+					"genre-12": {
+						"name": "Remove Genre - Hentai",
+						"type": "toggle",
+						"replacements": [
+							["dummy", "dummy", "dummy,:has([href$=\"genre=12\"])"]
+						]
+					},
+					"genre-9": {
+						"name": "Remove Genre - Ecchi",
+						"type": "toggle",
+						"replacements": [
+							["dummy", "dummy", "dummy,:has([href$=\"genre=9\"])"]
+						]
+					},
+					"genre-49": {
+						"name": "Remove Genre - Erotica",
+						"type": "toggle",
+						"replacements": [
+							["dummy", "dummy", "dummy,:has([href$=\"genre=49\"])"]
+						]
+					},
+					"tag-1": {
+						"name": "Hide by Tag (slot 1)",
+						"description": "Be sure to write the tag [b]exactly[/b] as you wrote it on your list.",
+						"type": "text/url_fragment",
+						"replacements": [
+							["dummy", "dummy,:has([href$=\"tag={{{insert}}}\"])"]
+						]
+					},
+					"tag-2": {
+						"name": "Hide by Tag (slot 2)",
+						"type": "text/url_fragment",
+						"replacements": [
+							["dummy", "dummy,:has([href$=\"tag={{{insert}}}\"])"]
+						]
+					},
+					"tag-3": {
+						"name": "Hide by Tag (slot 3)",
+						"description": "Let me know if you want more slots! More can also be added by editing the CSS after install.",
+						"type": "text/url_fragment",
+						"replacements": [
+							["dummy", "dummy,:has([href$=\"tag={{{insert}}}\"])"]
+						]
+					}
+				},
+				"tags": ["functionality"]
+			},
 			"category-header-colours": {
 				"name": "Category Header Colours",
 				"description": "Colours the buttons in the header based on their respective category.",
