@@ -1,36 +1,73 @@
 /**
  * Auto-hiding Tags & Genres
- * v0.1.0
+ * v1.0.0
  */
 
-.data:is(.tags,.genre) {
+/*
+If anyone is wondering why the selectors in this mod are pure fucking insanity,
+blame MAL devs for typoing the demographic class on the mangalist so now I have
+to write this god awful code. Thanks for coming to my TED talk.
+*/
+
+@supports selector(:has(*)) { /* wrap in a supports statement because otherwise this mod will look like shit */
+
+.data.tags,
+.anime .data.genre,
+.manga .data.genre:has(~.genre),
+.manga .list-table-header:not(:has(.demographic)) ~ * .genre {
 	display: grid !important;
 	grid-auto-columns: max-content;
 	grid-auto-flow: column;
 	grid-template-rows: 0fr;
+	justify-content: var(--genre-align, left); /* only affects genre as tags have a full-width div */
+	overflow: hidden; /* needed for compat. w/ review tags */
 	transition: grid-template-rows .18s ease 0s;
 }
 .data.tags {
 	grid-auto-columns: 1fr;
 }
-#list-container .list-table-data:hover .data:is(.tags,.genre) {
+.list-table-data:hover .data.tags,
+.anime .list-table-data:hover .data.genre,
+.manga .list-table-data:hover .data.genre:has(~.genre),
+.manga .list-table-header:not(:has(.demographic)) ~ .list-table-data:hover .genre {
 	grid-template-rows: 1fr;
 	transition-delay: .4s;
 }
-.data.tags div, .data.genre span {
+.data.tags div,
+.anime .data.genre span,
+.manga .data.genre:has(~.genre) span,
+.manga .list-table-header:not(:has(.demographic)) ~ * .genre span {
 	overflow: hidden;
 }
 .data.tags a {
 	white-space: nowrap;
 }
 
-/* try to unfuck demographic */
+/* handle empty column text */
 
-.data.genre ~ .genre {
-	display: block !important;
+.data.tags::after,
+.anime .data.genre::after,
+.manga .data.genre:has(~.genre)::after,
+.manga .list-table-header:not(:has(.demographic)) ~ * .genre::after {
+	height: 0;
+	overflow: hidden;
+	line-height: 22px;
+	transition: height .18s ease 0s;
 }
-.data.genre ~ .genre span {
-	overflow: visible;
+.list-table-data:hover .data.tags::after,
+.anime .list-table-data:hover .data.genre::after,
+.manga .list-table-data:hover .data.genre:has(~.genre)::after,
+.manga .list-table-header:not(:has(.demographic)) ~ .list-table-data:hover .genre::after {
+	height: 22px;
+	transition-delay: .4s;
+}
+
+/* hide empty column text when irrelevant */
+
+.anime .list-table-data:has(.tags div:empty) .data.genre:empty::after,
+.manga .list-table-data:has(.tags div:empty) .data.genre:has(~.genre):empty,
+.manga .list-table:not(:has(.header-title.demographic)) .list-table-data:has(.tags div:empty) .data.genre:empty {
+	display: none;
 }
 
 /* loading bar */
@@ -64,5 +101,7 @@
 		opacity: 0;
 	}
 }
+	
+} /* end @supports */
 
 /* END of Auto-hiding Tags & Genres */
