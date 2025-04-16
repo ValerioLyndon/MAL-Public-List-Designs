@@ -1,6 +1,6 @@
 /**
  * Review Tags
- * v1.1.0
+ * v1.2.0
  */
 
 .data.tags div:not(:empty) {
@@ -11,6 +11,7 @@
 	margin-top: 3px;
 	line-height: 1.35;
 	cursor: text;
+	justify-self: var(--tag-align, right); /* needed for compat with Auto-hide Tags/Genres. Uses tag-align compat from Switch Tags & Genres */
 }
 
 .data.tags span {
