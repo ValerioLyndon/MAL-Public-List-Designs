@@ -1,21 +1,24 @@
 /**
  * Switch Tags & Genres
- * v1.1.0
+ * v1.2.0
  */
+
+:root {
+	/* variables for compatibility with other mods */
+	--tag-align: left;
+	--genre-align: right;
+}
 
 .data.tags.tags.tags.tags {
 	margin-left: 0;
-	text-align: left !important;
+	text-align: var(--tag-align) !important;
 }
 
-.data.tags ~ .genre {
+.anime .data.tags ~ .genre,
+.manga .data.tags ~ .genre:has(~.genre),
+.manga .list-table-header:not(:has(.demographic)) ~ * .tags ~ .genre {
 	margin-left: auto;
-	text-align: right !important;
-}
-
-.manga .data.genre:not(:has([href*="genre="])) {
-	margin-left: 0;
-	text-align: center !important;
+	text-align: var(--genre-align) !important;
 }
 
 /* END of Switch Tags & Genres */
