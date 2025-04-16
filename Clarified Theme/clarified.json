@@ -757,6 +757,28 @@
 				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Review%20Tags.css"},
 				"tags": ["tags"]
 			},
+			"auto-hide-tags": {
+				"name": "Auto-hide Tags & Genres",
+				"description": "Hides tags & genres on your list items until hovered over.",
+				"css": {"bottom": "https://valeriolyndon.github.io/MAL-Public-List-Designs/Clarified%20Theme/Modifications/Auto-hide%20Tags-Genres.css"},
+				"tags": ["tags"],
+				"options": {
+					"delay": {
+						"name": "Activation Delay",
+						"description": "The time before the tags/genres are displayed upon mouse-over.",
+						"type": "range",
+						"min": 0,
+						"max": 5,
+						"step": 0.05,
+						"default": 0.4,
+						"replacements": [
+							[".4s", "{{{insert}}}s"],
+							[".37s", "calc({{{insert}}}s * 0.925)"],
+							[".13s", "calc({{{insert}}}s * 0.325)"]
+						]
+					}
+				}
+			},
 			"highlight-favourites": {
 				"name": "Highlight Favourites",
 				"description": "Please note:[list][*]This mod will not display correctly in the MyAnimeList preview window. View on your own list.[*]If using the Review Tags mod, be sure to place all \"Favourite\" tags at the end of each tag section or else there will be trailing commas in some areas.[/list]",
