@@ -1,5 +1,5 @@
 /* "Brink" by Valerio Lyndon
- * Version 2.1.4
+ * Version 2.1.5
  * 
  * = TABLE OF CONTENTS =
  * 
@@ -886,7 +886,7 @@ body {
 }
 
 #status-menu .status-button::before {
-	display: block;
+	display: inline;
 	color: hsla(var(--text), 48%);
 	font-size: 18px;
 	transition: all var(--timeButtonLarge) var(--bezierSmooth);
